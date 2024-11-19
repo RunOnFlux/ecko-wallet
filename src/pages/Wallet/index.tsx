@@ -184,6 +184,10 @@ const Wallet = () => {
     );
   };
 
+  const handleHistory = () => {
+    history.push('/history');
+  };
+
   const { theme } = useAppThemeContext();
 
   return (
@@ -215,6 +219,7 @@ const Wallet = () => {
             iconUrl={images.wallet.arrowReceive}
             variant="secondary"
           />
+          <CircledButton onClick={handleHistory} label="History" iconUrl={images.iconHistory} variant="empty" />
         </DivFlex>
       </DivBottomShadow>
       <DivAsset>
