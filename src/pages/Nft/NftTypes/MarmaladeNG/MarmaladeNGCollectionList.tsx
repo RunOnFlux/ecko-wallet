@@ -60,7 +60,7 @@ const MarmaladeNGCollectionList = () => {
             if (collectionListResponse?.result?.status === 'success') {
               const collectionList = collectionListResponse?.result?.data;
               const pactCode = getCollectionsAndTokens(collectionList.length);
-              promises.push(fetchLocal(pactCode, selectedNetwork?.url, selectedNetwork?.networkId, chainId));
+              promises.push(fetchLocal(pactCode, selectedNetwork?.url, selectedNetwork?.networkId, chainId, 3000000));
             }
           }
         } catch (err) {
@@ -126,6 +126,9 @@ const MarmaladeNGCollectionList = () => {
           })
           .catch((err) => {
             console.error('Error fetching NG NFTs', err);
+            hideLoading();
+          })
+          .finally(() => {
             hideLoading();
           });
       }

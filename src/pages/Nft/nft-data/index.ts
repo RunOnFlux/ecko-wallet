@@ -25,6 +25,7 @@ export const MARMALADE_NG_WHITELISTED_COLLECTIONS = [
   // 'c_Skellies_v1.0_TN_sTgd1BaLG_-promP51MlRNWOrEB4R667See6VZtM',
   // 'c_TestCollection_P8k5ckLwbIxKkvrOtGBrRojuaMbSgoPXPPuKUo6hyU4',
   'c_kadena-kings_dyedla8EGc56PDwvcF9VrO5RvpssA0jD4XUS2pvBWxA',
+  'c_Guardians_Of_Kadena_IGblM8MkJjt58dOSvJfON0qEqHjJJFFaiwrdszJuT1Q',
 ];
 
 export interface NFTData {

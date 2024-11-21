@@ -16,11 +16,11 @@ export const getApiUrl = (url, networkId, chainId) =>
     url === 'https://chainweb.kaddex.com' || url === 'https://chainweb.ecko.finance' ? 'https://api.chainweb.com' : url
   }/chainweb/0.0/${networkId}/chain/${chainId}/pact`;
 
-export const fetchLocal = (code, url, networkId, chainId) => {
+export const fetchLocal = (code, url, networkId, chainId, gasLimit = 1500000) => {
   const localCmd = {
     keyPairs: [],
     pactCode: code,
-    meta: Pact.lang.mkMeta('not-real', chainId.toString(), 0.00000001, 1500000, getTimestamp(), 600),
+    meta: Pact.lang.mkMeta('not-real', chainId.toString(), 0.00000001, gasLimit, getTimestamp(), 600),
   };
   return Pact.fetch.local(localCmd, getApiUrl(url, networkId, chainId));
 };
