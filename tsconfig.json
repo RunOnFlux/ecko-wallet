@@ -5,9 +5,7 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "lib": [
-      "esnext", "ES6", "DOM"
-    ],
+    "lib": ["esnext", "ES6", "DOM"],
     "moduleResolution": "node",
     "baseUrl": ".",
     "noEmit": true,
@@ -27,32 +25,13 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src/**/*",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-  "plugins": [
-    {
-      "name": "typescript-styled-plugin",
-      "lint": {
-        "validProperties": [
-          "shadow-color",
-          "shadow-opacity",
-          "shadow-offset",
-          "shadow-radius",
-          "padding-horizontal",
-          "padding-vertical",
-          "margin-vertical",
-          "margin-horizontal",
-          "tint-color",
-          "aspect-ratio",
-          "elevation"
-        ]
-      }
-    }
-  ]
+  "include": ["src/**/*", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
+  "paths": {
+    "@Components/*": ["src/components/*"],
+    "@Utils/*": ["src/utils/*"],
+    "@Css/*": ["src/css/*"],
+    "@Reducers/*": ["src/reducers/*"],
+    "@ledgerhq/devices": ["node_modules/@ledgerhq/devices/lib-es"]
+  }
 }

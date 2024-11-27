@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { BaseTextInput, BaseSelect, InputError } from 'src/baseComponent';
 import { useSelector } from 'react-redux';
-import QrReader from 'react-qr-reader';
+// import QrReader from 'react-qr-reader';
 import ModalCustom from 'src/components/Modal/ModalCustom';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
 import { toast } from 'react-toastify';
@@ -267,7 +267,7 @@ const ImportAccount = () => {
         <ModalCustom isOpen={isScanAccount} onCloseModal={() => setScanAccount(false)}>
           <Body>
             <TitleModal>Scan QR Code</TitleModal>
-            <QrReader
+            {/* <QrReader
               delay={1000}
               onError={() => {
                 if (isMobile) {
@@ -276,7 +276,7 @@ const ImportAccount = () => {
               }}
               onScan={handleScanAccount}
               style={{ width: '100%' }}
-            />
+            /> */}
             <DivChild>Place the QR code in front of your camera</DivChild>
           </Body>
         </ModalCustom>
@@ -285,7 +285,7 @@ const ImportAccount = () => {
         <ModalCustom isOpen={isScanPrivateKey} onCloseModal={() => setScanPrivateKey(false)}>
           <Body>
             <TitleModal>Scan QR Code</TitleModal>
-            <QrReader
+            {/* <QrReader
               delay={1000}
               onError={() => {
                 if (isMobile) {
@@ -294,7 +294,7 @@ const ImportAccount = () => {
               }}
               onScan={handleScanPrivateKey}
               style={{ width: '100%' }}
-            />
+            /> */}
             <DivChild>Place the QR code in front of your camera</DivChild>
           </Body>
         </ModalCustom>

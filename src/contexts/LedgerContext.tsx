@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import { listen } from '@ledgerhq/logs';
 import styled from 'styled-components';
-import KadenaLedger, { BuildTransactionResult, SignTransactionResult, TransferCrossChainTxParams, TransferTxParams } from 'hw-app-kda';
+import KadenaLedger, { BuildTransactionResult, SignTransactionResult, TransferCrossChainTxParams, TransferTxParams } from 'hw-app-kda/lib/Kadena';
 import TransportWebHID from '@ledgerhq/hw-transport-webhid';
 import { Overlay } from 'src/components/Modal/ModalCustom';
 import { SecondaryLabel } from 'src/components';

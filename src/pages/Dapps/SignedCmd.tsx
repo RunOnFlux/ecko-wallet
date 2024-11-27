@@ -3,7 +3,7 @@ import Pact from 'pact-lang-api';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import ReactJson from 'react-json-view';
+// import ReactJson from 'react-json-view';
 import Toast from 'src/components/Toast/Toast';
 import { toast } from 'react-toastify';
 import { InputError } from 'src/baseComponent';
@@ -233,7 +233,7 @@ const SignedCmd = () => {
       </SecondaryLabel>
       {Object.keys(newCmd).length && (
         <DappContentWrapper>
-          <ReactJson
+          {/* <ReactJson
             name="signedCmd"
             src={newCmd}
             enableClipboard={false}
@@ -245,7 +245,7 @@ const SignedCmd = () => {
             style={{ paddingBottom: 40 }}
             theme={theme.isDark ? 'twilight' : 'rjv-default'}
             collapseStringsAfterLength={false}
-          />
+          /> */}
         </DappContentWrapper>
       )}
       {type === AccountType.LEDGER && isWaitingLedger && (
@@ -270,7 +270,7 @@ const SignedCmd = () => {
             {caps?.map((cap, i) => (
               <DivFlex flexDirection="column">
                 <DappContentWrapper>
-                  <ReactJson
+                  {/* <ReactJson
                     name={cap?.cap?.name || `CAP ${i + 1}`}
                     src={cap}
                     enableClipboard={false}
@@ -281,7 +281,7 @@ const SignedCmd = () => {
                     indentWidth={2}
                     theme={theme.isDark ? 'twilight' : 'rjv-default'}
                     collapseStringsAfterLength={false}
-                  />
+                  /> */}
                 </DappContentWrapper>
               </DivFlex>
             ))}

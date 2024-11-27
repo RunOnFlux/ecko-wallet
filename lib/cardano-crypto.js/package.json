@@ -1,0 +1,64 @@
+{
+  "_args": [
+    [
+      "git+https://github.com/kadena-io/cardano-crypto.js.git#jam@chainweaver-keygen",
+      "/home/asemeraro/apps/misc/flux-ecko-wallet"
+    ]
+  ],
+  "_from": "git+https://github.com/kadena-io/cardano-crypto.js.git#jam@chainweaver-keygen",
+  "_id": "cardano-crypto.js@git+https://github.com/kadena-io/cardano-crypto.js.git#c50fb8c2fcd4e8d396506fb0c07de9d658aa1bae",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cardano-crypto.js",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "git+https://github.com/kadena-io/cardano-crypto.js.git#jam@chainweaver-keygen",
+    "rawSpec": "git+https://github.com/kadena-io/cardano-crypto.js.git#jam@chainweaver-keygen",
+    "saveSpec": "git+https://github.com/kadena-io/cardano-crypto.js.git#jam@chainweaver-keygen",
+    "fetchSpec": "https://github.com/kadena-io/cardano-crypto.js.git",
+    "gitCommittish": "jam@chainweaver-keygen"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/kadena-io/cardano-crypto.js.git#c50fb8c2fcd4e8d396506fb0c07de9d658aa1bae",
+  "_spec": "git+https://github.com/kadena-io/cardano-crypto.js.git#jam@chainweaver-keygen",
+  "_where": "/home/asemeraro/apps/misc/flux-ecko-wallet",
+  "author": {
+    "name": "refi93"
+  },
+  "bugs": {
+    "url": "https://github.com/vacuumlabs/cardano-crypto.js/issues"
+  },
+  "dependencies": {
+    "bech32": "^1.1.4",
+    "bip39": "^3.0.2",
+    "borc": "^2.1.1",
+    "buffer": "^6.0.3",
+    "pbkdf2": "^3.0.17"
+  },
+  "description": "input-output-hk/cardano-crypto compiled to pure javascript using Emscripten",
+  "devDependencies": {
+    "tape": "^4.11.0"
+  },
+  "homepage": "https://github.com/vacuumlabs/cardano-crypto.js#readme",
+  "keywords": [
+    "ed25519",
+    "cardano",
+    "signature"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "cardano-crypto.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vacuumlabs/cardano-crypto.js.git"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "prepublish": "npm run build",
+    "test": "tape test/**/*.js"
+  },
+  "version": "6.0.0"
+}

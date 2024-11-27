@@ -1,5 +1,5 @@
 import { CommonLabel, DivFlex } from 'src/components';
-import ReactJson from 'react-json-view';
+// import ReactJson from 'react-json-view';
 import { useAppThemeContext } from 'src/contexts/AppThemeContext';
 import NftCard from '../NftCard';
 import { NgTokenData } from './MarmaladeNGCollectionDetails';
@@ -17,7 +17,7 @@ export const NGModalContent = ({ token }: { token: NgTokenData }) => {
           fontSize: 13,
         }}
       >
-        <ReactJson
+        {/* <ReactJson
           name="metadata"
           src={token.metadata}
           theme={theme.isDark ? 'twilight' : 'rjv-default'}
@@ -28,7 +28,7 @@ export const NGModalContent = ({ token }: { token: NgTokenData }) => {
           shouldCollapse={false}
           style={{ paddingBottom: 40 }}
           collapseStringsAfterLength={false}
-        />
+        /> */}
       </DivFlex>
     </DivFlex>
   );

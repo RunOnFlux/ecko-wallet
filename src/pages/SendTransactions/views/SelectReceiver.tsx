@@ -5,7 +5,7 @@ import { BaseSelect, BaseTextInput, BaseModalSelect, InputError } from 'src/base
 import { useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import QrReader from 'react-qr-reader';
+// import QrReader from 'react-qr-reader';
 import images from 'src/images';
 import { toast } from 'react-toastify';
 import { ReactComponent as AlertIconSVG } from 'src/images/icon-alert.svg';
@@ -466,7 +466,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
         <ModalCustom isOpen={isScanSearching} onCloseModal={() => setIsScanSearching(false)}>
           <BodyModal>
             <TitleModal>Scan QR Code</TitleModal>
-            <QrReader
+            {/* <QrReader
               delay={1000}
               onError={() => {
                 if (isMobile) {
@@ -475,7 +475,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
               }}
               onScan={handleScanSearching}
               style={{ width: '100%' }}
-            />
+            /> */}
             <DivChild>Place the QR code in front of your camera</DivChild>
           </BodyModal>
         </ModalCustom>

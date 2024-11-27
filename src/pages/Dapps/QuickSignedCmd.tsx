@@ -3,7 +3,7 @@ import images from 'src/images';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import ReactJson from 'react-json-view';
+// import ReactJson from 'react-json-view';
 import Toast from 'src/components/Toast/Toast';
 import { toast } from 'react-toastify';
 import { hash as kadenaJSHash, sign as kadenaJSSign } from '@kadena/cryptography-utils';
@@ -257,7 +257,7 @@ const QuickSignedCmd = () => {
                     <DivFlex flexDirection="column">
                       {caps?.map((cap) => (
                         <div style={{ margin: '10px 0' }}>
-                          <ReactJson
+                          {/* <ReactJson
                             name={cap.name}
                             src={cap?.args}
                             enableClipboard={false}
@@ -268,7 +268,7 @@ const QuickSignedCmd = () => {
                             indentWidth={2}
                             theme={theme.isDark ? 'twilight' : 'rjv-default'}
                             collapseStringsAfterLength={false}
-                          />
+                          /> */}
                         </div>
                       ))}
                     </DivFlex>
@@ -279,7 +279,7 @@ const QuickSignedCmd = () => {
                     RAW DATA
                   </SecondaryLabel>
                 </DivFlex>
-                <ReactJson
+                {/* <ReactJson
                   name="rawCmd"
                   src={signData}
                   enableClipboard={false}
@@ -291,7 +291,7 @@ const QuickSignedCmd = () => {
                   style={{ paddingBottom: 40 }}
                   theme={theme.isDark ? 'twilight' : 'rjv-default'}
                   collapseStringsAfterLength={false}
-                />
+                /> */}
               </CommandListWrapper>
             </>
           )
