@@ -89,6 +89,7 @@
   },
   "devDependencies": {
     "@parcel/config-webextension": "^2.13.2",
+    "@parcel/packager-raw-url": "^2.13.2",
     "@parcel/transformer-sass": "^2.13.2",
     "@parcel/transformer-typescript-tsc": "^2.13.2",
     "@parcel/transformer-webmanifest": "^2.13.2",
@@ -113,5 +114,8 @@
     "default": {
       "distDir": "./output"
     }
+  },
+  "@parcel/resolver-default": {
+    "packageExports": true
   }
 }

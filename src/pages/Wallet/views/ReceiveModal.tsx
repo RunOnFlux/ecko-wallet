@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import images from 'src/images';
-import QRCode from 'qrcode.react';
+// import QRCode from 'qrcode.react';
 import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
 import { DivFlex, SecondaryLabel } from 'src/components';
@@ -37,9 +37,7 @@ const ReceiveModal = () => {
   return (
     <>
       <DivFlex alignItems="center" justifyContent="center" style={{ paddingBottom: 30 }}>
-        <div style={{ background: 'white', padding: 10 }}>
-          <QRCode id="receive" value={account} size={200} level="H" />
-        </div>
+        <div style={{ background: 'white', padding: 10 }}>{/* <QRCode id="receive" value={account} size={200} level="H" /> */}</div>
       </DivFlex>
       <ReceiveSection style={{ marginBottom: 30 }}>
         <DivFlex justifyContent="space-between" alignItems="center" style={{ marginBottom: 20 }}>
