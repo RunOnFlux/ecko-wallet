@@ -24,6 +24,7 @@
     "bcryptjs": "^2.4.3",
     "bignumber.js": "^9.0.1",
     "bip39": "^3.0.4",
+    "buffer": "^6.0.3",
     "cardano-crypto.js": "file:./lib/cardano-crypto.js",
     "copyfiles": "^2.4.1",
     "crypto-js": "^4.1.1",
@@ -56,7 +57,7 @@
   "scripts": {
     "start": "webpack serve --config webpack.config.js",
     "build": "webpack",
-    "postbuild": "mv ./build/public.*.html ./build/index.html",
+    "build:dev": "webpack --mode development --devtool source-map",
     "clean": "rm -rf .parcel-cache dist build",
     "test": "craco test",
     "eject": "react-scripts eject",

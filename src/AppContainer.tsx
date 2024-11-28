@@ -105,7 +105,7 @@ const AppContainer = () => {
           <PrivateRoute path="/" component={Wallet} />
           <Redirect to="/" />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
         {isLoading && <Loading />}
         <WalletCreator />
         <TransactionsImporter />

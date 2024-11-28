@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -12,7 +13,16 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[name].bundle.js',
+    filename: (pathData) => {
+      switch (pathData.chunk.name) {
+        case 'background':
+          return 'app/background.js';
+        case 'content':
+          return 'app/content.js';
+        default:
+          return '[name].bundle.js';
+      }
+    },
   },
   module: {
     rules: [
@@ -58,6 +68,7 @@ module.exports = {
       http: require.resolve('stream-http'),
       https: require.resolve('https-browserify'),
       crypto: require.resolve('crypto-browserify'),
+      buffer: require.resolve('buffer/'),
       stream: require.resolve('stream-browserify'),
       vm: require.resolve('vm-browserify'),
     },
@@ -72,9 +83,16 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: 'public/manifest.json', to: 'manifest.json' },
-        { from: 'public/image/favicon.png', to: 'favicon.png' },
-        { from: 'public/app/inpage.js', to: 'app/script/inpage.js' },
+        { from: 'public/favicon.png', to: 'favicon.png' },
+        { from: 'public/app/script/inpage.js', to: 'app/script/inpage.js' },
       ],
+    }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
     }),
   ],
   devServer: {

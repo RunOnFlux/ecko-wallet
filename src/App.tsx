@@ -43,8 +43,7 @@ const App = () => (
       <AppThemeProvider>
         <AppWrapper>
           <Content>
-            ciao
-            {/* <LedgerProvider>
+            <LedgerProvider>
               <ModalProvider>
                 <SettingsProvider>
                   <AccountBalanceProvider>
@@ -67,7 +66,7 @@ const App = () => (
                   </AccountBalanceProvider>
                 </SettingsProvider>
               </ModalProvider>
-            </LedgerProvider> */}
+            </LedgerProvider>
           </Content>
         </AppWrapper>
         <ToastContainer />

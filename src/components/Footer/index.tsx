@@ -14,7 +14,7 @@ import { ACTIVE_TAB } from 'src/utils/constant';
 import { DivFlex, SecondaryLabel } from '..';
 import { useAppSelector } from 'src/stores/hooks';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ isFooter?: boolean }>`
   display: ${(props) => (props.isFooter ? 'block' : 'none')};
   position: fixed;
   bottom: 0;
