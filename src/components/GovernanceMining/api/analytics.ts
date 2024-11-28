@@ -1,7 +1,7 @@
 import moment from 'moment';
-import { useSelector } from 'react-redux';
 import { getSelectedNetwork } from 'src/stores/slices/extensions';
 import { ANALYSIS_BASE_URL_DEV, ANALYSIS_BASE_URL_PROD } from '../constants';
+import { useAppSelector } from 'src/stores/hooks';
 
 const headers = {
   Accept: 'application/json',
@@ -9,7 +9,7 @@ const headers = {
 };
 
 export const useGetData = () => {
-  const selectedNetwork = useSelector(getSelectedNetwork);
+  const selectedNetwork = useAppSelector(getSelectedNetwork);
 
   return async (startDate: Date, endDate: Date) => {
     const start = moment(startDate).format('YYYY-MM-DD');
@@ -20,7 +20,7 @@ export const useGetData = () => {
     const options = { method: 'GET', headers };
 
     const response = await fetch(url, options);
-    const json = (await response.json());
+    const json = await response.json();
 
     return json;
   };

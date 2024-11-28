@@ -1,7 +1,6 @@
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { groupBy } from 'lodash';
 import { shortenAddress } from 'src/utils';
 import { useModalContext } from 'src/contexts/ModalContext';
@@ -12,6 +11,7 @@ import { CommonLabel, DivFlex, PrimaryLabel, SecondaryLabel, StickyFooter } from
 import { Body } from '../../SendTransactions/styles';
 import ContactForm from './views/ContactForm';
 import { ContactInfo } from './views/ContactInfo';
+import { useAppSelector } from 'src/stores/hooks';
 
 const Wrapper = styled.div`
   padding: 0 20px;
@@ -23,7 +23,7 @@ const AccountRow = styled.div`
 `;
 
 const PageContact = () => {
-  const { contacts, selectedNetwork } = useSelector((state) => state.extensions);
+  const { contacts, selectedNetwork } = useAppSelector((state) => state.extensions);
   const history = useHistory();
   const groupedContacts = groupBy(
     contacts?.filter((c) => c.accountName),

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { BaseTextInput, InputError } from 'src/baseComponent';
 import lib from 'cardano-crypto.js/kadena-crypto';
-import { useSelector } from 'react-redux';
 import { hash as kadenaHash } from '@kadena/cryptography-utils';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -11,6 +10,7 @@ import Toast from 'src/components/Toast/Toast';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import Button from 'src/components/Buttons';
 import { PasswordForm } from 'src/components/PasswordForm';
+import { useAppSelector } from 'src/stores/hooks';
 
 const CreatePasswordWrapper = styled.div`
   padding: 0 20px;
@@ -48,7 +48,7 @@ const CreatePassword = () => {
     clearErrors,
     control,
   } = useForm();
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { isCreateSeedPhrase, selectedNetwork } = rootState.extensions;
 
   const history = useHistory();

@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import { JazzAccount } from 'src/components/JazzAccount';
 import { shortenAddress } from 'src/utils';
 import { DivFlex, SecondaryLabel } from 'src/components';
+import { useAppSelector } from 'src/stores/hooks';
 
 const AccountLabel = styled.span`
   font-weight: ${(props) => (props.isSelected ? 'bold' : 500)};
@@ -12,7 +12,7 @@ const AccountLabel = styled.span`
 `;
 
 export const AccountList = ({ onSelectWallet }: { onSelectWallet: any }) => {
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { wallets } = rootState?.wallet;
   const { account: selectedAccount } = useCurrentWallet();
 

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { getLocalDapps } from 'src/utils/storage';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
 import { get } from 'lodash';
-import { useSelector } from 'react-redux';
 import { fetchLocal } from 'src/utils/chainweb';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
 import images from 'src/images';
 import Button from 'src/components/Buttons';
 import Transfer from './views/Transfer';
 import { DappContentWrapper, DappLogo, DappWrapper } from '../Dapps/SignedCmd';
+import { useAppSelector } from 'src/stores/hooks';
 
 const NotFound = styled.div`
   display: flex;
@@ -47,7 +47,7 @@ export const PageSendTransaction = styled.div`
 const DappTransfer = () => {
   const [destinationAccount, setDestinationAccount] = useState<any>();
   const [loading, setLoading] = useState(true);
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork } = rootState.extensions;
   useEffect(() => {
     getLocalDapps(

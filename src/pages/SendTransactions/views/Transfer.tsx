@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { BaseTextInput } from 'src/baseComponent';
-import { useSelector } from 'react-redux';
 import { useAppSelector } from 'src/stores/hooks';
 import { getContacts, hideLoading, showLoading } from 'src/stores/slices/extensions';
 import { ReactComponent as AddIconSVG } from 'src/images/add-round.svg';
@@ -67,10 +66,7 @@ interface TransactionInfoProps {
   containerStyle?: React.CSSProperties;
 }
 
-export const TransactionInfoView = ({
-  info,
-  containerStyle,
-}: TransactionInfoProps) => {
+export const TransactionInfoView = ({ info, containerStyle }: TransactionInfoProps) => {
   const contacts = useAppSelector(getContacts);
   const renderContactOrAccount = (acc) => contacts?.find((c) => c?.accountName === acc)?.aliasName ?? shortenAddress(acc);
   return (
@@ -159,7 +155,7 @@ const Transfer = (props: Props) => {
     clearErrors,
     setError,
   } = useForm<any>();
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork } = rootState.extensions;
   useEffect(() => {
     initData();
@@ -481,7 +477,7 @@ const Transfer = (props: Props) => {
           </SecondaryLabel>
           <GearIconSVG style={{ cursor: 'pointer' }} onClick={() => setIsOpenGasOptionsModal(true)} />
         </DivFlex>
-        { errors.cannotPayGas && (
+        {errors.cannotPayGas && (
           <Warning type="danger" margin="10px 0">
             <AlertIconSVG />
             <span>Insufficient funds for gas fee</span>

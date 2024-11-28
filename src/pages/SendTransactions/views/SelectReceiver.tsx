@@ -2,7 +2,6 @@ import { useState, useContext, useEffect, useRef } from 'react';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
 import { extractDecimal, fetchListLocal } from 'src/utils/chainweb';
 import { BaseSelect, BaseTextInput, BaseModalSelect, InputError } from 'src/baseComponent';
-import { useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 // import QrReader from 'react-qr-reader';
@@ -29,6 +28,7 @@ import Button from 'src/components/Buttons';
 import { IFungibleToken } from 'src/pages/ImportToken';
 import { BodyModal, TitleModal, DivChild, InputWrapper, Warning } from '../styles';
 import { KeyWrapper, KeyItemWrapper, KeyRemove, ContactSuggestion } from './style';
+import { useAppSelector } from 'src/stores/hooks';
 
 type Props = {
   goToTransfer: any;
@@ -48,7 +48,7 @@ const predList = [
 ];
 
 const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) => {
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { contacts, recent, selectedNetwork } = rootState.extensions;
   const sortedContacts = [...(contacts || [])]?.sort((a, b) => a?.aliasName?.localeCompare(b?.aliasName));
   const { wallet } = rootState;

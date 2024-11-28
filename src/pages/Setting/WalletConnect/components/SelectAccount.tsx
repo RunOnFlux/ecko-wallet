@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import Button from 'src/components/Buttons';
 import { useState } from 'react';
 import { DivFlex } from 'src/components';
-import { useSelector } from 'react-redux';
 import { Radio } from 'src/components/Radio';
 import { shortenAddress } from 'src/utils';
+import { useAppSelector } from 'src/stores/hooks';
 
 const CustomButton = styled.div`
   margin-top: 20px;
@@ -12,7 +12,7 @@ const CustomButton = styled.div`
 
 const SelectAccount = ({ onConfirmAccounts }: { onConfirmAccounts: (accounts: string[]) => any }) => {
   const [selectedAccounts, setSelectedAccounts] = useState<string[]>([]);
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { wallets } = rootState?.wallet;
 
   const toggleAccount = (publicKey) => {

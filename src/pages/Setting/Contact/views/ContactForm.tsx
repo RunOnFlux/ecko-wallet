@@ -15,11 +15,11 @@ import { useWindowResizeMobile } from 'src/hooks/useWindowResizeMobile';
 import { hideLoading, setContacts, showLoading } from 'src/stores/slices/extensions';
 import { fetchLocal } from 'src/utils/chainweb';
 import { getLocalContacts, setLocalContacts } from 'src/utils/storage';
-import { useSelector } from 'react-redux';
 import ModalCustom from 'src/components/Modal/ModalCustom';
 // import QrReader from 'react-qr-reader';
 import { DivFlex } from 'src/components';
 import { BodyModal, TitleModal, DivChild, DivError, DivChildButton, ItemWrapperContact } from './style';
+import { useAppSelector } from 'src/stores/hooks';
 
 type Props = {
   contact?: any;
@@ -44,7 +44,7 @@ const ContactForm = (props: Props) => {
     },
   });
   const [isMobile] = useWindowResizeMobile(420);
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork } = rootState.extensions;
   const [isScanAccountName, setIsScanAccountName] = useState(false);
   const [aliasState, setAliasState] = useState(contact?.aliasName ?? '');

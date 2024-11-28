@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { NavigationHeader } from 'src/components/NavigationHeader';
@@ -9,6 +8,7 @@ import { Body, FormSend, SelectWrapper } from './styles';
 import Transfer from './views/Transfer';
 import SelectReceiver from './views/SelectReceiver';
 import { IFungibleToken, IFungibleTokensByNetwork, LOCAL_DEFAULT_FUNGIBLE_TOKENS, LOCAL_KEY_FUNGIBLE_TOKENS } from '../ImportToken';
+import { useAppSelector } from 'src/stores/hooks';
 
 const Wrapper = styled.div`
   padding: 0 20px;
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 const SendTransactions = () => {
   const goHome = useGoHome();
   const { search } = useLocation();
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork } = rootState.extensions;
   const networkId = selectedNetwork?.networkId;
   const [fungibleTokens] = useLocalStorage<IFungibleTokensByNetwork>(LOCAL_KEY_FUNGIBLE_TOKENS, LOCAL_DEFAULT_FUNGIBLE_TOKENS);

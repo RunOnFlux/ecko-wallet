@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
@@ -13,10 +12,7 @@ import { AccountActions } from 'src/pages/Wallet/components/AccountActions';
 import { AccountType, setBalance, setCurrentWallet } from 'src/stores/slices/wallet';
 import { shortenAddress } from 'src/utils';
 import images from 'src/images';
-import {
-  getLocalPassword,
-  setLocalSelectedWallet,
-} from 'src/utils/storage';
+import { getLocalPassword, setLocalSelectedWallet } from 'src/utils/storage';
 import RemoveWalletPopup from 'src/pages/Wallet/views/RemoveWalletPopup';
 import { useCreateFirstAccountAvailable, useSelectNetwork } from 'src/hooks/wallet';
 import { DropdownModal } from '../DropdownModal';
@@ -24,6 +20,7 @@ import { DivFlex } from '..';
 import Toast from '../Toast/Toast';
 import { ActionList } from '../ActionList';
 import { DropdownRadioModal } from '../DropdownRadioModal';
+import { useAppSelector } from 'src/stores/hooks';
 
 const HeaderWallet = styled(DivFlex)`
   padding: 20px;
@@ -38,7 +35,7 @@ const AccountLabel = styled.span`
 export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
   const history = useHistory();
   const location = useLocation().pathname;
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const stateWallet = useCurrentWallet();
   const { openModal, closeModal } = useContext(ModalContext);
   const createFirstAccountAvailable = useCreateFirstAccountAvailable();

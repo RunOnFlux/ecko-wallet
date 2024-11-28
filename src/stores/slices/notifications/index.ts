@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dictionary, PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { RootState } from 'src/stores';
 
 export interface Notification {
@@ -8,7 +8,7 @@ export interface Notification {
   readTimestamp?: number;
 }
 
-export type NotificationsState = Dictionary<Notification>;
+export type NotificationsState = Record<string, Notification>;
 export type AddNotificationPayload = Pick<Notification, 'id' | 'content'>;
 
 const initialState: NotificationsState = {};

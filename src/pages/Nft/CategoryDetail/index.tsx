@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { fetchLocal } from 'src/utils/chainweb';
 import { DivFlex, SecondaryLabel } from 'src/components';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -12,9 +11,10 @@ import KadenaMiningClub from '../NftTypes/KadenaMiningClub';
 import KadenaMiningClubFoundersPass from '../NftTypes/KadenaMiningClubFoundersPass';
 import WizardsArena from '../NftTypes/WizardsArena';
 import MarmaladeV2 from '../NftTypes/MarmaladeV2';
+import { useAppSelector } from 'src/stores/hooks';
 
 const CategoryDetail = () => {
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork } = rootState.extensions;
   const { account } = rootState?.wallet;
   const history = useHistory();

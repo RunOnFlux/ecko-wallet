@@ -4,13 +4,13 @@
 import { createContext, useEffect, useContext } from 'react';
 import Pact from 'pact-lang-api';
 import { get } from 'lodash';
-import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
 import { fetchSend, getApiUrl, pollRequestKey } from 'src/utils/chainweb';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { getTimestamp } from 'src/utils';
 import { SettingsContext } from './SettingsContext';
+import { useAppSelector } from 'src/stores/hooks';
 
 interface CrossChainContextValue {
   crossChainRequests: any[] | null;
@@ -29,7 +29,7 @@ const defaultCrossChainContextValue: CrossChainContextValue = {
 export const CrossChainContext = createContext<CrossChainContextValue>(defaultCrossChainContextValue);
 
 export const CrossChainProvider = ({ children }: any) => {
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
 
   const { data: settings } = useContext(SettingsContext);
   const txSettings = settings?.txSettings;

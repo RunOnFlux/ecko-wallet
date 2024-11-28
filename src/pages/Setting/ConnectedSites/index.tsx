@@ -1,6 +1,5 @@
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import { decryptKey } from 'src/utils/security';
 import Toast from 'src/components/Toast/Toast';
 import { toast } from 'react-toastify';
@@ -18,6 +17,7 @@ import { NavigationHeader } from 'src/components/NavigationHeader';
 import { ContactBody } from '../Contact/style';
 import { SettingBody } from '../style';
 import { Body } from '../../SendTransactions/styles';
+import { useAppSelector } from 'src/stores/hooks';
 
 const RightAction = styled(DivFlex)`
   svg {
@@ -32,7 +32,7 @@ const PageConnectedSites = () => {
   const { theme } = useAppThemeContext();
   const { openModal, closeModal } = useModalContext();
   const stateWallet = useCurrentWallet();
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork, passwordHash } = rootState.extensions;
   const { connectedSites, wallets, account } = stateWallet;
 

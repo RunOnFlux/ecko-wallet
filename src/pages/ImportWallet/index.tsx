@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import { useState } from 'react';
 import { BaseTextInput, BaseSelect, InputError } from 'src/baseComponent';
-import { useSelector } from 'react-redux';
 // import QrReader from 'react-qr-reader';
 import ModalCustom from 'src/components/Modal/ModalCustom';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
@@ -23,6 +22,7 @@ import { find, isEmpty, get } from 'lodash';
 import { useHistory } from 'react-router-dom';
 import { getLocalPassword, getLocalWallets, setLocalSelectedWallet, setLocalWallets } from 'src/utils/storage';
 import { fetchLocal } from '../../utils/chainweb';
+import { useAppSelector } from 'src/stores/hooks';
 
 const DivBody = styled.div`
   width: 100%;
@@ -55,7 +55,7 @@ const ImportAccount = () => {
   const history = useHistory();
   const goHome = useGoHome();
   const [isMobile] = useWindowResizeMobile(420);
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { wallets, account } = rootState?.wallet;
   const { selectedNetwork, isLoading } = rootState?.extensions;
   const [isScanAccount, setScanAccount] = useState(false);

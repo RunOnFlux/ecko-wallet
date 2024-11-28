@@ -1,6 +1,5 @@
 import images from 'src/images';
 import Pact from 'pact-lang-api';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 // import ReactJson from 'react-json-view';
@@ -18,6 +17,7 @@ import { getSignatureFromHash } from 'src/utils/chainweb';
 import { bufferToHex, useLedgerContext } from 'src/contexts/LedgerContext';
 import { AccountType } from 'src/stores/slices/wallet';
 import { SigningResponse } from './interfaces';
+import { useAppSelector } from 'src/stores/hooks';
 
 export const DappWrapper = styled.div`
   display: flex;
@@ -76,10 +76,8 @@ const SignedCmd = () => {
   const [walletConnectParams, setWalletConnectParams] = useState<WalletConnectParams | null>(null);
   const { signHash, isWaitingLedger } = useLedgerContext();
 
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { publicKey, secretKey, type } = rootState.wallet;
-
-  const { theme } = useAppThemeContext();
 
   const returnSignedMessage = (result, error?, wcId = null, topic = null) => {
     const walletConnectId = wcId ?? walletConnectParams?.id;

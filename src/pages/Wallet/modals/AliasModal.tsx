@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { setWallets } from 'src/stores/slices/wallet';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import { decryptKey } from 'src/utils/security';
@@ -10,11 +9,12 @@ import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
 import { DivFlex } from 'src/components';
 import { useModalContext } from 'src/contexts/ModalContext';
+import { useAppSelector } from 'src/stores/hooks';
 
 export const AliasModal = () => {
   const stateWallet = useCurrentWallet();
   const { closeModal } = useModalContext();
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork, passwordHash } = rootState.extensions;
   const { wallets } = rootState?.wallet;
 

@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
 import { require2FA } from 'src/stores/slices/auth';
-import { useAppDispatch } from 'src/stores/hooks';
+import { useAppDispatch, useAppSelector } from 'src/stores/hooks';
 import { BaseTextInput, InputError } from 'src/baseComponent';
 import { useHistory } from 'react-router-dom';
 import images from 'src/images';
@@ -93,7 +92,7 @@ const LoginDapp = (props: any) => {
   const { setIsLocked } = useSettingsContext();
   const { location } = props;
   const { state } = location;
-  const rootState = useSelector((s) => s);
+  const rootState = useAppSelector((s) => s);
   const dispatch = useAppDispatch();
   const { selectedNetwork, networks, passwordHash } = rootState.extensions;
   const { publicKey, account, connectedSites } = rootState.wallet;

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { setActiveTab, setExtensionPassword, setIsHaveSeedPhrase } from 'src/stores/slices/extensions';
 import { useSettingsContext } from 'src/contexts/SettingsContext';
@@ -13,6 +12,7 @@ import { ReactComponent as GearIcon } from 'src/images/gear-icon.svg';
 import { ReactComponent as NFTIcon } from 'src/images/nft-icon.svg';
 import { ACTIVE_TAB } from 'src/utils/constant';
 import { DivFlex, SecondaryLabel } from '..';
+import { useAppSelector } from 'src/stores/hooks';
 
 const Wrapper = styled.div`
   display: ${(props) => (props.isFooter ? 'block' : 'none')};
@@ -70,7 +70,7 @@ const ActionBarElement = styled.div`
 `;
 
 const Footer = () => {
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork, networks, activeTab } = rootState.extensions;
   const { account } = rootState.wallet;
   const location = useLocation().pathname;

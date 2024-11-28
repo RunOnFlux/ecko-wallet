@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Button from 'src/components/Buttons';
 import { ReactComponent as AlertIconSVG } from 'src/images/icon-alert.svg';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Radio } from 'src/components/Radio';
 import { toast } from 'react-toastify';
 import { NavigationHeader } from 'src/components/NavigationHeader';
@@ -17,6 +16,7 @@ import { getLocalWallets, setLocalSeedPhrase, setLocalSelectedWallet, setLocalWa
 import { setCurrentWallet, setWallets } from 'src/stores/slices/wallet';
 import { Warning } from '../SendTransactions/styles';
 import { SPWrapper } from '../Setting/ExportSeedPhrase';
+import { useAppSelector } from 'src/stores/hooks';
 
 const Footer = styled.div`
   margin: 20px 0;
@@ -100,7 +100,7 @@ const SPText = styled.div`
 const defaultArr = ['', '', '', '', '', '', '', '', '', '', '', ''];
 const SeedPhrase = () => {
   const history = useHistory();
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { passwordHash, selectedNetwork } = rootState.extensions;
   const [keyPairs, setKeyPairs] = useState<any>();
   const [step, setStep] = useState(1);

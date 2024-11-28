@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { hash } from '@kadena/cryptography-utils';
-import { useAppDispatch } from 'src/stores/hooks';
+import { useAppDispatch, useAppSelector } from 'src/stores/hooks';
 import { require2FA } from 'src/stores/slices/auth';
 import images from 'src/images';
 import Button from 'src/components/Buttons';
@@ -79,7 +78,7 @@ const SignIn = () => {
     clearErrors,
   } = useForm();
 
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork, networks } = rootState.extensions;
   const { setIsLocked } = useSettingsContext();
   const dispatch = useAppDispatch();

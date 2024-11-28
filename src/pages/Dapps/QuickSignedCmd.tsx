@@ -1,6 +1,5 @@
 /* eslint-disable no-await-in-loop */
 import images from 'src/images';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 // import ReactJson from 'react-json-view';
@@ -18,6 +17,7 @@ import { sendWalletConnectMessage, updateQuickSignedCmdMessage } from 'src/utils
 import { DEFAULT_BIP32_PATH, bufferToHex, useLedgerContext } from 'src/contexts/LedgerContext';
 import { AccountType } from 'src/stores/slices/wallet';
 import { DappDescription, DappLogo, DappWrapper, WalletConnectParams } from './SignedCmd';
+import { useAppSelector } from 'src/stores/hooks';
 
 const CommandListWrapper = styled.div`
   padding: 10px;
@@ -52,7 +52,7 @@ const QuickSignedCmd = () => {
   const [walletConnectParams, setWalletConnectParams] = useState<WalletConnectParams | null>(null);
   const { getLedger } = useLedgerContext();
 
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { publicKey, secretKey, type } = rootState.wallet;
 
   const { theme } = useAppThemeContext();

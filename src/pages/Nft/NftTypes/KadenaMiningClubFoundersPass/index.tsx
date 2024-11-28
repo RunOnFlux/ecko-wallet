@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { fetchLocal } from 'src/utils/chainweb';
 import NftCard from '../NftCard';
 import KMCFPModalContent from './ModalContent';
+import { useAppSelector } from 'src/stores/hooks';
 
 const KadenaMiningClubFoundersPass = ({ id }: { id: string }) => {
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork } = rootState.extensions;
   const [data, setData] = useState({ id: null });
 

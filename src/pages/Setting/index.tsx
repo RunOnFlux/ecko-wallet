@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useAppThemeContext } from 'src/contexts/AppThemeContext';
 import { ReactComponent as ContactsIcon } from 'src/images/settings-contacts.svg';
 import { ReactComponent as NetworksIcon } from 'src/images/settings-networks.svg';
@@ -18,6 +17,7 @@ import useSessionStorage from 'src/hooks/useSessionStorage';
 import { STORAGE_PASSWORD_KEY } from 'src/utils/storage';
 import { RoundedArrow } from '../../components/Activities/FinishTransferItem';
 import packageJson from '../../../package.json';
+import { useAppSelector } from 'src/stores/hooks';
 
 interface ISettingsMenu {
   img: React.ReactNode;
@@ -61,7 +61,7 @@ const AboutDiv = styled(DivFlex)`
 
 const PageSetting = () => {
   const history = useHistory();
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { setIsLocked } = useSettingsContext();
   const { secretKey } = rootState?.wallet;
   const { theme } = useAppThemeContext();

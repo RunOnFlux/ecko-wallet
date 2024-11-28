@@ -4,16 +4,16 @@ import { useHistory } from 'react-router-dom';
 import { DivFlex, PrimaryLabel, SecondaryLabel } from 'src/components';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
-import { useSelector } from 'react-redux';
 import { groupBy, chunk } from 'lodash';
 import { fetchLocal } from '../../utils/chainweb';
 import nftList, { NFTTypes } from './nft-data';
 import { NftContainer, NftPageContainer } from './style';
 import NftCard from './NftTypes/NftCard';
 import MarmaladeNGCollectionList from './NftTypes/MarmaladeNG/MarmaladeNGCollectionList';
+import { useAppSelector } from 'src/stores/hooks';
 
 const Nft = () => {
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork } = rootState.extensions;
 
   const history = useHistory();

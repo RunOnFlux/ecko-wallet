@@ -15,7 +15,6 @@ import { DivBottomShadow, DivFlex, PrimaryLabel, SecondaryLabel } from 'src/comp
 import { ConfirmModal } from 'src/components/ConfirmModal';
 import { IconButton } from 'src/components/IconButton';
 import { ActionList } from 'src/components/ActionList';
-import { useSelector } from 'react-redux';
 import KDXGovernanceMiningButton from 'src/components/GovernanceMining/KDXButton';
 import { roundNumber, BigNumberConverter, humanReadableNumber } from 'src/utils';
 import { MAINNET_NETWORK_ID, extractDecimal } from 'src/utils/chainweb';
@@ -31,6 +30,7 @@ import { TokenElement } from './components/TokenElement';
 import { TokenChainBalance } from './components/TokenChainBalance';
 import { AssetsList } from './components/AssetsList';
 import { Warning } from '../SendTransactions/styles';
+import { useAppSelector } from 'src/stores/hooks';
 
 export interface IFungibleTokenBalance {
   contractAddress: string;
@@ -61,7 +61,7 @@ const Wallet = () => {
   const history = useHistory();
   const { openModal, closeModal } = useModalContext();
   const { isLoadingBalances, selectedAccountBalance, allAccountsBalance, allAccountsBalanceUsd } = useAccountBalanceContext();
-  const rootState = useSelector((state) => state);
+  const rootState = useAppSelector((state) => state);
   const { selectedNetwork } = rootState.extensions;
   const networkId = selectedNetwork?.networkId;
   const [fungibleTokens, setFungibleTokens] = useLocalStorage<IFungibleTokensByNetwork>(LOCAL_KEY_FUNGIBLE_TOKENS, LOCAL_DEFAULT_FUNGIBLE_TOKENS);
