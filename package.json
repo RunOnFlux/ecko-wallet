@@ -56,7 +56,8 @@
   },
   "scripts": {
     "start": "parcel watch public/manifest.json --host localhost --config @parcel/config-webextension",
-    "build": "parcel build public/manifest.json --config @parcel/config-webextension",
+    "build": "parcel build public/manifest.json --dist-dir build --no-source-maps --no-optimize ",
+    "postbuild": "mv ./build/public.*.html ./build/index.html",
     "clean": "rm -rf .parcel-cache dist build",
     "test": "craco test",
     "eject": "react-scripts eject",
@@ -105,6 +106,7 @@
     "parcel": "^2.13.2",
     "prettier": "^2.8.8",
     "stream-browserify": "^3.0.0",
+    "svgo": "^3.3.2",
     "typescript": "^5.7.2",
     "util": "^0.12.5",
     "webpack": "^5.96.1",
@@ -112,7 +114,13 @@
   },
   "targets": {
     "default": {
-      "distDir": "./output"
+      "distDir": "./build",
+      "sourceMap": false,
+      "optimize": false,
+      "publicUrl": "/",
+      "engines": {
+        "browsers": "> 0.5%, last 2 versions, not dead"
+      }
     }
   },
   "@parcel/resolver-default": {
