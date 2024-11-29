@@ -55,9 +55,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "webpack serve --config webpack.config.js",
+    "start": "webpack serve --mode development --open --config webpack.config.js",
     "build": "webpack",
-    "build:dev": "webpack --mode development --devtool source-map",
+    "build:dev": "webpack --mode development --devtool source-map --config webpack.config.js",
     "clean": "rm -rf .parcel-cache dist build",
     "test": "craco test",
     "eject": "react-scripts eject",
@@ -89,11 +89,6 @@
     "@ledgerhq/devices": "file:./node_modules/@ledgerhq/devices/lib-es"
   },
   "devDependencies": {
-    "@parcel/config-webextension": "^2.13.2",
-    "@parcel/packager-raw-url": "^2.13.2",
-    "@parcel/transformer-sass": "^2.13.2",
-    "@parcel/transformer-typescript-tsc": "^2.13.2",
-    "@parcel/transformer-webmanifest": "^2.13.2",
     "@svgr/webpack": "^8.1.0",
     "@types/bcrypt": "^5.0.2",
     "@types/chrome": "^0.0.221",
@@ -111,7 +106,6 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.6.3",
     "https-browserify": "^1.0.0",
-    "parcel": "^2.13.2",
     "prettier": "^2.8.8",
     "sass": "^1.81.0",
     "sass-loader": "^16.0.3",

@@ -5,8 +5,8 @@ import { NavigationHeader } from 'src/components/NavigationHeader';
 import Button from 'src/components/Buttons';
 import { useHistory } from 'react-router-dom';
 import { DivFlex, PageWrapper, SecondaryLabel, StickyFooter } from 'src/components';
-import { ReactComponent as LedgerLogo } from 'src/images/ledger-logo-long.svg';
-import { ReactComponent as LedgerIcon } from 'src/images/ledger-logo.svg';
+import LedgerLogo from 'src/images/ledger-logo-long.svg';
+import LedgerIcon from 'src/images/ledger-logo.svg';
 import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
 import { hideLoading, setActiveTab, showLoading } from 'src/stores/slices/extensions';
@@ -133,7 +133,7 @@ const ImportHardwareWallet = () => {
       </DivFlex>
       <DivFlex flexDirection="column" gap="16px" alignItems="center">
         <HardwareButton isSelected={selectedHardwareWallet === 'ledger'} onClick={() => setSelectdHardwareWallet('ledger')}>
-          <LedgerLogo style={{ marginTop: 13 }} />
+          <LedgerLogo /*style={{ marginTop: 13 }}*/ />
         </HardwareButton>
         {/* <HardwareButton>
           <TrezorLogo />

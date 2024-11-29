@@ -6,10 +6,10 @@ import { useSettingsContext } from 'src/contexts/SettingsContext';
 import { useGoHome } from 'src/hooks/ui';
 import { setCurrentWallet, setWallets } from 'src/stores/slices/wallet';
 import { getLocalSeedPhrase, initDataFromLocal } from 'src/utils/storage';
-import { ReactComponent as EckoWalletLogoBar } from 'src/images/ecko-wallet-icon.svg';
-import { ReactComponent as AnalyticsIcon } from 'src/images/ic_analytics.svg';
-import { ReactComponent as GearIcon } from 'src/images/gear-icon.svg';
-import { ReactComponent as NFTIcon } from 'src/images/nft-icon.svg';
+import EckoWalletLogoBar from 'src/images/ecko-wallet-icon.svg';
+import AnalyticsIcon from 'src/images/ic_analytics.svg';
+import GearIcon from 'src/images/gear-icon.svg';
+import NFTIcon from 'src/images/nft-icon.svg';
 import { ACTIVE_TAB } from 'src/utils/constant';
 import { DivFlex, SecondaryLabel } from '..';
 import { useAppSelector } from 'src/stores/hooks';
@@ -158,7 +158,7 @@ const Footer = () => {
       <DivFlex justifyContent="space-between" style={{ borderTop: '1px solid #DFDFED' }}>
         <ActionBarElement className={['xLogo', activeTab === ACTIVE_TAB.HOME && 'active']} onClick={setIconHomeActive}>
           <span>
-            <EckoWalletLogoBar style={{ width: 24, height: 24 }} />
+            <EckoWalletLogoBar /*style={{ width: 24, height: 24 }}*/ />
           </span>
           <SecondaryLabel fontWeight={700}>WALLET</SecondaryLabel>
         </ActionBarElement>

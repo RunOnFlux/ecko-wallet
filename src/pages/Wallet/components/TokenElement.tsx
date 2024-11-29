@@ -26,7 +26,7 @@ export interface TokenElementProps {
   contractAddress?: string;
   balance: number;
   usdBalance: number;
-  logo?: string;
+  logo?: any;
   isLoadingBalances?: boolean;
   isNonTransferable?: boolean;
   chainId?: number;

@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useAppThemeContext } from 'src/contexts/AppThemeContext';
-import { ReactComponent as ContactsIcon } from 'src/images/settings-contacts.svg';
-import { ReactComponent as NetworksIcon } from 'src/images/settings-networks.svg';
-import { ReactComponent as ThemeIcon } from 'src/images/icon-theme.svg';
-import { ReactComponent as KeyIcon } from 'src/images/settings-export-key.svg';
-import { ReactComponent as DiscordIcon } from 'src/images/discord-icon.svg';
-import { ReactComponent as GlobeIcon } from 'src/images/globe-icon.svg';
-import { ReactComponent as Padlock } from 'src/images/padlock.svg';
-import { ReactComponent as ExpandView } from 'src/images/expand-view.svg';
+import ContactsIcon from 'src/images/settings-contacts.svg';
+import NetworksIcon from 'src/images/settings-networks.svg';
+import ThemeIcon from 'src/images/icon-theme.svg';
+import KeyIcon from 'src/images/settings-export-key.svg';
+import DiscordIcon from 'src/images/discord-icon.svg';
+import GlobeIcon from 'src/images/globe-icon.svg';
+import Padlock from 'src/images/padlock.svg';
+import ExpandView from 'src/images/expand-view.svg';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
 import { DISCORD_INVITATION_LINK, PRIVACY_LINK, TERM_LINK, WEBSITE_LINK } from 'src/utils/config';
 import { useSettingsContext } from 'src/contexts/SettingsContext';
@@ -122,7 +122,7 @@ const PageSetting = () => {
       title: 'Theme',
       img: (
         <RoundedArrow margin="0px 5px 0px 0px" background={theme.iconSettingsBackground}>
-          <ThemeIcon style={{ width: 20 }} />
+          <ThemeIcon /*style={{ width: 20 }} */ />
         </RoundedArrow>
       ),
       description: 'Set Wallet Theme',

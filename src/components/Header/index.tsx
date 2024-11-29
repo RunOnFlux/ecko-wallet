@@ -5,7 +5,7 @@ import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import { encryptKey } from 'src/utils/security';
 import { toast } from 'react-toastify';
-import { ReactComponent as LedgerIcon } from 'src/images/ledger-logo.svg';
+import LedgerIcon from 'src/images/ledger-logo.svg';
 import { ModalContext } from 'src/contexts/ModalContext';
 import { AccountList } from 'src/pages/Wallet/components/AccountList';
 import { AccountActions } from 'src/pages/Wallet/components/AccountActions';

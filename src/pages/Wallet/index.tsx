@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-curly-newline */
 import { useHistory } from 'react-router-dom';
 import images from 'src/images';
-import { ReactComponent as SearchIconSVG } from 'src/images/search.svg';
-import { ReactComponent as AddIconSVG } from 'src/images/add-round.svg';
+import SearchIconSVG from 'src/images/search.svg';
+import AddIconSVG from 'src/images/add-round.svg';
 import styled from 'styled-components';
-import { ReactComponent as AlertIconSVG } from 'src/images/icon-alert.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg';
 import CircledButton from 'src/components/Buttons/CircledButton';
 import Spinner from 'src/components/Spinner';
 import { Header } from 'src/components/Header';

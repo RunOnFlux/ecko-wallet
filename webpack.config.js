@@ -50,8 +50,36 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        test: /\.svg$/i,
+        oneOf: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              typescript: true,
+              ref: true,
+              svgo: true,
+              svgoConfig: {
+                plugins: [
+                  {
+                    name: 'preset-default',
+                    params: {
+                      overrides: {
+                        removeViewBox: false,
+                      },
+                    },
+                  },
+                  'removeXMLNS',
+                ],
+              },
+            },
+          },
+          {
+            type: 'asset/resource',
+            generator: {
+              filename: 'images/[name][ext]',
+            },
+          },
+        ],
       },
     ],
   },

@@ -11,8 +11,8 @@ import { CommonLabel, DivFlex } from 'src/components';
 import { useModalContext } from 'src/contexts/ModalContext';
 import { getLocalSelectedWallet, getLocalWallets, setLocalSelectedWallet, setLocalWallets } from 'src/utils/storage';
 import { setCurrentWallet, setWallets } from 'src/stores/slices/wallet';
-import { ReactComponent as IconNetwork } from 'src/images/icon-network.svg';
-import { ReactComponent as TrashIcon } from 'src/images/trash-icon.svg';
+import IconNetwork from 'src/images/icon-network.svg';
+import TrashIcon from 'src/images/trash-icon.svg';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import { ContactBody } from '../Contact/style';
 import { SettingBody } from '../style';
@@ -84,7 +84,7 @@ const PageConnectedSites = () => {
         </DivFlex>
         <RightAction>
           <TrashIcon
-            onClick={() => {
+          /* onClick={() => {
               openModal({
                 title: 'Remove site',
                 content: (
@@ -100,7 +100,7 @@ const PageConnectedSites = () => {
                   />
                 ),
               });
-            }}
+            }}*/
           />
         </RightAction>
       </DivFlex>

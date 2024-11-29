@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 // import QrReader from 'react-qr-reader';
 import images from 'src/images';
 import { toast } from 'react-toastify';
-import { ReactComponent as AlertIconSVG } from 'src/images/icon-alert.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg';
 import { SInput, SLabel } from 'src/baseComponent/BaseTextInput';
 import Spinner from 'src/components/Spinner';
 import { useModalContext } from 'src/contexts/ModalContext';

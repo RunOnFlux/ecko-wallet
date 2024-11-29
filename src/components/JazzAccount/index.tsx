@@ -2,7 +2,7 @@ import React from 'react';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import { shortenAddress } from 'src/utils';
 import { AccountType } from 'src/stores/slices/wallet';
-import { ReactComponent as LedgerIcon } from 'src/images/ledger-logo.svg';
+import LedgerIcon from 'src/images/ledger-logo.svg';
 import styled from 'styled-components';
 import { DivFlex } from '..';
 
@@ -36,7 +36,7 @@ export const JazzAccount = ({
   account ? (
     <AccountListWrapper key={account} justifyContent="flex-start" alignItems="center" onClick={onClick}>
       {type === AccountType.LEDGER ? (
-        <LedgerIcon style={{ marginRight: 11 }} />
+        <LedgerIcon /*style={{ marginRight: 11 }}*/ />
       ) : (
         <Jazzicon
           diameter={diameter || 24}

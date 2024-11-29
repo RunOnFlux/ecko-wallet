@@ -2,7 +2,7 @@ import React from 'react';
 import { DivFlex, SecondaryLabel } from '..';
 
 interface ActionProps {
-  src?: string;
+  src?: any;
   label: React.ReactNode;
   onClick?: any;
   style?: React.CSSProperties;

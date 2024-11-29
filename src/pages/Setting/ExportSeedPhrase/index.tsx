@@ -4,7 +4,7 @@ import images from 'src/images';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
-import { ReactComponent as AlertIcon } from 'src/images/icon-alert.svg';
+import AlertIcon from 'src/images/icon-alert.svg';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import { DivFlex, SecondaryLabel } from 'src/components';
 import { Warning } from 'src/pages/SendTransactions/styles';
@@ -88,7 +88,7 @@ const ExportSeedPhrase = () => {
               Your Secret Recovery Phrase makes it easy to back up and restore your account.
             </SecondaryLabel>
             <Warning style={{ textAlign: 'start', marginTop: 30 }}>
-              <AlertIcon style={{ minWidth: 22 }} />
+              <AlertIcon /* style={{ minWidth: 22 }} */ />
               Never disclose your Secret Recovery Phrase. Anyone with this phrase can take your wallet forever.
             </Warning>
           </DivFlex>

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { BaseTextInput } from 'src/baseComponent';
 import { useAppSelector } from 'src/stores/hooks';
 import { getContacts, hideLoading, showLoading } from 'src/stores/slices/extensions';
-import { ReactComponent as AddIconSVG } from 'src/images/add-round.svg';
-import { ReactComponent as AlertIconSVG } from 'src/images/icon-alert.svg';
-import { ReactComponent as GearIconSVG } from 'src/images/gear-icon.svg';
+import AddIconSVG from 'src/images/add-round.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg';
+import GearIconSVG from 'src/images/gear-icon.svg';
 import { fetchListLocal, fetchLocal, getBalanceFromChainwebApiResponse } from 'src/utils/chainweb';
 import { getLocalContacts, getExistContacts } from 'src/utils/storage';
 import ModalCustom from 'src/components/Modal/ModalCustom';
@@ -475,7 +475,7 @@ const Transfer = (props: Props) => {
           <SecondaryLabel fontSize={12} fontWeight={600} uppercase>
             transaction parameters
           </SecondaryLabel>
-          <GearIconSVG style={{ cursor: 'pointer' }} onClick={() => setIsOpenGasOptionsModal(true)} />
+          <GearIconSVG /*style={{ cursor: 'pointer' }} onClick={() => setIsOpenGasOptionsModal(true)}*/ />
         </DivFlex>
         {errors.cannotPayGas && (
           <Warning type="danger" margin="10px 0">
