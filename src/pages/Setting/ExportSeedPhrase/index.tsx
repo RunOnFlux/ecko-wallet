@@ -4,7 +4,7 @@ import images from 'src/images';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
-import AlertIcon from 'src/images/icon-alert.svg';
+import AlertIcon from 'src/images/icon-alert.svg?react';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import { DivFlex, SecondaryLabel } from 'src/components';
 import { Warning } from 'src/pages/SendTransactions/styles';

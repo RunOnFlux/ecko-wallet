@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useAppThemeContext } from 'src/contexts/AppThemeContext';
-import ContactsIcon from 'src/images/settings-contacts.svg';
-import NetworksIcon from 'src/images/settings-networks.svg';
-import ThemeIcon from 'src/images/icon-theme.svg';
-import KeyIcon from 'src/images/settings-export-key.svg';
-import DiscordIcon from 'src/images/discord-icon.svg';
-import GlobeIcon from 'src/images/globe-icon.svg';
-import Padlock from 'src/images/padlock.svg';
-import ExpandView from 'src/images/expand-view.svg';
+import ContactsIcon from 'src/images/settings-contacts.svg?react';
+import NetworksIcon from 'src/images/settings-networks.svg?react';
+import ThemeIcon from 'src/images/icon-theme.svg?react';
+import KeyIcon from 'src/images/settings-export-key.svg?react';
+import DiscordIcon from 'src/images/discord-icon.svg?react';
+import GlobeIcon from 'src/images/globe-icon.svg?react';
+import Padlock from 'src/images/padlock.svg?react';
+import ExpandView from 'src/images/expand-view.svg?react';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
 import { DISCORD_INVITATION_LINK, PRIVACY_LINK, TERM_LINK, WEBSITE_LINK } from 'src/utils/config';
 import { useSettingsContext } from 'src/contexts/SettingsContext';
@@ -74,22 +74,27 @@ const PageSetting = () => {
 
   const settingsMenu: ISettingsMenu[] = [
     { title: 'Contacts', img: <ContactsIcon />, description: 'Manage your contacts', onClick: () => history.push('/contact') },
-    { title: 'Networks', img: <NetworksIcon />, description: 'Add or edit custom RPC networks', onClick: () => history.push('/networks') },
+    {
+      title: 'Networks',
+      img: <NetworksIcon key="networks" />,
+      description: 'Add or edit custom RPC networks',
+      onClick: () => history.push('/networks'),
+    },
     {
       title: 'Connected Sites',
-      img: <NetworksIcon />,
+      img: <NetworksIcon key="connected-sites" />,
       description: 'View and manage connected sites',
       onClick: () => history.push('/connected-sites'),
     },
     {
       title: 'Wallet Connect',
-      img: <NetworksIcon />,
+      img: <NetworksIcon key="wallet-connect" />,
       description: 'Connect with WalletConnect',
       onClick: () => history.push('/wallet-connect'),
     },
     {
       title: 'Transaction Settings',
-      img: <NetworksIcon />,
+      img: <NetworksIcon key="tx-settings" />,
       description: 'Set your gas preferences',
       onClick: () => history.push('/tx-settings'),
     },
@@ -122,7 +127,7 @@ const PageSetting = () => {
       title: 'Theme',
       img: (
         <RoundedArrow margin="0px 5px 0px 0px" background={theme.iconSettingsBackground}>
-          <ThemeIcon /*style={{ width: 20 }} */ />
+          <ThemeIcon style={{ width: 20 }} />
         </RoundedArrow>
       ),
       description: 'Set Wallet Theme',
@@ -143,7 +148,7 @@ const PageSetting = () => {
   ];
 
   const getSettingsItem = ({ img, title, description, onClick }: ISettingsMenu) => (
-    <SettingMenu className="settingMenu" justifyContent="flex-start" gap="10px" padding="15px 0" onClick={onClick}>
+    <SettingMenu key={title} className="settingMenu" justifyContent="flex-start" gap="10px" padding="15px 0" onClick={onClick}>
       {img}
       <DivFlex flexDirection="column" justifyContent="flex-start">
         <CommonLabel fontWeight={600} fontSize={16}>

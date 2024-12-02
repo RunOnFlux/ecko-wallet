@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { SecondaryLabel, StickyFooter } from 'src/components';
 import images from 'src/images';
-import EckoWalletLogo from '../../images/ecko-wallet-logo.svg';
+import EckoWalletLogo from '../../images/ecko-wallet-logo.svg?react';
 import styled from 'styled-components';
 import Button from '../../components/Buttons';
 

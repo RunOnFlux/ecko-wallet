@@ -1,8 +1,8 @@
-/* eslint-disable no-await-in-loop */
 import images from 'src/images';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-// import ReactJson from 'react-json-view';
+import { JsonView, darkStyles, defaultStyles } from 'react-json-view-lite';
+import 'react-json-view-lite/dist/index.css';
 import Toast from 'src/components/Toast/Toast';
 import { toast } from 'react-toastify';
 import { hash as kadenaJSHash, sign as kadenaJSSign } from '@kadena/cryptography-utils';
@@ -132,7 +132,6 @@ const QuickSignedCmd = () => {
       let signature: any = null;
       let hash: string | null = null;
       const signatureIndex = sigs.findIndex((s) => s.pubKey === publicKey);
-      // Account pubKey not present in sigs
       if (signatureIndex < 0) {
         signedResponses.push({
           cmd,
@@ -143,7 +142,6 @@ const QuickSignedCmd = () => {
         });
       } else {
         const parsedCmd = JSON.parse(cmd);
-        // find sig index for selected account
         const commandSigIndex = parsedCmd.signers.findIndex((s) => s.pubKey === publicKey);
         if (commandSigIndex > -1) {
           parsedCmd.signers[commandSigIndex].secretKey = secretKey;
@@ -160,7 +158,6 @@ const QuickSignedCmd = () => {
               signature = kadenaJSSign(cmd, { secretKey, publicKey }).sig;
             }
           } catch (err) {
-            // eslint-disable-next-line no-console
             console.error('QUICK-SIGN ERROR', err);
             setIsWaitingLedger(false);
             setErrorMessage('Ledger signing fail');
@@ -255,20 +252,9 @@ const QuickSignedCmd = () => {
                       CAPABILITIES ({caps?.length})
                     </SecondaryLabel>
                     <DivFlex flexDirection="column">
-                      {caps?.map((cap) => (
-                        <div style={{ margin: '10px 0' }}>
-                          {/* <ReactJson
-                            name={cap.name}
-                            src={cap?.args}
-                            enableClipboard={false}
-                            displayObjectSize={false}
-                            displayDataTypes={false}
-                            quotesOnKeys={false}
-                            collapsed
-                            indentWidth={2}
-                            theme={theme.isDark ? 'twilight' : 'rjv-default'}
-                            collapseStringsAfterLength={false}
-                          /> */}
+                      {caps?.map((cap, index) => (
+                        <div style={{ margin: '10px 0' }} key={index}>
+                          <JsonView data={cap.args} style={theme.isDark ? darkStyles : defaultStyles} clickToExpandNode />
                         </div>
                       ))}
                     </DivFlex>
@@ -279,19 +265,7 @@ const QuickSignedCmd = () => {
                     RAW DATA
                   </SecondaryLabel>
                 </DivFlex>
-                {/* <ReactJson
-                  name="rawCmd"
-                  src={signData}
-                  enableClipboard={false}
-                  displayObjectSize={false}
-                  displayDataTypes={false}
-                  quotesOnKeys={false}
-                  collapsed
-                  indentWidth={2}
-                  style={{ paddingBottom: 40 }}
-                  theme={theme.isDark ? 'twilight' : 'rjv-default'}
-                  collapseStringsAfterLength={false}
-                /> */}
+                <JsonView data={signData} style={theme.isDark ? darkStyles : defaultStyles} clickToExpandNode />
               </CommandListWrapper>
             </>
           )

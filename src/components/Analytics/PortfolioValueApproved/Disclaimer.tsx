@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import InfoIconSVG from 'src/images/info.svg';
+import InfoIconSVG from 'src/images/info.svg?react';
 
 const Container = styled.div`
   padding: 10px;

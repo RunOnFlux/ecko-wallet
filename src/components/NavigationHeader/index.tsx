@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { CommonLabel, DivFlex } from 'src/components';
-import ArrowDown from 'src/images/arrow-down-black.svg';
+import ArrowDown from 'src/images/arrow-down-black.svg?react';
 
 const NavigatorWrapper = styled(DivFlex)`
   height: 75px;

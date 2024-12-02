@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 import images from 'src/images';
 import styled from 'styled-components';
 import Button from 'src/components/Buttons';
-import AlertIconSVG from 'src/images/icon-alert.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg?react';
 import { useEffect, useState } from 'react';
 import { Radio } from 'src/components/Radio';
 import { toast } from 'react-toastify';

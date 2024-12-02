@@ -2,7 +2,8 @@ import images from 'src/images';
 import Pact from 'pact-lang-api';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-// import ReactJson from 'react-json-view';
+import { JsonView, darkStyles, defaultStyles } from 'react-json-view-lite';
+import 'react-json-view-lite/dist/index.css';
 import Toast from 'src/components/Toast/Toast';
 import { toast } from 'react-toastify';
 import { InputError } from 'src/baseComponent';
@@ -47,6 +48,12 @@ export const DappWrapper = styled.div`
 export const DappContentWrapper = styled.div`
   padding: 20px;
   word-break: break-word;
+  .json-view-lite {
+    background: ${({ theme }) => (theme.isDark ? '#1e1e1e' : '#fff')};
+    .json-view-lite-key {
+      color: ${({ theme }) => theme.text.primary};
+    }
+  }
 `;
 export const DappDescription = styled.div`
   color: ${({ theme }) => theme.text.primary};
@@ -75,6 +82,8 @@ const SignedCmd = () => {
   const [caps, setCaps] = useState<any[]>([]);
   const [walletConnectParams, setWalletConnectParams] = useState<WalletConnectParams | null>(null);
   const { signHash, isWaitingLedger } = useLedgerContext();
+
+  const { theme } = useAppThemeContext();
 
   const rootState = useAppSelector((state) => state);
   const { publicKey, secretKey, type } = rootState.wallet;
@@ -184,7 +193,6 @@ const SignedCmd = () => {
           resolve({ signedCmd, signingCmd });
         }
       } catch (err: any) {
-        // eslint-disable-next-line no-console
         console.error('Signing cmd err:', err);
         const result = {
           status: 'fail',
@@ -229,21 +237,9 @@ const SignedCmd = () => {
       <SecondaryLabel style={{ textAlign: 'center' }} uppercase>
         signed command
       </SecondaryLabel>
-      {Object.keys(newCmd).length && (
+      {Object.keys(newCmd).length > 0 && (
         <DappContentWrapper>
-          {/* <ReactJson
-            name="signedCmd"
-            src={newCmd}
-            enableClipboard={false}
-            displayObjectSize={false}
-            displayDataTypes={false}
-            quotesOnKeys={false}
-            collapsed
-            indentWidth={2}
-            style={{ paddingBottom: 40 }}
-            theme={theme.isDark ? 'twilight' : 'rjv-default'}
-            collapseStringsAfterLength={false}
-          /> */}
+          <JsonView data={newCmd} clickToExpandNode style={theme.isDark ? darkStyles : defaultStyles} />
         </DappContentWrapper>
       )}
       {type === AccountType.LEDGER && isWaitingLedger && (
@@ -266,20 +262,9 @@ const SignedCmd = () => {
           <SecondaryLabel style={{ textAlign: 'center' }}>CAPABILITIES</SecondaryLabel>
           <DivFlex flexDirection="column">
             {caps?.map((cap, i) => (
-              <DivFlex flexDirection="column">
+              <DivFlex key={i} flexDirection="column">
                 <DappContentWrapper>
-                  {/* <ReactJson
-                    name={cap?.cap?.name || `CAP ${i + 1}`}
-                    src={cap}
-                    enableClipboard={false}
-                    displayObjectSize={false}
-                    displayDataTypes={false}
-                    quotesOnKeys={false}
-                    collapsed
-                    indentWidth={2}
-                    theme={theme.isDark ? 'twilight' : 'rjv-default'}
-                    collapseStringsAfterLength={false}
-                  /> */}
+                  <JsonView data={cap} clickToExpandNode style={theme.isDark ? darkStyles : defaultStyles} />
                 </DappContentWrapper>
               </DivFlex>
             ))}

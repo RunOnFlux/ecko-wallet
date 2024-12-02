@@ -2,7 +2,7 @@ import React from 'react';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import { shortenAddress } from 'src/utils';
 import { AccountType } from 'src/stores/slices/wallet';
-import LedgerIcon from 'src/images/ledger-logo.svg';
+import LedgerIcon from 'src/images/ledger-logo.svg?react';
 import styled from 'styled-components';
 import { DivFlex } from '..';
 

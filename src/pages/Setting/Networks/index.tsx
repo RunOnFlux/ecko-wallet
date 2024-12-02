@@ -5,7 +5,7 @@ import Button from 'src/components/Buttons';
 import { RoundedArrow } from 'src/components/Activities/FinishTransferItem';
 import { useAppThemeContext } from 'src/contexts/AppThemeContext';
 import { CommonLabel, DivFlex, StickyFooter } from 'src/components';
-import IconNetwork from 'src/images/icon-network.svg';
+import IconNetwork from 'src/images/icon-network.svg?react';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import { ContactBody } from '../Contact/style';
 import { ImageLock } from './style';

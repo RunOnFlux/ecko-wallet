@@ -9,7 +9,7 @@ import { getWalletConnectActiveSessions, initWalletConnect, removeWalletConnectS
 import { BaseTextInput, InputError } from 'src/baseComponent';
 import ModalCustom from 'src/components/Modal/ModalCustom';
 import { ConfirmModal } from 'src/components/ConfirmModal';
-import TrashIcon from 'src/images/trash-icon.svg';
+import TrashIcon from 'src/images/trash-icon.svg?react';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import { CommonLabel, DivFlex, SecondaryLabel, StickyFooter } from 'src/components';
 import { useModalContext } from 'src/contexts/ModalContext';

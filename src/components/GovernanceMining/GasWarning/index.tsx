@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useGovernanceMining } from 'src/contexts/GovernanceMiningContext';
 import { Warning } from 'src/pages/SendTransactions/styles';
-import AlertIconSVG from 'src/images/icon-alert.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg?react';
 import { useStakingConstants } from '../constants/staking';
 
 const Container = styled(Warning)`

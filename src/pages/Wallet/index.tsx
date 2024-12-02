@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-curly-newline */
 import { useHistory } from 'react-router-dom';
 import images from 'src/images';
-import SearchIconSVG from 'src/images/search.svg';
-import AddIconSVG from 'src/images/add-round.svg';
+import SearchIconSVG from 'src/images/search.svg?react';
+import AddIconSVG from 'src/images/add-round.svg?react';
 import styled from 'styled-components';
-import AlertIconSVG from 'src/images/icon-alert.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg?react';
 import CircledButton from 'src/components/Buttons/CircledButton';
 import Spinner from 'src/components/Spinner';
 import { Header } from 'src/components/Header';
@@ -58,6 +58,7 @@ const DivAssetList = styled.div`
 `;
 
 const Wallet = () => {
+  console.log('process.env', process.env);
   const history = useHistory();
   const { openModal, closeModal } = useModalContext();
   const { isLoadingBalances, selectedAccountBalance, allAccountsBalance, allAccountsBalanceUsd } = useAccountBalanceContext();

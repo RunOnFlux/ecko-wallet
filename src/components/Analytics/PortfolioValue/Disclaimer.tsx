@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import AlertIconSVG from 'src/images/icon-alert.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg?react';
 
 const Container = styled.div`
   margin-bottom: 24px;

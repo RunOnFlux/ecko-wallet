@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useModalContext } from 'src/contexts/ModalContext';
 import { IconButton } from 'src/components/IconButton';
-import ArrowSendIcon from 'src/images/arrow-send.svg';
+import ArrowSendIcon from 'src/images/arrow-send.svg?react';
 import { DivFlex, CommonLabel } from 'src/components';
 import { humanReadableNumber } from 'src/utils';
 import { TokenElementProps } from './TokenElement';

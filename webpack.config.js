@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -46,13 +47,18 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpe?g|gif)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'static/images/[name][ext]',
+        },
       },
       {
         test: /\.svg$/i,
         oneOf: [
           {
+            issuer: /\.[jt]sx?$/,
+            resourceQuery: /react/,
             loader: '@svgr/webpack',
             options: {
               typescript: true,
@@ -76,7 +82,7 @@ module.exports = {
           {
             type: 'asset/resource',
             generator: {
-              filename: 'images/[name][ext]',
+              filename: 'static/images/[name][ext]',
             },
           },
         ],
@@ -84,13 +90,14 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.png', '.jpg', '.jpeg', '.gif'],
     alias: {
       src: path.resolve(__dirname, './src'),
       '@Components': path.resolve(__dirname, './src/components/'),
       '@Utils': path.resolve(__dirname, './src/utils/'),
       '@Css': path.resolve(__dirname, './src/css/'),
       '@Reducers': path.resolve(__dirname, './src/reducers/'),
+      '@images': path.resolve(__dirname, 'src/images'),
     },
     fallback: {
       http: require.resolve('stream-http'),
@@ -102,6 +109,11 @@ module.exports = {
     },
   },
   plugins: [
+    new Dotenv({
+      path: '.env',
+      systemvars: true,
+      safe: true,
+    }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
@@ -114,10 +126,6 @@ module.exports = {
         { from: 'public/favicon.png', to: 'favicon.png' },
         { from: 'public/app/script/inpage.js', to: 'app/script/inpage.js' },
       ],
-    }),
-    new webpack.DefinePlugin({
-      'process.env': JSON.stringify(process.env),
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
     new webpack.ProvidePlugin({
       Buffer: ['buffer', 'Buffer'],
