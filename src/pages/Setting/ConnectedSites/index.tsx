@@ -32,8 +32,7 @@ const PageConnectedSites = () => {
   const { theme } = useAppThemeContext();
   const { openModal, closeModal } = useModalContext();
   const stateWallet = useCurrentWallet();
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork, passwordHash } = rootState.extensions;
+  const { selectedNetwork, passwordHash } = useAppSelector((state) => state.extensions);
   const { connectedSites, wallets, account } = stateWallet;
 
   const goBack = () => {

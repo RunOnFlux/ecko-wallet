@@ -61,9 +61,8 @@ const AboutDiv = styled(DivFlex)`
 
 const PageSetting = () => {
   const history = useHistory();
-  const rootState = useAppSelector((state) => state);
   const { setIsLocked } = useSettingsContext();
-  const { secretKey } = rootState?.wallet;
+  const { secretKey } = useAppSelector((state) => state.wallet);
   const { theme } = useAppThemeContext();
   const [, , , removeAccountPassword] = useSessionStorage(STORAGE_PASSWORD_KEY, null);
 

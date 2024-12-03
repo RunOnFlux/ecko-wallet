@@ -17,8 +17,7 @@ const Header = styled.div`
 `;
 
 const History = () => {
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const stateWallet = useCurrentWallet();
   const history = useHistory();
 

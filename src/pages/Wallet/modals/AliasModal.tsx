@@ -14,9 +14,8 @@ import { useAppSelector } from 'src/stores/hooks';
 export const AliasModal = () => {
   const stateWallet = useCurrentWallet();
   const { closeModal } = useModalContext();
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork, passwordHash } = rootState.extensions;
-  const { wallets } = rootState?.wallet;
+  const { selectedNetwork, passwordHash } = useAppSelector((state) => state.extensions);
+  const { wallets } = useAppSelector((state) => state.wallet);
 
   const [alias, setAlias] = useState('');
 

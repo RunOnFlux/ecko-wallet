@@ -35,14 +35,13 @@ const AccountLabel = styled.span`
 export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
   const history = useHistory();
   const location = useLocation().pathname;
-  const rootState = useAppSelector((state) => state);
   const stateWallet = useCurrentWallet();
   const { openModal, closeModal } = useContext(ModalContext);
   const createFirstAccountAvailable = useCreateFirstAccountAvailable();
   const selectNetwork = useSelectNetwork();
 
-  const { selectedNetwork, networks } = rootState.extensions;
-  const { wallets, type } = rootState?.wallet;
+  const { selectedNetwork, networks } = useAppSelector((state) => state.extensions);
+  const { wallets, type } = useAppSelector((state) => state.wallet);
   const selectedWallet = wallets?.find((a) => a.account === stateWallet?.account);
 
   const setSelectedLocalWallet = (wallet) => {

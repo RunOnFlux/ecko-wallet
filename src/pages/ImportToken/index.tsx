@@ -63,8 +63,7 @@ const Footer = styled.div`
 const ImportToken = () => {
   const stateWallet = useCurrentWallet();
   const { search } = useLocation();
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const networkId = selectedNetwork?.networkId;
   const goHome = useGoHome();
   const [fungibleTokens, setFungibleTokens] = useLocalStorage<IFungibleTokensByNetwork>(LOCAL_KEY_FUNGIBLE_TOKENS, LOCAL_DEFAULT_FUNGIBLE_TOKENS);

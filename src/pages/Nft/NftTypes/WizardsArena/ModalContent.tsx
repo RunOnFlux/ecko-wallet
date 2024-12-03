@@ -10,8 +10,7 @@ import { useAppSelector } from 'src/stores/hooks';
 
 const WizardsArenaModalContent = ({ id, nftData, cardStyle }: { id: number; nftData: NFTData; cardStyle: React.CSSProperties }) => {
   const [data, setData] = useState<any>({});
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
 
   useEffect(() => {
     fetchLocal(`(free.wiz-arena.get-wizard-fields-for-id ${id})`, selectedNetwork?.url, selectedNetwork?.networkId, 1).then((res) =>

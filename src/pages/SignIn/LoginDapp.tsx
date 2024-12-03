@@ -92,10 +92,9 @@ const LoginDapp = (props: any) => {
   const { setIsLocked } = useSettingsContext();
   const { location } = props;
   const { state } = location;
-  const rootState = useAppSelector((s) => s);
   const dispatch = useAppDispatch();
-  const { selectedNetwork, networks, passwordHash } = rootState.extensions;
-  const { publicKey, account, connectedSites } = rootState.wallet;
+  const { selectedNetwork, networks, passwordHash } = useAppSelector((state) => state.extensions);
+  const { publicKey, account, connectedSites } = useAppSelector((state) => state.wallet);
   const from = state?.from ?? null;
 
   useEffect(() => {

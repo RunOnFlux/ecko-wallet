@@ -18,10 +18,9 @@ import { useAppSelector } from 'src/stores/hooks';
 
 const ImportLedger = () => {
   const history = useHistory();
-  const rootState = useAppSelector((state) => state);
   const [ledgerPublicKey, setLedgerPublicKey] = useState<string>('');
-  const { wallets } = rootState?.wallet;
-  const { selectedNetwork } = rootState?.extensions;
+  const { wallets } = useAppSelector((state) => state.wallet);
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const { getPublicKey, error } = useLedgerContext();
 
   const getLedgerAccount = async () => {

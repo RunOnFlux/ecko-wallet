@@ -12,8 +12,7 @@ const CustomButton = styled.div`
 
 const SelectAccount = ({ onConfirmAccounts }: { onConfirmAccounts: (accounts: string[]) => any }) => {
   const [selectedAccounts, setSelectedAccounts] = useState<string[]>([]);
-  const rootState = useAppSelector((state) => state);
-  const { wallets } = rootState?.wallet;
+  const { wallets } = useAppSelector((state) => state.wallet);
 
   const toggleAccount = (publicKey) => {
     if (selectedAccounts?.includes(publicKey)) {

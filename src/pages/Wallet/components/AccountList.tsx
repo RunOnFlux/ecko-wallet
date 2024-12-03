@@ -12,8 +12,7 @@ const AccountLabel = styled.span`
 `;
 
 export const AccountList = ({ onSelectWallet }: { onSelectWallet: any }) => {
-  const rootState = useAppSelector((state) => state);
-  const { wallets } = rootState?.wallet;
+  const { wallets } = useAppSelector((state) => state.wallet);
   const { account: selectedAccount } = useCurrentWallet();
 
   const groupedAccountWallets = wallets.filter((value, index, self) => index === self.findIndex((t) => t.account === value.account));

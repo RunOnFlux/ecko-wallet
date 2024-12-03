@@ -47,8 +47,7 @@ export const PageSendTransaction = styled.div`
 const DappTransfer = () => {
   const [destinationAccount, setDestinationAccount] = useState<any>();
   const [loading, setLoading] = useState(true);
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   useEffect(() => {
     getLocalDapps(
       (dapps) => {

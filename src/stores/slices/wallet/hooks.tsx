@@ -5,14 +5,5 @@ import { Wallet } from '.';
 import { RootState } from 'src/stores';
 
 export const useCurrentWallet = (): Wallet => {
-  const selector = useMemo(
-    () =>
-      createSelector(
-        (state: RootState) => state.wallet,
-        (value) => value,
-      ),
-    [],
-  );
-
-  return useSelector((state: RootState) => selector(state));
+  return useSelector((state: RootState) => state.wallet);
 };

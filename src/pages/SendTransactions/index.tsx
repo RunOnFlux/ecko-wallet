@@ -17,8 +17,7 @@ const Wrapper = styled.div`
 const SendTransactions = () => {
   const goHome = useGoHome();
   const { search } = useLocation();
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const networkId = selectedNetwork?.networkId;
   const [fungibleTokens] = useLocalStorage<IFungibleTokensByNetwork>(LOCAL_KEY_FUNGIBLE_TOKENS, LOCAL_DEFAULT_FUNGIBLE_TOKENS);
   const fungibleTokensByNetwork = (fungibleTokens && fungibleTokens[networkId]) || [];

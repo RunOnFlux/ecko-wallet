@@ -48,8 +48,7 @@ const CreatePassword = () => {
     clearErrors,
     control,
   } = useForm();
-  const rootState = useAppSelector((state) => state);
-  const { isCreateSeedPhrase, selectedNetwork } = rootState.extensions;
+  const { isCreateSeedPhrase, selectedNetwork } = useAppSelector((state) => state.extensions);
 
   const history = useHistory();
 

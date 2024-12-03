@@ -155,8 +155,8 @@ const Transfer = (props: Props) => {
     clearErrors,
     setError,
   } = useForm<any>();
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const rootStateWallet = useAppSelector((state) => state.wallet);
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   useEffect(() => {
     initData();
     checkTokenExists();
@@ -178,7 +178,7 @@ const Transfer = (props: Props) => {
   };
 
   const initData = () => {
-    const { account, publicKey, secretKey, type } = rootState.wallet;
+    const { account, publicKey, secretKey, type } = rootStateWallet;
     const pactCodeCoin = `(coin.details "${account}")`;
     const pactCodeToken = `(${fungibleToken.contractAddress}.details "${account}")`;
     showLoading();
@@ -208,7 +208,7 @@ const Transfer = (props: Props) => {
   };
 
   const onNext = () => {
-    if (destinationAccount?.accountName === rootState.wallet.account && destinationAccount?.chainId === sourceChainId) {
+    if (destinationAccount?.accountName === rootStateWallet.account && destinationAccount?.chainId === sourceChainId) {
       toast.error(<Toast type="fail" content="Can not send to yourself" />);
     } else {
       setIsOpenTransferModal(true);
@@ -260,7 +260,7 @@ const Transfer = (props: Props) => {
     gasPrice: selectedGas?.GAS_PRICE,
     amount,
     isCrossChain,
-    selectedNetwork: rootState?.extensions?.selectedNetwork,
+    selectedNetwork,
     estimateFee,
   };
 
@@ -417,7 +417,7 @@ const Transfer = (props: Props) => {
       <AccountTransferDetail justifyContent="space-between" alignItems="center">
         <div>
           <JazzAccount
-            account={rootState.wallet.account}
+            account={rootStateWallet.account}
             renderAccount={(acc) => (
               <DivFlex flexDirection="column">
                 <TransferAccountSpan>{shortenAddress(acc)}</TransferAccountSpan>
@@ -475,7 +475,7 @@ const Transfer = (props: Props) => {
           <SecondaryLabel fontSize={12} fontWeight={600} uppercase>
             transaction parameters
           </SecondaryLabel>
-          <GearIconSVG /*style={{ cursor: 'pointer' }} onClick={() => setIsOpenGasOptionsModal(true)}*/ />
+          <GearIconSVG style={{ cursor: 'pointer' }} onClick={() => setIsOpenGasOptionsModal(true)} />
         </DivFlex>
         {errors.cannotPayGas && (
           <Warning type="danger" margin="10px 0">

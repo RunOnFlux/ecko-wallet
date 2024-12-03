@@ -17,8 +17,7 @@ export const Icon = styled.img`
 `;
 
 export const HashSignModal = () => {
-  const rootState = useAppSelector((state) => state);
-  const { publicKey, secretKey, type } = rootState?.wallet;
+  const { publicKey, secretKey, type } = useAppSelector((state) => state.wallet);
 
   const [hash, setHash] = useState('');
   const [signature, setSignature] = useState('');

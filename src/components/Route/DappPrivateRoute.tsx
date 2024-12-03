@@ -18,10 +18,8 @@ type Props = {
 };
 const DappPrivateRoute = (props: Props) => {
   const { component: Component, path } = props;
-  const rootState = useAppSelector((state) => state);
   const { isLocked } = useSettingsContext();
-  const { extensions } = rootState;
-  const { isFetching, passwordHash } = extensions;
+  const { isFetching, passwordHash } = useAppSelector((state) => state.extensions);
   const isLoggedIn = !isLocked;
   const [loading, setLoading] = useState(true);
 

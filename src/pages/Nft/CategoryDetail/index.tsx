@@ -14,9 +14,8 @@ import MarmaladeV2 from '../NftTypes/MarmaladeV2';
 import { useAppSelector } from 'src/stores/hooks';
 
 const CategoryDetail = () => {
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
-  const { account } = rootState?.wallet;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
+  const { account } = useAppSelector((state) => state.wallet);
   const history = useHistory();
   const { search } = useLocation();
   const [nftUUIDs, setNftUUIDs] = useState<string[]>([]);

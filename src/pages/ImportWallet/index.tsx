@@ -55,9 +55,8 @@ const ImportAccount = () => {
   const history = useHistory();
   const goHome = useGoHome();
   const [isMobile] = useWindowResizeMobile(420);
-  const rootState = useAppSelector((state) => state);
-  const { wallets, account } = rootState?.wallet;
-  const { selectedNetwork, isLoading } = rootState?.extensions;
+  const { wallets, account } = useAppSelector((state) => state.wallet);
+  const { selectedNetwork, isLoading } = useAppSelector((state) => state.extensions);
   const [isScanAccount, setScanAccount] = useState(false);
   const [isScanPrivateKey, setScanPrivateKey] = useState(false);
   const {

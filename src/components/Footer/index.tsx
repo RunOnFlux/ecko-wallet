@@ -77,9 +77,8 @@ const ActionBarElement = styled.div`
 `;
 
 const Footer = () => {
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork, networks, activeTab } = rootState.extensions;
-  const { account } = rootState.wallet;
+  const { selectedNetwork, networks, activeTab } = useAppSelector((state) => state.extensions);
+  const { account } = useAppSelector((state) => state.wallet);
   const location = useLocation().pathname;
   const locationExtension = window.location.hash;
   const showSettingAndSelectNetworks = !(location.includes('networks') || location.includes('contact') || location.includes('about'));

@@ -100,8 +100,7 @@ const SPText = styled.div`
 const defaultArr = ['', '', '', '', '', '', '', '', '', '', '', ''];
 const SeedPhrase = () => {
   const history = useHistory();
-  const rootState = useAppSelector((state) => state);
-  const { passwordHash, selectedNetwork } = rootState.extensions;
+  const { passwordHash, selectedNetwork } = useAppSelector((state) => state.extensions);
   const [keyPairs, setKeyPairs] = useState<any>();
   const [step, setStep] = useState(1);
   const [sPMap, setSPMap] = useState<string[]>(defaultArr);

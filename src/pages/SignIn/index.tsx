@@ -78,8 +78,7 @@ const SignIn = () => {
     clearErrors,
   } = useForm();
 
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork, networks } = rootState.extensions;
+  const { selectedNetwork, networks } = useAppSelector((state) => state.extensions);
   const { setIsLocked } = useSettingsContext();
   const dispatch = useAppDispatch();
   const goHome = useGoHome();

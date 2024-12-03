@@ -5,8 +5,7 @@ import KMCFPModalContent from './ModalContent';
 import { useAppSelector } from 'src/stores/hooks';
 
 const KadenaMiningClubFoundersPass = ({ id }: { id: string }) => {
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const [data, setData] = useState({ id: null });
 
   useEffect(() => {

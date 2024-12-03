@@ -23,10 +23,8 @@ const FetchingWrapper = styled.div`
 
 const PrivateRoute = (props: Props) => {
   const { component: Component, path, isFirstInstall, isSignIn, isSeedPhrase } = props;
-  const rootState = useAppSelector((state) => state);
   const { isLocked } = useSettingsContext();
-  const { extensions } = rootState;
-  const { passwordHash, isFetching, isHaveSeedPhrase } = extensions;
+  const { passwordHash, isFetching, isHaveSeedPhrase } = useAppSelector((state) => state.extensions);
   const isLoggedIn = !isLocked;
   const hasPassword = !!passwordHash;
   const [loading, setLoading] = useState(true);

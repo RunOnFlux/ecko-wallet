@@ -30,9 +30,8 @@ export const AccountActions = ({
 }) => {
   const history = useHistory();
   const stateWallet = useCurrentWallet();
-  const rootState = useAppSelector((state) => state);
   const { openModal } = useContext(ModalContext);
-  const { wallets } = rootState?.wallet;
+  const { wallets } = useAppSelector((state) => state.wallet);
 
   const onActionClick = (clb) => {
     clb();

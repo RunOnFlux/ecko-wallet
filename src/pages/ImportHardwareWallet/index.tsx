@@ -38,11 +38,10 @@ const HardwareButton = styled.div`
 const ImportHardwareWallet = () => {
   const [selectedHardwareWallet, setSelectdHardwareWallet] = useState<'ledger' | 'trezor' | null>(null);
   const history = useHistory();
-  const rootState = useAppSelector((state) => state);
   const [ledgerPublicKey, setLedgerPublicKey] = useState<string>('');
   const [selectedPublicKey, setSelectedPublicKey] = useState<string>('');
-  const { wallets } = rootState?.wallet;
-  const { selectedNetwork } = rootState?.extensions;
+  const { wallets } = useAppSelector((state) => state.wallet);
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const { getPublicKey } = useLedgerContext();
 
   const goBack = () => {

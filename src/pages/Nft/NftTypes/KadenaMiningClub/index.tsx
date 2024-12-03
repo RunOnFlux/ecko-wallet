@@ -6,8 +6,7 @@ import { NFTData } from '../../nft-data';
 import { useAppSelector } from 'src/stores/hooks';
 
 const KadenaMiningClub = ({ id, nftData }: { id: string; nftData: NFTData }) => {
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const [data, setData] = useState<any>({});
 
   useEffect(() => {

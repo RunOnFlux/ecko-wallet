@@ -16,8 +16,7 @@ const Wrapper = styled.div`
 
 export const AssetsList = () => {
   const history = useHistory();
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const { chainId } = useCurrentWallet();
 
   const { closeModal } = useModalContext();

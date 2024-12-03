@@ -43,10 +43,8 @@ export const AccountBalanceProvider = ({ children }: any) => {
   const [accountsBalanceState, setAccountBalanceState] = useState<AccountBalanceProps>();
   const [usdPrices, setUsdPrices] = useState<TokenBalance>({});
 
-  const {
-    wallet: { wallets },
-    extensions: { selectedNetwork },
-  } = useAppSelector((state) => state);
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
+  const { wallets } = useAppSelector((state) => state.wallet);
 
   const networkId = selectedNetwork?.networkId;
 

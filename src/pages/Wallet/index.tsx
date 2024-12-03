@@ -62,8 +62,7 @@ const Wallet = () => {
   const history = useHistory();
   const { openModal, closeModal } = useModalContext();
   const { isLoadingBalances, selectedAccountBalance, allAccountsBalance, allAccountsBalanceUsd } = useAccountBalanceContext();
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const networkId = selectedNetwork?.networkId;
   const [fungibleTokens, setFungibleTokens] = useLocalStorage<IFungibleTokensByNetwork>(LOCAL_KEY_FUNGIBLE_TOKENS, LOCAL_DEFAULT_FUNGIBLE_TOKENS);
   const fungibleTokensByNetwork = (fungibleTokens && fungibleTokens[networkId]) || [];
@@ -140,6 +139,7 @@ const Wallet = () => {
           .filter((cD) => cD.balance > 0)
           .map((cD) => (
             <TokenChainBalance
+              key={cD.chainId}
               name={symbol}
               isNonTransferable={isNonTransferable}
               contractAddress={contractAddress}

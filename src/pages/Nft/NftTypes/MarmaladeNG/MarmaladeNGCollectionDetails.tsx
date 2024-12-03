@@ -28,8 +28,7 @@ const MarmaladeNGCollectionDetails = () => {
   const chainId = params.get('chainId');
   const name = params.get('name');
   const [ngNFTs, setNgNFTs] = useState<NgTokenData[]>([]);
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const history = useHistory();
 
   const stateWallet = useCurrentWallet();

@@ -60,8 +60,7 @@ const Container = styled.div`
 `;
 
 const AppContainer = () => {
-  const rootState = useAppSelector((state) => state);
-  const { isLoading } = rootState.extensions;
+  const { isLoading } = useAppSelector((state) => state.extensions);
   return (
     <Container>
       <TwoFactorAuthenticator>

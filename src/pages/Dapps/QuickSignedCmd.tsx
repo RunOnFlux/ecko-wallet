@@ -52,8 +52,7 @@ const QuickSignedCmd = () => {
   const [walletConnectParams, setWalletConnectParams] = useState<WalletConnectParams | null>(null);
   const { getLedger } = useLedgerContext();
 
-  const rootState = useAppSelector((state) => state);
-  const { publicKey, secretKey, type } = rootState.wallet;
+  const { publicKey, secretKey, type } = useAppSelector((state) => state.wallet);
 
   const { theme } = useAppThemeContext();
 

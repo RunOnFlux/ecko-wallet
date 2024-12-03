@@ -29,12 +29,10 @@ const defaultCrossChainContextValue: CrossChainContextValue = {
 export const CrossChainContext = createContext<CrossChainContextValue>(defaultCrossChainContextValue);
 
 export const CrossChainProvider = ({ children }: any) => {
-  const rootState = useAppSelector((state) => state);
-
   const { data: settings } = useContext(SettingsContext);
   const txSettings = settings?.txSettings;
-  const { selectedNetwork } = rootState.extensions;
-  const { account, chainId } = rootState.wallet;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
+  const { account, chainId } = useAppSelector((state) => state.wallet);
 
   const [toFinishCrossChainTxs, setToFinishCrossChainTxs, getTofinishTxhAsync] = useLocalStorage<any[]>('toFinishCrossChainTxs', []);
   const [pendingFinishRequestKeys, setPendingFinishRequestKeys] = useLocalStorage<any[]>('pendingFinishRequestKeys', []);

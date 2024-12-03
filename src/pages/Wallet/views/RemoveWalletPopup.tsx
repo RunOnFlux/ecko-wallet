@@ -61,9 +61,8 @@ const DivError = styled.div`
 const RemoveWalletPopup = (props: Props) => {
   const { onClose } = props;
   const history = useHistory();
-  const rootState = useAppSelector((state) => state);
-  const { passwordHash, selectedNetwork } = rootState.extensions;
-  const { wallets, account } = rootState.wallet;
+  const { passwordHash, selectedNetwork } = useAppSelector((state) => state.extensions);
+  const { wallets, account } = useAppSelector((state) => state.wallet);
   const [passwordInput, setPasswordInput] = useState('');
 
   const {

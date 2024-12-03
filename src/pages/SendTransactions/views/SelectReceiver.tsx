@@ -48,10 +48,9 @@ const predList = [
 ];
 
 const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) => {
-  const rootState = useAppSelector((state) => state);
-  const { contacts, recent, selectedNetwork } = rootState.extensions;
+  const { contacts, recent, selectedNetwork } = useAppSelector((state) => state.extensions);
   const sortedContacts = [...(contacts || [])]?.sort((a, b) => a?.aliasName?.localeCompare(b?.aliasName));
-  const { wallet } = rootState;
+  const rootStateWallet = useAppSelector((state) => state.wallet);
   const history = useHistory();
   const optionsChain = useChainIdOptions();
   const { data: settings } = useContext(SettingsContext);
@@ -137,7 +136,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
       setError('chainId', { type: 'required', message: 'Please select the Target Chain ID' });
       return;
     }
-    const isDuplicated = receiver === wallet?.account && chainId.toString() === sourceChainIdValue.toString();
+    const isDuplicated = receiver === rootStateWallet?.account && chainId.toString() === sourceChainIdValue.toString();
     if (isDuplicated) {
       toast.error(<Toast type="fail" content="Can not send to yourself" />);
     } else {
@@ -267,6 +266,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
       ?.filter((value, index, self) => index === self.findIndex((t) => t.accountName === value.accountName))
       .map((contact: any) => (
         <JazzAccount
+          key={contact.accountName}
           account={contact.accountName}
           renderAccount={
             contact.aliasName &&
@@ -358,7 +358,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
             </InputWrapper>
             <InputWrapper>
               <SLabel uppercase>{fungibleToken?.symbol} Chain balance</SLabel>
-              <SInput value={selectedChainBalance} />
+              <SInput value={selectedChainBalance} readOnly />
               {usdPrices && fungibleToken && usdPrices[fungibleToken?.contractAddress] ? (
                 <SecondaryLabel>{humanReadableNumber(usdPrices[fungibleToken?.contractAddress] * selectedChainBalance)} USD</SecondaryLabel>
               ) : null}

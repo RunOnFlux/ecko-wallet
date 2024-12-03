@@ -44,8 +44,7 @@ const ContactForm = (props: Props) => {
     },
   });
   const [isMobile] = useWindowResizeMobile(420);
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const [isScanAccountName, setIsScanAccountName] = useState(false);
   const [aliasState, setAliasState] = useState(contact?.aliasName ?? '');
 

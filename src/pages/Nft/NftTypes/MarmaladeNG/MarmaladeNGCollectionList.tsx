@@ -28,8 +28,7 @@ export interface NgCollection {
 
 const MarmaladeNGCollectionList = () => {
   const [ngCollections, setNgCollections] = useState<NgCollection[]>([]);
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const history = useHistory();
 
   const stateWallet = useCurrentWallet();

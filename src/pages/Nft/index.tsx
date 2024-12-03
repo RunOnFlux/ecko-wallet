@@ -13,8 +13,7 @@ import MarmaladeNGCollectionList from './NftTypes/MarmaladeNG/MarmaladeNGCollect
 import { useAppSelector } from 'src/stores/hooks';
 
 const Nft = () => {
-  const rootState = useAppSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
 
   const history = useHistory();
 

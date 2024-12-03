@@ -33,8 +33,7 @@ interface SeedPhraseRetrivierProps {
 }
 
 export const SeedPhraseRetrivier = ({ onSuccess, onFail }: SeedPhraseRetrivierProps) => {
-  const rootState = useAppSelector((state) => state);
-  const { passwordHash } = rootState.extensions;
+  const { passwordHash } = useAppSelector((state) => state.extensions);
 
   const [seedPhrase, setSeedPhrase] = useState('');
   const [seedPhraseHash, setSeedPhraseHash] = useState('');

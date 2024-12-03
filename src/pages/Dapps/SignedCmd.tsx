@@ -85,8 +85,7 @@ const SignedCmd = () => {
 
   const { theme } = useAppThemeContext();
 
-  const rootState = useAppSelector((state) => state);
-  const { publicKey, secretKey, type } = rootState.wallet;
+  const { publicKey, secretKey, type } = useAppSelector((state) => state.wallet);
 
   const returnSignedMessage = (result, error?, wcId = null, topic = null) => {
     const walletConnectId = wcId ?? walletConnectParams?.id;
