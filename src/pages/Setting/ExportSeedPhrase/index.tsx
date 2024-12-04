@@ -88,7 +88,7 @@ const ExportSeedPhrase = () => {
               Your Secret Recovery Phrase makes it easy to back up and restore your account.
             </SecondaryLabel>
             <Warning style={{ textAlign: 'start', marginTop: 30 }}>
-              <AlertIcon /* style={{ minWidth: 22 }} */ />
+              <AlertIcon style={{ minWidth: 22 }} />
               Never disclose your Secret Recovery Phrase. Anyone with this phrase can take your wallet forever.
             </Warning>
           </DivFlex>

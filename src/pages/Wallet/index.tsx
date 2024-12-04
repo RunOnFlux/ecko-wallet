@@ -58,7 +58,6 @@ const DivAssetList = styled.div`
 `;
 
 const Wallet = () => {
-  console.log('process.env', process.env);
   const history = useHistory();
   const { openModal, closeModal } = useModalContext();
   const { isLoadingBalances, selectedAccountBalance, allAccountsBalance, allAccountsBalanceUsd } = useAccountBalanceContext();

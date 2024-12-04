@@ -4,8 +4,9 @@ import { extractDecimal, fetchListLocal } from 'src/utils/chainweb';
 import { BaseSelect, BaseTextInput, BaseModalSelect, InputError } from 'src/baseComponent';
 import { Controller, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-// import QrReader from 'react-qr-reader';
+import { Html5Qrcode } from 'html5-qrcode';
 import images from 'src/images';
+import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import AlertIconSVG from 'src/images/icon-alert.svg?react';
 import { SInput, SLabel } from 'src/baseComponent/BaseTextInput';
@@ -46,6 +47,19 @@ const predList = [
     value: 'keys-any',
   },
 ];
+
+const QrReaderContainer = styled.div`
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  #qr-reader {
+    width: 100% !important;
+    video {
+      width: 100% !important;
+      border-radius: 8px;
+    }
+  }
+`;
 
 const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) => {
   const { contacts, recent, selectedNetwork } = useAppSelector((state) => state.extensions);
@@ -213,6 +227,47 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
         });
     }
   };
+
+  useEffect(() => {
+    let qrScanner: Html5Qrcode | null = null;
+
+    if (isScanSearching) {
+      const scanner = new Html5Qrcode('qr-reader');
+      scanner
+        .start(
+          { facingMode: 'environment' },
+          {
+            fps: 1,
+            qrbox: { width: 250, height: 250 },
+          },
+          (decodedText) => {
+            if (decodedText) {
+              handleScanSearching(decodedText);
+              setIsScanSearching(false);
+            }
+          },
+          (error) => {
+            if (!error.includes('QR code parse error')) {
+              console.error(error);
+              if (isMobile) {
+                (window as any)?.chrome?.tabs?.create({
+                  url: `/index.html#${history?.location?.pathname}`,
+                });
+              }
+            }
+          },
+        )
+        .catch(console.error);
+
+      qrScanner = scanner;
+    }
+
+    return () => {
+      if (qrScanner) {
+        qrScanner.stop().catch(console.error);
+      }
+    };
+  }, [isScanSearching]);
 
   const goToTransferAccount = (destAccount, sourceChainIdValue) => {
     goToTransfer(destAccount, sourceChainIdValue);
@@ -466,16 +521,17 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
         <ModalCustom isOpen={isScanSearching} onCloseModal={() => setIsScanSearching(false)}>
           <BodyModal>
             <TitleModal>Scan QR Code</TitleModal>
-            {/* <QrReader
-              delay={1000}
-              onError={() => {
-                if (isMobile) {
-                  (window as any)?.chrome?.tabs?.create({ url: `/index.html#${history?.location?.pathname}` });
-                }
-              }}
-              onScan={handleScanSearching}
-              style={{ width: '100%' }}
-            /> */}
+            {isScanSearching && (
+              <ModalCustom isOpen={isScanSearching} onCloseModal={() => setIsScanSearching(false)}>
+                <BodyModal>
+                  <TitleModal>Scan QR Code</TitleModal>
+                  <QrReaderContainer>
+                    <div id="qr-reader" />
+                  </QrReaderContainer>
+                  <DivChild>Place the QR code in front of your camera</DivChild>
+                </BodyModal>
+              </ModalCustom>
+            )}
             <DivChild>Place the QR code in front of your camera</DivChild>
           </BodyModal>
         </ModalCustom>

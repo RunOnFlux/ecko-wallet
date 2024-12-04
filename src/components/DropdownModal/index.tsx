@@ -68,7 +68,7 @@ export const DropdownModal = ({
           }
         }}
       >
-        {iconComponent || (iconSrc ? <DropdownImg src={iconSrc} /> : <ArrowDropdown /*className="arrowDropdown" */ />)}
+        {iconComponent || (iconSrc ? <DropdownImg src={iconSrc} /> : <ArrowDropdown className="arrowDropdown" />)}
       </div>
     </DropdownContainer>
   );

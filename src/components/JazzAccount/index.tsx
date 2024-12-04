@@ -36,7 +36,7 @@ export const JazzAccount = ({
   account ? (
     <AccountListWrapper key={account} justifyContent="flex-start" alignItems="center" onClick={onClick}>
       {type === AccountType.LEDGER ? (
-        <LedgerIcon /*style={{ marginRight: 11 }}*/ />
+        <LedgerIcon style={{ marginRight: 11 }} />
       ) : (
         <Jazzicon
           diameter={diameter || 24}

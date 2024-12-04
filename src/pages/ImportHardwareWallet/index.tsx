@@ -132,7 +132,7 @@ const ImportHardwareWallet = () => {
       </DivFlex>
       <DivFlex flexDirection="column" gap="16px" alignItems="center">
         <HardwareButton isSelected={selectedHardwareWallet === 'ledger'} onClick={() => setSelectdHardwareWallet('ledger')}>
-          <LedgerLogo /*style={{ marginTop: 13 }}*/ />
+          <LedgerLogo style={{ marginTop: 13 }} />
         </HardwareButton>
         {/* <HardwareButton>
           <TrezorLogo />

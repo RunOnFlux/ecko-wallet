@@ -83,7 +83,7 @@ const PageConnectedSites = () => {
         </DivFlex>
         <RightAction>
           <TrashIcon
-          /* onClick={() => {
+            onClick={() => {
               openModal({
                 title: 'Remove site',
                 content: (
@@ -99,7 +99,7 @@ const PageConnectedSites = () => {
                   />
                 ),
               });
-            }}*/
+            }}
           />
         </RightAction>
       </DivFlex>

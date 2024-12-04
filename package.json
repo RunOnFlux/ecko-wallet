@@ -28,6 +28,7 @@
     "cardano-crypto.js": "file:./lib/cardano-crypto.js",
     "copyfiles": "^2.4.1",
     "crypto-js": "^4.1.1",
+    "html5-qrcode": "^2.3.8",
     "hw-app-kda": "git+https://github.com/obsidiansystems/hw-app-kda",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",

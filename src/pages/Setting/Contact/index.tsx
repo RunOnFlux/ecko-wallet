@@ -59,7 +59,7 @@ const PageContact = () => {
       <Body style={{ marginBottom: 100 }}>
         {sortedKeys?.length ? (
           sortedKeys.map((letter) => (
-            <DivFlex alignItems="flex-start" style={{ borderTop: '1px solid #dfdfed' }}>
+            <DivFlex key={letter} alignItems="flex-start" style={{ borderTop: '1px solid #dfdfed' }}>
               <PrimaryLabel style={{ flex: 1 }}>{letter}</PrimaryLabel>
               <div style={{ flex: 3 }}>
                 {groupedContacts[letter]
@@ -67,7 +67,11 @@ const PageContact = () => {
                   ?.map(
                     (contact, i) =>
                       (contact?.accountName || contact?.aliasName) && (
-                        <AccountRow hasBorder={i < groupedContacts[letter].length - 1} onClick={() => onClickAccount(contact)}>
+                        <AccountRow
+                          key={contact.aliasName}
+                          hasBorder={i < groupedContacts[letter].length - 1}
+                          onClick={() => onClickAccount(contact)}
+                        >
                           {contact.accountName && (
                             <JazzAccount
                               key={contact.aliasName}
