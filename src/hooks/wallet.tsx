@@ -16,7 +16,7 @@ export const useCreateAccount = () => {
   const passwordHash = useAppSelector(getPasswordHash);
   const stateWallet = useCurrentWallet();
 
-  return (seedPhrase: string, index: number) => {
+  return async (seedPhrase: string, index: number) => {
     const checkWallet = (publicKey: string) => {
       let result = true;
       if (wallets && wallets.length) {
@@ -29,7 +29,7 @@ export const useCreateAccount = () => {
       return result;
     };
 
-    const keyPairs = getKeyPairsFromSeedPhrase(seedPhrase, index);
+    const keyPairs = await getKeyPairsFromSeedPhrase(seedPhrase, index);
     const { publicKey, secretKey } = keyPairs;
 
     if (!checkWallet(publicKey)) {
@@ -81,15 +81,15 @@ export const useCreateFirstAccountAvailable = () => {
   const createAccount = useCreateAccount();
   const passwordHash = useAppSelector(getPasswordHash);
 
-  return () => (
-    new Promise<void>((resolve, reject) => {
+  return () =>
+    new Promise<void>(async (resolve, reject) => {
       if (!passwordHash || passwordHash === '') {
         reject();
         return;
       }
 
       getLocalSeedPhrase(
-        (hash) => {
+        async (hash) => {
           const seedPhrase = decryptKey(hash, passwordHash);
 
           if (!seedPhrase || seedPhrase === '') {
@@ -97,22 +97,20 @@ export const useCreateFirstAccountAvailable = () => {
             return;
           }
 
-          for (
-            let index = 0, created = false;
-            created === false;
-            index += 1
-          ) {
-            created = createAccount(seedPhrase, index);
+          try {
+            for (let index = 0, created = false; created === false; index += 1) {
+              created = await createAccount(seedPhrase, index);
+            }
+            resolve();
+          } catch (error) {
+            reject(error);
           }
-
-          resolve();
         },
         () => {
           reject();
         },
       );
-    })
-  );
+    });
 };
 
 export const useSelectNetwork = () => {
@@ -121,25 +119,25 @@ export const useSelectNetwork = () => {
   return (newNetworkOrId: RawNetwork | string) => {
     const id = typeof newNetworkOrId === 'string' ? newNetworkOrId : newNetworkOrId.id;
     const newSelectedNetwork = networks.find((network) => network.id.toString() === id);
-      setSelectedNetwork(newSelectedNetwork);
-      setCurrentWallet({
-        chainId: 0,
-        account: '',
-        alias: '',
-        publicKey: '',
-        secretKey: '',
-        connectedSites: [],
-      });
-      setLocalSelectedWallet({
-        chainId: 0,
-        account: '',
-        alias: '',
-        publicKey: '',
-        secretKey: '',
-        connectedSites: [],
-      });
-      setBalance(0);
-      setLocalSelectedNetwork(newSelectedNetwork);
+    setSelectedNetwork(newSelectedNetwork);
+    setCurrentWallet({
+      chainId: 0,
+      account: '',
+      alias: '',
+      publicKey: '',
+      secretKey: '',
+      connectedSites: [],
+    });
+    setLocalSelectedWallet({
+      chainId: 0,
+      account: '',
+      alias: '',
+      publicKey: '',
+      secretKey: '',
+      connectedSites: [],
+    });
+    setBalance(0);
+    setLocalSelectedNetwork(newSelectedNetwork);
   };
 };
 
@@ -154,9 +152,7 @@ export const useSignMessage = () => {
     const hash = kadenaJSHash(message);
 
     if (type === AccountType.LEDGER) {
-      toast.info(
-        <Toast type="info" content="Please, enable BLIND SIGNING and follow the instruction on your ledger first" />,
-      );
+      toast.info(<Toast type="info" content="Please, enable BLIND SIGNING and follow the instruction on your ledger first" />);
       const ledger = await getLedger();
       const ledgerSignature = await ledger?.signHash(DEFAULT_BIP32_PATH, hash);
       return bufferToHex(ledgerSignature?.signature);

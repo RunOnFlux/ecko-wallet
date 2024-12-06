@@ -21,3 +21,18 @@ declare module '*.jpg' {
   const content: string;
   export default content;
 }
+
+// declare module '@kadena/hd-wallet/chainweaver' {
+//   export const legacyKadenaGenMnemonic: () => string;
+
+//   export const legacyKadenaMnemonicToRootKeypair: (password: string | Uint8Array, mnemonic: string) => Promise<Uint8Array>;
+
+//   export const legacyKadenaGenKeypair: (
+//     password: string | Uint8Array,
+//     rootKey: string | Uint8Array,
+//     index: number,
+//   ) => Promise<[Uint8Array, Uint8Array]>;
+
+//   export const kadenaGenMnemonic: () => string;
+//   export const kadenaGenKeypair: () => string;
+// }

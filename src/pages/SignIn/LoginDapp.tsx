@@ -154,15 +154,20 @@ const LoginDapp = (props: any) => {
           // get seedphrase and store again
           getLocalSeedPhrase(
             async (secretKey) => {
-              const plainSeedPhrase = decryptKey(secretKey, oldHashPassword);
-              // save new hashed secretKey
-              const hashPassword = hash(password);
-              setLocalPassword(hashPassword);
-              dispatch(require2FA());
-              initLocalWallet(plainSeedPhrase, hashPassword);
-              removeOldLocalPassword();
-              // restore data
-              window.location.reload();
+              try {
+                const plainSeedPhrase = decryptKey(secretKey, oldHashPassword);
+                // save new hashed secretKey
+                const hashPassword = hash(password);
+                setLocalPassword(hashPassword);
+                dispatch(require2FA());
+                await initLocalWallet(plainSeedPhrase, hashPassword);
+                removeOldLocalPassword();
+                // restore data
+                window.location.reload();
+              } catch (error) {
+                console.error('Error initializing wallet:', error);
+                setError('password', { type: 'manual', message: 'Error initializing wallet' });
+              }
             },
             () => {},
           );
@@ -170,7 +175,6 @@ const LoginDapp = (props: any) => {
           setError('password', { type: 'manual', message: 'Invalid Password' });
         }
       },
-      //
       async () => {
         const isValid = await isValidPassword(password);
         if (isValid) {
@@ -185,6 +189,7 @@ const LoginDapp = (props: any) => {
       },
     );
   };
+
   const history = useHistory();
   return (
     <CreatePasswordWrapper>

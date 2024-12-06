@@ -52,20 +52,27 @@ const CreatePassword = () => {
 
   const history = useHistory();
 
-  const onStorePassword = (data, path) => {
-    const hash = kadenaHash(data.password);
-    setLocalPassword(hash);
-    toast.success(<Toast type="success" content="Create new password successfully" />);
-    if (isCreateSeedPhrase) {
-      const newStateWallet = initLocalWallet(data.seedPhrase, hash);
-      updateData(hash, path, newStateWallet);
-      history.push('/sign-in');
-    } else {
-      updateWallets(selectedNetwork.networkId);
-      history.push(path);
-      updateData(hash, path, null);
+  const onStorePassword = async (data, path) => {
+    try {
+      const hash = kadenaHash(data.password);
+      setLocalPassword(hash);
+      toast.success(<Toast type="success" content="Create new password successfully" />);
+
+      if (isCreateSeedPhrase) {
+        const newStateWallet = await initLocalWallet(data.seedPhrase, hash);
+        updateData(hash, path, newStateWallet);
+        history.push('/sign-in');
+      } else {
+        updateWallets(selectedNetwork.networkId);
+        history.push(path);
+        updateData(hash, path, null);
+      }
+    } catch (error) {
+      console.error('Error storing password:', error);
+      toast.error(<Toast type="fail" content="Error creating wallet" />);
     }
   };
+
   const updateData = (hash, path, wallet) => {
     setTimeout(() => {
       (window as any)?.chrome?.runtime?.sendMessage({
@@ -78,17 +85,17 @@ const CreatePassword = () => {
       });
     }, 300);
   };
-  const onCheck = (data) => {
+  const onCheck = async (data) => {
     const { seedPhrase } = data;
     if (isCreateSeedPhrase) {
       const isSeedPhraseValid = lib.kadenaCheckMnemonic(seedPhrase);
       if (!isSeedPhraseValid) {
         toast.error(<Toast type="fail" content="Invalid Secret Recovery Phrase!" />);
       } else {
-        onStorePassword(data, '/sign-in');
+        await onStorePassword(data, '/sign-in');
       }
     } else {
-      onStorePassword(data, '/seed-phrase');
+      await onStorePassword(data, '/seed-phrase');
     }
   };
 

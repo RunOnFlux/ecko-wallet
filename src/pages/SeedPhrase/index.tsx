@@ -108,12 +108,24 @@ const SeedPhrase = () => {
   const [enable, setEnable] = useState(false);
   const [isHiddenSP, setIsHiddenSP] = useState(true);
   const [sP, setSP] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const seedPhrase = generateSeedPhrase();
-    setSP(seedPhrase);
-    const newKeyPairs = getKeyPairsFromSeedPhrase(seedPhrase, 0);
-    setKeyPairs(newKeyPairs);
+    const initSeedPhrase = async () => {
+      try {
+        const seedPhrase = generateSeedPhrase();
+        setSP(seedPhrase);
+        const newKeyPairs = await getKeyPairsFromSeedPhrase(seedPhrase, 0);
+        setKeyPairs(newKeyPairs);
+      } catch (error) {
+        console.error('Error generating key pairs:', error);
+        toast.error(<Toast type="fail" content="Error generating wallet keys" />);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    initSeedPhrase();
   }, []);
 
   const goToSignIn = () => {
@@ -121,7 +133,7 @@ const SeedPhrase = () => {
     history.push('/sign-in');
   };
 
-  const onNext = () => {
+  const onNext = async () => {
     if (step === 1) {
       if (isChecked) {
         setStep(2);
@@ -131,54 +143,75 @@ const SeedPhrase = () => {
         setStep(3);
       }
     } else if (enable) {
-      const newSP = sPMap.join(' ');
-      if (newSP.trim() === sP) {
-        const { publicKey, secretKey } = keyPairs;
-        const accountName = `k:${publicKey}`;
-        const wallet = {
-          account: encryptKey(accountName, passwordHash),
-          publicKey: encryptKey(publicKey, passwordHash),
-          secretKey: encryptKey(secretKey, passwordHash),
-          chainId: '0',
-          connectedSites: [],
-        };
-        getLocalWallets(
-          selectedNetwork.networkId,
-          (item) => {
-            const newData = [...item, wallet];
-            setLocalWallets(selectedNetwork.networkId, newData);
-          },
-          () => {
-            setLocalWallets(selectedNetwork.networkId, [wallet]);
-          },
-        );
-        getLocalWallets(
-          'testnet04',
-          (item) => {
-            const newData = [...item, wallet];
-            setLocalWallets('testnet04', newData);
-          },
-          () => {
-            setLocalWallets('testnet04', [wallet]);
-          },
-        );
-        const newStateWallet = {
-          chainId: '0',
-          account: accountName,
-          publicKey,
-          secretKey,
-          connectedSites: [],
-        };
-        const newWallets = [newStateWallet];
-        setWallets(newWallets);
-        setLocalSelectedWallet(wallet);
-        setCurrentWallet(newStateWallet);
-        const seedPhraseHash = encryptKey(sP, passwordHash);
-        setIsHaveSeedPhrase(true);
-        setLocalSeedPhrase(seedPhraseHash);
-        goToSignIn();
-      } else {
-        toast.error(<Toast type="fail" content="Invalid Secret Recovery Phrase!" />);
+      try {
+        const newSP = sPMap.join(' ');
+        if (newSP.trim() === sP) {
+          if (!keyPairs) {
+            throw new Error('Key pairs not generated');
+          }
+
+          const { publicKey, secretKey } = keyPairs;
+          const accountName = `k:${publicKey}`;
+          const wallet = {
+            account: encryptKey(accountName, passwordHash),
+            publicKey: encryptKey(publicKey, passwordHash),
+            secretKey: encryptKey(secretKey, passwordHash),
+            chainId: '0',
+            connectedSites: [],
+          };
+
+          await Promise.all([
+            new Promise<void>((resolve) => {
+              getLocalWallets(
+                selectedNetwork.networkId,
+                (item) => {
+                  const newData = [...item, wallet];
+                  setLocalWallets(selectedNetwork.networkId, newData);
+                  resolve();
+                },
+                () => {
+                  setLocalWallets(selectedNetwork.networkId, [wallet]);
+                  resolve();
+                },
+              );
+            }),
+            new Promise<void>((resolve) => {
+              getLocalWallets(
+                'testnet04',
+                (item) => {
+                  const newData = [...item, wallet];
+                  setLocalWallets('testnet04', newData);
+                  resolve();
+                },
+                () => {
+                  setLocalWallets('testnet04', [wallet]);
+                  resolve();
+                },
+              );
+            }),
+          ]);
+
+          const newStateWallet = {
+            chainId: '0',
+            account: accountName,
+            publicKey,
+            secretKey,
+            connectedSites: [],
+          };
+          const newWallets = [newStateWallet];
+          setWallets(newWallets);
+          setLocalSelectedWallet(wallet);
+          setCurrentWallet(newStateWallet);
+          const seedPhraseHash = encryptKey(sP, passwordHash);
+          setIsHaveSeedPhrase(true);
+          setLocalSeedPhrase(seedPhraseHash);
+          goToSignIn();
+        } else {
+          toast.error(<Toast type="fail" content="Invalid Secret Recovery Phrase!" />);
+        }
+      } catch (error) {
+        console.error('Error creating wallet:', error);
+        toast.error(<Toast type="fail" content="Error creating wallet" />);
       }
     }
   };
@@ -261,7 +294,7 @@ const SeedPhrase = () => {
         />
       </CheckboxWrapper>
       <Footer style={{ marginTop: 50 }}>
-        <Button size="full" onClick={onNext} isDisabled={!isChecked} label="Continue" />
+        <Button size="full" onClick={onNext} isDisabled={!isChecked || isLoading} label={isLoading ? 'Generating keys...' : 'Continue'} />
       </Footer>
     </>
   );
@@ -300,6 +333,14 @@ const SeedPhrase = () => {
       </Footer>
     </>
   );
+  if (isLoading) {
+    return (
+      <Wrapper>
+        <Title>Generating your wallet...</Title>
+      </Wrapper>
+    );
+  }
+
   return (
     <Wrapper>
       {step === 1 && renderStep1()}

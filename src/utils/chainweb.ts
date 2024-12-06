@@ -2,6 +2,7 @@
 import Pact from 'pact-lang-api';
 import nacl from 'tweetnacl';
 import { base64UrlDecodeArr, binToHex, toTweetNaclSecretKey } from '@kadena/cryptography-utils';
+import { kadenaGenMnemonic, kadenaGenKeypair, kadenaMnemonicToRootKeypair } from '@kadena/hd-wallet/chainweaver';
 import lib from 'cardano-crypto.js/kadena-crypto';
 import { CHAIN_AVAILABLE_TOKENS_FIXTURE, CHAIN_COUNT } from './constant';
 import { CONFIG, KADDEX_ANALYTICS_API } from './config';
@@ -47,11 +48,10 @@ export const fetchListLocal = (code, url, networkId, chainId, gasPrice = CONFIG.
 };
 
 export const generateSeedPhrase = () => {
-  const seedPhrase = lib.kadenaGenMnemonic();
-  return seedPhrase;
+  return kadenaGenMnemonic();
 };
 
-export const getKeyPairsFromSeedPhrase = (seedPhrase, index) => {
+export const legacyGetKeyPairsFromSeedPhrase = (seedPhrase, index) => {
   const root = lib.kadenaMnemonicToRootKeypair('', seedPhrase);
   const hardIndex = 0x80000000;
   const newIndex = hardIndex + index;
@@ -66,11 +66,21 @@ export const getKeyPairsFromSeedPhrase = (seedPhrase, index) => {
   };
 };
 
+export const getKeyPairsFromSeedPhrase = async (seedPhrase, index) => {
+  const root = await kadenaMnemonicToRootKeypair('', seedPhrase);
+  const { publicKey, secretKey } = await kadenaGenKeypair('', root, index);
+  return {
+    publicKey,
+    secretKey,
+  };
+};
+
 export const getSignatureFromHash = (hash, privateKey) => {
   const newHash = Buffer.from(hash, 'base64');
   const u8PrivateKey = Pact.crypto.hexToBin(privateKey);
   const signature = lib.kadenaSign('', newHash, u8PrivateKey);
   const s = new Uint8Array(signature);
+  const res = Pact.crypto.binToHex(s);
   return Pact.crypto.binToHex(s);
 };
 

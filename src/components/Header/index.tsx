@@ -78,11 +78,15 @@ export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
     openModal({ title: 'Remove wallet', content: <RemoveWalletPopup onClose={() => closeModal()} /> });
   };
 
-  const onCreateAccount = () => {
-    createFirstAccountAvailable().then(() => {
+  const onCreateAccount = async () => {
+    try {
+      await createFirstAccountAvailable();
       toast.success(<Toast type="success" content="Create account successfully!" />);
       closeModal();
-    });
+    } catch (error) {
+      console.error('Error creating account:', error);
+      toast.error(<Toast type="fail" content="Failed to create account" />);
+    }
   };
 
   const handleSelectNetwork = (id) => {

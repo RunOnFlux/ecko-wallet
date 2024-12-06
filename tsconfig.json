@@ -28,7 +28,8 @@
       "@Utils/*": ["src/utils/*"],
       "@Css/*": ["src/css/*"],
       "@Reducers/*": ["src/reducers/*"],
-      "@ledgerhq/devices": ["node_modules/@ledgerhq/devices/lib-es"]
+      "@ledgerhq/devices": ["node_modules/@ledgerhq/devices/lib-es"],
+      "@kadena/hd-wallet": ["./node_modules/@kadena/hd-wallet"]
     }
   },
   "include": ["src/**/*", "**/*.ts", "**/*.tsx"],
