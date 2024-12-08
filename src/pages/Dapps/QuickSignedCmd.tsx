@@ -152,7 +152,7 @@ const QuickSignedCmd = () => {
               toast.success(<Toast type="success" content={`Ledger command ${i + 1}/${data?.commandSigDatas?.length ?? '?'} signed successfully`} />);
               signature = bufferToHex(ledgerSig?.signature);
             } else if (secretKey.length > 64) {
-              signature = getSignatureFromHash(hash, secretKey);
+              signature = await getSignatureFromHash(hash, secretKey);
             } else {
               signature = kadenaJSSign(cmd, { secretKey, publicKey }).sig;
             }

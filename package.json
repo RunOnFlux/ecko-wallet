@@ -92,6 +92,7 @@
     "@ledgerhq/devices": "file:./node_modules/@ledgerhq/devices/lib-es"
   },
   "devDependencies": {
+    "@kadena/types": "^0.7.0",
     "@svgr/webpack": "^8.1.0",
     "@types/bcrypt": "^5.0.2",
     "@types/chrome": "^0.0.221",

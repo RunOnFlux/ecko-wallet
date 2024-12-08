@@ -63,6 +63,7 @@ const PageSetting = () => {
   const history = useHistory();
   const { setIsLocked } = useSettingsContext();
   const { secretKey } = useAppSelector((state) => state.wallet);
+  console.log('🚀 ~ PageSetting ~ secretKey:', secretKey);
   const { theme } = useAppThemeContext();
   const [, , , removeAccountPassword] = useSessionStorage(STORAGE_PASSWORD_KEY, null);
 

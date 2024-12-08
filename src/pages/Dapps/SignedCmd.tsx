@@ -138,68 +138,58 @@ const SignedCmd = () => {
     );
   }, [secretKey, type]);
 
-  const signCommand = (signingCmd) =>
-    new Promise((resolve, reject) => {
-      try {
-        const meta = Pact.lang.mkMeta(
-          signingCmd.sender,
-          signingCmd.chainId.toString(),
-          parseFloat(signingCmd.gasPrice),
-          parseFloat(signingCmd.gasLimit),
-          getTimestamp(),
-          signingCmd.ttl,
-        );
-        const clist = signingCmd.caps ? signingCmd.caps.map((c) => c.cap) : [];
-        const keyPairs: any = {
-          publicKey,
-        };
-        if (secretKey.length === 64) {
-          keyPairs.secretKey = secretKey;
-        }
-        if (clist.length > 0) {
-          keyPairs.clist = clist;
-        }
-        const signedCmd = Pact.api.prepareExecCmd(
-          keyPairs,
-          `${ECKO_WALLET_DAPP_SIGN_NONCE}-"${new Date().toISOString()}"`,
-          signingCmd?.pactCode || signingCmd?.code,
-          signingCmd?.data || signingCmd?.envData,
-          meta,
-          signingCmd.networkId,
-        );
-        if (type === AccountType.LEDGER) {
-          setHash(signedCmd.hash);
-          signHash(signedCmd.hash)
-            .then((signHashResult) => {
-              toast.success(<Toast type="success" content="Ledger signed successfully" />);
-              const sigs = [{ sig: bufferToHex(signHashResult?.signature) }];
-              signedCmd.sigs = sigs;
-              resolve({ signedCmd, signingCmd });
-            })
-            .catch((ledgerError) => {
-              const result = {
-                status: 'fail',
-                message: ledgerError ?? 'Ledger signing error',
-              };
-              reject(result);
-            });
-        } else {
-          if (secretKey.length > 64) {
-            const signature = getSignatureFromHash(signedCmd.hash, secretKey);
-            const sigs = [{ sig: signature }];
-            signedCmd.sigs = sigs;
-          }
-          resolve({ signedCmd, signingCmd });
-        }
-      } catch (err: any) {
-        console.error('Signing cmd err:', err);
-        const result = {
-          status: 'fail',
-          message: err?.message ?? 'Signing cmd error',
-        };
-        reject(result);
+  const signCommand = async (signingCmd) => {
+    try {
+      const meta = Pact.lang.mkMeta(
+        signingCmd.sender,
+        signingCmd.chainId.toString(),
+        parseFloat(signingCmd.gasPrice),
+        parseFloat(signingCmd.gasLimit),
+        getTimestamp(),
+        signingCmd.ttl,
+      );
+
+      const clist = signingCmd.caps?.map((c) => c.cap) || [];
+
+      const keyPairs = {
+        publicKey,
+        ...(secretKey.length === 64 && { secretKey }),
+        ...(clist.length > 0 && { clist }),
+      };
+
+      const signedCmd = Pact.api.prepareExecCmd(
+        keyPairs,
+        `${ECKO_WALLET_DAPP_SIGN_NONCE}-${new Date().toISOString()}`,
+        signingCmd.pactCode || signingCmd.code,
+        signingCmd.data || signingCmd.envData,
+        meta,
+        signingCmd.networkId,
+      );
+
+      if (type === AccountType.LEDGER) {
+        setHash(signedCmd.hash);
+        const signHashResult = await signHash(signedCmd.hash);
+        signedCmd.sigs = [
+          {
+            sig: bufferToHex(signHashResult?.signature),
+          },
+        ];
+        return { signedCmd, signingCmd };
       }
-    });
+
+      if (secretKey.length > 64) {
+        const signature = await getSignatureFromHash(signedCmd.hash, secretKey);
+        signedCmd.sigs = [{ sig: signature }];
+      }
+
+      return { signedCmd, signingCmd };
+    } catch (err: any) {
+      throw {
+        status: 'fail',
+        message: err?.message || 'Signing cmd error',
+      };
+    }
+  };
 
   const onSave = () => {
     if (walletConnectParams?.action === WALLET_CONNECT_SIGN_METHOD) {

@@ -79,7 +79,7 @@ export const HashSignModal = () => {
             type="submit"
             label="Sign"
             size="full"
-            onClick={() => {
+            onClick={async () => {
               if (hash) {
                 let signatureOutput: any;
                 if (type === AccountType.LEDGER) {
@@ -92,7 +92,7 @@ export const HashSignModal = () => {
                       setSignature('');
                     });
                 } else if (secretKey.length > 64) {
-                  signatureOutput = getSignatureFromHash(hash, secretKey);
+                  signatureOutput = await getSignatureFromHash(hash, secretKey);
                   setSignature(signatureOutput);
                 } else {
                   try {

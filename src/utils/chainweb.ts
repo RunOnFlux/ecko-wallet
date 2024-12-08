@@ -2,11 +2,12 @@
 import Pact from 'pact-lang-api';
 import nacl from 'tweetnacl';
 import { base64UrlDecodeArr, binToHex, toTweetNaclSecretKey } from '@kadena/cryptography-utils';
-import { kadenaGenMnemonic, kadenaGenKeypair, kadenaMnemonicToRootKeypair } from '@kadena/hd-wallet/chainweaver';
+import { kadenaGenMnemonic, kadenaGenKeypair, kadenaMnemonicToRootKeypair, kadenaSign } from '@kadena/hd-wallet/chainweaver';
 import lib from 'cardano-crypto.js/kadena-crypto';
 import { CHAIN_AVAILABLE_TOKENS_FIXTURE, CHAIN_COUNT } from './constant';
 import { CONFIG, KADDEX_ANALYTICS_API } from './config';
 import { getTimestamp } from './index';
+import { bufferToHex } from 'src/contexts/LedgerContext';
 // import { getLocalStorageDataByKey, SETTINGS_STORAGE_KEY } from './storage';
 
 export const MAINNET_NETWORK_ID = 'mainnet01';
@@ -75,13 +76,11 @@ export const getKeyPairsFromSeedPhrase = async (seedPhrase, index) => {
   };
 };
 
-export const getSignatureFromHash = (hash, privateKey) => {
-  const newHash = Buffer.from(hash, 'base64');
-  const u8PrivateKey = Pact.crypto.hexToBin(privateKey);
-  const signature = lib.kadenaSign('', newHash, u8PrivateKey);
-  const s = new Uint8Array(signature);
-  const res = Pact.crypto.binToHex(s);
-  return Pact.crypto.binToHex(s);
+export const getSignatureFromHash = async (hash, privateKey) => {
+  const signature2 = await kadenaSign('', hash, privateKey);
+  const signatureHex = bufferToHex(signature2);
+  console.log('🚀 ~ getSignatureFromHash ~ signatureHex:', signatureHex);
+  return signatureHex;
 };
 
 export const getSignatureFromHashWithPrivateKey64 = (hash, { secretKey, publicKey }) => {

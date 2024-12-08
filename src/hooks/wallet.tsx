@@ -159,7 +159,7 @@ export const useSignMessage = () => {
     }
 
     if (secretKey.length > 64) {
-      return getSignatureFromHash(hash, secretKey) as string;
+      return (await getSignatureFromHash(hash, secretKey)) as string;
     }
 
     return kadenaJSSign(message, { secretKey, publicKey }).sig;

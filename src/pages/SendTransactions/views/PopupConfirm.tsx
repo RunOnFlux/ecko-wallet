@@ -216,7 +216,7 @@ const PopupConfirm = (props: Props) => {
           return;
         }
       } else if (senderPrivateKey.length > 64) {
-        const signature = getSignatureFromHash(sendCmd.hash, senderPrivateKey);
+        const signature = await getSignatureFromHash(sendCmd.hash, senderPrivateKey);
         const sigs = [{ sig: signature }];
         sendCmd.sigs = sigs;
       }
