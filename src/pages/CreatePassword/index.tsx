@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { BaseTextInput, InputError } from 'src/baseComponent';
-import lib from 'cardano-crypto.js/kadena-crypto';
 import { hash as kadenaHash } from '@kadena/cryptography-utils';
+import { kadenaCheckMnemonic } from '@kadena/hd-wallet/chainweaver';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { initLocalWallet, setLocalPassword, updateWallets } from 'src/utils/storage';
@@ -88,7 +88,7 @@ const CreatePassword = () => {
   const onCheck = async (data) => {
     const { seedPhrase } = data;
     if (isCreateSeedPhrase) {
-      const isSeedPhraseValid = lib.kadenaCheckMnemonic(seedPhrase);
+      const isSeedPhraseValid = kadenaCheckMnemonic(seedPhrase);
       if (!isSeedPhraseValid) {
         toast.error(<Toast type="fail" content="Invalid Secret Recovery Phrase!" />);
       } else {
