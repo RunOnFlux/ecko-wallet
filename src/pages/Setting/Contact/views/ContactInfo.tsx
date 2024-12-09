@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
-import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
 import { ActionList } from 'src/components/ActionList';
@@ -14,10 +13,11 @@ import { setContacts } from 'src/stores/slices/extensions';
 import { convertContacts } from 'src/utils';
 import { getLocalContacts, setLocalContacts } from 'src/utils/storage';
 import ContactForm from './ContactForm';
+import { useAppSelector } from 'src/stores/hooks';
 
 export const ContactInfo = ({ contact }: any) => {
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
-  const { selectedNetwork } = useSelector((state) => state.extensions);
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const { openModal, closeModal } = useModalContext();
 
   const copyToClipboard = (value) => {

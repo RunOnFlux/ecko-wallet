@@ -119,7 +119,7 @@ export const useExecCommand = () => {
     const cmd = Pact.api.prepareExecCmd(keyPairs, nonce, pactCode, envData, meta, selectedNetwork.networkId);
 
     if (secretKey.length > 64) {
-      const signature = getSignatureFromHash(cmd.hash, secretKey);
+      const signature = await getSignatureFromHash(cmd.hash, secretKey);
       cmd.sigs = [{ sig: signature }];
     } else if (type === AccountType.LEDGER) {
       const signHashResult = await signHash(cmd.hash);

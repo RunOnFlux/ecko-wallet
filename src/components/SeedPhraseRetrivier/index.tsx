@@ -7,7 +7,7 @@ import { BaseTextInput, InputError } from 'src/baseComponent';
 import { DivFlex, SecondaryLabel } from 'src/components';
 import Button from 'src/components/Buttons';
 import images from 'src/images';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from 'src/stores/hooks';
 
 const Wrapper = styled.div`
   font-size: 16px;
@@ -33,8 +33,7 @@ interface SeedPhraseRetrivierProps {
 }
 
 export const SeedPhraseRetrivier = ({ onSuccess, onFail }: SeedPhraseRetrivierProps) => {
-  const rootState = useSelector((state) => state);
-  const { passwordHash } = rootState.extensions;
+  const { passwordHash } = useAppSelector((state) => state.extensions);
 
   const [seedPhrase, setSeedPhrase] = useState('');
   const [seedPhraseHash, setSeedPhraseHash] = useState('');

@@ -8,9 +8,9 @@ import { setLocalActivities, setLocalSelectedWallet, setLocalWallets } from 'src
 import { encryptKey } from 'src/utils/security';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
 import { DivFlex } from 'src/components';
 import { isValidPassword } from 'src/pages/SignIn';
+import { useAppSelector } from 'src/stores/hooks';
 
 const DivChild = styled.div`
   font-size: ${(props) => props.fontSize};
@@ -61,9 +61,8 @@ const DivError = styled.div`
 const RemoveWalletPopup = (props: Props) => {
   const { onClose } = props;
   const history = useHistory();
-  const rootState = useSelector((state) => state);
-  const { passwordHash, selectedNetwork } = rootState.extensions;
-  const { wallets, account } = rootState.wallet;
+  const { passwordHash, selectedNetwork } = useAppSelector((state) => state.extensions);
+  const { wallets, account } = useAppSelector((state) => state.wallet);
   const [passwordInput, setPasswordInput] = useState('');
 
   const {

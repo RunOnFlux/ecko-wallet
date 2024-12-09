@@ -256,11 +256,11 @@ export const TitleModal = styled.div`
   text-align: center;
   font-size: 20x;
   font-weight: 700;
-
+  color: ${({ theme }) => theme.text.primary};
   margin-bottom: 15px;
 `;
 export const DivChild = styled.div`
   margin-top: 20px;
-
+  color: ${({ theme }) => theme.text.primary};
   text-align: center;
 `;

@@ -162,6 +162,7 @@ export const BodyModal = styled.div`
   padding: 30px 0px;
 `;
 export const TitleModal = styled.div`
+  color: ${({ theme }) => theme.text.primary};
   text-align: center;
   font-size: 20px;
   font-weight: 700;
@@ -170,7 +171,7 @@ export const TitleModal = styled.div`
 `;
 export const DivChild = styled.div`
   margin-top: 20px;
-
+  color: ${({ theme }) => theme.text.primary};
   text-align: center;
 `;
 export const DivChildButton = styled.div`

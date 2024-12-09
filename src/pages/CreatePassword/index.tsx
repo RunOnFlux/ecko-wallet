@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { BaseTextInput, InputError } from 'src/baseComponent';
-import lib from 'cardano-crypto.js/kadena-crypto';
-import { useSelector } from 'react-redux';
 import { hash as kadenaHash } from '@kadena/cryptography-utils';
+import { kadenaCheckMnemonic } from '@kadena/hd-wallet/chainweaver';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { initLocalWallet, setLocalPassword, updateWallets } from 'src/utils/storage';
@@ -11,6 +10,7 @@ import Toast from 'src/components/Toast/Toast';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import Button from 'src/components/Buttons';
 import { PasswordForm } from 'src/components/PasswordForm';
+import { useAppSelector } from 'src/stores/hooks';
 
 const CreatePasswordWrapper = styled.div`
   padding: 0 20px;
@@ -48,25 +48,31 @@ const CreatePassword = () => {
     clearErrors,
     control,
   } = useForm();
-  const rootState = useSelector((state) => state);
-  const { isCreateSeedPhrase, selectedNetwork } = rootState.extensions;
+  const { isCreateSeedPhrase, selectedNetwork } = useAppSelector((state) => state.extensions);
 
   const history = useHistory();
 
-  const onStorePassword = (data, path) => {
-    const hash = kadenaHash(data.password);
-    setLocalPassword(hash);
-    toast.success(<Toast type="success" content="Create new password successfully" />);
-    if (isCreateSeedPhrase) {
-      const newStateWallet = initLocalWallet(data.seedPhrase, hash);
-      updateData(hash, path, newStateWallet);
-      history.push('/sign-in');
-    } else {
-      updateWallets(selectedNetwork.networkId);
-      history.push(path);
-      updateData(hash, path, null);
+  const onStorePassword = async (data, path) => {
+    try {
+      const hash = kadenaHash(data.password);
+      setLocalPassword(hash);
+      toast.success(<Toast type="success" content="Create new password successfully" />);
+
+      if (isCreateSeedPhrase) {
+        const newStateWallet = await initLocalWallet(data.seedPhrase, hash);
+        updateData(hash, path, newStateWallet);
+        history.push('/sign-in');
+      } else {
+        updateWallets(selectedNetwork.networkId);
+        history.push(path);
+        updateData(hash, path, null);
+      }
+    } catch (error) {
+      console.error('Error storing password:', error);
+      toast.error(<Toast type="fail" content="Error creating wallet" />);
     }
   };
+
   const updateData = (hash, path, wallet) => {
     setTimeout(() => {
       (window as any)?.chrome?.runtime?.sendMessage({
@@ -79,17 +85,17 @@ const CreatePassword = () => {
       });
     }, 300);
   };
-  const onCheck = (data) => {
+  const onCheck = async (data) => {
     const { seedPhrase } = data;
     if (isCreateSeedPhrase) {
-      const isSeedPhraseValid = lib.kadenaCheckMnemonic(seedPhrase);
+      const isSeedPhraseValid = kadenaCheckMnemonic(seedPhrase);
       if (!isSeedPhraseValid) {
         toast.error(<Toast type="fail" content="Invalid Secret Recovery Phrase!" />);
       } else {
-        onStorePassword(data, '/sign-in');
+        await onStorePassword(data, '/sign-in');
       }
     } else {
-      onStorePassword(data, '/seed-phrase');
+      await onStorePassword(data, '/seed-phrase');
     }
   };
 

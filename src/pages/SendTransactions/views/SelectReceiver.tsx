@@ -2,13 +2,13 @@ import { useState, useContext, useEffect, useRef } from 'react';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
 import { extractDecimal, fetchListLocal } from 'src/utils/chainweb';
 import { BaseSelect, BaseTextInput, BaseModalSelect, InputError } from 'src/baseComponent';
-import { useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import QrReader from 'react-qr-reader';
+import { Html5Qrcode } from 'html5-qrcode';
 import images from 'src/images';
+import styled from 'styled-components';
 import { toast } from 'react-toastify';
-import { ReactComponent as AlertIconSVG } from 'src/images/icon-alert.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg?react';
 import { SInput, SLabel } from 'src/baseComponent/BaseTextInput';
 import Spinner from 'src/components/Spinner';
 import { useModalContext } from 'src/contexts/ModalContext';
@@ -29,6 +29,7 @@ import Button from 'src/components/Buttons';
 import { IFungibleToken } from 'src/pages/ImportToken';
 import { BodyModal, TitleModal, DivChild, InputWrapper, Warning } from '../styles';
 import { KeyWrapper, KeyItemWrapper, KeyRemove, ContactSuggestion } from './style';
+import { useAppSelector } from 'src/stores/hooks';
 
 type Props = {
   goToTransfer: any;
@@ -47,11 +48,23 @@ const predList = [
   },
 ];
 
+const QrReaderContainer = styled.div`
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  #qr-reader {
+    width: 100% !important;
+    video {
+      width: 100% !important;
+      border-radius: 8px;
+    }
+  }
+`;
+
 const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) => {
-  const rootState = useSelector((state) => state);
-  const { contacts, recent, selectedNetwork } = rootState.extensions;
+  const { contacts, recent, selectedNetwork } = useAppSelector((state) => state.extensions);
   const sortedContacts = [...(contacts || [])]?.sort((a, b) => a?.aliasName?.localeCompare(b?.aliasName));
-  const { wallet } = rootState;
+  const rootStateWallet = useAppSelector((state) => state.wallet);
   const history = useHistory();
   const optionsChain = useChainIdOptions();
   const { data: settings } = useContext(SettingsContext);
@@ -137,7 +150,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
       setError('chainId', { type: 'required', message: 'Please select the Target Chain ID' });
       return;
     }
-    const isDuplicated = receiver === wallet?.account && chainId.toString() === sourceChainIdValue.toString();
+    const isDuplicated = receiver === rootStateWallet?.account && chainId.toString() === sourceChainIdValue.toString();
     if (isDuplicated) {
       toast.error(<Toast type="fail" content="Can not send to yourself" />);
     } else {
@@ -215,6 +228,47 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
     }
   };
 
+  useEffect(() => {
+    let qrScanner: Html5Qrcode | null = null;
+
+    if (isScanSearching) {
+      const scanner = new Html5Qrcode('qr-reader');
+      scanner
+        .start(
+          { facingMode: 'environment' },
+          {
+            fps: 1,
+            qrbox: { width: 250, height: 250 },
+          },
+          (decodedText) => {
+            if (decodedText) {
+              handleScanSearching(decodedText);
+              setIsScanSearching(false);
+            }
+          },
+          (error) => {
+            if (!error.includes('QR code parse error')) {
+              console.error(error);
+              if (isMobile) {
+                (window as any)?.chrome?.tabs?.create({
+                  url: `/index.html#${history?.location?.pathname}`,
+                });
+              }
+            }
+          },
+        )
+        .catch(console.error);
+
+      qrScanner = scanner;
+    }
+
+    return () => {
+      if (qrScanner) {
+        qrScanner.stop().catch(console.error);
+      }
+    };
+  }, [isScanSearching]);
+
   const goToTransferAccount = (destAccount, sourceChainIdValue) => {
     goToTransfer(destAccount, sourceChainIdValue);
     if (isOpenConfirmModal) {
@@ -267,6 +321,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
       ?.filter((value, index, self) => index === self.findIndex((t) => t.accountName === value.accountName))
       .map((contact: any) => (
         <JazzAccount
+          key={contact.accountName}
           account={contact.accountName}
           renderAccount={
             contact.aliasName &&
@@ -358,7 +413,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
             </InputWrapper>
             <InputWrapper>
               <SLabel uppercase>{fungibleToken?.symbol} Chain balance</SLabel>
-              <SInput value={selectedChainBalance} />
+              <SInput value={selectedChainBalance} readOnly />
               {usdPrices && fungibleToken && usdPrices[fungibleToken?.contractAddress] ? (
                 <SecondaryLabel>{humanReadableNumber(usdPrices[fungibleToken?.contractAddress] * selectedChainBalance)} USD</SecondaryLabel>
               ) : null}
@@ -466,16 +521,17 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
         <ModalCustom isOpen={isScanSearching} onCloseModal={() => setIsScanSearching(false)}>
           <BodyModal>
             <TitleModal>Scan QR Code</TitleModal>
-            <QrReader
-              delay={1000}
-              onError={() => {
-                if (isMobile) {
-                  (window as any)?.chrome?.tabs?.create({ url: `/index.html#${history?.location?.pathname}` });
-                }
-              }}
-              onScan={handleScanSearching}
-              style={{ width: '100%' }}
-            />
+            {isScanSearching && (
+              <ModalCustom isOpen={isScanSearching} onCloseModal={() => setIsScanSearching(false)}>
+                <BodyModal>
+                  <TitleModal>Scan QR Code</TitleModal>
+                  <QrReaderContainer>
+                    <div id="qr-reader" />
+                  </QrReaderContainer>
+                  <DivChild>Place the QR code in front of your camera</DivChild>
+                </BodyModal>
+              </ModalCustom>
+            )}
             <DivChild>Place the QR code in front of your camera</DivChild>
           </BodyModal>
         </ModalCustom>

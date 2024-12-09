@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BaseTextInput } from 'src/baseComponent';
-import { useSelector } from 'react-redux';
 import { useAppSelector } from 'src/stores/hooks';
 import { getContacts, hideLoading, showLoading } from 'src/stores/slices/extensions';
-import { ReactComponent as AddIconSVG } from 'src/images/add-round.svg';
-import { ReactComponent as AlertIconSVG } from 'src/images/icon-alert.svg';
-import { ReactComponent as GearIconSVG } from 'src/images/gear-icon.svg';
+import AddIconSVG from 'src/images/add-round.svg?react';
+import AlertIconSVG from 'src/images/icon-alert.svg?react';
+import GearIconSVG from 'src/images/gear-icon.svg?react';
 import { fetchListLocal, fetchLocal, getBalanceFromChainwebApiResponse } from 'src/utils/chainweb';
 import { getLocalContacts, getExistContacts } from 'src/utils/storage';
 import ModalCustom from 'src/components/Modal/ModalCustom';
@@ -67,10 +66,7 @@ interface TransactionInfoProps {
   containerStyle?: React.CSSProperties;
 }
 
-export const TransactionInfoView = ({
-  info,
-  containerStyle,
-}: TransactionInfoProps) => {
+export const TransactionInfoView = ({ info, containerStyle }: TransactionInfoProps) => {
   const contacts = useAppSelector(getContacts);
   const renderContactOrAccount = (acc) => contacts?.find((c) => c?.accountName === acc)?.aliasName ?? shortenAddress(acc);
   return (
@@ -159,8 +155,8 @@ const Transfer = (props: Props) => {
     clearErrors,
     setError,
   } = useForm<any>();
-  const rootState = useSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const rootStateWallet = useAppSelector((state) => state.wallet);
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   useEffect(() => {
     initData();
     checkTokenExists();
@@ -182,7 +178,7 @@ const Transfer = (props: Props) => {
   };
 
   const initData = () => {
-    const { account, publicKey, secretKey, type } = rootState.wallet;
+    const { account, publicKey, secretKey, type } = rootStateWallet;
     const pactCodeCoin = `(coin.details "${account}")`;
     const pactCodeToken = `(${fungibleToken.contractAddress}.details "${account}")`;
     showLoading();
@@ -212,7 +208,7 @@ const Transfer = (props: Props) => {
   };
 
   const onNext = () => {
-    if (destinationAccount?.accountName === rootState.wallet.account && destinationAccount?.chainId === sourceChainId) {
+    if (destinationAccount?.accountName === rootStateWallet.account && destinationAccount?.chainId === sourceChainId) {
       toast.error(<Toast type="fail" content="Can not send to yourself" />);
     } else {
       setIsOpenTransferModal(true);
@@ -264,7 +260,7 @@ const Transfer = (props: Props) => {
     gasPrice: selectedGas?.GAS_PRICE,
     amount,
     isCrossChain,
-    selectedNetwork: rootState?.extensions?.selectedNetwork,
+    selectedNetwork,
     estimateFee,
   };
 
@@ -421,7 +417,7 @@ const Transfer = (props: Props) => {
       <AccountTransferDetail justifyContent="space-between" alignItems="center">
         <div>
           <JazzAccount
-            account={rootState.wallet.account}
+            account={rootStateWallet.account}
             renderAccount={(acc) => (
               <DivFlex flexDirection="column">
                 <TransferAccountSpan>{shortenAddress(acc)}</TransferAccountSpan>
@@ -481,7 +477,7 @@ const Transfer = (props: Props) => {
           </SecondaryLabel>
           <GearIconSVG style={{ cursor: 'pointer' }} onClick={() => setIsOpenGasOptionsModal(true)} />
         </DivFlex>
-        { errors.cannotPayGas && (
+        {errors.cannotPayGas && (
           <Warning type="danger" margin="10px 0">
             <AlertIconSVG />
             <span>Insufficient funds for gas fee</span>

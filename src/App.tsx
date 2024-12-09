@@ -7,7 +7,6 @@ import store, { persistor } from './stores';
 import 'react-toastify/dist/ReactToastify.css';
 import AppContainer from './AppContainer';
 import { ModalProvider, ModalConsumer } from './contexts/ModalContext';
-import { CrossChainProvider } from './contexts/CrossChainContext';
 import { AppThemeProvider } from './contexts/AppThemeContext';
 import { SettingsProvider } from './contexts/SettingsContext';
 import { AccountBalanceProvider } from './contexts/AccountBalanceContext';
@@ -47,22 +46,20 @@ const App = () => (
               <ModalProvider>
                 <SettingsProvider>
                   <AccountBalanceProvider>
-                    <CrossChainProvider>
-                      <QueryClientProvider client={queryClient}>
-                        <GovernanceMiningContextProvider>
-                          <NotificationContextProvider>
-                            <ModalConsumer>
-                              {({ isOpen, title, content, footer, closeModal, roundIcon }) => (
-                                <ModalCustom isOpen={isOpen || false} title={title} footer={footer} onCloseModal={closeModal} roundIcon={roundIcon}>
-                                  {content}
-                                </ModalCustom>
-                              )}
-                            </ModalConsumer>
-                            <AppContainer />
-                          </NotificationContextProvider>
-                        </GovernanceMiningContextProvider>
-                      </QueryClientProvider>
-                    </CrossChainProvider>
+                    <QueryClientProvider client={queryClient}>
+                      <GovernanceMiningContextProvider>
+                        <NotificationContextProvider>
+                          <ModalConsumer>
+                            {({ isOpen, title, content, footer, closeModal, roundIcon }) => (
+                              <ModalCustom isOpen={isOpen || false} title={title} footer={footer} onCloseModal={closeModal} roundIcon={roundIcon}>
+                                {content}
+                              </ModalCustom>
+                            )}
+                          </ModalConsumer>
+                          <AppContainer />
+                        </NotificationContextProvider>
+                      </GovernanceMiningContextProvider>
+                    </QueryClientProvider>
                   </AccountBalanceProvider>
                 </SettingsProvider>
               </ModalProvider>

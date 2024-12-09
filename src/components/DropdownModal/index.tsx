@@ -3,7 +3,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { ModalContext } from 'src/contexts/ModalContext';
-import { ReactComponent as ArrowDropdown } from 'src/images/arrow-dropdown.svg';
+import ArrowDropdown from 'src/images/arrow-dropdown.svg?react';
 
 const DropdownContainer = styled.div`
   border: 1px solid ${({ theme }) => theme?.text?.secondary || 'rgba(65, 31, 84, 0.15)'};

@@ -5,9 +5,8 @@ import { NavigationHeader } from 'src/components/NavigationHeader';
 import Button from 'src/components/Buttons';
 import { useHistory } from 'react-router-dom';
 import { DivFlex, PageWrapper, SecondaryLabel, StickyFooter } from 'src/components';
-import { ReactComponent as LedgerLogo } from 'src/images/ledger-logo-long.svg';
-import { ReactComponent as LedgerIcon } from 'src/images/ledger-logo.svg';
-import { useSelector } from 'react-redux';
+import LedgerLogo from 'src/images/ledger-logo-long.svg?react';
+import LedgerIcon from 'src/images/ledger-logo.svg?react';
 import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
 import { hideLoading, setActiveTab, showLoading } from 'src/stores/slices/extensions';
@@ -19,6 +18,7 @@ import { AccountType, setCurrentWallet, setWallets } from 'src/stores/slices/wal
 import { ACTIVE_TAB } from 'src/utils/constant';
 import { useLedgerContext } from 'src/contexts/LedgerContext';
 import { RadioSelection } from 'src/components/RadioSelection';
+import { useAppSelector } from 'src/stores/hooks';
 
 const HardwareButton = styled.div`
   border-radius: 10px;
@@ -38,11 +38,10 @@ const HardwareButton = styled.div`
 const ImportHardwareWallet = () => {
   const [selectedHardwareWallet, setSelectdHardwareWallet] = useState<'ledger' | 'trezor' | null>(null);
   const history = useHistory();
-  const rootState = useSelector((state) => state);
   const [ledgerPublicKey, setLedgerPublicKey] = useState<string>('');
   const [selectedPublicKey, setSelectedPublicKey] = useState<string>('');
-  const { wallets } = rootState?.wallet;
-  const { selectedNetwork } = rootState?.extensions;
+  const { wallets } = useAppSelector((state) => state.wallet);
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const { getPublicKey } = useLedgerContext();
 
   const goBack = () => {

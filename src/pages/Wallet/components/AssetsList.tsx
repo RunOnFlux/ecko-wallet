@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { ActionList } from 'src/components/ActionList';
 import { useModalContext } from 'src/contexts/ModalContext';
@@ -8,6 +7,7 @@ import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import { getTokenList } from 'src/utils/chainweb';
 import { BaseTextInput } from 'src/baseComponent';
 import images from 'src/images';
+import { useAppSelector } from 'src/stores/hooks';
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -16,8 +16,7 @@ const Wrapper = styled.div`
 
 export const AssetsList = () => {
   const history = useHistory();
-  const rootState = useSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const { chainId } = useCurrentWallet();
 
   const { closeModal } = useModalContext();

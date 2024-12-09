@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useSettingsContext } from 'src/contexts/SettingsContext';
+import { useAppSelector } from 'src/stores/hooks';
 
 const FetchingWrapper = styled.div`
   position: fixed;
@@ -18,10 +18,8 @@ type Props = {
 };
 const DappPrivateRoute = (props: Props) => {
   const { component: Component, path } = props;
-  const rootState = useSelector((state) => state);
   const { isLocked } = useSettingsContext();
-  const { extensions } = rootState;
-  const { isFetching, passwordHash } = extensions;
+  const { isFetching, passwordHash } = useAppSelector((state) => state.extensions);
   const isLoggedIn = !isLocked;
   const [loading, setLoading] = useState(true);
 

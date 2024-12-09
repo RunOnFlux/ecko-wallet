@@ -1,11 +1,11 @@
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import images from 'src/images';
-import QRCode from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react';
 import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
 import { DivFlex, SecondaryLabel } from 'src/components';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
+import { useAppSelector } from 'src/stores/hooks';
 
 const Label = styled.span`
   font-weight: 500;
@@ -27,7 +27,7 @@ export const ReceiveSection = styled.div`
 `;
 
 const ReceiveModal = () => {
-  const { account } = useSelector((state) => state?.wallet);
+  const { account } = useAppSelector((state) => state?.wallet);
 
   const onCopy = (str: string) => {
     navigator.clipboard.writeText(str);
@@ -38,7 +38,7 @@ const ReceiveModal = () => {
     <>
       <DivFlex alignItems="center" justifyContent="center" style={{ paddingBottom: 30 }}>
         <div style={{ background: 'white', padding: 10 }}>
-          <QRCode id="receive" value={account} size={200} level="H" />
+          <QRCodeSVG id="receive" value={account} size={200} level="H" />
         </div>
       </DivFlex>
       <ReceiveSection style={{ marginBottom: 30 }}>

@@ -5,15 +5,14 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "lib": [
-      "esnext", "ES6", "DOM"
-    ],
+    "jsxImportSource": "react",
+    "lib": ["ES6", "DOM"],
     "moduleResolution": "node",
     "baseUrl": ".",
-    "noEmit": true,
+    "noEmit": false,
     "strict": true,
-    "target": "esnext",
-    "module": "esnext",
+    "target": "ES6",
+    "module": "ES6",
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "noImplicitReturns": true,
@@ -21,38 +20,18 @@
     "noImplicitAny": false,
     "importHelpers": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true
-  },
-  "include": [
-    "src/**/*",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-  "plugins": [
-    {
-      "name": "typescript-styled-plugin",
-      "lint": {
-        "validProperties": [
-          "shadow-color",
-          "shadow-opacity",
-          "shadow-offset",
-          "shadow-radius",
-          "padding-horizontal",
-          "padding-vertical",
-          "margin-vertical",
-          "margin-horizontal",
-          "tint-color",
-          "aspect-ratio",
-          "elevation"
-        ]
-      }
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@Components/*": ["src/components/*"],
+      "@Utils/*": ["src/utils/*"],
+      "@Css/*": ["src/css/*"],
+      "@Reducers/*": ["src/reducers/*"],
+      "@ledgerhq/devices": ["node_modules/@ledgerhq/devices/lib-es"],
+      "@kadena/hd-wallet": ["./node_modules/@kadena/hd-wallet"]
     }
-  ]
+  },
+  "include": ["src/**/*", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

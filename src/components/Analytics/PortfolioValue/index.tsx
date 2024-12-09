@@ -8,7 +8,7 @@ import { useAppSelector } from 'src/stores/hooks';
 import { canTrackPortfolio } from 'src/stores/slices/analytics';
 import { DivFlex } from 'src/components';
 import images from 'src/images';
-import InfoIcon from 'src/images/info.svg';
+import InfoIcon from 'src/images/info.svg?react';
 import PortfolioValueApproved from '../PortfolioValueApproved';
 import { AnalyticTile, Container } from '../UI';
 import Confirm from './Confirm';
@@ -40,11 +40,6 @@ const ButtonWrapper = styled.button`
   padding: 0px;
 `;
 
-const IconContainer = styled.img`
-  width: 24px;
-  height: 24px;
-`;
-
 const PortfolioValue = forwardRef<HTMLDivElement>((_, ref) => {
   const trackPortfolio = useAppSelector(canTrackPortfolio());
   const { openModal, closeModal } = useModalContext();
@@ -57,23 +52,18 @@ const PortfolioValue = forwardRef<HTMLDivElement>((_, ref) => {
   };
 
   const onInfo = () => {
-    toast.warning(
-      <SimpleToast content={<DisclaimerInfo />} />,
-      {
-        autoClose: false,
-        toastId: 'portfolioValueApprovedInfo',
-      },
-    );
+    toast.warning(<SimpleToast content={<DisclaimerInfo />} />, {
+      autoClose: false,
+      toastId: 'portfolioValueApprovedInfo',
+    });
   };
 
-  const children = (
-    trackPortfolio ? (
-      <PortfolioValueApproved />
-    ) : (
-      <Content>
-        <TrackButton label="Start Tracking" onClick={handleTrackPortfolio} />
-      </Content>
-    )
+  const children = trackPortfolio ? (
+    <PortfolioValueApproved />
+  ) : (
+    <Content>
+      <TrackButton label="Start Tracking" onClick={handleTrackPortfolio} />
+    </Content>
   );
 
   return (
@@ -81,7 +71,7 @@ const PortfolioValue = forwardRef<HTMLDivElement>((_, ref) => {
       <DivFlex flexDirection="row" alignItems="center" gap="12px">
         <AnalyticTile>PORTFOLIO VALUE CHART</AnalyticTile>
         <ButtonWrapper onClick={onInfo}>
-          <IconContainer src={InfoIcon} />
+          <InfoIcon width={24} height={24} />
         </ButtonWrapper>
       </DivFlex>
       {children}

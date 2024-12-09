@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useGovernanceMining } from 'src/contexts/GovernanceMiningContext';
 import { Warning } from 'src/pages/SendTransactions/styles';
-import { ReactComponent as AlertIconSVG } from 'src/images/icon-alert.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg?react';
 import { useStakingConstants } from '../constants/staking';
 
 const Container = styled(Warning)`
@@ -22,9 +22,7 @@ const GasWarning = () => {
   return (
     <Container>
       <AlertIconSVG />
-      <div>
-        Insufficient Gas. You need KDA in chain {chainId}
-      </div>
+      <div>Insufficient Gas. You need KDA in chain {chainId}</div>
     </Container>
   );
 };

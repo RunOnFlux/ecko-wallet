@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as InfoIconSVG } from 'src/images/info.svg';
+import InfoIconSVG from 'src/images/info.svg?react';
 
 const Container = styled.div`
   padding: 10px;
@@ -33,7 +33,10 @@ const Disclaimer = () => (
     <InfoIconSVG />
     <Info>
       <InfoCaption>Info!</InfoCaption>
-      <InfoText>The information displayed on this page is currently under BETA testing, and is provided on an &quot;as is&quot; and &quot;as available&quot; basis.</InfoText>
+      <InfoText>
+        The information displayed on this page is currently under BETA testing, and is provided on an &quot;as is&quot; and &quot;as available&quot;
+        basis.
+      </InfoText>
     </Info>
   </Container>
 );

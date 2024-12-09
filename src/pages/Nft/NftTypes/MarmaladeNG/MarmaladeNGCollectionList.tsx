@@ -2,7 +2,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import images from 'src/images';
 import { useHistory } from 'react-router-dom';
 import { idToPascalCase } from 'src/utils';
@@ -17,6 +16,7 @@ import {
   MARMALADE_NG_WHITELISTED_COLLECTIONS,
 } from '../../nft-data';
 import NftCard from '../NftCard';
+import { useAppSelector } from 'src/stores/hooks';
 
 export interface NgCollection {
   id: string;
@@ -28,8 +28,7 @@ export interface NgCollection {
 
 const MarmaladeNGCollectionList = () => {
   const [ngCollections, setNgCollections] = useState<NgCollection[]>([]);
-  const rootState = useSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const history = useHistory();
 
   const stateWallet = useCurrentWallet();

@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useAppThemeContext } from 'src/contexts/AppThemeContext';
-import { ReactComponent as ContactsIcon } from 'src/images/settings-contacts.svg';
-import { ReactComponent as NetworksIcon } from 'src/images/settings-networks.svg';
-import { ReactComponent as ThemeIcon } from 'src/images/icon-theme.svg';
-import { ReactComponent as KeyIcon } from 'src/images/settings-export-key.svg';
-import { ReactComponent as DiscordIcon } from 'src/images/discord-icon.svg';
-import { ReactComponent as GlobeIcon } from 'src/images/globe-icon.svg';
-import { ReactComponent as Padlock } from 'src/images/padlock.svg';
-import { ReactComponent as ExpandView } from 'src/images/expand-view.svg';
+import ContactsIcon from 'src/images/settings-contacts.svg?react';
+import NetworksIcon from 'src/images/settings-networks.svg?react';
+import ThemeIcon from 'src/images/icon-theme.svg?react';
+import KeyIcon from 'src/images/settings-export-key.svg?react';
+import DiscordIcon from 'src/images/discord-icon.svg?react';
+import GlobeIcon from 'src/images/globe-icon.svg?react';
+import Padlock from 'src/images/padlock.svg?react';
+import ExpandView from 'src/images/expand-view.svg?react';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
 import { DISCORD_INVITATION_LINK, PRIVACY_LINK, TERM_LINK, WEBSITE_LINK } from 'src/utils/config';
 import { useSettingsContext } from 'src/contexts/SettingsContext';
@@ -18,6 +17,7 @@ import useSessionStorage from 'src/hooks/useSessionStorage';
 import { STORAGE_PASSWORD_KEY } from 'src/utils/storage';
 import { RoundedArrow } from '../../components/Activities/FinishTransferItem';
 import packageJson from '../../../package.json';
+import { useAppSelector } from 'src/stores/hooks';
 
 interface ISettingsMenu {
   img: React.ReactNode;
@@ -61,9 +61,8 @@ const AboutDiv = styled(DivFlex)`
 
 const PageSetting = () => {
   const history = useHistory();
-  const rootState = useSelector((state) => state);
   const { setIsLocked } = useSettingsContext();
-  const { secretKey } = rootState?.wallet;
+  const { secretKey } = useAppSelector((state) => state.wallet);
   const { theme } = useAppThemeContext();
   const [, , , removeAccountPassword] = useSessionStorage(STORAGE_PASSWORD_KEY, null);
 
@@ -74,22 +73,27 @@ const PageSetting = () => {
 
   const settingsMenu: ISettingsMenu[] = [
     { title: 'Contacts', img: <ContactsIcon />, description: 'Manage your contacts', onClick: () => history.push('/contact') },
-    { title: 'Networks', img: <NetworksIcon />, description: 'Add or edit custom RPC networks', onClick: () => history.push('/networks') },
+    {
+      title: 'Networks',
+      img: <NetworksIcon key="networks" />,
+      description: 'Add or edit custom RPC networks',
+      onClick: () => history.push('/networks'),
+    },
     {
       title: 'Connected Sites',
-      img: <NetworksIcon />,
+      img: <NetworksIcon key="connected-sites" />,
       description: 'View and manage connected sites',
       onClick: () => history.push('/connected-sites'),
     },
     {
       title: 'Wallet Connect',
-      img: <NetworksIcon />,
+      img: <NetworksIcon key="wallet-connect" />,
       description: 'Connect with WalletConnect',
       onClick: () => history.push('/wallet-connect'),
     },
     {
       title: 'Transaction Settings',
-      img: <NetworksIcon />,
+      img: <NetworksIcon key="tx-settings" />,
       description: 'Set your gas preferences',
       onClick: () => history.push('/tx-settings'),
     },
@@ -143,7 +147,7 @@ const PageSetting = () => {
   ];
 
   const getSettingsItem = ({ img, title, description, onClick }: ISettingsMenu) => (
-    <SettingMenu className="settingMenu" justifyContent="flex-start" gap="10px" padding="15px 0" onClick={onClick}>
+    <SettingMenu key={title} className="settingMenu" justifyContent="flex-start" gap="10px" padding="15px 0" onClick={onClick}>
       {img}
       <DivFlex flexDirection="column" justifyContent="flex-start">
         <CommonLabel fontWeight={600} fontSize={16}>

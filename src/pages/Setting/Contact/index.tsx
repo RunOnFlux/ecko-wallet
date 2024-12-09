@@ -1,7 +1,6 @@
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { groupBy } from 'lodash';
 import { shortenAddress } from 'src/utils';
 import { useModalContext } from 'src/contexts/ModalContext';
@@ -12,6 +11,7 @@ import { CommonLabel, DivFlex, PrimaryLabel, SecondaryLabel, StickyFooter } from
 import { Body } from '../../SendTransactions/styles';
 import ContactForm from './views/ContactForm';
 import { ContactInfo } from './views/ContactInfo';
+import { useAppSelector } from 'src/stores/hooks';
 
 const Wrapper = styled.div`
   padding: 0 20px;
@@ -23,7 +23,7 @@ const AccountRow = styled.div`
 `;
 
 const PageContact = () => {
-  const { contacts, selectedNetwork } = useSelector((state) => state.extensions);
+  const { contacts, selectedNetwork } = useAppSelector((state) => state.extensions);
   const history = useHistory();
   const groupedContacts = groupBy(
     contacts?.filter((c) => c.accountName),
@@ -59,7 +59,7 @@ const PageContact = () => {
       <Body style={{ marginBottom: 100 }}>
         {sortedKeys?.length ? (
           sortedKeys.map((letter) => (
-            <DivFlex alignItems="flex-start" style={{ borderTop: '1px solid #dfdfed' }}>
+            <DivFlex key={letter} alignItems="flex-start" style={{ borderTop: '1px solid #dfdfed' }}>
               <PrimaryLabel style={{ flex: 1 }}>{letter}</PrimaryLabel>
               <div style={{ flex: 3 }}>
                 {groupedContacts[letter]
@@ -67,7 +67,11 @@ const PageContact = () => {
                   ?.map(
                     (contact, i) =>
                       (contact?.accountName || contact?.aliasName) && (
-                        <AccountRow hasBorder={i < groupedContacts[letter].length - 1} onClick={() => onClickAccount(contact)}>
+                        <AccountRow
+                          key={contact.aliasName}
+                          hasBorder={i < groupedContacts[letter].length - 1}
+                          onClick={() => onClickAccount(contact)}
+                        >
                           {contact.accountName && (
                             <JazzAccount
                               key={contact.aliasName}

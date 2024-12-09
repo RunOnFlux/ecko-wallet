@@ -1,8 +1,11 @@
-/* eslint-disable no-console */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Html5Qrcode } from 'html5-qrcode';
+import styled from 'styled-components';
+import { useForm, Controller } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import { find, isEmpty, get } from 'lodash';
+import Pact from 'pact-lang-api';
 import { BaseTextInput, BaseSelect, InputError } from 'src/baseComponent';
-import { useSelector } from 'react-redux';
-import QrReader from 'react-qr-reader';
 import ModalCustom from 'src/components/Modal/ModalCustom';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
 import { toast } from 'react-toastify';
@@ -13,16 +16,12 @@ import { setCurrentWallet, setWallets } from 'src/stores/slices/wallet';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import Button from 'src/components/Buttons';
 import { useWindowResizeMobile } from 'src/hooks/useWindowResizeMobile';
-import styled from 'styled-components';
 import useChainIdOptions from 'src/hooks/useChainIdOptions';
 import { useGoHome } from 'src/hooks/ui';
-import { Controller, useForm } from 'react-hook-form';
-import Pact from 'pact-lang-api';
 import { encryptKey } from 'src/utils/security';
-import { find, isEmpty, get } from 'lodash';
-import { useHistory } from 'react-router-dom';
 import { getLocalPassword, getLocalWallets, setLocalSelectedWallet, setLocalWallets } from 'src/utils/storage';
 import { fetchLocal } from '../../utils/chainweb';
+import { useAppSelector } from 'src/stores/hooks';
 
 const DivBody = styled.div`
   width: 100%;
@@ -38,28 +37,44 @@ const Body = styled.div`
   height: auto;
   width: 100%;
 `;
-const DivChild = styled.div`
-  margin-top: 20px;
 
+const DivChild = styled.div`
+  margin: 20px 0px;
   text-align: center;
+  color: ${({ theme }) => theme.text.primary};
 `;
+
 const TitleModal = styled.div`
   text-align: center;
   font-size: 20px;
   font-weight: 700;
-
-  margin-bottom: 15px;
+  padding: 15px 0px;
+  color: ${({ theme }) => theme.text.primary};
 `;
+
+const QrReaderContainer = styled.div`
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  #qr-reader {
+    width: 100% !important;
+    video {
+      width: 100% !important;
+      border-radius: 8px;
+    }
+  }
+`;
+
 const ImportAccount = () => {
   const optionsChain = useChainIdOptions();
   const history = useHistory();
   const goHome = useGoHome();
   const [isMobile] = useWindowResizeMobile(420);
-  const rootState = useSelector((state) => state);
-  const { wallets, account } = rootState?.wallet;
-  const { selectedNetwork, isLoading } = rootState?.extensions;
+  const { wallets, account } = useAppSelector((state) => state.wallet);
+  const { selectedNetwork, isLoading } = useAppSelector((state) => state.extensions);
   const [isScanAccount, setScanAccount] = useState(false);
   const [isScanPrivateKey, setScanPrivateKey] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -70,12 +85,44 @@ const ImportAccount = () => {
     getValues,
   } = useForm();
 
+  const initQRScanner = (onSuccessCallback) => {
+    const html5QrCode = new Html5Qrcode('qr-reader');
+
+    html5QrCode.start(
+      { facingMode: 'environment' },
+      { fps: 1, qrbox: { width: 250, height: 250 } },
+      (decodedText) => {
+        onSuccessCallback(decodedText);
+        html5QrCode.stop();
+      },
+      (error) => {
+        if (isMobile) {
+          (window as any)?.chrome?.tabs?.create({ url: `/index.html#${history?.location?.pathname}` });
+        }
+      },
+    );
+  };
+
+  useEffect(() => {
+    if (isScanAccount) {
+      initQRScanner(handleScanAccount);
+    }
+  }, [isScanAccount]);
+
+  useEffect(() => {
+    if (isScanPrivateKey) {
+      initQRScanner(handleScanPrivateKey);
+    }
+  }, [isScanPrivateKey]);
+
   const onImport = async (data) => {
     if (isLoading) return;
     const { chainId, accountName, secretKey } = data;
+
     try {
       const { publicKey } = Pact.crypto.restoreKeyPairFromSecretKey(data.secretKey);
       const pactCode = `(coin.details "${accountName}")`;
+
       showLoading();
       fetchLocal(pactCode, selectedNetwork.url, selectedNetwork.networkId, chainId.value)
         .then((request) => {
@@ -84,11 +131,13 @@ const ImportAccount = () => {
           const keySets = get(request, 'result.data.guard.keys');
           const status = get(request, 'result.status');
           const doesNotExist = request?.result?.error?.message?.startsWith('with-read: row not found:');
+
           if ((keySets && keySets.length === 1) || doesNotExist) {
             if ((publicCodeFromRequest && publicCodeFromRequest === publicKey) || doesNotExist) {
               getLocalPassword(
                 (accountPassword) => {
                   const isWalletEmpty = isEmpty(find(wallets, (e) => e.chainId === chainId.value && e.account === accountName));
+
                   if (isWalletEmpty) {
                     const wallet = {
                       account: encryptKey(accountName, accountPassword),
@@ -97,6 +146,7 @@ const ImportAccount = () => {
                       chainId: chainId.value,
                       connectedSites: [],
                     };
+
                     getLocalWallets(
                       selectedNetwork.networkId,
                       (item) => {
@@ -107,6 +157,7 @@ const ImportAccount = () => {
                         setLocalWallets(selectedNetwork.networkId, [wallet]);
                       },
                     );
+
                     const newStateWallet = {
                       chainId: chainId.value,
                       account: accountName,
@@ -114,6 +165,7 @@ const ImportAccount = () => {
                       secretKey,
                       connectedSites: [],
                     };
+
                     const newWallets = [...wallets, newStateWallet];
                     setWallets(newWallets);
                     setLocalSelectedWallet(wallet);
@@ -151,18 +203,21 @@ const ImportAccount = () => {
       history.push('/init');
     }
   };
+
   const handleScanAccount = (data) => {
     if (data) {
       setValue('accountName', data, { shouldValidate: true });
       setScanAccount(false);
     }
   };
+
   const handleScanPrivateKey = (data) => {
     if (data) {
       setValue('secretKey', data, { shouldValidate: true });
       setScanPrivateKey(false);
     }
   };
+
   return (
     <PageWrapper>
       <NavigationHeader title="Import Wallet" onBack={goBack} />
@@ -202,6 +257,7 @@ const ImportAccount = () => {
             />
             {errors.accountName && <InputError>{errors.accountName.message}</InputError>}
           </DivBody>
+
           <DivBody>
             <Controller
               control={control}
@@ -227,6 +283,7 @@ const ImportAccount = () => {
             />
             {errors.chainId && !getValues('chainId') && <InputError>{errors.chainId.message}</InputError>}
           </DivBody>
+
           <DivBody>
             <BaseTextInput
               inputProps={{
@@ -263,46 +320,36 @@ const ImportAccount = () => {
           </DivBody>
         </form>
       </Body>
+
       {isScanAccount && (
         <ModalCustom isOpen={isScanAccount} onCloseModal={() => setScanAccount(false)}>
           <Body>
             <TitleModal>Scan QR Code</TitleModal>
-            <QrReader
-              delay={1000}
-              onError={() => {
-                if (isMobile) {
-                  (window as any)?.chrome?.tabs?.create({ url: `/index.html#${history?.location?.pathname}` });
-                }
-              }}
-              onScan={handleScanAccount}
-              style={{ width: '100%' }}
-            />
+            <QrReaderContainer>
+              <div id="qr-reader" />
+            </QrReaderContainer>
             <DivChild>Place the QR code in front of your camera</DivChild>
           </Body>
         </ModalCustom>
       )}
+
       {isScanPrivateKey && (
         <ModalCustom isOpen={isScanPrivateKey} onCloseModal={() => setScanPrivateKey(false)}>
           <Body>
             <TitleModal>Scan QR Code</TitleModal>
-            <QrReader
-              delay={1000}
-              onError={() => {
-                if (isMobile) {
-                  (window as any)?.chrome?.tabs?.create({ url: `/index.html#${history?.location?.pathname}` });
-                }
-              }}
-              onScan={handleScanPrivateKey}
-              style={{ width: '100%' }}
-            />
+            <QrReaderContainer>
+              <div id="qr-reader" />
+            </QrReaderContainer>
             <DivChild>Place the QR code in front of your camera</DivChild>
           </Body>
         </ModalCustom>
       )}
+
       <ActionFooter>
         <Button label="Import wallet" size="full" form="import-wallet-form" />
       </ActionFooter>
     </PageWrapper>
   );
 };
+
 export default ImportAccount;

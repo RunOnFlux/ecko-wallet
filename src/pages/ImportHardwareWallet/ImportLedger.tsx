@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import Button from 'src/components/Buttons';
 import { useHistory } from 'react-router-dom';
@@ -15,13 +14,13 @@ import { encryptKey } from 'src/utils/security';
 import { AccountType, setCurrentWallet, setWallets } from 'src/stores/slices/wallet';
 import { ACTIVE_TAB } from 'src/utils/constant';
 import { useLedgerContext } from 'src/contexts/LedgerContext';
+import { useAppSelector } from 'src/stores/hooks';
 
 const ImportLedger = () => {
   const history = useHistory();
-  const rootState = useSelector((state) => state);
   const [ledgerPublicKey, setLedgerPublicKey] = useState<string>('');
-  const { wallets } = rootState?.wallet;
-  const { selectedNetwork } = rootState?.extensions;
+  const { wallets } = useAppSelector((state) => state.wallet);
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const { getPublicKey, error } = useLedgerContext();
 
   const getLedgerAccount = async () => {

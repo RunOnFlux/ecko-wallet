@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-curly-newline */
 import { useHistory } from 'react-router-dom';
 import images from 'src/images';
-import { ReactComponent as SearchIconSVG } from 'src/images/search.svg';
-import { ReactComponent as AddIconSVG } from 'src/images/add-round.svg';
+import SearchIconSVG from 'src/images/search.svg?react';
+import AddIconSVG from 'src/images/add-round.svg?react';
 import styled from 'styled-components';
-import { ReactComponent as AlertIconSVG } from 'src/images/icon-alert.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg?react';
 import CircledButton from 'src/components/Buttons/CircledButton';
 import Spinner from 'src/components/Spinner';
 import { Header } from 'src/components/Header';
@@ -15,7 +15,6 @@ import { DivBottomShadow, DivFlex, PrimaryLabel, SecondaryLabel } from 'src/comp
 import { ConfirmModal } from 'src/components/ConfirmModal';
 import { IconButton } from 'src/components/IconButton';
 import { ActionList } from 'src/components/ActionList';
-import { useSelector } from 'react-redux';
 import KDXGovernanceMiningButton from 'src/components/GovernanceMining/KDXButton';
 import { roundNumber, BigNumberConverter, humanReadableNumber } from 'src/utils';
 import { MAINNET_NETWORK_ID, extractDecimal } from 'src/utils/chainweb';
@@ -31,6 +30,7 @@ import { TokenElement } from './components/TokenElement';
 import { TokenChainBalance } from './components/TokenChainBalance';
 import { AssetsList } from './components/AssetsList';
 import { Warning } from '../SendTransactions/styles';
+import { useAppSelector } from 'src/stores/hooks';
 
 export interface IFungibleTokenBalance {
   contractAddress: string;
@@ -61,8 +61,7 @@ const Wallet = () => {
   const history = useHistory();
   const { openModal, closeModal } = useModalContext();
   const { isLoadingBalances, selectedAccountBalance, allAccountsBalance, allAccountsBalanceUsd } = useAccountBalanceContext();
-  const rootState = useSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const networkId = selectedNetwork?.networkId;
   const [fungibleTokens, setFungibleTokens] = useLocalStorage<IFungibleTokensByNetwork>(LOCAL_KEY_FUNGIBLE_TOKENS, LOCAL_DEFAULT_FUNGIBLE_TOKENS);
   const fungibleTokensByNetwork = (fungibleTokens && fungibleTokens[networkId]) || [];
@@ -139,6 +138,7 @@ const Wallet = () => {
           .filter((cD) => cD.balance > 0)
           .map((cD) => (
             <TokenChainBalance
+              key={cD.chainId}
               name={symbol}
               isNonTransferable={isNonTransferable}
               contractAddress={contractAddress}

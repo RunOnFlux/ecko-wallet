@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useSettingsContext } from 'src/contexts/SettingsContext';
+import { useAppSelector } from 'src/stores/hooks';
 
 type Props = {
   component: any;
@@ -23,10 +23,8 @@ const FetchingWrapper = styled.div`
 
 const PrivateRoute = (props: Props) => {
   const { component: Component, path, isFirstInstall, isSignIn, isSeedPhrase } = props;
-  const rootState = useSelector((state) => state);
   const { isLocked } = useSettingsContext();
-  const { extensions } = rootState;
-  const { passwordHash, isFetching, isHaveSeedPhrase } = extensions;
+  const { passwordHash, isFetching, isHaveSeedPhrase } = useAppSelector((state) => state.extensions);
   const isLoggedIn = !isLocked;
   const hasPassword = !!passwordHash;
   const [loading, setLoading] = useState(true);

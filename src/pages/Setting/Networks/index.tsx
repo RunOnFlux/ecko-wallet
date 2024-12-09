@@ -1,12 +1,11 @@
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import images from 'src/images';
 import Button from 'src/components/Buttons';
 import { RoundedArrow } from 'src/components/Activities/FinishTransferItem';
 import { useAppThemeContext } from 'src/contexts/AppThemeContext';
 import { CommonLabel, DivFlex, StickyFooter } from 'src/components';
-import { ReactComponent as IconNetwork } from 'src/images/icon-network.svg';
+import IconNetwork from 'src/images/icon-network.svg?react';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import { ContactBody } from '../Contact/style';
 import { ImageLock } from './style';
@@ -14,6 +13,7 @@ import { ImageNetworks, SettingBody } from '../style';
 import { Body } from '../../SendTransactions/styles';
 import EditNetwork from './views/EditNetwork';
 import ViewNetwork from './views/ViewNetwork';
+import { useAppSelector } from 'src/stores/hooks';
 
 const networkDefault = {
   name: '',
@@ -24,7 +24,7 @@ const networkDefault = {
 const PageNetworks = () => {
   const history = useHistory();
   const { theme } = useAppThemeContext();
-  const networks = useSelector((state) => state.extensions.networks);
+  const networks = useAppSelector((state) => state.extensions.networks);
   const [isEdit, setIsEdit] = useState(false);
   const [isNormal, setIsNormal] = useState(true);
   const [isView, setIsView] = useState(false);

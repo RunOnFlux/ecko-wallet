@@ -4,7 +4,6 @@ import Button from 'src/components/Buttons';
 import { BaseTextInput, InputError } from 'src/baseComponent';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { useSelector } from 'react-redux';
 import Toast from 'src/components/Toast/Toast';
 import { DivFlex, SecondaryLabel } from 'src/components';
 import { convertNetworks, getTimestamp } from 'src/utils';
@@ -30,7 +29,7 @@ const EditNetwork = (props: Props) => {
   const [settingNetwork, setSettingNetwork] = useState<any>(network);
   const [errMessageDuplicateUrl, setErrorMessageDuplicateUrl] = useState('');
   const [errMessageDuplicateNetworksId, setErrorMessageDuplicateNetworksId] = useState('');
-  const networks = useSelector((state) => state.extensions.networks);
+  const networks = useAppSelector((state) => state.extensions.networks);
   const selectedNetwork = useAppSelector(getSelectedNetwork);
   const [isModalRemoveNetwork, setModalRemoveNetwork] = useState(false);
   const selectNetwork = useSelectNetwork();

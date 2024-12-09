@@ -1,20 +1,20 @@
 import { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { setActiveTab, setExtensionPassword, setIsHaveSeedPhrase } from 'src/stores/slices/extensions';
 import { useSettingsContext } from 'src/contexts/SettingsContext';
 import { useGoHome } from 'src/hooks/ui';
 import { setCurrentWallet, setWallets } from 'src/stores/slices/wallet';
 import { getLocalSeedPhrase, initDataFromLocal } from 'src/utils/storage';
-import { ReactComponent as EckoWalletLogoBar } from 'src/images/ecko-wallet-icon.svg';
-import { ReactComponent as AnalyticsIcon } from 'src/images/ic_analytics.svg';
-import { ReactComponent as GearIcon } from 'src/images/gear-icon.svg';
-import { ReactComponent as NFTIcon } from 'src/images/nft-icon.svg';
+import EckoWalletLogoBar from 'src/images/ecko-wallet-icon.svg?react';
+import AnalyticsIcon from 'src/images/ic_analytics.svg?react';
+import GearIcon from 'src/images/gear-icon.svg?react';
+import NFTIcon from 'src/images/nft-icon.svg?react';
 import { ACTIVE_TAB } from 'src/utils/constant';
 import { DivFlex, SecondaryLabel } from '..';
+import { useAppSelector } from 'src/stores/hooks';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ isFooter?: boolean }>`
   display: ${(props) => (props.isFooter ? 'block' : 'none')};
   position: fixed;
   bottom: 0;
@@ -41,6 +41,13 @@ const ActionBarElement = styled.div`
   svg {
     width: 20px;
     height: 20px;
+  }
+  &:not(.xLogo) {
+    svg {
+      path {
+        fill: ${({ theme }) => theme?.footer?.secondary};
+      }
+    }
   }
   &.active {
     border-top: 2px solid #ffa900;
@@ -70,9 +77,8 @@ const ActionBarElement = styled.div`
 `;
 
 const Footer = () => {
-  const rootState = useSelector((state) => state);
-  const { selectedNetwork, networks, activeTab } = rootState.extensions;
-  const { account } = rootState.wallet;
+  const { selectedNetwork, networks, activeTab } = useAppSelector((state) => state.extensions);
+  const { account } = useAppSelector((state) => state.wallet);
   const location = useLocation().pathname;
   const locationExtension = window.location.hash;
   const showSettingAndSelectNetworks = !(location.includes('networks') || location.includes('contact') || location.includes('about'));

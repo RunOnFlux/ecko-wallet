@@ -1,7 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
@@ -13,6 +12,7 @@ import { MARMALADE_NG_CONTRACT, getGatewayUrlByIPFS, getTokensUris } from '../..
 import NftCard from '../NftCard';
 import { NftContainer, NftPageContainer } from '../../style';
 import { NGModalContent } from './ModalContent';
+import { useAppSelector } from 'src/stores/hooks';
 
 export interface NgTokenData {
   tokenId: string;
@@ -28,8 +28,7 @@ const MarmaladeNGCollectionDetails = () => {
   const chainId = params.get('chainId');
   const name = params.get('name');
   const [ngNFTs, setNgNFTs] = useState<NgTokenData[]>([]);
-  const rootState = useSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const history = useHistory();
 
   const stateWallet = useCurrentWallet();

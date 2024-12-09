@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import { SecondaryLabel, StickyFooter } from 'src/components';
-import images from 'src/images';
+import EckoWalletLogo from '../../images/ecko-wallet-logo.svg?react';
 import styled from 'styled-components';
 import Button from '../../components/Buttons';
 
@@ -54,12 +54,18 @@ const HomePage = () => {
     <StartBackground>
       <Wrapper>
         <DivImage marginBottom="120px">
-          <Image src={images.eckoWalletLogo} size={200} width={200} alt="logo" />
+          <EckoWalletLogo style={{ width: 200 }} />
           <SecondaryLabel>The Kadena ecosystem gateway</SecondaryLabel>
         </DivImage>
       </Wrapper>
       <StickyFooter style={{ background: 'transparent', padding: '20px 0px' }}>
-        <Button size="full" variant="disabled" onClick={goToTermsCondition} label="Start Now" style={{ width: '90%', maxWidth: 890 }} />
+        <Button
+          size="full"
+          variant="disabled"
+          onClick={goToTermsCondition}
+          label="Start Now"
+          style={{ width: '90%', maxWidth: 890, cursor: 'pointer' }}
+        />
       </StickyFooter>
     </StartBackground>
   );

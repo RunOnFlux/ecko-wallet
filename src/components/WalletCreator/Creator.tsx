@@ -8,12 +8,20 @@ const Creator = () => {
   const createAccount = useCreateFirstAccountAvailable();
 
   useEffect(() => {
-    if (wallets.length > 0) {
-      return;
-    }
+    const init = async () => {
+      if (wallets.length > 0) {
+        return;
+      }
 
-    createAccount();
-  }, [wallets]);
+      try {
+        await createAccount();
+      } catch (error) {
+        console.error('Error creating account:', error);
+      }
+    };
+
+    init();
+  }, [wallets, createAccount]);
 
   return null;
 };

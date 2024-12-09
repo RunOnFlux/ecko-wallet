@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { NftFullDetailsLink } from 'src/components/NftFullDetailsLink';
-import { useSelector } from 'react-redux';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
 import { fetchLocal } from 'src/utils/chainweb';
 import NftCard from '../NftCard';
 import { NFTData } from '../../nft-data';
 import { getWizardCategory } from '.';
 import { NftTableRow } from '../../style';
+import { useAppSelector } from 'src/stores/hooks';
 
 const WizardsArenaModalContent = ({ id, nftData, cardStyle }: { id: number; nftData: NFTData; cardStyle: React.CSSProperties }) => {
   const [data, setData] = useState<any>({});
-  const rootState = useSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
 
   useEffect(() => {
     fetchLocal(`(free.wiz-arena.get-wizard-fields-for-id ${id})`, selectedNetwork?.url, selectedNetwork?.networkId, 1).then((res) =>

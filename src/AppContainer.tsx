@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Switch, Redirect, Route } from 'react-router-dom';
+import { useAppSelector } from './stores/hooks';
 import Footer from './components/Footer';
 import WalletCreator from './components/WalletCreator';
 import CreatePassword from './pages/CreatePassword';
@@ -60,8 +60,7 @@ const Container = styled.div`
 `;
 
 const AppContainer = () => {
-  const rootState = useSelector((state) => state);
-  const { isLoading } = rootState.extensions;
+  const { isLoading } = useAppSelector((state) => state.extensions);
   return (
     <Container>
       <TwoFactorAuthenticator>
