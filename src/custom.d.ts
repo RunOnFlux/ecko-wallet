@@ -21,3 +21,7 @@ declare module '*.jpg' {
   const content: string;
   export default content;
 }
+
+declare module '@kadena/hd-wallet' {
+  export function kadenaEncrypt(password: string, message: any): Promise<string>;
+}

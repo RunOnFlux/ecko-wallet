@@ -1,9 +1,9 @@
 /* eslint-disable no-await-in-loop */
+const { kadenaEncrypt } = require('@kadena/hd-wallet');
 import Pact from 'pact-lang-api';
 import nacl from 'tweetnacl';
 import { base64UrlDecodeArr, binToHex, toTweetNaclSecretKey } from '@kadena/cryptography-utils';
 import { kadenaGenMnemonic, kadenaGenKeypair, kadenaMnemonicToRootKeypair, kadenaSign } from '@kadena/hd-wallet/chainweaver';
-import lib from 'cardano-crypto.js/kadena-crypto';
 import { CHAIN_AVAILABLE_TOKENS_FIXTURE, CHAIN_COUNT } from './constant';
 import { CONFIG, KADDEX_ANALYTICS_API } from './config';
 import { getTimestamp } from './index';
@@ -52,21 +52,6 @@ export const generateSeedPhrase = () => {
   return kadenaGenMnemonic();
 };
 
-export const legacyGetKeyPairsFromSeedPhrase = (seedPhrase, index) => {
-  const root = lib.kadenaMnemonicToRootKeypair('', seedPhrase);
-  const hardIndex = 0x80000000;
-  const newIndex = hardIndex + index;
-  const [privateRaw, pubRaw] = lib.kadenaGenKeypair('', root, newIndex);
-  const axprv = new Uint8Array(privateRaw);
-  const axpub = new Uint8Array(pubRaw);
-  const pub = Pact.crypto.binToHex(axpub);
-  const prv = Pact.crypto.binToHex(axprv);
-  return {
-    publicKey: pub,
-    secretKey: prv,
-  };
-};
-
 export const getKeyPairsFromSeedPhrase = async (seedPhrase, index) => {
   const root = await kadenaMnemonicToRootKeypair('', seedPhrase);
   const { publicKey, secretKey } = await kadenaGenKeypair('', root, index);
@@ -76,10 +61,18 @@ export const getKeyPairsFromSeedPhrase = async (seedPhrase, index) => {
   };
 };
 
+export const isKadenaEncryptedPrivateKey = (privateKey) => privateKey.length > 256;
+
 export const getSignatureFromHash = async (hash, privateKey) => {
-  const signature2 = await kadenaSign('', hash, privateKey);
-  const signatureHex = bufferToHex(signature2);
-  console.log('🚀 ~ getSignatureFromHash ~ signatureHex:', signatureHex);
+  console.log('🚀 ~ getSignatureFromHash ~ privateKey:', privateKey);
+  let secretKey = privateKey;
+  if (!isKadenaEncryptedPrivateKey(privateKey)) {
+    const keyBuffer = Buffer.from(privateKey, 'hex');
+    secretKey = await kadenaEncrypt('', keyBuffer);
+    console.log('🚀 ~ getSignatureFromHash ~ secretKey:', secretKey);
+  }
+  const signature = await kadenaSign('', hash, secretKey);
+  const signatureHex = bufferToHex(signature);
   return signatureHex;
 };
 
