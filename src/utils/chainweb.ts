@@ -64,12 +64,10 @@ export const getKeyPairsFromSeedPhrase = async (seedPhrase, index) => {
 export const isKadenaEncryptedPrivateKey = (privateKey) => privateKey.length > 256;
 
 export const getSignatureFromHash = async (hash, privateKey) => {
-  console.log('🚀 ~ getSignatureFromHash ~ privateKey:', privateKey);
   let secretKey = privateKey;
   if (!isKadenaEncryptedPrivateKey(privateKey)) {
     const keyBuffer = Buffer.from(privateKey, 'hex');
     secretKey = await kadenaEncrypt('', keyBuffer);
-    console.log('🚀 ~ getSignatureFromHash ~ secretKey:', secretKey);
   }
   const signature = await kadenaSign('', hash, secretKey);
   const signatureHex = bufferToHex(signature);
