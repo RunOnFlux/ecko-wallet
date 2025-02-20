@@ -85,7 +85,11 @@ const ImportToken = () => {
       try {
         /* eslint-disable no-await-in-loop */
         const res = await fetchListLocal(pactCode, selectedNetwork.url, selectedNetwork.networkId, i, txSettings?.gasPrice, txSettings?.gasLimit);
-        if (res?.result?.error?.message?.includes('row not found') || res?.result?.status === 'success') {
+        if (
+          res?.result?.error?.message?.includes('row not found') ||
+          res?.result?.error?.message?.includes('No value found in table') ||
+          res?.result?.status === 'success'
+        ) {
           hideLoading();
           return true;
         }
