@@ -151,7 +151,7 @@ const Wallet = () => {
           <Warning justifyContent="center">Doesn’t exist: This account does not exist.</Warning>
         ) : null}
         {!hasBalance && symbol?.toLowerCase() !== 'kda' ? <Warning justifyContent="center">{symbol?.toUpperCase()} balance is 0.</Warning> : null}
-        {['coin', 'kaddex.kdx'].every((add) => add !== contractAddress) && (
+        {['coin', 'runonflux.flux'].every((add) => add !== contractAddress) && (
           <ActionList
             actions={[
               {
