@@ -1,6 +1,5 @@
 /* eslint-disable no-restricted-syntax */
 import { useState, createContext, useEffect, useContext } from 'react';
-import { useSelector } from 'react-redux';
 import moment from 'moment';
 import useLocalStorage from 'src/hooks/useLocalStorage';
 import { useInterval } from 'src/hooks/useInterval';
@@ -12,6 +11,7 @@ import { CHAIN_COUNT } from 'src/utils/constant';
 import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
 import { SettingsContext } from './SettingsContext';
+import { useAppSelector } from 'src/stores/hooks';
 
 export interface TokenBalance {
   [contractAddress: string]: number;
@@ -43,10 +43,8 @@ export const AccountBalanceProvider = ({ children }: any) => {
   const [accountsBalanceState, setAccountBalanceState] = useState<AccountBalanceProps>();
   const [usdPrices, setUsdPrices] = useState<TokenBalance>({});
 
-  const {
-    wallet: { wallets },
-    extensions: { selectedNetwork },
-  } = useSelector((state) => state);
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
+  const { wallets } = useAppSelector((state) => state.wallet);
 
   const networkId = selectedNetwork?.networkId;
 

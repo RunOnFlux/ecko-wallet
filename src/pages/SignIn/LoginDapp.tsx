@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
 import { require2FA } from 'src/stores/slices/auth';
-import { useAppDispatch } from 'src/stores/hooks';
+import { useAppDispatch, useAppSelector } from 'src/stores/hooks';
 import { BaseTextInput, InputError } from 'src/baseComponent';
 import { useHistory } from 'react-router-dom';
 import images from 'src/images';
@@ -93,10 +92,9 @@ const LoginDapp = (props: any) => {
   const { setIsLocked } = useSettingsContext();
   const { location } = props;
   const { state } = location;
-  const rootState = useSelector((s) => s);
   const dispatch = useAppDispatch();
-  const { selectedNetwork, networks, passwordHash } = rootState.extensions;
-  const { publicKey, account, connectedSites } = rootState.wallet;
+  const { selectedNetwork, networks, passwordHash } = useAppSelector((state) => state.extensions);
+  const { publicKey, account, connectedSites } = useAppSelector((state) => state.wallet);
   const from = state?.from ?? null;
 
   useEffect(() => {
@@ -156,15 +154,20 @@ const LoginDapp = (props: any) => {
           // get seedphrase and store again
           getLocalSeedPhrase(
             async (secretKey) => {
-              const plainSeedPhrase = decryptKey(secretKey, oldHashPassword);
-              // save new hashed secretKey
-              const hashPassword = hash(password);
-              setLocalPassword(hashPassword);
-              dispatch(require2FA());
-              initLocalWallet(plainSeedPhrase, hashPassword);
-              removeOldLocalPassword();
-              // restore data
-              window.location.reload();
+              try {
+                const plainSeedPhrase = decryptKey(secretKey, oldHashPassword);
+                // save new hashed secretKey
+                const hashPassword = hash(password);
+                setLocalPassword(hashPassword);
+                dispatch(require2FA());
+                await initLocalWallet(plainSeedPhrase, hashPassword);
+                removeOldLocalPassword();
+                // restore data
+                window.location.reload();
+              } catch (error) {
+                console.error('Error initializing wallet:', error);
+                setError('password', { type: 'manual', message: 'Error initializing wallet' });
+              }
             },
             () => {},
           );
@@ -172,7 +175,6 @@ const LoginDapp = (props: any) => {
           setError('password', { type: 'manual', message: 'Invalid Password' });
         }
       },
-      //
       async () => {
         const isValid = await isValidPassword(password);
         if (isValid) {
@@ -187,6 +189,7 @@ const LoginDapp = (props: any) => {
       },
     );
   };
+
   const history = useHistory();
   return (
     <CreatePasswordWrapper>

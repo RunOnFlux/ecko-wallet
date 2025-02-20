@@ -1,29 +1,60 @@
 # eckoWALLET
 
-## Installation instructions
+### The Kadena ecosystem gateway
 
-### Install [emscripten](http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html#installation-instructions) first (required for cardano-crypto.js lib, used by eckoWALLET).
+## Prerequisites
 
-###
+- Node.js v22
 
-### Emscripten build example
+## Development setup
 
-```
-git clone https://github.com/emscripten-core/emsdk.git
-cd emsdk
-./emsdk install 1.39.19
-./emsdk activate 1.39.19
-source ./emsdk_env.sh
-```
+1. Clone the repository
+2. Copy environment file:
 
-### ecko-Wallet build
-
-```
+```bash
 cp .env.example .env
+
+```
+
+3. Install dependencies:
+
+```bash
 npm install
+
+```
+
+4. Start development watch mode:
+
+```
+npm start
+```
+
+5. Load the extension in Chrome:
+
+- Open chrome://extensions/
+- Enable "Developer mode" in the top right
+- Click "Load unpacked"
+- Select the build folder of the project
+
+The extension will automatically reload when you make changes to the code.
+
+## Production build
+
+To create a production build:
+
+```
 npm run build
 ```
 
-## Install extension
+For a development build with source maps:
 
-Go to chrome://extensions/ and check the box for Developer mode in the top right. Click the Load unpacked extension button and select the build folder
+```
+npm run build:dev
+```
+
+Installing the built extension
+
+1. Go to `chrome://extensions/`
+2. Enable "Developer mode" in the top right
+3. Click "Load unpacked"
+4. Select the build folder

@@ -1,7 +1,7 @@
 {
   "name": "eckoWALLET",
   "description": "The best web extension wallet for the Kadena blockchain.",
-  "version": "2.16.7",
+  "version": "2.20.0",
   "manifest_version": 3,
   "background": {
     "service_worker": "app/background.js"
@@ -38,6 +38,6 @@
     "128": "favicon.png"
   },
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
   }
 }

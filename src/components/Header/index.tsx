@@ -1,22 +1,18 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import { encryptKey } from 'src/utils/security';
 import { toast } from 'react-toastify';
-import { ReactComponent as LedgerIcon } from 'src/images/ledger-logo.svg';
+import LedgerIcon from 'src/images/ledger-logo.svg?react';
 import { ModalContext } from 'src/contexts/ModalContext';
 import { AccountList } from 'src/pages/Wallet/components/AccountList';
 import { AccountActions } from 'src/pages/Wallet/components/AccountActions';
 import { AccountType, setBalance, setCurrentWallet } from 'src/stores/slices/wallet';
 import { shortenAddress } from 'src/utils';
 import images from 'src/images';
-import {
-  getLocalPassword,
-  setLocalSelectedWallet,
-} from 'src/utils/storage';
+import { getLocalPassword, setLocalSelectedWallet } from 'src/utils/storage';
 import RemoveWalletPopup from 'src/pages/Wallet/views/RemoveWalletPopup';
 import { useCreateFirstAccountAvailable, useSelectNetwork } from 'src/hooks/wallet';
 import { DropdownModal } from '../DropdownModal';
@@ -24,6 +20,7 @@ import { DivFlex } from '..';
 import Toast from '../Toast/Toast';
 import { ActionList } from '../ActionList';
 import { DropdownRadioModal } from '../DropdownRadioModal';
+import { useAppSelector } from 'src/stores/hooks';
 
 const HeaderWallet = styled(DivFlex)`
   padding: 20px;
@@ -38,14 +35,13 @@ const AccountLabel = styled.span`
 export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
   const history = useHistory();
   const location = useLocation().pathname;
-  const rootState = useSelector((state) => state);
   const stateWallet = useCurrentWallet();
   const { openModal, closeModal } = useContext(ModalContext);
   const createFirstAccountAvailable = useCreateFirstAccountAvailable();
   const selectNetwork = useSelectNetwork();
 
-  const { selectedNetwork, networks } = rootState.extensions;
-  const { wallets, type } = rootState?.wallet;
+  const { selectedNetwork, networks } = useAppSelector((state) => state.extensions);
+  const { wallets, type } = useAppSelector((state) => state.wallet);
   const selectedWallet = wallets?.find((a) => a.account === stateWallet?.account);
 
   const setSelectedLocalWallet = (wallet) => {
@@ -82,11 +78,15 @@ export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
     openModal({ title: 'Remove wallet', content: <RemoveWalletPopup onClose={() => closeModal()} /> });
   };
 
-  const onCreateAccount = () => {
-    createFirstAccountAvailable().then(() => {
+  const onCreateAccount = async () => {
+    try {
+      await createFirstAccountAvailable();
       toast.success(<Toast type="success" content="Create account successfully!" />);
       closeModal();
-    });
+    } catch (error) {
+      console.error('Error creating account:', error);
+      toast.error(<Toast type="fail" content="Failed to create account" />);
+    }
   };
 
   const handleSelectNetwork = (id) => {

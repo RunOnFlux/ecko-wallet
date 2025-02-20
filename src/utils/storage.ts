@@ -77,8 +77,8 @@ export const getMultipleLocalWallets = (networks: string[], callback: GetMultipl
   (window as any)?.chrome?.storage?.local?.get(keys, callback);
 };
 
-export const initLocalWallet = (seedPhrase: string, passwordHash: string) => {
-  const keyPairs = getKeyPairsFromSeedPhrase(seedPhrase, 0);
+export const initLocalWallet = async (seedPhrase: string, passwordHash: string) => {
+  const keyPairs = await getKeyPairsFromSeedPhrase(seedPhrase, 0);
   const { publicKey, secretKey } = keyPairs;
   const accountName = `k:${publicKey}`;
   const wallet = {
@@ -299,7 +299,7 @@ export const getLocalActivities = (network, account, successCallback, failCallba
   });
 };
 
-export const addLocalActivity = async (network: string, account: string, activity: LocalActivity) => (
+export const addLocalActivity = async (network: string, account: string, activity: LocalActivity) =>
   new Promise<void>((resolve) => {
     getLocalActivities(
       network,
@@ -317,8 +317,7 @@ export const addLocalActivity = async (network: string, account: string, activit
         resolve();
       },
     );
-  })
-);
+  });
 
 export const updateLocalActivity = (network: string, account: string, activity: LocalActivity) => {
   getLocalActivities(

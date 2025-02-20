@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { hash } from '@kadena/cryptography-utils';
-import { useAppDispatch } from 'src/stores/hooks';
+import { useAppDispatch, useAppSelector } from 'src/stores/hooks';
 import { require2FA } from 'src/stores/slices/auth';
 import images from 'src/images';
 import Button from 'src/components/Buttons';
@@ -79,8 +78,7 @@ const SignIn = () => {
     clearErrors,
   } = useForm();
 
-  const rootState = useSelector((state) => state);
-  const { selectedNetwork, networks } = rootState.extensions;
+  const { selectedNetwork, networks } = useAppSelector((state) => state.extensions);
   const { setIsLocked } = useSettingsContext();
   const dispatch = useAppDispatch();
   const goHome = useGoHome();
@@ -119,7 +117,7 @@ const SignIn = () => {
     });
   };
 
-  const handleSignIn = () => {
+  const handleSignIn = async () => {
     const password = getValues('password');
     getOldLocalPassword(
       async (oldHashPassword) => {
@@ -130,15 +128,20 @@ const SignIn = () => {
           // get seedphrase and store again
           getLocalSeedPhrase(
             async (secretKey) => {
-              const plainSeedPhrase = decryptKey(secretKey, oldHashPassword);
-              // save new hashed secretKey
-              const hashPassword = hash(password);
-              setLocalPassword(hashPassword);
-              dispatch(require2FA());
-              initLocalWallet(plainSeedPhrase, hashPassword);
-              removeOldLocalPassword();
-              // restore data
-              window.location.reload();
+              try {
+                const plainSeedPhrase = decryptKey(secretKey, oldHashPassword);
+                // save new hashed secretKey
+                const hashPassword = hash(password);
+                setLocalPassword(hashPassword);
+                dispatch(require2FA());
+                await initLocalWallet(plainSeedPhrase, hashPassword);
+                removeOldLocalPassword();
+                // restore data
+                window.location.reload();
+              } catch (error) {
+                console.error('Error initializing wallet:', error);
+                setError('password', { type: 'manual', message: 'Error initializing wallet' });
+              }
             },
             () => {},
           );
@@ -146,7 +149,6 @@ const SignIn = () => {
           setError('password', { type: 'manual', message: 'Invalid Password' });
         }
       },
-      //
       async () => {
         const isValid = await isValidPassword(password);
         if (!isValid) {

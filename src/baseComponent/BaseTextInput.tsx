@@ -8,7 +8,7 @@ type ImageProps = {
   width: string;
   height: string;
   marginTop?: string;
-  src: string;
+  src: any;
   callback: () => void;
 };
 type Props = {

@@ -1,5 +1,4 @@
 import { useEffect, useContext } from 'react';
-import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
@@ -15,6 +14,7 @@ import { SettingsContext } from 'src/contexts/SettingsContext';
 import { useGoHome } from 'src/hooks/ui';
 import Button from 'src/components/Buttons';
 import { NavigationHeader } from 'src/components/NavigationHeader';
+import { useAppSelector } from 'src/stores/hooks';
 
 export const LOCAL_KEY_FUNGIBLE_TOKENS = 'fungibleTokensByNetwork';
 export const LOCAL_DEFAULT_FUNGIBLE_TOKENS = {
@@ -63,8 +63,7 @@ const Footer = styled.div`
 const ImportToken = () => {
   const stateWallet = useCurrentWallet();
   const { search } = useLocation();
-  const rootState = useSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const networkId = selectedNetwork?.networkId;
   const goHome = useGoHome();
   const [fungibleTokens, setFungibleTokens] = useLocalStorage<IFungibleTokensByNetwork>(LOCAL_KEY_FUNGIBLE_TOKENS, LOCAL_DEFAULT_FUNGIBLE_TOKENS);

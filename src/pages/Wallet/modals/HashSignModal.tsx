@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import styled from 'styled-components';
 import { BaseTextInput } from 'src/baseComponent';
@@ -11,14 +10,14 @@ import images from 'src/images';
 import { getSignatureFromHash, getSignatureFromHashWithPrivateKey64 } from 'src/utils/chainweb';
 import { AccountType } from 'src/stores/slices/wallet';
 import { bufferToHex, useLedgerContext } from 'src/contexts/LedgerContext';
+import { useAppSelector } from 'src/stores/hooks';
 
 export const Icon = styled.img`
   cursor: pointer;
 `;
 
 export const HashSignModal = () => {
-  const rootState = useSelector((state) => state);
-  const { publicKey, secretKey, type } = rootState?.wallet;
+  const { publicKey, secretKey, type } = useAppSelector((state) => state.wallet);
 
   const [hash, setHash] = useState('');
   const [signature, setSignature] = useState('');
@@ -80,7 +79,7 @@ export const HashSignModal = () => {
             type="submit"
             label="Sign"
             size="full"
-            onClick={() => {
+            onClick={async () => {
               if (hash) {
                 let signatureOutput: any;
                 if (type === AccountType.LEDGER) {
@@ -93,7 +92,7 @@ export const HashSignModal = () => {
                       setSignature('');
                     });
                 } else if (secretKey.length > 64) {
-                  signatureOutput = getSignatureFromHash(hash, secretKey);
+                  signatureOutput = await getSignatureFromHash(hash, secretKey);
                   setSignature(signatureOutput);
                 } else {
                   try {

@@ -1,6 +1,5 @@
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import { decryptKey } from 'src/utils/security';
 import Toast from 'src/components/Toast/Toast';
 import { toast } from 'react-toastify';
@@ -12,12 +11,13 @@ import { CommonLabel, DivFlex } from 'src/components';
 import { useModalContext } from 'src/contexts/ModalContext';
 import { getLocalSelectedWallet, getLocalWallets, setLocalSelectedWallet, setLocalWallets } from 'src/utils/storage';
 import { setCurrentWallet, setWallets } from 'src/stores/slices/wallet';
-import { ReactComponent as IconNetwork } from 'src/images/icon-network.svg';
-import { ReactComponent as TrashIcon } from 'src/images/trash-icon.svg';
+import IconNetwork from 'src/images/icon-network.svg?react';
+import TrashIcon from 'src/images/trash-icon.svg?react';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import { ContactBody } from '../Contact/style';
 import { SettingBody } from '../style';
 import { Body } from '../../SendTransactions/styles';
+import { useAppSelector } from 'src/stores/hooks';
 
 const RightAction = styled(DivFlex)`
   svg {
@@ -32,8 +32,7 @@ const PageConnectedSites = () => {
   const { theme } = useAppThemeContext();
   const { openModal, closeModal } = useModalContext();
   const stateWallet = useCurrentWallet();
-  const rootState = useSelector((state) => state);
-  const { selectedNetwork, passwordHash } = rootState.extensions;
+  const { selectedNetwork, passwordHash } = useAppSelector((state) => state.extensions);
   const { connectedSites, wallets, account } = stateWallet;
 
   const goBack = () => {

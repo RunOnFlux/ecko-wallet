@@ -8,9 +8,9 @@ import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import { ModalContext } from 'src/contexts/ModalContext';
-import { useSelector } from 'react-redux';
 import { AliasModal } from '../modals/AliasModal';
 import { HashSignModal } from '../modals/HashSignModal';
+import { useAppSelector } from 'src/stores/hooks';
 
 export const DoubleFooter = styled.div`
   margin: -1rem;
@@ -30,9 +30,8 @@ export const AccountActions = ({
 }) => {
   const history = useHistory();
   const stateWallet = useCurrentWallet();
-  const rootState = useSelector((state) => state);
   const { openModal } = useContext(ModalContext);
-  const { wallets } = rootState?.wallet;
+  const { wallets } = useAppSelector((state) => state.wallet);
 
   const onActionClick = (clb) => {
     clb();

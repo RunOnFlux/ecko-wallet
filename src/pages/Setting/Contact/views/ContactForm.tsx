@@ -1,8 +1,9 @@
-/* eslint-disable no-console */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { BaseTextInput, InputError } from 'src/baseComponent';
+import { Html5Qrcode } from 'html5-qrcode';
 import { get } from 'lodash';
+import styled from 'styled-components';
+import { BaseTextInput, InputError } from 'src/baseComponent';
 import Button from 'src/components/Buttons';
 import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
@@ -15,11 +16,23 @@ import { useWindowResizeMobile } from 'src/hooks/useWindowResizeMobile';
 import { hideLoading, setContacts, showLoading } from 'src/stores/slices/extensions';
 import { fetchLocal } from 'src/utils/chainweb';
 import { getLocalContacts, setLocalContacts } from 'src/utils/storage';
-import { useSelector } from 'react-redux';
 import ModalCustom from 'src/components/Modal/ModalCustom';
-import QrReader from 'react-qr-reader';
 import { DivFlex } from 'src/components';
 import { BodyModal, TitleModal, DivChild, DivError, DivChildButton, ItemWrapperContact } from './style';
+import { useAppSelector } from 'src/stores/hooks';
+
+const QrReaderContainer = styled.div`
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  #qr-reader {
+    width: 100% !important;
+    video {
+      width: 100% !important;
+      border-radius: 8px;
+    }
+  }
+`;
 
 type Props = {
   contact?: any;
@@ -30,6 +43,12 @@ type Props = {
 const ContactForm = (props: Props) => {
   const { contact, networkId, isNew } = props;
   const { closeModal } = useModalContext();
+  const [isMobile] = useWindowResizeMobile(420);
+  const { selectedNetwork } = useAppSelector((state) => state.extensions);
+  const [isScanAccountName, setIsScanAccountName] = useState(false);
+  const [aliasState, setAliasState] = useState(contact?.aliasName ?? '');
+  const history = useHistory();
+
   const {
     register,
     handleSubmit,
@@ -43,13 +62,47 @@ const ContactForm = (props: Props) => {
       accountName: contact?.accountName ?? '',
     },
   });
-  const [isMobile] = useWindowResizeMobile(420);
-  const rootState = useSelector((state) => state);
-  const { selectedNetwork } = rootState.extensions;
-  const [isScanAccountName, setIsScanAccountName] = useState(false);
-  const [aliasState, setAliasState] = useState(contact?.aliasName ?? '');
 
-  const history = useHistory();
+  useEffect(() => {
+    let qrScanner: Html5Qrcode | null = null;
+
+    if (isScanAccountName) {
+      const scanner = new Html5Qrcode('qr-reader');
+      scanner
+        .start(
+          { facingMode: 'environment' },
+          {
+            fps: 1,
+            qrbox: { width: 250, height: 250 },
+          },
+          (decodedText) => {
+            if (decodedText) {
+              handleScanAccountName(decodedText);
+              setIsScanAccountName(false);
+            }
+          },
+          (error) => {
+            if (!error.includes('QR code parse error')) {
+              console.error(error);
+              if (isMobile) {
+                (window as any)?.chrome?.tabs?.create({
+                  url: `/index.html#${history?.location?.pathname}`,
+                });
+              }
+            }
+          },
+        )
+        .catch(console.error);
+
+      qrScanner = scanner;
+    }
+
+    return () => {
+      if (qrScanner) {
+        qrScanner.stop().catch(console.error);
+      }
+    };
+  }, [isScanAccountName]);
 
   const finishAddContact = (addContact) => {
     const aliasName = getValues('alias').trim();
@@ -60,6 +113,7 @@ const ContactForm = (props: Props) => {
       pred: addContact.pred,
       keys: addContact.keys,
     };
+
     getLocalContacts(
       networkId,
       (data) => {
@@ -84,6 +138,7 @@ const ContactForm = (props: Props) => {
       },
     );
   };
+
   const checkAddContact = () => {
     const { accountName, alias } = getValues();
     if (accountName && alias) {
@@ -117,16 +172,19 @@ const ContactForm = (props: Props) => {
     setAliasState(e.target.value);
     setValue('alias', e.target.value);
   };
+
   const handleScanAccountName = (data) => {
     if (data) {
       setValue('accountName', data, { shouldValidate: true });
       setIsScanAccountName(false);
     }
   };
+
   const copyToClipboard = (value) => {
     navigator.clipboard.writeText(value);
     toast.success(<Toast type="success" content="Copied!" />);
   };
+
   return (
     <PageConfirm>
       <InfoWrapper>
@@ -210,20 +268,14 @@ const ContactForm = (props: Props) => {
             )}
           </ItemWrapperContact>
         </form>
+
         {isScanAccountName && (
           <ModalCustom isOpen={isScanAccountName} onCloseModal={() => setIsScanAccountName(false)}>
             <BodyModal>
               <TitleModal>Scan QR Code</TitleModal>
-              <QrReader
-                delay={1000}
-                onError={() => {
-                  if (isMobile) {
-                    (window as any)?.chrome?.tabs?.create({ url: `/index.html#${history?.location?.pathname}` });
-                  }
-                }}
-                onScan={handleScanAccountName}
-                style={{ width: '100%' }}
-              />
+              <QrReaderContainer>
+                <div id="qr-reader" />
+              </QrReaderContainer>
               <DivChild>Place the QR code in front of your camera</DivChild>
             </BodyModal>
           </ModalCustom>

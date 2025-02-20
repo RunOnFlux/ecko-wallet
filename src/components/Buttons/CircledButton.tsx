@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 interface CircledButtonProps {
   label?: string;
-  iconUrl: string;
+  iconUrl: any;
   onClick: () => void;
   variant?: 'primary' | 'secondary' | 'brand' | 'empty';
 }

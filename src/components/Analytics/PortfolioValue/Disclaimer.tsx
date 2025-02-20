@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as AlertIconSVG } from 'src/images/icon-alert.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg?react';
 
 const Container = styled.div`
   margin-bottom: 24px;
@@ -37,7 +37,10 @@ const Disclaimer = () => (
     <AlertIconSVG />
     <Info>
       <InfoCaption>Info!</InfoCaption>
-      <InfoText>The information displayed on this page is currently under BETA testing, and is provided on an &quot;as is&quot; and &quot;as available&quot; basis.</InfoText>
+      <InfoText>
+        The information displayed on this page is currently under BETA testing, and is provided on an &quot;as is&quot; and &quot;as available&quot;
+        basis.
+      </InfoText>
     </Info>
   </Container>
 );

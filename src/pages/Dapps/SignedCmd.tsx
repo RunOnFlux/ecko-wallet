@@ -1,9 +1,9 @@
 import images from 'src/images';
 import Pact from 'pact-lang-api';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import ReactJson from 'react-json-view';
+import { JsonView, darkStyles, defaultStyles } from 'react-json-view-lite';
+import 'react-json-view-lite/dist/index.css';
 import Toast from 'src/components/Toast/Toast';
 import { toast } from 'react-toastify';
 import { InputError } from 'src/baseComponent';
@@ -18,6 +18,7 @@ import { getSignatureFromHash } from 'src/utils/chainweb';
 import { bufferToHex, useLedgerContext } from 'src/contexts/LedgerContext';
 import { AccountType } from 'src/stores/slices/wallet';
 import { SigningResponse } from './interfaces';
+import { useAppSelector } from 'src/stores/hooks';
 
 export const DappWrapper = styled.div`
   display: flex;
@@ -47,6 +48,12 @@ export const DappWrapper = styled.div`
 export const DappContentWrapper = styled.div`
   padding: 20px;
   word-break: break-word;
+  .json-view-lite {
+    background: ${({ theme }) => (theme.isDark ? '#1e1e1e' : '#fff')};
+    .json-view-lite-key {
+      color: ${({ theme }) => theme.text.primary};
+    }
+  }
 `;
 export const DappDescription = styled.div`
   color: ${({ theme }) => theme.text.primary};
@@ -76,10 +83,9 @@ const SignedCmd = () => {
   const [walletConnectParams, setWalletConnectParams] = useState<WalletConnectParams | null>(null);
   const { signHash, isWaitingLedger } = useLedgerContext();
 
-  const rootState = useSelector((state) => state);
-  const { publicKey, secretKey, type } = rootState.wallet;
-
   const { theme } = useAppThemeContext();
+
+  const { publicKey, secretKey, type } = useAppSelector((state) => state.wallet);
 
   const returnSignedMessage = (result, error?, wcId = null, topic = null) => {
     const walletConnectId = wcId ?? walletConnectParams?.id;
@@ -132,69 +138,58 @@ const SignedCmd = () => {
     );
   }, [secretKey, type]);
 
-  const signCommand = (signingCmd) =>
-    new Promise((resolve, reject) => {
-      try {
-        const meta = Pact.lang.mkMeta(
-          signingCmd.sender,
-          signingCmd.chainId.toString(),
-          parseFloat(signingCmd.gasPrice),
-          parseFloat(signingCmd.gasLimit),
-          getTimestamp(),
-          signingCmd.ttl,
-        );
-        const clist = signingCmd.caps ? signingCmd.caps.map((c) => c.cap) : [];
-        const keyPairs: any = {
-          publicKey,
-        };
-        if (secretKey.length === 64) {
-          keyPairs.secretKey = secretKey;
-        }
-        if (clist.length > 0) {
-          keyPairs.clist = clist;
-        }
-        const signedCmd = Pact.api.prepareExecCmd(
-          keyPairs,
-          `${ECKO_WALLET_DAPP_SIGN_NONCE}-"${new Date().toISOString()}"`,
-          signingCmd?.pactCode || signingCmd?.code,
-          signingCmd?.data || signingCmd?.envData,
-          meta,
-          signingCmd.networkId,
-        );
-        if (type === AccountType.LEDGER) {
-          setHash(signedCmd.hash);
-          signHash(signedCmd.hash)
-            .then((signHashResult) => {
-              toast.success(<Toast type="success" content="Ledger signed successfully" />);
-              const sigs = [{ sig: bufferToHex(signHashResult?.signature) }];
-              signedCmd.sigs = sigs;
-              resolve({ signedCmd, signingCmd });
-            })
-            .catch((ledgerError) => {
-              const result = {
-                status: 'fail',
-                message: ledgerError ?? 'Ledger signing error',
-              };
-              reject(result);
-            });
-        } else {
-          if (secretKey.length > 64) {
-            const signature = getSignatureFromHash(signedCmd.hash, secretKey);
-            const sigs = [{ sig: signature }];
-            signedCmd.sigs = sigs;
-          }
-          resolve({ signedCmd, signingCmd });
-        }
-      } catch (err: any) {
-        // eslint-disable-next-line no-console
-        console.error('Signing cmd err:', err);
-        const result = {
-          status: 'fail',
-          message: err?.message ?? 'Signing cmd error',
-        };
-        reject(result);
+  const signCommand = async (signingCmd) => {
+    try {
+      const meta = Pact.lang.mkMeta(
+        signingCmd.sender,
+        signingCmd.chainId.toString(),
+        parseFloat(signingCmd.gasPrice),
+        parseFloat(signingCmd.gasLimit),
+        getTimestamp(),
+        signingCmd.ttl,
+      );
+
+      const clist = signingCmd.caps?.map((c) => c.cap) || [];
+
+      const keyPairs = {
+        publicKey,
+        ...(secretKey.length === 64 && { secretKey }),
+        ...(clist.length > 0 && { clist }),
+      };
+
+      const signedCmd = Pact.api.prepareExecCmd(
+        keyPairs,
+        `${ECKO_WALLET_DAPP_SIGN_NONCE}-${new Date().toISOString()}`,
+        signingCmd.pactCode || signingCmd.code,
+        signingCmd.data || signingCmd.envData,
+        meta,
+        signingCmd.networkId,
+      );
+
+      if (type === AccountType.LEDGER) {
+        setHash(signedCmd.hash);
+        const signHashResult = await signHash(signedCmd.hash);
+        signedCmd.sigs = [
+          {
+            sig: bufferToHex(signHashResult?.signature),
+          },
+        ];
+        return { signedCmd, signingCmd };
       }
-    });
+
+      if (secretKey.length > 64) {
+        const signature = await getSignatureFromHash(signedCmd.hash, secretKey);
+        signedCmd.sigs = [{ sig: signature }];
+      }
+
+      return { signedCmd, signingCmd };
+    } catch (err: any) {
+      throw {
+        status: 'fail',
+        message: err?.message || 'Signing cmd error',
+      };
+    }
+  };
 
   const onSave = () => {
     if (walletConnectParams?.action === WALLET_CONNECT_SIGN_METHOD) {
@@ -231,21 +226,9 @@ const SignedCmd = () => {
       <SecondaryLabel style={{ textAlign: 'center' }} uppercase>
         signed command
       </SecondaryLabel>
-      {Object.keys(newCmd).length && (
+      {Object.keys(newCmd).length > 0 && (
         <DappContentWrapper>
-          <ReactJson
-            name="signedCmd"
-            src={newCmd}
-            enableClipboard={false}
-            displayObjectSize={false}
-            displayDataTypes={false}
-            quotesOnKeys={false}
-            collapsed
-            indentWidth={2}
-            style={{ paddingBottom: 40 }}
-            theme={theme.isDark ? 'twilight' : 'rjv-default'}
-            collapseStringsAfterLength={false}
-          />
+          <JsonView data={newCmd} clickToExpandNode style={theme.isDark ? darkStyles : defaultStyles} />
         </DappContentWrapper>
       )}
       {type === AccountType.LEDGER && isWaitingLedger && (
@@ -268,20 +251,9 @@ const SignedCmd = () => {
           <SecondaryLabel style={{ textAlign: 'center' }}>CAPABILITIES</SecondaryLabel>
           <DivFlex flexDirection="column">
             {caps?.map((cap, i) => (
-              <DivFlex flexDirection="column">
+              <DivFlex key={i} flexDirection="column">
                 <DappContentWrapper>
-                  <ReactJson
-                    name={cap?.cap?.name || `CAP ${i + 1}`}
-                    src={cap}
-                    enableClipboard={false}
-                    displayObjectSize={false}
-                    displayDataTypes={false}
-                    quotesOnKeys={false}
-                    collapsed
-                    indentWidth={2}
-                    theme={theme.isDark ? 'twilight' : 'rjv-default'}
-                    collapseStringsAfterLength={false}
-                  />
+                  <JsonView data={cap} clickToExpandNode style={theme.isDark ? darkStyles : defaultStyles} />
                 </DappContentWrapper>
               </DivFlex>
             ))}

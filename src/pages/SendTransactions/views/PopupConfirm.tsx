@@ -10,7 +10,7 @@ import { AccountType } from 'src/stores/slices/wallet';
 import { CONFIG, ECKO_WALLET_SEND_TX_NONCE } from 'src/utils/config';
 import { updateSendDapp } from 'src/utils/message';
 import { addLocalActivity, addPendingCrossChainRequestKey, getLocalRecent, setLocalRecent } from 'src/utils/storage';
-import { ReactComponent as AlertIconSVG } from 'src/images/icon-alert.svg';
+import AlertIconSVG from 'src/images/icon-alert.svg?react';
 import { useLedgerContext } from 'src/contexts/LedgerContext';
 import { useGoHome } from 'src/hooks/ui';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
@@ -216,7 +216,7 @@ const PopupConfirm = (props: Props) => {
           return;
         }
       } else if (senderPrivateKey.length > 64) {
-        const signature = getSignatureFromHash(sendCmd.hash, senderPrivateKey);
+        const signature = await getSignatureFromHash(sendCmd.hash, senderPrivateKey);
         const sigs = [{ sig: signature }];
         sendCmd.sigs = sigs;
       }

@@ -1,24 +1,28 @@
 /* eslint-disable no-await-in-loop */
+const { kadenaEncrypt } = require('@kadena/hd-wallet');
 import Pact from 'pact-lang-api';
 import nacl from 'tweetnacl';
 import { base64UrlDecodeArr, binToHex, toTweetNaclSecretKey } from '@kadena/cryptography-utils';
-import lib from 'cardano-crypto.js/kadena-crypto';
+import { kadenaGenMnemonic, kadenaGenKeypair, kadenaMnemonicToRootKeypair, kadenaSign } from '@kadena/hd-wallet/chainweaver';
 import { CHAIN_AVAILABLE_TOKENS_FIXTURE, CHAIN_COUNT } from './constant';
 import { CONFIG, KADDEX_ANALYTICS_API } from './config';
 import { getTimestamp } from './index';
+import { bufferToHex } from 'src/contexts/LedgerContext';
 // import { getLocalStorageDataByKey, SETTINGS_STORAGE_KEY } from './storage';
 
 export const MAINNET_NETWORK_ID = 'mainnet01';
 
 export const getApiUrl = (url, networkId, chainId) =>
-  // old storage issue
-  `${url === 'https://chainweb.kaddex.com' ? 'https://chainweb.ecko.finance' : url}/chainweb/0.0/${networkId}/chain/${chainId}/pact`;
+  // ignore dismissed networks
+  `${
+    url === 'https://chainweb.kaddex.com' || url === 'https://chainweb.ecko.finance' ? 'https://api.chainweb.com' : url
+  }/chainweb/0.0/${networkId}/chain/${chainId}/pact`;
 
-export const fetchLocal = (code, url, networkId, chainId) => {
+export const fetchLocal = (code, url, networkId, chainId, gasLimit = 1500000) => {
   const localCmd = {
     keyPairs: [],
     pactCode: code,
-    meta: Pact.lang.mkMeta('not-real', chainId.toString(), 0.00000001, 1500000, getTimestamp(), 600),
+    meta: Pact.lang.mkMeta('not-real', chainId.toString(), 0.00000001, gasLimit, getTimestamp(), 600),
   };
   return Pact.fetch.local(localCmd, getApiUrl(url, networkId, chainId));
 };
@@ -45,31 +49,29 @@ export const fetchListLocal = (code, url, networkId, chainId, gasPrice = CONFIG.
 };
 
 export const generateSeedPhrase = () => {
-  const seedPhrase = lib.kadenaGenMnemonic();
-  return seedPhrase;
+  return kadenaGenMnemonic();
 };
 
-export const getKeyPairsFromSeedPhrase = (seedPhrase, index) => {
-  const root = lib.kadenaMnemonicToRootKeypair('', seedPhrase);
-  const hardIndex = 0x80000000;
-  const newIndex = hardIndex + index;
-  const [privateRaw, pubRaw] = lib.kadenaGenKeypair('', root, newIndex);
-  const axprv = new Uint8Array(privateRaw);
-  const axpub = new Uint8Array(pubRaw);
-  const pub = Pact.crypto.binToHex(axpub);
-  const prv = Pact.crypto.binToHex(axprv);
+export const getKeyPairsFromSeedPhrase = async (seedPhrase, index) => {
+  const root = await kadenaMnemonicToRootKeypair('', seedPhrase);
+  const { publicKey, secretKey } = await kadenaGenKeypair('', root, index);
   return {
-    publicKey: pub,
-    secretKey: prv,
+    publicKey,
+    secretKey,
   };
 };
 
-export const getSignatureFromHash = (hash, privateKey) => {
-  const newHash = Buffer.from(hash, 'base64');
-  const u8PrivateKey = Pact.crypto.hexToBin(privateKey);
-  const signature = lib.kadenaSign('', newHash, u8PrivateKey);
-  const s = new Uint8Array(signature);
-  return Pact.crypto.binToHex(s);
+export const isKadenaEncryptedPrivateKey = (privateKey) => privateKey.length > 256;
+
+export const getSignatureFromHash = async (hash, privateKey) => {
+  let secretKey = privateKey;
+  if (!isKadenaEncryptedPrivateKey(privateKey)) {
+    const keyBuffer = Buffer.from(privateKey, 'hex');
+    secretKey = await kadenaEncrypt('', keyBuffer);
+  }
+  const signature = await kadenaSign('', hash, secretKey);
+  const signatureHex = bufferToHex(signature);
+  return signatureHex;
 };
 
 export const getSignatureFromHashWithPrivateKey64 = (hash, { secretKey, publicKey }) => {
