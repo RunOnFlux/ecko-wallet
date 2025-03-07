@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-curly-newline */
 import { useHistory } from 'react-router-dom';
 import images from 'src/images';
+import RefreshIconSVG from 'src/images/refresh.svg?react';
 import SearchIconSVG from 'src/images/search.svg?react';
 import AddIconSVG from 'src/images/add-round.svg?react';
 import styled from 'styled-components';
@@ -31,6 +32,7 @@ import { TokenChainBalance } from './components/TokenChainBalance';
 import { AssetsList } from './components/AssetsList';
 import { Warning } from '../SendTransactions/styles';
 import { useAppSelector } from 'src/stores/hooks';
+import TokenDetector from './components/TokenDetector';
 
 export interface IFungibleTokenBalance {
   contractAddress: string;
@@ -44,11 +46,11 @@ interface ChainDistribution {
   balance: number;
 }
 
-const DivAsset = styled.div`
+export const DivAsset = styled.div`
   padding: 20px;
   margin-bottom: 60px;
 `;
-const DivAssetList = styled.div`
+export const DivAssetList = styled.div`
   .token-element {
     border-top: 1px solid ${({ theme }) => theme?.border};
   }
@@ -227,7 +229,25 @@ const Wallet = () => {
           <SecondaryLabel style={{ paddingTop: 10 }}>ASSETS</SecondaryLabel>
           <DivFlex>
             {selectedNetwork.networkId === MAINNET_NETWORK_ID && (
-              <IconButton onClick={() => openModal({ title: 'Token list', content: <AssetsList /> })} svgComponent={<SearchIconSVG />} />
+              <>
+                <IconButton
+                  onClick={() =>
+                    openModal({
+                      title: 'Detected tokens',
+                      content: (
+                        <TokenDetector
+                          onTokenSelect={(t) => {
+                            closeModal();
+                            history.push(`/import-token?suggest=${t.contract}`);
+                          }}
+                        />
+                      ),
+                    })
+                  }
+                  svgComponent={<RefreshIconSVG style={{ marginTop: -2 }} />}
+                />
+                <IconButton onClick={() => openModal({ title: 'Token list', content: <AssetsList /> })} svgComponent={<SearchIconSVG />} />
+              </>
             )}
             <IconButton onClick={() => history.push('/import-token')} svgComponent={<AddIconSVG />} style={{ marginLeft: 5 }} />
           </DivFlex>
