@@ -8,14 +8,25 @@ import images from 'src/images';
 import { humanReadableNumber, shortenAddress } from '@Utils/index';
 import Spinner from '@Components/Spinner';
 import { useAppThemeContext } from 'src/contexts/AppThemeContext';
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { IFungibleTokensByNetwork, LOCAL_DEFAULT_FUNGIBLE_TOKENS, LOCAL_KEY_FUNGIBLE_TOKENS } from 'src/pages/ImportToken';
+
+interface DetectedToken {
+  contract: string;
+  balance: number;
+  chainId: number;
+}
 
 export const TokenDetector = ({ onTokenSelect }: { onTokenSelect: (token: { contract: string; balance: number }) => void }) => {
   const { theme } = useAppThemeContext();
   const [loading, setLoading] = useState(true);
-  const [detectedTokens, setDetectedTokens] = useState<any>([]);
+  const [detectedTokens, setDetectedTokens] = useState<DetectedToken[]>([]);
   const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const { account } = useAppSelector((state) => state.wallet);
   const [tokens, setTokens] = useState<string[]>([]);
+
+  const [fungibleTokens, setFungibleTokens] = useLocalStorage<IFungibleTokensByNetwork>(LOCAL_KEY_FUNGIBLE_TOKENS, LOCAL_DEFAULT_FUNGIBLE_TOKENS);
+  const fungibleTokensByNetwork = (fungibleTokens && fungibleTokens[selectedNetwork?.networkId]) || [];
 
   useEffect(() => {
     const init = async () => {
@@ -89,15 +100,17 @@ export const TokenDetector = ({ onTokenSelect }: { onTokenSelect: (token: { cont
 
     await Promise.all(chainPromises);
 
-    const allTokensWithBalance = Object.values(tokenBalances);
-    setDetectedTokens(allTokensWithBalance);
+    const allTokensWithBalance: DetectedToken[] = Object.values(tokenBalances);
+    setDetectedTokens(
+      allTokensWithBalance.filter((t) => t.contract !== 'coin' && !fungibleTokensByNetwork?.find((f) => f.contractAddress === t.contract)),
+    );
     setLoading(false);
 
     return allTokensWithBalance;
   };
 
   const renderTokenOptions = () => {
-    return detectedTokens.map((token: { contract: string; balance: number; chainId: number }) => (
+    return detectedTokens.map((token) => (
       <TokenElement
         key={token.contract}
         rightText={humanReadableNumber(token.balance, 5)}
@@ -115,7 +128,7 @@ export const TokenDetector = ({ onTokenSelect }: { onTokenSelect: (token: { cont
       ) : detectedTokens.length > 0 ? (
         <DivAssetList style={{ width: '100%' }}>{renderTokenOptions()}</DivAssetList>
       ) : (
-        <SecondaryLabel>No tokens found for this account.</SecondaryLabel>
+        <SecondaryLabel>No other tokens found for this account.</SecondaryLabel>
       )}
     </DivFlex>
   );
