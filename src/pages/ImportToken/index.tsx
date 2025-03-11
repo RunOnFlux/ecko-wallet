@@ -16,10 +16,10 @@ import Button from 'src/components/Buttons';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import { useAppSelector } from 'src/stores/hooks';
 
-export const LOCAL_KEY_FUNGIBLE_TOKENS = 'fungibleTokensByNetwork';
+export const LOCAL_KEY_FUNGIBLE_TOKENS = 'fungibleTokensByNetworkv2';
 export const LOCAL_DEFAULT_FUNGIBLE_TOKENS = {
   mainnet01: [
-    { contractAddress: 'kaddex.kdx', symbol: 'kdx' },
+    { contractAddress: 'runonflux.flux', symbol: 'flux' },
     { contractAddress: 'n_b742b4e9c600892af545afb408326e82a6c0c6ed.zUSD', symbol: 'zUSD' },
   ],
   testnet04: [{ contractAddress: 'n_dd05101ff4df21179bfc038a912fc88c38d777a1.kdx', symbol: 'kdx' }],
@@ -85,7 +85,11 @@ const ImportToken = () => {
       try {
         /* eslint-disable no-await-in-loop */
         const res = await fetchListLocal(pactCode, selectedNetwork.url, selectedNetwork.networkId, i, txSettings?.gasPrice, txSettings?.gasLimit);
-        if (res?.result?.error?.message?.includes('row not found') || res?.result?.status === 'success') {
+        if (
+          res?.result?.error?.message?.includes('row not found') ||
+          res?.result?.error?.message?.includes('No value found in table') ||
+          res?.result?.status === 'success'
+        ) {
           hideLoading();
           return true;
         }
