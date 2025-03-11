@@ -122,6 +122,10 @@ const Wallet = () => {
     closeModal();
   };
 
+  const handleBuy = () => {
+    history.push('/buy');
+  };
+
   const renderChainDistribution = (symbol: string, contractAddress: string) => {
     const isNonTransferable = NON_TRANSFERABLE_TOKENS.some((nonTransf) => nonTransf === contractAddress);
     const hasBalance = getTokenChainDistribution(contractAddress).filter((cD) => cD.balance > 0)?.length > 0;
@@ -221,6 +225,7 @@ const Wallet = () => {
             iconUrl={images.wallet.arrowReceive}
             variant="secondary"
           />
+          <CircledButton onClick={handleBuy} label="Buy" iconUrl={images.wallet.iconBuy} variant="brand" />
           <CircledButton onClick={handleHistory} label="History" iconUrl={images.iconHistory} variant="empty" />
         </DivFlex>
       </DivBottomShadow>

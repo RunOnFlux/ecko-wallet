@@ -22,8 +22,14 @@ const PageSelectTheme = () => {
     <Wrapper>
       <NavigationHeader title="Themes" onBack={goBack} />
       <Body style={{ marginBottom: 100 }}>
-        {Object.keys(AppThemeEnum).map((t) => (
-          <Radio isChecked={t === selectedTheme} label={t?.replace('_', ' ')} onClick={() => setTheme(t)} style={{ marginBottom: 20 }} />
+        {Object.keys(AppThemeEnum).map((t, i) => (
+          <Radio
+            key={`theme_${i}`}
+            isChecked={t === selectedTheme}
+            label={t?.replace('_', ' ')}
+            onClick={() => setTheme(t)}
+            style={{ marginBottom: 20 }}
+          />
         ))}
       </Body>
     </Wrapper>

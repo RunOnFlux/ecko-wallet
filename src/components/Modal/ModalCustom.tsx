@@ -78,7 +78,7 @@ const RoundIcon = styled.div`
 `;
 
 const ModalCustom = (props: Props) => {
-  const { isOpen, onCloseModal, closeOnOverlayClick, title, showCloseIcon, roundIcon, children, footer } = props;
+  const { isOpen, onCloseModal, closeOnOverlayClick, title, showCloseIcon, roundIcon, bodyHeight, children, footer } = props;
 
   if (!isOpen) {
     return null;
@@ -94,7 +94,7 @@ const ModalCustom = (props: Props) => {
             <CloseIcon src={images.close} alt="close" onClick={onCloseModal} />
           </TitleHeader>
         )}
-        <DivBody style={{ maxHeight: window.innerHeight * 0.6 }}>
+        <DivBody style={{ height: bodyHeight || 'auto', maxHeight: !bodyHeight ? window.innerHeight * 0.6 : undefined }}>
           <div>{children}</div>
           <div>{footer && <DivFooter>{footer}</DivFooter>}</div>
         </DivBody>
@@ -110,6 +110,7 @@ type Props = {
   title?: React.ReactNode;
   roundIcon?: React.ReactNode;
   showCloseIcon?: boolean;
+  bodyHeight?: string | number | null;
   children?: React.ReactNode;
   footer?: React.ReactNode;
 };

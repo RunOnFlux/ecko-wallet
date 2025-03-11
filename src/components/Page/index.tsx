@@ -19,7 +19,8 @@ export const PageFullScreen = styled(PageFullWidth)`
 
 export const Header = styled.div`
   text-align: center;
-  margin: 20px 0;
+  margin: ${({ margin }) => margin || '20px 0'};
+  padding: ${({ padding }) => padding || '20px 0'};
 `;
 
 export const Body = styled.div`
