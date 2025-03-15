@@ -29,8 +29,6 @@ const Buy = () => {
     defaultCrypto: 'KDA',
     sell_onlyCryptoNetworks: 'kadena',
     sell_defaultCrypto: 'KDA',
-    wallets: `kda_kadena:${walletAddress}`,
-    networkWallets: `kadena:${walletAddress}`,
     themeName: theme.isDark ? 'dark' : 'light',
     containerColor: theme.background.replace('#', ''),
     primaryColor: theme.button.primary.replace('#', ''),
@@ -42,15 +40,7 @@ const Buy = () => {
   };
 
   const generateOnramperUrl = () => {
-    if (payloadToSign) {
-      const [key, value] = payloadToSign.split('=');
-      params[key] = value;
-
-      if (signature) {
-        params.signature = signature;
-      }
-    }
-    return `https://buy.onramper.com?${new URLSearchParams(params).toString()}`;
+    return `https://buy.onramper.com?${new URLSearchParams(params).toString()}&${payloadToSign}&signature=${signature}`;
   };
 
   useEffect(() => {
@@ -87,17 +77,18 @@ const Buy = () => {
         setError('Unable to connect to the service. Please try again later.');
       });
   };
-
+  const url = `${generateOnramperUrl()}`;
+  console.dir(url, { depth: null, maxStringLength: Infinity });
   return (
     <PageFullScreen>
       <Header margin="0px" padding="0 20px">
         <NavigationHeader title="Buy" onBack={goBack} />
       </Header>
       <BodyFullScreen>
-        {isAccepted && payloadToSign ? (
+        {isAccepted && payloadToSign && signature ? (
           <DivFlex flexDirection="column" style={{ textAlign: 'center', height: '100%' }}>
             <iframe
-              src={generateOnramperUrl()}
+              src={url}
               title="Onramper"
               height="100%"
               width="100%"
