@@ -130,7 +130,9 @@ const ImportAccount = () => {
           const publicCodeFromRequest = get(request, 'result.data.guard.keys[0]');
           const keySets = get(request, 'result.data.guard.keys');
           const status = get(request, 'result.status');
-          const doesNotExist = request?.result?.error?.message?.startsWith('with-read: row not found:');
+          const doesNotExist =
+            request?.result?.error?.message?.startsWith('with-read: row not found:') ||
+            request.result?.error?.message?.startsWith('No value found in table');
 
           if ((keySets && keySets.length === 1) || doesNotExist) {
             if ((publicCodeFromRequest && publicCodeFromRequest === publicKey) || doesNotExist) {
