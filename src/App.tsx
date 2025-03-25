@@ -50,8 +50,15 @@ const App = () => (
                       <GovernanceMiningContextProvider>
                         <NotificationContextProvider>
                           <ModalConsumer>
-                            {({ isOpen, title, content, footer, closeModal, roundIcon }) => (
-                              <ModalCustom isOpen={isOpen || false} title={title} footer={footer} onCloseModal={closeModal} roundIcon={roundIcon}>
+                            {({ isOpen, title, content, footer, closeModal, roundIcon, bodyHeight }) => (
+                              <ModalCustom
+                                isOpen={isOpen || false}
+                                title={title}
+                                bodyHeight={bodyHeight}
+                                footer={footer}
+                                onCloseModal={closeModal}
+                                roundIcon={roundIcon}
+                              >
                                 {content}
                               </ModalCustom>
                             )}
