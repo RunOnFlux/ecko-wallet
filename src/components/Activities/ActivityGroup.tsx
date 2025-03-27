@@ -22,22 +22,14 @@ interface Props {
   openActivityDetail: (activity: LocalActivity) => void;
 }
 
-const ActivityGroup = ({
-  label,
-  activities,
-  pendingCrossChainRequestKeys,
-  openActivityDetail,
-}: Props) => (
+const ActivityGroup = ({ label, activities, pendingCrossChainRequestKeys, openActivityDetail }: Props) => (
   <>
     <DayLabel uppercase>{label}</DayLabel>
-    {activities.map((item) => {
+    {activities.map((item, i) => {
       if (!item || !item.receiverChainId) return null;
       return (
-        <Div key={item.id} style={{ padding: '0px 24px' }} onClick={() => openActivityDetail(item)}>
-          <FinishTransferItem
-            isFinishing={pendingCrossChainRequestKeys.includes(item.requestKey)}
-            activity={item}
-          />
+        <Div key={`${item.id}${i}`} style={{ padding: '0px 24px' }} onClick={() => openActivityDetail(item)}>
+          <FinishTransferItem isFinishing={pendingCrossChainRequestKeys.includes(item.requestKey)} activity={item} />
         </Div>
       );
     })}
