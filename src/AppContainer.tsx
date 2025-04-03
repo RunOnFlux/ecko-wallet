@@ -37,7 +37,6 @@ import PageSelectTheme from './pages/Setting/SelectTheme';
 import PageConnectedSites from './pages/Setting/ConnectedSites';
 import TwoFactorAuthenticator from './components/TwoFactorAuthenticator';
 import PageWalletConnect from './pages/Setting/WalletConnect';
-import BuyCryptocurrencies from './pages/Wallet/views/BuyCryptocurrencies';
 import CategoryDetail from './pages/Nft/CategoryDetail';
 import ImportHardwareWallet from './pages/ImportHardwareWallet';
 import ImportLedger from './pages/ImportHardwareWallet/ImportLedger';
@@ -46,6 +45,7 @@ import MarmaladeNGCollectionDetails from './pages/Nft/NftTypes/MarmaladeNG/Marma
 import TransactionsImporter from './components/TransactionsImporter';
 import Analytics from './pages/Analytics';
 import AnalyticsTracker from './components/AnalyticsTracker';
+import Buy from './pages/Buy';
 
 const Container = styled.div`
   width: 1000px;
@@ -95,7 +95,7 @@ const AppContainer = () => {
           <PrivateRoute path="/wallet-connect" component={PageWalletConnect} />
           <PrivateRoute path="/setting" component={PageSetting} />
           <PrivateRoute path="/history" component={History} />
-          <PrivateRoute path="/buy" component={BuyCryptocurrencies} />
+          <PrivateRoute path="/buy" component={Buy} />
           <PrivateRoute path="/nft" component={Nft} />
           <PrivateRoute path="/nft-details" component={CategoryDetail} />
           <PrivateRoute path="/ng-details" component={MarmaladeNGCollectionDetails} />

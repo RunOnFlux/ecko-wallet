@@ -6,6 +6,7 @@ interface ModalProps {
   content: React.ReactNode;
   roundIcon?: React.ReactNode;
   footer?: React.ReactNode;
+  bodyHeight?: string | number | null;
   closeOnOverlayClick?: boolean;
 }
 
@@ -19,6 +20,7 @@ const initialState = {
   title: null,
   content: null,
   footer: null,
+  bodyHeight: null,
   closeOnOverlayClick: true,
 };
 
