@@ -1,5 +1,5 @@
 import { Core } from '@walletconnect/core';
-import { Web3Wallet } from '@walletconnect/web3wallet';
+import { WalletKit } from '@reown/walletkit';
 
 export class WalletConnectProvider {
   core;
@@ -22,7 +22,7 @@ export class WalletConnectProvider {
   }
 
   async init() {
-    this.wallet = await Web3Wallet.init({
+    this.wallet = await WalletKit.init({
       core: this.core,
       metadata: {
         name: 'EckoWallet',

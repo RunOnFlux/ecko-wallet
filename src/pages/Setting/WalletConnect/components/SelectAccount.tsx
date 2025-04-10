@@ -26,6 +26,7 @@ const SelectAccount = ({ onConfirmAccounts }: { onConfirmAccounts: (accounts: st
     <DivFlex flexDirection="column" padding="10px 20px">
       {wallets.map((w) => (
         <Radio
+          key={w.publicKey}
           isChecked={selectedAccounts.includes(w.publicKey)}
           label={shortenAddress(w.account)}
           onClick={() => toggleAccount(w.publicKey)}
