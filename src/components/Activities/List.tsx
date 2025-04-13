@@ -15,6 +15,7 @@ import { transactionToActivity } from './utils';
 import { getLocalActivities, getPendingCrossChainRequestKey } from '@Utils/storage';
 import { getSelectedNetwork } from 'src/stores/slices/extensions';
 import { MAINNET_NETWORK_ID } from '@Utils/chainweb';
+import { ECKO_DEXTOOLS_API_URL } from '@Utils/constant';
 
 const Div = styled.div`
   cursor: pointer;
@@ -51,7 +52,7 @@ const List = ({ openActivityDetail }: Props) => {
 
   const fetchTransactions = async () => {
     try {
-      const apiUrl = `${process.env.REACT_APP_ECKO_DEXTOOLS_API_URL}api/account-transaction-history?account=${account}&limit=${limit}&skip=${skip}`;
+      const apiUrl = `${ECKO_DEXTOOLS_API_URL}api/account-transaction-history?account=${account}&limit=${limit}&skip=${skip}`;
       const res = await fetch(apiUrl);
       const transactions = await res.json();
 

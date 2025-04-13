@@ -1,6 +1,5 @@
 import moment from 'moment';
 import { getSelectedNetwork } from 'src/stores/slices/extensions';
-import { ANALYSIS_BASE_URL_DEV, ANALYSIS_BASE_URL_PROD } from '../constants';
 import { useAppSelector } from 'src/stores/hooks';
 
 const headers = {
@@ -15,7 +14,7 @@ export const useGetData = () => {
     const start = moment(startDate).format('YYYY-MM-DD');
     const end = moment(endDate).format('YYYY-MM-DD');
 
-    const baseUrl = selectedNetwork.networkId === 'development' ? ANALYSIS_BASE_URL_DEV : ANALYSIS_BASE_URL_PROD;
+    const baseUrl = 'https://api.ecko.finance/analytics/';
     const url = `${baseUrl}get-data?dateStart=${start}&dateEnd=${end}`;
     const options = { method: 'GET', headers };
 

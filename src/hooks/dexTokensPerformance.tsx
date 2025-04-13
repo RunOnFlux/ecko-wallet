@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 
 import { useQuery } from '@tanstack/react-query';
+import { ECKO_DEXTOOLS_API_URL } from '@Utils/constant';
 import { TimeStep } from 'src/components/Analytics/TimeSelector';
 
 export type TickerPerformance = {
@@ -24,7 +25,7 @@ export const useDexTokensPerformance = (interval: TimeStep = '1D') =>
   useQuery({
     queryKey: ['performance-summary', interval],
     queryFn: async () => {
-      const apiUrl = `${process.env.REACT_APP_ECKO_DEXTOOLS_API_URL}api/performance-summary?interval=${interval}`;
+      const apiUrl = `${ECKO_DEXTOOLS_API_URL}api/performance-summary?interval=${interval}`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {

@@ -1,5 +1,7 @@
 import images from '../images';
 
+export const ECKO_DEXTOOLS_API_URL = 'https://api.dexscan.ecko.finance/';
+
 export const OptionSelect = {
   ConnectedSite: 0,
   ViewExplorer: 1,
