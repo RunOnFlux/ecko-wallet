@@ -1,0 +1,147 @@
+{
+  "select_language": "Seleziona Lingua",
+  "home": { "startNow": "Inizia Ora" },
+  "condition": {
+    "noPersonalInfo": "Non raccogliamo mai chiavi, indirizzi, transazioni, saldi, hash o qualsiasi informazione personale",
+    "noIP": "Non raccogliamo mai il tuo indirizzo IP completo",
+    "noSelling": "Non vendiamo mai dati a scopo di lucro. Mai!",
+    "next": "Avanti"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Ho letto e accetto i",
+    "termsOfUse": "Termini di Utilizzo",
+    "createNewWallet": "Crea Nuovo Wallet",
+    "setupNewAccount": "Configura nuovo account eckoWALLET",
+    "restoreWallet": "Ripristina Wallet",
+    "restoreFromPhrase": "Ripristina da frase di recupero"
+  },
+  "createPassword": {
+    "successCreate": "Password creata con successo",
+    "errorCreate": "Errore durante la creazione del wallet",
+    "invalidPhrase": "Frase di recupero segreta non valida!",
+    "importFromPhrase": "Importa da Recovery Phrase",
+    "createPassword": "Crea Password",
+    "pastePhrase": "Incolla la Frase di Recupero Segreta",
+    "requiredField": "Questo campo è obbligatorio.",
+    "phraseTooLong": "Frase di recupero segreta troppo lunga.",
+    "secretRecoveryPhrase": "Frase di Recupero Segreta",
+    "import": "Importa",
+    "create": "Crea"
+  },
+  "passwordForm": {
+    "inputPassword": "Inserisci Password",
+    "inputConfirmPassword": "Conferma Password",
+    "requiredField": "Questo campo è obbligatorio.",
+    "minPassword": "La password deve contenere almeno 8 caratteri.",
+    "maxPassword": "La password deve contenere massimo 256 caratteri.",
+    "passwordMismatch": "Le password non corrispondono",
+    "newPassword": "Nuova Password (min 8 caratteri)",
+    "confirmPassword": "Conferma Password",
+    "passwordWarning": "Comprendo di aver usato caratteri non sicuri. Si raccomanda fortemente di usare solo lettere (a-z), numeri (0-9) e caratteri speciali _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Frase Segreta di Recupero",
+    "step1Text": "Nel prossimo passaggio registrerai la tua frase di recupero di 12 parole.\nLa tua frase di recupero facilita il ripristino del wallet su un nuovo dispositivo.\nChiunque possieda questa frase può prendere il controllo del tuo wallet, tienila segreta.\nNessuno può recuperare la tua frase se la perdi, conservala in un luogo sicuro.",
+    "step1Checkbox": "Capisco che se perdo la mia frase di recupero, non potrò più ripristinare il mio wallet.",
+    "generating": "Generazione delle chiavi...",
+    "continue": "Continua",
+    "reveal": "Clicca qui per rivelare le parole segrete",
+    "step2Text1": "La tua Frase Segreta di Recupero facilita il backup e il ripristino del tuo account.",
+    "step2Text2": "Attenzione: Non divulgare mai la tua Frase Segreta di Recupero. Chiunque la possieda può prendere il controllo del tuo wallet per sempre.",
+    "download": "Scarica",
+    "verifyTitle": "Verifica Frase di Recupero",
+    "verifyInstruction": "Conferma la tua frase di recupero digitando le parole nell'ordine corretto.",
+    "successVerify": "Frase Segreta di Recupero verificata con successo",
+    "invalidPhrase": "Frase Segreta di Recupero non valida!",
+    "errorGeneratingKeys": "Errore nella generazione delle chiavi del wallet",
+    "errorCreatingWallet": "Errore nella creazione del wallet",
+    "generatingWallet": "Generazione del tuo wallet in corso..."
+  },
+  "wallet": {
+    "netWorth": "PATRIMONIO",
+    "accountBalance": "SALDO ACCOUNT",
+    "send": "Invia",
+    "receive": "Ricevi",
+    "receiveTokens": "Ricevi token",
+    "buy": "Compra",
+    "history": "Storico",
+    "assets": "ASSET",
+    "detectedTokens": "Token rilevati",
+    "tokenList": "Lista token",
+    "kdaChainDistribution": "Distribuzione KDA",
+    "chainDistribution": "Distribuzione chain",
+    "tokenRemoved": "Token rimosso con successo",
+    "removeToken": "Rimuovi token",
+    "editToken": "Modifica token",
+    "removeTokenTitle": "Rimuovi il token {{symbol}}",
+    "confirmRemoveToken": "Sei sicuro di voler rimuovere il token {{symbol}}?",
+    "notTransferable": "{{contractAddress}} non è trasferibile!",
+    "accountDoesNotExist": "Non esiste: questo account non esiste.",
+    "balanceZero": "Saldo {{symbol}} pari a 0."
+  },
+  "accountActions": {
+    "shareWallet": "Condividi Wallet",
+    "copied": "Copiato!",
+    "exportRecoveryPhrase": "Esporta Frase di Recupero",
+    "signHashTransaction": "Firma Transazione Hash",
+    "editAccountAlias": "Modifica Alias Account",
+    "setAccountAlias": "Imposta Alias Account",
+    "removeSelectedWallet": "Rimuovi Wallet Selezionato",
+    "createWallet": "Crea Wallet",
+    "importWallet": "Importa Wallet",
+    "importHardwareWallet": "Importa Wallet Hardware"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Nessun altro token trovato per questo account."
+  },
+  "aliasModal": {
+    "accountAlias": "Alias Account",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "aliasChanged": "Alias modificato con successo"
+  },
+  "hashSignModal": {
+    "publicKey": "La tua Chiave Pubblica",
+    "transactionHash": "Hash della Transazione",
+    "insertTransactionHash": "Inserisci l'Hash della Transazione",
+    "signature": "Firma",
+    "copied": "Copiato!",
+    "clean": "Pulisci",
+    "sign": "Firma"
+  },
+  "popupDetailTransaction": {
+    "status": "Stato",
+    "direction": "Direzione",
+    "symbol": "Simbolo",
+    "quantity": "Quantità",
+    "gasFee": "Commissione Gas",
+    "total": "Totale",
+    "viewDetails": "Vedi Dettagli",
+    "activityLog": "Registro Attività",
+    "transactionCreated": "Transazione creata con un valore di {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transazione confermata",
+    "success": "Successo",
+    "failed": "Fallito",
+    "finishing": "In conclusione"
+  },
+  "removeWallet": {
+    "title": "Sei sicuro di voler rimuovere questo wallet?",
+    "description": "Inserisci la password per confermare",
+    "passwordPlaceholder": "Inserisci la password",
+    "passwordRequired": "Questo campo è obbligatorio.",
+    "passwordMinLength": "La password deve essere di almeno 8 caratteri.",
+    "passwordMaxLength": "La password deve essere di massimo 256 caratteri.",
+    "invalidPassword": "Password non valida",
+    "cancel": "Annulla",
+    "remove": "Rimuovi"
+  },
+  "header": {
+    "selectNetwork": "Seleziona Rete",
+    "manageNetworks": "Gestisci reti",
+    "myWallets": "I Miei Wallet",
+    "removeWalletTitle": "Rimuovi wallet",
+    "createAccountSuccess": "Account creato con successo!",
+    "createAccountFail": "Errore nella creazione dell'account",
+    "copied": "Copiato!"
+  }
+}

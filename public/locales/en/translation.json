@@ -1,0 +1,147 @@
+{
+  "select_language": "Select Language",
+  "home": { "startNow": "Start Now" },
+  "condition": {
+    "noPersonalInfo": "We never collect keys, addresses, transactions, balances, hashes, or any personal information",
+    "noIP": "We never collect your full IP address",
+    "noSelling": "We never sell data for profit. Ever!",
+    "next": "Next"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "I have read and agree to the",
+    "termsOfUse": "Terms of Use",
+    "createNewWallet": "Create New Wallet",
+    "setupNewAccount": "Setup new eckoWALLET account",
+    "restoreWallet": "Restore Wallet",
+    "restoreFromPhrase": "Restore from recovery phrase"
+  },
+  "createPassword": {
+    "successCreate": "Create new password successfully",
+    "errorCreate": "Error creating wallet",
+    "invalidPhrase": "Invalid Secret Recovery Phrase!",
+    "importFromPhrase": "Import From Recovery Phrase",
+    "createPassword": "Create Password",
+    "pastePhrase": "Paste Secret Recovery Phrase",
+    "requiredField": "This field is required.",
+    "phraseTooLong": "Secret Recovery Phrase too long.",
+    "secretRecoveryPhrase": "Secret Recovery Phrase",
+    "import": "Import",
+    "create": "Create"
+  },
+  "passwordForm": {
+    "inputPassword": "Input Password",
+    "inputConfirmPassword": "Input Confirm Password",
+    "requiredField": "This field is required.",
+    "minPassword": "Password should be minimum 8 characters.",
+    "maxPassword": "Password should be maximum 256 characters.",
+    "passwordMismatch": "Password does not match",
+    "newPassword": "New Password (min 8 chars)",
+    "confirmPassword": "Confirm Password",
+    "passwordWarning": "I understand that I used characters that are unsafe. It is strongly recommended to use only letters (a-z), numbers (0-9), and special characters _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Secret Recovery Phrase",
+    "step1Text": "In the next step you will record your 12-word recovery phrase.\nYour recovery phrase makes it easy to restore your wallet on a new device.\nAnyone with this phrase can take control of your wallet, keep this phrase private.\nNo one can access your recovery phrase if lost, please store it safely.",
+    "step1Checkbox": "I understand that if I lose my recovery phrase, I will not be able to restore my wallet.",
+    "generating": "Generating keys...",
+    "continue": "Continue",
+    "reveal": "Click here to reveal secret words",
+    "step2Text1": "Your Secret Recovery Phrase makes it easy to back up and restore your account.",
+    "step2Text2": "Warning: Never disclose your Secret Recovery Phrase. Anyone with this phrase can take your wallet forever.",
+    "download": "Download",
+    "verifyTitle": "Verify Recovery Phrase",
+    "verifyInstruction": "Please confirm your recovery phrase by typing the words in the correct order.",
+    "successVerify": "Secret Recovery Phrase verified successfully",
+    "invalidPhrase": "Invalid Secret Recovery Phrase!",
+    "errorGeneratingKeys": "Error generating wallet keys",
+    "errorCreatingWallet": "Error creating wallet",
+    "generatingWallet": "Generating your wallet..."
+  },
+  "wallet": {
+    "netWorth": "NET WORTH",
+    "accountBalance": "ACCOUNT BALANCE",
+    "send": "Send",
+    "receive": "Receive",
+    "receiveTokens": "Receive tokens",
+    "buy": "Buy",
+    "history": "History",
+    "assets": "ASSETS",
+    "detectedTokens": "Detected tokens",
+    "tokenList": "Token list",
+    "kdaChainDistribution": "KDA Chain Distribution",
+    "chainDistribution": "Chain Distribution",
+    "tokenRemoved": "Token successfully removed",
+    "removeToken": "Remove token",
+    "editToken": "Edit token",
+    "removeTokenTitle": "Remove {{symbol}} token",
+    "confirmRemoveToken": "Are you sure you want to remove {{symbol}} token?",
+    "notTransferable": "{{contractAddress}} is not transferable!",
+    "accountDoesNotExist": "Doesn’t exist: This account does not exist.",
+    "balanceZero": "{{symbol}} balance is 0."
+  },
+  "accountActions": {
+    "shareWallet": "Share Wallet",
+    "copied": "Copied!",
+    "exportRecoveryPhrase": "Export Recovery Phrase",
+    "signHashTransaction": "Sign Hash Transaction",
+    "editAccountAlias": "Edit Account Alias",
+    "setAccountAlias": "Set Account Alias",
+    "removeSelectedWallet": "Remove Selected Wallet",
+    "createWallet": "Create Wallet",
+    "importWallet": "Import Wallet",
+    "importHardwareWallet": "Import Hardware Wallet"
+  },
+  "tokenDetector": {
+    "noTokensFound": "No other tokens found for this account."
+  },
+  "aliasModal": {
+    "accountAlias": "Account Alias",
+    "cancel": "Cancel",
+    "save": "Save",
+    "aliasChanged": "Alias changed successfully"
+  },
+  "hashSignModal": {
+    "publicKey": "Your Public Key",
+    "transactionHash": "Transaction Hash",
+    "insertTransactionHash": "Insert Transaction Hash",
+    "signature": "Signature",
+    "copied": "Copied!",
+    "clean": "Clean",
+    "sign": "Sign"
+  },
+  "popupDetailTransaction": {
+    "status": "Status",
+    "direction": "Direction",
+    "symbol": "Symbol",
+    "quantity": "Quantity",
+    "gasFee": "Gas Fee",
+    "total": "Total",
+    "viewDetails": "View Details",
+    "activityLog": "Activity Log",
+    "transactionCreated": "Transaction created with a Value of {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transaction confirmed",
+    "success": "Success",
+    "failed": "Failed",
+    "finishing": "Finishing"
+  },
+  "removeWallet": {
+    "title": "Are you sure to remove this wallet?",
+    "description": "Input password to confirm",
+    "passwordPlaceholder": "Input password",
+    "passwordRequired": "This field is required.",
+    "passwordMinLength": "Password should be minimum 8 characters.",
+    "passwordMaxLength": "Password should be maximum 256 characters.",
+    "invalidPassword": "Invalid Password",
+    "cancel": "Cancel",
+    "remove": "Remove"
+  },
+  "header": {
+    "selectNetwork": "Select Network",
+    "manageNetworks": "Manage networks",
+    "myWallets": "My Wallets",
+    "removeWalletTitle": "Remove wallet",
+    "createAccountSuccess": "Create account successfully!",
+    "createAccountFail": "Failed to create account",
+    "copied": "Copied!"
+  }
+}

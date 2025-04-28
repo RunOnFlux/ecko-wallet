@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Control, Controller, FieldValues, UseFormClearErrors, UseFormGetValues, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { BaseTextInput, InputAlert, InputError } from 'src/baseComponent';
 import { Radio } from 'src/components/Radio';
+import { useTranslation } from 'react-i18next';
 
 const DivBody = styled.div`
   width: 100%;
@@ -23,10 +24,9 @@ interface PasswordFormProps {
 }
 
 export const PasswordForm = ({ clearErrors, control, errors, getValues, register, setValue }: PasswordFormProps) => {
+  const { t } = useTranslation();
+
   const checkPasswordDiscouraged = (str) => {
-    // Check if there are characters that are NOT:
-    // \w words (letters, digits, underscore)
-    // !?"'.,;@# special characters
     const pattern = /[^\w!?"'.,;@#]/;
     return pattern.test(str);
   };
@@ -40,24 +40,24 @@ export const PasswordForm = ({ clearErrors, control, errors, getValues, register
         <BaseTextInput
           inputProps={{
             type: 'password',
-            placeholder: 'Input Password',
+            placeholder: t('passwordForm.inputPassword'),
             ...register('password', {
               required: {
                 value: true,
-                message: 'This field is required.',
+                message: t('passwordForm.requiredField'),
               },
               minLength: {
                 value: 8,
-                message: 'Password should be minimum 8 characters.',
+                message: t('passwordForm.minPassword'),
               },
               maxLength: {
                 value: 256,
-                message: 'Password should be maximum 256 characters.',
+                message: t('passwordForm.maxPassword'),
               },
             }),
           }}
           typeInput="password"
-          title="New Password (min 8 chars)"
+          title={t('passwordForm.newPassword')}
           height="auto"
           onChange={(e) => {
             clearErrors('password');
@@ -70,23 +70,23 @@ export const PasswordForm = ({ clearErrors, control, errors, getValues, register
         <BaseTextInput
           inputProps={{
             type: 'password',
-            placeholder: 'Input Confirm Password',
+            placeholder: t('passwordForm.inputConfirmPassword'),
             ...register('confirmPassword', {
               required: {
                 value: true,
-                message: 'This field is required.',
+                message: t('passwordForm.requiredField'),
               },
               maxLength: {
                 value: 256,
-                message: 'Password should be maximum 256 characters.',
+                message: t('passwordForm.maxPassword'),
               },
               validate: {
-                match: (v) => v === getValues('password') || 'Password does not match',
+                match: (v) => v === getValues('password') || t('passwordForm.passwordMismatch'),
               },
             }),
           }}
           typeInput="password"
-          title="Confirm Password"
+          title={t('passwordForm.confirmPassword')}
           height="auto"
           onChange={(e) => {
             clearErrors('confirmPassword');
@@ -103,20 +103,11 @@ export const PasswordForm = ({ clearErrors, control, errors, getValues, register
             rules={{
               required: {
                 value: true,
-                message: 'This field is required.',
+                message: t('passwordForm.requiredField'),
               },
             }}
             render={({ field: { value, name } }) => (
-              <Radio
-                onClick={() => setValue(name, !value)}
-                isChecked={value}
-                label={
-                  <InputAlert>
-                    I understand that I used characters that are unsafe. It is strongly recommended to use only letters(a-z), numbers(0-9), and
-                    special characters _!?&quot;&apos;.#@,;-
-                  </InputAlert>
-                }
-              />
+              <Radio onClick={() => setValue(name, !value)} isChecked={value} label={<InputAlert>{t('passwordForm.passwordWarning')}</InputAlert>} />
             )}
           />
         )}

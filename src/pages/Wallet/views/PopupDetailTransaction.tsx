@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import ModalCustom from 'src/components/Modal/ModalCustom';
 import { convertTowCharacters } from 'src/utils';
 import images from 'src/images';
@@ -65,12 +66,16 @@ const convertedDateString = (newTime) => {
   const second = convertTowCharacters(newTime.getSeconds());
   return `${day}/${month}/${year} - ${hours}:${minutes}:${second}`;
 };
+
 const PopupDetailTransaction = (props: Props) => {
+  const { t } = useTranslation();
   const tokens = useFungibleTokensList();
   const { isOpen, onCloseModal, closeOnOverlayClick, title, showCloseIcon, activityDetails, selectedNetwork, isFinishing } = props;
+
   const openTransactionDetails = () => {
     (window as any).chrome.tabs.create({ url: `${selectedNetwork.explorer}/tx/${activityDetails.requestKey}` });
   };
+
   const gasFee = Number(activityDetails.gas) * Number(activityDetails.gasPrice);
   const total = gasFee + Number(activityDetails.amount);
   const newTime = new Date(activityDetails.createdTime);
@@ -86,60 +91,65 @@ const PopupDetailTransaction = (props: Props) => {
   } else if (activityDetails.status === 'pending') {
     color = '#ffa500';
   }
+
   let statusText = 'Pending';
   if (!isPending) {
     if (status === 'success') {
-      statusText = isFinishing ? 'Finishing' : 'Success';
+      statusText = isFinishing ? t('popupDetailTransaction.finishing') : t('popupDetailTransaction.success');
     } else {
-      statusText = 'Failed';
+      statusText = t('popupDetailTransaction.failed');
     }
   }
+
   return (
     <ModalCustom isOpen={isOpen} onCloseModal={onCloseModal} closeOnOverlayClick={closeOnOverlayClick} title={title} showCloseIcon={showCloseIcon}>
       <DetailTx>
-        <TransactionInfoView info={activityDetails} containerStyle={{ borderTop: ' none', margin: '0px -20px 20px', paddingBottom: 10 }} />
+        <TransactionInfoView info={activityDetails} containerStyle={{ borderTop: 'none', margin: '0px -20px 20px', paddingBottom: 10 }} />
         <Item>
-          <DivChild fontWeight="700">Status</DivChild>
+          <DivChild fontWeight="700">{t('popupDetailTransaction.status')}</DivChild>
           <CustomDiv fontSize="14px" fontWeight="700" color={color}>
             {statusText}
           </CustomDiv>
         </Item>
         <Item>
-          <DivChild fontWeight="700">Direction</DivChild>
+          <DivChild fontWeight="700">{t('popupDetailTransaction.direction')}</DivChild>
           <DivChild fontWeight="700">{activityDetails?.direction}</DivChild>
         </Item>
         <Item>
-          <DivChild fontWeight="700">Symbol</DivChild>
+          <DivChild fontWeight="700">{t('popupDetailTransaction.symbol')}</DivChild>
           <DivChild fontWeight="700">{inferredToken}</DivChild>
         </Item>
         <Item>
-          <DivChild fontWeight="700">Quantity</DivChild>
+          <DivChild fontWeight="700">{t('popupDetailTransaction.quantity')}</DivChild>
           <DivChild fontWeight="700">{new BigNumber(activityDetails?.amount).decimalPlaces(12).toString()}</DivChild>
         </Item>
         <Item>
-          <DivChild>Gas Fee</DivChild>
+          <DivChild>{t('popupDetailTransaction.gasFee')}</DivChild>
           <DivChild>{isPending ? 'Pending' : new BigNumber(gasFee).decimalPlaces(12).toString()}</DivChild>
         </Item>
         {(activityDetails.symbol || 'kda') === 'kda' && (
           <Item>
-            <DivChild>Total</DivChild>
+            <DivChild>{t('popupDetailTransaction.total')}</DivChild>
             <DivChild>{isPending ? 'Pending' : `${new BigNumber(total).decimalPlaces(12).toString()} KDA`}</DivChild>
           </Item>
         )}
       </DetailTx>
       <DivFlex justifyContent="center" padding="0px 24px">
-        <Button size="full" onClick={openTransactionDetails} label="View Details" />
+        <Button size="full" onClick={openTransactionDetails} label={t('popupDetailTransaction.viewDetails')} />
       </DivFlex>
       <ActivityLog>
         <DivChild margin="0 0 10px 0" fontSize="16px" fontWeight={700}>
-          Activity Log
+          {t('popupDetailTransaction.activityLog')}
         </DivChild>
         <ActivityDetail>
           <DetailItem borderLeft>
             <TxStepText padding={`0 0 ${isPending ? '0' : '20px'} 20px`}>
               {convertedDateString(newTime)}
               <br />
-              {`Transaction created with a Value of ${activityDetails?.amount} ${activityDetails?.symbol?.toUpperCase() || 'KDA'}`}
+              {t('popupDetailTransaction.transactionCreated', {
+                amount: activityDetails?.amount,
+                symbol: activityDetails?.symbol?.toUpperCase() || 'KDA',
+              })}
             </TxStepText>
             <ImageBox>
               <Image src={images?.wallet?.addGray} alt="icon-add" />
@@ -152,7 +162,7 @@ const PopupDetailTransaction = (props: Props) => {
               <TxStepText padding="0 0 20px 20px">
                 {convertedDateString(finishDateValue)}
                 <br />
-                Transaction confirmed
+                {t('popupDetailTransaction.transactionConfirmed')}
               </TxStepText>
               <ImageBox>
                 <Image src={images?.wallet?.checkedGray} alt="check-box" />
@@ -164,6 +174,7 @@ const PopupDetailTransaction = (props: Props) => {
     </ModalCustom>
   );
 };
+
 type Props = {
   isOpen: boolean;
   onCloseModal?: any;
@@ -174,4 +185,5 @@ type Props = {
   selectedNetwork: any;
   isFinishing?: boolean;
 };
+
 export default PopupDetailTransaction;

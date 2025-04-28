@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import styled from 'styled-components';
 import { BaseTextInput } from 'src/baseComponent';
@@ -17,6 +18,7 @@ export const Icon = styled.img`
 `;
 
 export const HashSignModal = () => {
+  const { t } = useTranslation();
   const { publicKey, secretKey, type } = useAppSelector((state) => state.wallet);
 
   const [hash, setHash] = useState('');
@@ -25,7 +27,7 @@ export const HashSignModal = () => {
 
   const onCopy = (str: string) => {
     navigator.clipboard.writeText(str);
-    toast.success(<Toast type="success" content="Copied!" />);
+    toast.success(<Toast type="success" content={t('hashSignModal.copied')} />);
   };
 
   return (
@@ -33,7 +35,7 @@ export const HashSignModal = () => {
       <div style={{ padding: '24px', paddingBottom: 0 }}>
         <div style={{ marginBottom: 30 }}>
           <DivFlex justifyContent="space-between" alignItems="center" style={{ marginBottom: 10 }}>
-            <SecondaryLabel fontSize={10}>YOUR PUBLIC KEY</SecondaryLabel>
+            <SecondaryLabel fontSize={10}>{t('hashSignModal.publicKey')}</SecondaryLabel>
             <Icon src={images.wallet.copyGray} onClick={() => onCopy(publicKey)} />
           </DivFlex>
           <DivFlex justifyContent="flex-start" alignItems="flex-start">
@@ -42,12 +44,12 @@ export const HashSignModal = () => {
           </DivFlex>
         </div>
       </div>
-      <div style={{ padding: 24, borderTop: ' 1px solid #dfdfed' }}>
+      <div style={{ padding: 24, borderTop: '1px solid #dfdfed' }}>
         <SecondaryLabel fontSize={10} margin="10px 0px" style={{ display: 'block' }}>
-          TRANSACTION HASH
+          {t('hashSignModal.transactionHash')}
         </SecondaryLabel>
         <BaseTextInput
-          inputProps={{ value: hash || '', placeholder: 'Insert Transaction Hash' }}
+          inputProps={{ value: hash || '', placeholder: t('hashSignModal.insertTransactionHash') }}
           title=""
           height="auto"
           onChange={(e) => {
@@ -57,7 +59,7 @@ export const HashSignModal = () => {
         {signature && (
           <>
             <DivFlex justifyContent="space-between" alignItems="center" margin="20px 0px 10px 0px">
-              <SecondaryLabel fontSize={10}>SIGNATURE</SecondaryLabel>
+              <SecondaryLabel fontSize={10}>{t('hashSignModal.signature')}</SecondaryLabel>
               <Icon src={images.wallet.copyGray} onClick={() => onCopy(signature)} />
             </DivFlex>
             <DivFlex justifyContent="flex-start" alignItems="flex-start">
@@ -67,7 +69,7 @@ export const HashSignModal = () => {
         )}
         <DivFlex justifyContent="space-between" alignItems="center" gap="10px" padding="10px 0px" marginTop="40px">
           <Button
-            label="Clean"
+            label={t('hashSignModal.clean')}
             size="full"
             variant="grey"
             onClick={() => {
@@ -77,7 +79,7 @@ export const HashSignModal = () => {
           />
           <Button
             type="submit"
-            label="Sign"
+            label={t('hashSignModal.sign')}
             size="full"
             onClick={async () => {
               if (hash) {
@@ -98,8 +100,7 @@ export const HashSignModal = () => {
                   try {
                     signatureOutput = getSignatureFromHashWithPrivateKey64(hash, { secretKey, publicKey });
                   } catch (err) {
-                    // eslint-disable-next-line no-console
-                    console.log('err', err);
+                    console.error('err', err);
                   }
                   setSignature(signatureOutput ?? '');
                 }

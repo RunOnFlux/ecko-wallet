@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { BaseTextInput, InputError } from 'src/baseComponent';
 import Button from 'src/components/Buttons';
@@ -59,6 +59,7 @@ const DivError = styled.div`
 `;
 
 const RemoveWalletPopup = (props: Props) => {
+  const { t } = useTranslation();
   const { onClose } = props;
   const history = useHistory();
   const { passwordHash, selectedNetwork } = useAppSelector((state) => state.extensions);
@@ -73,11 +74,13 @@ const RemoveWalletPopup = (props: Props) => {
     setValue,
     clearErrors,
   } = useForm();
+
   const onChangeInput = (e) => {
     clearErrors('password');
     setPasswordInput(e.target.value);
     setValue('password', e.target.value);
   };
+
   const confirm = async () => {
     const isValid = await isValidPassword(passwordInput);
     if (isValid) {
@@ -119,37 +122,39 @@ const RemoveWalletPopup = (props: Props) => {
       }
       onClose();
     } else {
-      setError('password', { type: 'manual', message: 'Invalid Passwords' });
+      setError('password', { type: 'manual', message: t('removeWallet.invalidPassword') });
     }
   };
+
   const onError = (err) => {
     console.log('err', err);
   };
+
   return (
     <RemoveWalletContent>
       <RemoveWalletText fontSize="24px" fontWeight="700" marginBottom="20px">
-        Are you sure to remove this wallet?
+        {t('removeWallet.title')}
       </RemoveWalletText>
-      <DesRemoveWallet>Input password to confirm</DesRemoveWallet>
+      <DesRemoveWallet>{t('removeWallet.description')}</DesRemoveWallet>
       <form onSubmit={handleSubmit(confirm, onError)} id="validate-password-form">
         <DivBody>
           <BaseTextInput
             inputProps={{
               type: 'password',
-              placeholder: 'Input password',
+              placeholder: t('removeWallet.passwordPlaceholder'),
               maxLength: '1000',
               ...register('password', {
                 required: {
                   value: true,
-                  message: 'This field is required.',
+                  message: t('removeWallet.passwordRequired'),
                 },
                 minLength: {
                   value: 8,
-                  message: 'Password should be minimum 8 characters.',
+                  message: t('removeWallet.passwordMinLength'),
                 },
                 maxLength: {
                   value: 256,
-                  message: 'Password should be maximum 256 characters.',
+                  message: t('removeWallet.passwordMaxLength'),
                 },
               }),
             }}
@@ -163,14 +168,16 @@ const RemoveWalletPopup = (props: Props) => {
       </form>
       <DivChild>
         <ActionButton>
-          <Button onClick={onClose} label="Cancel" size="full" variant="secondary" />
-          <Button form="validate-password-form" disabled={!passwordInput} label="Remove" size="full" />
+          <Button onClick={onClose} label={t('removeWallet.cancel')} size="full" variant="secondary" />
+          <Button form="validate-password-form" disabled={!passwordInput} label={t('removeWallet.remove')} size="full" />
         </ActionButton>
       </DivChild>
     </RemoveWalletContent>
   );
 };
+
 type Props = {
   onClose?: any;
 };
+
 export default RemoveWalletPopup;

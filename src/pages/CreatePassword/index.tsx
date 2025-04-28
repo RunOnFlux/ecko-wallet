@@ -11,6 +11,7 @@ import { NavigationHeader } from 'src/components/NavigationHeader';
 import Button from 'src/components/Buttons';
 import { PasswordForm } from 'src/components/PasswordForm';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 const CreatePasswordWrapper = styled.div`
   padding: 0 20px;
@@ -49,14 +50,14 @@ const CreatePassword = () => {
     control,
   } = useForm();
   const { isCreateSeedPhrase, selectedNetwork } = useAppSelector((state) => state.extensions);
-
+  const { t } = useTranslation();
   const history = useHistory();
 
   const onStorePassword = async (data, path) => {
     try {
       const hash = kadenaHash(data.password);
       setLocalPassword(hash);
-      toast.success(<Toast type="success" content="Create new password successfully" />);
+      toast.success(<Toast type="success" content={t('createPassword.successCreate')} />);
 
       if (isCreateSeedPhrase) {
         const newStateWallet = await initLocalWallet(data.seedPhrase, hash);
@@ -69,7 +70,7 @@ const CreatePassword = () => {
       }
     } catch (error) {
       console.error('Error storing password:', error);
-      toast.error(<Toast type="fail" content="Error creating wallet" />);
+      toast.error(<Toast type="fail" content={t('createPassword.errorCreate')} />);
     }
   };
 
@@ -85,12 +86,13 @@ const CreatePassword = () => {
       });
     }, 300);
   };
+
   const onCheck = async (data) => {
     const { seedPhrase } = data;
     if (isCreateSeedPhrase) {
       const isSeedPhraseValid = kadenaCheckMnemonic(seedPhrase);
       if (!isSeedPhraseValid) {
-        toast.error(<Toast type="fail" content="Invalid Secret Recovery Phrase!" />);
+        toast.error(<Toast type="fail" content={t('createPassword.invalidPhrase')} />);
       } else {
         await onStorePassword(data, '/sign-in');
       }
@@ -105,7 +107,7 @@ const CreatePassword = () => {
 
   return (
     <CreatePasswordWrapper>
-      <NavigationHeader title={isCreateSeedPhrase ? 'Import From Recovery Phrase' : 'Create Password'} onBack={goBack} />
+      <NavigationHeader title={isCreateSeedPhrase ? t('createPassword.importFromPhrase') : t('createPassword.createPassword')} onBack={goBack} />
       <Body>
         <Wrapper onSubmit={handleSubmit(onCheck)} id="create-password-form">
           {isCreateSeedPhrase && (
@@ -114,20 +116,20 @@ const CreatePassword = () => {
                 <BaseTextInput
                   inputProps={{
                     type: 'password',
-                    placeholder: 'Paste Secret Recovery Phrase',
+                    placeholder: t('createPassword.pastePhrase'),
                     ...register('seedPhrase', {
                       required: {
                         value: true,
-                        message: 'This field is required.',
+                        message: t('createPassword.requiredField'),
                       },
                       maxLength: {
                         value: 256,
-                        message: 'Secret Recovery Phrase too long.',
+                        message: t('createPassword.phraseTooLong'),
                       },
                     }),
                   }}
                   typeInput="password"
-                  title="Secret Recovery Phrase"
+                  title={t('createPassword.secretRecoveryPhrase')}
                   height="auto"
                   onChange={(e) => {
                     clearErrors('seedPhrase');
@@ -142,7 +144,12 @@ const CreatePassword = () => {
         </Wrapper>
       </Body>
       <Footer>
-        <Button label={isCreateSeedPhrase ? 'Import' : 'Create'} size="full" variant="primary" form="create-password-form" />
+        <Button
+          label={isCreateSeedPhrase ? t('createPassword.import') : t('createPassword.create')}
+          size="full"
+          variant="primary"
+          form="create-password-form"
+        />
       </Footer>
     </CreatePasswordWrapper>
   );

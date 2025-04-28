@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { StickyFooter } from 'src/components';
 import Button from 'src/components/Buttons';
 import { StartBackground } from '../Home';
+import { useTranslation } from 'react-i18next';
 
 const DivBody = styled.div`
   width: 100%;
@@ -35,6 +36,7 @@ const Icon = styled.div`
 `;
 const Condition = () => {
   const history = useHistory();
+  const { t } = useTranslation();
 
   const onNext = () => {
     history.push('/init-seed-phrase');
@@ -47,23 +49,23 @@ const Condition = () => {
             <Icon>
               <Img src={images.wallet.checkedV} alt="check-box" />
             </Icon>
-            <TextRight>We never collect keys, addresses, transactions, balances, hashes, or any personal information</TextRight>
+            <TextRight>{t('condition.noPersonalInfo')}</TextRight>
           </DivBody>
           <DivBody>
             <Icon>
               <Img src={images.wallet.checkedV} alt="check-box" />
             </Icon>
-            <TextRight>We never collect your full IP address</TextRight>
+            <TextRight>{t('condition.noIP')}</TextRight>
           </DivBody>
           <DivBody>
             <Icon>
               <Img src={images.wallet.checkedV} alt="check-box" />
             </Icon>
-            <TextRight>We never sell data for profit. Ever!</TextRight>
+            <TextRight>{t('condition.noSelling')}</TextRight>
           </DivBody>
         </Body>
         <StickyFooter style={{ background: 'transparent', padding: '20px 0px' }}>
-          <Button onClick={onNext} label="Next" size="full" style={{ width: '90%', maxWidth: 890 }} />
+          <Button onClick={onNext} label={t('condition.next')} size="full" style={{ width: '90%', maxWidth: 890 }} />
         </StickyFooter>
       </div>
     </StartBackground>
