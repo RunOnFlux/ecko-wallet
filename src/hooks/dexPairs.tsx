@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 
 import { useQuery } from '@tanstack/react-query';
+import { ECKO_DEXTOOLS_API_URL } from '@Utils/constant';
 
 export type DexPairToken = {
   name: string;
@@ -29,7 +30,7 @@ export const useDexPairs = () =>
   useQuery({
     queryKey: ['pairs'],
     queryFn: async () => {
-      const apiUrl = `${process.env.REACT_APP_ECKO_DEXTOOLS_API_URL}api/pairs`;
+      const apiUrl = `${ECKO_DEXTOOLS_API_URL}api/pairs`;
       const response = await fetch(apiUrl);
 
       if (!response.ok) {

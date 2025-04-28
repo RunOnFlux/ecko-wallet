@@ -1,0 +1,39 @@
+name: Build And Upload eckoWallet Extension Zip
+
+on:
+  push:
+    tags:
+      - v2.*
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run build
+        env:
+          REACT_APP_WALLET_CONNECT_PROJECT_ID: ${{ secrets.REACT_APP_WALLET_CONNECT_PROJECT_ID }}
+
+      - name: Zip build with tag
+        run: |
+          mkdir -p dist-zip
+          zip -r dist-zip/build_${GITHUB_REF##*/}.zip ./build
+
+      - name: Upload extension artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: chrome-extension-${{ github.ref_name }}
+          path: dist-zip/build_${{ github.ref_name }}.zip

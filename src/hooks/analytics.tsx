@@ -2,6 +2,7 @@ import { useQueries, useQuery } from '@tanstack/react-query';
 import { useAppSelector } from 'src/stores/hooks';
 import { getCurrentWallet } from 'src/stores/slices/wallet';
 import { useSignMessage } from './wallet';
+import { ECKO_DEXTOOLS_API_URL } from '@Utils/constant';
 
 export type AccountBalanceChartResponse = {
   date: string;
@@ -14,7 +15,7 @@ const accountBalanceChart = async (account: string, from: string, to: string) =>
     throw new Error('Account is not provided');
   }
 
-  const apiUrl = `${process.env.REACT_APP_ECKO_DEXTOOLS_API_URL}api/account-balance-chart?account=${account}&from=${from}&to=${to}`;
+  const apiUrl = `${ECKO_DEXTOOLS_API_URL}api/account-balance-chart?account=${account}&from=${from}&to=${to}`;
   const response = await fetch(apiUrl);
 
   if (!response.ok) {
@@ -75,7 +76,7 @@ export const useTrackAccountBalance = () => {
       throw new Error('Cannot sign the track request');
     }
 
-    const apiUrl = `${process.env.REACT_APP_ECKO_DEXTOOLS_API_URL}api/account-balance-chart?account=${accountId}&from=2024-04-01&to=2024-04-30`;
+    const apiUrl = `${ECKO_DEXTOOLS_API_URL}api/account-balance-chart?account=${accountId}&from=2024-04-01&to=2024-04-30`;
     const response = await fetch(apiUrl, {
       headers: {
         'x-signature': signature,
