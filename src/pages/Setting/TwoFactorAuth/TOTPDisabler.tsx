@@ -8,11 +8,13 @@ import { NavigationHeader } from 'src/components/NavigationHeader';
 import Toast from 'src/components/Toast/Toast';
 import { useAppDispatch } from 'src/stores/hooks';
 import { Body, Footer, Page } from 'src/components/Page';
+import { useTranslation } from 'react-i18next';
 
 const TOTPDisabler = () => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const goBack = () => {
     history.goBack();
@@ -24,19 +26,20 @@ const TOTPDisabler = () => {
 
     dispatch(disable2FA());
     goBack();
-    toast.success(<Toast type="success" content="2FA removed successfully" />);
+    toast.success(<Toast type="success" content={t('settings.2faPage.successDisable')} />);
   };
 
   return (
     <Page>
-      <NavigationHeader title="Two-Factor Authentication" onBack={goBack} />
+      <NavigationHeader title={t('settings.2faPage.title')} onBack={goBack} />
       <Body>
-        <CommonLabel fontSize={18}>Two-Factor Authentication is already setupped.</CommonLabel>
+        <CommonLabel fontSize={18}>{t('settings.2faPage.description')}</CommonLabel>
       </Body>
       <Footer>
-        <Button onClick={handleDisable} isDisabled={isLoading} label="Disable" size="full" variant="primary" />
+        <Button onClick={handleDisable} isDisabled={isLoading} label={t('settings.2faPage.disableButton')} size="full" variant="primary" />
       </Footer>
     </Page>
   );
 };
+
 export default TOTPDisabler;

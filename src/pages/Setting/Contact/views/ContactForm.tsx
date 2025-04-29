@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Html5Qrcode } from 'html5-qrcode';
 import { get } from 'lodash';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { BaseTextInput, InputError } from 'src/baseComponent';
 import Button from 'src/components/Buttons';
 import { toast } from 'react-toastify';
@@ -41,6 +42,7 @@ type Props = {
 };
 
 const ContactForm = (props: Props) => {
+  const { t } = useTranslation();
   const { contact, networkId, isNew } = props;
   const { closeModal } = useModalContext();
   const [isMobile] = useWindowResizeMobile(420);
@@ -71,10 +73,7 @@ const ContactForm = (props: Props) => {
       scanner
         .start(
           { facingMode: 'environment' },
-          {
-            fps: 1,
-            qrbox: { width: 250, height: 250 },
-          },
+          { fps: 1, qrbox: { width: 250, height: 250 } },
           (decodedText) => {
             if (decodedText) {
               handleScanAccountName(decodedText);
@@ -85,9 +84,7 @@ const ContactForm = (props: Props) => {
             if (!error.includes('QR code parse error')) {
               console.error(error);
               if (isMobile) {
-                (window as any)?.chrome?.tabs?.create({
-                  url: `/index.html#${history?.location?.pathname}`,
-                });
+                (window as any)?.chrome?.tabs?.create({ url: `/index.html#${history?.location?.pathname}` });
               }
             }
           },
@@ -124,7 +121,7 @@ const ContactForm = (props: Props) => {
         setContacts(convertContacts(contacts));
         setAliasState('');
         closeModal();
-        toast.success(<Toast type="success" content="Contact Added" />);
+        toast.success(<Toast type="success" content={t('settings.contactForm.successContactAdded')} />);
       },
       () => {
         const contacts = {};
@@ -132,7 +129,7 @@ const ContactForm = (props: Props) => {
         contacts[`${0}`][`${addContact.accountName}`] = newContact;
         setLocalContacts(networkId, contacts);
         setContacts(convertContacts(contacts));
-        toast.success(<Toast type="success" content="Contact Added" />);
+        toast.success(<Toast type="success" content={t('settings.contactForm.successContactAdded')} />);
         setAliasState('');
         closeModal();
       },
@@ -161,7 +158,7 @@ const ContactForm = (props: Props) => {
           })
           .catch(() => {
             hideLoading();
-            toast.error(<Toast type="fail" content="Network error." />);
+            toast.error(<Toast type="fail" content={t('settings.contactForm.errorNetwork')} />);
           });
       }
     }
@@ -182,7 +179,7 @@ const ContactForm = (props: Props) => {
 
   const copyToClipboard = (value) => {
     navigator.clipboard.writeText(value);
-    toast.success(<Toast type="success" content="Copied!" />);
+    toast.success(<Toast type="success" content={t('settings.contactForm.copied')} />);
   };
 
   return (
@@ -192,24 +189,24 @@ const ContactForm = (props: Props) => {
           <ItemWrapperContact>
             <BaseTextInput
               inputProps={{
-                placeholder: 'e.g David',
+                placeholder: t('settings.contactForm.aliasPlaceholder'),
                 ...register('alias', {
                   required: {
                     value: true,
-                    message: 'This field is required.',
+                    message: t('settings.contactForm.requiredField'),
                   },
                   validate: {
-                    required: (val) => val.trim().length > 0 || 'Invalid data',
+                    required: (val) => val.trim().length > 0 || t('settings.contactForm.invalidData'),
                   },
                   maxLength: {
                     value: 256,
-                    message: 'Enter an alias should be maximum 256 characters.',
+                    message: t('settings.contactForm.aliasMaxLength'),
                   },
                 }),
                 value: aliasState,
               }}
               onChange={handleChangeAliasName}
-              title="Enter An Alias"
+              title={t('settings.contactForm.enterAlias')}
               height="auto"
               onBlur={(e) => {
                 setValue('alias', e.target.value.trim());
@@ -218,11 +215,15 @@ const ContactForm = (props: Props) => {
             />
           </ItemWrapperContact>
           <DivError>{errors.alias && <InputError marginTop="0">{errors.alias.message}</InputError>}</DivError>
+
           <ItemWrapperContact>
             {!isNew ? (
               <BaseTextInput
-                inputProps={{ readOnly: true, value: shortenAddress(contact?.accountName ?? '') }}
-                title="Account name"
+                inputProps={{
+                  readOnly: true,
+                  value: shortenAddress(contact?.accountName ?? ''),
+                }}
+                title={t('settings.contactForm.accountNameTitle')}
                 height="auto"
                 image={{
                   width: '15px',
@@ -235,22 +236,22 @@ const ContactForm = (props: Props) => {
               <>
                 <BaseTextInput
                   inputProps={{
-                    placeholder: 'Account name',
+                    placeholder: t('settings.contactForm.accountNamePlaceholder'),
                     ...register('accountName', {
                       required: {
                         value: true,
-                        message: 'This field is required.',
+                        message: t('settings.contactForm.requiredField'),
                       },
                       validate: {
-                        required: (val) => val.trim().length > 0 || 'Invalid data',
+                        required: (val) => val.trim().length > 0 || t('settings.contactForm.invalidData'),
                       },
                       maxLength: {
                         value: 1000,
-                        message: 'Account name should be maximum 1000 characters.',
+                        message: t('settings.contactForm.accountNameMaxLength'),
                       },
                     }),
                   }}
-                  title="Account Name"
+                  title={t('settings.contactForm.accountNameTitle')}
                   height="auto"
                   image={{
                     width: '20px',
@@ -272,11 +273,11 @@ const ContactForm = (props: Props) => {
         {isScanAccountName && (
           <ModalCustom isOpen={isScanAccountName} onCloseModal={() => setIsScanAccountName(false)}>
             <BodyModal>
-              <TitleModal>Scan QR Code</TitleModal>
+              <TitleModal>{t('settings.contactForm.scanQrTitle')}</TitleModal>
               <QrReaderContainer>
                 <div id="qr-reader" />
               </QrReaderContainer>
-              <DivChild>Place the QR code in front of your camera</DivChild>
+              <DivChild>{t('settings.contactForm.scanQrDescription')}</DivChild>
             </BodyModal>
           </ModalCustom>
         )}
@@ -284,8 +285,8 @@ const ContactForm = (props: Props) => {
 
       <DivChildButton>
         <DivFlex justifyContent="space-between" alignItems="center" gap="10px" padding="10px">
-          <Button label="Cancel" size="full" variant="disabled" onClick={() => closeModal()} />
-          <Button type="submit" label="Save" size="full" form="contact-form" />
+          <Button label={t('settings.contactForm.buttonCancel')} size="full" variant="disabled" onClick={() => closeModal()} />
+          <Button type="submit" label={t('settings.contactForm.buttonSave')} size="full" form="contact-form" />
         </DivFlex>
       </DivChildButton>
     </PageConfirm>

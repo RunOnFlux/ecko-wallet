@@ -8,6 +8,7 @@ import { DivFlex, SecondaryLabel } from 'src/components';
 import Button from 'src/components/Buttons';
 import images from 'src/images';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   font-size: 16px;
@@ -33,6 +34,7 @@ interface SeedPhraseRetrivierProps {
 }
 
 export const SeedPhraseRetrivier = ({ onSuccess, onFail }: SeedPhraseRetrivierProps) => {
+  const { t } = useTranslation();
   const { passwordHash } = useAppSelector((state) => state.extensions);
 
   const [seedPhrase, setSeedPhrase] = useState('');
@@ -73,7 +75,6 @@ export const SeedPhraseRetrivier = ({ onSuccess, onFail }: SeedPhraseRetrivierPr
           setSeedPhrase(plainSeedPhrase);
           onSuccess(plainSeedPhrase, passwordInput);
         } catch (err) {
-          // eslint-disable-next-line no-console
           console.error('Invalid hash');
           onFail?.();
         }
@@ -88,15 +89,15 @@ export const SeedPhraseRetrivier = ({ onSuccess, onFail }: SeedPhraseRetrivierPr
       {!seedPhrase && (
         <DivFlex flexDirection="column" justifyContent="center" alignItems="center" padding="50px 0px">
           <LockImage src={images.settings.iconLockOpen} alt="lock" />
-          <SecondaryLabel fontWeight={500}>Enter your password to continue</SecondaryLabel>
+          <SecondaryLabel fontWeight={500}>{t('settings.seedPhraseRetrivier.enterPassword')}</SecondaryLabel>
         </DivFlex>
       )}
       <Wrapper>
         {!seedPhrase && (
           <>
             <BaseTextInput
-              inputProps={{ placeholder: 'Input password', type: 'password' }}
-              title="Password"
+              inputProps={{ placeholder: t('settings.seedPhraseRetrivier.inputPlaceholder'), type: 'password' }}
+              title={t('settings.seedPhraseRetrivier.password')}
               height="auto"
               onChange={onChangeInput}
               onKeyPress={(event) => {
@@ -107,15 +108,21 @@ export const SeedPhraseRetrivier = ({ onSuccess, onFail }: SeedPhraseRetrivierPr
               typeInput="password"
             />
             <DivError>
-              {isErrorEmpty && <InputError marginTop="0">This field is required.</InputError>}
-              {isErrorVerify && <InputError marginTop="0">Invalid Passwords.</InputError>}
+              {isErrorEmpty && <InputError marginTop="0">{t('settings.seedPhraseRetrivier.errorRequired')}</InputError>}
+              {isErrorVerify && <InputError marginTop="0">{t('settings.seedPhraseRetrivier.errorInvalid')}</InputError>}
             </DivError>
             <CustomButton>
-              <Button size="full" variant="primary" onClick={handleVerifyPassword} isDisabled={!passwordInput} label="Continue" />
+              <Button
+                size="full"
+                variant="primary"
+                onClick={handleVerifyPassword}
+                isDisabled={!passwordInput}
+                label={t('settings.seedPhraseRetrivier.continue')}
+              />
             </CustomButton>
           </>
         )}
-        {seedPhrase && <SecondaryLabel fontWeight={500}>Your password is correct, please wait...</SecondaryLabel>}
+        {seedPhrase && <SecondaryLabel fontWeight={500}>{t('settings.seedPhraseRetrivier.correctPassword')}</SecondaryLabel>}
       </Wrapper>
     </>
   );

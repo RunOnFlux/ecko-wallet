@@ -14,11 +14,11 @@ import { NavigationHeader } from 'src/components/NavigationHeader';
 import { CommonLabel, DivFlex, SecondaryLabel, StickyFooter } from 'src/components';
 import { useModalContext } from 'src/contexts/ModalContext';
 import Toast from 'src/components/Toast/Toast';
+import { useTranslation } from 'react-i18next';
 import SelectAccount from './components/SelectAccount';
 
 const Wrapper = styled.div`
   padding: 0 20px;
-
   font-size: 16px;
   word-break: break-word;
 `;
@@ -39,6 +39,7 @@ const CustomButton = styled.div`
 `;
 
 const PageWalletConnect = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const [code, setCode] = useState('');
   const [errorCode, setErrorCode] = useState('');
@@ -65,7 +66,6 @@ const PageWalletConnect = () => {
     const setupListener = () => {
       (window as any)?.chrome?.runtime?.onMessage?.addListener(receiveMessage);
     };
-
     setupListener();
     return () => {
       (window as any)?.chrome?.runtime?.onMessage?.removeListener(receiveMessage);
@@ -94,38 +94,38 @@ const PageWalletConnect = () => {
     setErrorCode('');
     if (code !== '') {
       openModal({
-        title: 'Select accounts',
+        title: t('settings.walletConnectPage.selectAccounts'),
         content: <SelectAccount onConfirmAccounts={(accounts) => onSelectAccounts(accounts)} />,
       });
       setIsOpenCodeModal(false);
     } else {
-      setErrorCode('Invalid URL');
+      setErrorCode(t('settings.walletConnectPage.invalidUrl'));
     }
   };
 
   const onRemoveWalletConnectSession = (topic) => {
     removeWalletConnectSession(topic);
-    toast.success(<Toast type="success" content="Disconnect request sent successfully" />);
+    toast.success(<Toast type="success" content={t('settings.walletConnectPage.disconnectSuccess')} />);
     closeModal();
     history.push('/setting');
   };
 
   return (
     <Wrapper>
-      <NavigationHeader title="Wallet Connect" onBack={goBack} />
+      <NavigationHeader title={t('settings.walletConnectPage.title')} onBack={goBack} />
       <DivFlex flexDirection="column">
         <SecondaryLabel textCenter fontWeight={500} margin="20px 0">
-          {walletConnectSessions?.length === 0 ? 'NO ACTIVE SESSIONS' : 'ACTIVE SESSIONS'}
+          {walletConnectSessions?.length === 0 ? t('settings.walletConnectPage.noActiveSessions') : t('settings.walletConnectPage.activeSessions')}
         </SecondaryLabel>
         {walletConnectSessions.map((s) => (
-          <DivFlex padding="10px 0" alignItems="center" justifyContent="space-between">
+          <DivFlex key={s.topic} padding="10px 0" alignItems="center" justifyContent="space-between">
             <DivFlex gap="15px" alignItems="center">
               <img style={{ height: 25 }} src={s?.peer?.metadata?.icons[0] || images.settings.iconNetwork} />
               <DivFlex flexDirection="column">
                 <CommonLabel fontWeight={600}>{s?.peer?.metadata?.name}</CommonLabel>
                 <CommonLabel fontSize={12}>{s?.peer?.metadata?.url}</CommonLabel>
                 <CommonLabel fontWeight={600} style={{ marginTop: 10 }}>
-                  Expiry:
+                  {t('settings.walletConnectPage.expiry')}
                 </CommonLabel>
                 <CommonLabel fontSize={12}>{moment.unix(s.expiry).format('DD/MM/YYYY HH:mm')}</CommonLabel>
               </DivFlex>
@@ -134,15 +134,10 @@ const PageWalletConnect = () => {
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 openModal({
-                  title: 'Remove Connection',
+                  title: t('settings.walletConnectPage.removeConnection'),
                   content: (
                     <ConfirmModal
-                      text={
-                        <>
-                          Are you sure you want remove <br />
-                          this WalletConnect instance?
-                        </>
-                      }
+                      text={<>{t('settings.walletConnectPage.removeConfirmation')}</>}
                       onClose={closeModal}
                       onConfirm={() => onRemoveWalletConnectSession(s.topic)}
                     />
@@ -155,14 +150,14 @@ const PageWalletConnect = () => {
       </DivFlex>
       <StickyFooter>
         <DivFlex style={{ width: '90%' }}>
-          <Button size="full" variant="primary" onClick={() => setIsOpenCodeModal(true)} label="New connection" />
+          <Button size="full" variant="primary" onClick={() => setIsOpenCodeModal(true)} label={t('settings.walletConnectPage.newConnection')} />
         </DivFlex>
       </StickyFooter>
-      <ModalCustom isOpen={isCodeModalOpen} title="Add new Wallet Connect" onCloseModal={() => setIsOpenCodeModal(false)}>
+      <ModalCustom isOpen={isCodeModalOpen} title={t('settings.walletConnectPage.addConnection')} onCloseModal={() => setIsOpenCodeModal(false)}>
         <div style={{ padding: 24 }}>
           <BaseTextInput
-            inputProps={{ placeholder: 'Input uri' }}
-            title="Code"
+            inputProps={{ placeholder: t('settings.walletConnectPage.inputUri') }}
+            title={t('settings.walletConnectPage.code')}
             height="auto"
             onChange={(e) => onChangeInput(e)}
             onKeyPress={(event) => {
@@ -173,7 +168,13 @@ const PageWalletConnect = () => {
           />
           {errorCode && <InputError>{errorCode}</InputError>}
           <CustomButton>
-            <Button size="full" variant="primary" onClick={() => handleConfirmCode()} isDisabled={!code} label="Continue" />
+            <Button
+              size="full"
+              variant="primary"
+              onClick={() => handleConfirmCode()}
+              isDisabled={!code}
+              label={t('settings.walletConnectPage.continue')}
+            />
           </CustomButton>
         </div>
       </ModalCustom>

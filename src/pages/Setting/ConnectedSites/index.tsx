@@ -18,6 +18,7 @@ import { ContactBody } from '../Contact/style';
 import { SettingBody } from '../style';
 import { Body } from '../../SendTransactions/styles';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 const RightAction = styled(DivFlex)`
   svg {
@@ -28,6 +29,7 @@ const RightAction = styled(DivFlex)`
 `;
 
 const PageConnectedSites = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const { theme } = useAppThemeContext();
   const { openModal, closeModal } = useModalContext();
@@ -69,7 +71,7 @@ const PageConnectedSites = () => {
       () => {},
     );
     closeModal();
-    toast.success(<Toast type="success" content="Site removed successfully." />);
+    toast.success(<Toast type="success" content={t('settings.connectedSitesPage.removeSiteSuccess')} />);
   };
 
   const renderConnectedSites = () =>
@@ -85,13 +87,12 @@ const PageConnectedSites = () => {
           <TrashIcon
             onClick={() => {
               openModal({
-                title: 'Remove site',
+                title: t('settings.connectedSitesPage.removeSiteTitle'),
                 content: (
                   <ConfirmModal
                     text={
                       <>
-                        Are you sure you want remove <br />
-                        <b>{item}</b> site?
+                        {t('settings.connectedSitesPage.removeSiteConfirmText')} <b>{item}</b>?
                       </>
                     }
                     onClose={closeModal}
@@ -108,7 +109,7 @@ const PageConnectedSites = () => {
   return (
     <SettingBody>
       <div style={{ padding: '0 24px' }}>
-        <NavigationHeader title="Connected Sites" onBack={goBack} />
+        <NavigationHeader title={t('settings.connectedSitesPage.title')} onBack={goBack} />
       </div>
       <Body>
         <ContactBody>{renderConnectedSites()}</ContactBody>
@@ -116,4 +117,5 @@ const PageConnectedSites = () => {
     </SettingBody>
   );
 };
+
 export default PageConnectedSites;

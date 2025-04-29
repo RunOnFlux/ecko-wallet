@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAppThemeContext } from 'src/contexts/AppThemeContext';
 import ContactsIcon from 'src/images/settings-contacts.svg?react';
 import NetworksIcon from 'src/images/settings-networks.svg?react';
@@ -18,14 +19,6 @@ import { STORAGE_PASSWORD_KEY } from 'src/utils/storage';
 import { RoundedArrow } from '../../components/Activities/FinishTransferItem';
 import packageJson from '../../../package.json';
 import { useAppSelector } from 'src/stores/hooks';
-
-interface ISettingsMenu {
-  img: React.ReactNode;
-  title: string;
-  description: string;
-  onClick: any;
-  isHidden?: boolean;
-}
 
 const SettingsContainer = styled.div`
   padding: 24px;
@@ -45,7 +38,6 @@ const SettingMenu = styled(DivFlex)`
       fill: ${({ theme }) => theme.iconSettingsBackground};
     }
   }
-  border-bottom: '1px solid #dfdfed';
 `;
 
 const AboutDiv = styled(DivFlex)`
@@ -60,6 +52,7 @@ const AboutDiv = styled(DivFlex)`
 `;
 
 const PageSetting = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const { setIsLocked } = useSettingsContext();
   const { secretKey } = useAppSelector((state) => state.wallet);
@@ -71,82 +64,67 @@ const PageSetting = () => {
     setIsLocked(true);
   };
 
-  const settingsMenu: ISettingsMenu[] = [
-    { title: 'Contacts', img: <ContactsIcon />, description: 'Manage your contacts', onClick: () => history.push('/contact') },
+  const settingsMenu = [
+    { title: t('settings.contacts'), img: <ContactsIcon />, description: t('settings.contactsDesc'), onClick: () => history.push('/contact') },
+    { title: t('settings.networks'), img: <NetworksIcon />, description: t('settings.networksDesc'), onClick: () => history.push('/networks') },
     {
-      title: 'Networks',
-      img: <NetworksIcon key="networks" />,
-      description: 'Add or edit custom RPC networks',
-      onClick: () => history.push('/networks'),
-    },
-    {
-      title: 'Connected Sites',
-      img: <NetworksIcon key="connected-sites" />,
-      description: 'View and manage connected sites',
+      title: t('settings.connectedSites'),
+      img: <NetworksIcon />,
+      description: t('settings.connectedSitesDesc'),
       onClick: () => history.push('/connected-sites'),
     },
     {
-      title: 'Wallet Connect',
-      img: <NetworksIcon key="wallet-connect" />,
-      description: 'Connect with WalletConnect',
+      title: t('settings.walletConnect'),
+      img: <NetworksIcon />,
+      description: t('settings.walletConnectDesc'),
       onClick: () => history.push('/wallet-connect'),
     },
     {
-      title: 'Transaction Settings',
-      img: <NetworksIcon key="tx-settings" />,
-      description: 'Set your gas preferences',
+      title: t('settings.txSettings'),
+      img: <NetworksIcon />,
+      description: t('settings.txSettingsDesc'),
       onClick: () => history.push('/tx-settings'),
     },
     {
-      title: 'Export Recovery Phrase',
+      title: t('settings.exportPhrase'),
       img: <KeyIcon />,
-      description: 'Protect your wallet',
+      description: t('settings.exportPhraseDesc'),
       onClick: () => history.push('/export-seed-phrase'),
       isHidden: secretKey?.length !== 256,
     },
     {
-      title: 'Edit Password',
+      title: t('settings.editPassword'),
       img: <KeyIcon />,
-      description: 'Change your wallet password',
+      description: t('settings.editPasswordDesc'),
       onClick: () => history.push('/edit-password'),
     },
+    { title: t('settings.2fa'), img: <KeyIcon />, description: t('settings.2faDesc'), onClick: () => history.push('/2fa') },
     {
-      title: '2FA',
-      img: <KeyIcon />,
-      description: 'Manager two-factor authentication',
-      onClick: () => history.push('/2fa'),
-    },
-    {
-      title: 'Expand View',
+      title: t('settings.expandView'),
       img: <ExpandView />,
-      description: 'Open eckoWALLET in a new window',
-      onClick: () => (window as any)?.chrome?.tabs?.create({ url: '/index.html#/' }),
+      description: t('settings.expandViewDesc'),
+      onClick: () => window?.chrome?.tabs?.create({ url: '/index.html#/' }),
     },
     {
-      title: 'Theme',
+      title: t('settings.theme'),
       img: (
         <RoundedArrow margin="0px 5px 0px 0px" background={theme.iconSettingsBackground}>
           <ThemeIcon style={{ width: 20 }} />
         </RoundedArrow>
       ),
-      description: 'Set Wallet Theme',
+      description: t('settings.themeDesc'),
       onClick: () => history.push('/select-theme'),
     },
+    { title: t('settings.lock'), img: <Padlock />, description: t('settings.lockDesc'), onClick: lockWallet },
     {
-      title: 'Lock Wallet',
+      title: t('settings.lockSettings'),
       img: <Padlock />,
-      description: 'Protect your wallet',
-      onClick: lockWallet,
-    },
-    {
-      title: 'Lock Wallet Settings',
-      img: <Padlock />,
-      description: 'Change security settings',
+      description: t('settings.lockSettingsDesc'),
       onClick: () => history.push('/lock-settings'),
     },
   ];
 
-  const getSettingsItem = ({ img, title, description, onClick }: ISettingsMenu) => (
+  const getSettingsItem = ({ img, title, description, onClick }) => (
     <SettingMenu key={title} className="settingMenu" justifyContent="flex-start" gap="10px" padding="15px 0" onClick={onClick}>
       {img}
       <DivFlex flexDirection="column" justifyContent="flex-start">
@@ -162,7 +140,7 @@ const PageSetting = () => {
 
   return (
     <SettingsContainer>
-      {settingsMenu.map((menuItem) => !menuItem.isHidden && getSettingsItem(menuItem))}
+      {settingsMenu.map((item) => !item.isHidden && getSettingsItem(item))}
       <AboutDiv marginTop="48px" alignItems="center">
         <SecondaryLabel fontWeight={500}>
           eckoWALLET V. {packageJson.version}
@@ -173,25 +151,26 @@ const PageSetting = () => {
       </AboutDiv>
       <AboutDiv marginTop="30px">
         <a href={DISCORD_INVITATION_LINK} target="_blank" rel="noreferrer">
-          <DiscordIcon /> <SecondaryLabel>Join us on Discord</SecondaryLabel>
+          <DiscordIcon /> <SecondaryLabel>{t('settings.discord')}</SecondaryLabel>
         </a>
       </AboutDiv>
       <AboutDiv marginTop="10px">
         <a href={WEBSITE_LINK} target="_blank" rel="noreferrer">
-          <GlobeIcon /> <SecondaryLabel>Visit our website</SecondaryLabel>
+          <GlobeIcon /> <SecondaryLabel>{t('settings.website')}</SecondaryLabel>
         </a>
       </AboutDiv>
       <AboutDiv marginTop="10px">
         <a href={TERM_LINK} target="_blank" rel="noreferrer">
-          <SecondaryLabel>Terms of use</SecondaryLabel>
+          <SecondaryLabel>{t('settings.terms')}</SecondaryLabel>
         </a>
       </AboutDiv>
       <AboutDiv marginTop="10px">
         <a href={PRIVACY_LINK} target="_blank" rel="noreferrer">
-          <SecondaryLabel>Privacy Policy</SecondaryLabel>
+          <SecondaryLabel>{t('settings.privacy')}</SecondaryLabel>
         </a>
       </AboutDiv>
     </SettingsContainer>
   );
 };
+
 export default PageSetting;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
 import { ActionList } from 'src/components/ActionList';
@@ -16,13 +17,14 @@ import ContactForm from './ContactForm';
 import { useAppSelector } from 'src/stores/hooks';
 
 export const ContactInfo = ({ contact }: any) => {
+  const { t } = useTranslation();
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const { openModal, closeModal } = useModalContext();
 
   const copyToClipboard = (value) => {
     navigator.clipboard.writeText(value);
-    toast.success(<Toast type="success" content="Copied!" />);
+    toast.success(<Toast type="success" content={t('settings.contactInfo.copied')} />);
   };
 
   const handleRemoveContact = () => {
@@ -34,7 +36,7 @@ export const ContactInfo = ({ contact }: any) => {
         setLocalContacts(selectedNetwork.networkId, newContacts);
         setContacts(convertContacts(newContacts));
         setIsDeleting(false);
-        toast.success(<Toast type="success" content="Contact Removed" />);
+        toast.success(<Toast type="success" content={t('settings.contactInfo.contactRemoved')} />);
         closeModal();
       },
       () => {},
@@ -46,7 +48,7 @@ export const ContactInfo = ({ contact }: any) => {
       <div style={{ padding: 24 }}>
         <DivFlex justifyContent="space-between" alignItems="center" style={{ marginBottom: 20 }}>
           <ReceiveTitle fontWeight={700} fontSize={10}>
-            ACCOUNT NAME
+            {t('settings.contactInfo.accountName')}
           </ReceiveTitle>
           <Icon src={images.wallet.copyGray} onClick={() => copyToClipboard(contact.accountName)} />
         </DivFlex>
@@ -55,35 +57,40 @@ export const ContactInfo = ({ contact }: any) => {
           <CommonLabel wordBreak="break-word">{contact.accountName}</CommonLabel>
         </DivFlex>
       </div>
+
       <ReceiveSection flexDirection="column" padding="0 24px">
         <ActionList
           actions={[
             {
-              label: 'Edit Contact',
+              label: t('settings.contactInfo.editContact'),
               src: images.settings.iconEdit,
               onClick: () =>
                 openModal({
-                  title: `Edit ${contact.aliasName} account`,
+                  title: `${t('settings.contactInfo.editTitle')} ${contact.aliasName}`,
                   content: <ContactForm networkId={selectedNetwork.networkId} contact={contact} />,
                 }),
             },
-            { label: 'Delete', src: images.settings.iconTrash, onClick: () => setIsDeleting(true) },
+            {
+              label: t('settings.contactInfo.delete'),
+              src: images.settings.iconTrash,
+              onClick: () => setIsDeleting(true),
+            },
           ]}
         />
         {isDeleting && (
-          <ModalCustom isOpen={isDeleting} showCloseIcon={false} title="Delete contact">
+          <ModalCustom isOpen={isDeleting} showCloseIcon={false} title={t('settings.contactInfo.deleteContactTitle')}>
             <div>
               <DivFlex flexDirection="column" justifyContent="center" alignItems="center" padding="24px">
                 <CommonLabel fontSize={18} fontWeight={700}>
-                  Remove Contact?
+                  {t('settings.contactInfo.removeContact')}
                 </CommonLabel>
                 <SecondaryLabel fontWeight={400} fontSize={14} style={{ textAlign: 'center', margin: '20px 0' }}>
-                  Are you sure you want to remove this contact?
+                  {t('settings.contactInfo.confirmRemove')}
                 </SecondaryLabel>
               </DivFlex>
               <DivFlex justifyContent="space-between" alignItems="center" gap="10px" padding="24px">
-                <Button size="full" label="Cancel" variant="disabled" onClick={() => setIsDeleting(false)} />
-                <Button size="full" label="Confirm" variant="primary" onClick={handleRemoveContact} />
+                <Button size="full" label={t('settings.contactInfo.cancel')} variant="disabled" onClick={() => setIsDeleting(false)} />
+                <Button size="full" label={t('settings.contactInfo.confirm')} variant="primary" onClick={handleRemoveContact} />
               </DivFlex>
             </div>
           </ModalCustom>
