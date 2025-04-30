@@ -106,6 +106,12 @@ const PageSetting = () => {
       onClick: () => window?.chrome?.tabs?.create({ url: '/index.html#/' }),
     },
     {
+      title: t('settings.language'),
+      img: <GlobeIcon width={41} height={41} />,
+      description: t('settings.languageDesc'),
+      onClick: () => history.push('/language'),
+    },
+    {
       title: t('settings.theme'),
       img: (
         <RoundedArrow margin="0px 5px 0px 0px" background={theme.iconSettingsBackground}>

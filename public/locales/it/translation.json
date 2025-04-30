@@ -6,6 +6,7 @@
     "invalidData": "Dato non valido",
     "invalidUrl": "URL non valido",
     "cancel": "Cancella",
+    "back": "Indietro",
     "confirm": "Conferma",
     "continue": "Continua",
     "reject": "Rifiuta",
@@ -169,6 +170,8 @@
   },
   "settings": {
     "contacts": "Contatti",
+    "language": "Lingua",
+    "languageDesc": "Scegli la lingua del wallet",
     "contactsDesc": "Gestisci i tuoi contatti",
     "networks": "Reti",
     "networksDesc": "Aggiungi o modifica reti RPC personalizzate",

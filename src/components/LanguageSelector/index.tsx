@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { CommonLabel, DivFlex, PrimaryLabel } from '..';
 import { useModalContext } from 'src/contexts/ModalContext';
 
-const LANGUAGES_DATA = {
+export const LANGUAGES_DATA = {
   en: {
     label: 'English',
     flag: flags.GB.emoji,

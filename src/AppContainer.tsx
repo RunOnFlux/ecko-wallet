@@ -33,6 +33,7 @@ import History from './pages/History';
 import Nft from './pages/Nft';
 import PageTransaction from './pages/Setting/Transaction';
 import PageLockSettings from './pages/Setting/Lock';
+import PageLanguageSettings from './pages/Setting/Language';
 import PageSelectTheme from './pages/Setting/SelectTheme';
 import PageConnectedSites from './pages/Setting/ConnectedSites';
 import TwoFactorAuthenticator from './components/TwoFactorAuthenticator';
@@ -90,6 +91,7 @@ const AppContainer = () => {
           <PrivateRoute path="/connected-sites" component={PageConnectedSites} />
           <PrivateRoute path="/tx-settings" component={PageTransaction} />
           <PrivateRoute path="/lock-settings" component={PageLockSettings} />
+          <PrivateRoute path="/language" component={PageLanguageSettings} />
           <PrivateRoute path="/select-theme" component={PageSelectTheme} />
           <PrivateRoute path="/wallet-connect" component={PageWalletConnect} />
           <PrivateRoute path="/setting" component={PageSetting} />
