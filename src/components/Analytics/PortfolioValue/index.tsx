@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import Button from 'src/components/Buttons';
 import SimpleToast from 'src/components/Toast/SimpleToast';
 import { useModalContext } from 'src/contexts/ModalContext';
@@ -41,12 +42,13 @@ const ButtonWrapper = styled.button`
 `;
 
 const PortfolioValue = forwardRef<HTMLDivElement>((_, ref) => {
+  const { t } = useTranslation();
   const trackPortfolio = useAppSelector(canTrackPortfolio());
   const { openModal, closeModal } = useModalContext();
 
   const handleTrackPortfolio = () => {
     openModal({
-      title: 'Track Portfolio Value',
+      title: t('analytics.trackPortfolioTitle'),
       content: <Confirm onConfirm={closeModal} />,
     });
   };
@@ -62,14 +64,14 @@ const PortfolioValue = forwardRef<HTMLDivElement>((_, ref) => {
     <PortfolioValueApproved />
   ) : (
     <Content>
-      <TrackButton label="Start Tracking" onClick={handleTrackPortfolio} />
+      <TrackButton label={t('analytics.startTracking')} onClick={handleTrackPortfolio} />
     </Content>
   );
 
   return (
     <Container ref={ref}>
       <DivFlex flexDirection="row" alignItems="center" gap="12px">
-        <AnalyticTile>PORTFOLIO VALUE CHART</AnalyticTile>
+        <AnalyticTile>{t('analytics.portfolioValue')}</AnalyticTile>
         <ButtonWrapper onClick={onInfo}>
           <InfoIcon width={24} height={24} />
         </ButtonWrapper>

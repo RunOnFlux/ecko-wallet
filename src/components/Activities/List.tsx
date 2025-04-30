@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { groupBy, orderBy } from 'lodash';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 import { DivFlex, SecondaryLabel } from 'src/components';
 import ActivityGroup from './ActivityGroup';
 import Filters from './Filters';
@@ -25,7 +26,6 @@ const DivChild = styled.div`
   color: ${(props) => props.color};
   font-size: ${(props) => props.fontSize};
 `;
-
 const DivScroll = styled.div`
   display: block;
   padding-bottom: 90px;
@@ -35,9 +35,10 @@ interface Props {
   openActivityDetail: (activity: LocalActivity) => void;
 }
 
-const limit = 15;
+const limit = 25;
 
 const List = ({ openActivityDetail }: Props) => {
+  const { t } = useTranslation();
   const [pendingCrossChainRequestKeys, setPendingCrossChainRequestKeys] = useState<string[]>([]);
   const [status, setStatus] = useState<StatusValue>();
   const [token, setToken] = useState<string>();
@@ -61,12 +62,8 @@ const List = ({ openActivityDetail }: Props) => {
       }
       const newActivities: LocalActivity[] = [];
       for (let i = 0; i < transactions.length; i += 1) {
-        const transaction = transactions[i];
-        const activity = transactionToActivity(transaction, tokens);
-
-        if (activity) {
-          newActivities.push(activity);
-        }
+        const activity = transactionToActivity(transactions[i], tokens);
+        if (activity) newActivities.push(activity);
       }
 
       setTransactions((prev) => [...(prev || []), ...newActivities]);
@@ -79,22 +76,20 @@ const List = ({ openActivityDetail }: Props) => {
   const isMainnet = selectedNetwork.networkId === MAINNET_NETWORK_ID;
 
   useEffect(() => {
-    if (isMainnet) {
-      fetchTransactions();
-    }
+    if (isMainnet) fetchTransactions();
   }, [isMainnet]);
 
   useEffect(() => {
     getLocalActivities(
       selectedNetwork.networkId,
       account,
-      (activities: LocalActivity[]) => {
+      (activities) => {
         let localActivities: LocalActivity[] = [];
         if (!isMainnet) {
-          localActivities = activities.filter((activity) => activity.status !== 'pending');
+          localActivities = activities.filter((a) => a.status !== 'pending');
         }
-        const pendingActivities = activities.filter((activity) => activity.status === 'pending');
-        setTransactions((prev) => [...(prev || []), ...pendingActivities, ...localActivities]);
+        const pending = activities.filter((a) => a.status === 'pending');
+        setTransactions((prev) => [...(prev || []), ...pending, ...localActivities]);
       },
       () => {},
     );
@@ -106,43 +101,37 @@ const List = ({ openActivityDetail }: Props) => {
   }, [account, selectedNetwork.networkId]);
 
   const sorted = useMemo(() => {
-    const localActivities = transactions || [];
-    const filteredActivitiesByStatus = status
-      ? localActivities.filter((activity) => {
+    const all = transactions || [];
+    const byStatus = status
+      ? all.filter((a) => {
           switch (status) {
             case 'IN':
-              return activity.direction === 'IN';
+              return a.direction === 'IN';
             case 'OUT':
-              return activity.direction === 'OUT';
+              return a.direction === 'OUT';
             case 'PENDING':
-              return activity.status === 'pending';
+              return a.status === 'pending';
             default:
               return true;
           }
         })
-      : localActivities;
-    const filteredActivities = token ? filteredActivitiesByStatus.filter((activity) => activity.module === token) : filteredActivitiesByStatus;
+      : all;
+    const byToken = token ? byStatus.filter((a) => a.module === token) : byStatus;
 
-    const groupedActivities = groupBy(filteredActivities, (activity) => moment(new Date(activity.createdTime)).format('DD/MM/YYYY'));
-
-    const sortedActivities = Object.keys(groupedActivities).reduce((acc, key) => {
-      acc[key] = orderBy(groupedActivities[key], (activity) => moment(new Date(activity.createdTime)).unix(), 'desc');
-      return acc;
-    }, {} as Record<string, LocalActivity[]>);
-
-    const sortedKeys = Object.keys(groupedActivities).sort((a, b) => moment(b, 'DD/MM/YYYY').unix() - moment(a, 'DD/MM/YYYY').unix());
-    const withSortedKeys = sortedKeys.reduce((acc, key) => {
-      acc.set(key, sortedActivities[key]);
-      return acc;
+    const grouped = groupBy(byToken, (a) => moment(new Date(a.createdTime)).format('DD/MM/YYYY'));
+    const sortedGroups: Record<string, LocalActivity[]> = {};
+    Object.keys(grouped).forEach((key) => {
+      sortedGroups[key] = orderBy(grouped[key], (a) => moment(new Date(a.createdTime)).unix(), 'desc');
+    });
+    const keys = Object.keys(grouped).sort((a, b) => moment(b, 'DD/MM/YYYY').unix() - moment(a, 'DD/MM/YYYY').unix());
+    return keys.reduce((map, key) => {
+      map.set(key, sortedGroups[key]);
+      return map;
     }, new Map<string, LocalActivity[]>());
-
-    return withSortedKeys;
   }, [transactions, status, token]);
 
-  const todayString = moment().format('DD/MM/YYYY');
-  const todayActivities = sorted.get(todayString);
-  const yesterdayString = moment().subtract(1, 'days').format('DD/MM/YYYY');
-  const yesterdayActivities = sorted.get(yesterdayString);
+  const today = moment().format('DD/MM/YYYY');
+  const yesterday = moment().subtract(1, 'days').format('DD/MM/YYYY');
   const keys = [...sorted.keys()];
 
   return (
@@ -151,32 +140,35 @@ const List = ({ openActivityDetail }: Props) => {
       {keys.length ? (
         <DivChild>
           <DivScroll>
-            <InfiniteScroll dataLength={transactions?.length ?? 0} next={fetchTransactions} hasMore={hasMore} loader={<h4>Loading...</h4>}>
-              {todayActivities && (
+            <InfiniteScroll
+              dataLength={transactions?.length ?? 0}
+              next={fetchTransactions}
+              hasMore={hasMore}
+              loader={<h4>{t('activityList.loading')}</h4>}
+            >
+              {sorted.get(today) && (
                 <ActivityGroup
-                  label="Today"
-                  activities={todayActivities}
+                  label={t('activityList.today')}
+                  activities={sorted.get(today)!}
                   pendingCrossChainRequestKeys={pendingCrossChainRequestKeys}
                   openActivityDetail={openActivityDetail}
                 />
               )}
-
-              {yesterdayActivities && (
+              {sorted.get(yesterday) && (
                 <ActivityGroup
-                  label="Yesterday"
-                  activities={yesterdayActivities}
+                  label={t('activityList.yesterday')}
+                  activities={sorted.get(yesterday)!}
                   pendingCrossChainRequestKeys={pendingCrossChainRequestKeys}
                   openActivityDetail={openActivityDetail}
                 />
               )}
-
               {keys
-                .filter((key) => key !== yesterdayString && key !== todayString)
+                .filter((key) => key !== today && key !== yesterday)
                 .map((date) => (
                   <ActivityGroup
                     key={date}
                     label={moment(date, 'DD/MM/YYYY').format('DD/MM/YYYY')}
-                    activities={sorted.get(date) || []}
+                    activities={sorted.get(date)!}
                     pendingCrossChainRequestKeys={pendingCrossChainRequestKeys}
                     openActivityDetail={openActivityDetail}
                   />
@@ -187,7 +179,7 @@ const List = ({ openActivityDetail }: Props) => {
       ) : (
         <DivFlex marginTop="200px">
           <SecondaryLabel textCenter style={{ flex: 1 }}>
-            You have no transactions
+            {t('activityList.noTransactions')}
           </SecondaryLabel>
         </DivFlex>
       )}

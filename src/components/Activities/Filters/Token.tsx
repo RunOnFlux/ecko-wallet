@@ -1,30 +1,35 @@
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { DropdownRadioModal } from 'src/components/DropdownRadioModal';
 import { SelectionOption } from 'src/components/RadioSelection';
 import { useFungibleTokensList } from 'src/hooks/fungibleTokens';
 
-const TokenFilter = ({
-  token,
-  onChangeToken,
-}: TokenFilterProps) => {
+export interface TokenFilterProps {
+  token?: string;
+  onChangeToken: (token: string | undefined) => void;
+}
+
+const TokenFilter = ({ token, onChangeToken }: TokenFilterProps) => {
+  const { t } = useTranslation();
   const tokens = useFungibleTokensList();
-  const modalTokens = useMemo(() => {
-    const convertedTokens = tokens.map((t) => ({
-      label: t.symbol,
-      value: t.contractAddress,
+
+  const modalTokens: SelectionOption[] = useMemo(() => {
+    const convertedTokens = tokens.map((tkn) => ({
+      label: tkn.symbol,
+      value: tkn.contractAddress,
     }));
 
     return [
       {
-        label: 'All',
+        label: t('tokenFilter.options.all'),
         value: undefined,
       },
       ...convertedTokens,
     ];
-  }, [tokens]);
+  }, [tokens, t]);
 
-  const selectedToken = modalTokens.find((a) => a.value === token) as SelectionOption;
-  const displayValue = `Asset: ${selectedToken?.label}`;
+  const selectedToken = modalTokens.find((opt) => opt.value === token) || modalTokens[0];
+  const displayValue = `${t('tokenFilter.prefix')}${selectedToken.label}`;
 
   const handleChangeToken = (option?: SelectionOption) => {
     onChangeToken(option?.value);
@@ -32,7 +37,7 @@ const TokenFilter = ({
 
   return (
     <DropdownRadioModal
-      modalTitle="Token"
+      modalTitle={t('tokenFilter.modalTitle')}
       value={selectedToken}
       displayValue={displayValue}
       options={modalTokens}
@@ -41,10 +46,5 @@ const TokenFilter = ({
     />
   );
 };
-
-export interface TokenFilterProps {
-  token?: string;
-  onChangeToken: (token: string | undefined) => void;
-}
 
 export default TokenFilter;

@@ -13,6 +13,7 @@ import NFTIcon from 'src/images/nft-icon.svg?react';
 import { ACTIVE_TAB } from 'src/utils/constant';
 import { DivFlex, SecondaryLabel } from '..';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div<{ isFooter?: boolean }>`
   display: ${(props) => (props.isFooter ? 'block' : 'none')};
@@ -39,8 +40,8 @@ const ActionBarElement = styled.div`
     margin-bottom: 3px;
   }
   svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
   }
   &:not(.xLogo) {
     svg {
@@ -159,26 +160,28 @@ const Footer = () => {
     setActiveTab(ACTIVE_TAB.NFT);
   };
 
+  const { t } = useTranslation();
+
   return (
     <Wrapper isFooter={isFooter}>
       <DivFlex justifyContent="space-between" style={{ borderTop: '1px solid #DFDFED' }}>
         <ActionBarElement className={['xLogo', activeTab === ACTIVE_TAB.HOME && 'active']} onClick={setIconHomeActive}>
           <span>
-            <EckoWalletLogoBar style={{ width: 24, height: 24 }} />
+            <EckoWalletLogoBar style={{ width: 22, height: 22 }} />
           </span>
-          <SecondaryLabel fontWeight={700}>WALLET</SecondaryLabel>
+          <SecondaryLabel fontWeight={700}>{t('footer.wallet')}</SecondaryLabel>
         </ActionBarElement>
         <ActionBarElement className={activeTab === ACTIVE_TAB.ANALYTICS && 'active'} onClick={setIconAnalyticsActive}>
           <span>
             <AnalyticsIcon />
           </span>
-          <SecondaryLabel fontWeight={700}>ANALYTICS</SecondaryLabel>
+          <SecondaryLabel fontWeight={700}>{t('footer.analytics')}</SecondaryLabel>
         </ActionBarElement>
         <ActionBarElement className={activeTab === ACTIVE_TAB.NFT && 'active'} onClick={setIconNftActive}>
           <span>
             <NFTIcon />
           </span>
-          <SecondaryLabel fontWeight={700}>NFT</SecondaryLabel>
+          <SecondaryLabel fontWeight={700}>{t('footer.nft')}</SecondaryLabel>
         </ActionBarElement>
         <ActionBarElement
           className={activeTab === ACTIVE_TAB.SETTINGS && 'active'}
@@ -188,7 +191,7 @@ const Footer = () => {
           <span>
             <GearIcon />
           </span>
-          <SecondaryLabel fontWeight={700}>SETTINGS</SecondaryLabel>
+          <SecondaryLabel fontWeight={700}>{t('footer.settings')}</SecondaryLabel>
         </ActionBarElement>
       </DivFlex>
     </Wrapper>

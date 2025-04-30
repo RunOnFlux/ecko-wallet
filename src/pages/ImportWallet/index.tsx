@@ -5,6 +5,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { find, isEmpty, get } from 'lodash';
 import Pact from 'pact-lang-api';
+import { useTranslation } from 'react-i18next';
 import { BaseTextInput, BaseSelect, InputError } from 'src/baseComponent';
 import ModalCustom from 'src/components/Modal/ModalCustom';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
@@ -66,6 +67,7 @@ const QrReaderContainer = styled.div`
 `;
 
 const ImportAccount = () => {
+  const { t } = useTranslation();
   const optionsChain = useChainIdOptions();
   const history = useHistory();
   const goHome = useGoHome();
@@ -85,34 +87,35 @@ const ImportAccount = () => {
     getValues,
   } = useForm();
 
-  const initQRScanner = (onSuccessCallback) => {
+  const initQRScanner = (onSuccessCallback: (decoded: string) => void) => {
     const html5QrCode = new Html5Qrcode('qr-reader');
-
-    html5QrCode.start(
-      { facingMode: 'environment' },
-      { fps: 1, qrbox: { width: 250, height: 250 } },
-      (decodedText) => {
-        onSuccessCallback(decodedText);
-        html5QrCode.stop();
-      },
-      (error) => {
-        if (isMobile) {
-          (window as any)?.chrome?.tabs?.create({ url: `/index.html#${history?.location?.pathname}` });
-        }
-      },
-    );
+    html5QrCode
+      .start(
+        { facingMode: 'environment' },
+        { fps: 1, qrbox: { width: 250, height: 250 } },
+        (decodedText) => {
+          onSuccessCallback(decodedText);
+          html5QrCode.stop();
+        },
+        () => {
+          if (isMobile) {
+            (window as any)?.chrome?.tabs?.create({
+              url: `/index.html#${history.location.pathname}`,
+            });
+          }
+        },
+      )
+      .catch(() => {
+        /* ignore */
+      });
   };
 
   useEffect(() => {
-    if (isScanAccount) {
-      initQRScanner(handleScanAccount);
-    }
+    if (isScanAccount) initQRScanner(handleScanAccount);
   }, [isScanAccount]);
 
   useEffect(() => {
-    if (isScanPrivateKey) {
-      initQRScanner(handleScanPrivateKey);
-    }
+    if (isScanPrivateKey) initQRScanner(handleScanPrivateKey);
   }, [isScanPrivateKey]);
 
   const onImport = async (data) => {
@@ -120,131 +123,120 @@ const ImportAccount = () => {
     const { chainId, accountName, secretKey } = data;
 
     try {
-      const { publicKey } = Pact.crypto.restoreKeyPairFromSecretKey(data.secretKey);
+      const { publicKey } = Pact.crypto.restoreKeyPairFromSecretKey(secretKey);
       const pactCode = `(coin.details "${accountName}")`;
 
       showLoading();
       fetchLocal(pactCode, selectedNetwork.url, selectedNetwork.networkId, chainId.value)
         .then((request) => {
           hideLoading();
-          const publicCodeFromRequest = get(request, 'result.data.guard.keys[0]');
           const keySets = get(request, 'result.data.guard.keys');
+          const publicKeyOnChain = get(request, 'result.data.guard.keys[0]');
           const status = get(request, 'result.status');
-          const doesNotExist =
+          const notFound =
             request?.result?.error?.message?.startsWith('with-read: row not found:') ||
             request.result?.error?.message?.startsWith('No value found in table');
 
-          if ((keySets && keySets.length === 1) || doesNotExist) {
-            if ((publicCodeFromRequest && publicCodeFromRequest === publicKey) || doesNotExist) {
+          if ((keySets && keySets.length === 1) || notFound) {
+            if (notFound || publicKeyOnChain === publicKey) {
               getLocalPassword(
-                (accountPassword) => {
-                  const isWalletEmpty = isEmpty(find(wallets, (e) => e.chainId === chainId.value && e.account === accountName));
-
-                  if (isWalletEmpty) {
-                    const wallet = {
-                      account: encryptKey(accountName, accountPassword),
-                      publicKey: encryptKey(publicKey, accountPassword),
-                      secretKey: encryptKey(secretKey, accountPassword),
+                (pwd) => {
+                  const exists = !isEmpty(find(wallets, (w) => w.chainId === chainId.value && w.account === accountName));
+                  if (!exists) {
+                    const enc = (s) => encryptKey(s, pwd);
+                    const newWallet = {
+                      account: enc(accountName),
+                      publicKey: enc(publicKey),
+                      secretKey: enc(secretKey),
                       chainId: chainId.value,
                       connectedSites: [],
                     };
 
                     getLocalWallets(
                       selectedNetwork.networkId,
-                      (item) => {
-                        const newData = [...item, wallet];
-                        setLocalWallets(selectedNetwork.networkId, newData);
+                      (list) => {
+                        setLocalWallets(selectedNetwork.networkId, [...list, newWallet]);
                       },
                       () => {
-                        setLocalWallets(selectedNetwork.networkId, [wallet]);
+                        setLocalWallets(selectedNetwork.networkId, [newWallet]);
                       },
                     );
 
-                    const newStateWallet = {
-                      chainId: chainId.value,
+                    const stateWallet = {
                       account: accountName,
                       publicKey,
                       secretKey,
+                      chainId: chainId.value,
                       connectedSites: [],
                     };
 
-                    const newWallets = [...wallets, newStateWallet];
-                    setWallets(newWallets);
-                    setLocalSelectedWallet(wallet);
-                    setCurrentWallet(newStateWallet);
-                    toast.success(<Toast type="success" content="Import account successfully." />);
+                    setWallets([...wallets, stateWallet]);
+                    setLocalSelectedWallet(newWallet);
+                    setCurrentWallet(stateWallet);
+
+                    toast.success(<Toast type="success" content={t('importWallet.toast.importSuccess')} />);
                     goHome();
                   } else {
-                    toast.error(<Toast type="fail" content="The account you are trying to import is a duplicate." />);
+                    toast.error(<Toast type="fail" content={t('importWallet.toast.duplicateError')} />);
                   }
                 },
                 () => {},
               );
             } else {
-              toast.error(<Toast type="fail" content="Invalid account data" />);
+              toast.error(<Toast type="fail" content={t('importWallet.toast.invalidAccountData')} />);
             }
           } else if (status === 'success') {
-            toast.error(<Toast type="fail" content="Multiple key sets are not supported" />);
+            toast.error(<Toast type="fail" content={t('importWallet.toast.multipleKeys')} />);
           } else {
-            toast.error(<Toast type="fail" content="Invalid data" />);
+            toast.error(<Toast type="fail" content={t('importWallet.toast.invalidData')} />);
           }
         })
         .catch(() => {
           hideLoading();
-          toast.error(<Toast type="fail" content="Network error." />);
+          toast.error(<Toast type="fail" content={t('importWallet.toast.networkError')} />);
         });
-    } catch (e) {
-      toast.error(<Toast type="fail" content="Invalid data" />);
+    } catch {
+      toast.error(<Toast type="fail" content={t('importWallet.toast.invalidData')} />);
     }
   };
 
   const goBack = () => {
-    if (account) {
-      history.push(`${history?.location?.state?.from || '/'}`);
-    } else {
-      history.push('/init');
-    }
+    if (account) history.push(history.location.state?.from || '/');
+    else history.push('/init');
   };
 
-  const handleScanAccount = (data) => {
-    if (data) {
-      setValue('accountName', data, { shouldValidate: true });
-      setScanAccount(false);
-    }
+  const handleScanAccount = (data: string) => {
+    setValue('accountName', data.trim(), { shouldValidate: true });
+    setScanAccount(false);
   };
 
-  const handleScanPrivateKey = (data) => {
-    if (data) {
-      setValue('secretKey', data, { shouldValidate: true });
-      setScanPrivateKey(false);
-    }
+  const handleScanPrivateKey = (data: string) => {
+    setValue('secretKey', data.trim(), { shouldValidate: true });
+    setScanPrivateKey(false);
   };
 
   return (
     <PageWrapper>
-      <NavigationHeader title="Import Wallet" onBack={goBack} />
+      <NavigationHeader title={t('importWallet.header')} onBack={goBack} />
       <Body>
         <form onSubmit={handleSubmit(onImport)} id="import-wallet-form">
           <DivBody>
             <BaseTextInput
               inputProps={{
-                placeholder: 'Account Name',
+                placeholder: t('importWallet.form.accountName.placeholder'),
                 ...register('accountName', {
-                  required: {
-                    value: true,
-                    message: 'This field is required.',
-                  },
+                  required: { value: true, message: t('importWallet.validation.required') },
                   validate: {
-                    required: (val) => val.trim().length > 0 || 'Invalid data',
-                    startsWithK: (val) => val.startsWith('k:') || 'Account name must start with "k:"',
+                    required: (v) => v.trim().length > 0 || t('importWallet.validation.invalidData'),
+                    startsWithK: (v) => v.startsWith('k:') || t('importWallet.validation.startsWithK'),
                   },
                   maxLength: {
                     value: 1000,
-                    message: 'Account name should be maximum 1000 characters.',
+                    message: t('importWallet.validation.accountName.maxLength'),
                   },
                 }),
               }}
-              title="Your Account Name"
+              title={t('importWallet.form.accountName.title')}
               height="auto"
               image={{
                 width: '20px',
@@ -264,23 +256,9 @@ const ImportAccount = () => {
             <Controller
               control={control}
               name="chainId"
-              rules={{
-                required: {
-                  value: true,
-                  message: 'This field is required.',
-                },
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <BaseSelect
-                  selectProps={{
-                    onChange,
-                    onBlur,
-                    value,
-                  }}
-                  options={optionsChain}
-                  title="Chain ID"
-                  height="auto"
-                />
+              rules={{ required: { value: true, message: t('importWallet.validation.required') } }}
+              render={({ field }) => (
+                <BaseSelect selectProps={field} options={optionsChain} title={t('importWallet.form.chainId.title')} height="auto" />
               )}
             />
             {errors.chainId && !getValues('chainId') && <InputError>{errors.chainId.message}</InputError>}
@@ -289,22 +267,19 @@ const ImportAccount = () => {
           <DivBody>
             <BaseTextInput
               inputProps={{
-                placeholder: 'Private Key',
+                placeholder: t('importWallet.form.secretKey.placeholder'),
                 ...register('secretKey', {
-                  required: {
-                    value: true,
-                    message: 'This field is required.',
-                  },
+                  required: { value: true, message: t('importWallet.validation.required') },
                   validate: {
-                    required: (val) => val.trim().length > 0 || 'Invalid data',
+                    required: (v) => v.trim().length > 0 || t('importWallet.validation.invalidData'),
                   },
                   maxLength: {
                     value: 1000,
-                    message: 'Private key should be maximum 1000 characters.',
+                    message: t('importWallet.validation.secretKey.maxLength'),
                   },
                 }),
               }}
-              title="Your Private Key"
+              title={t('importWallet.form.secretKey.title')}
               height="auto"
               image={{
                 width: '20px',
@@ -324,31 +299,31 @@ const ImportAccount = () => {
       </Body>
 
       {isScanAccount && (
-        <ModalCustom isOpen={isScanAccount} onCloseModal={() => setScanAccount(false)}>
+        <ModalCustom isOpen onCloseModal={() => setScanAccount(false)}>
           <Body>
-            <TitleModal>Scan QR Code</TitleModal>
+            <TitleModal>{t('importWallet.modal.scanTitle')}</TitleModal>
             <QrReaderContainer>
               <div id="qr-reader" />
             </QrReaderContainer>
-            <DivChild>Place the QR code in front of your camera</DivChild>
+            <DivChild>{t('importWallet.modal.scanBody')}</DivChild>
           </Body>
         </ModalCustom>
       )}
 
       {isScanPrivateKey && (
-        <ModalCustom isOpen={isScanPrivateKey} onCloseModal={() => setScanPrivateKey(false)}>
+        <ModalCustom isOpen onCloseModal={() => setScanPrivateKey(false)}>
           <Body>
-            <TitleModal>Scan QR Code</TitleModal>
+            <TitleModal>{t('importWallet.modal.scanTitle')}</TitleModal>
             <QrReaderContainer>
               <div id="qr-reader" />
             </QrReaderContainer>
-            <DivChild>Place the QR code in front of your camera</DivChild>
+            <DivChild>{t('importWallet.modal.scanBody')}</DivChild>
           </Body>
         </ModalCustom>
       )}
 
       <ActionFooter>
-        <Button label="Import wallet" size="full" form="import-wallet-form" />
+        <Button label={t('importWallet.button.import')} size="full" form="import-wallet-form" />
       </ActionFooter>
     </PageWrapper>
   );

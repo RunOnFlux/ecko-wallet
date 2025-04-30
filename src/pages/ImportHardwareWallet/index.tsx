@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import Button from 'src/components/Buttons';
 import { useHistory } from 'react-router-dom';
@@ -20,7 +20,7 @@ import { useLedgerContext } from 'src/contexts/LedgerContext';
 import { RadioSelection } from 'src/components/RadioSelection';
 import { useAppSelector } from 'src/stores/hooks';
 
-const HardwareButton = styled.div`
+const HardwareButton = styled.div<{ isSelected: boolean }>`
   border-radius: 10px;
   height: 50px;
   width: 380px;
@@ -36,8 +36,9 @@ const HardwareButton = styled.div`
 `;
 
 const ImportHardwareWallet = () => {
-  const [selectedHardwareWallet, setSelectdHardwareWallet] = useState<'ledger' | 'trezor' | null>(null);
+  const { t } = useTranslation();
   const history = useHistory();
+  const [selectedHardwareWallet, setSelectedHardwareWallet] = useState<'ledger' | 'trezor' | null>(null);
   const [ledgerPublicKey, setLedgerPublicKey] = useState<string>('');
   const [selectedPublicKey, setSelectedPublicKey] = useState<string>('');
   const { wallets } = useAppSelector((state) => state.wallet);
@@ -54,12 +55,10 @@ const ImportHardwareWallet = () => {
       const publicKey = await getPublicKey();
       setLedgerPublicKey(publicKey ?? '');
       hideLoading();
-      return publicKey;
     } catch (err: any) {
-      console.log('Ledger ERROR:', err);
+      console.error('Ledger ERROR:', err);
       hideLoading();
     }
-    return null;
   };
 
   const importAccountFromLedger = () => {
@@ -68,14 +67,12 @@ const ImportHardwareWallet = () => {
       const pactCode = `(coin.details "${accountName}")`;
       showLoading();
       fetchLocal(pactCode, selectedNetwork.url, selectedNetwork.networkId, 0)
-        .then((response) => {
-          console.log('ACCOUNT DETAILS RESPONSE', response);
-          // Allow account import even if it doesn't exist
+        .then(() => {
           hideLoading();
           getLocalPassword(
             (accountPassword) => {
-              const isWalletEmpty = isEmpty(find(wallets, (e) => Number(e.chainId) === 0 && e.account === accountName));
-              if (isWalletEmpty) {
+              const alreadyExists = !isEmpty(find(wallets, (e) => Number(e.chainId) === 0 && e.account === accountName));
+              if (!alreadyExists) {
                 const wallet = {
                   account: encryptKey(accountName, accountPassword),
                   publicKey: encryptKey(ledgerPublicKey, accountPassword),
@@ -86,15 +83,10 @@ const ImportHardwareWallet = () => {
                 };
                 getLocalWallets(
                   selectedNetwork.networkId,
-                  (item) => {
-                    const newData = [...item, wallet];
-                    setLocalWallets(selectedNetwork.networkId, newData);
-                  },
-                  () => {
-                    setLocalWallets(selectedNetwork.networkId, [wallet]);
-                  },
+                  (item) => setLocalWallets(selectedNetwork.networkId, [...item, wallet]),
+                  () => setLocalWallets(selectedNetwork.networkId, [wallet]),
                 );
-                const newStateWallet = {
+                const newWalletState = {
                   chainId: 0,
                   account: accountName,
                   publicKey: ledgerPublicKey,
@@ -102,15 +94,15 @@ const ImportHardwareWallet = () => {
                   type: AccountType.LEDGER,
                   connectedSites: [],
                 };
-                const newWallets = [...wallets, newStateWallet];
-                setWallets(newWallets);
+                const updatedWallets = [...wallets, newWalletState];
+                setWallets(updatedWallets);
                 setLocalSelectedWallet(wallet);
-                setCurrentWallet(newStateWallet);
-                toast.success(<Toast type="success" content="Import Hardware wallet successfully" />);
+                setCurrentWallet(newWalletState);
+                toast.success(<Toast type="success" content={t('hardware.import.success')} />);
                 history.push('/');
                 setActiveTab(ACTIVE_TAB.HOME);
               } else {
-                toast.error(<Toast type="fail" content="The account you are trying to import is a duplicate." />);
+                toast.error(<Toast type="fail" content={t('hardware.import.error.duplicate')} />);
               }
             },
             () => {},
@@ -118,33 +110,30 @@ const ImportHardwareWallet = () => {
         })
         .catch(() => {
           hideLoading();
-          toast.error(<Toast type="fail" content="Network error." />);
+          toast.error(<Toast type="fail" content={t('hardware.import.error.network')} />);
         });
-    } catch (e) {
-      toast.error(<Toast type="fail" content="Invalid data" />);
+    } catch {
+      toast.error(<Toast type="fail" content={t('hardware.import.error.invalid')} />);
     }
   };
 
   const renderSelectHardwareWallet = () => (
     <>
       <DivFlex justifyContent="center" padding="22px 0">
-        <SecondaryLabel>Please select an hardware wallet</SecondaryLabel>
+        <SecondaryLabel>{t('hardware.import.selectDevice')}</SecondaryLabel>
       </DivFlex>
       <DivFlex flexDirection="column" gap="16px" alignItems="center">
-        <HardwareButton isSelected={selectedHardwareWallet === 'ledger'} onClick={() => setSelectdHardwareWallet('ledger')}>
+        <HardwareButton isSelected={selectedHardwareWallet === 'ledger'} onClick={() => setSelectedHardwareWallet('ledger')}>
           <LedgerLogo style={{ marginTop: 13 }} />
         </HardwareButton>
-        {/* <HardwareButton>
-          <TrezorLogo />
-        </HardwareButton> */}
       </DivFlex>
       {selectedHardwareWallet === 'ledger' && (
         <>
           <DivFlex justifyContent="center" padding="22px 0">
-            <SecondaryLabel>Connect your Ledger directly into your computer. Then unlock it and open the Kadena app.</SecondaryLabel>
+            <SecondaryLabel>{t('hardware.import.ledgerInstructions')}</SecondaryLabel>
           </DivFlex>
           <StickyFooter style={{ background: 'transparent', padding: '20px 0px' }}>
-            <Button onClick={getLedgerAccount} label="Connect" size="full" style={{ width: '90%', maxWidth: 890 }} />
+            <Button onClick={getLedgerAccount} label={t('hardware.import.connect')} size="full" style={{ width: '90%', maxWidth: 890 }} />
           </StickyFooter>
         </>
       )}
@@ -182,7 +171,7 @@ const ImportHardwareWallet = () => {
       />
       {selectedPublicKey && (
         <StickyFooter style={{ background: 'transparent', padding: '20px 0px' }}>
-          <Button onClick={importAccountFromLedger} label="Import" size="full" style={{ width: '90%', maxWidth: 890 }} />
+          <Button onClick={importAccountFromLedger} label={t('hardware.import.confirm')} size="full" style={{ width: '90%', maxWidth: 890 }} />
         </StickyFooter>
       )}
     </>
@@ -190,10 +179,11 @@ const ImportHardwareWallet = () => {
 
   return (
     <PageWrapper>
-      <NavigationHeader title="Import Hardware Wallet" onBack={goBack} />
+      <NavigationHeader title={t('hardware.import.title')} onBack={goBack} />
       {!ledgerPublicKey && renderSelectHardwareWallet()}
       {ledgerPublicKey && renderSelectAccount()}
     </PageWrapper>
   );
 };
+
 export default ImportHardwareWallet;

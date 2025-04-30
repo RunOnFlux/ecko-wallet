@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import ModalCustom from 'src/components/Modal/ModalCustom';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
 import { get } from 'lodash';
@@ -17,13 +18,12 @@ const Header = styled.div`
 `;
 
 const History = () => {
+  const { t } = useTranslation();
   const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const stateWallet = useCurrentWallet();
   const history = useHistory();
 
-  const goBack = () => {
-    history.goBack();
-  };
+  const goBack = () => history.goBack();
 
   useEffect(() => {
     if (stateWallet) {
@@ -32,13 +32,8 @@ const History = () => {
       showLoading();
       fetchLocal(pactCode, selectedNetwork?.url, selectedNetwork?.networkId, chainId)
         .then((res) => {
-          const status = get(res, 'result.status');
-          if (status === 'success') {
-            const newBalance = getBalanceFromChainwebApiResponse(res);
-            setBalance(newBalance);
-          } else {
-            // eslint-disable-next-line no-console
-            console.log('fetch error');
+          if (get(res, 'result.status') === 'success') {
+            setBalance(getBalanceFromChainwebApiResponse(res));
           }
           hideLoading();
         })
@@ -46,18 +41,19 @@ const History = () => {
           hideLoading();
         });
     }
-  }, [stateWallet?.account, stateWallet?.chainId]);
+  }, [stateWallet?.account, stateWallet?.chainId, selectedNetwork]);
 
   return (
     <PageFullScreen>
       <Header>
-        <NavigationHeader title="History" onBack={goBack} />
+        <NavigationHeader title={t('history.header')} onBack={goBack} />
       </Header>
       <BodyFullScreen>
         <Activities />
       </BodyFullScreen>
-      <ModalCustom isOpen={false} title="Confirm Send Transaction" closeOnOverlayClick={false} />
+      <ModalCustom isOpen={false} title={t('history.modal.confirmSendTransaction')} closeOnOverlayClick={false} />
     </PageFullScreen>
   );
 };
+
 export default History;

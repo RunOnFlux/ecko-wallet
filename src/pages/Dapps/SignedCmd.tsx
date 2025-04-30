@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { JsonView, darkStyles, defaultStyles } from 'react-json-view-lite';
 import 'react-json-view-lite/dist/index.css';
-import Toast from 'src/components/Toast/Toast';
-import { toast } from 'react-toastify';
 import { InputError } from 'src/baseComponent';
 import { getLocalSelectedNetwork, getLocalSigningCmd } from 'src/utils/storage';
 import Button from 'src/components/Buttons';
@@ -17,34 +15,20 @@ import { ECKO_WALLET_DAPP_SIGN_NONCE, WALLET_CONNECT_SIGN_METHOD } from 'src/uti
 import { getSignatureFromHash } from 'src/utils/chainweb';
 import { bufferToHex, useLedgerContext } from 'src/contexts/LedgerContext';
 import { AccountType } from 'src/stores/slices/wallet';
-import { SigningResponse } from './interfaces';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 export const DappWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 2;
-  font-size: 14px;
   overflow-y: scroll;
-  overflow-x: hidden;
   padding-bottom: 15px;
+  font-size: 14px;
   &::-webkit-scrollbar {
     display: none;
   }
-
-  &::-webkit-scrollbar-track {
-    background: rgb(226, 226, 226);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: rgb(54, 54, 54);
-    border-radius: 2px;
-  }
 `;
+
 export const DappContentWrapper = styled.div`
   padding: 20px;
   word-break: break-word;
@@ -55,11 +39,13 @@ export const DappContentWrapper = styled.div`
     }
   }
 `;
+
 export const DappDescription = styled.div`
   color: ${({ theme }) => theme.text.primary};
   text-align: center;
   margin: 20px 0;
 `;
+
 export const DappLogo = styled.img`
   width: 70px;
   height: 70px;
@@ -73,6 +59,7 @@ export interface WalletConnectParams {
 }
 
 const SignedCmd = () => {
+  const { t } = useTranslation();
   const [domain, setDomain] = useState('');
   const [tabId, setTabId] = useState(null);
   const [cmd, setCmd] = useState<any>({});
@@ -82,9 +69,7 @@ const SignedCmd = () => {
   const [caps, setCaps] = useState<any[]>([]);
   const [walletConnectParams, setWalletConnectParams] = useState<WalletConnectParams | null>(null);
   const { signHash, isWaitingLedger } = useLedgerContext();
-
   const { theme } = useAppThemeContext();
-
   const { publicKey, secretKey, type } = useAppSelector((state) => state.wallet);
 
   const returnSignedMessage = (result, error?, wcId = null, topic = null) => {
@@ -95,9 +80,7 @@ const SignedCmd = () => {
     } else {
       updateSignedCmdMessage(result, tabId);
     }
-    setTimeout(() => {
-      window.close();
-    }, 300);
+    setTimeout(() => window.close(), 300);
   };
 
   useEffect(() => {
@@ -107,32 +90,27 @@ const SignedCmd = () => {
         setChainId(signingCmd?.signingCmd?.chainId);
         if (signingCmd?.signingCmd?.walletConnectAction) {
           const { id, topic, walletConnectAction } = signingCmd?.signingCmd;
-          setWalletConnectParams({
-            id,
-            topic,
-            action: walletConnectAction,
-          });
+          setWalletConnectParams({ id, topic, action: walletConnectAction });
         }
-        signCommand(signingCmd?.signingCmd)
-          .then((signedResponse: any) => {
-            if (signedResponse?.signingCmd && signedResponse.signedCmd) {
-              getLocalSelectedNetwork(
-                (selectedNetwork) => {
-                  if (selectedNetwork.networkId === signedResponse?.signingCmd.networkId) {
-                    setDomain(signedResponse?.signingCmd.domain);
-                    setCmd(signedResponse?.signedCmd);
-                    setCaps(signedResponse?.signingCmd.caps);
-                  } else {
-                    setErrorMessage('Invalid Network');
-                  }
-                },
-                () => {},
-              );
-            }
-          })
-          .catch((result) => {
-            setErrorMessage(result?.message ?? 'Signing cmd error, please check your payload');
-          });
+        try {
+          const signedResponse = await signCommand(signingCmd?.signingCmd);
+          if (signedResponse?.signingCmd && signedResponse.signedCmd) {
+            getLocalSelectedNetwork(
+              (selectedNetwork) => {
+                if (selectedNetwork.networkId === signedResponse?.signingCmd.networkId) {
+                  setDomain(signedResponse?.signingCmd.domain);
+                  setCmd(signedResponse?.signedCmd);
+                  setCaps(signedResponse?.signingCmd.caps);
+                } else {
+                  setErrorMessage(t('dapps.signedCmd.invalidNetwork'));
+                }
+              },
+              () => {},
+            );
+          }
+        } catch (err: any) {
+          setErrorMessage(err?.message ?? t('dapps.signedCmd.signingCmdError'));
+        }
       },
       () => {},
     );
@@ -150,7 +128,6 @@ const SignedCmd = () => {
       );
 
       const clist = signingCmd.caps?.map((c) => c.cap) || [];
-
       const keyPairs = {
         publicKey,
         ...(secretKey.length === 64 && { secretKey }),
@@ -169,11 +146,7 @@ const SignedCmd = () => {
       if (type === AccountType.LEDGER) {
         setHash(signedCmd.hash);
         const signHashResult = await signHash(signedCmd.hash);
-        signedCmd.sigs = [
-          {
-            sig: bufferToHex(signHashResult?.signature),
-          },
-        ];
+        signedCmd.sigs = [{ sig: bufferToHex(signHashResult?.signature) }];
         return { signedCmd, signingCmd };
       }
 
@@ -184,47 +157,31 @@ const SignedCmd = () => {
 
       return { signedCmd, signingCmd };
     } catch (err: any) {
-      throw {
-        status: 'fail',
-        message: err?.message || 'Signing cmd error',
-      };
+      throw { status: 'fail', message: err?.message || t('dapps.signedCmd.signingCmdGenericError') };
     }
   };
 
   const onSave = () => {
-    if (walletConnectParams?.action === WALLET_CONNECT_SIGN_METHOD) {
-      const result: SigningResponse = {
-        chainId,
-        body: cmd,
-      };
-      returnSignedMessage(result);
-    } else {
-      const result = {
-        status: 'success',
-        signedCmd: cmd,
-      };
-      returnSignedMessage(result);
-    }
+    const result: any = walletConnectParams?.action === WALLET_CONNECT_SIGN_METHOD ? { chainId, body: cmd } : { status: 'success', signedCmd: cmd };
+    returnSignedMessage(result);
   };
 
   const onClose = () => {
-    const result = {
-      status: 'fail',
-      message: errorMessage || 'Rejected by user',
-    };
+    const result = { status: 'fail', message: errorMessage || t('dapps.signedCmd.rejectedByUser') };
     returnSignedMessage(result, {
       code: 5000,
-      message: errorMessage || 'User rejected.',
+      message: errorMessage || t('dapps.signedCmd.userRejected'),
     });
   };
 
   const newCmd = cmd.cmd ? { ...cmd, cmd: JSON.parse(cmd.cmd) } : {};
+
   return (
     <DappWrapper>
       <DappLogo src={images.eckoWalletLogoRounded} alt="logo" />
       <DappDescription>{domain}</DappDescription>
       <SecondaryLabel style={{ textAlign: 'center' }} uppercase>
-        signed command
+        {t('dapps.signedCmd.signedCommand')}
       </SecondaryLabel>
       {Object.keys(newCmd).length > 0 && (
         <DappContentWrapper>
@@ -233,42 +190,41 @@ const SignedCmd = () => {
       )}
       {type === AccountType.LEDGER && isWaitingLedger && (
         <DivFlex flexDirection="column" alignItems="center" padding="24px">
-          <SecondaryLabel style={{ textAlign: 'center' }}>
-            Please enable BLIND SIGNING <br />
-            and follow the instruction on your ledger first
-          </SecondaryLabel>
+          <SecondaryLabel style={{ textAlign: 'center' }}>{t('dapps.signedCmd.pleaseEnableLedger')}</SecondaryLabel>
           {hash && (
             <SecondaryLabel style={{ textAlign: 'center', marginTop: 30, wordBreak: 'break-all' }}>
-              HASH TO SIGN:
+              {t('dapps.signedCmd.hashToSign')}
               <br />
               {hash}
             </SecondaryLabel>
           )}
         </DivFlex>
       )}
-      {!isWaitingLedger && caps?.length ? (
+      {!isWaitingLedger && caps?.length > 0 && (
         <>
-          <SecondaryLabel style={{ textAlign: 'center' }}>CAPABILITIES</SecondaryLabel>
+          <SecondaryLabel style={{ textAlign: 'center' }}>{t('dapps.signedCmd.capabilities')}</SecondaryLabel>
           <DivFlex flexDirection="column">
-            {caps?.map((cap, i) => (
-              <DivFlex key={i} flexDirection="column">
-                <DappContentWrapper>
-                  <JsonView data={cap} clickToExpandNode style={theme.isDark ? darkStyles : defaultStyles} />
-                </DappContentWrapper>
-              </DivFlex>
+            {caps.map((cap, i) => (
+              <DappContentWrapper key={i}>
+                <JsonView data={cap} clickToExpandNode style={theme.isDark ? darkStyles : defaultStyles} />
+              </DappContentWrapper>
             ))}
           </DivFlex>
         </>
-      ) : null}
-
+      )}
       {!isWaitingLedger && (
         <>
           <DivFlex gap="10px" padding="24px">
             <InputError>{errorMessage}</InputError>
           </DivFlex>
           <DivFlex gap="10px" padding="24px">
-            <Button size="full" label={errorMessage ? 'Close' : 'Reject'} variant="disabled" onClick={onClose} />
-            {!errorMessage && <Button isDisabled={isWaitingLedger} size="full" label="Confirm" onClick={onSave} />}
+            <Button
+              size="full"
+              label={errorMessage ? t('dapps.signedCmd.close') : t('dapps.signedCmd.reject')}
+              variant="disabled"
+              onClick={onClose}
+            />
+            {!errorMessage && <Button isDisabled={isWaitingLedger} size="full" label={t('dapps.signedCmd.confirm')} onClick={onSave} />}
           </DivFlex>
         </>
       )}

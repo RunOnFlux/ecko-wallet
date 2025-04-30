@@ -30,6 +30,7 @@ import { IFungibleToken } from 'src/pages/ImportToken';
 import { BodyModal, TitleModal, DivChild, InputWrapper, Warning } from '../styles';
 import { KeyWrapper, KeyItemWrapper, KeyRemove, ContactSuggestion } from './style';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   goToTransfer: any;
@@ -62,6 +63,7 @@ const QrReaderContainer = styled.div`
 `;
 
 const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) => {
+  const { t } = useTranslation();
   const { contacts, recent, selectedNetwork } = useAppSelector((state) => state.extensions);
   const sortedContacts = [...(contacts || [])]?.sort((a, b) => a?.aliasName?.localeCompare(b?.aliasName));
   const rootStateWallet = useAppSelector((state) => state.wallet);
@@ -373,19 +375,22 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
   };
 
   const isNonTransferable = NON_TRANSFERABLE_TOKENS.some((nonTransf) => nonTransf === fungibleToken?.contractAddress);
-
   return (
     <>
       <div>
         <form>
-          {isNonTransferable ? (
+          {isNonTransferable && (
             <Warning type="danger" margin="-20px 0px 10px 0px">
               <AlertIconSVG />
               <div>
-                <span>{fungibleToken?.contractAddress} is not transferable!</span>
+                <span>
+                  {t('selectReceiver.notTransferable', {
+                    contractAddress: fungibleToken?.contractAddress,
+                  })}
+                </span>
               </div>
             </Warning>
-          ) : null}
+          )}
           <DivBottomShadow justifyContent="center" flexDirection="column" padding="20px" margin="0 -20px">
             <InputWrapper style={{ marginTop: 0 }}>
               <Controller
@@ -394,7 +399,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
                 rules={{
                   required: {
                     value: true,
-                    message: 'This field is required.',
+                    message: t('common.requiredField'),
                   },
                 }}
                 render={({ field: { onChange, value } }) => (
@@ -405,42 +410,53 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
                       onChange(chain);
                     }}
                     options={optionsChain}
-                    title="Source Chain ID"
+                    title={t('selectReceiver.form.sourceChainId.title')}
                   />
                 )}
               />
-              {errors.sourceChainId && <InputError>{(errors.sourceChainId as any).message}</InputError>}
+              {errors.sourceChainId && <InputError>{errors.sourceChainId.message}</InputError>}
             </InputWrapper>
+
             <InputWrapper>
-              <SLabel uppercase>{fungibleToken?.symbol} Chain balance</SLabel>
+              <SLabel uppercase>
+                {t('selectReceiver.balanceLabel', {
+                  symbol: fungibleToken?.symbol,
+                })}
+              </SLabel>
               <SInput value={selectedChainBalance} readOnly />
-              {usdPrices && fungibleToken && usdPrices[fungibleToken?.contractAddress] ? (
-                <SecondaryLabel>{humanReadableNumber(usdPrices[fungibleToken?.contractAddress] * selectedChainBalance)} USD</SecondaryLabel>
-              ) : null}
+              {usdPrices && fungibleToken && usdPrices[fungibleToken.contractAddress] && (
+                <SecondaryLabel>{humanReadableNumber(usdPrices[fungibleToken.contractAddress] * selectedChainBalance)} USD</SecondaryLabel>
+              )}
             </InputWrapper>
+
             <InputWrapper
               ref={destinationAccountInputRef}
-              style={{ borderTop: '1px solid #DFDFED', paddingTop: 10, marginTop: 30, position: 'relative' }}
+              style={{
+                borderTop: '1px solid #DFDFED',
+                paddingTop: 10,
+                marginTop: 30,
+                position: 'relative',
+              }}
             >
               <BaseTextInput
+                title={t('selectReceiver.form.destinationAccount.title')}
+                subtitle={convertedAccountName}
+                height="auto"
                 inputProps={{
                   ...register('accountName', {
                     required: {
                       value: true,
-                      message: 'This field is required.',
+                      message: t('common.requiredField'),
                     },
                     validate: {
-                      required: (val) => val.trim().length > 0 || 'Invalid data',
+                      required: (val) => val.trim().length > 0 || t('common.invalidData'),
                     },
                     maxLength: {
                       value: 1000,
-                      message: 'Destination account should be maximum 1000 characters.',
+                      message: t('selectReceiver.validation.maxDestinationAccount'),
                     },
                   }),
                 }}
-                subtitle={convertedAccountName}
-                title="Destination Account"
-                height="auto"
                 image={{
                   width: '20px',
                   height: '20px',
@@ -465,12 +481,13 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
                 }}
               />
               {errors.accountName && <InputError>{errors.accountName.message}</InputError>}
-              {isOpenContactSuggestion && accountName ? (
-                <ContactSuggestion style={{ width: rect?.width ? rect?.width - 10 : '100%' }} className="lightScrollbar">
-                  {getTabContent(sortedContacts?.filter((c) => c.aliasName?.toLocaleLowerCase()?.includes(accountName?.toLocaleLowerCase())))}
+              {isOpenContactSuggestion && accountName && (
+                <ContactSuggestion style={{ width: rect?.width ? rect.width - 10 : '100%' }} className="lightScrollbar">
+                  {getTabContent(sortedContacts?.filter((c) => c.aliasName?.toLowerCase().includes(accountName.toLowerCase())))}
                 </ContactSuggestion>
-              ) : null}
+              )}
             </InputWrapper>
+
             <InputWrapper>
               <Controller
                 control={control}
@@ -478,146 +495,105 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
                 rules={{
                   required: {
                     value: true,
-                    message: 'This field is required.',
+                    message: t('common.requiredField'),
                   },
                 }}
                 render={({ field: { onChange, value } }) => (
-                  <BaseModalSelect value={value} onChange={onChange} options={optionsChain} title="Target Chain ID" />
+                  <BaseModalSelect value={value} onChange={onChange} options={optionsChain} title={t('selectReceiver.form.targetChainId.title')} />
                 )}
               />
-              {errors.chainId && <InputError>{(errors.chainId as any).message}</InputError>}
+              {errors.chainId && <InputError>{errors.chainId.message}</InputError>}
             </InputWrapper>
           </DivBottomShadow>
         </form>
       </div>
+
       {isSearching ? (
         <div />
       ) : (
         <div style={{ margin: '30px 0 70px 0' }}>
-          <div>
-            {recent.length > 0 && (
-              <div>
-                <SecondaryLabel>RECENT</SecondaryLabel>
-                {getTabContent(
-                  recent.filter((r, i) => i < 5),
-                  true,
-                )}
-              </div>
-            )}
-            {contacts.length > 0 && (
-              <div>
-                <SecondaryLabel>CONTACTS</SecondaryLabel>
-                {getTabContent(sortedContacts)}
-              </div>
-            )}
-          </div>
+          {recent.length > 0 && (
+            <div>
+              <SecondaryLabel>{t('selectReceiver.recent')}</SecondaryLabel>
+              {getTabContent(recent.slice(0, 5), true)}
+            </div>
+          )}
+          {contacts.length > 0 && (
+            <div>
+              <SecondaryLabel>{t('selectReceiver.contacts')}</SecondaryLabel>
+              {getTabContent(sortedContacts)}
+            </div>
+          )}
         </div>
       )}
+
       <StickyFooter>
-        <Button onClick={handleSubmit(onNext)} label="Continue" size="full" style={{ width: '90%', maxWidth: 890 }} />
+        <Button onClick={handleSubmit(onNext)} label={t('common.continue')} size="full" style={{ width: '90%', maxWidth: 890 }} />
       </StickyFooter>
 
       {isScanSearching && (
         <ModalCustom isOpen={isScanSearching} onCloseModal={() => setIsScanSearching(false)}>
           <BodyModal>
-            <TitleModal>Scan QR Code</TitleModal>
-            {isScanSearching && (
-              <ModalCustom isOpen={isScanSearching} onCloseModal={() => setIsScanSearching(false)}>
-                <BodyModal>
-                  <TitleModal>Scan QR Code</TitleModal>
-                  <QrReaderContainer>
-                    <div id="qr-reader" />
-                  </QrReaderContainer>
-                  <DivChild>Place the QR code in front of your camera</DivChild>
-                </BodyModal>
-              </ModalCustom>
-            )}
-            <DivChild>Place the QR code in front of your camera</DivChild>
+            <TitleModal>{t('importWallet.modal.scanTitle')}</TitleModal>
+            <QrReaderContainer>
+              <div id="qr-reader" />
+            </QrReaderContainer>
+            <DivChild>{t('importWallet.modal.scanBody')}</DivChild>
           </BodyModal>
         </ModalCustom>
       )}
-      {isOpenConfirmModal && (
-        <ModalCustom isOpen={isOpenConfirmModal} title="Warning" onCloseModal={() => setIsOpenConfirmModal(false)} closeOnOverlayClick={false}>
-          <div style={{ padding: '0 24px' }}>
-            <DivFlex justifyContent="center">
-              <JazzAccount
-                diameter={50}
-                account={account.accountName}
-                renderAccount={
-                  account.accountName &&
-                  ((acc) => (
-                    <DivFlex flexDirection="column">
-                      <CommonLabel color={theme.footer?.primary} fontWeight={700} fontSize={14}>
-                        {acc}
-                      </CommonLabel>
-                      <SecondaryLabel fontWeight={500}>CHAIN {account.chainId}</SecondaryLabel>
-                    </DivFlex>
-                  ))
-                }
-              />
-            </DivFlex>
 
-            <DivFlex justifyContent="center" marginTop="20px" style={{ textAlign: 'center' }}>
-              <CommonLabel fontWeight={600} fontSize={14}>
-                Receiving account does not exist. <br />
-                You must specify a keyset to create this account.
-              </CommonLabel>
-            </DivFlex>
-            <form onSubmit={handleSubmit(onCreateAccount)} id="create-account-form">
-              <InputWrapper>
-                <BaseTextInput
-                  inputProps={{
-                    placeholder: 'Input public key',
-                    ...register('publicKey', {
-                      required: false,
-                    }),
-                  }}
-                  image={{
-                    width: '20px',
-                    height: '20px',
-                    src: images.transfer.violetAdd,
-                    callback: () => onAddPublicKey(),
-                  }}
-                  title="Public Key"
+      {isOpenConfirmModal && (
+        <ModalCustom
+          isOpen
+          title={t('selectReceiver.confirm.warningTitle')}
+          onCloseModal={() => setIsOpenConfirmModal(false)}
+          closeOnOverlayClick={false}
+        >
+          <div style={{ padding: '0 24px' }}>
+            {/* ... */}
+            <BaseTextInput
+              title={t('selectReceiver.confirm.publicKeyTitle')}
+              inputProps={{
+                placeholder: t('selectReceiver.confirm.publicKeyPlaceholder'),
+                ...register('publicKey'),
+              }}
+              image={{
+                width: '20px',
+                height: '20px',
+                src: images.transfer.violetAdd,
+                callback: () => onAddPublicKey(),
+              }}
+              height="auto"
+              onChange={(e) => {
+                clearErrors('publicKey');
+                setValue('publicKey', e.target.value);
+              }}
+            />
+            {/* ... */}
+            <Controller
+              control={control}
+              name="pred"
+              rules={{
+                required: {
+                  value: true,
+                  message: t('common.requiredField'),
+                },
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <BaseSelect
+                  selectProps={{ onChange, onBlur, value }}
+                  options={predList}
+                  title={t('selectReceiver.confirm.predicateTitle')}
+                  placeholder={t('selectReceiver.confirm.predicatePlaceholder')}
                   height="auto"
-                  onChange={(e) => {
-                    clearErrors('publicKey');
-                    setValue('publicKey', e.target.value);
-                  }}
                 />
-                {errors.publicKey && <InputError>{errors.publicKey.message}</InputError>}
-              </InputWrapper>
-              {pKeys.length > 0 && renderKeys()}
-              <InputWrapper>
-                <Controller
-                  control={control}
-                  name="pred"
-                  rules={{
-                    required: {
-                      value: true,
-                      message: 'This field is required.',
-                    },
-                  }}
-                  render={({ field: { onChange, onBlur, value } }) => (
-                    <BaseSelect
-                      selectProps={{
-                        onChange,
-                        onBlur,
-                        value,
-                      }}
-                      options={predList}
-                      title="Predicate"
-                      height="auto"
-                      placeholder="Predicate"
-                    />
-                  )}
-                />
-                {errors.pred && !getValues('pred') && <InputError>{errors.pred}</InputError>}
-              </InputWrapper>
-            </form>
+              )}
+            />
+            {/* ... */}
             <DivFlex justifyContent="space-between" alignItems="center" margin="24px 0px" gap="10px">
-              <Button size="full" variant="disabled" label="Cancel" onClick={() => setIsOpenConfirmModal(false)} />
-              <Button size="full" variant="primary" label="Continue" form="create-account-form" />
+              <Button size="full" variant="disabled" label={t('common.cancel')} onClick={() => setIsOpenConfirmModal(false)} />
+              <Button size="full" variant="primary" label={t('common.continue')} form="create-account-form" />
             </DivFlex>
           </div>
         </ModalCustom>

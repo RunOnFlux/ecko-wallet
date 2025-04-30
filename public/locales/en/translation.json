@@ -6,7 +6,12 @@
     "invalidData": "Invalid data",
     "invalidUrl": "Invalid URL",
     "cancel": "Cancel",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "continue": "Continue",
+    "reject": "Reject",
+    "usd": "{{value}} USD",
+    "next": "Next",
+    "close": "Close"
   },
   "condition": {
     "noPersonalInfo": "We never collect keys, addresses, transactions, balances, hashes, or any personal information",
@@ -338,5 +343,299 @@
       "code": "Code",
       "continue": "Continue"
     }
+  },
+  "buy": {
+    "title": "Buy",
+    "description": "The purchase and sale of cryptocurrencies are facilitated through a third-party service provided by Onramper.\n\nWhile eckoWallet is committed to ensuring the highest level of security for its users, we cannot guarantee the security and privacy of third-party services.",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "error": {
+      "noAddress": "Wallet address not available",
+      "generic": "Unable to connect to the service. Please try again later."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "WALLET ANALYTICS",
+    "dexAnalytics": "DEX ANALYTICS",
+    "portfolioValue": "PORTFOLIO VALUE CHART",
+    "startTracking": "Start Tracking",
+    "trackPortfolioTitle": "Track Portfolio Value",
+    "trackPortfolioStart": "START ACCOUNT BALANCE MONITORING",
+    "trackPortfolioDesc1": "By confirming, you're authorising the start of tracking for your account balance.",
+    "trackPortfolioDesc2": "Proceed?",
+    "confirm": "Confirm",
+    "confirming": "Confirming, please wait...",
+    "disclaimerTitle": "Info!",
+    "disclaimerText": "The information displayed on this page is currently under BETA testing, and is provided on an \"as is\" and \"as available\" basis."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Invalid Network",
+      "signingCmdError": "Signing cmd error, please check your payload",
+      "signingCmdGenericError": "Signing cmd error",
+      "rejectedByUser": "Rejected by user",
+      "userRejected": "User rejected.",
+      "signedCommand": "Signed Command",
+      "hashToSign": "HASH TO SIGN:",
+      "pleaseEnableLedger": "Please enable BLIND SIGNING\nand follow the instruction on your ledger first",
+      "capabilities": "Capabilities",
+      "close": "Close",
+      "reject": "Reject",
+      "confirm": "Confirm"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Quick Sign Request",
+      "code": "Code",
+      "capabilities": "Capabilities",
+      "rawData": "Raw Data",
+      "command": "Command {{index}}/{{total}}",
+      "hashToSign": "HASH TO SIGN ({{count}}/{{total}}):",
+      "ledgerInstructions": "Please enable BLIND SIGNING and follow the instruction on your ledger first",
+      "close": "Close",
+      "reject": "Reject",
+      "confirm": "Confirm",
+      "error.invalidStructure": "QuickSign fail: your data structure is invalid",
+      "error.pubKeyNotFound": "QuickSign fail: wallet public key not found",
+      "error.ledger": "Ledger signing fail"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Import Hardware Wallet",
+      "selectDevice": "Please select a hardware wallet",
+      "ledgerInstructions": "Connect your Ledger directly into your computer. Then unlock it and open the Kadena app.",
+      "connect": "Connect",
+      "confirm": "Import",
+      "success": "Import Hardware wallet successfully",
+      "error": {
+        "duplicate": "The account you are trying to import is a duplicate.",
+        "network": "Network error.",
+        "invalid": "Invalid data"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Import From Ledger",
+      "instruction": "Plug your Ledger directly into your computer, then unlock it and open the Kadena app.",
+      "continue": "Continue",
+      "publicKey": "PUBLIC KEY",
+      "account": "ACCOUNT",
+      "confirm": "Confirm import",
+      "success": "Import account successfully.",
+      "error": {
+        "duplicate": "The account you are trying to import is a duplicate.",
+        "network": "Network error fetching account data",
+        "invalid": "Invalid data"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Import Tokens",
+      "contractLabel": "Token Contract Address",
+      "symbolLabel": "Token Symbol",
+      "placeholder": {
+        "contract": "Input Contract Address",
+        "symbol": "Input Symbol"
+      },
+      "add": "Add Token",
+      "edit": "Edit Token",
+      "success": "Token successfully saved",
+      "error": {
+        "duplicate": "Token already added",
+        "notFound": "Cannot resolve {{contract}}.details - Please check the token exists on {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Import Wallet",
+    "form": {
+      "accountName": {
+        "title": "Your Account Name",
+        "placeholder": "Account Name"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "Your Private Key",
+        "placeholder": "Private Key"
+      }
+    },
+    "validation": {
+      "required": "This field is required.",
+      "invalidData": "Invalid data",
+      "startsWithK": "Account name must start with \"k:\"",
+      "accountName": {
+        "maxLength": "Account name should be maximum 1000 characters."
+      },
+      "secretKey": {
+        "maxLength": "Private key should be maximum 1000 characters."
+      }
+    },
+    "modal": {
+      "scanTitle": "Scan QR Code",
+      "scanBody": "Place the QR code in front of your camera"
+    },
+    "button": {
+      "import": "Import wallet"
+    },
+    "toast": {
+      "importSuccess": "Account imported successfully.",
+      "duplicateError": "The account you are trying to import is a duplicate.",
+      "invalidAccountData": "Invalid account data",
+      "multipleKeys": "Multiple key sets are not supported",
+      "invalidData": "Invalid data",
+      "networkError": "Network error."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "I have an existing private key.",
+      "prompt": "Import your existing private key"
+    },
+    "button": {
+      "import": "Import"
+    },
+    "image": {
+      "alt": "Import icon"
+    }
+  },
+  "nft": {
+    "header": "Your collectibles",
+    "noOwned": "No NFT owned"
+  },
+  "sendTransactions": {
+    "header": "Send {{symbol}} Transaction"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger sign success",
+    "ledgerSignFailed": "Ledger sign failed or rejected",
+    "transferSuccess": "Transfer successfully",
+    "transferFailed": "Transfer failed",
+    "transactionSent": "Transaction sent successfully! Please check the transaction status in the history tab",
+    "networkError": "Network error.",
+    "loadingTop": "Please don’t close this view",
+    "loadingBottom": "You will be redirected when the transaction ends",
+    "labelReceiver": "Receiver",
+    "labelAmount": "Amount",
+    "labelGasLimit": "Gas Limit",
+    "labelGasPrice": "Gas Price",
+    "labelGasFee": "Gas Fee",
+    "labelTotal": "Total",
+    "warningCrossChainLine1": "You are about to do a cross chain transfer",
+    "warningCrossChainLine2": "This operation usually takes more time",
+    "warningNonKAccountLine1": "You are sending to a non “k:account”!",
+    "warningNonKAccountLine2": "Are you sure you want to proceed?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} is not transferable!",
+    "form": {
+      "sourceChainId": {
+        "title": "Source Chain ID"
+      },
+      "destinationAccount": {
+        "title": "Destination Account"
+      },
+      "targetChainId": {
+        "title": "Target Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Destination account should be maximum 1000 characters."
+    },
+    "balanceLabel": "{{symbol}} Chain balance",
+    "recent": "RECENT",
+    "contacts": "CONTACTS",
+    "confirm": {
+      "warningTitle": "Warning",
+      "publicKeyTitle": "Public Key",
+      "publicKeyPlaceholder": "Input public key",
+      "predicateTitle": "Predicate",
+      "predicatePlaceholder": "Predicate"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Cannot send to yourself",
+    "invalidGasLimit": "Invalid gas limit",
+    "gasLimitInteger": "Gas limit must be integer",
+    "invalidGasPrice": "Invalid gas price",
+    "insufficientFundsGas": "Insufficient funds for gas fee",
+    "newAddressDetected": "New address detected! Add to your contacts",
+    "tokenNotExists": "{{contractAddress}} could not exist on CHAIN {{chainId}}!",
+    "transactionParameters": "Transaction Parameters",
+    "estimatedGas": "Estimated gas {{gas}}",
+    "speed": "{{speed}} speed",
+    "modal": {
+      "confirmTitle": "Confirm Send Transaction",
+      "gasParametersTitle": "Transaction Parameters"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gas Limit"
+      },
+      "gasPrice": {
+        "title": "Gas Price"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Amount to send",
+    "button": {
+      "half": "HALF",
+      "max": "MAX"
+    },
+    "error": {
+      "insufficientFunds": "Insufficient funds",
+      "invalidAmount": "Invalid amount"
+    },
+    "balance": "Balance: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp logo",
+    "sendTransaction": "Send Transaction",
+    "destinationNotFound": "Destination account not found"
+  },
+  "history": {
+    "header": "History",
+    "modal": {
+      "confirmSendTransaction": "Confirm Send Transaction"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Transaction Details"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Your account name"
+  },
+  "activityList": {
+    "loading": "Loading...",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "noTransactions": "You have no transactions"
+  },
+  "statusFilter": {
+    "modalTitle": "Status",
+    "prefix": "Status: ",
+    "options": {
+      "all": "All",
+      "in": "Received",
+      "out": "Sent",
+      "pending": "Pending"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Asset: ",
+    "options": {
+      "all": "All"
+    }
+  },
+  "footer": {
+    "wallet": "WALLET",
+    "analytics": "ANALYTICS",
+    "nft": "NFT",
+    "settings": "SETTINGS"
   }
 }

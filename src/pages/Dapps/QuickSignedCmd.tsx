@@ -18,6 +18,7 @@ import { DEFAULT_BIP32_PATH, bufferToHex, useLedgerContext } from 'src/contexts/
 import { AccountType } from 'src/stores/slices/wallet';
 import { DappDescription, DappLogo, DappWrapper, WalletConnectParams } from './SignedCmd';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 const CommandListWrapper = styled.div`
   padding: 10px;
@@ -42,6 +43,7 @@ const CodeWrapper = styled.div`
 `;
 
 const QuickSignedCmd = () => {
+  const { t } = useTranslation();
   const [domain, setDomain] = useState('');
   const [tabId, setTabId] = useState(null);
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -211,14 +213,11 @@ const QuickSignedCmd = () => {
       <DappLogo src={images.eckoWalletLogoRounded} alt="logo" />
       <DappDescription>{domain}</DappDescription>
       <CommonLabel textCenter fontWeight={800} style={{ marginBottom: 20 }}>
-        QUICK SIGN REQUEST
+        {t('dapps.quickSignCmd.quickSignRequest')}
       </CommonLabel>
       {type === AccountType.LEDGER && isWaitingLedger && (
         <DivFlex flexDirection="column" alignItems="center" padding="24px">
-          <SecondaryLabel style={{ textAlign: 'center' }}>
-            Please enable BLIND SIGNING <br />
-            and follow the instruction on your ledger first
-          </SecondaryLabel>
+          <SecondaryLabel style={{ textAlign: 'center' }}>{t('dapps.quickSignCmd.ledgerInstructions')}</SecondaryLabel>
           {currentHash?.hash && (
             <SecondaryLabel style={{ textAlign: 'center', marginTop: 30, wordBreak: 'break-all' }}>
               HASH TO SIGN ({currentHash?.count}/{totalCommands}):
