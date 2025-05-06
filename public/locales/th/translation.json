@@ -1,0 +1,646 @@
+{
+  "select_language": "เลือกภาษา",
+  "home": {
+    "startNow": "เริ่มตอนนี้"
+  },
+  "common": {
+    "requiredField": "จำเป็นต้องกรอกข้อมูลนี้",
+    "invalidData": "ข้อมูลไม่ถูกต้อง",
+    "invalidUrl": "URL ไม่ถูกต้อง",
+    "cancel": "ยกเลิก",
+    "back": "กลับ",
+    "confirm": "ยืนยัน",
+    "continue": "ดำเนินการต่อ",
+    "reject": "ปฏิเสธ",
+    "usd": "{{value}} USD",
+    "next": "ถัดไป",
+    "close": "ปิด"
+  },
+  "condition": {
+    "noPersonalInfo": "เราไม่เคยเก็บกุญแจ, ที่อยู่, ธุรกรรม, ยอดคงเหลือ, แฮช หรือข้อมูลส่วนบุคคลใดๆ",
+    "noIP": "เราไม่เคยเก็บที่อยู่ IP ทั้งหมดของคุณ",
+    "noSelling": "เราไม่เคยขายข้อมูลเพื่อหากำไรเลย!",
+    "next": "ถัดไป"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "ฉันได้อ่านและยอมรับ",
+    "termsOfUse": "ข้อกำหนดในการใช้งาน",
+    "createNewWallet": "สร้างกระเป๋าใหม่",
+    "setupNewAccount": "ตั้งค่าบัญชี eckoWALLET ใหม่",
+    "restoreWallet": "กู้คืนกระเป๋า",
+    "restoreFromPhrase": "กู้คืนจากวลี"
+  },
+  "createPassword": {
+    "successCreate": "สร้างรหัสผ่านสำเร็จ",
+    "errorCreate": "เกิดข้อผิดพลาดในการสร้างกระเป๋า",
+    "invalidPhrase": "วลีสำรองส่วนตัวไม่ถูกต้อง!",
+    "importFromPhrase": "นำเข้าจากวลีสำรอง",
+    "createPassword": "สร้างรหัสผ่าน",
+    "pastePhrase": "วางวลีสำรองส่วนตัว",
+    "requiredField": "จำเป็นต้องกรอกข้อมูลนี้",
+    "phraseTooLong": "วลีสำรองยาวเกินไป",
+    "secretRecoveryPhrase": "วลีสำรองส่วนตัว",
+    "import": "นำเข้า",
+    "create": "สร้าง"
+  },
+  "passwordForm": {
+    "inputPassword": "กรอกรหัสผ่าน",
+    "inputConfirmPassword": "กรอกยืนยันรหัสผ่าน",
+    "requiredField": "จำเป็นต้องกรอกข้อมูลนี้",
+    "minPassword": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
+    "maxPassword": "รหัสผ่านต้องไม่เกิน 256 ตัวอักษร",
+    "passwordMismatch": "รหัสผ่านไม่ตรงกัน",
+    "newPassword": "รหัสผ่านใหม่ (อย่างน้อย 8 ตัวอักษร)",
+    "confirmPassword": "ยืนยันรหัสผ่าน",
+    "passwordWarning": "ฉันตระหนักว่าฉันใช้ตัวอักษรที่ไม่ปลอดภัย แนะนำให้ใช้เฉพาะตัวอักษร (a–z), ตัวเลข (0–9) และสัญลักษณ์พิเศษ _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "วลีสำรองส่วนตัว",
+    "step1Text": "ในขั้นตอนถัดไป คุณจะจดบันทึกวลีสำรอง 12 คำ\nวลีสำรองจะช่วยให้คุณกู้คืนกระเป๋าบนอุปกรณ์ใหม่ได้อย่างง่ายดาย\nผู้ใดก็ตามที่มีวลีนี้ สามารถควบคุมกระเป๋าของคุณได้ ดังนั้นโปรดเก็บรักษาให้ปลอดภัย\nหากคุณทำวลีหาย จะไม่มีใครกู้คืนให้ได้ ดังนั้นโปรดเก็บให้ปลอดภัย",
+    "step1Checkbox": "ฉันเข้าใจว่า หากฉันสูญเสียวลีสำรอง จะไม่สามารถกู้คืนกระเป๋าได้",
+    "generating": "กำลังสร้างกุญแจ...",
+    "continue": "ดำเนินการต่อ",
+    "reveal": "คลิกที่นี่เพื่อแสดงคำลับ",
+    "step2Text1": "วลีสำรองส่วนตัวช่วยให้สำรองและกู้คืนบัญชีได้ง่าย",
+    "step2Text2": "คำเตือน: อย่าเปิดเผยวลีสำรองส่วนตัวของคุณ ผู้ใดมีวลีสามารถยึดกระเป๋าคุณได้ตลอดไป",
+    "download": "ดาวน์โหลด",
+    "verifyTitle": "ยืนยันวลีสำรอง",
+    "verifyInstruction": "ยืนยันวลีสำรองโดยการกรอกคำตามลำดับที่ถูกต้อง",
+    "successVerify": "ยืนยันวลีสำรองสำเร็จ",
+    "invalidPhrase": "วลีสำรองส่วนตัวไม่ถูกต้อง!",
+    "errorGeneratingKeys": "เกิดข้อผิดพลาดในการสร้างกุญแจกระเป๋า",
+    "errorCreatingWallet": "เกิดข้อผิดพลาดในการสร้างกระเป๋า",
+    "generatingWallet": "กำลังสร้างกระเป๋าของคุณ..."
+  },
+  "wallet": {
+    "netWorth": "มูลค่าสุทธิ",
+    "accountBalance": "ยอดคงเหลือในบัญชี",
+    "send": "ส่ง",
+    "receive": "รับ",
+    "receiveTokens": "รับโทเค็น",
+    "buy": "ซื้อ",
+    "history": "ประวัติ",
+    "assets": "สินทรัพย์",
+    "detectedTokens": "โทเค็นที่ตรวจพบ",
+    "tokenList": "รายการโทเค็น",
+    "kdaChainDistribution": "การแจกจ่าย KDA chain",
+    "chainDistribution": "การแจกจ่ายเชน",
+    "tokenRemoved": "ลบโทเค็นสำเร็จ",
+    "removeToken": "ลบโทเค็น",
+    "editToken": "แก้ไขโทเค็น",
+    "removeTokenTitle": "ลบโทเค็น {{symbol}}",
+    "confirmRemoveToken": "คุณแน่ใจหรือไม่ว่าจะลบโทเค็น {{symbol}}?",
+    "notTransferable": "{{contractAddress}} ไม่สามารถโอนถ่ายได้!",
+    "accountDoesNotExist": "ไม่พบบัญชี: บัญชีนี้ไม่มีอยู่",
+    "balanceZero": "ยอด {{symbol}} เป็น 0"
+  },
+  "accountActions": {
+    "shareWallet": "แชร์กระเป๋า",
+    "copied": "คัดลอกแล้ว!",
+    "exportRecoveryPhrase": "ส่งออกวลีสำรอง",
+    "signHashTransaction": "ลงนามธุรกรรมแฮช",
+    "editAccountAlias": "แก้ไขชื่อเล่นบัญชี",
+    "setAccountAlias": "ตั้งชื่อเล่นบัญชี",
+    "removeSelectedWallet": "ลบกระเป๋าที่เลือก",
+    "createWallet": "สร้างกระเป๋า",
+    "importWallet": "นำเข้ากระเป๋า",
+    "importHardwareWallet": "นำเข้ากระเป๋าฮาร์ดแวร์"
+  },
+  "tokenDetector": {
+    "noTokensFound": "ไม่พบโทเค็นอื่นสำหรับบัญชีนี้"
+  },
+  "aliasModal": {
+    "accountAlias": "ชื่อเล่นบัญชี",
+    "cancel": "ยกเลิก",
+    "save": "บันทึก",
+    "aliasChanged": "เปลี่ยนชื่อเล่นสำเร็จ"
+  },
+  "hashSignModal": {
+    "publicKey": "กุญแจสาธารณะของคุณ",
+    "transactionHash": "แฮชธุรกรรม",
+    "insertTransactionHash": "กรอกแฮชธุรกรรม",
+    "signature": "ลายเซ็น",
+    "copied": "คัดลอกแล้ว!",
+    "clean": "ล้าง",
+    "sign": "ลงนาม"
+  },
+  "popupDetailTransaction": {
+    "status": "สถานะ",
+    "direction": "ทิศทาง",
+    "symbol": "สัญลักษณ์",
+    "quantity": "จำนวน",
+    "gasFee": "ค่าธรรมเนียมแก๊ส",
+    "total": "รวม",
+    "viewDetails": "ดูรายละเอียด",
+    "activityLog": "บันทึกกิจกรรม",
+    "transactionCreated": "สร้างธุรกรรมมูลค่า {{amount}} {{symbol}}",
+    "transactionConfirmed": "ธุรกรรมได้รับการยืนยัน",
+    "success": "สำเร็จ",
+    "failed": "ไม่สำเร็จ",
+    "finishing": "กำลังดำเนินการ"
+  },
+  "removeWallet": {
+    "title": "คุณแน่ใจหรือไม่ว่าจะลบกระเป๋านี้?",
+    "description": "เพื่อยืนยัน กรุณากรอกรหัสผ่าน",
+    "passwordPlaceholder": "กรอกรหัสผ่าน",
+    "passwordRequired": "จำเป็นต้องกรอกข้อมูลนี้",
+    "passwordMinLength": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
+    "passwordMaxLength": "รหัสผ่านต้องไม่เกิน 256 ตัวอักษร",
+    "invalidPassword": "รหัสผ่านไม่ถูกต้อง",
+    "cancel": "ยกเลิก",
+    "remove": "ลบ"
+  },
+  "header": {
+    "selectNetwork": "เลือกเครือข่าย",
+    "manageNetworks": "จัดการเครือข่าย",
+    "myWallets": "กระเป๋าของฉัน",
+    "removeWalletTitle": "ลบกระเป๋า",
+    "createAccountSuccess": "สร้างบัญชีสำเร็จ!",
+    "createAccountFail": "สร้างบัญชีไม่สำเร็จ",
+    "copied": "คัดลอกแล้ว!"
+  },
+  "signIn": {
+    "loginTitle": "เข้าสู่ระบบบัญชีของคุณ",
+    "passwordPlaceholder": "กรอกรหัสผ่าน",
+    "passwordTitle": "รหัสผ่าน",
+    "signInButton": "เข้าสู่ระบบ",
+    "invalidPassword": "รหัสผ่านไม่ถูกต้อง",
+    "required": "จำเป็นต้องกรอกข้อมูลนี้",
+    "minLength": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
+    "maxLength": "รหัสผ่านต้องไม่เกิน 256 ตัวอักษร",
+    "initWalletError": "เกิดข้อผิดพลาดในการเริ่มต้นกระเป๋า"
+  },
+  "settings": {
+    "contacts": "รายชื่อ",
+    "language": "ภาษา",
+    "languageDesc": "เลือกภาษาของกระเป๋า",
+    "contactsDesc": "จัดการรายชื่อผู้ติดต่อของคุณ",
+    "networks": "เครือข่าย",
+    "networksDesc": "เพิ่มหรือแก้ไข RPC ที่กำหนดเอง",
+    "connectedSites": "เว็บไซต์ที่เชื่อมต่อ",
+    "connectedSitesDesc": "ดูและจัดการเว็บไซต์ที่เชื่อมต่อ",
+    "walletConnect": "Wallet Connect",
+    "walletConnectDesc": "เชื่อมต่อผ่าน WalletConnect",
+    "txSettings": "การตั้งค่าธุรกรรม",
+    "txSettingsDesc": "ตั้งค่าก๊าซ",
+    "exportPhrase": "ส่งออกวลีสำรอง",
+    "exportPhraseDesc": "ปกป้องกระเป๋าของคุณ",
+    "editPassword": "แก้ไขรหัสผ่าน",
+    "editPasswordDesc": "เปลี่ยนรหัสผ่านกระเป๋า",
+    "2fa": "2FA",
+    "2faDesc": "จัดการการยืนยันสองปัจจัย",
+    "expandView": "ขยายมุมมอง",
+    "expandViewDesc": "เปิด eckoWALLET ในหน้าต่างใหม่",
+    "theme": "ธีม",
+    "themeDesc": "ตั้งค่าธีมสำหรับกระเป๋า",
+    "lock": "ล็อกกระเป๋า",
+    "lockDesc": "ปกป้องกระเป๋าของคุณ",
+    "lockSettings": "การตั้งค่าการล็อก",
+    "lockSettingsDesc": "เปลี่ยนการตั้งค่าความปลอดภัย",
+    "discord": "เข้าร่วม Discord ของเรา",
+    "website": "เยี่ยมชมเว็บไซต์ของเรา",
+    "terms": "ข้อกำหนดการใช้",
+    "privacy": "นโยบายความเป็นส่วนตัว",
+    "connectedSitesPage": {
+      "title": "เว็บไซต์ที่เชื่อมต่อ",
+      "removeSiteTitle": "ลบเว็บไซต์",
+      "removeSiteConfirmText": "คุณแน่ใจหรือไม่ว่าจะลบ",
+      "removeSiteSuccess": "ลบเว็บไซต์สำเร็จ"
+    },
+    "contactsPage": {
+      "title": "รายชื่อ",
+      "newContactTitle": "ผู้ติดต่อใหม่",
+      "addNewContact": "เพิ่มผู้ติดต่อใหม่",
+      "noContacts": "ไม่มีผู้ติดต่อ"
+    },
+    "contactForm": {
+      "enterAlias": "กรอกชื่อเล่น",
+      "aliasPlaceholder": "เช่น David",
+      "accountNameTitle": "ชื่อบัญชี",
+      "accountNamePlaceholder": "ชื่อบัญชี",
+      "scanQrTitle": "สแกน QR",
+      "scanQrDescription": "ชี้กล้องไปที่ QR โค้ด",
+      "buttonCancel": "ยกเลิก",
+      "buttonSave": "บันทึก",
+      "successContactAdded": "เพิ่มผู้ติดต่อสำเร็จ",
+      "errorNetwork": "เกิดข้อผิดพลาดเครือข่าย",
+      "copied": "คัดลอกแล้ว!",
+      "requiredField": "จำเป็นต้องกรอกข้อมูลนี้",
+      "invalidData": "ข้อมูลไม่ถูกต้อง",
+      "aliasMaxLength": "ชื่อเล่นต้องไม่เกิน 256 ตัวอักษร",
+      "accountNameMaxLength": "ชื่อบัญชีต้องไม่เกิน 1000 ตัวอักษร"
+    },
+    "contactInfo": {
+      "copied": "คัดลอกแล้ว!",
+      "contactRemoved": "ลบผู้ติดต่อเรียบร้อยแล้ว",
+      "accountName": "ชื่อบัญชี",
+      "editContact": "แก้ไขผู้ติดต่อ",
+      "editTitle": "แก้ไขบัญชี",
+      "delete": "ลบ",
+      "deleteContactTitle": "ลบผู้ติดต่อ",
+      "removeContact": "ต้องการลบผู้ติดต่อ?",
+      "confirmRemove": "คุณแน่ใจหรือไม่ว่าจะลบผู้ติดต่อคนนี้?",
+      "cancel": "ยกเลิก",
+      "confirm": "ยืนยัน"
+    },
+    "editPasswordPage": {
+      "title": "แก้ไขรหัสผ่าน",
+      "passwordChanged": "เปลี่ยนรหัสผ่านสำเร็จ",
+      "cannotUpdatePassword": "ไม่สามารถอัปเดตรหัสผ่านได้",
+      "save": "บันทึก"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "กรอกรหัสผ่านเพื่อดำเนินการต่อ",
+      "inputPlaceholder": "กรอกรหัสผ่าน",
+      "password": "รหัสผ่าน",
+      "errorRequired": "จำเป็นต้องกรอกข้อมูลนี้",
+      "errorInvalid": "รหัสผ่านไม่ถูกต้อง",
+      "continue": "ดำเนินการต่อ",
+      "correctPassword": "รหัสผ่านถูกต้อง กรุณารอ..."
+    },
+    "exportSeedPhrase": {
+      "title": "ส่งออกวลีสำรอง",
+      "copied": "คัดลอกแล้ว!",
+      "description": "วลีสำรองส่วนตัวช่วยให้สำรองและกู้คืนบัญชีได้ง่าย",
+      "warning": "อย่าเปิดเผยวลีสำรองส่วนตัว ผู้ใดมีวลีสามารถยึดกระเป๋าของคุณได้ตลอดไป",
+      "copyKeyphrase": "คัดลอกวลี",
+      "download": "ดาวน์โหลด"
+    },
+    "lockSettingsPage": {
+      "title": "การตั้งค่าการล็อกอัตโนมัติ",
+      "saved": "บันทึกการตั้งค่าเรียบร้อยแล้ว",
+      "required": "จำเป็นต้องกรอกข้อมูลนี้",
+      "placeholder": "เลือกเวลาล็อกอัตโนมัติ",
+      "selectTitle": "เวลาล็อกอัตโนมัติ",
+      "restore": "กู้คืนค่าเริ่มต้น",
+      "save": "บันทึก"
+    },
+    "networksPage": {
+      "title": "เครือข่าย",
+      "network": "เครือข่าย",
+      "addNew": "เพิ่มใหม่",
+      "editSuccess": "แก้ไขเครือข่ายสำเร็จ",
+      "addSuccess": "เพิ่มเครือข่ายสำเร็จ",
+      "errorUrl": "URL มีอยู่แล้ว",
+      "deleteSuccess": "ลบเครือข่ายสำเร็จ",
+      "remove": "ลบ",
+      "save": "บันทึก",
+      "confirmRemove": "ลบเครือข่ายนี้?",
+      "confirmRemoveDesc": "คุณแน่ใจหรือไม่ว่าจะลบเครือข่ายนี้?",
+      "placeholderName": "กรอกชื่อเครือข่าย",
+      "placeholderUrl": "กรอก RPC URL ใหม่",
+      "placeholderExplorer": "กรอก URL สำรวจบล็อก",
+      "placeholderNetworkId": "กรอก ID เครือข่าย",
+      "titleName": "ชื่อเครือข่าย",
+      "titleUrl": "RPC URL ใหม่",
+      "titleExplorer": "URL สำรวจบล็อก",
+      "titleNetworkId": "ID เครือข่าย",
+      "nameMax": "ชื่อเครือข่ายต้องไม่เกิน 1000 ตัวอักษร",
+      "urlMax": "RPC URL ใหม่ต้องไม่เกิน 1000 ตัวอักษร",
+      "explorerMax": "URL สำรวจบล็อกต้องไม่เกิน 1000 ตัวอักษร",
+      "networkIdMax": "ID เครือข่ายต้องไม่เกิน 1000 ตัวอักษร"
+    },
+    "selectTheme": {
+      "title": "เลือกธีม"
+    },
+    "txSettingsPage": {
+      "title": "การตั้งค่าธุรกรรม",
+      "gasLimit": "ขีดจำกัดแก๊ส",
+      "gasLimitPlaceholder": "กรอกขีดจำกัดแก๊ส",
+      "finishCrossChain": "เสร็จสิ้น Crosschain Gas Station",
+      "finishCrossChainPlaceholder": "กรอก Crosschain Gas Station",
+      "crossChainGasLimit": "ขีดจำกัดแก๊สข้ามเชน",
+      "crossChainGasLimitPlaceholder": "กรอกขีดจำกัดแก๊สข้ามเชน",
+      "crossChainGasPrice": "ราคาก๊าซข้ามเชน",
+      "crossChainGasPricePlaceholder": "กรอกราคาก๊าซข้ามเชน",
+      "save": "บันทึก",
+      "restoreDefault": "กู้คืนค่าเริ่มต้น",
+      "successSave": "บันทึกการตั้งค่าสำเร็จ",
+      "requiredField": "จำเป็นต้องกรอกข้อมูลนี้",
+      "invalidValue": "ค่าที่ไม่ถูกต้อง"
+    },
+    "2faPage": {
+      "title": "การยืนยันสองขั้นตอน",
+      "description": "การยืนยันสองขั้นตอนถูกตั้งค่าแล้ว",
+      "disableButton": "ปิดการใช้งาน",
+      "successDisable": "ปิดใช้งาน 2FA สำเร็จ",
+      "installApp": "ติดตั้ง",
+      "orSimilar": "หรือแอปที่คล้ายกัน",
+      "scanQRCode": "สแกน QR โค้ดด้านล่าง:",
+      "enter6Digits": "กรอกรหัส 6 หลัก",
+      "invalidCode": "รหัสไม่ถูกต้อง",
+      "saveButton": "บันทึก",
+      "setupSuccess": "ตั้งค่า 2FA สำเร็จ"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "เลือกรายการบัญชี",
+      "invalidUrl": "URL ไม่ถูกต้อง",
+      "disconnectSuccess": "ส่งคำขอยกเลิกการเชื่อมต่อสำเร็จ",
+      "noActiveSessions": "ไม่มีเซสชันที่ใช้งาน",
+      "activeSessions": "เซสชันที่ใช้งาน",
+      "expiry": "หมดอายุ:",
+      "removeConnection": "ลบการเชื่อมต่อ",
+      "removeConfirmation": "คุณแน่ใจหรือไม่ว่าจะลบ WalletConnect นี้?",
+      "newConnection": "การเชื่อมต่อใหม่",
+      "addConnection": "เพิ่ม Wallet Connect ใหม่",
+      "inputUri": "กรอก URI",
+      "code": "รหัส",
+      "continue": "ดำเนินการต่อ"
+    }
+  },
+  "buy": {
+    "title": "ซื้อ",
+    "description": "การซื้อและขายสกุลเงินคริปโตทำผ่านบริการบุคคลที่สามจาก Onramper\n\nแม้ว่า eckoWALLET จะมุ่งมั่นในการให้ความปลอดภัยสูงสุดแก่ผู้ใช้ แต่เราไม่สามารถรับประกันความปลอดภัยและความเป็นส่วนตัวของบริการบุคคลที่สามได้",
+    "cancel": "ยกเลิก",
+    "confirm": "ยืนยัน",
+    "error": {
+      "noAddress": "ไม่พบที่อยู่กระเป๋า",
+      "generic": "ไม่สามารถเชื่อมต่อบริการได้ กรุณาลองอีกครั้งภายหลัง"
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "การวิเคราะห์กระเป๋า",
+    "dexAnalytics": "การวิเคราะห์ DEX",
+    "portfolioValue": "กราฟมูลค่าพอร์ตโฟลิโอ",
+    "startTracking": "เริ่มการติดตาม",
+    "trackPortfolioTitle": "ติดตามมูลค่าพอร์ตโฟลิโอ",
+    "trackPortfolioStart": "เริ่มติดตามยอดคงเหลือ",
+    "trackPortfolioDesc1": "เมื่อยืนยัน คุณยินยอมให้ติดตามยอดคงเหลือในบัญชีของคุณ",
+    "trackPortfolioDesc2": "คุณต้องการดำเนินการต่อหรือไม่?",
+    "confirm": "ยืนยัน",
+    "confirming": "กำลังยืนยัน โปรดรอ...",
+    "disclaimerTitle": "ข้อมูล!",
+    "disclaimerText": "ข้อมูลบนหน้านี้อยู่ในขั้นตอน BETA และให้บริการ 'ตามสภาพ' และ 'ตามที่มี'"
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "เครือข่ายไม่ถูกต้อง",
+      "signingCmdError": "เกิดข้อผิดพลาดในการลงนามคำสั่ง กรุณาตรวจ payload",
+      "signingCmdGenericError": "เกิดข้อผิดพลาดในการลงนามคำสั่ง",
+      "rejectedByUser": "ผู้ใช้ปฏิเสธ",
+      "userRejected": "ผู้ใช้ปฏิเสธแล้ว",
+      "signedCommand": "คำสั่งลงนามแล้ว",
+      "hashToSign": "HASH สำหรับลงนาม:",
+      "pleaseEnableLedger": "กรุณาเปิดใช้งาน BLIND SIGNING และทำตามขั้นตอนบน Ledger ก่อน",
+      "capabilities": "ความสามารถ",
+      "close": "ปิด",
+      "reject": "ปฏิเสธ",
+      "confirm": "ยืนยัน"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "คำขอลงนามด่วน",
+      "code": "รหัส",
+      "capabilities": "ความสามารถ",
+      "rawData": "ข้อมูลดิบ",
+      "command": "คำสั่ง {{index}}/{{total}}",
+      "hashToSign": "HASH สำหรับลงนาม ({{count}}/{{total}}):",
+      "ledgerInstructions": "กรุณาเปิดใช้งาน BLIND SIGNING และทำตามขั้นตอนบน Ledger ก่อน",
+      "close": "ปิด",
+      "reject": "ปฏิเสธ",
+      "confirm": "ยืนยัน",
+      "error.invalidStructure": "QuickSign ล้มเหลว: โครงสร้างข้อมูลไม่ถูกต้อง",
+      "error.pubKeyNotFound": "QuickSign ล้มเหลว: ไม่พบกุญแจสาธารณะของกระเป๋า",
+      "error.ledger": "ล้มเหลวในการลงนามด้วย Ledger"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "นำเข้ากระเป๋าฮาร์ดแวร์",
+      "selectDevice": "เลือกอุปกรณ์ฮาร์ดแวร์",
+      "ledgerInstructions": "เชื่อมต่อ Ledger กับคอมพิวเตอร์ จากนั้นปลดล็อกและเปิดแอป Kadena",
+      "connect": "เชื่อมต่อ",
+      "confirm": "นำเข้า",
+      "success": "นำเข้ากระเป๋าฮาร์ดแวร์สำเร็จ",
+      "error": {
+        "duplicate": "บัญชีที่นำเข้าอยู่แล้ว",
+        "network": "ข้อผิดพลาดเครือข่าย",
+        "invalid": "ข้อมูลไม่ถูกต้อง"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "นำเข้าจาก Ledger",
+      "instruction": "เสียบ Ledger เข้ากับคอมพิวเตอร์ ปลดล็อกแล้วเปิดแอป Kadena",
+      "continue": "ดำเนินการต่อ",
+      "publicKey": "กุญแจสาธารณะ",
+      "account": "บัญชี",
+      "confirm": "ยืนยันนำเข้า",
+      "success": "นำเข้าบัญชีสำเร็จ",
+      "error": {
+        "duplicate": "บัญชีที่นำเข้าอยู่แล้ว",
+        "network": "ข้อผิดพลาดเครือข่ายขณะดึงข้อมูลบัญชี",
+        "invalid": "ข้อมูลไม่ถูกต้อง"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "นำเข้าโทเค็น",
+      "contractLabel": "ที่อยู่สัญญาโทเค็น",
+      "symbolLabel": "สัญลักษณ์โทเค็น",
+      "placeholder": {
+        "contract": "กรอกที่อยู่สัญญา",
+        "symbol": "กรอกสัญลักษณ์"
+      },
+      "add": "เพิ่มโทเค็น",
+      "edit": "แก้ไขโทเค็น",
+      "success": "บันทึกโทเค็นสำเร็จ",
+      "error": {
+        "duplicate": "โทเค็นมีอยู่แล้ว",
+        "notFound": "ไม่พบ {{contract}} โปรดตรวจสอบโทเค็นบนเครือข่าย {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "นำเข้ากระเป๋า",
+    "form": {
+      "accountName": {
+        "title": "ชื่อบัญชีของคุณ",
+        "placeholder": "ชื่อบัญชี"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "กุญแจส่วนตัวของคุณ",
+        "placeholder": "กุญแจส่วนตัว"
+      }
+    },
+    "validation": {
+      "required": "จำเป็นต้องกรอกข้อมูลนี้",
+      "invalidData": "ข้อมูลไม่ถูกต้อง",
+      "startsWithK": "ชื่อบัญชีต้องขึ้นต้นด้วย \"k:\"",
+      "accountName": {
+        "maxLength": "ชื่อบัญชีต้องไม่เกิน 1000 ตัวอักษร"
+      },
+      "secretKey": {
+        "maxLength": "กุญแจส่วนตัวต้องไม่เกิน 1000 ตัวอักษร"
+      }
+    },
+    "modal": {
+      "scanTitle": "สแกน QR โค้ด",
+      "scanBody": "ชี้กล้องไปที่ QR โค้ด"
+    },
+    "button": {
+      "import": "นำเข้ากระเป๋า"
+    },
+    "toast": {
+      "importSuccess": "นำเข้าสำเร็จ",
+      "duplicateError": "บัญชีที่นำเข้าอยู่แล้ว",
+      "invalidAccountData": "ข้อมูลบัญชีไม่ถูกต้อง",
+      "multipleKeys": "ไม่รองรับชุดกุญแจหลายชุด",
+      "invalidData": "ข้อมูลไม่ถูกต้อง",
+      "networkError": "ข้อผิดพลาดเครือข่าย"
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "ฉันมีกุญแจส่วนตัวอยู่แล้ว",
+      "prompt": "นำเข้ากุญแจส่วนตัวของคุณ"
+    },
+    "button": {
+      "import": "นำเข้า"
+    },
+    "image": {
+      "alt": "ไอคอนนำเข้า"
+    }
+  },
+  "nft": {
+    "header": "ไอเทมสะสมของคุณ",
+    "noOwned": "คุณไม่มี NFT ใดๆ"
+  },
+  "sendTransactions": {
+    "header": "ส่งธุรกรรม {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "ลงนาม Ledger สำเร็จ",
+    "ledgerSignFailed": "ลงนาม Ledger ล้มเหลวหรือถูกปฏิเสธ",
+    "transferSuccess": "การโอนสำเร็จ",
+    "transferFailed": "การโอนล้มเหลว",
+    "transactionSent": "ส่งธุรกรรมเรียบร้อย! ตรวจสอบสถานะในประวัติ",
+    "networkError": "ข้อผิดพลาดเครือข่าย",
+    "loadingTop": "กรุณาอย่าปิดหน้าต่างนี้",
+    "loadingBottom": "คุณจะถูกนำทางเมื่อธุรกรรมเสร็จสิ้น",
+    "labelReceiver": "ผู้รับ",
+    "labelAmount": "จำนวน",
+    "labelGasLimit": "ขีดจำกัดแก๊ส",
+    "labelGasPrice": "ราคาแก๊ส",
+    "labelGasFee": "ค่าธรรมเนียมแก๊ส",
+    "labelTotal": "รวม",
+    "warningCrossChainLine1": "คุณกำลังจะทำการโอนข้ามเชน",
+    "warningCrossChainLine2": "การดำเนินการนี้มักใช้เวลานานขึ้น",
+    "warningNonKAccountLine1": "คุณกำลังส่งไปยังบัญชีที่ไม่ใช่ \"k:account\"!",
+    "warningNonKAccountLine2": "คุณแน่ใจหรือไม่ว่าจะดำเนินการต่อ?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} ไม่สามารถโอนถ่ายได้!",
+    "form": {
+      "sourceChainId": {
+        "title": "Source Chain ID"
+      },
+      "destinationAccount": {
+        "title": "บัญชีเป้าหมาย"
+      },
+      "targetChainId": {
+        "title": "Target Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "ชื่อบัญชีเป้าหมายต้องไม่เกิน 1000 ตัวอักษร"
+    },
+    "balanceLabel": "ยอด {{symbol}} เชน",
+    "recent": "ล่าสุด",
+    "contacts": "รายชื่อ",
+    "confirm": {
+      "warningTitle": "คำเตือน",
+      "publicKeyTitle": "กุญแจสาธารณะ",
+      "publicKeyPlaceholder": "กรอกกุญแจสาธารณะ",
+      "predicateTitle": "Predicat​e",
+      "predicatePlaceholder": "Predicat​e"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "ไม่สามารถส่งให้ตัวคุณเอง",
+    "invalidGasLimit": "ขีดจำกัดแก๊สไม่ถูกต้อง",
+    "gasLimitInteger": "ขีดจำกัดแก๊สต้องเป็นจำนวนเต็ม",
+    "invalidGasPrice": "ราคาก๊าซไม่ถูกต้อง",
+    "insufficientFundsGas": "ยอดไม่พอสำหรับค่าธรรมเนียมแก๊ส",
+    "newAddressDetected": "ตรวจพบที่อยู่ใหม่! เพิ่มในรายชื่อของคุณ",
+    "tokenNotExists": "{{contractAddress}} อาจไม่มีอยู่ในเชน {{chainId}}!",
+    "transactionParameters": "พารามิเตอร์ธุรกรรม",
+    "estimatedGas": "ก๊าซประมาณ {{gas}}",
+    "speed": "ความเร็ว {{speed}}",
+    "modal": {
+      "confirmTitle": "ยืนยันการส่งธุรกรรม",
+      "gasParametersTitle": "พารามิเตอร์ธุรกรรม"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "ขีดจำกัดแก๊ส"
+      },
+      "gasPrice": {
+        "title": "ราคาแก๊ส"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "จำนวนที่จะส่ง",
+    "button": {
+      "half": "ครึ่ง",
+      "max": "สูงสุด"
+    },
+    "error": {
+      "insufficientFunds": "ยอดไม่เพียงพอ",
+      "invalidAmount": "จำนวนไม่ถูกต้อง"
+    },
+    "balance": "ยอดคงเหลือ: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "โลโก้ Dapp",
+    "sendTransaction": "ส่งธุรกรรม",
+    "destinationNotFound": "ไม่พบบัญชีเป้าหมาย"
+  },
+  "history": {
+    "header": "ประวัติ",
+    "modal": {
+      "confirmSendTransaction": "ยืนยันการส่งธุรกรรม"
+    }
+  },
+  "activities": {
+    "detailsTitle": "รายละเอียดธุรกรรม"
+  },
+  "receiveModal": {
+    "accountNameTitle": "ชื่อบัญชีของคุณ"
+  },
+  "activityList": {
+    "loading": "กำลังโหลด...",
+    "today": "วันนี้",
+    "yesterday": "เมื่อวาน",
+    "noTransactions": "คุณไม่มีธุรกรรม"
+  },
+  "statusFilter": {
+    "modalTitle": "สถานะ",
+    "prefix": "สถานะ: ",
+    "options": {
+      "all": "ทั้งหมด",
+      "in": "รับเข้า",
+      "out": "ส่งออก",
+      "pending": "รอดำเนินการ"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "โทเค็น",
+    "prefix": "สินทรัพย์: ",
+    "options": {
+      "all": "ทั้งหมด"
+    }
+  },
+  "footer": {
+    "wallet": "กระเป๋า",
+    "analytics": "วิเคราะห์",
+    "nft": "NFT",
+    "settings": "การตั้งค่า"
+  }
+}

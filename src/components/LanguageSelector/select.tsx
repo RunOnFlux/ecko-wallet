@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import flags from 'emoji-flags';
 import { useForm, Controller } from 'react-hook-form';
 import { BaseSelect } from 'src/baseComponent';
 import styled from 'styled-components';

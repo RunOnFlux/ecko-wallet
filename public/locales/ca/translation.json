@@ -1,0 +1,646 @@
+{
+  "select_language": "Selecciona l’idioma",
+  "home": {
+    "startNow": "Comença ara"
+  },
+  "common": {
+    "requiredField": "Aquest camp és obligatori.",
+    "invalidData": "Dades no vàlides",
+    "invalidUrl": "URL no vàlida",
+    "cancel": "Cancel·la",
+    "back": "Enrere",
+    "confirm": "Confirma",
+    "continue": "Continua",
+    "reject": "Rebutja",
+    "usd": "{{value}} USD",
+    "next": "Següent",
+    "close": "Tanca"
+  },
+  "condition": {
+    "noPersonalInfo": "Mai no recopilem claus, adreces, transaccions, saldos, hashes ni dades personals",
+    "noIP": "Mai no recopilem la teva adreça IP completa",
+    "noSelling": "Mai no venem dades per benefici. Mai!",
+    "next": "Següent"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "He llegit i accepto els",
+    "termsOfUse": "Termes d’ús",
+    "createNewWallet": "Crea una nova cartera",
+    "setupNewAccount": "Configura un nou compte eckoWALLET",
+    "restoreWallet": "Restaura la cartera",
+    "restoreFromPhrase": "Restaura des de la frase"
+  },
+  "createPassword": {
+    "successCreate": "Contrasenya creada correctament",
+    "errorCreate": "Error en crear la cartera",
+    "invalidPhrase": "Frase de recuperació privada no vàlida!",
+    "importFromPhrase": "Importa des de la frase de recuperació",
+    "createPassword": "Crea contrasenya",
+    "pastePhrase": "Enganxa la frase de recuperació privada",
+    "requiredField": "Aquest camp és obligatori.",
+    "phraseTooLong": "La frase de recuperació és massa llarga.",
+    "secretRecoveryPhrase": "Frase de recuperació privada",
+    "import": "Importa",
+    "create": "Crea"
+  },
+  "passwordForm": {
+    "inputPassword": "Introdueix la contrasenya",
+    "inputConfirmPassword": "Introdueix la confirmació de la contrasenya",
+    "requiredField": "Aquest camp és obligatori.",
+    "minPassword": "La contrasenya ha de tenir com a mínim 8 caràcters.",
+    "maxPassword": "La contrasenya pot tenir com a màxim 256 caràcters.",
+    "passwordMismatch": "Les contrasenyes no coincideixen",
+    "newPassword": "Contrasenya nova (min. 8 caràcters)",
+    "confirmPassword": "Confirmar contrasenya",
+    "passwordWarning": "Soc conscient que he utilitzat caràcters insegurs. Es recomana fer servir només lletres (a–z), números (0–9) i caràcters especials _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Frase de recuperació privada",
+    "step1Text": "En el següent pas, anotaràs la teva frase de recuperació de 12 paraules.\nLa teva frase de recuperació et permet restaurar fàcilment la cartera en un dispositiu nou.\nQui tingui aquesta frase pot prendre el control de la teva cartera, així que guarda-la amb seguretat.\nSi perds la frase, ningú la podrà recuperar; emmagatzema-la de manera segura.",
+    "step1Checkbox": "Entenc que si perdo la meva frase de recuperació, no podré restaurar la cartera.",
+    "generating": "Generant claus...",
+    "continue": "Continua",
+    "reveal": "Fes clic aquí per revelar les paraules secretes",
+    "step2Text1": "La teva frase de recuperació privada facilita la còpia de seguretat i la restauració del compte.",
+    "step2Text2": "Avís: no revelis mai la teva frase de recuperació privada. Qui la tingui pot assumir la teva cartera per sempre.",
+    "download": "Descarrega",
+    "verifyTitle": "Verifica la frase de recuperació",
+    "verifyInstruction": "Verifica la frase de recuperació introduint les paraules en l’ordre correcte.",
+    "successVerify": "Frase de recuperació privada verificada correctament.",
+    "invalidPhrase": "Frase de recuperació privada no vàlida!",
+    "errorGeneratingKeys": "Error en generar claus de cartera",
+    "errorCreatingWallet": "Error en crear la cartera",
+    "generatingWallet": "Creant la teva cartera..."
+  },
+  "wallet": {
+    "netWorth": "PATRIMONI NET",
+    "accountBalance": "SALDO DE COMPTE",
+    "send": "Envia",
+    "receive": "Rep",
+    "receiveTokens": "Rep tokens",
+    "buy": "Compra",
+    "history": "Historial",
+    "assets": "ACTIUS",
+    "detectedTokens": "Tokens detectats",
+    "tokenList": "Llista de tokens",
+    "kdaChainDistribution": "Distribució de KDA chain",
+    "chainDistribution": "Distribució de chain",
+    "tokenRemoved": "Token eliminat correctament",
+    "removeToken": "Elimina token",
+    "editToken": "Edita token",
+    "removeTokenTitle": "Elimina el token {{symbol}}",
+    "confirmRemoveToken": "Segur que vols eliminar el token {{symbol}}?",
+    "notTransferable": "{{contractAddress}} no és transferible!",
+    "accountDoesNotExist": "No existeix: aquest compte no existeix.",
+    "balanceZero": "El saldo de {{symbol}} és 0."
+  },
+  "accountActions": {
+    "shareWallet": "Comparteix cartera",
+    "copied": "Copiat!",
+    "exportRecoveryPhrase": "Exporta frase de recuperació",
+    "signHashTransaction": "Signa transacció hash",
+    "editAccountAlias": "Edita àlies del compte",
+    "setAccountAlias": "Configura àlies del compte",
+    "removeSelectedWallet": "Elimina la cartera seleccionada",
+    "createWallet": "Crea cartera",
+    "importWallet": "Importa cartera",
+    "importHardwareWallet": "Importa cartera de maquinari"
+  },
+  "tokenDetector": {
+    "noTokensFound": "No s’han trobat altres tokens per a aquest compte."
+  },
+  "aliasModal": {
+    "accountAlias": "Àlies del compte",
+    "cancel": "Cancel·la",
+    "save": "Desa",
+    "aliasChanged": "Àlies canviat correctament"
+  },
+  "hashSignModal": {
+    "publicKey": "La teva clau pública",
+    "transactionHash": "Hash de transacció",
+    "insertTransactionHash": "Introdueix el hash de transacció",
+    "signature": "Signatura",
+    "copied": "Copiat!",
+    "clean": "Neteja",
+    "sign": "Signa"
+  },
+  "popupDetailTransaction": {
+    "status": "Estat",
+    "direction": "Direcció",
+    "symbol": "Símbol",
+    "quantity": "Quantitat",
+    "gasFee": "Comissió de gas",
+    "total": "Total",
+    "viewDetails": "Mostra detalls",
+    "activityLog": "Registre d’activitat",
+    "transactionCreated": "Transacció creada per valor de {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transacció confirmada",
+    "success": "Èxit",
+    "failed": "Fallar",
+    "finishing": "S’està finalitzant"
+  },
+  "removeWallet": {
+    "title": "Segur que vols eliminar aquesta cartera?",
+    "description": "Per confirmar, introdueix la contrasenya",
+    "passwordPlaceholder": "Introdueix la contrasenya",
+    "passwordRequired": "Aquest camp és obligatori.",
+    "passwordMinLength": "La contrasenya ha de tenir com a mínim 8 caràcters.",
+    "passwordMaxLength": "La contrasenya pot tenir com a màxim 256 caràcters.",
+    "invalidPassword": "Contrasenya no vàlida",
+    "cancel": "Cancel·la",
+    "remove": "Elimina"
+  },
+  "header": {
+    "selectNetwork": "Selecciona xarxa",
+    "manageNetworks": "Gestiona xarxes",
+    "myWallets": "Les meves carteres",
+    "removeWalletTitle": "Elimina cartera",
+    "createAccountSuccess": "Compte creat correctament!",
+    "createAccountFail": "Error en crear el compte",
+    "copied": "Copiat!"
+  },
+  "signIn": {
+    "loginTitle": "Inicia sessió al teu compte",
+    "passwordPlaceholder": "Introdueix la contrasenya",
+    "passwordTitle": "Contrasenya",
+    "signInButton": "Inicia sessió",
+    "invalidPassword": "Contrasenya no vàlida",
+    "required": "Aquest camp és obligatori.",
+    "minLength": "La contrasenya ha de tenir com a mínim 8 caràcters.",
+    "maxLength": "La contrasenya pot tenir com a màxim 256 caràcters.",
+    "initWalletError": "Error en inicialitzar la cartera"
+  },
+  "settings": {
+    "contacts": "Contactes",
+    "language": "Idioma",
+    "languageDesc": "Selecciona l’idioma de la cartera",
+    "contactsDesc": "Gestiona els teus contactes",
+    "networks": "Xarxes",
+    "networksDesc": "Afegeix o edita RPC personalitzades",
+    "connectedSites": "Situs connectats",
+    "connectedSitesDesc": "Visualitza i gestiona els llocs connectats",
+    "walletConnect": "Wallet Connect",
+    "walletConnectDesc": "Connecta amb WalletConnect",
+    "txSettings": "Configuració de transaccions",
+    "txSettingsDesc": "Defineix paràmetres de gas",
+    "exportPhrase": "Exporta frase de recuperació",
+    "exportPhraseDesc": "Protegeix la teva cartera",
+    "editPassword": "Edita contrasenya",
+    "editPasswordDesc": "Canvia la contrasenya de la cartera",
+    "2fa": "2FA",
+    "2faDesc": "Gestiona l’autenticació de dos factors",
+    "expandView": "Vista ampliada",
+    "expandViewDesc": "Obre eckoWALLET en una nova finestra",
+    "theme": "Tema",
+    "themeDesc": "Defineix el tema de la cartera",
+    "lock": "Bloqueja cartera",
+    "lockDesc": "Protegeix la teva cartera",
+    "lockSettings": "Configuració de bloqueig",
+    "lockSettingsDesc": "Canvia configuracions de seguretat",
+    "discord": "Uneix-te al nostre Discord",
+    "website": "Visita el nostre lloc web",
+    "terms": "Termes d’ús",
+    "privacy": "Política de privacitat",
+    "connectedSitesPage": {
+      "title": "Llocs connectats",
+      "removeSiteTitle": "Elimina lloc",
+      "removeSiteConfirmText": "Segur que vols eliminar",
+      "removeSiteSuccess": "Lloc eliminat correctament."
+    },
+    "contactsPage": {
+      "title": "Contactes",
+      "newContactTitle": "Nou contacte",
+      "addNewContact": "Afegeix nou contacte",
+      "noContacts": "Cap contacte"
+    },
+    "contactForm": {
+      "enterAlias": "Introdueix un àlies",
+      "aliasPlaceholder": "per ex. David",
+      "accountNameTitle": "Nom del compte",
+      "accountNamePlaceholder": "Nom del compte",
+      "scanQrTitle": "Escaneja el codi QR",
+      "scanQrDescription": "Apunta la càmera cap al codi QR",
+      "buttonCancel": "Cancel·la",
+      "buttonSave": "Desa",
+      "successContactAdded": "Contacte afegit",
+      "errorNetwork": "Error de xarxa.",
+      "copied": "Copiat!",
+      "requiredField": "Aquest camp és obligatori.",
+      "invalidData": "Dades no vàlides",
+      "aliasMaxLength": "L’àlies pot tenir màxim 256 caràcters.",
+      "accountNameMaxLength": "El nom del compte pot tenir màxim 1000 caràcters."
+    },
+    "contactInfo": {
+      "copied": "Copiat!",
+      "contactRemoved": "Contacte eliminat",
+      "accountName": "NOM DE COMPTE",
+      "editContact": "Edita contacte",
+      "editTitle": "Edita compte",
+      "delete": "Elimina",
+      "deleteContactTitle": "Elimina contacte",
+      "removeContact": "Elimina el contacte?",
+      "confirmRemove": "Segur que vols eliminar aquest contacte?",
+      "cancel": "Cancel·la",
+      "confirm": "Confirma"
+    },
+    "editPasswordPage": {
+      "title": "Edita contrasenya",
+      "passwordChanged": "Contrasenya canviada correctament",
+      "cannotUpdatePassword": "No s’ha pogut actualitzar la contrasenya",
+      "save": "Desa"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Introdueix contrasenya per continuar",
+      "inputPlaceholder": "Introdueix la contrasenya",
+      "password": "Contrasenya",
+      "errorRequired": "Aquest camp és obligatori.",
+      "errorInvalid": "Contrasenya no vàlida.",
+      "continue": "Continua",
+      "correctPassword": "La teva contrasenya és correcta, espera..."
+    },
+    "exportSeedPhrase": {
+      "title": "Exporta frase de recuperació",
+      "copied": "Copiat!",
+      "description": "La teva frase de recuperació privada facilita la còpia de seguretat i la restauració del compte.",
+      "warning": "Mai revelis la teva frase de recuperació privada. Qui la tingui pot prendre el control de la teva cartera per sempre.",
+      "copyKeyphrase": "Copia la frase",
+      "download": "Descarrega"
+    },
+    "lockSettingsPage": {
+      "title": "Configuració de bloqueig automàtic",
+      "saved": "Configuració desada correctament",
+      "required": "Aquest camp és obligatori.",
+      "placeholder": "Selecciona el temps de bloqueig automàtic",
+      "selectTitle": "Temps de bloqueig automàtic",
+      "restore": "Restaura valors per defecte",
+      "save": "Desa"
+    },
+    "networksPage": {
+      "title": "Xarxes",
+      "network": "Xarxa",
+      "addNew": "Afegeix-ne una de nova",
+      "editSuccess": "Xarxa editada correctament",
+      "addSuccess": "Xarxa afegida correctament",
+      "errorUrl": "L’URL ja existeix",
+      "deleteSuccess": "Xarxa eliminada correctament",
+      "remove": "Elimina",
+      "save": "Desa",
+      "confirmRemove": "Elimina aquesta xarxa?",
+      "confirmRemoveDesc": "Segur que vols eliminar aquesta xarxa?",
+      "placeholderName": "Introdueix el nom de la xarxa",
+      "placeholderUrl": "Introdueix el nou RPC URL",
+      "placeholderExplorer": "Introdueix l’URL de l’explorador de blocs",
+      "placeholderNetworkId": "Introdueix la ID de la xarxa",
+      "titleName": "Nom de la xarxa",
+      "titleUrl": "Nou RPC URL",
+      "titleExplorer": "URL de l’explorador de blocs",
+      "titleNetworkId": "ID de la xarxa",
+      "nameMax": "El nom de la xarxa pot tenir màxim 1000 caràcters.",
+      "urlMax": "El nou RPC URL pot tenir màxim 1000 caràcters.",
+      "explorerMax": "L’URL de l’explorador pot tenir màxim 1000 caràcters.",
+      "networkIdMax": "La ID de la xarxa pot tenir màxim 1000 caràcters."
+    },
+    "selectTheme": {
+      "title": "Selecciona tema"
+    },
+    "txSettingsPage": {
+      "title": "Configuració de transaccions",
+      "gasLimit": "Límit de gas",
+      "gasLimitPlaceholder": "Introdueix el límit de gas",
+      "finishCrossChain": "Acaba Crosschain Gas Station",
+      "finishCrossChainPlaceholder": "Introdueix Crosschain Gas Station",
+      "crossChainGasLimit": "Límit de gas cross-chain",
+      "crossChainGasLimitPlaceholder": "Introdueix el límit de gas cross-chain",
+      "crossChainGasPrice": "Preu de gas cross-chain",
+      "crossChainGasPricePlaceholder": "Introdueix el preu de gas cross-chain",
+      "save": "Desa",
+      "restoreDefault": "Restaura valors per defecte",
+      "successSave": "Configuració desada correctament",
+      "requiredField": "Aquest camp és obligatori.",
+      "invalidValue": "Valor no vàlid"
+    },
+    "2faPage": {
+      "title": "Autenticació de dos factors",
+      "description": "L’autenticació de dos factors ja està configurada.",
+      "disableButton": "Desactiva",
+      "successDisable": "2FA desactivada correctament.",
+      "installApp": "Instal·la",
+      "orSimilar": "o aplicació similar",
+      "scanQRCode": "Escaneja el codi QR a sota:",
+      "enter6Digits": "Introdueix el codi de 6 dígits",
+      "invalidCode": "Codi no vàlid.",
+      "saveButton": "Desa",
+      "setupSuccess": "2FA configurada correctament"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "Selecciona comptes",
+      "invalidUrl": "URL no vàlida",
+      "disconnectSuccess": "Sol·licitud de desconnexió enviada correctament",
+      "noActiveSessions": "SENSE SESSIONS ACTIVES",
+      "activeSessions": "SESSIONS ACTIVES",
+      "expiry": "Caduca:",
+      "removeConnection": "Elimina connexió",
+      "removeConfirmation": "Segur que vols eliminar aquesta instància de WalletConnect?",
+      "newConnection": "Connexió nova",
+      "addConnection": "Afegeix nova connexió Wallet Connect",
+      "inputUri": "Introdueix URI",
+      "code": "Codi",
+      "continue": "Continua"
+    }
+  },
+  "buy": {
+    "title": "Compra",
+    "description": "La compra i venda de criptomonedes es realitza a través d’un servei de tercers proporcionat per Onramper.\n\neckoWALLET es compromet a oferir el màxim nivell de seguretat als seus usuaris, però no podem garantir la seguretat i la privacitat dels serveis de tercers.",
+    "cancel": "Cancel·la",
+    "confirm": "Confirma",
+    "error": {
+      "noAddress": "L’adreça de la cartera no està disponible",
+      "generic": "No s’ha pogut connectar al servei. Torna-ho a provar més tard."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "ANÀLISI DE CARTERA",
+    "dexAnalytics": "ANÀLISI DEX",
+    "portfolioValue": "GRÀFIC DE VALOR DEL PORTFOLI",
+    "startTracking": "Comença a seguir",
+    "trackPortfolioTitle": "Segueix el valor del portfoli",
+    "trackPortfolioStart": "COMENÇA A SEGUIR EL SALDO DE COMPTE",
+    "trackPortfolioDesc1": "En confirmar, autoritzes el seguiment del saldo del teu compte.",
+    "trackPortfolioDesc2": "Vols continuar?",
+    "confirm": "Confirma",
+    "confirming": "Confirmant, espera...",
+    "disclaimerTitle": "Avís!",
+    "disclaimerText": "La informació d’aquesta pàgina està en fase BETA i es proporciona “tal qual” i “segons disponibilitat”."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Xarxa no vàlida",
+      "signingCmdError": "Error al signar l’ordre, comprova el teu payload",
+      "signingCmdGenericError": "Error al signar l’ordre",
+      "rejectedByUser": "Rebutjat per l’usuari",
+      "userRejected": "L’usuari ha rebutjat.",
+      "signedCommand": "Ordre signada",
+      "hashToSign": "HASH PER SIGNAR:",
+      "pleaseEnableLedger": "Activa BLIND SIGNING i segueix primer les instruccions al teu Ledger.",
+      "capabilities": "Capacitats",
+      "close": "Tanca",
+      "reject": "Rebutja",
+      "confirm": "Confirma"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Sol·licitud de signatura ràpida",
+      "code": "Codi",
+      "capabilities": "Capacitats",
+      "rawData": "Dades brutes",
+      "command": "Ordre {{index}}/{{total}}",
+      "hashToSign": "HASH PER SIGNAR ({{count}}/{{total}}):",
+      "ledgerInstructions": "Activa BLIND SIGNING i segueix primer les instruccions al teu Ledger",
+      "close": "Tanca",
+      "reject": "Rebutja",
+      "confirm": "Confirma",
+      "error.invalidStructure": "QuickSign ha fallat: estructura de dades no vàlida",
+      "error.pubKeyNotFound": "QuickSign ha fallat: clau pública no trobada",
+      "error.ledger": "Error en la signatura amb Ledger"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Importa cartera de maquinari",
+      "selectDevice": "Selecciona dispositiu de maquinari",
+      "ledgerInstructions": "Connecta el teu Ledger al PC. Després desbloqueja’l i obre l’app Kadena.",
+      "connect": "Connecta",
+      "confirm": "Importa",
+      "success": "Cartera de maquinari importada correctament",
+      "error": {
+        "duplicate": "El compte que intentes importar ja existeix.",
+        "network": "Error de xarxa.",
+        "invalid": "Dades no vàlides"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Importa des de Ledger",
+      "instruction": "Connecta el teu Ledger al PC, desbloqueja’l i obre l’app Kadena.",
+      "continue": "Continua",
+      "publicKey": "CLAU PÚBLICA",
+      "account": "COMPTE",
+      "confirm": "Confirma importació",
+      "success": "Compte importat correctament.",
+      "error": {
+        "duplicate": "El compte que intentes importar ja existeix.",
+        "network": "Error de xarxa en obtenir dades del compte",
+        "invalid": "Dades no vàlides"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Importa tokens",
+      "contractLabel": "Adreça del contracte del token",
+      "symbolLabel": "Símbol del token",
+      "placeholder": {
+        "contract": "Introdueix l’adreça del contracte",
+        "symbol": "Introdueix el símbol"
+      },
+      "add": "Afegeix token",
+      "edit": "Edita token",
+      "success": "Token desat correctament",
+      "error": {
+        "duplicate": "Token ja afegit",
+        "notFound": "No s’ha pogut resoldre {{contract}}. Comprova si existeix a la xarxa {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Importa cartera",
+    "form": {
+      "accountName": {
+        "title": "Nom del teu compte",
+        "placeholder": "Nom del compte"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "La teva clau privada",
+        "placeholder": "Clau privada"
+      }
+    },
+    "validation": {
+      "required": "Aquest camp és obligatori.",
+      "invalidData": "Dades no vàlides",
+      "startsWithK": "El nom del compte ha de començar per \"k:\"",
+      "accountName": {
+        "maxLength": "El nom del compte pot tenir com a màxim 1000 caràcters."
+      },
+      "secretKey": {
+        "maxLength": "La clau privada pot tenir com a màxim 1000 caràcters."
+      }
+    },
+    "modal": {
+      "scanTitle": "Escaneja el codi QR",
+      "scanBody": "Apunta la càmera cap al codi QR"
+    },
+    "button": {
+      "import": "Importa cartera"
+    },
+    "toast": {
+      "importSuccess": "Compte importat correctament.",
+      "duplicateError": "El compte que intentes importar ja existeix.",
+      "invalidAccountData": "Dades de compte no vàlides",
+      "multipleKeys": "No es suporten conjunts de claus múltiples.",
+      "invalidData": "Dades no vàlides",
+      "networkError": "Error de xarxa."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Ja tinc una clau privada existent.",
+      "prompt": "Importa la teva clau privada existent"
+    },
+    "button": {
+      "import": "Importa"
+    },
+    "image": {
+      "alt": "Icona d’importació"
+    }
+  },
+  "nft": {
+    "header": "Els teus elements col·leccionables",
+    "noOwned": "No tens cap NFT."
+  },
+  "sendTransactions": {
+    "header": "Envia transacció {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Signatura amb Ledger exitosa",
+    "ledgerSignFailed": "Signatura amb Ledger fallida o rebutjada",
+    "transferSuccess": "Transferència exitosa",
+    "transferFailed": "Transferència fallida",
+    "transactionSent": "Transacció enviada correctament! Comprova l’historial per l’estat de la transacció",
+    "networkError": "Error de xarxa.",
+    "loadingTop": "Si us plau, no tanquis aquesta vista",
+    "loadingBottom": "Seràs redirigit quan la transacció finalitzi",
+    "labelReceiver": "Receptor",
+    "labelAmount": "Import",
+    "labelGasLimit": "Límit de gas",
+    "labelGasPrice": "Preu del gas",
+    "labelGasFee": "Comissió de gas",
+    "labelTotal": "Total",
+    "warningCrossChainLine1": "Estàs a punt de fer una transferència cross-chain",
+    "warningCrossChainLine2": "Aquesta operació normalment triga més temps",
+    "warningNonKAccountLine1": "Estàs enviant a un compte que no és \"k:account\"!",
+    "warningNonKAccountLine2": "Segur que vols continuar?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} no és transferible!",
+    "form": {
+      "sourceChainId": {
+        "title": "Source Chain ID"
+      },
+      "destinationAccount": {
+        "title": "Compte de destinació"
+      },
+      "targetChainId": {
+        "title": "Target Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "El compte de destinació pot tenir com a màxim 1000 caràcters."
+    },
+    "balanceLabel": "Saldo de {{symbol}} chain",
+    "recent": "MÉS RECENT",
+    "contacts": "CONTACTES",
+    "confirm": {
+      "warningTitle": "Avís",
+      "publicKeyTitle": "Clau pública",
+      "publicKeyPlaceholder": "Introdueix la clau pública",
+      "predicateTitle": "Predicat",
+      "predicatePlaceholder": "Predicat"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "No pots enviar a tu mateix",
+    "invalidGasLimit": "Límit de gas no vàlid",
+    "gasLimitInteger": "El límit de gas ha de ser un nombre enter",
+    "invalidGasPrice": "Preu del gas no vàlid",
+    "insufficientFundsGas": "Fons insuficients per a la comissió de gas",
+    "newAddressDetected": "S’ha detectat una adreça nova! Afegeix-la als teus contactes.",
+    "tokenNotExists": "Potser {{contractAddress}} no existeix a chain {{chainId}}!",
+    "transactionParameters": "Paràmetres de la transacció",
+    "estimatedGas": "Gas estimat {{gas}}",
+    "speed": "Velocitat {{speed}}",
+    "modal": {
+      "confirmTitle": "Confirma l’enviament de la transacció",
+      "gasParametersTitle": "Paràmetres de la transacció"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Límit de gas"
+      },
+      "gasPrice": {
+        "title": "Preu del gas"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Import per enviar",
+    "button": {
+      "half": "MITJÀ",
+      "max": "MÀX"
+    },
+    "error": {
+      "insufficientFunds": "Fons insuficients",
+      "invalidAmount": "Import no vàlid"
+    },
+    "balance": "Saldo: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Logotip Dapp",
+    "sendTransaction": "Envia transacció",
+    "destinationNotFound": "No s’ha trobat el compte de destinació"
+  },
+  "history": {
+    "header": "Historial",
+    "modal": {
+      "confirmSendTransaction": "Confirma l’enviament de la transacció"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Detalls de la transacció"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Nom del teu compte"
+  },
+  "activityList": {
+    "loading": "Carregant...",
+    "today": "Avui",
+    "yesterday": "Ahir",
+    "noTransactions": "No tens transaccions"
+  },
+  "statusFilter": {
+    "modalTitle": "Estat",
+    "prefix": "Estat: ",
+    "options": {
+      "all": "Tot",
+      "in": "Rebut",
+      "out": "Enviat",
+      "pending": "Pendent"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Actiu: ",
+    "options": {
+      "all": "Tots"
+    }
+  },
+  "footer": {
+    "wallet": "CARTERA",
+    "analytics": "ANÀLISI",
+    "nft": "NFT",
+    "settings": "CONFIGURACIÓ"
+  }
+}

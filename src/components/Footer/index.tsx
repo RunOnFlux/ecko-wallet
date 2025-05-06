@@ -169,19 +169,25 @@ const Footer = () => {
           <span>
             <EckoWalletLogoBar style={{ width: 22, height: 22 }} />
           </span>
-          <SecondaryLabel fontWeight={700}>{t('footer.wallet')}</SecondaryLabel>
+          <SecondaryLabel uppercase fontWeight={700}>
+            {t('footer.wallet')}
+          </SecondaryLabel>
         </ActionBarElement>
         <ActionBarElement className={activeTab === ACTIVE_TAB.ANALYTICS && 'active'} onClick={setIconAnalyticsActive}>
           <span>
             <AnalyticsIcon />
           </span>
-          <SecondaryLabel fontWeight={700}>{t('footer.analytics')}</SecondaryLabel>
+          <SecondaryLabel uppercase fontWeight={700}>
+            {t('footer.analytics')}
+          </SecondaryLabel>
         </ActionBarElement>
         <ActionBarElement className={activeTab === ACTIVE_TAB.NFT && 'active'} onClick={setIconNftActive}>
           <span>
             <NFTIcon />
           </span>
-          <SecondaryLabel fontWeight={700}>{t('footer.nft')}</SecondaryLabel>
+          <SecondaryLabel uppercase fontWeight={700}>
+            {t('footer.nft')}
+          </SecondaryLabel>
         </ActionBarElement>
         <ActionBarElement
           className={activeTab === ACTIVE_TAB.SETTINGS && 'active'}
@@ -191,7 +197,9 @@ const Footer = () => {
           <span>
             <GearIcon />
           </span>
-          <SecondaryLabel fontWeight={700}>{t('footer.settings')}</SecondaryLabel>
+          <SecondaryLabel uppercase fontWeight={700}>
+            {t('footer.settings')}
+          </SecondaryLabel>
         </ActionBarElement>
       </DivFlex>
     </Wrapper>

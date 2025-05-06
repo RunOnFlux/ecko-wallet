@@ -41,7 +41,6 @@ import PageWalletConnect from './pages/Setting/WalletConnect';
 import CategoryDetail from './pages/Nft/CategoryDetail';
 import ImportHardwareWallet from './pages/ImportHardwareWallet';
 import ImportLedger from './pages/ImportHardwareWallet/ImportLedger';
-import GovernanceMining from './pages/GovernanceMining';
 import MarmaladeNGCollectionDetails from './pages/Nft/NftTypes/MarmaladeNG/MarmaladeNGCollectionDetails';
 import Analytics from './pages/Analytics';
 import AnalyticsTracker from './components/AnalyticsTracker';
@@ -100,7 +99,6 @@ const AppContainer = () => {
           <PrivateRoute path="/nft" component={Nft} />
           <PrivateRoute path="/nft-details" component={CategoryDetail} />
           <PrivateRoute path="/ng-details" component={MarmaladeNGCollectionDetails} />
-          <PrivateRoute path="/governance-mining" component={GovernanceMining} />
           <PrivateRoute path="/analytics" component={Analytics} />
           <PrivateRoute path="/" component={Wallet} />
           <Redirect to="/" />

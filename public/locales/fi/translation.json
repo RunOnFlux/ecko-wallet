@@ -1,0 +1,646 @@
+{
+  "select_language": "Valitse kieli",
+  "home": {
+    "startNow": "Aloita nyt"
+  },
+  "common": {
+    "requiredField": "Tämä kenttä on pakollinen.",
+    "invalidData": "Virheelliset tiedot",
+    "invalidUrl": "Virheellinen URL-osoite",
+    "cancel": "Peruuta",
+    "back": "Takaisin",
+    "confirm": "Vahvista",
+    "continue": "Jatka",
+    "reject": "Hylkää",
+    "usd": "{{value}} USD",
+    "next": "Seuraava",
+    "close": "Sulje"
+  },
+  "condition": {
+    "noPersonalInfo": "Emme koskaan kerää avaimia, osoitteita, tapahtumia, saldoja, tiivisteitä emmekä henkilökohtaisia tietoja",
+    "noIP": "Emme koskaan tallenna koko IP-osoitettasi",
+    "noSelling": "Emme koskaan myy tietojasi voittoa varten. Koskaan!",
+    "next": "Seuraava"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Olen lukenut ja hyväksyn",
+    "termsOfUse": "käyttöehdot",
+    "createNewWallet": "Luo uusi lompakko",
+    "setupNewAccount": "Luo uusi eckoWALLET-tili",
+    "restoreWallet": "Palauta lompakko",
+    "restoreFromPhrase": "Palauta toipumislauseesta"
+  },
+  "createPassword": {
+    "successCreate": "Uuden salasanan luonti onnistui",
+    "errorCreate": "Virhe lompakon luomisessa",
+    "invalidPhrase": "Virheellinen palautuslauseke!",
+    "importFromPhrase": "Tuo palautuslausekkeesta",
+    "createPassword": "Luo salasana",
+    "pastePhrase": "Liitä palautuslauseke",
+    "requiredField": "Tämä kenttä on pakollinen.",
+    "phraseTooLong": "Palautuslauseke on liian pitkä.",
+    "secretRecoveryPhrase": "Salauspalautuslauseke",
+    "import": "Tuo",
+    "create": "Luo"
+  },
+  "passwordForm": {
+    "inputPassword": "Syötä salasana",
+    "inputConfirmPassword": "Syötä vahvistussalasana",
+    "requiredField": "Tämä kenttä on pakollinen.",
+    "minPassword": "Salasanan on oltava vähintään 8 merkkiä.",
+    "maxPassword": "Salasanan enimmäispituus on 256 merkkiä.",
+    "passwordMismatch": "Salasanat eivät täsmää",
+    "newPassword": "Uusi salasana (vähintään 8 merkkiä)",
+    "confirmPassword": "Vahvista salasana",
+    "passwordWarning": "Ymmärrän, että käytin epäsuotavia merkkejä. Suosittelemme käyttämään vain aakkosia (a–z), numeroita (0–9) ja erikoismerkkejä _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Salauspalautuslauseke",
+    "step1Text": "Seuraavassa vaiheessa kirjaat 12 sanan palautuslausekkeesi.\nPalautuslausekkeella voit helposti palauttaa lompakkosi uudelle laitteelle.\nKuka tahansa, jolla on tämä lauseke, saa täydet oikeudet lompakkoosi, pidä se turvassa.\nJos kadotat lausekkeen, et voi enää käyttää lompakkoasi, säilytä se huolellisesti.",
+    "step1Checkbox": "Ymmärrän, että jos kadotan palautuslausekkeen, en voi palauttaa lompakkoani.",
+    "generating": "Avainparia luodaan...",
+    "continue": "Jatka",
+    "reveal": "Näytä salasanasanat klikkaamalla tästä",
+    "step2Text1": "Salauksen palautuslauseke helpottaa tilisi varmuuskopiointia ja palauttamista.",
+    "step2Text2": "Varoitus: Älä koskaan paljasta palautuslauseketta. Kuka tahansa, jolla on se, voi ottaa lompakkosi haltuunsa.",
+    "download": "Lataa",
+    "verifyTitle": "Vahvista palautuslauseke",
+    "verifyInstruction": "Kirjoita lausekkeen sanat oikeassa järjestyksessä vahvistaaksesi.",
+    "successVerify": "Palautuslausekkeen vahvistus onnistui",
+    "invalidPhrase": "Virheellinen palautuslauseke!",
+    "errorGeneratingKeys": "Virhe avainten luomisessa",
+    "errorCreatingWallet": "Virhe lompakon luomisessa",
+    "generatingWallet": "Lompakkoasi luodaan..."
+  },
+  "wallet": {
+    "netWorth": "NETTOVARAISUUS",
+    "accountBalance": "TILIN SALDO",
+    "send": "Lähetä",
+    "receive": "Vastaanota",
+    "receiveTokens": "Vastaanota tokeneita",
+    "buy": "Osta",
+    "history": "Historia",
+    "assets": "VARAT",
+    "detectedTokens": "Havaitut tokenit",
+    "tokenList": "Token-lista",
+    "kdaChainDistribution": "KDA Chain -jakauma",
+    "chainDistribution": "Chain-jakauma",
+    "tokenRemoved": "Token poistettu onnistuneesti",
+    "removeToken": "Poista token",
+    "editToken": "Muokkaa tokenia",
+    "removeTokenTitle": "Poista {{symbol}}-token",
+    "confirmRemoveToken": "Haluatko varmasti poistaa {{symbol}}-tokenin?",
+    "notTransferable": "{{contractAddress}} ei ole siirrettävissä!",
+    "accountDoesNotExist": "Ei löydy: Tiliä ei ole olemassa.",
+    "balanceZero": "{{symbol}}-saldo on 0."
+  },
+  "accountActions": {
+    "shareWallet": "Jaa lompakko",
+    "copied": "Kopioitu!",
+    "exportRecoveryPhrase": "Vie palautuslauseke",
+    "signHashTransaction": "Allekirjoita tiivistetapahtuma",
+    "editAccountAlias": "Muokkaa tilin aliasia",
+    "setAccountAlias": "Aseta tilin alias",
+    "removeSelectedWallet": "Poista valittu lompakko",
+    "createWallet": "Luo lompakko",
+    "importWallet": "Tuo lompakko",
+    "importHardwareWallet": "Tuo laitteistolompakko"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Tiliä varten ei löytynyt muita tokeneita."
+  },
+  "aliasModal": {
+    "accountAlias": "Tilin alias",
+    "cancel": "Peruuta",
+    "save": "Tallenna",
+    "aliasChanged": "Alias vaihdettu onnistuneesti"
+  },
+  "hashSignModal": {
+    "publicKey": "Julkinen avain",
+    "transactionHash": "Tapahtuman tiiviste",
+    "insertTransactionHash": "Syötä tapahtuman tiiviste",
+    "signature": "Allekirjoitus",
+    "copied": "Kopioitu!",
+    "clean": "Tyhjennä",
+    "sign": "Allekirjoita"
+  },
+  "popupDetailTransaction": {
+    "status": "Tila",
+    "direction": "Suunta",
+    "symbol": "Symboli",
+    "quantity": "Määrä",
+    "gasFee": "Kaasumaksu",
+    "total": "Yhteensä",
+    "viewDetails": "Näytä tiedot",
+    "activityLog": "Toimintaloki",
+    "transactionCreated": "Tapahtuma luotu arvolla {{amount}} {{symbol}}",
+    "transactionConfirmed": "Tapahtuma vahvistettu",
+    "success": "Onnistui",
+    "failed": "Epäonnistui",
+    "finishing": "Viimeistellään"
+  },
+  "removeWallet": {
+    "title": "Haluatko varmasti poistaa tämän lompakon?",
+    "description": "Syötä salasana vahvistaaksesi",
+    "passwordPlaceholder": "Syötä salasana",
+    "passwordRequired": "Tämä kenttä on pakollinen.",
+    "passwordMinLength": "Salasanan on oltava vähintään 8 merkkiä.",
+    "passwordMaxLength": "Salasanan enimmäispituus on 256 merkkiä.",
+    "invalidPassword": "Virheellinen salasana",
+    "cancel": "Peruuta",
+    "remove": "Poista"
+  },
+  "header": {
+    "selectNetwork": "Valitse verkko",
+    "manageNetworks": "Hallitse verkkoja",
+    "myWallets": "Omat lompakot",
+    "removeWalletTitle": "Poista lompakko",
+    "createAccountSuccess": "Tili luotu onnistuneesti!",
+    "createAccountFail": "Tilin luonti epäonnistui",
+    "copied": "Kopioitu!"
+  },
+  "signIn": {
+    "loginTitle": "Kirjaudu sisään tilillesi",
+    "passwordPlaceholder": "Syötä salasana",
+    "passwordTitle": "Salasana",
+    "signInButton": "Kirjaudu",
+    "invalidPassword": "Virheellinen salasana",
+    "required": "Tämä kenttä on pakollinen.",
+    "minLength": "Salasanan on oltava vähintään 8 merkkiä.",
+    "maxLength": "Salasanan enimmäispituus on 256 merkkiä.",
+    "initWalletError": "Virhe lompakon alustuksessa"
+  },
+  "settings": {
+    "contacts": "Yhteystiedot",
+    "language": "Kieli",
+    "languageDesc": "Valitse lompakon kieli",
+    "contactsDesc": "Hallitse yhteystietojasi",
+    "networks": "Verkot",
+    "networksDesc": "Lisää tai muokkaa RPC-verkkoja",
+    "connectedSites": "Yhdistetyt sivustot",
+    "connectedSitesDesc": "Näytä ja hallitse yhdistettyjä sivustoja",
+    "walletConnect": "Wallet Connect",
+    "walletConnectDesc": "Yhdistä WalletConnectin avulla",
+    "txSettings": "Tapahtuma-asetukset",
+    "txSettingsDesc": "Aseta kaasupreferenssit",
+    "exportPhrase": "Vie palautuslauseke",
+    "exportPhraseDesc": "Suojaa lompakkosi",
+    "editPassword": "Muokkaa salasanaa",
+    "editPasswordDesc": "Vaihda lompakon salasana",
+    "2fa": "Kaksivaiheinen tunnistus",
+    "2faDesc": "Hallitse 2FA-asetuksia",
+    "expandView": "L laajennettu näkymä",
+    "expandViewDesc": "Avaa eckoWALLET uudessa ikkunassa",
+    "theme": "Teema",
+    "themeDesc": "Aseta lompakon teema",
+    "lock": "Lukitse lompakko",
+    "lockDesc": "Suojaa lompakkosi",
+    "lockSettings": "Automaattinen lukitus",
+    "lockSettingsDesc": "Vaihda suojausasetuksia",
+    "discord": "Liity Discordiin",
+    "website": "Vieraile verkkosivustollamme",
+    "terms": "Käyttöehdot",
+    "privacy": "Tietosuojakäytäntö",
+    "connectedSitesPage": {
+      "title": "Yhdistetyt sivustot",
+      "removeSiteTitle": "Poista sivusto",
+      "removeSiteConfirmText": "Haluatko varmasti poistaa",
+      "removeSiteSuccess": "Sivusto poistettu onnistuneesti."
+    },
+    "contactsPage": {
+      "title": "Yhteystiedot",
+      "newContactTitle": "Uusi tili",
+      "addNewContact": "Lisää uusi yhteystieto",
+      "noContacts": "Ei yhteystietoja"
+    },
+    "contactForm": {
+      "enterAlias": "Anna alias",
+      "aliasPlaceholder": "esim. Matti",
+      "accountNameTitle": "Tilin nimi",
+      "accountNamePlaceholder": "Tilin nimi",
+      "scanQrTitle": "Skannaa QR-koodi",
+      "scanQrDescription": "Aseta QR-koodi kamerasi eteen",
+      "buttonCancel": "Peruuta",
+      "buttonSave": "Tallenna",
+      "successContactAdded": "Yhteystieto lisätty",
+      "errorNetwork": "Verkkovirhe.",
+      "copied": "Kopioitu!",
+      "requiredField": "Tämä kenttä on pakollinen.",
+      "invalidData": "Virheelliset tiedot",
+      "aliasMaxLength": "Aliaan enimmäispituus on 256 merkkiä.",
+      "accountNameMaxLength": "Tilin nimen enimmäispituus on 1000 merkkiä."
+    },
+    "contactInfo": {
+      "copied": "Kopioitu!",
+      "contactRemoved": "Yhteystieto poistettu",
+      "accountName": "TILIN NIMI",
+      "editContact": "Muokkaa yhteystietoa",
+      "editTitle": "Muokkaa tiliä",
+      "delete": "Poista",
+      "deleteContactTitle": "Poista yhteystieto",
+      "removeContact": "Poistetaanko yhteystieto?",
+      "confirmRemove": "Haluatko varmasti poistaa tämän yhteystiedon?",
+      "cancel": "Peruuta",
+      "confirm": "Vahvista"
+    },
+    "editPasswordPage": {
+      "title": "Muokkaa salasanaa",
+      "passwordChanged": "Salasana vaihdettu onnistuneesti",
+      "cannotUpdatePassword": "Salasana-asetuksia ei voi päivittää",
+      "save": "Tallenna"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Syötä salasanasi jatkaaksesi",
+      "inputPlaceholder": "Syötä salasana",
+      "password": "Salasana",
+      "errorRequired": "Tämä kenttä on pakollinen.",
+      "errorInvalid": "Virheellinen salasana.",
+      "continue": "Jatka",
+      "correctPassword": "Salasana oikein, odota hetki..."
+    },
+    "exportSeedPhrase": {
+      "title": "Vie palautuslauseke",
+      "copied": "Kopioitu!",
+      "description": "Salauspalautuslausekkeesi helpottaa tilisi varmuuskopiointia ja palauttamista.",
+      "warning": "Älä koskaan paljasta palautuslauseketta. Kuka tahansa, jolla on se, voi ottaa lompakkosi haltuunsa.",
+      "copyKeyphrase": "Kopioi lauseke",
+      "download": "Lataa"
+    },
+    "lockSettingsPage": {
+      "title": "Automaattisen lukituksen asetukset",
+      "saved": "Asetukset tallennettu",
+      "required": "Tämä kenttä on pakollinen.",
+      "placeholder": "Valitse lukitusviive",
+      "selectTitle": "Automaattinen lukitus",
+      "restore": "Palauta oletus",
+      "save": "Tallenna"
+    },
+    "networksPage": {
+      "title": "Verkot",
+      "network": "Verkko",
+      "addNew": "Lisää uusi verkko",
+      "editSuccess": "Verkko muokattu onnistuneesti",
+      "addSuccess": "Verkko lisätty onnistuneesti",
+      "errorUrl": "URL-osoite on jo olemassa",
+      "deleteSuccess": "Verkko poistettu onnistuneesti",
+      "remove": "Poista",
+      "save": "Tallenna",
+      "confirmRemove": "Poistetaanko tämä verkko?",
+      "confirmRemoveDesc": "Haluatko varmasti poistaa tämän verkon?",
+      "placeholderName": "Syötä verkon nimi",
+      "placeholderUrl": "Syötä uusi RPC-URL",
+      "placeholderExplorer": "Syötä lohkoketjun selaimen URL",
+      "placeholderNetworkId": "Syötä verkon ID",
+      "titleName": "Verkon nimi",
+      "titleUrl": "Uusi RPC-URL",
+      "titleExplorer": "Lohkoketjuselain URL",
+      "titleNetworkId": "Verkon ID",
+      "nameMax": "Verkon nimen enimmäispituus on 1000 merkkiä.",
+      "urlMax": "RPC-URL:n enimmäispituus on 1000 merkkiä.",
+      "explorerMax": "Lohkoketjuselaimen URL:n enimmäispituus on 1000 merkkiä.",
+      "networkIdMax": "Verkon ID:n enimmäispituus on 1000 merkkiä."
+    },
+    "selectTheme": {
+      "title": "Valitse teema"
+    },
+    "txSettingsPage": {
+      "title": "Tapahtuma-asetukset",
+      "gasLimit": "Kaasuraja",
+      "gasLimitPlaceholder": "Syötä kaasuraja",
+      "finishCrossChain": "Viimeistele crosschain-kaasusäiliö",
+      "finishCrossChainPlaceholder": "Syötä crosschain-kaasusäiliö",
+      "crossChainGasLimit": "Crosschain-kaasuraja",
+      "crossChainGasLimitPlaceholder": "Syötä crosschain-kaasuraja",
+      "crossChainGasPrice": "Crosschain-kaasuhinta",
+      "crossChainGasPricePlaceholder": "Syötä crosschain-kaasuhinta",
+      "save": "Tallenna",
+      "restoreDefault": "Palauta oletus",
+      "successSave": "Asetukset tallennettu onnistuneesti",
+      "requiredField": "Tämä kenttä on pakollinen.",
+      "invalidValue": "Virheellinen arvo"
+    },
+    "2faPage": {
+      "title": "Kaksivaiheinen tunnistus",
+      "description": "Kaksivaiheinen tunnistus on jo otettu käyttöön.",
+      "disableButton": "Poista käytöstä",
+      "successDisable": "2FA poistettu onnistuneesti",
+      "installApp": "Asenna",
+      "orSimilar": "tai vastaava sovellus",
+      "scanQRCode": "Skannaa alla oleva QR-koodi:",
+      "enter6Digits": "Syötä 6-numeroinen koodi",
+      "invalidCode": "Koodi ei kelpaa.",
+      "saveButton": "Tallenna",
+      "setupSuccess": "2FA otettu käyttöön onnistuneesti"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "Valitse tilit",
+      "invalidUrl": "Virheellinen URL-osoite",
+      "disconnectSuccess": "Yhteyden katkaisu pyynnöstä onnistui",
+      "noActiveSessions": "EI AKTIIVISIA ISTUNTOJA",
+      "activeSessions": "AKTIIVISET ISTUNNOT",
+      "expiry": "Voimassa:",
+      "removeConnection": "Poista yhteys",
+      "removeConfirmation": "Haluatko varmasti poistaa tämän WalletConnect-yhteyden?",
+      "newConnection": "Uusi yhteys",
+      "addConnection": "Lisää uusi WalletConnect",
+      "inputUri": "Syötä URI",
+      "code": "Koodi",
+      "continue": "Jatka"
+    }
+  },
+  "buy": {
+    "title": "Osta",
+    "description": "Kryptovaluuttojen osto ja myynti tapahtuu Onramperin tarjoaman kolmannen osapuolen palvelun kautta.\n\neckoWALLET pyrkii takaamaan käyttäjilleen korkean tietoturvan, emmekä voi taata kolmansien osapuolten palveluiden turvallisuutta tai yksityisyyttä.",
+    "cancel": "Peruuta",
+    "confirm": "Vahvista",
+    "error": {
+      "noAddress": "Lompakon osoite ei ole saatavilla",
+      "generic": "Yhteyttä palveluun ei voitu muodostaa. Yritä myöhemmin uudelleen."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "LOMPAKON ANALYTIIKKA",
+    "dexAnalytics": "DEX-ANALYTIIKKA",
+    "portfolioValue": "PORTFOLION ARVOKAAVIO",
+    "startTracking": "Aloita seuranta",
+    "trackPortfolioTitle": "Seuraa portfolion arvoa",
+    "trackPortfolioStart": "ALOITA SALDON SEURANTA",
+    "trackPortfolioDesc1": "Vahvistamalla aloitat tilisi saldon seurannan.",
+    "trackPortfolioDesc2": "Jatketaanko?",
+    "confirm": "Vahvista",
+    "confirming": "Vahvistetaan, odota...",
+    "disclaimerTitle": "Tietoa!",
+    "disclaimerText": "Tämän sivun tiedot ovat BETA-vaiheessa ja tarjotaan \"sellaisina kuin ne ovat\" -periaatteella."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Virheellinen verkko",
+      "signingCmdError": "Allekirjoitusvirhe, tarkista hyötykuorma",
+      "signingCmdGenericError": "Allekirjoitusvirhe",
+      "rejectedByUser": "Hylätty käyttäjän toimesta",
+      "userRejected": "Käyttäjä hylkäsi.",
+      "signedCommand": "Allekirjoitettu komento",
+      "hashToSign": "TIIVISTE ALLEKIRJOITETTAVAKSI:",
+      "pleaseEnableLedger": "Ota BLIND SIGNING käyttöön\nja seuraa Ledgerin ohjeita ensin",
+      "capabilities": "Oikeudet",
+      "close": "Sulje",
+      "reject": "Hylkää",
+      "confirm": "Vahvista"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Nopea allekirjoituspyyntö",
+      "code": "Koodi",
+      "capabilities": "Oikeudet",
+      "rawData": "Raakadatat",
+      "command": "Komento {{index}}/{{total}}",
+      "hashToSign": "TIIVISTE ALLEKIRJOITETTAVAKSI ({{count}}/{{total}}):",
+      "ledgerInstructions": "Ota BLIND SIGNING käyttöön ja seuraa Ledgerin ohjeita ensin",
+      "close": "Sulje",
+      "reject": "Hylkää",
+      "confirm": "Vahvista",
+      "error.invalidStructure": "QuickSign epäonnistui: tietorakenne virheellinen",
+      "error.pubKeyNotFound": "QuickSign epäonnistui: julkista avainta ei löydy",
+      "error.ledger": "Ledger-allekirjoitus epäonnistui"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Tuo laitteistolompakko",
+      "selectDevice": "Valitse laitteistolompakko",
+      "ledgerInstructions": "Yhdistä Ledger suoraan tietokoneeseesi. Avaa Kadena-sovellus ja poista lukitus.",
+      "connect": "Yhdistä",
+      "confirm": "Tuo",
+      "success": "Laitteistolompakko tuotu onnistuneesti",
+      "error": {
+        "duplicate": "Tuotava tili on jo lisätty.",
+        "network": "Verkkovirhe.",
+        "invalid": "Virheelliset tiedot"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Tuo Ledgeristä",
+      "instruction": "Liitä Ledger suoraan tietokoneeseesi, avaa Kadena-sovellus ja poista lukitus.",
+      "continue": "Jatka",
+      "publicKey": "JULKINEN AVAIN",
+      "account": "TILI",
+      "confirm": "Vahvista tuonti",
+      "success": "Tili tuotu onnistuneesti.",
+      "error": {
+        "duplicate": "Tuotava tili on jo lisätty.",
+        "network": "Verkkovirhe tilin tietojen hakemisessa",
+        "invalid": "Virheelliset tiedot"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Tuo tokenit",
+      "contractLabel": "Token-sopimuksen osoite",
+      "symbolLabel": "Tokenin symboli",
+      "placeholder": {
+        "contract": "Syötä sopimuksen osoite",
+        "symbol": "Syötä symboli"
+      },
+      "add": "Lisää token",
+      "edit": "Muokkaa tokenia",
+      "success": "Token tallennettu onnistuneesti",
+      "error": {
+        "duplicate": "Token on jo lisätty",
+        "notFound": "Ei löytynyt tietoja sopimukselle {{contract}} – tarkista verkko {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Tuo lompakko",
+    "form": {
+      "accountName": {
+        "title": "Tilisi nimi",
+        "placeholder": "Tilin nimi"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "Yksityinen avain",
+        "placeholder": "Yksityinen avain"
+      }
+    },
+    "validation": {
+      "required": "Tämä kenttä on pakollinen.",
+      "invalidData": "Virheelliset tiedot",
+      "startsWithK": "Tilin nimen on aloitettava \"k:\"",
+      "accountName": {
+        "maxLength": "Tilin nimen enimmäispituus on 1000 merkkiä."
+      },
+      "secretKey": {
+        "maxLength": "Yksityisen avaimen enimmäispituus on 1000 merkkiä."
+      }
+    },
+    "modal": {
+      "scanTitle": "Skannaa QR-koodi",
+      "scanBody": "Aseta QR-koodi kamerasi eteen"
+    },
+    "button": {
+      "import": "Tuo lompakko"
+    },
+    "toast": {
+      "importSuccess": "Tili tuotu onnistuneesti.",
+      "duplicateError": "Tuotava tili on jo lisätty.",
+      "invalidAccountData": "Virheelliset tilitiedot",
+      "multipleKeys": "Useita avainpareja ei tueta",
+      "invalidData": "Virheelliset tiedot",
+      "networkError": "Verkkovirhe."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Minulla on olemassa oleva yksityinen avain.",
+      "prompt": "Tuo olemassa oleva yksityinen avain"
+    },
+    "button": {
+      "import": "Tuo"
+    },
+    "image": {
+      "alt": "Tuo-kuvake"
+    }
+  },
+  "nft": {
+    "header": "Keräilyesineesi",
+    "noOwned": "Ei omistettuja NFT:itä"
+  },
+  "sendTransactions": {
+    "header": "Lähetä {{symbol}}-tapahtuma"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger-allekirjoitus onnistui",
+    "ledgerSignFailed": "Ledger-allekirjoitus epäonnistui tai hylättiin",
+    "transferSuccess": "Siirto onnistui",
+    "transferFailed": "Siirto epäonnistui",
+    "transactionSent": "Tapahtuma lähetetty onnistuneesti! Tarkista tila historia-välilehdeltä",
+    "networkError": "Verkkovirhe.",
+    "loadingTop": "Älä sulje tätä näkymää",
+    "loadingBottom": "Sinut ohjataan automaattisesti, kun tapahtuma on valmis",
+    "labelReceiver": "Vastaanottaja",
+    "labelAmount": "Määrä",
+    "labelGasLimit": "Kaasuraja",
+    "labelGasPrice": "Kaasuhinta",
+    "labelGasFee": "Kaasumaksu",
+    "labelTotal": "Yhteensä",
+    "warningCrossChainLine1": "Olet tekemässä cross chain -siirtoa",
+    "warningCrossChainLine2": "Tämä operaatio vie tavallista enemmän aikaa",
+    "warningNonKAccountLine1": "Olet lähettämässä ei-“k:”-alkuiseen tiliin!",
+    "warningNonKAccountLine2": "Haluatko varmasti jatkaa?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} ei ole siirrettävissä!",
+    "form": {
+      "sourceChainId": {
+        "title": "Lähde Chain ID"
+      },
+      "destinationAccount": {
+        "title": "Kohdetili"
+      },
+      "targetChainId": {
+        "title": "Kohde Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Kohdetilin enimmäispituus on 1000 merkkiä."
+    },
+    "balanceLabel": "{{symbol}} Chain -saldo",
+    "recent": "VIIMEISIMMÄT",
+    "contacts": "YHTEYSTIEDOT",
+    "confirm": {
+      "warningTitle": "Varoitus",
+      "publicKeyTitle": "Julkinen avain",
+      "publicKeyPlaceholder": "Syötä julkinen avain",
+      "predicateTitle": "Ehto",
+      "predicatePlaceholder": "Syötä ehto"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Et voi lähettää itsellesi",
+    "invalidGasLimit": "Virheellinen kaasuraja",
+    "gasLimitInteger": "Kaasurajan on oltava kokonaisluku",
+    "invalidGasPrice": "Virheellinen kaasuhinta",
+    "insufficientFundsGas": "Ei tarpeeksi varoja kaasumaksuun",
+    "newAddressDetected": "Uusi osoite havaittu! Lisää yhteystietoihisi",
+    "tokenNotExists": "{{contractAddress}} ei löydy CHAINilta {{chainId}}!",
+    "transactionParameters": "Tapahtuman parametrit",
+    "estimatedGas": "Arvioitu kaasu {{gas}}",
+    "speed": "{{speed}} nopeus",
+    "modal": {
+      "confirmTitle": "Vahvista lähetys",
+      "gasParametersTitle": "Kaasuparametrit"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Kaasuraja"
+      },
+      "gasPrice": {
+        "title": "Kaasuhinta"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Lähetettävä määrä",
+    "button": {
+      "half": "PUOLI",
+      "max": "MAKSIMI"
+    },
+    "error": {
+      "insufficientFunds": "Ei tarpeeksi varoja",
+      "invalidAmount": "Virheellinen määrä"
+    },
+    "balance": "Saldo: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp-logo",
+    "sendTransaction": "Lähetä tapahtuma",
+    "destinationNotFound": "Kohdetiliä ei löydy"
+  },
+  "history": {
+    "header": "Historia",
+    "modal": {
+      "confirmSendTransaction": "Vahvista lähetys"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Tapahtumatiedot"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Tilisi nimi"
+  },
+  "activityList": {
+    "loading": "Ladataan...",
+    "today": "Tänään",
+    "yesterday": "Eilen",
+    "noTransactions": "Sinulla ei ole tapahtumia"
+  },
+  "statusFilter": {
+    "modalTitle": "Tila",
+    "prefix": "Tila: ",
+    "options": {
+      "all": "Kaikki",
+      "in": "Vastaanotetut",
+      "out": "Lähetetyt",
+      "pending": "Odottaa"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Varat: ",
+    "options": {
+      "all": "Kaikki"
+    }
+  },
+  "footer": {
+    "wallet": "LOMPAKKO",
+    "analytics": "ANALYTIIKKA",
+    "nft": "NFT",
+    "settings": "ASETUKSET"
+  }
+}

@@ -1,0 +1,646 @@
+{
+  "select_language": "Kies taal",
+  "home": {
+    "startNow": "Begin nou"
+  },
+  "common": {
+    "requiredField": "Hierdie veld is verpligtend.",
+    "invalidData": "Ongeldige data",
+    "invalidUrl": "Ongeldige URL",
+    "cancel": "Kanselleer",
+    "back": "Terug",
+    "confirm": "Bevestig",
+    "continue": "Gaan voort",
+    "reject": "Weier",
+    "usd": "{{value}} USD",
+    "next": "Volgende",
+    "close": "Sluit"
+  },
+  "condition": {
+    "noPersonalInfo": "Ons versamel nooit sleutels, adresse, transaksies, borge, hashes of enige persoonlike data nie",
+    "noIP": "Ons versamel nooit jou volle IP-adres nie",
+    "noSelling": "Ons verkoop nooit data vir wins nie. Nooit!",
+    "next": "Volgende"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Ek het gelees en stem in met",
+    "termsOfUse": "Gebruiksvoorwaardes",
+    "createNewWallet": "Skep nuwe beursie",
+    "setupNewAccount": "Stel nuwe eckoWALLET-rekening op",
+    "restoreWallet": "Herstel beursie",
+    "restoreFromPhrase": "Herstel vanaf frase"
+  },
+  "createPassword": {
+    "successCreate": "Wagwoord suksesvol geskep",
+    "errorCreate": "Fout tydens skep van beursie",
+    "invalidPhrase": "Ongeldige privaat herstelfrase!",
+    "importFromPhrase": "Voer in vanaf herstelfrase",
+    "createPassword": "Skep wagwoord",
+    "pastePhrase": "Plak privaat herstelfrase",
+    "requiredField": "Hierdie veld is verpligtend.",
+    "phraseTooLong": "Herstelfrase is te lank.",
+    "secretRecoveryPhrase": "Privaat herstelfrase",
+    "import": "Voer in",
+    "create": "Skep"
+  },
+  "passwordForm": {
+    "inputPassword": "Voer wagwoord in",
+    "inputConfirmPassword": "Voer bevestigingswagwoord in",
+    "requiredField": "Hierdie veld is verpligtend.",
+    "minPassword": "Wagwoord moet minstens 8 tekens hê.",
+    "maxPassword": "Wagwoord mag hoogstens 256 tekens hê.",
+    "passwordMismatch": "Wagwoorde stem nie ooreen nie",
+    "newPassword": "Nuwe wagwoord (min. 8 tekens)",
+    "confirmPassword": "Bevestig wagwoord",
+    "passwordWarning": "Ek verstaan ek het onveilige tekens gebruik. Ons beveel aan om net letters (a–z), syfers (0–9) en spesiale tekens _!?\"'.#@,;- te gebruik"
+  },
+  "seedPhrase": {
+    "title": "Privaat herstelfrase",
+    "step1Text": "In die volgende stap sal jy jou 12-woord herstelfrase neerskryf.\nJou herstelfrase laat jou toe om jou beursie maklik op ŉ nuwe toestel te herstel.\nEnigiemand met hierdie frase kan jou beursie beheer, hou dit dus veilig.\nAs jy dit verloor, kan niemand dit herstel nie; berg dit dus veilig.",
+    "step1Checkbox": "Ek verstaan dat as ek my herstelfrase verloor, ek nie die beursie kan herstel nie.",
+    "generating": "Sleutels word gegenereer...",
+    "continue": "Gaan voort",
+    "reveal": "Klik hier om geheime woorde te onthul",
+    "step2Text1": "Jou privaat herstelfrase maak eenvoudige rugsteun en herstel van jou rekening moontlik.",
+    "step2Text2": "Waarskuwing: moenie ooit jou privaat herstelfrase deel nie. Enigiemand met dit kan jou beursie permanent oorneem.",
+    "download": "Laai af",
+    "verifyTitle": "Bevestig herstelfrase",
+    "verifyInstruction": "Bevestig jou herstelfrase deur die woorde in die korrekte volgorde in te voer.",
+    "successVerify": "Privaat herstelfrase suksesvol bevestig.",
+    "invalidPhrase": "Ongeldige privaat herstelfrase!",
+    "errorGeneratingKeys": "Fout tydens generering van beursiesleutels",
+    "errorCreatingWallet": "Fout tydens skep van beursie",
+    "generatingWallet": "Jou beursie word geskep..."
+  },
+  "wallet": {
+    "netWorth": "NETTOWAARDE",
+    "accountBalance": "REKENINGBALANS",
+    "send": "Stuur",
+    "receive": "Ontvang",
+    "receiveTokens": "Ontvang tokens",
+    "buy": "Koop",
+    "history": "Geskiedenis",
+    "assets": "BATE",
+    "detectedTokens": "Gevonde tokens",
+    "tokenList": "Tokenlys",
+    "kdaChainDistribution": "KDA chain-verspreiding",
+    "chainDistribution": "Chain-verspreiding",
+    "tokenRemoved": "Token suksesvol verwyder",
+    "removeToken": "Verwyder token",
+    "editToken": "Wysig token",
+    "removeTokenTitle": "Verwyder token {{symbol}}",
+    "confirmRemoveToken": "Is jy seker jy wil token {{symbol}} verwyder?",
+    "notTransferable": "{{contractAddress}} is nie oordraagbaar nie!",
+    "accountDoesNotExist": "Bestaan nie: hierdie rekening bestaan nie.",
+    "balanceZero": "Balans van {{symbol}} is 0."
+  },
+  "accountActions": {
+    "shareWallet": "Deel beursie",
+    "copied": "Gekopieer!",
+    "exportRecoveryPhrase": "Voer herstelfrase uit",
+    "signHashTransaction": "Teken hash-transaksie",
+    "editAccountAlias": "Wysig rekeningaanduiding",
+    "setAccountAlias": "Stel rekeningaanduiding in",
+    "removeSelectedWallet": "Verwyder geselekteerde beursie",
+    "createWallet": "Skep beursie",
+    "importWallet": "Voer beursie in",
+    "importHardwareWallet": "Voer hardeware-beursie in"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Geen ander tokens gevind vir hierdie rekening nie."
+  },
+  "aliasModal": {
+    "accountAlias": "Rekeningaanduiding",
+    "cancel": "Kanselleer",
+    "save": "Stoor",
+    "aliasChanged": "Aanduiding suksesvol verander"
+  },
+  "hashSignModal": {
+    "publicKey": "Jou openbare sleutel",
+    "transactionHash": "Transaksie-hash",
+    "insertTransactionHash": "Voer transaksie-hash in",
+    "signature": "Handtekening",
+    "copied": "Gekopieer!",
+    "clean": "Maak skoon",
+    "sign": "Teken"
+  },
+  "popupDetailTransaction": {
+    "status": "Status",
+    "direction": "Rigting",
+    "symbol": "Simbol",
+    "quantity": "Hoeveelheid",
+    "gasFee": "Gasfooi",
+    "total": "Totaal",
+    "viewDetails": "Wys besonderhede",
+    "activityLog": "Aktiwiteitslog",
+    "transactionCreated": "Transaksie geskep ter waarde van {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transaksie bevestig",
+    "success": "Sukses",
+    "failed": "Misluk",
+    "finishing": "Besig om te voltooi"
+  },
+  "removeWallet": {
+    "title": "Is jy seker jy wil hierdie beursie verwyder?",
+    "description": "Voer wagwoord in om te bevestig",
+    "passwordPlaceholder": "Voer wagwoord in",
+    "passwordRequired": "Hierdie veld is verpligtend.",
+    "passwordMinLength": "Wagwoord moet minstens 8 tekens hê.",
+    "passwordMaxLength": "Wagwoord mag hoogstens 256 tekens hê.",
+    "invalidPassword": "Ongeldige wagwoord",
+    "cancel": "Kanselleer",
+    "remove": "Verwyder"
+  },
+  "header": {
+    "selectNetwork": "Kies netwerk",
+    "manageNetworks": "Bestuur netwerke",
+    "myWallets": "My beursies",
+    "removeWalletTitle": "Verwyder beursie",
+    "createAccountSuccess": "Rekening suksesvol geskep!",
+    "createAccountFail": "Skep rekening misluk",
+    "copied": "Gekopieer!"
+  },
+  "signIn": {
+    "loginTitle": "Teken in by jou rekening",
+    "passwordPlaceholder": "Voer wagwoord in",
+    "passwordTitle": "Wagwoord",
+    "signInButton": "Teken in",
+    "invalidPassword": "Ongeldige wagwoord",
+    "required": "Hierdie veld is verpligtend.",
+    "minLength": "Wagwoord moet minstens 8 tekens hê.",
+    "maxLength": "Wagwoord mag hoogstens 256 tekens hê.",
+    "initWalletError": "Fout tydens inisialisering van beursie"
+  },
+  "settings": {
+    "contacts": "Kontakte",
+    "language": "Taal",
+    "languageDesc": "Kies beursie-taal",
+    "contactsDesc": "Bestuur jou kontakte",
+    "networks": "Netwerke",
+    "networksDesc": "Voeg persoonlike RPC-netwerke by of wysig",
+    "connectedSites": "Verbonde webwerwe",
+    "connectedSitesDesc": "Bekyk en bestuur verbonde werwe",
+    "walletConnect": "Wallet Connect",
+    "walletConnectDesc": "Koppel met WalletConnect",
+    "txSettings": "Transaksie-instellings",
+    "txSettingsDesc": "Stel gasinstellings in",
+    "exportPhrase": "Voer herstelfrase uit",
+    "exportPhraseDesc": "Beveilig jou beursie",
+    "editPassword": "Wysig wagwoord",
+    "editPasswordDesc": "Verander beursie-wagwoord",
+    "2fa": "2FA",
+    "2faDesc": "Bestuur twee-faktor-verifikasie",
+    "expandView": "Breë vertoning",
+    "expandViewDesc": "Maak eckoWALLET in ŉ nuwe venster oop",
+    "theme": "Tema",
+    "themeDesc": "Stel beursie-tema in",
+    "lock": "Sluit beursie",
+    "lockDesc": "Beveilig jou beursie",
+    "lockSettings": "Sluit-instellings",
+    "lockSettingsDesc": "Verander veiligheid-instellings",
+    "discord": "Sluit by ons aan op Discord",
+    "website": "Besoek ons webwerf",
+    "terms": "Gebruiksvoorwaardes",
+    "privacy": "Privaatheidsbeleid",
+    "connectedSitesPage": {
+      "title": "Verbonde werwe",
+      "removeSiteTitle": "Verwyder werf",
+      "removeSiteConfirmText": "Is jy seker jy wil verwyder",
+      "removeSiteSuccess": "Werp suksesvol verwyder."
+    },
+    "contactsPage": {
+      "title": "Kontakte",
+      "newContactTitle": "Nuwe kontak",
+      "addNewContact": "Voeg nuwe kontak by",
+      "noContacts": "Geen kontakte nie"
+    },
+    "contactForm": {
+      "enterAlias": "Voer alias in",
+      "aliasPlaceholder": "bv. David",
+      "accountNameTitle": "Rekeningnaam",
+      "accountNamePlaceholder": "Rekeningnaam",
+      "scanQrTitle": "Skandeer QR-kode",
+      "scanQrDescription": "Rig jou kamera na die QR-kode",
+      "buttonCancel": "Kanselleer",
+      "buttonSave": "Stoor",
+      "successContactAdded": "Kontak gevoeg",
+      "errorNetwork": "Netwerkfout.",
+      "copied": "Gekopieer!",
+      "requiredField": "Hierdie veld is verpligtend.",
+      "invalidData": "Ongeldige data",
+      "aliasMaxLength": "Alias mag hoogstens 256 tekens hê.",
+      "accountNameMaxLength": "Rekeningnaam mag hoogstens 1000 tekens hê."
+    },
+    "contactInfo": {
+      "copied": "Gekopieer!",
+      "contactRemoved": "Kontak verwyder",
+      "accountName": "REKENINGNAAM",
+      "editContact": "Wysig kontak",
+      "editTitle": "Wysig rekening",
+      "delete": "Verwyder",
+      "deleteContactTitle": "Verwyder kontak",
+      "removeContact": "Verwyder kontak?",
+      "confirmRemove": "Is jy seker jy wil hierdie kontak verwyder?",
+      "cancel": "Kanselleer",
+      "confirm": "Bevestig"
+    },
+    "editPasswordPage": {
+      "title": "Wysig wagwoord",
+      "passwordChanged": "Wagwoord suksesvol verander",
+      "cannotUpdatePassword": "Wagwoord kan nie opgedateer word nie",
+      "save": "Stoor"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Voer wagwoord in om voort te gaan",
+      "inputPlaceholder": "Voer wagwoord in",
+      "password": "Wagwoord",
+      "errorRequired": "Hierdie veld is verpligtend.",
+      "errorInvalid": "Ongeldige wagwoord.",
+      "continue": "Gaan voort",
+      "correctPassword": "Jou wagwoord is korrek, wag asseblief..."
+    },
+    "exportSeedPhrase": {
+      "title": "Voer herstelfrase uit",
+      "copied": "Gekopieer!",
+      "description": "Jou privaat herstelfrase laat eenvoudige rugsteun en herstel van jou rekening toe.",
+      "warning": "Moet nooit jou privaat herstelfrase openbaar nie. Enigiemand wat dit het kan jou beursie permanent oorneem.",
+      "copyKeyphrase": "Kopieer frase",
+      "download": "Laai af"
+    },
+    "lockSettingsPage": {
+      "title": "Outomatiese sluit-instellings",
+      "saved": "Instellings suksesvol gestoor",
+      "required": "Hierdie veld is verpligtend.",
+      "placeholder": "Kies tyd vir outomatiese sluit",
+      "selectTitle": "Tyd vir outomatiese sluit",
+      "restore": "Herstel verstek",
+      "save": "Stoor"
+    },
+    "networksPage": {
+      "title": "Netwerke",
+      "network": "Netwerk",
+      "addNew": "Voeg nuwe by",
+      "editSuccess": "Netwerk suksesvol gewysig",
+      "addSuccess": "Netwerk suksesvol bygevoeg",
+      "errorUrl": "URL bestaan reeds",
+      "deleteSuccess": "Netwerk suksesvol verwyder",
+      "remove": "Verwyder",
+      "save": "Stoor",
+      "confirmRemove": "Verwyder hierdie netwerk?",
+      "confirmRemoveDesc": "Is jy seker jy wil hierdie netwerk verwyder?",
+      "placeholderName": "Voer net- werknaam in",
+      "placeholderUrl": "Voer nuwe RPC-URL in",
+      "placeholderExplorer": "Voer blokverkenner-URL in",
+      "placeholderNetworkId": "Voer netwerk-ID in",
+      "titleName": "Netwerknaam",
+      "titleUrl": "Nuwe RPC-URL",
+      "titleExplorer": "Blokverkenner-URL",
+      "titleNetworkId": "Netwerk-ID",
+      "nameMax": "Netwerknaam mag hoogstens 1000 tekens hê.",
+      "urlMax": "Nuwe RPC-URL mag hoogstens 1000 tekens hê.",
+      "explorerMax": "Blokverkenner-URL mag hoogstens 1000 tekens hê.",
+      "networkIdMax": "Netwerk-ID mag hoogstens 1000 tekens hê."
+    },
+    "selectTheme": {
+      "title": "Kies tema"
+    },
+    "txSettingsPage": {
+      "title": "Transaksie-instellings",
+      "gasLimit": "Gaslimiet",
+      "gasLimitPlaceholder": "Voer gaslimiet in",
+      "finishCrossChain": "Voltooi Crosschain Gas Station",
+      "finishCrossChainPlaceholder": "Voer Crosschain Gas Station in",
+      "crossChainGasLimit": "Cross-chain gaslimiet",
+      "crossChainGasLimitPlaceholder": "Voer cross-chain gaslimiet in",
+      "crossChainGasPrice": "Cross-chain gaskoste",
+      "crossChainGasPricePlaceholder": "Voer cross-chain gaskoste in",
+      "save": "Stoor",
+      "restoreDefault": "Herstel verstek",
+      "successSave": "Instellings suksesvol gestoor",
+      "requiredField": "Hierdie veld is verpligtend.",
+      "invalidValue": "Ongeldige waarde"
+    },
+    "2faPage": {
+      "title": "Twee-faktor-verifikasie",
+      "description": "Twee-faktor-verifikasie is reeds geaktiveer.",
+      "disableButton": "Deaktiveer",
+      "successDisable": "2FA suksesvol gedeaktiveer.",
+      "installApp": "Installeer",
+      "orSimilar": "of soortgelyke app",
+      "scanQRCode": "Ska​​neër die QR-kode hieronder:",
+      "enter6Digits": "Voer 6-syfer kode in",
+      "invalidCode": "Ongeldige kode.",
+      "saveButton": "Stoor",
+      "setupSuccess": "2FA suksesvol ingestel"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "Kies rekeninge",
+      "invalidUrl": "Ongeldige URL",
+      "disconnectSuccess": "Ontkoppelversoek suksesvol gestuur",
+      "noActiveSessions": "GEEN AKTIEWE SESSIES NIE",
+      "activeSessions": "AKTIEWE SESSIES",
+      "expiry": "Verval:",
+      "removeConnection": "Verwyder verbinding",
+      "removeConfirmation": "Is jy seker jy wil hierdie WalletConnect-instansie verwyder?",
+      "newConnection": "Nuwe verbinding",
+      "addConnection": "Voeg nuwe Wallet Connect by",
+      "inputUri": "Voer URI in",
+      "code": "Kode",
+      "continue": "Gaan voort"
+    }
+  },
+  "buy": {
+    "title": "Koop",
+    "description": "Koop en verkoop van kripto word uitgevoer via ŉ derdeparty-diens gelewer deur Onramper.\n\neckoWALLET poog wel om die hoogste vlak sekuriteit vir gebruikers te bied, maar ons kan nie borg vir sekuriteit en privaatheid van derdeparty-dienste nie.",
+    "cancel": "Kanselleer",
+    "confirm": "Bevestig",
+    "error": {
+      "noAddress": "Beursie-adres nie beskikbaar nie",
+      "generic": "Kan nie met diens koppel nie. Probeer later weer."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "BEURSIE-ANALITIEK",
+    "dexAnalytics": "DEX-ANALITIEK",
+    "portfolioValue": "PORTFOLIOWAARDE-GRAFIEK",
+    "startTracking": "Begin nasporing",
+    "trackPortfolioTitle": "Sporing van portefeuljewaarde",
+    "trackPortfolioStart": "BEGIN NASPORING VAN REKENINGSBALANS",
+    "trackPortfolioDesc1": "Deur te bevestig, gee jy toestemming om jou rekeningbalans na te spoor.",
+    "trackPortfolioDesc2": "Wil jy voortgaan?",
+    "confirm": "Bevestig",
+    "confirming": "Bevestiging, wag asseblief...",
+    "disclaimerTitle": "Let wel!",
+    "disclaimerText": "Inligting op hierdie bladsy is in BETA en word aangebied \"soos dit is\" en \"soos beskikbaar\"."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Ongeldige netwerk",
+      "signingCmdError": "Fout tydens ondertekening van opdrag, kontroleer jou payload",
+      "signingCmdGenericError": "Fout tydens ondertekening van opdrag",
+      "rejectedByUser": "Deur gebruiker geweier",
+      "userRejected": "Gebruiker het geweier.",
+      "signedCommand": "Opdrag onderteken",
+      "hashToSign": "HASH OM TE ONDERTEKEN:",
+      "pleaseEnableLedger": "Aktiveer asseblief BLIND SIGNING en volg eers die instruksies op jou Ledger.",
+      "capabilities": "Vermoëns",
+      "close": "Sluit",
+      "reject": "Weier",
+      "confirm": "Bevestig"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Vinnige ondertekenversoek",
+      "code": "Kode",
+      "capabilities": "Vermoëns",
+      "rawData": "Ruwe data",
+      "command": "Opdrag {{index}}/{{total}}",
+      "hashToSign": "HASH OM TE ONDERTEKEN ({{count}}/{{total}}):",
+      "ledgerInstructions": "Aktiveer asseblief BLIND SIGNING en volg eers die instruksies op jou Ledger",
+      "close": "Sluit",
+      "reject": "Weier",
+      "confirm": "Bevestig",
+      "error.invalidStructure": "QuickSign misluk: ongeldige datastruktuur",
+      "error.pubKeyNotFound": "QuickSign misluk: openbare sleutel van beursie nie gevind nie",
+      "error.ledger": "Ledger-ondertekening misluk"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Voer hardeware-beursie in",
+      "selectDevice": "Kies hardeware-toestel",
+      "ledgerInstructions": "Koppel jou Ledger direk aan die rekenaar. Ontsluit dit dan en maak die Kadena-app oop.",
+      "connect": "Koppel",
+      "confirm": "Voer in",
+      "success": "Hardeware-beursie suksesvol ingevoer",
+      "error": {
+        "duplicate": "Rekening wat jy probeer invoer bestaan reeds.",
+        "network": "Netwerkfout.",
+        "invalid": "Ongeldige data"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Voer in vanaf Ledger",
+      "instruction": "Steek jou Ledger direk in die rekenaar, ontsluit dit en open die Kadena-app.",
+      "continue": "Gaan voort",
+      "publicKey": "OPENBARE SLEUTEL",
+      "account": "REKENING",
+      "confirm": "Bevestig invoer",
+      "success": "Rekening suksesvol ingevoer.",
+      "error": {
+        "duplicate": "Rekening wat jy probeer invoer bestaan reeds.",
+        "network": "Netwerkfout tydens opvraging van rekeningdata",
+        "invalid": "Ongeldige data"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Voer tokens in",
+      "contractLabel": "Token-kontrakadres",
+      "symbolLabel": "Token-simbool",
+      "placeholder": {
+        "contract": "Voer kontrakadres in",
+        "symbol": "Voer simbool in"
+      },
+      "add": "Voeg token by",
+      "edit": "Wysig token",
+      "success": "Token suksesvol gestoor",
+      "error": {
+        "duplicate": "Token reeds bygevoeg",
+        "notFound": "Kan nie {{contract}} oplos nie. Kontroleer of token bestaan op netwerk {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Voer beursie in",
+    "form": {
+      "accountName": {
+        "title": "Jou rekeningnaam",
+        "placeholder": "Rekeningnaam"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "Jou privaat sleutel",
+        "placeholder": "Privaat sleutel"
+      }
+    },
+    "validation": {
+      "required": "Hierdie veld is verpligtend.",
+      "invalidData": "Ongeldige data",
+      "startsWithK": "Rekeningnaam moet begin met \"k:\"",
+      "accountName": {
+        "maxLength": "Rekeningnaam mag hoogstens 1000 tekens hê."
+      },
+      "secretKey": {
+        "maxLength": "Privaat sleutel mag hoogstens 1000 tekens hê."
+      }
+    },
+    "modal": {
+      "scanTitle": "Skandeer QR-kode",
+      "scanBody": "Rig kamera op QR-kode"
+    },
+    "button": {
+      "import": "Voer beursie in"
+    },
+    "toast": {
+      "importSuccess": "Rekening suksesvol ingevoer.",
+      "duplicateError": "Rekening wat jy probeer invoer bestaan reeds.",
+      "invalidAccountData": "Ongeldige rekeningdata",
+      "multipleKeys": "Meerdere sleutelwerke word nie ondersteun nie.",
+      "invalidData": "Ongeldige data",
+      "networkError": "Netwerkfout."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Ek het reeds ŉ privaat sleutel.",
+      "prompt": "Voer jou bestaande privaat sleutel in"
+    },
+    "button": {
+      "import": "Voer in"
+    },
+    "image": {
+      "alt": "Invoerikoon"
+    }
+  },
+  "nft": {
+    "header": "Jou versamel-items",
+    "noOwned": "Jy besit geen NFTs nie."
+  },
+  "sendTransactions": {
+    "header": "Stuur {{symbol}}-transaksie"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger-ondertekening suksesvol",
+    "ledgerSignFailed": "Ledger-ondertekening misluk of geweier",
+    "transferSuccess": "Oordrag suksesvol",
+    "transferFailed": "Oordrag misluk",
+    "transactionSent": "Transaksie suksesvol gestuur! Kontroleer status in Geskiedenis",
+    "networkError": "Netwerkfout.",
+    "loadingTop": "Moet asseblief nie hierdie venster toemaak nie",
+    "loadingBottom": "Jy sal herlei word wanneer transaksie klaar is",
+    "labelReceiver": "Ontvanger",
+    "labelAmount": "Bedrag",
+    "labelGasLimit": "Gaslimiet",
+    "labelGasPrice": "Gaskoste",
+    "labelGasFee": "Gasfooi",
+    "labelTotal": "Totaal",
+    "warningCrossChainLine1": "Jy is besig om ŉ cross-chain-oordrag te maak",
+    "warningCrossChainLine2": "Hierdie operasie neem gewoonlik langer",
+    "warningNonKAccountLine1": "Jy stuur na ŉ rekening wat nie \"k:account\" is nie!",
+    "warningNonKAccountLine2": "Is jy seker jy wil voortgaan?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} is nie oordraagbaar nie!",
+    "form": {
+      "sourceChainId": {
+        "title": "Bron-Chain ID"
+      },
+      "destinationAccount": {
+        "title": "Bestemmingsrekening"
+      },
+      "targetChainId": {
+        "title": "Teiken-Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Bestemmingsrekening mag hoogstens 1000 tekens hê."
+    },
+    "balanceLabel": "Balans {{symbol}} chain",
+    "recent": "NUUTSTE",
+    "contacts": "Kontakte",
+    "confirm": {
+      "warningTitle": "Waarskuwing",
+      "publicKeyTitle": "Openbare sleutel",
+      "publicKeyPlaceholder": "Voer openbare sleutel in",
+      "predicateTitle": "Predikaat",
+      "predicatePlaceholder": "Predikaat"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Jy kan nie aan jouself stuur nie",
+    "invalidGasLimit": "Ongeldige gaslimiet",
+    "gasLimitInteger": "Gaslimiet moet ŉ heelgetal wees",
+    "invalidGasPrice": "Ongeldige gaskoste",
+    "insufficientFundsGas": "Onvoldoende middele vir gasfooi",
+    "newAddressDetected": "Nuwe adres opgespoor! Voeg by jou kontakte.",
+    "tokenNotExists": "{{contractAddress}} bestaan dalk nie op chain {{chainId}} nie!",
+    "transactionParameters": "Transaksieparameters",
+    "estimatedGas": "Geskatte gas {{gas}}",
+    "speed": "Spoed {{speed}}",
+    "modal": {
+      "confirmTitle": "Bevestig transaksie-verstuuring",
+      "gasParametersTitle": "Transaksie-parameters"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gaslimiet"
+      },
+      "gasPrice": {
+        "title": "Gaskoste"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Bedrag om te stuur",
+    "button": {
+      "half": "HELFT",
+      "max": "MAKS"
+    },
+    "error": {
+      "insufficientFunds": "Onvoldoende fondse",
+      "invalidAmount": "Ongeldige bedrag"
+    },
+    "balance": "Balans: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp-logo",
+    "sendTransaction": "Stuur transaksie",
+    "destinationNotFound": "Bestemmingsrekening nie gevind nie"
+  },
+  "history": {
+    "header": "Geskiedenis",
+    "modal": {
+      "confirmSendTransaction": "Bevestig transaksie-verstuuring"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Transaksie-besonderhede"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Jou rekeningnaam"
+  },
+  "activityList": {
+    "loading": "Besig om te laai...",
+    "today": "Vandag",
+    "yesterday": "Gister",
+    "noTransactions": "Jy het geen transaksies nie"
+  },
+  "statusFilter": {
+    "modalTitle": "Status",
+    "prefix": "Status: ",
+    "options": {
+      "all": "Alles",
+      "in": "Ontvang",
+      "out": "Gestuur",
+      "pending": "Hangend"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Bate: ",
+    "options": {
+      "all": "Alles"
+    }
+  },
+  "footer": {
+    "wallet": "BEURSIE",
+    "analytics": "ANALITIEK",
+    "nft": "NFT",
+    "settings": "INSTELLINGS"
+  }
+}

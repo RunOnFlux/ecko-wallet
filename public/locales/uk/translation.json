@@ -1,0 +1,646 @@
+{
+  "select_language": "Виберіть мову",
+  "home": {
+    "startNow": "Почати зараз"
+  },
+  "common": {
+    "requiredField": "Це поле є обов'язковим.",
+    "invalidData": "Невірні дані",
+    "invalidUrl": "Неправильний URL",
+    "cancel": "Скасувати",
+    "back": "Назад",
+    "confirm": "Підтвердити",
+    "continue": "Продовжити",
+    "reject": "Відхилити",
+    "usd": "{{value}} USD",
+    "next": "Далі",
+    "close": "Закрити"
+  },
+  "condition": {
+    "noPersonalInfo": "Ми ніколи не збираємо ключі, адреси, транзакції, баланси, хеші чи будь-які особисті дані",
+    "noIP": "Ми ніколи не збираємо вашу повну IP-адресу",
+    "noSelling": "Ми ніколи не продаємо дані заради прибутку. Ніколи!",
+    "next": "Далі"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Я прочитав(ла) і погоджуюся з",
+    "termsOfUse": "Умови використання",
+    "createNewWallet": "Створити новий гаманець",
+    "setupNewAccount": "Налаштувати новий акаунт eckoWALLET",
+    "restoreWallet": "Відновити гаманець",
+    "restoreFromPhrase": "Відновити з фрази"
+  },
+  "createPassword": {
+    "successCreate": "Пароль успішно створено",
+    "errorCreate": "Помилка створення гаманця",
+    "invalidPhrase": "Невірна приватна фраза відновлення!",
+    "importFromPhrase": "Імпортувати з фрази відновлення",
+    "createPassword": "Створити пароль",
+    "pastePhrase": "Вставте приватну фразу відновлення",
+    "requiredField": "Це поле є обов'язковим.",
+    "phraseTooLong": "Фраза відновлення занадто довга.",
+    "secretRecoveryPhrase": "Приватна фраза відновлення",
+    "import": "Імпортувати",
+    "create": "Створити"
+  },
+  "passwordForm": {
+    "inputPassword": "Введіть пароль",
+    "inputConfirmPassword": "Введіть підтвердження пароля",
+    "requiredField": "Це поле є обов'язковим.",
+    "minPassword": "Пароль повинен містити щонайменше 8 символів.",
+    "maxPassword": "Пароль може містити не більше 256 символів.",
+    "passwordMismatch": "Паролі не співпадають",
+    "newPassword": "Новий пароль (мін. 8 символів)",
+    "confirmPassword": "Підтвердіть пароль",
+    "passwordWarning": "Я усвідомлюю, що використав небезпечні символи. Рекомендується використовувати лише літери (a–z), цифри (0–9) та спеціальні символи _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Приватна фраза відновлення",
+    "step1Text": "У наступному кроці ви запишете свою 12-слівну фразу відновлення.\nВаша фраза відновлення дозволяє легко відновити гаманець на новому пристрої.\nБудь-хто з цією фразою може отримати контроль над вашим гаманцем, тому зберігайте її в безпеці.\nЯкщо ви втратите фразу, ніхто не зможе її відновити; збережіть її надійно.",
+    "step1Checkbox": "Я розумію, що якщо втратлю свою фразу відновлення, не зможу відновити гаманець.",
+    "generating": "Генерація ключів...",
+    "continue": "Продовжити",
+    "reveal": "Натисніть тут, щоб показати секретні слова",
+    "step2Text1": "Ваша приватна фраза відновлення дозволяє легко створювати резервні копії та відновлювати акаунт.",
+    "step2Text2": "Увага: ніколи не розкривайте свою приватну фразу відновлення. Кожен, хто її має, може назавжди захопити ваш гаманець.",
+    "download": "Завантажити",
+    "verifyTitle": "Підтвердіть фразу відновлення",
+    "verifyInstruction": "Підтвердіть фразу відновлення, ввівши слова в правильному порядку.",
+    "successVerify": "Приватну фразу відновлення успішно підтверджено.",
+    "invalidPhrase": "Невірна приватна фраза відновлення!",
+    "errorGeneratingKeys": "Помилка при генерації ключів гаманця",
+    "errorCreatingWallet": "Помилка створення гаманця",
+    "generatingWallet": "Створення вашого гаманця..."
+  },
+  "wallet": {
+    "netWorth": "ЧИСТА ВАРТІСТЬ",
+    "accountBalance": "БАЛАНС РАХУНКУ",
+    "send": "Відправити",
+    "receive": "Отримати",
+    "receiveTokens": "Отримати токени",
+    "buy": "Купити",
+    "history": "Історія",
+    "assets": "АКТИВИ",
+    "detectedTokens": "Виявлені токени",
+    "tokenList": "Список токенів",
+    "kdaChainDistribution": "Розподіл KDA chain",
+    "chainDistribution": "Розподіл chain",
+    "tokenRemoved": "Токен успішно видалено",
+    "removeToken": "Видалити токен",
+    "editToken": "Редагувати токен",
+    "removeTokenTitle": "Видалити токен {{symbol}}",
+    "confirmRemoveToken": "Ви впевнені, що хочете видалити токен {{symbol}}?",
+    "notTransferable": "{{contractAddress}} не підлягає передачі!",
+    "accountDoesNotExist": "Не існує: такого акаунту не існує.",
+    "balanceZero": "Баланс {{symbol}} становить 0."
+  },
+  "accountActions": {
+    "shareWallet": "Поділитися гаманцем",
+    "copied": "Скопійовано!",
+    "exportRecoveryPhrase": "Експортувати фразу відновлення",
+    "signHashTransaction": "Підписати hash-транзакцію",
+    "editAccountAlias": "Редагувати псевдонім акаунту",
+    "setAccountAlias": "Встановити псевдонім акаунту",
+    "removeSelectedWallet": "Видалити вибраний гаманець",
+    "createWallet": "Створити гаманець",
+    "importWallet": "Імпортувати гаманець",
+    "importHardwareWallet": "Імпортувати апаратний гаманець"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Для цього акаунту інших токенів не знайдено."
+  },
+  "aliasModal": {
+    "accountAlias": "Псевдонім акаунту",
+    "cancel": "Скасувати",
+    "save": "Зберегти",
+    "aliasChanged": "Псевдонім успішно змінено"
+  },
+  "hashSignModal": {
+    "publicKey": "Ваш публічний ключ",
+    "transactionHash": "Hash транзакції",
+    "insertTransactionHash": "Введіть hash транзакції",
+    "signature": "Підпис",
+    "copied": "Скопійовано!",
+    "clean": "Очистити",
+    "sign": "Підписати"
+  },
+  "popupDetailTransaction": {
+    "status": "Статус",
+    "direction": "Напрямок",
+    "symbol": "Символ",
+    "quantity": "Кількість",
+    "gasFee": "Комісія за газ",
+    "total": "Всього",
+    "viewDetails": "Переглянути деталі",
+    "activityLog": "Журнал активності",
+    "transactionCreated": "Транзакція створена на суму {{amount}} {{symbol}}",
+    "transactionConfirmed": "Транзакцію підтверджено",
+    "success": "Успіх",
+    "failed": "Не вдалося",
+    "finishing": "Завершення"
+  },
+  "removeWallet": {
+    "title": "Ви впевнені, що хочете видалити цей гаманець?",
+    "description": "Для підтвердження введіть пароль",
+    "passwordPlaceholder": "Введіть пароль",
+    "passwordRequired": "Це поле є обов'язковим.",
+    "passwordMinLength": "Пароль повинен містити щонайменше 8 символів.",
+    "passwordMaxLength": "Пароль може містити не більше 256 символів.",
+    "invalidPassword": "Неправильний пароль",
+    "cancel": "Скасувати",
+    "remove": "Видалити"
+  },
+  "header": {
+    "selectNetwork": "Виберіть мережу",
+    "manageNetworks": "Керування мережами",
+    "myWallets": "Мої гаманці",
+    "removeWalletTitle": "Видалити гаманець",
+    "createAccountSuccess": "Акаунт успішно створено!",
+    "createAccountFail": "Не вдалося створити акаунт",
+    "copied": "Скопійовано!"
+  },
+  "signIn": {
+    "loginTitle": "Увійдіть у свій акаунт",
+    "passwordPlaceholder": "Введіть пароль",
+    "passwordTitle": "Пароль",
+    "signInButton": "Увійти",
+    "invalidPassword": "Неправильний пароль",
+    "required": "Це поле є обов'язковим.",
+    "minLength": "Пароль повинен містити щонайменше 8 символів.",
+    "maxLength": "Пароль може містити не більше 256 символів.",
+    "initWalletError": "Помилка ініціалізації гаманця"
+  },
+  "settings": {
+    "contacts": "Контакти",
+    "language": "Мова",
+    "languageDesc": "Виберіть мову гаманця",
+    "contactsDesc": "Керуйте своїми контактами",
+    "networks": "Мережі",
+    "networksDesc": "Додати або редагувати кастомні RPC мережі",
+    "connectedSites": "Підключені сайти",
+    "connectedSitesDesc": "Перегляд та керування підключеними сайтами",
+    "walletConnect": "Wallet Connect",
+    "walletConnectDesc": "Підключитися через WalletConnect",
+    "txSettings": "Налаштування транзакцій",
+    "txSettingsDesc": "Встановити налаштування газу",
+    "exportPhrase": "Експортувати фразу відновлення",
+    "exportPhraseDesc": "Захистіть свій гаманець",
+    "editPassword": "Змінити пароль",
+    "editPasswordDesc": "Змінити пароль гаманця",
+    "2fa": "2FA",
+    "2faDesc": "Керувати двофакторною автентифікацією",
+    "expandView": "Розширений вигляд",
+    "expandViewDesc": "Відкрити eckoWALLET у новому вікні",
+    "theme": "Тема",
+    "themeDesc": "Встановити тему гаманця",
+    "lock": "Заблокувати гаманець",
+    "lockDesc": "Захистити свій гаманець",
+    "lockSettings": "Налаштування блокування",
+    "lockSettingsDesc": "Змінити налаштування безпеки",
+    "discord": "Приєднатися до нас у Discord",
+    "website": "Відвідати наш сайт",
+    "terms": "Умови використання",
+    "privacy": "Політика конфіденційності",
+    "connectedSitesPage": {
+      "title": "Підключені сайти",
+      "removeSiteTitle": "Видалити сайт",
+      "removeSiteConfirmText": "Ви впевнені, що хочете видалити",
+      "removeSiteSuccess": "Сайт успішно видалено."
+    },
+    "contactsPage": {
+      "title": "Контакти",
+      "newContactTitle": "Новий контакт",
+      "addNewContact": "Додати новий контакт",
+      "noContacts": "Немає контактів"
+    },
+    "contactForm": {
+      "enterAlias": "Введіть псевдонім",
+      "aliasPlaceholder": "наприклад David",
+      "accountNameTitle": "Назва акаунту",
+      "accountNamePlaceholder": "Назва акаунту",
+      "scanQrTitle": "Сканувати QR-код",
+      "scanQrDescription": "Наведіть камеру на QR-код",
+      "buttonCancel": "Скасувати",
+      "buttonSave": "Зберегти",
+      "successContactAdded": "Контакт додано",
+      "errorNetwork": "Помилка мережі.",
+      "copied": "Скопійовано!",
+      "requiredField": "Це поле є обов'язковим.",
+      "invalidData": "Невірні дані",
+      "aliasMaxLength": "Псевдонім може містити не більше 256 символів.",
+      "accountNameMaxLength": "Назва акаунту може містити не більше 1000 символів."
+    },
+    "contactInfo": {
+      "copied": "Скопійовано!",
+      "contactRemoved": "Контакт видалено",
+      "accountName": "НАЗВА АКАУНТУ",
+      "editContact": "Редагувати контакт",
+      "editTitle": "Редагувати акаунт",
+      "delete": "Видалити",
+      "deleteContactTitle": "Видалити контакт",
+      "removeContact": "Видалити контакт?",
+      "confirmRemove": "Ви впевнені, що хочете видалити цей контакт?",
+      "cancel": "Скасувати",
+      "confirm": "Підтвердити"
+    },
+    "editPasswordPage": {
+      "title": "Змінити пароль",
+      "passwordChanged": "Пароль успішно зминено",
+      "cannotUpdatePassword": "Не вдалося оновити пароль",
+      "save": "Зберегти"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Введіть пароль для продовження",
+      "inputPlaceholder": "Введіть пароль",
+      "password": "Пароль",
+      "errorRequired": "Це поле є обов'язковим.",
+      "errorInvalid": "Неправильний пароль.",
+      "continue": "Продовжити",
+      "correctPassword": "Ваш пароль правильний, будь ласка зачекайте..."
+    },
+    "exportSeedPhrase": {
+      "title": "Експортувати фразу відновлення",
+      "copied": "Скопійовано!",
+      "description": "Ваша приватна фраза відновлення дозволяє легко створювати резервні копії та відновлювати акаунт.",
+      "warning": "Ніколи не розкривайте свою приватну фразу відновлення. Той, хто її має, може назавжди захопити ваш гаманець.",
+      "copyKeyphrase": "Скопіювати фразу",
+      "download": "Завантажити"
+    },
+    "lockSettingsPage": {
+      "title": "Налаштування автоматичного блокування гаманця",
+      "saved": "Налаштування успішно збережено",
+      "required": "Це поле є обов'язковим.",
+      "placeholder": "Виберіть час для автоматичного блокування",
+      "selectTitle": "Час автоматичного блокування",
+      "restore": "Відновити за замовчуванням",
+      "save": "Зберегти"
+    },
+    "networksPage": {
+      "title": "Мережі",
+      "network": "Мережа",
+      "addNew": "Додати нове",
+      "editSuccess": "Мережу успішно відредаговано",
+      "addSuccess": "Мережу успішно додано",
+      "errorUrl": "URL уже існує",
+      "deleteSuccess": "Мережу успішно видалено",
+      "remove": "Видалити",
+      "save": "Зберегти",
+      "confirmRemove": "Видалити цю мережу?",
+      "confirmRemoveDesc": "Ви впевнені, що хочете видалити цю мережу?",
+      "placeholderName": "Введіть назву мережі",
+      "placeholderUrl": "Введіть новий RPC URL",
+      "placeholderExplorer": "Введіть URL блок-експлорера",
+      "placeholderNetworkId": "Введіть ID мережі",
+      "titleName": "Назва мережі",
+      "titleUrl": "Новий RPC URL",
+      "titleExplorer": "URL блок-експлорера",
+      "titleNetworkId": "ID мережі",
+      "nameMax": "Назва мережі може містити не більше 1000 символів.",
+      "urlMax": "Новий RPC URL може містити не більше 1000 символів.",
+      "explorerMax": "URL блок-експлорера може містити не більше 1000 символів.",
+      "networkIdMax": "ID мережі може містити не більше 1000 символів."
+    },
+    "selectTheme": {
+      "title": "Виберіть тему"
+    },
+    "txSettingsPage": {
+      "title": "Налаштування транзакцій",
+      "gasLimit": "Ліміт газу",
+      "gasLimitPlaceholder": "Введіть ліміт газу",
+      "finishCrossChain": "Завершити Crosschain Gas Station",
+      "finishCrossChainPlaceholder": "Введіть Crosschain Gas Station",
+      "crossChainGasLimit": "Crosschain ліміт газу",
+      "crossChainGasLimitPlaceholder": "Введіть Crosschain ліміт газу",
+      "crossChainGasPrice": "Crosschain ціна газу",
+      "crossChainGasPricePlaceholder": "Введіть Crosschain ціну газу",
+      "save": "Зберегти",
+      "restoreDefault": "Відновити за замовчуванням",
+      "successSave": "Налаштування успішно збережено",
+      "requiredField": "Це поле є обов'язковим.",
+      "invalidValue": "Неправильне значення"
+    },
+    "2faPage": {
+      "title": "Двофакторна автентифікація",
+      "description": "Двофакторна автентифікація вже налаштована.",
+      "disableButton": "Вимкнути",
+      "successDisable": "2FA успішно вимкнено.",
+      "installApp": "Встановити",
+      "orSimilar": "або подібний додаток",
+      "scanQRCode": "Скануйте QR-код нижче:",
+      "enter6Digits": "Введіть 6-значний код",
+      "invalidCode": "Невірний код.",
+      "saveButton": "Зберегти",
+      "setupSuccess": "2FA успішно налаштовано"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "Виберіть акаунти",
+      "invalidUrl": "Неправильний URL",
+      "disconnectSuccess": "Запит на відключення успішно надіслано",
+      "noActiveSessions": "НІ ЯКИХ АКТИВНИХ СЕСІЙ",
+      "activeSessions": "АКТИВНІ СЕСІЇ",
+      "expiry": "Термін дії:",
+      "removeConnection": "Видалити з'єднання",
+      "removeConfirmation": "Ви впевнені, що хочете видалити цей екземпляр WalletConnect?",
+      "newConnection": "Нове з'єднання",
+      "addConnection": "Додати нове з'єднання Wallet Connect",
+      "inputUri": "Введіть URI",
+      "code": "Код",
+      "continue": "Продовжити"
+    }
+  },
+  "buy": {
+    "title": "Купити",
+    "description": "Купівля та продаж криптовалют здійснюється через сторонній сервіс, що його надає Onramper.\n\nХоча eckoWALLET прагне забезпечити максимальний рівень безпеки для своїх користувачів, ми не можемо гарантувати безпеку та конфіденційність сторонніх сервісів.",
+    "cancel": "Скасувати",
+    "confirm": "Підтвердити",
+    "error": {
+      "noAddress": "Адреса гаманця недоступна",
+      "generic": "Не вдалося підключитися до сервісу. Спробуйте пізніше."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "АНАЛІТИКА ГАМАНЦЯ",
+    "dexAnalytics": "АНАЛІТИКА DEX",
+    "portfolioValue": "ГРАФІК ВАРТОСТІ ПОРТФЕЛЯ",
+    "startTracking": "Почати відстеження",
+    "trackPortfolioTitle": "Відслідковувати вартість портфеля",
+    "trackPortfolioStart": "ПОЧАТИ ВІДСЛІДКУВАННЯ БАЛАНСУ РАХУНКУ",
+    "trackPortfolioDesc1": "Підтверджуючи, ви дозволяєте почати відстеження балансу вашого рахунку.",
+    "trackPortfolioDesc2": "Бажаєте продовжити?",
+    "confirm": "Підтвердити",
+    "confirming": "Підтвердження, будь ласка, зачекайте...",
+    "disclaimerTitle": "Інфо!",
+    "disclaimerText": "Інформація на цій сторінці наразі перебуває в бета-версії та надається «як є» та «за наявності»."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Неправильна мережа",
+      "signingCmdError": "Помилка підпису команди, перевірте свій payload",
+      "signingCmdGenericError": "Помилка підпису команди",
+      "rejectedByUser": "Відхилено користувачем",
+      "userRejected": "Користувач відхилив.",
+      "signedCommand": "Команда підписано",
+      "hashToSign": "HASH ДЛЯ ПІДПИСУ:",
+      "pleaseEnableLedger": "Будь ласка, увімкніть BLIND SIGNING та спочатку дотримуйтесь інструкцій на своєму Ledger.",
+      "capabilities": "Можливості",
+      "close": "Закрити",
+      "reject": "Відхилити",
+      "confirm": "Підтвердити"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Запит швидкого підпису",
+      "code": "Код",
+      "capabilities": "Можливості",
+      "rawData": "Сирі дані",
+      "command": "Команда {{index}}/{{total}}",
+      "hashToSign": "HASH ДЛЯ ПІДПИСУ ({{count}}/{{total}}):",
+      "ledgerInstructions": "Будь ласка, увімкніть BLIND SIGNING та спочатку дотримуйтесь інструкцій на своєму Ledger",
+      "close": "Закрити",
+      "reject": "Відхилити",
+      "confirm": "Підтвердити",
+      "error.invalidStructure": "QuickSign не вдалося: структура даних неправильна",
+      "error.pubKeyNotFound": "QuickSign не вдалося: публічний ключ гаманця не знайдено",
+      "error.ledger": "Збій підпису Ledger"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Імпортувати апаратний гаманець",
+      "selectDevice": "Виберіть апаратний гаманець",
+      "ledgerInstructions": "Підключіть свій Ledger безпосередньо до комп’ютера. Потім розблокуйте і відкрийте додаток Kadena.",
+      "connect": "Підключити",
+      "confirm": "Імпортувати",
+      "success": "Апаратний гаманець успішно імпортовано",
+      "error": {
+        "duplicate": "Акаунт, який ви намагаєтеся імпортувати, вже існує.",
+        "network": "Помилка мережі.",
+        "invalid": "Невірні дані"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Імпортувати з Ledger",
+      "instruction": "Вставте свій Ledger безпосередньо в комп’ютер, потім розблокуйте і відкрийте додаток Kadena.",
+      "continue": "Продовжити",
+      "publicKey": "ПУБЛІЧНИЙ КЛЮЧ",
+      "account": "АКАУНТ",
+      "confirm": "Підтвердити імпорт",
+      "success": "Акаунт успішно імпортовано.",
+      "error": {
+        "duplicate": "Акаунт, який ви намагаєтеся імпортувати, вже існує.",
+        "network": "Помилка мережі при отриманні даних акаунту",
+        "invalid": "Невірні дані"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Імпортувати токени",
+      "contractLabel": "Адреса контракту токена",
+      "symbolLabel": "Символ токена",
+      "placeholder": {
+        "contract": "Введіть адресу контракту",
+        "symbol": "Введіть символ"
+      },
+      "add": "Додати токен",
+      "edit": "Редагувати токен",
+      "success": "Токен успішно збережено",
+      "error": {
+        "duplicate": "Токен уже додано",
+        "notFound": "Не вдалося знайти {{contract}}. Перевірте, чи існує токен мережі {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Імпортувати гаманець",
+    "form": {
+      "accountName": {
+        "title": "Назва вашого акаунту",
+        "placeholder": "Назва акаунту"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "Ваш приватний ключ",
+        "placeholder": "Приватний ключ"
+      }
+    },
+    "validation": {
+      "required": "Це поле є обов'язковим.",
+      "invalidData": "Невірні дані",
+      "startsWithK": "Назва акаунту має починатися з \"k:\"",
+      "accountName": {
+        "maxLength": "Назва акаунту може містити не більше 1000 символів."
+      },
+      "secretKey": {
+        "maxLength": "Приватний ключ може містити не більше 1000 символів."
+      }
+    },
+    "modal": {
+      "scanTitle": "Сканувати QR-код",
+      "scanBody": "Наведіть камеру на QR-код"
+    },
+    "button": {
+      "import": "Імпортувати гаманець"
+    },
+    "toast": {
+      "importSuccess": "Акаунт успішно імпортовано.",
+      "duplicateError": "Акаунт, який ви намагаєтеся імпортувати, вже існує.",
+      "invalidAccountData": "Невірні дані акаунту",
+      "multipleKeys": "Кілька наборів ключів не підтримуються.",
+      "invalidData": "Невірні дані",
+      "networkError": "Помилка мережі."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "У мене вже є приватний ключ.",
+      "prompt": "Імпортуйте свій наявний приватний ключ"
+    },
+    "button": {
+      "import": "Імпортувати"
+    },
+    "image": {
+      "alt": "Іконка імпорту"
+    }
+  },
+  "nft": {
+    "header": "Ваші колекційні предмети",
+    "noOwned": "У вас немає жодного NFT."
+  },
+  "sendTransactions": {
+    "header": "Відправити транзакцію {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Підпис за допомогою Ledger успішний",
+    "ledgerSignFailed": "Підпис за допомогою Ledger не вдався або був відхилений",
+    "transferSuccess": "Переказ успішний",
+    "transferFailed": "Переказ не вдався",
+    "transactionSent": "Транзакцію успішно відправлено! Перевірте статус в Історії",
+    "networkError": "Помилка мережі.",
+    "loadingTop": "Будь ласка, не закривайте це вікно",
+    "loadingBottom": "Вас переадресують, коли транзакція завершиться",
+    "labelReceiver": "Отримувач",
+    "labelAmount": "Сума",
+    "labelGasLimit": "Ліміт газу",
+    "labelGasPrice": "Ціна газу",
+    "labelGasFee": "Комісія за газ",
+    "labelTotal": "Всього",
+    "warningCrossChainLine1": "Ви готуєтесь до cross-chain переказу",
+    "warningCrossChainLine2": "Ця операція зазвичай займає більше часу",
+    "warningNonKAccountLine1": "Ви відправляєте на акаунт, який не є \"k:account\"!",
+    "warningNonKAccountLine2": "Ви впевнені, що хочете продовжити?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} не підлягає передачі!",
+    "form": {
+      "sourceChainId": {
+        "title": "Вихідний Chain ID"
+      },
+      "destinationAccount": {
+        "title": "Цільовий акаунт"
+      },
+      "targetChainId": {
+        "title": "Цільовий Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Цільовий акаунт може містити не більше 1000 символів."
+    },
+    "balanceLabel": "Баланс {{symbol}} chain",
+    "recent": "НОВІ",
+    "contacts": "КОНТАКТИ",
+    "confirm": {
+      "warningTitle": "Попередження",
+      "publicKeyTitle": "Публічний ключ",
+      "publicKeyPlaceholder": "Введіть публічний ключ",
+      "predicateTitle": "Предикат",
+      "predicatePlaceholder": "Предикат"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Ви не можете відправити собі",
+    "invalidGasLimit": "Неправильний ліміт газу",
+    "gasLimitInteger": "Ліміт газу має бути цілим числом",
+    "invalidGasPrice": "Неправильна ціна газу",
+    "insufficientFundsGas": "Недостатньо коштів для комісії за газ",
+    "newAddressDetected": "Виявлено нову адресу! Додайте її до своїх контактів.",
+    "tokenNotExists": "Можливо, {{contractAddress}} не існує в chain {{chainId}}!",
+    "transactionParameters": "Параметри транзакції",
+    "estimatedGas": "Оцінений газ {{gas}}",
+    "speed": "Швидкість {{speed}}",
+    "modal": {
+      "confirmTitle": "Підтвердьте відправлення транзакції",
+      "gasParametersTitle": "Параметри транзакції"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Ліміт газу"
+      },
+      "gasPrice": {
+        "title": "Ціна газу"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Сума для відправки",
+    "button": {
+      "half": "ПОЛОВИНА",
+      "max": "МАКС"
+    },
+    "error": {
+      "insufficientFunds": "Недостатньо коштів",
+      "invalidAmount": "Невірна сума"
+    },
+    "balance": "Баланс: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Логотип Dapp",
+    "sendTransaction": "Надіслати транзакцію",
+    "destinationNotFound": "Цільовий акаунт не знайдено"
+  },
+  "history": {
+    "header": "Історія",
+    "modal": {
+      "confirmSendTransaction": "Підтвердьте відправлення транзакції"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Деталі транзакції"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Назва вашого акаунту"
+  },
+  "activityList": {
+    "loading": "Завантаження...",
+    "today": "Сьогодні",
+    "yesterday": "Вчора",
+    "noTransactions": "У вас немає транзакцій"
+  },
+  "statusFilter": {
+    "modalTitle": "Статус",
+    "prefix": "Статус: ",
+    "options": {
+      "all": "Усі",
+      "in": "Отримано",
+      "out": "Відправлено",
+      "pending": "В очікуванні"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Токен",
+    "prefix": "Актив: ",
+    "options": {
+      "all": "Усі"
+    }
+  },
+  "footer": {
+    "wallet": "ГАМАНЕЦЬ",
+    "analytics": "АНАЛІТИКА",
+    "nft": "NFT",
+    "settings": "НАЛАШТУВАННЯ"
+  }
+}

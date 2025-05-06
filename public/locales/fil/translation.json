@@ -1,0 +1,646 @@
+{
+  "select_language": "Piliin ang wika",
+  "home": {
+    "startNow": "Magsimula na ngayon"
+  },
+  "common": {
+    "requiredField": "Kinakailangan ang patlang na ito.",
+    "invalidData": "Hindi wastong data",
+    "invalidUrl": "Hindi wastong URL",
+    "cancel": "Kanselahin",
+    "back": "Bumalik",
+    "confirm": "Kumpirmahin",
+    "continue": "Magpatuloy",
+    "reject": "Tanggihan",
+    "usd": "{{value}} USD",
+    "next": "Susunod",
+    "close": "Isara"
+  },
+  "condition": {
+    "noPersonalInfo": "Hindi namin kailanman kinokolekta ang private keys, mga address, transaksyon, balanse, hash, o personal na impormasyon",
+    "noIP": "Hindi namin kailanman kinokolekta ang iyong buong IP address",
+    "noSelling": "Hindi namin kailanman ibinebenta ang data para kumita. Hindi kailanman!",
+    "next": "Susunod"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Nabasa ko at sumasang-ayon ako sa",
+    "termsOfUse": "Mga Tuntunin ng Paggamit",
+    "createNewWallet": "Gumawa ng bagong Wallet",
+    "setupNewAccount": "I-setup ang bagong eckoWALLET account",
+    "restoreWallet": "I-restore ang Wallet",
+    "restoreFromPhrase": "I-restore mula sa recovery phrase"
+  },
+  "createPassword": {
+    "successCreate": "Matagumpay na nagawa ang password",
+    "errorCreate": "Error sa paggawa ng Wallet",
+    "invalidPhrase": "Hindi wastong recovery phrase!",
+    "importFromPhrase": "Mag-import mula sa recovery phrase",
+    "createPassword": "Gumawa ng password",
+    "pastePhrase": "Idikit ang recovery phrase",
+    "requiredField": "Kinakailangan ang patlang na ito.",
+    "phraseTooLong": "Masyadong mahaba ang recovery phrase.",
+    "secretRecoveryPhrase": "Lihim na recovery phrase",
+    "import": "I-import",
+    "create": "Gumawa"
+  },
+  "passwordForm": {
+    "inputPassword": "Ilagay ang password",
+    "inputConfirmPassword": "Kumpirmahin ang password",
+    "requiredField": "Kinakailangan ang patlang na ito.",
+    "minPassword": "Dapat ay hindi bababa sa 8 karakter ang password.",
+    "maxPassword": "Hindi lalampas sa 256 karakter ang password.",
+    "passwordMismatch": "Hindi magkatugma ang mga password",
+    "newPassword": "Bagong password (hindi bababa sa 8 karakter)",
+    "confirmPassword": "Kumpirmahin ang password",
+    "passwordWarning": "Naiintindihan ko na gumamit ako ng hindi ligtas na mga karakter. Inirerekomenda lamang gumamit ng mga letra (a-z), numero (0-9), at espesyal na karakter _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Lihim na recovery phrase",
+    "step1Text": "Sa susunod na hakbang, makakakuha ka ng 12-salitang recovery phrase.\nGinagamit ang phrase na ito para i-restore ang Wallet sa bagong device.\nSinumang may phrase na ito ay maaaring kontrolin ang iyong Wallet. Panatilihing pribado.\nWalang paraan para maibalik ang phrase kapag nawala, itago ito nang ligtas.",
+    "step1Checkbox": "Naiintindihan ko na hindi ko ma-rerecover ang aking Wallet kung mawala ang recovery phrase.",
+    "generating": "Gumagawa ng mga susi...",
+    "continue": "Magpatuloy",
+    "reveal": "I-click dito para ipakita ang mga lihim na salita",
+    "step2Text1": "Pinapadali ng iyong lihim na recovery phrase ang pag-backup at pag-restore ng iyong account.",
+    "step2Text2": "Babala: Huwag ibahagi kailanman ang iyong lihim na recovery phrase. Sinumang may phrase na ito ay maaaring maagaw ang iyong Wallet magpakailanman.",
+    "download": "I-download",
+    "verifyTitle": "I-verify ang recovery phrase",
+    "verifyInstruction": "Pakiverify ang iyong recovery phrase sa pamamagitan ng pag-type ng mga salita sa tamang pagkakasunod.",
+    "successVerify": "Matagumpay na na-verify ang recovery phrase",
+    "invalidPhrase": "Hindi wastong lihim na recovery phrase!",
+    "errorGeneratingKeys": "Error sa pag-generate ng Wallet keys",
+    "errorCreatingWallet": "Error sa paglikha ng Wallet",
+    "generatingWallet": "Ginagawa ang iyong Wallet..."
+  },
+  "wallet": {
+    "netWorth": "NET WORTH",
+    "accountBalance": "BALANSE NG ACCOUNT",
+    "send": "Magpadala",
+    "receive": "Tumanggap",
+    "receiveTokens": "Tumanggap ng tokens",
+    "buy": "Bumili",
+    "history": "Kasaysayan",
+    "assets": "ASSETS",
+    "detectedTokens": "Nadetektang tokens",
+    "tokenList": "Listahan ng tokens",
+    "kdaChainDistribution": "Distribusyon ng KDA chain",
+    "chainDistribution": "Distribusyon ng chain",
+    "tokenRemoved": "Matagumpay na natanggal ang token",
+    "removeToken": "Tanggalin ang token",
+    "editToken": "I-edit ang token",
+    "removeTokenTitle": "Tanggalin ang token {{symbol}}",
+    "confirmRemoveToken": "Sigurado ka bang gusto mong tanggalin ang token {{symbol}}?",
+    "notTransferable": "{{contractAddress}} ay hindi maililipat!",
+    "accountDoesNotExist": "Hindi umiiral: hindi umiiral ang account na ito.",
+    "balanceZero": "Balanse ng {{symbol}} ay 0."
+  },
+  "accountActions": {
+    "shareWallet": "I-share ang Wallet",
+    "copied": "Nakopya!",
+    "exportRecoveryPhrase": "I-export ang recovery phrase",
+    "signHashTransaction": "Pirmahan ang hash ng transaksyon",
+    "editAccountAlias": "I-edit ang alias ng account",
+    "setAccountAlias": "Itakda ang alias ng account",
+    "removeSelectedWallet": "Tanggalin ang napiling Wallet",
+    "createWallet": "Gumawa ng Wallet",
+    "importWallet": "I-import ang Wallet",
+    "importHardwareWallet": "I-import ang hardware Wallet"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Walang ibang token na nakita para sa account na ito."
+  },
+  "aliasModal": {
+    "accountAlias": "Alias ng account",
+    "cancel": "Kanselahin",
+    "save": "I-save",
+    "aliasChanged": "Matagumpay na nabago ang alias"
+  },
+  "hashSignModal": {
+    "publicKey": "Iyong public key",
+    "transactionHash": "Hash ng transaksyon",
+    "insertTransactionHash": "Ilagay ang hash ng transaksyon",
+    "signature": "Lagda",
+    "copied": "Nakopya!",
+    "clean": "Linisin",
+    "sign": "Pirmahan"
+  },
+  "popupDetailTransaction": {
+    "status": "Katayuan",
+    "direction": "Direksyon",
+    "symbol": "Simbolo",
+    "quantity": "Dami",
+    "gasFee": "Bayad sa gas",
+    "total": "Kabuuan",
+    "viewDetails": "Tingnan ang detalye",
+    "activityLog": "Talaan ng aktibidad",
+    "transactionCreated": "Transaksyon na nilikha ng halagang {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transaksyon nakumpirma",
+    "success": "Matagumpay",
+    "failed": "Nabigo",
+    "finishing": "Tinatapos"
+  },
+  "removeWallet": {
+    "title": "Siguradong gusto mong tanggalin ang Wallet na ito?",
+    "description": "Ilagay ang iyong password para kumpirmahin",
+    "passwordPlaceholder": "Ilagay ang password",
+    "passwordRequired": "Kinakailangan ang patlang na ito.",
+    "passwordMinLength": "Kailangang hindi bababa sa 8 karakter ang password.",
+    "passwordMaxLength": "Hindi lalampas sa 256 karakter ang password.",
+    "invalidPassword": "Hindi wastong password",
+    "cancel": "Kanselahin",
+    "remove": "Tanggalin"
+  },
+  "header": {
+    "selectNetwork": "Piliin ang network",
+    "manageNetworks": "Pamahalaan ang mga network",
+    "myWallets": "Aking Wallets",
+    "removeWalletTitle": "Tanggalin ang Wallet",
+    "createAccountSuccess": "Matagumpay na nagawa ang account!",
+    "createAccountFail": "Error sa paglikha ng account",
+    "copied": "Nakopya!"
+  },
+  "signIn": {
+    "loginTitle": "Mag-sign in sa iyong account",
+    "passwordPlaceholder": "Ilagay ang password",
+    "passwordTitle": "Password",
+    "signInButton": "Mag-sign in",
+    "invalidPassword": "Hindi wastong password",
+    "required": "Kinakailangan ang patlang na ito.",
+    "minLength": "Kailangang hindi bababa sa 8 karakter ang password.",
+    "maxLength": "Hindi lalampas sa 256 karakter ang password.",
+    "initWalletError": "Error sa pag-initialize ng Wallet"
+  },
+  "settings": {
+    "contacts": "Mga kontak",
+    "language": "Wika",
+    "languageDesc": "Piliin ang wika ng Wallet",
+    "contactsDesc": "Pamahalaan ang iyong mga kontak",
+    "networks": "Mga network",
+    "networksDesc": "Magdagdag o i-edit ang custom na RPCs",
+    "connectedSites": "Mga nakakonektang site",
+    "connectedSitesDesc": "Tingnan at pamahalaan ang mga nakakonektang site",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "Kumonekta gamit ang WalletConnect",
+    "txSettings": "Mga setting ng transaksyon",
+    "txSettingsDesc": "Itakda ang iyong mga preference sa gas",
+    "exportPhrase": "I-export ang recovery phrase",
+    "exportPhraseDesc": "Protektahan ang iyong Wallet",
+    "editPassword": "I-edit ang password",
+    "editPasswordDesc": "Palitan ang password ng iyong Wallet",
+    "2fa": "2FA",
+    "2faDesc": "Pamahalaan ang two-factor authentication",
+    "expandView": "Pinalawak na view",
+    "expandViewDesc": "Buksan ang eckoWALLET sa bagong window",
+    "theme": "Tema",
+    "themeDesc": "I-customize ang tema ng Wallet",
+    "lock": "I-lock ang Wallet",
+    "lockDesc": "Protektahan ang iyong Wallet",
+    "lockSettings": "Mga setting ng lock",
+    "lockSettingsDesc": "Baguhin ang mga setting ng seguridad",
+    "discord": "Sumali sa aming Discord",
+    "website": "Bisitahin ang aming website",
+    "terms": "Mga Tuntunin ng Paggamit",
+    "privacy": "Patakaran sa Privacy",
+    "connectedSitesPage": {
+      "title": "Mga nakakonektang site",
+      "removeSiteTitle": "Tanggalin ang site",
+      "removeSiteConfirmText": "Sigurado kang gusto mong tanggalin",
+      "removeSiteSuccess": "Matagumpay na natanggal ang site."
+    },
+    "contactsPage": {
+      "title": "Mga kontak",
+      "newContactTitle": "Bagong kontak",
+      "addNewContact": "Magdagdag ng bagong kontak",
+      "noContacts": "Walang mga kontak"
+    },
+    "contactForm": {
+      "enterAlias": "Ilagay ang alias",
+      "aliasPlaceholder": "hal. David",
+      "accountNameTitle": "Pangalan ng account",
+      "accountNamePlaceholder": "Pangalan ng account",
+      "scanQrTitle": "I-scan ang QR code",
+      "scanQrDescription": "Itutok ang QR code sa iyong kamera",
+      "buttonCancel": "Kanselahin",
+      "buttonSave": "I-save",
+      "successContactAdded": "Matagumpay na nadagdag ang kontak",
+      "errorNetwork": "Error sa network.",
+      "copied": "Nakopya!",
+      "requiredField": "Kinakailangan ang patlang na ito.",
+      "invalidData": "Hindi wastong data",
+      "aliasMaxLength": "Hindi lalampas sa 256 karakter ang alias.",
+      "accountNameMaxLength": "Hindi lalampas sa 1000 karakter ang pangalan ng account."
+    },
+    "contactInfo": {
+      "copied": "Nakopya!",
+      "contactRemoved": "Natanggal ang kontak",
+      "accountName": "PANGALAN NG ACCOUNT",
+      "editContact": "I-edit ang kontak",
+      "editTitle": "I-edit ang account",
+      "delete": "Tanggalin",
+      "deleteContactTitle": "Tanggalin ang kontak",
+      "removeContact": "Tanggalin ang kontak?",
+      "confirmRemove": "Sigurado kang gusto mong tanggalin ang kontak na ito?",
+      "cancel": "Kanselahin",
+      "confirm": "Kumpirmahin"
+    },
+    "editPasswordPage": {
+      "title": "I-edit ang password",
+      "passwordChanged": "Matagumpay na nabago ang password",
+      "cannotUpdatePassword": "Hindi ma-update ang password",
+      "save": "I-save"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Ilagay ang password para magpatuloy",
+      "inputPlaceholder": "Ilagay ang password",
+      "password": "Password",
+      "errorRequired": "Kinakailangan ang patlang na ito.",
+      "errorInvalid": "Hindi wastong password.",
+      "continue": "Magpatuloy",
+      "correctPassword": "Tama ang password, pakihintay..."
+    },
+    "exportSeedPhrase": {
+      "title": "I-export ang recovery phrase",
+      "copied": "Nakopya!",
+      "description": "Pinapadali ng iyong lihim na recovery phrase ang pag-backup at pag-restore ng iyong account.",
+      "warning": "Huwag kailanman ibahagi ang iyong lihim na recovery phrase. Sinumang may phrase na ito ay maaaring maagaw ang iyong Wallet magpakailanman.",
+      "copyKeyphrase": "Kopyahin ang keyphrase",
+      "download": "I-download"
+    },
+    "lockSettingsPage": {
+      "title": "Mga setting ng auto-lock",
+      "saved": "Matagumpay na na-save ang mga setting",
+      "required": "Kinakailangan ang patlang na ito.",
+      "placeholder": "Piliin ang oras ng auto-lock",
+      "selectTitle": "Oras ng auto-lock",
+      "restore": "I-restore sa default",
+      "save": "I-save"
+    },
+    "networksPage": {
+      "title": "Mga network",
+      "network": "Network",
+      "addNew": "Magdagdag ng bago",
+      "editSuccess": "Matagumpay na na-edit ang network",
+      "addSuccess": "Matagumpay na naidagdag ang network",
+      "errorUrl": "Umiiral na ang URL",
+      "deleteSuccess": "Matagumpay na natanggal ang network",
+      "remove": "Tanggalin",
+      "save": "I-save",
+      "confirmRemove": "Tanggalin ang network na ito?",
+      "confirmRemoveDesc": "Sigurado kang gusto mong tanggalin ang network na ito?",
+      "placeholderName": "Ilagay ang pangalan ng network",
+      "placeholderUrl": "Ilagay ang bagong RPC URL",
+      "placeholderExplorer": "Ilagay ang block explorer URL",
+      "placeholderNetworkId": "Ilagay ang network ID",
+      "titleName": "Pangalan ng network",
+      "titleUrl": "Bagong RPC URL",
+      "titleExplorer": "URL ng block explorer",
+      "titleNetworkId": "Network ID",
+      "nameMax": "Hindi lalampas sa 1000 karakter ang pangalan ng network.",
+      "urlMax": "Hindi lalampas sa 1000 karakter ang RPC URL.",
+      "explorerMax": "Hindi lalampas sa 1000 karakter ang URL ng block explorer.",
+      "networkIdMax": "Hindi lalampas sa 1000 karakter ang network ID."
+    },
+    "selectTheme": {
+      "title": "Piliin ang tema"
+    },
+    "txSettingsPage": {
+      "title": "Mga setting ng transaksyon",
+      "gasLimit": "Gas limit",
+      "gasLimitPlaceholder": "Ilagay ang gas limit",
+      "finishCrossChain": "Tapusin ang cross-chain gas station",
+      "finishCrossChainPlaceholder": "Ilagay ang gas station",
+      "crossChainGasLimit": "Cross-chain gas limit",
+      "crossChainGasLimitPlaceholder": "Ilagay ang cross-chain gas limit",
+      "crossChainGasPrice": "Cross-chain gas price",
+      "crossChainGasPricePlaceholder": "Ilagay ang cross-chain gas price",
+      "save": "I-save",
+      "restoreDefault": "I-restore sa default",
+      "successSave": "Matagumpay na na-save ang mga setting",
+      "requiredField": "Kinakailangan ang patlang na ito.",
+      "invalidValue": "Hindi wastong halaga"
+    },
+    "2faPage": {
+      "title": "Dalawang-factor na pagpapatunay",
+      "description": "Na-enable na ang dalawang-factor na pagpapatunay.",
+      "disableButton": "I-disable",
+      "successDisable": "Matagumpay na na-disable ang 2FA",
+      "installApp": "I-install ang app",
+      "orSimilar": "o katulad na apps",
+      "scanQRCode": "I-scan ang QR code sa ibaba:",
+      "enter6Digits": "Ilagay ang 6-digit na code",
+      "invalidCode": "Hindi wastong code.",
+      "saveButton": "I-save",
+      "setupSuccess": "Matagumpay na na-setup ang 2FA"
+    },
+    "walletConnectPage": {
+      "title": "WalletConnect",
+      "selectAccounts": "Piliin ang mga account",
+      "invalidUrl": "Hindi wastong URL",
+      "disconnectSuccess": "Matagumpay na na-send ang request ng disconnect",
+      "noActiveSessions": "WALANG AKTIBONG SESSION",
+      "activeSessions": "AKTIBONG SESSION",
+      "expiry": "Expiry:",
+      "removeConnection": "Tanggalin ang connection",
+      "removeConfirmation": "Sigurado ka bang gusto mong tanggalin ang WalletConnect connection na ito?",
+      "newConnection": "Bagong connection",
+      "addConnection": "Magdagdag ng bagong WalletConnect connection",
+      "inputUri": "Ilagay ang URI",
+      "code": "Code",
+      "continue": "Magpatuloy"
+    }
+  },
+  "buy": {
+    "title": "Bumili",
+    "description": "Ang pagbili at pagbebenta ng cryptocurrencies ay ginagawa sa pamamagitan ng third-party service ng Onramper.\n\neckoWALLET ay nangangalaga ng pinakamataas na seguridad para sa mga user nito, ngunit hindi namin masisiguro ang seguridad at privacy ng mga third-party services.",
+    "cancel": "Kanselahin",
+    "confirm": "Kumpirmahin",
+    "error": {
+      "noAddress": "Wallet address hindi available",
+      "generic": "Hindi makakonekta sa serbisyo. Mangyaring subukan muli mamaya."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "ANALISIS NG WALLET",
+    "dexAnalytics": "ANALISIS NG DEX",
+    "portfolioValue": "GRAPH NG HALAGA NG PORTFOLIO",
+    "startTracking": "Simulan ang pagsubaybay",
+    "trackPortfolioTitle": "Subaybayan ang halaga ng portfolio",
+    "trackPortfolioStart": "SIMULAN ANG PAG-SUBAYBAY NG BALANSE NG ACCOUNT",
+    "trackPortfolioDesc1": "Sa pag-confirm, pinapayagan mo ang pag-subaybay ng iyong balanse ng account.",
+    "trackPortfolioDesc2": "Magpapatuloy?",
+    "confirm": "Kumpirmahin",
+    "confirming": "Kinikumpirma, paki-hintay...",
+    "disclaimerTitle": "Paunawa!",
+    "disclaimerText": "Ang impormasyon na ipinapakita sa pahinang ito ay nasa BETA na yugto at ibinibigay \"as is\" at ayon sa availability."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Hindi wastong network",
+      "signingCmdError": "Error sa pag-sign ng cmd, i-check ang iyong payload",
+      "signingCmdGenericError": "Error sa pag-sign ng cmd",
+      "rejectedByUser": "Tinanggihan ng user",
+      "userRejected": "Tinanggihan ng user.",
+      "signedCommand": "Na-sign na utos",
+      "hashToSign": "HASH NA PIPIRMASAN:",
+      "pleaseEnableLedger": "Paki-enable ang BLIND SIGNING at sundin muna ang instruksyon sa iyong Ledger",
+      "capabilities": "Mga kakayahan",
+      "close": "Isara",
+      "reject": "Tanggihan",
+      "confirm": "Kumpirmahin"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Request para sa quick sign",
+      "code": "Code",
+      "capabilities": "Mga kakayahan",
+      "rawData": "Raw data",
+      "command": "Utos {{index}}/{{total}}",
+      "hashToSign": "HASH NA PIPIRMASAN ({{count}}/{{total}}):",
+      "ledgerInstructions": "Paki-enable ang BLIND SIGNING at sundin muna ang instruksyon sa iyong Ledger",
+      "close": "Isara",
+      "reject": "Tanggihan",
+      "confirm": "Kumpirmahin",
+      "error.invalidStructure": "Nabigo ang quick sign: hindi valid ang data structure",
+      "error.pubKeyNotFound": "Nabigo ang quick sign: hindi makita ang public key ng Wallet",
+      "error.ledger": "Error sa pag-sign gamit ang Ledger"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "I-import ang hardware Wallet",
+      "selectDevice": "Paki-tumiili ng hardware Wallet",
+      "ledgerInstructions": "Ikabit ang iyong Ledger sa computer. I-unlock ito at buksan ang Kadena app.",
+      "connect": "Kumonekta",
+      "confirm": "I-import",
+      "success": "Matagumpay na na-import ang hardware Wallet",
+      "error": {
+        "duplicate": "Ang account na ini-import ay duplicado.",
+        "network": "Error sa network.",
+        "invalid": "Hindi wastong data"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "I-import mula sa Ledger",
+      "instruction": "Ikabit ang iyong Ledger sa computer, i-unlock, at buksan ang Kadena app.",
+      "continue": "Magpatuloy",
+      "publicKey": "PUBLIC KEY",
+      "account": "ACCOUNT",
+      "confirm": "Kumpirmahin ang import",
+      "success": "Matagumpay na na-import ang account.",
+      "error": {
+        "duplicate": "Ang account na ini-import ay duplicado.",
+        "network": "Error sa network sa pagkuha ng account data",
+        "invalid": "Hindi wastong data"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "I-import ang tokens",
+      "contractLabel": "Token contract address",
+      "symbolLabel": "Token symbol",
+      "placeholder": {
+        "contract": "Ilagay ang contract address",
+        "symbol": "Ilagay ang symbol"
+      },
+      "add": "Magdagdag ng token",
+      "edit": "I-edit ang token",
+      "success": "Matagumpay na na-save ang token",
+      "error": {
+        "duplicate": "Token ay na-idagdag na",
+        "notFound": "Hindi ma-resolve ang {{contract}}. Pakicheck kung umiiral ang token sa {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "I-import ang Wallet",
+    "form": {
+      "accountName": {
+        "title": "Pangalan ng iyong account",
+        "placeholder": "Pangalan ng account"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "Iyong private key",
+        "placeholder": "Private key"
+      }
+    },
+    "validation": {
+      "required": "Kinakailangan ang patlang na ito.",
+      "invalidData": "Hindi wastong data",
+      "startsWithK": "Dapat nagsisimula sa \"k:\" ang pangalan ng account",
+      "accountName": {
+        "maxLength": "Hindi lalampas sa 1000 karakter ang pangalan ng account."
+      },
+      "secretKey": {
+        "maxLength": "Hindi lalampas sa 1000 karakter ang private key."
+      }
+    },
+    "modal": {
+      "scanTitle": "I-scan ang QR code",
+      "scanBody": "Itutok ang kamera sa QR code"
+    },
+    "button": {
+      "import": "I-import"
+    },
+    "toast": {
+      "importSuccess": "Matagumpay na na-import ang account.",
+      "duplicateError": "Ang account na ini-import ay duplicado.",
+      "invalidAccountData": "Hindi wastong account data",
+      "multipleKeys": "Hindi sinusuportahan ang maraming key sets",
+      "invalidData": "Hindi wastong data",
+      "networkError": "Error sa network."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Mayroon akong existing private key.",
+      "prompt": "I-import ang iyong existing private key"
+    },
+    "button": {
+      "import": "I-import"
+    },
+    "image": {
+      "alt": "Import icon"
+    }
+  },
+  "nft": {
+    "header": "Ang iyong mga koleksyon",
+    "noOwned": "Wala kang NFT"
+  },
+  "sendTransactions": {
+    "header": "Magpadala ng transaksyon {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Matagumpay ang Ledger sign",
+    "ledgerSignFailed": "Nabigo o tinanggihan ang Ledger sign",
+    "transferSuccess": "Matagumpay ang transfer",
+    "transferFailed": "Nabigo ang transfer",
+    "transactionSent": "Matagumpay na na-send ang transaksyon! Pakicheck ang status sa history",
+    "networkError": "Error sa network.",
+    "loadingTop": "Huwag isara ang view na ito",
+    "loadingBottom": "Ire-redirect ka kapag natapos na ang transaksyon",
+    "labelReceiver": "Tumatanggap",
+    "labelAmount": "Halaga",
+    "labelGasLimit": "Gas limit",
+    "labelGasPrice": "Presyo ng gas",
+    "labelGasFee": "Bayad sa gas",
+    "labelTotal": "Kabuuan",
+    "warningCrossChainLine1": "Malapit kang magsagawa ng cross-chain transfer",
+    "warningCrossChainLine2": "Mas matagal karaniwang tumagal ang operasyong ito",
+    "warningNonKAccountLine1": "Nagpapadala ka sa account na hindi “k:account”!",
+    "warningNonKAccountLine2": "Sigurado kang gusto mong magpatuloy?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} ay hindi maililipat!",
+    "form": {
+      "sourceChainId": {
+        "title": "Source chain ID"
+      },
+      "destinationAccount": {
+        "title": "Destination account"
+      },
+      "targetChainId": {
+        "title": "Target chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Hindi lalampas sa 1000 karakter ang destination account."
+    },
+    "balanceLabel": "Balanse: {{balance}} {{symbol}}",
+    "recent": "PINAKABAGO",
+    "contacts": "KONTAK",
+    "confirm": {
+      "warningTitle": "Babala",
+      "publicKeyTitle": "Public key",
+      "publicKeyPlaceholder": "Ilagay ang public key",
+      "predicateTitle": "Predicate",
+      "predicatePlaceholder": "Ilagay ang predicate"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Hindi mo maaaring ipadala sa iyong sarili",
+    "invalidGasLimit": "Hindi wastong gas limit",
+    "gasLimitInteger": "Dapat integer ang gas limit",
+    "invalidGasPrice": "Hindi wastong presyo ng gas",
+    "insufficientFundsGas": "Kulang ang pondo para sa gas fee",
+    "newAddressDetected": "Nakakita ng bagong address! Idagdag sa iyong contacts",
+    "tokenNotExists": "{{contractAddress}} maaaring hindi umiiral sa CHAIN {{chainId}}!",
+    "transactionParameters": "Mga parameter ng transaksyon",
+    "estimatedGas": "Tinatayang gas {{gas}}",
+    "speed": "Bilis {{speed}}",
+    "modal": {
+      "confirmTitle": "Kumpirmahin ang pagpapadala ng transaksyon",
+      "gasParametersTitle": "Mga parameter ng gas"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gas limit"
+      },
+      "gasPrice": {
+        "title": "Presyo ng gas"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Halaga na ipapadala",
+    "button": {
+      "half": "KALAHATI",
+      "max": "MAX"
+    },
+    "error": {
+      "insufficientFunds": "Kulang ang pondo",
+      "invalidAmount": "Hindi wastong halaga"
+    },
+    "balance": "Balanse: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Logo ng Dapp",
+    "sendTransaction": "Magpadala ng transaksyon",
+    "destinationNotFound": "Hindi makita ang destination account"
+  },
+  "history": {
+    "header": "Kasaysayan",
+    "modal": {
+      "confirmSendTransaction": "Kumpirmahin ang pagpapadala ng transaksyon"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Detalye ng transaksyon"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Pangalan ng iyong account"
+  },
+  "activityList": {
+    "loading": "Naglo-load...",
+    "today": "Ngayon",
+    "yesterday": "Kahapon",
+    "noTransactions": "Wala kang transaksyon"
+  },
+  "statusFilter": {
+    "modalTitle": "Katayuan",
+    "prefix": "Katayuan: ",
+    "options": {
+      "all": "Lahat",
+      "in": "Papasok",
+      "out": "Paglabas",
+      "pending": "Hinihintay"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Asset: ",
+    "options": {
+      "all": "Lahat"
+    }
+  },
+  "footer": {
+    "wallet": "Wallet",
+    "analytics": "Analitika",
+    "nft": "NFT",
+    "settings": "Mga setting"
+  }
+}

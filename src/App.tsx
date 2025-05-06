@@ -10,7 +10,6 @@ import { ModalProvider, ModalConsumer } from './contexts/ModalContext';
 import { AppThemeProvider } from './contexts/AppThemeContext';
 import { SettingsProvider } from './contexts/SettingsContext';
 import { AccountBalanceProvider } from './contexts/AccountBalanceContext';
-import { GovernanceMiningContextProvider } from './contexts/GovernanceMiningContext';
 import ModalCustom from './components/Modal/ModalCustom';
 import { LedgerProvider } from './contexts/LedgerContext';
 import { NotificationContextProvider } from './contexts/NotificationsContext';
@@ -47,25 +46,23 @@ const App = () => (
                 <SettingsProvider>
                   <AccountBalanceProvider>
                     <QueryClientProvider client={queryClient}>
-                      <GovernanceMiningContextProvider>
-                        <NotificationContextProvider>
-                          <ModalConsumer>
-                            {({ isOpen, title, content, footer, closeModal, roundIcon, bodyHeight }) => (
-                              <ModalCustom
-                                isOpen={isOpen || false}
-                                title={title}
-                                bodyHeight={bodyHeight}
-                                footer={footer}
-                                onCloseModal={closeModal}
-                                roundIcon={roundIcon}
-                              >
-                                {content}
-                              </ModalCustom>
-                            )}
-                          </ModalConsumer>
-                          <AppContainer />
-                        </NotificationContextProvider>
-                      </GovernanceMiningContextProvider>
+                      <NotificationContextProvider>
+                        <ModalConsumer>
+                          {({ isOpen, title, content, footer, closeModal, roundIcon, bodyHeight }) => (
+                            <ModalCustom
+                              isOpen={isOpen || false}
+                              title={title}
+                              bodyHeight={bodyHeight}
+                              footer={footer}
+                              onCloseModal={closeModal}
+                              roundIcon={roundIcon}
+                            >
+                              {content}
+                            </ModalCustom>
+                          )}
+                        </ModalConsumer>
+                        <AppContainer />
+                      </NotificationContextProvider>
                     </QueryClientProvider>
                   </AccountBalanceProvider>
                 </SettingsProvider>

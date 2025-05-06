@@ -1,0 +1,646 @@
+{
+  "select_language": "選擇語言",
+  "home": {
+    "startNow": "立即開始"
+  },
+  "common": {
+    "requiredField": "此欄位為必填項。",
+    "invalidData": "資料無效",
+    "invalidUrl": "URL 無效",
+    "cancel": "取消",
+    "back": "返回",
+    "confirm": "確認",
+    "continue": "繼續",
+    "reject": "拒絕",
+    "usd": "{{value}} 美元",
+    "next": "下一步",
+    "close": "關閉"
+  },
+  "condition": {
+    "noPersonalInfo": "我們絕不蒐集金鑰、地址、交易、餘額、哈希或個人資訊",
+    "noIP": "我們絕不儲存完整的 IP 位址",
+    "noSelling": "我們絕不為牟利出售您的資料。絕不！",
+    "next": "下一步"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "我已閱讀並同意",
+    "termsOfUse": "使用條款",
+    "createNewWallet": "創建新錢包",
+    "setupNewAccount": "設定新的 eckoWALLET 帳戶",
+    "restoreWallet": "還原錢包",
+    "restoreFromPhrase": "從助記詞還原"
+  },
+  "createPassword": {
+    "successCreate": "新密碼已成功建立",
+    "errorCreate": "創建錢包時發生錯誤",
+    "invalidPhrase": "無效的助記詞！",
+    "importFromPhrase": "從助記詞匯入",
+    "createPassword": "建立密碼",
+    "pastePhrase": "貼上助記詞",
+    "requiredField": "此欄位為必填項。",
+    "phraseTooLong": "助記詞過長。",
+    "secretRecoveryPhrase": "秘密恢復詞",
+    "import": "匯入",
+    "create": "建立"
+  },
+  "passwordForm": {
+    "inputPassword": "輸入密碼",
+    "inputConfirmPassword": "確認密碼",
+    "requiredField": "此欄位為必填項。",
+    "minPassword": "密碼至少需包含 8 個字元。",
+    "maxPassword": "密碼最多可包含 256 個字元。",
+    "passwordMismatch": "密碼不符",
+    "newPassword": "新密碼（至少 8 個字元）",
+    "confirmPassword": "確認密碼",
+    "passwordWarning": "我了解我使用了不建議的字元。建議僅使用英文字母 (a–z)、數字 (0–9) 及符號 _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "秘密恢復詞",
+    "step1Text": "接下來請記下您的 12 個助記詞。\n有了助記詞即可在新裝置上還原錢包。\n任何擁有此助記詞者均可完全存取您的錢包，請妥善保管。\n若助記詞遺失，將無法還原錢包，請務必備份。",
+    "step1Checkbox": "我瞭解若助記詞遺失，將無法還原錢包。",
+    "generating": "正在生成密鑰對…",
+    "continue": "繼續",
+    "reveal": "點此顯示助記詞",
+    "step2Text1": "秘密恢復詞可簡化帳戶備份與還原。",
+    "step2Text2": "警告：切勿洩露恢復詞。任何擁有它者均可接管您的錢包。",
+    "download": "下載",
+    "verifyTitle": "驗證恢復詞",
+    "verifyInstruction": "請按正確順序輸入助記詞以確認。",
+    "successVerify": "恢復詞驗證成功",
+    "invalidPhrase": "無效的恢復詞！",
+    "errorGeneratingKeys": "生成密鑰時發生錯誤",
+    "errorCreatingWallet": "建立錢包時發生錯誤",
+    "generatingWallet": "正在創建錢包…"
+  },
+  "wallet": {
+    "netWorth": "淨資產",
+    "accountBalance": "帳戶餘額",
+    "send": "發送",
+    "receive": "接收",
+    "receiveTokens": "接收代幣",
+    "buy": "購買",
+    "history": "歷史紀錄",
+    "assets": "資產",
+    "detectedTokens": "偵測到的代幣",
+    "tokenList": "代幣列表",
+    "kdaChainDistribution": "KDA 鏈分佈",
+    "chainDistribution": "鏈分佈",
+    "tokenRemoved": "代幣已成功移除",
+    "removeToken": "移除代幣",
+    "editToken": "編輯代幣",
+    "removeTokenTitle": "移除 {{symbol}} 代幣",
+    "confirmRemoveToken": "確定要移除 {{symbol}} 代幣？",
+    "notTransferable": "{{contractAddress}} 無法轉移！",
+    "accountDoesNotExist": "找不到：帳戶不存在。",
+    "balanceZero": "{{symbol}} 餘額為 0。"
+  },
+  "accountActions": {
+    "shareWallet": "分享錢包",
+    "copied": "已複製！",
+    "exportRecoveryPhrase": "匯出恢復詞",
+    "signHashTransaction": "簽署交易哈希",
+    "editAccountAlias": "編輯帳戶別名",
+    "setAccountAlias": "設定帳戶別名",
+    "removeSelectedWallet": "移除所選錢包",
+    "createWallet": "建立錢包",
+    "importWallet": "匯入錢包",
+    "importHardwareWallet": "匯入硬體錢包"
+  },
+  "tokenDetector": {
+    "noTokensFound": "未偵測到其他代幣。"
+  },
+  "aliasModal": {
+    "accountAlias": "帳戶別名",
+    "cancel": "取消",
+    "save": "儲存",
+    "aliasChanged": "別名已成功更改"
+  },
+  "hashSignModal": {
+    "publicKey": "公鑰",
+    "transactionHash": "交易哈希",
+    "insertTransactionHash": "輸入交易哈希",
+    "signature": "簽名",
+    "copied": "已複製！",
+    "clean": "清除",
+    "sign": "簽署"
+  },
+  "popupDetailTransaction": {
+    "status": "狀態",
+    "direction": "方向",
+    "symbol": "符號",
+    "quantity": "數量",
+    "gasFee": "Gas 費用",
+    "total": "總計",
+    "viewDetails": "查看詳情",
+    "activityLog": "活動日誌",
+    "transactionCreated": "已建立 {{amount}} {{symbol}} 交易",
+    "transactionConfirmed": "交易已確認",
+    "success": "成功",
+    "failed": "失敗",
+    "finishing": "完成中…"
+  },
+  "removeWallet": {
+    "title": "確定要移除此錢包？",
+    "description": "請輸入密碼以確認",
+    "passwordPlaceholder": "輸入密碼",
+    "passwordRequired": "此欄位為必填項。",
+    "passwordMinLength": "密碼至少需包含 8 個字元。",
+    "passwordMaxLength": "密碼最多可包含 256 個字元。",
+    "invalidPassword": "密碼無效",
+    "cancel": "取消",
+    "remove": "移除"
+  },
+  "header": {
+    "selectNetwork": "選擇網路",
+    "manageNetworks": "管理網路",
+    "myWallets": "我的錢包",
+    "removeWalletTitle": "移除錢包",
+    "createAccountSuccess": "帳戶建立成功！",
+    "createAccountFail": "帳戶建立失敗",
+    "copied": "已複製！"
+  },
+  "signIn": {
+    "loginTitle": "登入您的帳戶",
+    "passwordPlaceholder": "輸入密碼",
+    "passwordTitle": "密碼",
+    "signInButton": "登入",
+    "invalidPassword": "密碼無效",
+    "required": "此欄位為必填項。",
+    "minLength": "密碼至少需包含 8 個字元。",
+    "maxLength": "密碼最多可包含 256 個字元。",
+    "initWalletError": "初始化錢包時發生錯誤"
+  },
+  "settings": {
+    "contacts": "聯絡人",
+    "language": "語言",
+    "languageDesc": "選擇錢包語言",
+    "contactsDesc": "管理您的聯絡人",
+    "networks": "網路",
+    "networksDesc": "新增或編輯 RPC 網路",
+    "connectedSites": "已連線網站",
+    "connectedSitesDesc": "查看並管理已連線網站",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "透過 WalletConnect 連線",
+    "txSettings": "交易設定",
+    "txSettingsDesc": "設定 Gas 偏好",
+    "exportPhrase": "匯出恢復詞",
+    "exportPhraseDesc": "保護您的錢包",
+    "editPassword": "變更密碼",
+    "editPasswordDesc": "變更錢包密碼",
+    "2fa": "雙因素驗證",
+    "2faDesc": "管理 2FA 設定",
+    "expandView": "擴展視圖",
+    "expandViewDesc": "於新視窗開啟 eckoWALLET",
+    "theme": "主題",
+    "themeDesc": "設定錢包主題",
+    "lock": "鎖定錢包",
+    "lockDesc": "保護您的錢包",
+    "lockSettings": "自動鎖定",
+    "lockSettingsDesc": "變更安全設定",
+    "discord": "加入 Discord",
+    "website": "造訪我們的網站",
+    "terms": "使用條款",
+    "privacy": "隱私政策",
+    "connectedSitesPage": {
+      "title": "已連線網站",
+      "removeSiteTitle": "移除網站",
+      "removeSiteConfirmText": "確定要移除此網站：",
+      "removeSiteSuccess": "網站已成功移除。"
+    },
+    "contactsPage": {
+      "title": "聯絡人",
+      "newContactTitle": "新增聯絡人",
+      "addNewContact": "新增聯絡人",
+      "noContacts": "尚無聯絡人"
+    },
+    "contactForm": {
+      "enterAlias": "輸入別名",
+      "aliasPlaceholder": "例如：張三",
+      "accountNameTitle": "帳戶名稱",
+      "accountNamePlaceholder": "輸入帳戶名稱",
+      "scanQrTitle": "掃描 QR 碼",
+      "scanQrDescription": "將 QR 碼置於鏡頭前",
+      "buttonCancel": "取消",
+      "buttonSave": "儲存",
+      "successContactAdded": "聯絡人已成功新增",
+      "errorNetwork": "網路錯誤。",
+      "copied": "已複製！",
+      "requiredField": "此欄位為必填項。",
+      "invalidData": "資料無效",
+      "aliasMaxLength": "別名最多 256 個字元。",
+      "accountNameMaxLength": "帳戶名稱最多 1000 個字元。"
+    },
+    "contactInfo": {
+      "copied": "已複製！",
+      "contactRemoved": "聯絡人已移除",
+      "accountName": "帳戶名稱",
+      "editContact": "編輯聯絡人",
+      "editTitle": "編輯帳戶",
+      "delete": "刪除",
+      "deleteContactTitle": "刪除聯絡人",
+      "removeContact": "確定要刪除此聯絡人？",
+      "confirmRemove": "確定要移除此聯絡人？",
+      "cancel": "取消",
+      "confirm": "確認"
+    },
+    "editPasswordPage": {
+      "title": "變更密碼",
+      "passwordChanged": "密碼已成功變更",
+      "cannotUpdatePassword": "無法更新密碼設定",
+      "save": "儲存"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "輸入密碼以繼續",
+      "inputPlaceholder": "輸入密碼",
+      "password": "密碼",
+      "errorRequired": "此欄位為必填項。",
+      "errorInvalid": "密碼無效。",
+      "continue": "繼續",
+      "correctPassword": "密碼正確，請稍候…"
+    },
+    "exportSeedPhrase": {
+      "title": "匯出恢復詞",
+      "copied": "已複製！",
+      "description": "秘密恢復詞可簡化帳戶備份與還原。",
+      "warning": "切勿洩露恢復詞。任何擁有它者均可接管您的錢包。",
+      "copyKeyphrase": "複製助記詞",
+      "download": "下載"
+    },
+    "lockSettingsPage": {
+      "title": "自動鎖定設定",
+      "saved": "設定已儲存",
+      "required": "此欄位為必填項。",
+      "placeholder": "選擇鎖定延遲",
+      "selectTitle": "自動鎖定",
+      "restore": "恢復預設",
+      "save": "儲存"
+    },
+    "networksPage": {
+      "title": "網路",
+      "network": "網路",
+      "addNew": "新增網路",
+      "editSuccess": "網路已成功編輯",
+      "addSuccess": "網路已成功新增",
+      "errorUrl": "URL 已存在",
+      "deleteSuccess": "網路已成功移除",
+      "remove": "移除",
+      "save": "儲存",
+      "confirmRemove": "確定要移除此網路？",
+      "confirmRemoveDesc": "確定要移除此網路？",
+      "placeholderName": "輸入網路名稱",
+      "placeholderUrl": "輸入 RPC URL",
+      "placeholderExplorer": "輸入區塊鏈瀏覽器 URL",
+      "placeholderNetworkId": "輸入網路 ID",
+      "titleName": "網路名稱",
+      "titleUrl": "RPC URL",
+      "titleExplorer": "瀏覽器 URL",
+      "titleNetworkId": "網路 ID",
+      "nameMax": "網路名稱最多 1000 個字元。",
+      "urlMax": "RPC URL 最多 1000 個字元。",
+      "explorerMax": "瀏覽器 URL 最多 1000 個字元。",
+      "networkIdMax": "網路 ID 最多 1000 個字元。"
+    },
+    "selectTheme": {
+      "title": "選擇主題"
+    },
+    "txSettingsPage": {
+      "title": "交易設定",
+      "gasLimit": "Gas 限制",
+      "gasLimitPlaceholder": "輸入 Gas 限制",
+      "finishCrossChain": "完成跨鏈 Gas 池",
+      "finishCrossChainPlaceholder": "輸入跨鏈 Gas 池",
+      "crossChainGasLimit": "跨鏈 Gas 限制",
+      "crossChainGasLimitPlaceholder": "輸入跨鏈 Gas 限制",
+      "crossChainGasPrice": "跨鏈 Gas 價格",
+      "crossChainGasPricePlaceholder": "輸入跨鏈 Gas 價格",
+      "save": "儲存",
+      "restoreDefault": "恢復預設",
+      "successSave": "設定已成功儲存",
+      "requiredField": "此欄位為必填項。",
+      "invalidValue": "值無效"
+    },
+    "2faPage": {
+      "title": "雙因素驗證",
+      "description": "雙因素驗證已啟用。",
+      "disableButton": "停用",
+      "successDisable": "已成功停用 2FA",
+      "installApp": "安裝應用程式",
+      "orSimilar": "或類似應用",
+      "scanQRCode": "掃描以下 QR 碼：",
+      "enter6Digits": "輸入 6 位數代碼",
+      "invalidCode": "代碼無效。",
+      "saveButton": "儲存",
+      "setupSuccess": "已成功啟用 2FA"
+    },
+    "walletConnectPage": {
+      "title": "WalletConnect",
+      "selectAccounts": "選擇帳戶",
+      "invalidUrl": "URL 無效",
+      "disconnectSuccess": "已成功斷開連線",
+      "noActiveSessions": "無活動連線",
+      "activeSessions": "活動連線",
+      "expiry": "到期：",
+      "removeConnection": "移除連線",
+      "removeConfirmation": "確定要移除此 WalletConnect 連線？",
+      "newConnection": "新連線",
+      "addConnection": "新增 WalletConnect",
+      "inputUri": "輸入 URI",
+      "code": "代碼",
+      "continue": "繼續"
+    }
+  },
+  "buy": {
+    "title": "購買",
+    "description": "加密貨幣的買賣透過第三方服務 Onramper 進行。\n\neckoWALLET 致力於提供高安全性，但無法保證第三方服務的安全性或隱私。",
+    "cancel": "取消",
+    "confirm": "確認",
+    "error": {
+      "noAddress": "錢包地址不可用",
+      "generic": "無法連接服務，請稍後再試。"
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "錢包分析",
+    "dexAnalytics": "DEX 分析",
+    "portfolioValue": "資產組合價值",
+    "startTracking": "開始追蹤",
+    "trackPortfolioTitle": "追蹤資產組合價值",
+    "trackPortfolioStart": "開始追蹤餘額",
+    "trackPortfolioDesc1": "確認後將開始追蹤您的帳戶餘額。",
+    "trackPortfolioDesc2": "繼續？",
+    "confirm": "確認",
+    "confirming": "確認中…",
+    "disclaimerTitle": "注意！",
+    "disclaimerText": "此頁面資料處於 BETA 階段，按「原樣」提供。"
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "網路無效",
+      "signingCmdError": "簽署錯誤，請檢查載荷",
+      "signingCmdGenericError": "簽署錯誤",
+      "rejectedByUser": "已被使用者拒絕",
+      "userRejected": "使用者已拒絕。",
+      "signedCommand": "已簽署命令",
+      "hashToSign": "待簽署哈希：",
+      "pleaseEnableLedger": "請啟用盲簽章並先按照 Ledger 指示操作",
+      "capabilities": "權限",
+      "close": "關閉",
+      "reject": "拒絕",
+      "confirm": "確認"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "快速簽署請求",
+      "code": "代碼",
+      "capabilities": "權限",
+      "rawData": "原始資料",
+      "command": "命令 {{index}}/{{total}}",
+      "hashToSign": "待簽署哈希 ({{count}}/{{total}})：",
+      "ledgerInstructions": "請啟用盲簽章並按照 Ledger 指示操作",
+      "close": "關閉",
+      "reject": "拒絕",
+      "confirm": "確認",
+      "error.invalidStructure": "快速簽署失敗：結構無效",
+      "error.pubKeyNotFound": "快速簽署失敗：未找到公鑰",
+      "error.ledger": "Ledger �署失敗"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "匯入硬體錢包",
+      "selectDevice": "選擇硬體錢包",
+      "ledgerInstructions": "將 Ledger 連接至電腦，打開 Kadena 應用並解鎖",
+      "connect": "連接",
+      "confirm": "匯入",
+      "success": "硬體錢包匯入成功",
+      "error": {
+        "duplicate": "要匯入的帳戶已存在。",
+        "network": "網路錯誤。",
+        "invalid": "資料無效"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "從 Ledger 匯入",
+      "instruction": "連接 Ledger，打開 Kadena 應用並解鎖",
+      "continue": "繼續",
+      "publicKey": "公鑰",
+      "account": "帳戶",
+      "confirm": "確認匯入",
+      "success": "帳戶匯入成功。",
+      "error": {
+        "duplicate": "要匯入的帳戶已存在。",
+        "network": "獲取帳戶資訊時發生網路錯誤",
+        "invalid": "資料無效"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "匯入代幣",
+      "contractLabel": "代幣合約地址",
+      "symbolLabel": "代幣符號",
+      "placeholder": {
+        "contract": "輸入合約地址",
+        "symbol": "輸入符號"
+      },
+      "add": "新增代幣",
+      "edit": "編輯代幣",
+      "success": "代幣已成功儲存",
+      "error": {
+        "duplicate": "代幣已存在",
+        "notFound": "於 {{network}} 網路上未找到 {{contract}} 資料"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "匯入錢包",
+    "form": {
+      "accountName": {
+        "title": "帳戶名稱",
+        "placeholder": "輸入帳戶名稱"
+      },
+      "chainId": {
+        "title": "鏈 ID"
+      },
+      "secretKey": {
+        "title": "私鑰",
+        "placeholder": "輸入私鑰"
+      }
+    },
+    "validation": {
+      "required": "此欄位為必填項。",
+      "invalidData": "資料無效",
+      "startsWithK": "帳戶名稱須以 “k:” 開頭",
+      "accountName": {
+        "maxLength": "帳戶名稱最多 1000 個字元。"
+      },
+      "secretKey": {
+        "maxLength": "私鑰最多 1000 個字元。"
+      }
+    },
+    "modal": {
+      "scanTitle": "掃描 QR 碼",
+      "scanBody": "將 QR 碼置於鏡頭前"
+    },
+    "button": {
+      "import": "匯入"
+    },
+    "toast": {
+      "importSuccess": "帳戶匯入成功。",
+      "duplicateError": "要匯入的帳戶已存在。",
+      "invalidAccountData": "帳戶資料無效",
+      "multipleKeys": "不支援多組金鑰對",
+      "invalidData": "資料無效",
+      "networkError": "網路錯誤。"
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "我已有私鑰。",
+      "prompt": "匯入現有私鑰"
+    },
+    "button": {
+      "import": "匯入"
+    },
+    "image": {
+      "alt": "匯入圖示"
+    }
+  },
+  "nft": {
+    "header": "您的收藏",
+    "noOwned": "尚無 NFT"
+  },
+  "sendTransactions": {
+    "header": "發送 {{symbol}} 交易"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger 簽署成功",
+    "ledgerSignFailed": "Ledger �署失敗或被拒絕",
+    "transferSuccess": "轉帳成功",
+    "transferFailed": "轉帳失敗",
+    "transactionSent": "交易發送成功！請於歷史紀錄查看",
+    "networkError": "網路錯誤。",
+    "loadingTop": "請勿關閉此視窗",
+    "loadingBottom": "交易完成後將自動跳轉",
+    "labelReceiver": "收款人",
+    "labelAmount": "數量",
+    "labelGasLimit": "Gas 限制",
+    "labelGasPrice": "Gas 價格",
+    "labelGasFee": "Gas 費用",
+    "labelTotal": "總計",
+    "warningCrossChainLine1": "您正在執行跨鏈轉帳",
+    "warningCrossChainLine2": "此操作將比一般花費更多時間",
+    "warningNonKAccountLine1": "您正在向非 “k:” 開頭帳戶發送！",
+    "warningNonKAccountLine2": "確定要繼續？"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} 無法轉移！",
+    "form": {
+      "sourceChainId": {
+        "title": "來源 鏈 ID"
+      },
+      "destinationAccount": {
+        "title": "目標帳戶"
+      },
+      "targetChainId": {
+        "title": "目標 鏈 ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "目標帳戶最多 1000 個字元。"
+    },
+    "balanceLabel": "{{symbol}} 鏈餘額",
+    "recent": "最近",
+    "contacts": "聯絡人",
+    "confirm": {
+      "warningTitle": "警告",
+      "publicKeyTitle": "公鑰",
+      "publicKeyPlaceholder": "輸入公鑰",
+      "predicateTitle": "條件",
+      "predicatePlaceholder": "輸入條件"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "無法發送給自己",
+    "invalidGasLimit": "Gas 限制無效",
+    "gasLimitInteger": "Gas 限制須為整數",
+    "invalidGasPrice": "Gas 價格無效",
+    "insufficientFundsGas": "Gas 費用不足",
+    "newAddressDetected": "偵測到新地址！請新增至聯絡人",
+    "tokenNotExists": "{{contractAddress}} 在 {{chainId}} 鏈上不存在！",
+    "transactionParameters": "交易參數",
+    "estimatedGas": "預估 Gas {{gas}}",
+    "speed": "{{speed}} 速度",
+    "modal": {
+      "confirmTitle": "確認發送",
+      "gasParametersTitle": "Gas 參數"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gas 限制"
+      },
+      "gasPrice": {
+        "title": "Gas 價格"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "發送數量",
+    "button": {
+      "half": "一半",
+      "max": "最大"
+    },
+    "error": {
+      "insufficientFunds": "餘額不足",
+      "invalidAmount": "數量無效"
+    },
+    "balance": "餘額：{{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp 標誌",
+    "sendTransaction": "發送交易",
+    "destinationNotFound": "找不到目標帳戶"
+  },
+  "history": {
+    "header": "歷史紀錄",
+    "modal": {
+      "confirmSendTransaction": "確認發送交易"
+    }
+  },
+  "activities": {
+    "detailsTitle": "交易明細"
+  },
+  "receiveModal": {
+    "accountNameTitle": "帳戶名稱"
+  },
+  "activityList": {
+    "loading": "讀取中…",
+    "today": "今天",
+    "yesterday": "昨天",
+    "noTransactions": "尚無交易"
+  },
+  "statusFilter": {
+    "modalTitle": "狀態",
+    "prefix": "狀態：",
+    "options": {
+      "all": "全部",
+      "in": "接收",
+      "out": "發送",
+      "pending": "待處理"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "代幣",
+    "prefix": "資產：",
+    "options": {
+      "all": "全部"
+    }
+  },
+  "footer": {
+    "wallet": "錢包",
+    "analytics": "分析",
+    "nft": "NFT",
+    "settings": "設定"
+  }
+}

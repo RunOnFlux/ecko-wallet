@@ -1,0 +1,646 @@
+{
+  "select_language": "Pilih bahasa",
+  "home": {
+    "startNow": "Mulai sekarang"
+  },
+  "common": {
+    "requiredField": "Kolom ini wajib diisi.",
+    "invalidData": "Data tidak valid",
+    "invalidUrl": "URL tidak valid",
+    "cancel": "Batal",
+    "back": "Kembali",
+    "confirm": "Konfirmasi",
+    "continue": "Lanjut",
+    "reject": "Tolak",
+    "usd": "{{value}} USD",
+    "next": "Berikutnya",
+    "close": "Tutup"
+  },
+  "condition": {
+    "noPersonalInfo": "Kami tidak pernah mengumpulkan kunci pribadi, alamat, transaksi, saldo, hash, atau informasi pribadi",
+    "noIP": "Kami tidak pernah mengumpulkan alamat IP lengkap Anda",
+    "noSelling": "Kami tidak pernah menjual data untuk keuntungan. Tidak pernah!",
+    "next": "Berikutnya"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Saya telah membaca dan menyetujui",
+    "termsOfUse": "Syarat Penggunaan",
+    "createNewWallet": "Buat Wallet baru",
+    "setupNewAccount": "Siapkan akun eckoWALLET baru",
+    "restoreWallet": "Pulihkan Wallet",
+    "restoreFromPhrase": "Pulihkan dari frase pemulihan"
+  },
+  "createPassword": {
+    "successCreate": "Kata sandi berhasil dibuat",
+    "errorCreate": "Terjadi kesalahan saat membuat Wallet",
+    "invalidPhrase": "Frase pemulihan tidak valid!",
+    "importFromPhrase": "Impor dari frase pemulihan",
+    "createPassword": "Buat kata sandi",
+    "pastePhrase": "Tempel frase pemulihan",
+    "requiredField": "Kolom ini wajib diisi.",
+    "phraseTooLong": "Frase pemulihan terlalu panjang.",
+    "secretRecoveryPhrase": "Frase pemulihan rahasia",
+    "import": "Impor",
+    "create": "Buat"
+  },
+  "passwordForm": {
+    "inputPassword": "Masukkan kata sandi",
+    "inputConfirmPassword": "Konfirmasi kata sandi",
+    "requiredField": "Kolom ini wajib diisi.",
+    "minPassword": "Kata sandi minimal 8 karakter.",
+    "maxPassword": "Kata sandi maksimal 256 karakter.",
+    "passwordMismatch": "Kata sandi tidak cocok",
+    "newPassword": "Kata sandi baru (minimal 8 karakter)",
+    "confirmPassword": "Konfirmasi kata sandi",
+    "passwordWarning": "Saya mengerti bahwa saya menggunakan karakter yang tidak aman. Disarankan hanya menggunakan huruf (a-z), angka (0-9), dan karakter khusus _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Frase pemulihan rahasia",
+    "step1Text": "Pada langkah berikutnya Anda akan mendapatkan frase pemulihan 12 kata.\nFrase ini memudahkan memulihkan Wallet di perangkat baru.\nSiapa pun yang memiliki frase ini dapat mengakses Wallet Anda, simpan dengan aman.\nTidak ada cara memulihkan frase jika hilang, simpan di tempat aman.",
+    "step1Checkbox": "Saya mengerti jika saya kehilangan frase pemulihan, saya tidak dapat memulihkan Wallet saya.",
+    "generating": "Menghasilkan kunci...",
+    "continue": "Lanjut",
+    "reveal": "Klik di sini untuk menampilkan kata-kata rahasia",
+    "step2Text1": "Frase pemulihan rahasia memudahkan mencadangkan dan memulihkan akun Anda.",
+    "step2Text2": "Peringatan: Jangan pernah membagikan frase pemulihan rahasia Anda. Siapa pun dengan frase ini dapat mengambil alih Wallet Anda selamanya.",
+    "download": "Unduh",
+    "verifyTitle": "Verifikasi frase pemulihan",
+    "verifyInstruction": "Silakan verifikasi frase pemulihan dengan memasukkan kata-kata dalam urutan yang benar.",
+    "successVerify": "Frase pemulihan berhasil diverifikasi",
+    "invalidPhrase": "Frase pemulihan rahasia tidak valid!",
+    "errorGeneratingKeys": "Kesalahan saat menghasilkan kunci Wallet",
+    "errorCreatingWallet": "Kesalahan saat membuat Wallet",
+    "generatingWallet": "Membuat Wallet..."
+  },
+  "wallet": {
+    "netWorth": "NET WORTH",
+    "accountBalance": "SALDO AKUN",
+    "send": "Kirim",
+    "receive": "Terima",
+    "receiveTokens": "Terima token",
+    "buy": "Beli",
+    "history": "Riwayat",
+    "assets": "ASSETS",
+    "detectedTokens": "Token terdeteksi",
+    "tokenList": "Daftar token",
+    "kdaChainDistribution": "Distribusi chain KDA",
+    "chainDistribution": "Distribusi chain",
+    "tokenRemoved": "Token berhasil dihapus",
+    "removeToken": "Hapus token",
+    "editToken": "Edit token",
+    "removeTokenTitle": "Hapus token {{symbol}}",
+    "confirmRemoveToken": "Yakin ingin menghapus token {{symbol}}?",
+    "notTransferable": "{{contractAddress}} tidak dapat ditransfer!",
+    "accountDoesNotExist": "Tidak ada: akun ini tidak ada.",
+    "balanceZero": "Saldo {{symbol}} adalah 0."
+  },
+  "accountActions": {
+    "shareWallet": "Bagikan Wallet",
+    "copied": "Disalin!",
+    "exportRecoveryPhrase": "Ekspor frase pemulihan",
+    "signHashTransaction": "Tandatangani hash transaksi",
+    "editAccountAlias": "Edit alias akun",
+    "setAccountAlias": "Tetapkan alias akun",
+    "removeSelectedWallet": "Hapus Wallet terpilih",
+    "createWallet": "Buat Wallet",
+    "importWallet": "Impor Wallet",
+    "importHardwareWallet": "Impor hardware Wallet"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Tidak ada token lain yang ditemukan untuk akun ini."
+  },
+  "aliasModal": {
+    "accountAlias": "Alias akun",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "aliasChanged": "Alias berhasil diubah"
+  },
+  "hashSignModal": {
+    "publicKey": "Kunci publik Anda",
+    "transactionHash": "Hash transaksi",
+    "insertTransactionHash": "Masukkan hash transaksi",
+    "signature": "Tanda tangan",
+    "copied": "Disalin!",
+    "clean": "Bersihkan",
+    "sign": "Tandatangani"
+  },
+  "popupDetailTransaction": {
+    "status": "Status",
+    "direction": "Arah",
+    "symbol": "Simbol",
+    "quantity": "Jumlah",
+    "gasFee": "Biaya gas",
+    "total": "Total",
+    "viewDetails": "Lihat detail",
+    "activityLog": "Log aktivitas",
+    "transactionCreated": "Transaksi dibuat senilai {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transaksi dikonfirmasi",
+    "success": "Berhasil",
+    "failed": "Gagal",
+    "finishing": "Menyelesaikan"
+  },
+  "removeWallet": {
+    "title": "Yakin ingin menghapus Wallet ini?",
+    "description": "Masukkan kata sandi Anda untuk konfirmasi",
+    "passwordPlaceholder": "Masukkan kata sandi",
+    "passwordRequired": "Kolom ini wajib diisi.",
+    "passwordMinLength": "Kata sandi minimal 8 karakter.",
+    "passwordMaxLength": "Kata sandi maksimal 256 karakter.",
+    "invalidPassword": "Kata sandi tidak valid",
+    "cancel": "Batal",
+    "remove": "Hapus"
+  },
+  "header": {
+    "selectNetwork": "Pilih jaringan",
+    "manageNetworks": "Kelola jaringan",
+    "myWallets": "Wallet saya",
+    "removeWalletTitle": "Hapus Wallet",
+    "createAccountSuccess": "Akun berhasil dibuat!",
+    "createAccountFail": "Kesalahan membuat akun",
+    "copied": "Disalin!"
+  },
+  "signIn": {
+    "loginTitle": "Masuk ke akun Anda",
+    "passwordPlaceholder": "Masukkan kata sandi",
+    "passwordTitle": "Kata sandi",
+    "signInButton": "Masuk",
+    "invalidPassword": "Kata sandi tidak valid",
+    "required": "Kolom ini wajib diisi.",
+    "minLength": "Kata sandi minimal 8 karakter.",
+    "maxLength": "Kata sandi maksimal 256 karakter.",
+    "initWalletError": "Kesalahan inisialisasi Wallet"
+  },
+  "settings": {
+    "contacts": "Kontak",
+    "language": "Bahasa",
+    "languageDesc": "Pilih bahasa Wallet",
+    "contactsDesc": "Kelola kontak Anda",
+    "networks": "Jaringan",
+    "networksDesc": "Tambah atau edit RPC kustom",
+    "connectedSites": "Situs terhubung",
+    "connectedSitesDesc": "Lihat dan kelola situs terhubung",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "Hubungkan dengan WalletConnect",
+    "txSettings": "Pengaturan transaksi",
+    "txSettingsDesc": "Atur preferensi gas Anda",
+    "exportPhrase": "Ekspor frase pemulihan",
+    "exportPhraseDesc": "Lindungi Wallet Anda",
+    "editPassword": "Edit kata sandi",
+    "editPasswordDesc": "Ganti kata sandi Wallet Anda",
+    "2fa": "2FA",
+    "2faDesc": "Kelola autentikasi dua faktor",
+    "expandView": "Tampilan luas",
+    "expandViewDesc": "Buka eckoWALLET di jendela baru",
+    "theme": "Tema",
+    "themeDesc": "Sesuaikan tema Wallet",
+    "lock": "Kunci Wallet",
+    "lockDesc": "Lindungi Wallet Anda",
+    "lockSettings": "Pengaturan kunci",
+    "lockSettingsDesc": "Ubah pengaturan keamanan",
+    "discord": "Bergabung di Discord kami",
+    "website": "Kunjungi situs kami",
+    "terms": "Syarat Penggunaan",
+    "privacy": "Kebijakan Privasi",
+    "connectedSitesPage": {
+      "title": "Situs terhubung",
+      "removeSiteTitle": "Hapus situs",
+      "removeSiteConfirmText": "Yakin ingin menghapus",
+      "removeSiteSuccess": "Situs berhasil dihapus."
+    },
+    "contactsPage": {
+      "title": "Kontak",
+      "newContactTitle": "Kontak baru",
+      "addNewContact": "Tambah kontak baru",
+      "noContacts": "Tidak ada kontak"
+    },
+    "contactForm": {
+      "enterAlias": "Masukkan alias",
+      "aliasPlaceholder": "mis. David",
+      "accountNameTitle": "Nama akun",
+      "accountNamePlaceholder": "Nama akun",
+      "scanQrTitle": "Pindai kode QR",
+      "scanQrDescription": "Arahkan kamera ke kode QR",
+      "buttonCancel": "Batal",
+      "buttonSave": "Simpan",
+      "successContactAdded": "Kontak ditambahkan",
+      "errorNetwork": "Kesalahan jaringan.",
+      "copied": "Disalin!",
+      "requiredField": "Kolom ini wajib diisi.",
+      "invalidData": "Data tidak valid",
+      "aliasMaxLength": "Alias maksimal 256 karakter.",
+      "accountNameMaxLength": "Nama akun maksimal 1000 karakter."
+    },
+    "contactInfo": {
+      "copied": "Disalin!",
+      "contactRemoved": "Kontak dihapus",
+      "accountName": "NAMA AKUN",
+      "editContact": "Edit kontak",
+      "editTitle": "Edit akun",
+      "delete": "Hapus",
+      "deleteContactTitle": "Hapus kontak",
+      "removeContact": "Hapus kontak?",
+      "confirmRemove": "Yakin ingin menghapus kontak ini?",
+      "cancel": "Batal",
+      "confirm": "Konfirmasi"
+    },
+    "editPasswordPage": {
+      "title": "Edit kata sandi",
+      "passwordChanged": "Kata sandi berhasil diubah",
+      "cannotUpdatePassword": "Tidak dapat memperbarui kata sandi",
+      "save": "Simpan"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Masukkan kata sandi untuk melanjutkan",
+      "inputPlaceholder": "Masukkan kata sandi",
+      "password": "Kata sandi",
+      "errorRequired": "Kolom ini wajib diisi.",
+      "errorInvalid": "Kata sandi tidak valid.",
+      "continue": "Lanjut",
+      "correctPassword": "Kata sandi benar, harap tunggu..."
+    },
+    "exportSeedPhrase": {
+      "title": "Ekspor frase pemulihan",
+      "copied": "Disalin!",
+      "description": "Frase pemulihan rahasia memudahkan mencadangkan dan memulihkan akun Anda.",
+      "warning": "Jangan pernah membagikan frase pemulihan rahasia Anda. Siapa pun dengan frase ini dapat mengambil alih Wallet Anda selamanya.",
+      "copyKeyphrase": "Salin frase kunci",
+      "download": "Unduh"
+    },
+    "lockSettingsPage": {
+      "title": "Pengaturan kunci otomatis",
+      "saved": "Pengaturan berhasil disimpan",
+      "required": "Kolom ini wajib diisi.",
+      "placeholder": "Pilih waktu kunci otomatis",
+      "selectTitle": "Waktu kunci otomatis",
+      "restore": "Pulihkan default",
+      "save": "Simpan"
+    },
+    "networksPage": {
+      "title": "Jaringan",
+      "network": "Jaringan",
+      "addNew": "Tambah baru",
+      "editSuccess": "Jaringan berhasil diedit",
+      "addSuccess": "Jaringan berhasil ditambahkan",
+      "errorUrl": "URL sudah ada",
+      "deleteSuccess": "Jaringan berhasil dihapus",
+      "remove": "Hapus",
+      "save": "Simpan",
+      "confirmRemove": "Hapus jaringan ini?",
+      "confirmRemoveDesc": "Yakin ingin menghapus jaringan ini?",
+      "placeholderName": "Masukkan nama jaringan",
+      "placeholderUrl": "Masukkan URL RPC baru",
+      "placeholderExplorer": "Masukkan URL explorer blok",
+      "placeholderNetworkId": "Masukkan ID jaringan",
+      "titleName": "Nama jaringan",
+      "titleUrl": "URL RPC baru",
+      "titleExplorer": "URL explorer blok",
+      "titleNetworkId": "ID jaringan",
+      "nameMax": "Nama jaringan maksimal 1000 karakter.",
+      "urlMax": "URL RPC maksimal 1000 karakter.",
+      "explorerMax": "URL explorer blok maksimal 1000 karakter.",
+      "networkIdMax": "ID jaringan maksimal 1000 karakter."
+    },
+    "selectTheme": {
+      "title": "Pilih tema"
+    },
+    "txSettingsPage": {
+      "title": "Pengaturan transaksi",
+      "gasLimit": "Limit gas",
+      "gasLimitPlaceholder": "Masukkan limit gas",
+      "finishCrossChain": "Selesaikan station gas cross-chain",
+      "finishCrossChainPlaceholder": "Masukkan station gas cross-chain",
+      "crossChainGasLimit": "Limit gas cross-chain",
+      "crossChainGasLimitPlaceholder": "Masukkan limit gas cross-chain",
+      "crossChainGasPrice": "Harga gas cross-chain",
+      "crossChainGasPricePlaceholder": "Masukkan harga gas cross-chain",
+      "save": "Simpan",
+      "restoreDefault": "Pulihkan default",
+      "successSave": "Pengaturan berhasil disimpan",
+      "requiredField": "Kolom ini wajib diisi.",
+      "invalidValue": "Nilai tidak valid"
+    },
+    "2faPage": {
+      "title": "Autentikasi dua faktor",
+      "description": "Autentikasi dua faktor sudah diaktifkan.",
+      "disableButton": "Nonaktifkan",
+      "successDisable": "2FA berhasil dinonaktifkan",
+      "installApp": "Pasang aplikasi",
+      "orSimilar": "atau aplikasi serupa",
+      "scanQRCode": "Pindai kode QR berikut:",
+      "enter6Digits": "Masukkan kode 6 digit",
+      "invalidCode": "Kode tidak valid.",
+      "saveButton": "Simpan",
+      "setupSuccess": "2FA berhasil diatur"
+    },
+    "walletConnectPage": {
+      "title": "WalletConnect",
+      "selectAccounts": "Pilih akun",
+      "invalidUrl": "URL tidak valid",
+      "disconnectSuccess": "Permintaan putus koneksi berhasil dikirim",
+      "noActiveSessions": "TIDAK ADA SESI AKTIF",
+      "activeSessions": "SESI AKTIF",
+      "expiry": "Kadaluarsa:",
+      "removeConnection": "Hapus koneksi",
+      "removeConfirmation": "Yakin ingin menghapus koneksi WalletConnect ini?",
+      "newConnection": "Koneksi baru",
+      "addConnection": "Tambah koneksi WalletConnect baru",
+      "inputUri": "Masukkan URI",
+      "code": "Kode",
+      "continue": "Lanjut"
+    }
+  },
+  "buy": {
+    "title": "Beli",
+    "description": "Pembelian dan penjualan cryptocurrency dilakukan melalui layanan pihak ketiga oleh Onramper.\n\neckoWALLET berkomitmen menjamin keamanan tertinggi, tetapi tidak dapat menjamin keamanan dan privasi layanan pihak ketiga.",
+    "cancel": "Batal",
+    "confirm": "Konfirmasi",
+    "error": {
+      "noAddress": "Alamat Wallet tidak tersedia",
+      "generic": "Gagal terhubung ke layanan. Silakan coba lagi nanti."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "ANALISIS WALLET",
+    "dexAnalytics": "ANALISIS DEX",
+    "portfolioValue": "GRAFIK NILAI PORTOFOLIO",
+    "startTracking": "Mulai pelacakan",
+    "trackPortfolioTitle": "Lacak nilai portofolio",
+    "trackPortfolioStart": "MULAI PELACAKAN SALDO AKUN",
+    "trackPortfolioDesc1": "Dengan mengonfirmasi, Anda menyetujui pelacakan saldo akun Anda.",
+    "trackPortfolioDesc2": "Lanjutkan?",
+    "confirm": "Konfirmasi",
+    "confirming": "Mengonfirmasi, harap tunggu...",
+    "disclaimerTitle": "Info!",
+    "disclaimerText": "Informasi pada halaman ini masih dalam tahap BETA dan disediakan \"apa adanya\" dan sesuai ketersediaan."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Jaringan tidak valid",
+      "signingCmdError": "Kesalahan saat menandatangani cmd, periksa payload Anda",
+      "signingCmdGenericError": "Kesalahan menandatangani cmd",
+      "rejectedByUser": "Ditolak oleh pengguna",
+      "userRejected": "Pengguna menolak.",
+      "signedCommand": "Cmd ditandatangani",
+      "hashToSign": "HASH UNTUK DITANDATANGANI:",
+      "pleaseEnableLedger": "Silakan aktifkan BLIND SIGNING\ndan ikuti instruksi di Ledger Anda terlebih dahulu",
+      "capabilities": "Kemampuan",
+      "close": "Tutup",
+      "reject": "Tolak",
+      "confirm": "Konfirmasi"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Permintaan tanda tangan cepat",
+      "code": "Kode",
+      "capabilities": "Kemampuan",
+      "rawData": "Data mentah",
+      "command": "Cmd {{index}}/{{total}}",
+      "hashToSign": "HASH UNTUK DITANDATANGANI ({{count}}/{{total}}):",
+      "ledgerInstructions": "Silakan aktifkan BLIND SIGNING dan ikuti instruksi di Ledger Anda terlebih dahulu",
+      "close": "Tutup",
+      "reject": "Tolak",
+      "confirm": "Konfirmasi",
+      "error.invalidStructure": "Tanda tangan cepat gagal: struktur data tidak valid",
+      "error.pubKeyNotFound": "Tanda tangan cepat gagal: kunci publik Wallet tidak ditemukan",
+      "error.ledger": "Kesalahan tanda tangan Ledger"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Impor hardware Wallet",
+      "selectDevice": "Silakan pilih hardware Wallet",
+      "ledgerInstructions": "Hubungkan Ledger ke komputer Anda. Buka kuncinya dan jalankan app Kadena.",
+      "connect": "Hubungkan",
+      "confirm": "Impor",
+      "success": "Hardware Wallet berhasil diimpor",
+      "error": {
+        "duplicate": "Akun yang Anda impor sudah ada.",
+        "network": "Kesalahan jaringan.",
+        "invalid": "Data tidak valid"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Impor dari Ledger",
+      "instruction": "Hubungkan Ledger ke komputer Anda, buka kuncinya, dan jalankan app Kadena.",
+      "continue": "Lanjut",
+      "publicKey": "KUNCI PUBLIK",
+      "account": "AKUN",
+      "confirm": "Konfirmasi impor",
+      "success": "Akun berhasil diimpor.",
+      "error": {
+        "duplicate": "Akun yang Anda impor sudah ada.",
+        "network": "Kesalahan jaringan saat mengambil data akun",
+        "invalid": "Data tidak valid"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Impor token",
+      "contractLabel": "Alamat kontrak token",
+      "symbolLabel": "Simbol token",
+      "placeholder": {
+        "contract": "Masukkan alamat kontrak",
+        "symbol": "Masukkan simbol"
+      },
+      "add": "Tambah token",
+      "edit": "Edit token",
+      "success": "Token berhasil disimpan",
+      "error": {
+        "duplicate": "Token sudah ditambahkan",
+        "notFound": "Tidak dapat menemukan {{contract}}. Periksa apakah token ada di {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Impor Wallet",
+    "form": {
+      "accountName": {
+        "title": "Nama akun Anda",
+        "placeholder": "Nama akun"
+      },
+      "chainId": {
+        "title": "Chain-ID"
+      },
+      "secretKey": {
+        "title": "Kunci privat Anda",
+        "placeholder": "Kunci privat"
+      }
+    },
+    "validation": {
+      "required": "Kolom ini wajib diisi.",
+      "invalidData": "Data tidak valid",
+      "startsWithK": "Nama akun harus diawali dengan \"k:\"",
+      "accountName": {
+        "maxLength": "Nama akun maksimal 1000 karakter."
+      },
+      "secretKey": {
+        "maxLength": "Kunci privat maksimal 1000 karakter."
+      }
+    },
+    "modal": {
+      "scanTitle": "Pindai kode QR",
+      "scanBody": "Arahkan kamera ke kode QR"
+    },
+    "button": {
+      "import": "Impor"
+    },
+    "toast": {
+      "importSuccess": "Akun berhasil diimpor.",
+      "duplicateError": "Akun yang diimpor sudah ada.",
+      "invalidAccountData": "Data akun tidak valid",
+      "multipleKeys": "Tidak mendukung beberapa set kunci",
+      "invalidData": "Data tidak valid",
+      "networkError": "Kesalahan jaringan."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Saya sudah memiliki kunci privat.",
+      "prompt": "Impor kunci privat Anda"
+    },
+    "button": {
+      "import": "Impor"
+    },
+    "image": {
+      "alt": "Ikon impor"
+    }
+  },
+  "nft": {
+    "header": "Koleksi Anda",
+    "noOwned": "Anda tidak memiliki NFT"
+  },
+  "sendTransactions": {
+    "header": "Kirim transaksi {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Tanda tangan Ledger berhasil",
+    "ledgerSignFailed": "Tanda tangan Ledger gagal atau ditolak",
+    "transferSuccess": "Transfer berhasil",
+    "transferFailed": "Transfer gagal",
+    "transactionSent": "Transaksi berhasil dikirim! Periksa status di riwayat",
+    "networkError": "Kesalahan jaringan.",
+    "loadingTop": "Jangan tutup tampilan ini",
+    "loadingBottom": "Anda akan dialihkan setelah transaksi selesai",
+    "labelReceiver": "Penerima",
+    "labelAmount": "Jumlah",
+    "labelGasLimit": "Limit gas",
+    "labelGasPrice": "Harga gas",
+    "labelGasFee": "Biaya gas",
+    "labelTotal": "Total",
+    "warningCrossChainLine1": "Anda akan melakukan transfer cross-chain",
+    "warningCrossChainLine2": "Operasi ini biasanya memakan waktu lebih lama",
+    "warningNonKAccountLine1": "Anda mengirim ke akun bukan “k:account”!",
+    "warningNonKAccountLine2": "Yakin ingin melanjutkan?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} tidak dapat ditransfer!",
+    "form": {
+      "sourceChainId": {
+        "title": "Chain-ID sumber"
+      },
+      "destinationAccount": {
+        "title": "Akun tujuan"
+      },
+      "targetChainId": {
+        "title": "Chain-ID tujuan"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Akun tujuan maksimal 1000 karakter."
+    },
+    "balanceLabel": "Saldo: {{balance}} {{symbol}}",
+    "recent": "TERBARU",
+    "contacts": "KONTAK",
+    "confirm": {
+      "warningTitle": "Peringatan",
+      "publicKeyTitle": "Kunci publik",
+      "publicKeyPlaceholder": "Masukkan kunci publik",
+      "predicateTitle": "Predicate",
+      "predicatePlaceholder": "Masukkan predicate"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Anda tidak dapat mengirim ke diri sendiri",
+    "invalidGasLimit": "Limit gas tidak valid",
+    "gasLimitInteger": "Limit gas harus bilangan bulat",
+    "invalidGasPrice": "Harga gas tidak valid",
+    "insufficientFundsGas": "Dana tidak cukup untuk biaya gas",
+    "newAddressDetected": "Alamat baru terdeteksi! Tambahkan ke kontak Anda",
+    "tokenNotExists": "{{contractAddress}} mungkin tidak ada di CHAIN {{chainId}}!",
+    "transactionParameters": "Parameter transaksi",
+    "estimatedGas": "Gas terestimasi {{gas}}",
+    "speed": "Kecepatan {{speed}}",
+    "modal": {
+      "confirmTitle": "Konfirmasi pengiriman transaksi",
+      "gasParametersTitle": "Parameter gas"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Limit gas"
+      },
+      "gasPrice": {
+        "title": "Harga gas"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Jumlah yang akan dikirim",
+    "button": {
+      "half": "SETENGAH",
+      "max": "MAKS"
+    },
+    "error": {
+      "insufficientFunds": "Dana tidak cukup",
+      "invalidAmount": "Jumlah tidak valid"
+    },
+    "balance": "Saldo: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Logo Dapp",
+    "sendTransaction": "Kirim transaksi",
+    "destinationNotFound": "Akun tujuan tidak ditemukan"
+  },
+  "history": {
+    "header": "Riwayat",
+    "modal": {
+      "confirmSendTransaction": "Konfirmasi pengiriman transaksi"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Detail transaksi"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Nama akun Anda"
+  },
+  "activityList": {
+    "loading": "Memuat...",
+    "today": "Hari ini",
+    "yesterday": "Kemarin",
+    "noTransactions": "Anda belum memiliki transaksi"
+  },
+  "statusFilter": {
+    "modalTitle": "Status",
+    "prefix": "Status: ",
+    "options": {
+      "all": "Semua",
+      "in": "Masuk",
+      "out": "Keluar",
+      "pending": "Tertunda"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Aset: ",
+    "options": {
+      "all": "Semua"
+    }
+  },
+  "footer": {
+    "wallet": "Dompet",
+    "analytics": "Analitik",
+    "nft": "NFT",
+    "settings": "Pengaturan"
+  }
+}
