@@ -86,11 +86,13 @@ import iconHeron from './heron-token.png';
 import iconKayc from './kayc-logo.svg';
 import iconKds from './kds-logo.svg';
 import iconCrna from './corona-logo.svg';
-import iconKishu from './kishk-logo.svg';
+import iconKishu from './tokens/kishuken.png';
 import iconArkd from './arkade-logo.png';
+import iconAzuki from './tokens/azuki_logo.png';
 import iconWiz from './wizz.svg';
 import iconTeckel from './teckel-coin.png';
-import iconCrankk from './crankk.svg';
+import iconCrankk from './tokens/crankk.png';
+import iconUnitt from './tokens/unitt_Logo.png';
 import iconBro from './bro-logo.png';
 import iconCfly from './cfly-logo.svg';
 import iconFinux from './finux-logo.png';
@@ -247,7 +249,9 @@ const wallet = {
     'n_b742b4e9c600892af545afb408326e82a6c0c6ed.zUSD': zUSD,
     'n_e309f0fa7cf3a13f93a8da5325cdad32790d2070.heron': iconHeron,
     'n_582fed11af00dc626812cd7890bb88e72067f28c.bro': iconBro,
+    'n_518dfea5f0d2abe95cbcd8956eb97f3238e274a9.AZUKI': iconAzuki,
     'free.cyberfly_token': iconCfly,
+    'n_ebe54249b2e9d68f5060961f3c419f8288d18dc2.unitt': iconUnitt,
   },
 };
 const initPage = {
