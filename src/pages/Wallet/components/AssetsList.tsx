@@ -56,7 +56,7 @@ export const AssetsList = () => {
       </div>
       <ActionList
         actions={tokens
-          .filter((t) => !search || t.includes(search))
+          .filter((t) => !search || t?.toLowerCase().includes(search?.toLowerCase()))
           .map((t) => ({
             label: t,
             onClick: () => {
