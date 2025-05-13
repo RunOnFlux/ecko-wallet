@@ -6,6 +6,7 @@ import Toast from 'src/components/Toast/Toast';
 import { DivFlex, SecondaryLabel } from 'src/components';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 const Label = styled.span`
   font-weight: 500;
@@ -27,11 +28,12 @@ export const ReceiveSection = styled.div`
 `;
 
 const ReceiveModal = () => {
-  const { account } = useAppSelector((state) => state?.wallet);
+  const { t } = useTranslation();
+  const { account } = useAppSelector((state) => state.wallet);
 
   const onCopy = (str: string) => {
     navigator.clipboard.writeText(str);
-    toast.success(<Toast type="success" content="Copied!" />);
+    toast.success(<Toast type="success" content={t('common.copied')} />);
   };
 
   return (
@@ -43,7 +45,7 @@ const ReceiveModal = () => {
       </DivFlex>
       <ReceiveSection style={{ marginBottom: 30 }}>
         <DivFlex justifyContent="space-between" alignItems="center" style={{ marginBottom: 20 }}>
-          <ReceiveTitle fontSize={10}>YOUR ACCOUNT NAME</ReceiveTitle>
+          <ReceiveTitle fontSize={10}>{t('receiveModal.accountNameTitle')}</ReceiveTitle>
           <Icon src={images.wallet.copyGray} onClick={() => onCopy(account)} />
         </DivFlex>
         <DivFlex justifyContent="flex-start" alignItems="flex-start">

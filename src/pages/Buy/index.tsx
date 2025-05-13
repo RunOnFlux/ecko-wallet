@@ -6,8 +6,10 @@ import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import { useAppThemeContext } from 'src/contexts/AppThemeContext';
 import { BodyFullScreen, Header, PageFullScreen } from '@Components/Page';
 import { NavigationHeader } from '@Components/NavigationHeader';
+import { useTranslation } from 'react-i18next';
 
 const Buy = () => {
+  const { t } = useTranslation();
   const { account: walletAddress } = useCurrentWallet();
   const [isAccepted, setIsAccepted] = useState(false);
   const [signature, setSignature] = useState('');
@@ -57,7 +59,7 @@ const Buy = () => {
 
   const askForSignature = async () => {
     if (!payloadToSign) {
-      setError('Wallet address not available');
+      setError(t('buy.error.noAddress'));
       return;
     }
 
@@ -69,20 +71,21 @@ const Buy = () => {
           setError(null);
         } else {
           console.error('Error getting signature:', error);
-          setError('Unable to connect to the service. Please try again later.');
+          setError(t('buy.error.generic'));
         }
       })
       .catch((error) => {
         console.error('Error getting signature:', error);
-        setError('Unable to connect to the service. Please try again later.');
+        setError(t('buy.error.generic'));
       });
   };
-  const url = `${generateOnramperUrl()}`;
-  console.dir(url, { depth: null, maxStringLength: Infinity });
+
+  const url = generateOnramperUrl();
+
   return (
     <PageFullScreen>
       <Header margin="0px" padding="0 20px">
-        <NavigationHeader title="Buy" onBack={goBack} />
+        <NavigationHeader title={t('buy.title')} onBack={goBack} />
       </Header>
       <BodyFullScreen>
         {isAccepted && payloadToSign && signature ? (
@@ -103,14 +106,10 @@ const Buy = () => {
           </DivFlex>
         ) : (
           <DivFlex flexDirection="column" justifyContent="space-evenly" padding="20px" style={{ height: '100%' }}>
-            <SecondaryLabel>
-              The purchase and sale of cryptocurrencies are facilitated through a third-party service provided by Onramper. <br /> <br />
-              While eckoWallet is committed to ensuring the highest level of security for its users, we cannot guarantee the security and privacy of
-              third-party services.
-            </SecondaryLabel>
+            <SecondaryLabel>{t('buy.description')}</SecondaryLabel>
             <DivFlex justifyContent="space-between" alignItems="center" gap="10px" margin="30px 0">
-              <Button label="Cancel" size="full" variant="secondary" onClick={() => goBack()} />
-              <Button type="submit" label="Confirm" size="full" variant="primary" onClick={() => setIsAccepted(true)} />
+              <Button label={t('buy.cancel')} size="full" variant="secondary" onClick={goBack} />
+              <Button type="submit" label={t('buy.confirm')} size="full" variant="primary" onClick={() => setIsAccepted(true)} />
             </DivFlex>
           </DivFlex>
         )}

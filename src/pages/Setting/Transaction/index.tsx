@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Button from 'src/components/Buttons';
 import { SettingsContext, TxSettings } from 'src/contexts/SettingsContext';
 import { BaseTextInput, InputError } from 'src/baseComponent';
@@ -18,6 +19,7 @@ import { Body, DivError } from '../Contact/views/style';
 
 const PageTransaction = () => {
   const history = useHistory();
+  const { t } = useTranslation();
   const { data: settings, setTxSettings } = useContext(SettingsContext);
   const txSettings = settings?.txSettings;
 
@@ -51,7 +53,7 @@ const PageTransaction = () => {
       xChainGasPrice: Number(dataSubmit.xChainGasPrice),
     };
     setTxSettings(toSubmit);
-    toast.success(<Toast type="success" content="Settings saved successfully" />);
+    toast.success(<Toast type="success" content={t('settings.txSettingsPage.successSave')} />);
     history.push('/setting');
   };
 
@@ -67,25 +69,24 @@ const PageTransaction = () => {
   };
 
   const onErrors = () => {};
+
   return (
     <SettingBody>
       <div style={{ padding: '0 24px' }}>
-        <NavigationHeader title="Transaction Settings" onBack={() => history.push('/setting')} />
+        <NavigationHeader title={t('settings.txSettingsPage.title')} onBack={() => history.push('/setting')} />
       </div>
       <Body>
         <Content>
           <form onSubmit={handleSubmit(onSave, onErrors)} id="save-network">
             <DivBodyNetwork>
               <BaseTextInput
-                title="Gas Limit"
+                title={t('settings.txSettingsPage.gasLimit')}
                 height="auto"
                 onChange={(e) => setValue('gasLimit', e.target.value)}
                 inputProps={{
                   type: 'number',
-                  placeholder: 'Gas Limit',
-                  ...register('gasLimit', {
-                    required: true,
-                  }),
+                  placeholder: t('settings.txSettingsPage.gasLimitPlaceholder'),
+                  ...register('gasLimit', { required: true }),
                 }}
               />
               {errors.gasLimit && (
@@ -96,16 +97,15 @@ const PageTransaction = () => {
                 </ErrorWrapper>
               )}
             </DivBodyNetwork>
+
             <DivBodyNetwork>
               <BaseTextInput
-                title="Finish Crosschain Gas Station"
+                title={t('settings.txSettingsPage.finishCrossChain')}
                 height="auto"
                 onChange={(e) => setValue('xChainGasStation', e.target.value)}
                 inputProps={{
-                  placeholder: 'Finish Crosschain Gas Station',
-                  ...register('xChainGasStation', {
-                    required: true,
-                  }),
+                  placeholder: t('settings.txSettingsPage.finishCrossChainPlaceholder'),
+                  ...register('xChainGasStation', { required: true }),
                 }}
               />
               {errors.xChainGasStation && (
@@ -116,19 +116,17 @@ const PageTransaction = () => {
                 </ErrorWrapper>
               )}
             </DivBodyNetwork>
+
             <DivBodyNetwork>
               <BaseTextInput
-                title="Crosschain Gas Limit"
+                title={t('settings.txSettingsPage.crossChainGasLimit')}
                 height="auto"
                 onChange={(e) => setValue('xChainGasLimit', e.target.value)}
                 inputProps={{
                   type: 'number',
-                  placeholder: 'Crosschain Gas Limit',
+                  placeholder: t('settings.txSettingsPage.crossChainGasLimitPlaceholder'),
                   ...register('xChainGasLimit', {
-                    required: {
-                      value: true,
-                      message: 'This field is required.',
-                    },
+                    required: { value: true, message: t('settings.txSettingsPage.requiredField') },
                   }),
                 }}
               />
@@ -140,23 +138,19 @@ const PageTransaction = () => {
                 </ErrorWrapper>
               )}
             </DivBodyNetwork>
+
             <DivBodyNetwork>
               <BaseTextInput
-                title="Crosschain Gas Price"
+                title={t('settings.txSettingsPage.crossChainGasPrice')}
                 height="auto"
                 onChange={(e) => setValue('xChainGasPrice', e.target.value)}
                 inputProps={{
                   type: 'number',
                   step: 'any',
-                  placeholder: 'Crosschain Gas Price',
+                  placeholder: t('settings.txSettingsPage.crossChainGasPricePlaceholder'),
                   ...register('xChainGasPrice', {
-                    required: {
-                      value: true,
-                      message: 'This field is required.',
-                    },
-                    validate: {
-                      required: (val) => !Number.isNaN(val) || 'Invalid value',
-                    },
+                    required: { value: true, message: t('settings.txSettingsPage.requiredField') },
+                    validate: { required: (val) => !Number.isNaN(val) || t('settings.txSettingsPage.invalidValue') },
                   }),
                 }}
               />
@@ -169,10 +163,11 @@ const PageTransaction = () => {
               )}
             </DivBodyNetwork>
           </form>
+
           <StickyFooter>
             <DivFlex gap="10px" style={{ width: '90%', maxWidth: 890 }}>
-              <Button size="full" label="Restore default" variant="disabled" onClick={restoreDefault} />
-              <Button size="full" label="Save" variant="primary" form="save-network" type="submit" />
+              <Button size="full" label={t('settings.txSettingsPage.restoreDefault')} variant="disabled" onClick={restoreDefault} />
+              <Button size="full" label={t('settings.txSettingsPage.save')} variant="primary" form="save-network" type="submit" />
             </DivFlex>
           </StickyFooter>
         </Content>

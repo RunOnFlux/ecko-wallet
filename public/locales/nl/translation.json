@@ -1,0 +1,646 @@
+{
+  "select_language": "Taal selecteren",
+  "home": {
+    "startNow": "Nu starten"
+  },
+  "common": {
+    "requiredField": "Dit veld is verplicht.",
+    "invalidData": "Ongeldige gegevens",
+    "invalidUrl": "Ongeldige URL",
+    "cancel": "Annuleren",
+    "back": "Terug",
+    "confirm": "Bevestigen",
+    "continue": "Doorgaan",
+    "reject": "Weigeren",
+    "usd": "{{value}} USD",
+    "next": "Volgende",
+    "close": "Sluiten"
+  },
+  "condition": {
+    "noPersonalInfo": "Wij verzamelen nooit sleutels, adressen, transacties, saldi, hashes of andere persoonlijke informatie",
+    "noIP": "Wij verzamelen nooit uw volledige IP-adres",
+    "noSelling": "Wij verkopen gegevens nooit voor winst. Nooit!",
+    "next": "Volgende"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Ik heb de",
+    "termsOfUse": "Gebruiksvoorwaarden",
+    "createNewWallet": "Nieuwe wallet aanmaken",
+    "setupNewAccount": "Nieuw eckoWALLET-account instellen",
+    "restoreWallet": "Wallet herstellen",
+    "restoreFromPhrase": "Herstellen via herstelzin"
+  },
+  "createPassword": {
+    "successCreate": "Wachtwoord succesvol aangemaakt",
+    "errorCreate": "Fout bij aanmaken wallet",
+    "invalidPhrase": "Ongeldige secret recovery phrase!",
+    "importFromPhrase": "Importeren via herstelzin",
+    "createPassword": "Wachtwoord aanmaken",
+    "pastePhrase": "Plak secret recovery phrase",
+    "requiredField": "Dit veld is verplicht.",
+    "phraseTooLong": "Secret recovery phrase te lang.",
+    "secretRecoveryPhrase": "Secret recovery phrase",
+    "import": "Importeren",
+    "create": "Aanmaken"
+  },
+  "passwordForm": {
+    "inputPassword": "Voer wachtwoord in",
+    "inputConfirmPassword": "Bevestig wachtwoord",
+    "requiredField": "Dit veld is verplicht.",
+    "minPassword": "Wachtwoord moet minimaal 8 tekens bevatten.",
+    "maxPassword": "Wachtwoord mag maximaal 256 tekens bevatten.",
+    "passwordMismatch": "Wachtwoorden komen niet overeen",
+    "newPassword": "Nieuw wachtwoord (minimaal 8 tekens)",
+    "confirmPassword": "Bevestig wachtwoord",
+    "passwordWarning": "Ik begrijp dat ik onveilige tekens heb gebruikt. Het wordt sterk aanbevolen alleen letters (a-z), cijfers (0-9) en de speciale tekens _!?\"'.#@,;- te gebruiken."
+  },
+  "seedPhrase": {
+    "title": "Secret Recovery Phrase",
+    "step1Text": "In de volgende stap noteer je je 12-woord herstelzin.\nJe herstelzin maakt het makkelijk je wallet op een nieuw apparaat te herstellen.\nIedereen met deze zin kan je wallet overnemen; houd deze zin veilig en privé.\nNiemand kan je herstelzin ophalen als je hem verliest, sla hem dus goed op.",
+    "step1Checkbox": "Ik begrijp dat ik mijn wallet niet kan herstellen als ik mijn herstelzin verlies.",
+    "generating": "Sleutels genereren...",
+    "continue": "Doorgaan",
+    "reveal": "Klik hier om de geheime woorden te tonen",
+    "step2Text1": "Je secret recovery phrase maakt het makkelijk om je account te back-uppen en te herstellen.",
+    "step2Text2": "Waarschuwing: deel je secret recovery phrase nooit. Iedereen met deze zin kan je wallet voor altijd overnemen.",
+    "download": "Downloaden",
+    "verifyTitle": "Herstelzin verifiëren",
+    "verifyInstruction": "Bevestig je herstelzin door de woorden in de juiste volgorde in te typen.",
+    "successVerify": "Secret recovery phrase succesvol geverifieerd",
+    "invalidPhrase": "Ongeldige secret recovery phrase!",
+    "errorGeneratingKeys": "Fout bij genereren wallet-sleutels",
+    "errorCreatingWallet": "Fout bij aanmaken wallet",
+    "generatingWallet": "Wallet genereren..."
+  },
+  "wallet": {
+    "netWorth": "NETTOWAARDE",
+    "accountBalance": "REKENINGSALDO",
+    "send": "Versturen",
+    "receive": "Ontvangen",
+    "receiveTokens": "Tokens ontvangen",
+    "buy": "Kopen",
+    "history": "Geschiedenis",
+    "assets": "ACTIVA",
+    "detectedTokens": "Gevonden tokens",
+    "tokenList": "Tokenlijst",
+    "kdaChainDistribution": "KDA Chain-verdeling",
+    "chainDistribution": "Chain-verdeling",
+    "tokenRemoved": "Token succesvol verwijderd",
+    "removeToken": "Token verwijderen",
+    "editToken": "Token bewerken",
+    "removeTokenTitle": "Verwijder {{symbol}}-token",
+    "confirmRemoveToken": "Weet je zeker dat je het {{symbol}}-token wilt verwijderen?",
+    "notTransferable": "{{contractAddress}} is niet overdraagbaar!",
+    "accountDoesNotExist": "Bestaat niet: deze account bestaat niet.",
+    "balanceZero": "{{symbol}}-saldo is 0."
+  },
+  "accountActions": {
+    "shareWallet": "Wallet delen",
+    "copied": "Gekopieerd!",
+    "exportRecoveryPhrase": "Herstelzin exporteren",
+    "signHashTransaction": "Hashtransactie ondertekenen",
+    "editAccountAlias": "Accountalias bewerken",
+    "setAccountAlias": "Accountalias instellen",
+    "removeSelectedWallet": "Geselecteerde wallet verwijderen",
+    "createWallet": "Wallet aanmaken",
+    "importWallet": "Wallet importeren",
+    "importHardwareWallet": "Hardware wallet importeren"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Geen andere tokens voor deze account gevonden."
+  },
+  "aliasModal": {
+    "accountAlias": "Accountalias",
+    "cancel": "Annuleren",
+    "save": "Opslaan",
+    "aliasChanged": "Alias succesvol gewijzigd"
+  },
+  "hashSignModal": {
+    "publicKey": "Je publieke sleutel",
+    "transactionHash": "Transactie-hash",
+    "insertTransactionHash": "Voer transactie-hash in",
+    "signature": "Handtekening",
+    "copied": "Gekopieerd!",
+    "clean": "Opschonen",
+    "sign": "Ondertekenen"
+  },
+  "popupDetailTransaction": {
+    "status": "Status",
+    "direction": "Richting",
+    "symbol": "Symbool",
+    "quantity": "Hoeveelheid",
+    "gasFee": "Gasvergoeding",
+    "total": "Totaal",
+    "viewDetails": "Details bekijken",
+    "activityLog": "Activiteitenlog",
+    "transactionCreated": "Transactie aangemaakt met een waarde van {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transactie bevestigd",
+    "success": "Succes",
+    "failed": "Mislukt",
+    "finishing": "Bezig met afronden"
+  },
+  "removeWallet": {
+    "title": "Weet je zeker dat je deze wallet wilt verwijderen?",
+    "description": "Voer wachtwoord in ter bevestiging",
+    "passwordPlaceholder": "Wachtwoord invoeren",
+    "passwordRequired": "Dit veld is verplicht.",
+    "passwordMinLength": "Wachtwoord moet minimaal 8 tekens bevatten.",
+    "passwordMaxLength": "Wachtwoord mag maximaal 256 tekens bevatten.",
+    "invalidPassword": "Ongeldig wachtwoord",
+    "cancel": "Annuleren",
+    "remove": "Verwijderen"
+  },
+  "header": {
+    "selectNetwork": "Netwerk selecteren",
+    "manageNetworks": "Netwerken beheren",
+    "myWallets": "Mijn wallets",
+    "removeWalletTitle": "Wallet verwijderen",
+    "createAccountSuccess": "Account succesvol aangemaakt!",
+    "createAccountFail": "Account aanmaken mislukt",
+    "copied": "Gekopieerd!"
+  },
+  "signIn": {
+    "loginTitle": "Log in op je account",
+    "passwordPlaceholder": "Wachtwoord invoeren",
+    "passwordTitle": "Wachtwoord",
+    "signInButton": "Inloggen",
+    "invalidPassword": "Ongeldig wachtwoord",
+    "required": "Dit veld is verplicht.",
+    "minLength": "Wachtwoord moet minimaal 8 tekens bevatten.",
+    "maxLength": "Wachtwoord mag maximaal 256 tekens bevatten.",
+    "initWalletError": "Fout bij initialisatie wallet"
+  },
+  "settings": {
+    "contacts": "Contacten",
+    "language": "Taal",
+    "languageDesc": "Kies de taal van de wallet",
+    "contactsDesc": "Beheer je contacten",
+    "networks": "Netwerken",
+    "networksDesc": "Voeg aangepaste RPC-netwerken toe of bewerk ze",
+    "connectedSites": "Verbonden sites",
+    "connectedSitesDesc": "Bekijk en beheer verbonden sites",
+    "walletConnect": "Wallet Connect",
+    "walletConnectDesc": "Verbind via WalletConnect",
+    "txSettings": "Transactie-instellingen",
+    "txSettingsDesc": "Stel je gas-voorkeuren in",
+    "exportPhrase": "Herstelzin exporteren",
+    "exportPhraseDesc": "Bescherm je wallet",
+    "editPassword": "Wachtwoord wijzigen",
+    "editPasswordDesc": "Wijzig je wallet-wachtwoord",
+    "2fa": "2FA",
+    "2faDesc": "Beheer tweefactorauthenticatie",
+    "expandView": "Weergave vergroten",
+    "expandViewDesc": "Open eckoWALLET in een nieuw venster",
+    "theme": "Thema",
+    "themeDesc": "Kies het wallet-thema",
+    "lock": "Wallet vergrendelen",
+    "lockDesc": "Bescherm je wallet",
+    "lockSettings": "Instellingen automatisch vergrendelen",
+    "lockSettingsDesc": "Wijzig beveiligingsinstellingen",
+    "discord": "Ga naar Discord",
+    "website": "Bezoek website",
+    "terms": "Gebruiksvoorwaarden",
+    "privacy": "Privacybeleid",
+    "connectedSitesPage": {
+      "title": "Verbonden sites",
+      "removeSiteTitle": "Site verwijderen",
+      "removeSiteConfirmText": "Weet je zeker dat je wilt verwijderen",
+      "removeSiteSuccess": "Site succesvol verwijderd."
+    },
+    "contactsPage": {
+      "title": "Contacten",
+      "newContactTitle": "Nieuw account",
+      "addNewContact": "Nieuw contact toevoegen",
+      "noContacts": "Geen contacten"
+    },
+    "contactForm": {
+      "enterAlias": "Alias invoeren",
+      "aliasPlaceholder": "bijv. David",
+      "accountNameTitle": "Accountnaam",
+      "accountNamePlaceholder": "Accountnaam",
+      "scanQrTitle": "QR-code scannen",
+      "scanQrDescription": "Houd de QR-code voor je camera",
+      "buttonCancel": "Annuleren",
+      "buttonSave": "Opslaan",
+      "successContactAdded": "Contact toegevoegd",
+      "errorNetwork": "Netwerkfout.",
+      "copied": "Gekopieerd!",
+      "requiredField": "Dit veld is verplicht.",
+      "invalidData": "Ongeldige gegevens",
+      "aliasMaxLength": "Alias mag maximaal 256 tekens bevatten.",
+      "accountNameMaxLength": "Accountnaam mag maximaal 1000 tekens bevatten."
+    },
+    "contactInfo": {
+      "copied": "Gekopieerd!",
+      "contactRemoved": "Contact verwijderd",
+      "accountName": "ACCOUNTNAAM",
+      "editContact": "Contact bewerken",
+      "editTitle": "Account bewerken",
+      "delete": "Verwijderen",
+      "deleteContactTitle": "Contact verwijderen",
+      "removeContact": "Contact verwijderen?",
+      "confirmRemove": "Weet je zeker dat je dit contact wilt verwijderen?",
+      "cancel": "Annuleren",
+      "confirm": "Bevestigen"
+    },
+    "editPasswordPage": {
+      "title": "Wachtwoord wijzigen",
+      "passwordChanged": "Wachtwoord succesvol gewijzigd",
+      "cannotUpdatePassword": "Wachtwoord kan niet worden bijgewerkt",
+      "save": "Opslaan"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Voer je wachtwoord in om door te gaan",
+      "inputPlaceholder": "Wachtwoord invoeren",
+      "password": "Wachtwoord",
+      "errorRequired": "Dit veld is verplicht.",
+      "errorInvalid": "Ongeldig wachtwoord.",
+      "continue": "Doorgaan",
+      "correctPassword": "Je wachtwoord is correct, even geduld..."
+    },
+    "exportSeedPhrase": {
+      "title": "Herstelzin exporteren",
+      "copied": "Gekopieerd!",
+      "description": "Je secret recovery phrase maakt het makkelijk om je account te back-uppen en te herstellen.",
+      "warning": "Deel je secret recovery phrase nooit. Iedereen met deze zin kan je wallet voor altijd overnemen.",
+      "copyKeyphrase": "Herstelzin kopiëren",
+      "download": "Downloaden"
+    },
+    "lockSettingsPage": {
+      "title": "AutoLock-instellingen wallet",
+      "saved": "Instellingen succesvol opgeslagen",
+      "required": "Dit veld is verplicht.",
+      "placeholder": "Selecteer AutoLock-tijd",
+      "selectTitle": "AutoLock-tijd",
+      "restore": "Standaard herstellen",
+      "save": "Opslaan"
+    },
+    "networksPage": {
+      "title": "Netwerken",
+      "network": "Netwerk",
+      "addNew": "Nieuw netwerk toevoegen",
+      "editSuccess": "Netwerk succesvol bewerkt",
+      "addSuccess": "Netwerk succesvol toegevoegd",
+      "errorUrl": "URL bestaat al",
+      "deleteSuccess": "Netwerk succesvol verwijderd",
+      "remove": "Verwijderen",
+      "save": "Opslaan",
+      "confirmRemove": "Dit netwerk verwijderen?",
+      "confirmRemoveDesc": "Weet je zeker dat je dit netwerk wilt verwijderen?",
+      "placeholderName": "Netwerknaam invoeren",
+      "placeholderUrl": "Nieuwe RPC-URL invoeren",
+      "placeholderExplorer": "Block explorer-URL invoeren",
+      "placeholderNetworkId": "Netwerk-ID invoeren",
+      "titleName": "Netwerknaam",
+      "titleUrl": "Nieuwe RPC-URL",
+      "titleExplorer": "Block explorer-URL",
+      "titleNetworkId": "Netwerk-ID",
+      "nameMax": "Netwerknaam mag maximaal 1000 tekens bevatten.",
+      "urlMax": "RPC-URL mag maximaal 1000 tekens bevatten.",
+      "explorerMax": "Block explorer-URL mag maximaal 1000 tekens bevatten.",
+      "networkIdMax": "Netwerk-ID mag maximaal 1000 tekens bevatten."
+    },
+    "selectTheme": {
+      "title": "Thema selecteren"
+    },
+    "txSettingsPage": {
+      "title": "Transactie-instellingen",
+      "gasLimit": "Gaslimiet",
+      "gasLimitPlaceholder": "Gaslimiet invoeren",
+      "finishCrossChain": "Voltooi Cross-chain Gas Station",
+      "finishCrossChainPlaceholder": "Cross-chain Gas Station invoeren",
+      "crossChainGasLimit": "Cross-chain gaslimiet",
+      "crossChainGasLimitPlaceholder": "Cross-chain gaslimiet invoeren",
+      "crossChainGasPrice": "Cross-chain gasprijs",
+      "crossChainGasPricePlaceholder": "Cross-chain gasprijs invoeren",
+      "save": "Opslaan",
+      "restoreDefault": "Standaard herstellen",
+      "successSave": "Instellingen succesvol opgeslagen",
+      "requiredField": "Dit veld is verplicht.",
+      "invalidValue": "Ongeldige waarde"
+    },
+    "2faPage": {
+      "title": "Tweefactorauthenticatie",
+      "description": "Tweefactorauthenticatie is al ingesteld.",
+      "disableButton": "Uitschakelen",
+      "successDisable": "2FA succesvol verwijderd",
+      "installApp": "App installeren",
+      "orSimilar": "of vergelijkbare apps",
+      "scanQRCode": "Scan de QR-code hieronder:",
+      "enter6Digits": "Voer de 6-cijferige code in",
+      "invalidCode": "De code is ongeldig.",
+      "saveButton": "Opslaan",
+      "setupSuccess": "2FA succesvol ingesteld"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "Accounts selecteren",
+      "invalidUrl": "Ongeldige URL",
+      "disconnectSuccess": "Verbindingsverzoek succesvol verzonden",
+      "noActiveSessions": "GEEN ACTIEVE SESSIES",
+      "activeSessions": "ACTIEVE SESSIES",
+      "expiry": "Vervaldatum:",
+      "removeConnection": "Verbinding verwijderen",
+      "removeConfirmation": "Weet je zeker dat je deze WalletConnect-verbinding wilt verwijderen?",
+      "newConnection": "Nieuwe verbinding",
+      "addConnection": "Nieuwe WalletConnect toevoegen",
+      "inputUri": "URI invoeren",
+      "code": "Code",
+      "continue": "Doorgaan"
+    }
+  },
+  "buy": {
+    "title": "Kopen",
+    "description": "De aankoop en verkoop van cryptocurrencies wordt gefaciliteerd via een dienst van derden (Onramper).\n\neckoWallet zet zich in voor de hoogste veiligheidsnormen, maar kan de veiligheid en privacy van externe diensten niet garanderen.",
+    "cancel": "Annuleren",
+    "confirm": "Bevestigen",
+    "error": {
+      "noAddress": "Wallet-adres niet beschikbaar",
+      "generic": "Kan geen verbinding maken met de dienst. Probeer het later opnieuw."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "WALLET-ANALYTICS",
+    "dexAnalytics": "DEX-ANALYTICS",
+    "portfolioValue": "PORTFOLIOWAARDEGRAFIEK",
+    "startTracking": "Begin met volgen",
+    "trackPortfolioTitle": "Portfolio-waarde bijhouden",
+    "trackPortfolioStart": "ACCOUNT-SALDO-MONITORING STARTEN",
+    "trackPortfolioDesc1": "Door te bevestigen autoriseer je het volgen van je account-saldo.",
+    "trackPortfolioDesc2": "Doorgaan?",
+    "confirm": "Bevestigen",
+    "confirming": "Bevestigen, even geduld...",
+    "disclaimerTitle": "Info!",
+    "disclaimerText": "De informatie op deze pagina bevindt zich in BETA en wordt aangeboden ‘as is’ en ‘as available’."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Ongeldig netwerk",
+      "signingCmdError": "Fout bij ondertekenen cmd, controleer je payload",
+      "signingCmdGenericError": "Fout bij ondertekenen cmd",
+      "rejectedByUser": "Afgewezen door gebruiker",
+      "userRejected": "Gebruiker geweigerd.",
+      "signedCommand": "Ondertekend commando",
+      "hashToSign": "TE ONDERTEKENEN HASH:",
+      "pleaseEnableLedger": "Schakel BLIND SIGNING in\nen volg eerst de instructies op je Ledger",
+      "capabilities": "Mogelijkheden",
+      "close": "Sluiten",
+      "reject": "Weigeren",
+      "confirm": "Bevestigen"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Quick Sign-verzoek",
+      "code": "Code",
+      "capabilities": "Mogelijkheden",
+      "rawData": "Ruwe gegevens",
+      "command": "Commando {{index}}/{{total}}",
+      "hashToSign": "TE ONDERTEKENEN HASH ({{count}}/{{total}}):",
+      "ledgerInstructions": "Schakel BLIND SIGNING in en volg eerst de instructies op je Ledger",
+      "close": "Sluiten",
+      "reject": "Weigeren",
+      "confirm": "Bevestigen",
+      "error.invalidStructure": "QuickSign mislukt: ongeldige datastructuur",
+      "error.pubKeyNotFound": "QuickSign mislukt: publieke sleutel niet gevonden",
+      "error.ledger": "Ledger-ondertekening mislukt"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Hardware wallet importeren",
+      "selectDevice": "Selecteer een hardware wallet",
+      "ledgerInstructions": "Sluit je Ledger direct aan op je computer. Ontgrendel en open de Kadena-app.",
+      "connect": "Verbinden",
+      "confirm": "Importeren",
+      "success": "Hardware wallet succesvol geïmporteerd",
+      "error": {
+        "duplicate": "De account die je probeert te importeren is een duplicaat.",
+        "network": "Netwerkfout.",
+        "invalid": "Ongeldige gegevens"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Importeren vanaf Ledger",
+      "instruction": "Sluit je Ledger direct aan op je computer, ontgrendel en open de Kadena-app.",
+      "continue": "Doorgaan",
+      "publicKey": "PUBLIEKE SLEUTEL",
+      "account": "ACCOUNT",
+      "confirm": "Bevestig import",
+      "success": "Account succesvol geïmporteerd.",
+      "error": {
+        "duplicate": "De account die je probeert te importeren is een duplicaat.",
+        "network": "Netwerkfout bij ophalen account-gegevens",
+        "invalid": "Ongeldige gegevens"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Tokens importeren",
+      "contractLabel": "Token contractadres",
+      "symbolLabel": "Tokensymbool",
+      "placeholder": {
+        "contract": "Contractadres invoeren",
+        "symbol": "Symbool invoeren"
+      },
+      "add": "Token toevoegen",
+      "edit": "Token bewerken",
+      "success": "Token succesvol opgeslagen",
+      "error": {
+        "duplicate": "Token al toegevoegd",
+        "notFound": "Kan {{contract}} niet vinden – controleer of de token op {{network}} bestaat"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Wallet importeren",
+    "form": {
+      "accountName": {
+        "title": "Je accountnaam",
+        "placeholder": "Accountnaam"
+      },
+      "chainId": {
+        "title": "Chain-ID"
+      },
+      "secretKey": {
+        "title": "Je private key",
+        "placeholder": "Private key"
+      }
+    },
+    "validation": {
+      "required": "Dit veld is verplicht.",
+      "invalidData": "Ongeldige gegevens",
+      "startsWithK": "Accountnaam moet beginnen met \"k:\"",
+      "accountName": {
+        "maxLength": "Accountnaam mag maximaal 1000 tekens bevatten."
+      },
+      "secretKey": {
+        "maxLength": "Private key mag maximaal 1000 tekens bevatten."
+      }
+    },
+    "modal": {
+      "scanTitle": "QR-code scannen",
+      "scanBody": "Houd de QR-code voor je camera"
+    },
+    "button": {
+      "import": "Wallet importeren"
+    },
+    "toast": {
+      "importSuccess": "Account succesvol geïmporteerd.",
+      "duplicateError": "De account die je probeert te importeren is een duplicaat.",
+      "invalidAccountData": "Ongeldige accountgegevens",
+      "multipleKeys": "Meerdere sleutelsets worden niet ondersteund",
+      "invalidData": "Ongeldige gegevens",
+      "networkError": "Netwerkfout."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Ik heb een bestaande private key.",
+      "prompt": "Importeer je bestaande private key"
+    },
+    "button": {
+      "import": "Importeren"
+    },
+    "image": {
+      "alt": "Import-icoon"
+    }
+  },
+  "nft": {
+    "header": "Je collectibles",
+    "noOwned": "Geen NFT's in bezit"
+  },
+  "sendTransactions": {
+    "header": "Verstuur {{symbol}}-transactie"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger-ondertekening gelukt",
+    "ledgerSignFailed": "Ledger-ondertekening mislukt of geweigerd",
+    "transferSuccess": "Overdracht geslaagd",
+    "transferFailed": "Overdracht mislukt",
+    "transactionSent": "Transactie succesvol verzonden! Bekijk de status in het tabblad Geschiedenis",
+    "networkError": "Netwerkfout.",
+    "loadingTop": "Sluit deze weergave alsjeblieft niet",
+    "loadingBottom": "Je wordt doorgestuurd zodra de transactie voltooid is",
+    "labelReceiver": "Ontvanger",
+    "labelAmount": "Bedrag",
+    "labelGasLimit": "Gaslimiet",
+    "labelGasPrice": "Gasprijs",
+    "labelGasFee": "Gasvergoeding",
+    "labelTotal": "Totaal",
+    "warningCrossChainLine1": "Je staat op het punt een cross-chain overdracht uit te voeren",
+    "warningCrossChainLine2": "Deze operatie duurt meestal langer",
+    "warningNonKAccountLine1": "Je stuurt naar een niet-“k:account”!",
+    "warningNonKAccountLine2": "Weet je zeker dat je wilt doorgaan?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} is niet overdraagbaar!",
+    "form": {
+      "sourceChainId": {
+        "title": "Bron chain-ID"
+      },
+      "destinationAccount": {
+        "title": "Bestemmingsaccount"
+      },
+      "targetChainId": {
+        "title": "Doel chain-ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Bestemmingsaccount mag maximaal 1000 tekens bevatten."
+    },
+    "balanceLabel": "{{symbol}} chain-saldo",
+    "recent": "RECENT",
+    "contacts": "CONTACTEN",
+    "confirm": {
+      "warningTitle": "Waarschuwing",
+      "publicKeyTitle": "Publieke sleutel",
+      "publicKeyPlaceholder": "Publieke sleutel invoeren",
+      "predicateTitle": "Predicate",
+      "predicatePlaceholder": "Predicate invoeren"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Je kunt niet naar jezelf sturen",
+    "invalidGasLimit": "Ongeldige gaslimiet",
+    "gasLimitInteger": "Gaslimiet moet een geheel getal zijn",
+    "invalidGasPrice": "Ongeldige gasprijs",
+    "insufficientFundsGas": "Onvoldoende saldo voor gasvergoeding",
+    "newAddressDetected": "Nieuw adres gedetecteerd! Toevoegen aan je contacten",
+    "tokenNotExists": "{{contractAddress}} bestaat mogelijk niet op CHAIN {{chainId}}!",
+    "transactionParameters": "Transactieparameters",
+    "estimatedGas": "Geschat gas {{gas}}",
+    "speed": "{{speed}} snelheid",
+    "modal": {
+      "confirmTitle": "Bevestig verzenden",
+      "gasParametersTitle": "Transactieparameters"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gaslimiet"
+      },
+      "gasPrice": {
+        "title": "Gasprijs"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Te verzenden bedrag",
+    "button": {
+      "half": "HELFT",
+      "max": "MAX"
+    },
+    "error": {
+      "insufficientFunds": "Onvoldoende saldo",
+      "invalidAmount": "Ongeldig bedrag"
+    },
+    "balance": "Saldo: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp-logo",
+    "sendTransaction": "Transactie versturen",
+    "destinationNotFound": "Bestemmingsaccount niet gevonden"
+  },
+  "history": {
+    "header": "Geschiedenis",
+    "modal": {
+      "confirmSendTransaction": "Bevestig verzenden"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Transactiedetails"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Je accountnaam"
+  },
+  "activityList": {
+    "loading": "Laden...",
+    "today": "Vandaag",
+    "yesterday": "Gisteren",
+    "noTransactions": "Je hebt geen transacties"
+  },
+  "statusFilter": {
+    "modalTitle": "Status",
+    "prefix": "Status: ",
+    "options": {
+      "all": "Alles",
+      "in": "Ontvangen",
+      "out": "Verzonden",
+      "pending": "In afwachting"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Actief: ",
+    "options": {
+      "all": "Alles"
+    }
+  },
+  "footer": {
+    "wallet": "WALLET",
+    "analytics": "ANALYTICS",
+    "nft": "NFT",
+    "settings": "INSTELLINGEN"
+  }
+}

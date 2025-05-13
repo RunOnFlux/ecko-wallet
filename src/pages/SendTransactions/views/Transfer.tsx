@@ -27,6 +27,7 @@ import CryptoAmountSelector from 'src/components/CryptoAmountSelector';
 import AddContact from './AddContact';
 import { Warning, Footer, Error, GasItem, ErrorWrapper } from '../styles';
 import { TransferImage, AccountTransferDetail, TransferAccountSpan } from './style';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   isDappTransfer?: boolean;
@@ -99,6 +100,7 @@ export const TransactionInfoView = ({ info, containerStyle }: TransactionInfoPro
 };
 
 const Transfer = (props: Props) => {
+  const { t } = useTranslation();
   const { destinationAccount, fungibleToken, sourceChainId, isDappTransfer } = props;
   const { data: settings } = useSettingsContext();
   const txSettings = settings?.txSettings;
@@ -209,7 +211,7 @@ const Transfer = (props: Props) => {
 
   const onNext = () => {
     if (destinationAccount?.accountName === rootStateWallet.account && destinationAccount?.chainId === sourceChainId) {
-      toast.error(<Toast type="fail" content="Can not send to yourself" />);
+      toast.error(<Toast type="fail" content={t('transfer.cannotSendToYourself')} />);
     } else {
       setIsOpenTransferModal(true);
     }
@@ -284,7 +286,6 @@ const Transfer = (props: Props) => {
 
   const gasOptions = (
     <>
-      {/* gas option */}
       <DivFlex justifyContent="space-evenly" margin="10px 0" gap="10px" padding="0px 24px">
         {Object.keys(GAS_CONFIGS).map((config) => {
           const gas = GAS_CONFIGS[config];
@@ -305,7 +306,6 @@ const Transfer = (props: Props) => {
       </DivFlex>
       <DivFlex gap="10px" padding="24px">
         <div style={{ flex: 1 }}>
-          {/* gas limit */}
           <BaseTextInput
             inputProps={{
               type: 'number',
@@ -314,49 +314,28 @@ const Transfer = (props: Props) => {
               ...register('gasLimit', {
                 required: {
                   value: true,
-                  message: 'This field is required.',
+                  message: t('common.requiredField'),
                 },
                 validate: {
-                  positive: (v) => {
-                    const value = Number(v);
-                    return value > 0;
-                  },
-                  isInteger: (v) => {
-                    const reg = /^\d+$/;
-                    return reg.test(v);
-                  },
+                  positive: (v) => Number(v) > 0 || t('transfer.invalidGasLimit'),
+                  isInteger: (v) => /^\d+$/.test(v) || t('transfer.gasLimitInteger'),
                 },
               }),
             }}
-            onWheel={(event) => event.currentTarget.blur()}
-            title="gas limit"
+            onWheel={(e) => e.currentTarget.blur()}
+            title={t('transfer.form.gasLimit.title')}
             height="auto"
             onChange={handleChangeGasLimit}
           />
-          {errors.gasLimit && errors.gasLimit.type === 'required' && (
+          {errors.gasLimit && (
             <ErrorWrapper>
               <DivFlex>
-                <Error>This field is required</Error>
-              </DivFlex>
-            </ErrorWrapper>
-          )}
-          {errors.gasLimit && errors.gasLimit.type === 'positive' && (
-            <ErrorWrapper>
-              <DivFlex>
-                <Error>Invalid gas limit</Error>
-              </DivFlex>
-            </ErrorWrapper>
-          )}
-          {errors.gasLimit && errors.gasLimit.type === 'isInteger' && (
-            <ErrorWrapper>
-              <DivFlex>
-                <Error>Gas limit must be integer</Error>
+                <Error>{errors.gasLimit.message}</Error>
               </DivFlex>
             </ErrorWrapper>
           )}
         </div>
         <div style={{ flex: 1 }}>
-          {/* gas price */}
           <BaseTextInput
             inputProps={{
               type: 'number',
@@ -365,32 +344,22 @@ const Transfer = (props: Props) => {
               ...register('gasPrice', {
                 required: {
                   value: true,
-                  message: 'This field is required.',
+                  message: t('common.requiredField'),
                 },
                 validate: {
-                  positive: (v) => {
-                    const value = Number(v);
-                    return value > 0;
-                  },
+                  positive: (v) => Number(v) > 0 || t('transfer.invalidGasPrice'),
                 },
               }),
             }}
-            title="gas price"
+            title={t('transfer.form.gasPrice.title')}
             height="auto"
             onChange={handleChangeGasPrice}
-            onWheel={(event) => event.currentTarget.blur()}
+            onWheel={(e) => e.currentTarget.blur()}
           />
-          {errors.gasPrice && errors.gasPrice.type === 'required' && (
+          {errors.gasPrice && (
             <ErrorWrapper>
               <DivFlex>
-                <Error>This field is required</Error>
-              </DivFlex>
-            </ErrorWrapper>
-          )}
-          {errors.gasPrice && errors.gasPrice.type === 'positive' && (
-            <ErrorWrapper>
-              <DivFlex>
-                <Error>Invalid gas price</Error>
+                <Error>{errors.gasPrice.message}</Error>
               </DivFlex>
             </ErrorWrapper>
           )}
@@ -405,7 +374,7 @@ const Transfer = (props: Props) => {
   useEffect(() => {
     if (!canPayGas) {
       setError('cannotPayGas', {
-        message: 'Insufficient funds for gas fee',
+        message: t('transfer.insufficientFundsGas'),
       });
     } else {
       clearErrors('cannotPayGas');
@@ -442,7 +411,7 @@ const Transfer = (props: Props) => {
       {isNewContact && !destinationAccount.domain && (
         <Warning isContact onClick={openAddContact}>
           <AddIconSVG />
-          New address detected! Add to your contacts
+          {t('transfer.newAddressDetected')}
         </Warning>
       )}
       <form onSubmit={handleSubmit(onNext, onErrors)} id="send-transaction" noValidate>
@@ -465,7 +434,10 @@ const Transfer = (props: Props) => {
             <AlertIconSVG />
             <div>
               <span>
-                {fungibleToken.contractAddress} could not exists on <b>CHAIN {destinationAccount?.chainId}</b>!
+                {t('transfer.tokenNotExists', {
+                  contractAddress: fungibleToken.contractAddress,
+                  chainId: destinationAccount?.chainId,
+                })}
               </span>
             </div>
           </Warning>
@@ -473,43 +445,45 @@ const Transfer = (props: Props) => {
         <DivBottomShadow margin="0 -20px 20px -20px" />
         <DivFlex justifyContent="space-between">
           <SecondaryLabel fontSize={12} fontWeight={600} uppercase>
-            transaction parameters
+            {t('transfer.transactionParameters')}
           </SecondaryLabel>
           <GearIconSVG style={{ cursor: 'pointer' }} onClick={() => setIsOpenGasOptionsModal(true)} />
         </DivFlex>
         {errors.cannotPayGas && (
           <Warning type="danger" margin="10px 0">
             <AlertIconSVG />
-            <span>Insufficient funds for gas fee</span>
+            <span>{t('transfer.insufficientFundsGas')}</span>
           </Warning>
         )}
         <DivFlex justifyContent="space-between" alignItems="center" margin="20px 0">
           <SecondaryLabel fontSize={12} fontWeight={600} uppercase>
-            Estimated gas {configs.gasLimit * configs.gasPrice}
+            {t('transfer.estimatedGas', { gas: configs.gasLimit * configs.gasPrice })}
             <br />
             <SecondaryLabel fontWeight={200} uppercase>
-              {selectedGas.LABEL} SPEED
+              {t('transfer.speed', { speed: selectedGas.LABEL })}
             </SecondaryLabel>
           </SecondaryLabel>
           <CommonLabel fontSize={12} fontWeight={600} uppercase>
-            {humanReadableNumber(usdPrices?.coin * configs.gasLimit * configs.gasPrice)} USD
+            {t('common.usd', {
+              value: humanReadableNumber(usdPrices?.coin * configs.gasLimit * configs.gasPrice),
+            })}
           </CommonLabel>
         </DivFlex>
         <Footer>
           {destinationAccount.domain ? (
             <DivFlex margin="30px 0" gap="5px">
-              <Button size="full" variant="disabled" label="Reject" onClick={() => window.close()} />
-              <Button size="full" label="Next" form="send-transaction" />
+              <Button size="full" variant="disabled" label={t('common.reject')} onClick={() => window.close()} />
+              <Button size="full" label={t('common.next')} form="send-transaction" />
             </DivFlex>
           ) : (
             <StickyFooter>
-              <Button form="send-transaction" label="Next" size="full" style={{ width: '90%', maxWidth: 890 }} />
+              <Button form="send-transaction" label={t('common.next')} size="full" style={{ width: '90%', maxWidth: 890 }} />
             </StickyFooter>
           )}
         </Footer>
       </form>
       {isOpenTransferModal && (
-        <ModalCustom isOpen={isOpenTransferModal} title="Confirm Send Transaction" onCloseModal={onCloseTransfer} closeOnOverlayClick={false}>
+        <ModalCustom isOpen={isOpenTransferModal} title={t('transfer.modal.confirmTitle')} onCloseModal={onCloseTransfer} closeOnOverlayClick={false}>
           <PopupConfirm
             configs={configs}
             onClose={onCloseTransfer}
@@ -523,15 +497,15 @@ const Transfer = (props: Props) => {
       <ModalCustom
         closeOnOverlayClick
         isOpen={isOpenGasOptionsModal}
-        title="Transaction Parameters"
+        title={t('transfer.modal.gasParametersTitle')}
         onCloseModal={() => setIsOpenGasOptionsModal(false)}
       >
         {gasOptions}
       </ModalCustom>
       {isOpenAddContactModal && (
         <ModalCustom
-          isOpen={isOpenAddContactModal}
-          title="Add To Address Book"
+          isOpen
+          title={t('settings.contactForm.addToAddressBook')}
           onCloseModal={() => setIsOpenAddContactModal(false)}
           closeOnOverlayClick={false}
         >

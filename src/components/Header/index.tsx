@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { useHistory, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import { encryptKey } from 'src/utils/security';
@@ -33,13 +34,13 @@ const AccountLabel = styled.span`
 `;
 
 export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
+  const { t } = useTranslation();
   const history = useHistory();
   const location = useLocation().pathname;
   const stateWallet = useCurrentWallet();
   const { openModal, closeModal } = useContext(ModalContext);
   const createFirstAccountAvailable = useCreateFirstAccountAvailable();
   const selectNetwork = useSelectNetwork();
-
   const { selectedNetwork, networks } = useAppSelector((state) => state.extensions);
   const { wallets, type } = useAppSelector((state) => state.wallet);
   const selectedWallet = wallets?.find((a) => a.account === stateWallet?.account);
@@ -75,17 +76,17 @@ export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
   };
 
   const onRemoveWallet = () => {
-    openModal({ title: 'Remove wallet', content: <RemoveWalletPopup onClose={() => closeModal()} /> });
+    openModal({ title: t('header.removeWalletTitle'), content: <RemoveWalletPopup onClose={() => closeModal()} /> });
   };
 
   const onCreateAccount = async () => {
     try {
       await createFirstAccountAvailable();
-      toast.success(<Toast type="success" content="Create account successfully!" />);
+      toast.success(<Toast type="success" content={t('header.createAccountSuccess')} />);
       closeModal();
     } catch (error) {
       console.error('Error creating account:', error);
-      toast.error(<Toast type="fail" content="Failed to create account" />);
+      toast.error(<Toast type="fail" content={t('header.createAccountFail')} />);
     }
   };
 
@@ -97,7 +98,7 @@ export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
   return (
     <HeaderWallet justifyContent="space-between">
       <DropdownRadioModal
-        modalTitle="Select Network"
+        modalTitle={t('header.selectNetwork')}
         value={selectedNetwork && { value: selectedNetwork.id, label: selectedNetwork.name }}
         options={networks.map((n) => ({ label: n.name, value: n.id }))}
         onChange={(network) => handleSelectNetwork(network?.value)}
@@ -106,7 +107,7 @@ export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
             actions={[
               {
                 src: images.settings.iconGear,
-                label: 'Manage networks',
+                label: t('header.manageNetworks'),
                 onClick: () => {
                   closeModal();
                   history.push('/networks');
@@ -120,14 +121,14 @@ export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
         <DropdownModal
           title={
             <DivFlex>
-              {type === AccountType.LEDGER ? <LedgerIcon /> : <Jazzicon diameter={24} seed={jsNumberForAddress(stateWallet?.account)} />}{' '}
-              <AccountLabel>{selectedWallet?.alias || shortenAddress(stateWallet?.account)}</AccountLabel>{' '}
+              {type === AccountType.LEDGER ? <LedgerIcon /> : <Jazzicon diameter={24} seed={jsNumberForAddress(stateWallet?.account)} />}
+              <AccountLabel>{selectedWallet?.alias || shortenAddress(stateWallet?.account)}</AccountLabel>
             </DivFlex>
           }
           iconComponent={<img src={images.moreIcon} style={{ width: 14, marginTop: 10 }} />}
           iconContainerStyle={{ padding: 0 }}
           containerStyle={{ border: 'none', justifyContent: 'flex-end' }}
-          modalTitle="My Wallets"
+          modalTitle={t('header.myWallets')}
           modalContent={
             <AccountList
               onSelectWallet={(w) => {
@@ -149,7 +150,7 @@ export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
             e.preventDefault();
             e.stopPropagation();
             navigator.clipboard.writeText(stateWallet?.account);
-            toast.success(<Toast type="success" content="Copied!" />);
+            toast.success(<Toast type="success" content={t('header.copied')} />);
           }}
         />
       )}

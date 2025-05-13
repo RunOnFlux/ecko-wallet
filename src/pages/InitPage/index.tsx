@@ -3,6 +3,7 @@ import images from 'src/images';
 import { useHistory } from 'react-router-dom';
 import { Header } from 'src/components/Header';
 import { PrimaryLabel, SecondaryLabel } from 'src/components';
+import { useTranslation } from 'react-i18next';
 
 const CreateInitPageWrapper = styled.div`
   padding: 0 20px;
@@ -28,23 +29,26 @@ const DivChild = styled.div`
   margin-top: 50px;
   margin-bottom: 20px;
 `;
+
 const InitPage = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const goToImport = () => {
     history.push('/import-wallet');
   };
+
   return (
     <>
       <Header hideAccounts />
       <CreateInitPageWrapper>
         <Body>
-          <SecondaryLabel fontSize={14}>I have an existing private key.</SecondaryLabel>
+          <SecondaryLabel fontSize={14}>{t('initPage.secondary.existingKey')}</SecondaryLabel>
           <br />
-          <SecondaryLabel fontSize={14}>Import your existing private key</SecondaryLabel>
+          <SecondaryLabel fontSize={14}>{t('initPage.secondary.prompt')}</SecondaryLabel>
           <DivChild>
-            <Image src={images.initPage.importPrivateKey} alt="icon-import" onClick={goToImport} />
+            <Image src={images.initPage.importPrivateKey} alt={t('initPage.image.alt')} onClick={goToImport} />
           </DivChild>
-          <PrimaryLabel>Import</PrimaryLabel>
+          <PrimaryLabel>{t('initPage.button.import')}</PrimaryLabel>
         </Body>
       </CreateInitPageWrapper>
     </>

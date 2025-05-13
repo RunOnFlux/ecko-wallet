@@ -1,0 +1,644 @@
+{
+  "select_language": "Select Language",
+  "home": { "startNow": "Start Now" },
+  "common": {
+    "requiredField": "This field is required.",
+    "invalidData": "Invalid data",
+    "invalidUrl": "Invalid URL",
+    "cancel": "Cancel",
+    "back": "Back",
+    "confirm": "Confirm",
+    "continue": "Continue",
+    "reject": "Reject",
+    "usd": "{{value}} USD",
+    "next": "Next",
+    "close": "Close"
+  },
+  "condition": {
+    "noPersonalInfo": "We never collect keys, addresses, transactions, balances, hashes, or any personal information",
+    "noIP": "We never collect your full IP address",
+    "noSelling": "We never sell data for profit. Ever!",
+    "next": "Next"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "I have read and agree to the",
+    "termsOfUse": "Terms of Use",
+    "createNewWallet": "Create New Wallet",
+    "setupNewAccount": "Setup new eckoWALLET account",
+    "restoreWallet": "Restore Wallet",
+    "restoreFromPhrase": "Restore from recovery phrase"
+  },
+  "createPassword": {
+    "successCreate": "Create new password successfully",
+    "errorCreate": "Error creating wallet",
+    "invalidPhrase": "Invalid Secret Recovery Phrase!",
+    "importFromPhrase": "Import From Recovery Phrase",
+    "createPassword": "Create Password",
+    "pastePhrase": "Paste Secret Recovery Phrase",
+    "requiredField": "This field is required.",
+    "phraseTooLong": "Secret Recovery Phrase too long.",
+    "secretRecoveryPhrase": "Secret Recovery Phrase",
+    "import": "Import",
+    "create": "Create"
+  },
+  "passwordForm": {
+    "inputPassword": "Input Password",
+    "inputConfirmPassword": "Input Confirm Password",
+    "requiredField": "This field is required.",
+    "minPassword": "Password should be minimum 8 characters.",
+    "maxPassword": "Password should be maximum 256 characters.",
+    "passwordMismatch": "Password does not match",
+    "newPassword": "New Password (min 8 chars)",
+    "confirmPassword": "Confirm Password",
+    "passwordWarning": "I understand that I used characters that are unsafe. It is strongly recommended to use only letters (a-z), numbers (0-9), and special characters _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Secret Recovery Phrase",
+    "step1Text": "In the next step you will record your 12-word recovery phrase.\nYour recovery phrase makes it easy to restore your wallet on a new device.\nAnyone with this phrase can take control of your wallet, keep this phrase private.\nNo one can access your recovery phrase if lost, please store it safely.",
+    "step1Checkbox": "I understand that if I lose my recovery phrase, I will not be able to restore my wallet.",
+    "generating": "Generating keys...",
+    "continue": "Continue",
+    "reveal": "Click here to reveal secret words",
+    "step2Text1": "Your Secret Recovery Phrase makes it easy to back up and restore your account.",
+    "step2Text2": "Warning: Never disclose your Secret Recovery Phrase. Anyone with this phrase can take your wallet forever.",
+    "download": "Download",
+    "verifyTitle": "Verify Recovery Phrase",
+    "verifyInstruction": "Please confirm your recovery phrase by typing the words in the correct order.",
+    "successVerify": "Secret Recovery Phrase verified successfully",
+    "invalidPhrase": "Invalid Secret Recovery Phrase!",
+    "errorGeneratingKeys": "Error generating wallet keys",
+    "errorCreatingWallet": "Error creating wallet",
+    "generatingWallet": "Generating your wallet..."
+  },
+  "wallet": {
+    "netWorth": "NET WORTH",
+    "accountBalance": "ACCOUNT BALANCE",
+    "send": "Send",
+    "receive": "Receive",
+    "receiveTokens": "Receive tokens",
+    "buy": "Buy",
+    "history": "History",
+    "assets": "ASSETS",
+    "detectedTokens": "Detected tokens",
+    "tokenList": "Token list",
+    "kdaChainDistribution": "KDA Chain Distribution",
+    "chainDistribution": "Chain Distribution",
+    "tokenRemoved": "Token successfully removed",
+    "removeToken": "Remove token",
+    "editToken": "Edit token",
+    "removeTokenTitle": "Remove {{symbol}} token",
+    "confirmRemoveToken": "Are you sure you want to remove {{symbol}} token?",
+    "notTransferable": "{{contractAddress}} is not transferable!",
+    "accountDoesNotExist": "Doesn’t exist: This account does not exist.",
+    "balanceZero": "{{symbol}} balance is 0."
+  },
+  "accountActions": {
+    "shareWallet": "Share Wallet",
+    "copied": "Copied!",
+    "exportRecoveryPhrase": "Export Recovery Phrase",
+    "signHashTransaction": "Sign Hash Transaction",
+    "editAccountAlias": "Edit Account Alias",
+    "setAccountAlias": "Set Account Alias",
+    "removeSelectedWallet": "Remove Selected Wallet",
+    "createWallet": "Create Wallet",
+    "importWallet": "Import Wallet",
+    "importHardwareWallet": "Import Hardware Wallet"
+  },
+  "tokenDetector": {
+    "noTokensFound": "No other tokens found for this account."
+  },
+  "aliasModal": {
+    "accountAlias": "Account Alias",
+    "cancel": "Cancel",
+    "save": "Save",
+    "aliasChanged": "Alias changed successfully"
+  },
+  "hashSignModal": {
+    "publicKey": "Your Public Key",
+    "transactionHash": "Transaction Hash",
+    "insertTransactionHash": "Insert Transaction Hash",
+    "signature": "Signature",
+    "copied": "Copied!",
+    "clean": "Clean",
+    "sign": "Sign"
+  },
+  "popupDetailTransaction": {
+    "status": "Status",
+    "direction": "Direction",
+    "symbol": "Symbol",
+    "quantity": "Quantity",
+    "gasFee": "Gas Fee",
+    "total": "Total",
+    "viewDetails": "View Details",
+    "activityLog": "Activity Log",
+    "transactionCreated": "Transaction created with a Value of {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transaction confirmed",
+    "success": "Success",
+    "failed": "Failed",
+    "finishing": "Finishing"
+  },
+  "removeWallet": {
+    "title": "Are you sure to remove this wallet?",
+    "description": "Input password to confirm",
+    "passwordPlaceholder": "Input password",
+    "passwordRequired": "This field is required.",
+    "passwordMinLength": "Password should be minimum 8 characters.",
+    "passwordMaxLength": "Password should be maximum 256 characters.",
+    "invalidPassword": "Invalid Password",
+    "cancel": "Cancel",
+    "remove": "Remove"
+  },
+  "header": {
+    "selectNetwork": "Select Network",
+    "manageNetworks": "Manage networks",
+    "myWallets": "My Wallets",
+    "removeWalletTitle": "Remove wallet",
+    "createAccountSuccess": "Create account successfully!",
+    "createAccountFail": "Failed to create account",
+    "copied": "Copied!"
+  },
+  "signIn": {
+    "loginTitle": "Login to your account",
+    "passwordPlaceholder": "Input Password",
+    "passwordTitle": "Password",
+    "signInButton": "Sign In",
+    "invalidPassword": "Invalid Password",
+    "required": "This field is required.",
+    "minLength": "Password should be minimum 8 characters.",
+    "maxLength": "Password should be maximum 256 characters.",
+    "initWalletError": "Error initializing wallet"
+  },
+  "settings": {
+    "contacts": "Contacts",
+    "language": "Language",
+    "languageDesc": "Choose wallet language",
+    "contactsDesc": "Manage your contacts",
+    "networks": "Networks",
+    "networksDesc": "Add or edit custom RPC networks",
+    "connectedSites": "Connected Sites",
+    "connectedSitesDesc": "View and manage connected sites",
+    "walletConnect": "Wallet Connect",
+    "walletConnectDesc": "Connect with WalletConnect",
+    "txSettings": "Transaction Settings",
+    "txSettingsDesc": "Set your gas preferences",
+    "exportPhrase": "Export Recovery Phrase",
+    "exportPhraseDesc": "Protect your wallet",
+    "editPassword": "Edit Password",
+    "editPasswordDesc": "Change your wallet password",
+    "2fa": "2FA",
+    "2faDesc": "Manage two-factor authentication",
+    "expandView": "Expand View",
+    "expandViewDesc": "Open eckoWALLET in a new window",
+    "theme": "Theme",
+    "themeDesc": "Set Wallet Theme",
+    "lock": "Lock Wallet",
+    "lockDesc": "Protect your wallet",
+    "lockSettings": "Lock Wallet Settings",
+    "lockSettingsDesc": "Change security settings",
+    "discord": "Join us on Discord",
+    "website": "Visit our website",
+    "terms": "Terms of use",
+    "privacy": "Privacy Policy",
+    "connectedSitesPage": {
+      "title": "Connected Sites",
+      "removeSiteTitle": "Remove site",
+      "removeSiteConfirmText": "Are you sure you want to remove",
+      "removeSiteSuccess": "Site removed successfully."
+    },
+    "contactsPage": {
+      "title": "Contacts",
+      "newContactTitle": "New account",
+      "addNewContact": "Add New Contact",
+      "noContacts": "No contacts"
+    },
+    "contactForm": {
+      "enterAlias": "Enter An Alias",
+      "aliasPlaceholder": "e.g David",
+      "accountNameTitle": "Account Name",
+      "accountNamePlaceholder": "Account name",
+      "scanQrTitle": "Scan QR Code",
+      "scanQrDescription": "Place the QR code in front of your camera",
+      "buttonCancel": "Cancel",
+      "buttonSave": "Save",
+      "successContactAdded": "Contact Added",
+      "errorNetwork": "Network error.",
+      "copied": "Copied!",
+      "requiredField": "This field is required.",
+      "invalidData": "Invalid data",
+      "aliasMaxLength": "Enter an alias should be maximum 256 characters.",
+      "accountNameMaxLength": "Account name should be maximum 1000 characters."
+    },
+    "contactInfo": {
+      "copied": "Copied!",
+      "contactRemoved": "Contact Removed",
+      "accountName": "ACCOUNT NAME",
+      "editContact": "Edit Contact",
+      "editTitle": "Edit account",
+      "delete": "Delete",
+      "deleteContactTitle": "Delete contact",
+      "removeContact": "Remove Contact?",
+      "confirmRemove": "Are you sure you want to remove this contact?",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
+    "editPasswordPage": {
+      "title": "Edit Password",
+      "passwordChanged": "Password modified successfully",
+      "cannotUpdatePassword": "Cannot update password",
+      "save": "Save"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Enter your password to continue",
+      "inputPlaceholder": "Input password",
+      "password": "Password",
+      "errorRequired": "This field is required.",
+      "errorInvalid": "Invalid Passwords.",
+      "continue": "Continue",
+      "correctPassword": "Your password is correct, please wait..."
+    },
+    "exportSeedPhrase": {
+      "title": "Export Recovery Phrase",
+      "copied": "Copied!",
+      "description": "Your Secret Recovery Phrase makes it easy to back up and restore your account.",
+      "warning": "Never disclose your Secret Recovery Phrase. Anyone with this phrase can take your wallet forever.",
+      "copyKeyphrase": "Copy Keyphrase",
+      "download": "Download"
+    },
+    "lockSettingsPage": {
+      "title": "Wallet AutoLock Settings",
+      "saved": "Settings saved successfully",
+      "required": "This field is required.",
+      "placeholder": "Select Auto Lock Time",
+      "selectTitle": "Auto Lock Time",
+      "restore": "Restore default",
+      "save": "Save"
+    },
+    "networksPage": {
+      "title": "Networks",
+      "network": "Network",
+      "addNew": "Add New Network",
+      "editSuccess": "Network edited successfully",
+      "addSuccess": "Network added successfully",
+      "errorUrl": "URL already exists",
+      "deleteSuccess": "Network deleted successfully",
+      "remove": "Remove",
+      "save": "Save",
+      "confirmRemove": "Remove this Network?",
+      "confirmRemoveDesc": "Are you sure you want to remove this network?",
+      "placeholderName": "Insert Network Name",
+      "placeholderUrl": "Insert New RPC URL",
+      "placeholderExplorer": "Insert Block Explorer URL",
+      "placeholderNetworkId": "Insert Network ID",
+      "titleName": "Network Name",
+      "titleUrl": "New RPC URL",
+      "titleExplorer": "Block Explorer URL",
+      "titleNetworkId": "Network ID",
+      "nameMax": "Network name should be maximum 1000 characters.",
+      "urlMax": "New RPC URL should be maximum 1000 characters.",
+      "explorerMax": "Block Explorer URL should be maximum 1000 characters.",
+      "networkIdMax": "Network ID should be maximum 1000 characters."
+    },
+    "selectTheme": {
+      "title": "Select Theme"
+    },
+    "txSettingsPage": {
+      "title": "Transaction Settings",
+      "gasLimit": "Gas Limit",
+      "gasLimitPlaceholder": "Insert Gas Limit",
+      "finishCrossChain": "Finish Crosschain Gas Station",
+      "finishCrossChainPlaceholder": "Insert Crosschain Gas Station",
+      "crossChainGasLimit": "Crosschain Gas Limit",
+      "crossChainGasLimitPlaceholder": "Insert Crosschain Gas Limit",
+      "crossChainGasPrice": "Crosschain Gas Price",
+      "crossChainGasPricePlaceholder": "Insert Crosschain Gas Price",
+      "save": "Save",
+      "restoreDefault": "Restore Default",
+      "successSave": "Settings saved successfully",
+      "requiredField": "This field is required.",
+      "invalidValue": "Invalid value"
+    },
+    "2faPage": {
+      "title": "Two-Factor Authentication",
+      "description": "Two-Factor Authentication is already set up.",
+      "disableButton": "Disable",
+      "successDisable": "2FA removed successfully",
+      "installApp": "Install",
+      "orSimilar": "or similar apps",
+      "scanQRCode": "Scan the QR code below:",
+      "enter6Digits": "Enter the 6-digit code",
+      "invalidCode": "The code is not valid.",
+      "saveButton": "Save",
+      "setupSuccess": "2FA set up successfully"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "Select accounts",
+      "invalidUrl": "Invalid URL",
+      "disconnectSuccess": "Disconnect request sent successfully",
+      "noActiveSessions": "NO ACTIVE SESSIONS",
+      "activeSessions": "ACTIVE SESSIONS",
+      "expiry": "Expiry:",
+      "removeConnection": "Remove Connection",
+      "removeConfirmation": "Are you sure you want to remove this WalletConnect instance?",
+      "newConnection": "New connection",
+      "addConnection": "Add new Wallet Connect",
+      "inputUri": "Input URI",
+      "code": "Code",
+      "continue": "Continue"
+    }
+  },
+  "buy": {
+    "title": "Buy",
+    "description": "The purchase and sale of cryptocurrencies are facilitated through a third-party service provided by Onramper.\n\nWhile eckoWallet is committed to ensuring the highest level of security for its users, we cannot guarantee the security and privacy of third-party services.",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "error": {
+      "noAddress": "Wallet address not available",
+      "generic": "Unable to connect to the service. Please try again later."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "WALLET ANALYTICS",
+    "dexAnalytics": "DEX ANALYTICS",
+    "portfolioValue": "PORTFOLIO VALUE CHART",
+    "startTracking": "Start Tracking",
+    "trackPortfolioTitle": "Track Portfolio Value",
+    "trackPortfolioStart": "START ACCOUNT BALANCE MONITORING",
+    "trackPortfolioDesc1": "By confirming, you're authorising the start of tracking for your account balance.",
+    "trackPortfolioDesc2": "Proceed?",
+    "confirm": "Confirm",
+    "confirming": "Confirming, please wait...",
+    "disclaimerTitle": "Info!",
+    "disclaimerText": "The information displayed on this page is currently under BETA testing, and is provided on an \"as is\" and \"as available\" basis."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Invalid Network",
+      "signingCmdError": "Signing cmd error, please check your payload",
+      "signingCmdGenericError": "Signing cmd error",
+      "rejectedByUser": "Rejected by user",
+      "userRejected": "User rejected.",
+      "signedCommand": "Signed Command",
+      "hashToSign": "HASH TO SIGN:",
+      "pleaseEnableLedger": "Please enable BLIND SIGNING\nand follow the instruction on your ledger first",
+      "capabilities": "Capabilities",
+      "close": "Close",
+      "reject": "Reject",
+      "confirm": "Confirm"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Quick Sign Request",
+      "code": "Code",
+      "capabilities": "Capabilities",
+      "rawData": "Raw Data",
+      "command": "Command {{index}}/{{total}}",
+      "hashToSign": "HASH TO SIGN ({{count}}/{{total}}):",
+      "ledgerInstructions": "Please enable BLIND SIGNING and follow the instruction on your ledger first",
+      "close": "Close",
+      "reject": "Reject",
+      "confirm": "Confirm",
+      "error.invalidStructure": "QuickSign fail: your data structure is invalid",
+      "error.pubKeyNotFound": "QuickSign fail: wallet public key not found",
+      "error.ledger": "Ledger signing fail"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Import Hardware Wallet",
+      "selectDevice": "Please select a hardware wallet",
+      "ledgerInstructions": "Connect your Ledger directly into your computer. Then unlock it and open the Kadena app.",
+      "connect": "Connect",
+      "confirm": "Import",
+      "success": "Import Hardware wallet successfully",
+      "error": {
+        "duplicate": "The account you are trying to import is a duplicate.",
+        "network": "Network error.",
+        "invalid": "Invalid data"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Import From Ledger",
+      "instruction": "Plug your Ledger directly into your computer, then unlock it and open the Kadena app.",
+      "continue": "Continue",
+      "publicKey": "PUBLIC KEY",
+      "account": "ACCOUNT",
+      "confirm": "Confirm import",
+      "success": "Import account successfully.",
+      "error": {
+        "duplicate": "The account you are trying to import is a duplicate.",
+        "network": "Network error fetching account data",
+        "invalid": "Invalid data"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Import Tokens",
+      "contractLabel": "Token Contract Address",
+      "symbolLabel": "Token Symbol",
+      "placeholder": {
+        "contract": "Input Contract Address",
+        "symbol": "Input Symbol"
+      },
+      "add": "Add Token",
+      "edit": "Edit Token",
+      "success": "Token successfully saved",
+      "error": {
+        "duplicate": "Token already added",
+        "notFound": "Cannot resolve {{contract}}.details - Please check the token exists on {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Import Wallet",
+    "form": {
+      "accountName": {
+        "title": "Your Account Name",
+        "placeholder": "Account Name"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "Your Private Key",
+        "placeholder": "Private Key"
+      }
+    },
+    "validation": {
+      "required": "This field is required.",
+      "invalidData": "Invalid data",
+      "startsWithK": "Account name must start with \"k:\"",
+      "accountName": {
+        "maxLength": "Account name should be maximum 1000 characters."
+      },
+      "secretKey": {
+        "maxLength": "Private key should be maximum 1000 characters."
+      }
+    },
+    "modal": {
+      "scanTitle": "Scan QR Code",
+      "scanBody": "Place the QR code in front of your camera"
+    },
+    "button": {
+      "import": "Import wallet"
+    },
+    "toast": {
+      "importSuccess": "Account imported successfully.",
+      "duplicateError": "The account you are trying to import is a duplicate.",
+      "invalidAccountData": "Invalid account data",
+      "multipleKeys": "Multiple key sets are not supported",
+      "invalidData": "Invalid data",
+      "networkError": "Network error."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "I have an existing private key.",
+      "prompt": "Import your existing private key"
+    },
+    "button": {
+      "import": "Import"
+    },
+    "image": {
+      "alt": "Import icon"
+    }
+  },
+  "nft": {
+    "header": "Your collectibles",
+    "noOwned": "No NFT owned"
+  },
+  "sendTransactions": {
+    "header": "Send {{symbol}} Transaction"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger sign success",
+    "ledgerSignFailed": "Ledger sign failed or rejected",
+    "transferSuccess": "Transfer successfully",
+    "transferFailed": "Transfer failed",
+    "transactionSent": "Transaction sent successfully! Please check the transaction status in the history tab",
+    "networkError": "Network error.",
+    "loadingTop": "Please don’t close this view",
+    "loadingBottom": "You will be redirected when the transaction ends",
+    "labelReceiver": "Receiver",
+    "labelAmount": "Amount",
+    "labelGasLimit": "Gas Limit",
+    "labelGasPrice": "Gas Price",
+    "labelGasFee": "Gas Fee",
+    "labelTotal": "Total",
+    "warningCrossChainLine1": "You are about to do a cross chain transfer",
+    "warningCrossChainLine2": "This operation usually takes more time",
+    "warningNonKAccountLine1": "You are sending to a non “k:account”!",
+    "warningNonKAccountLine2": "Are you sure you want to proceed?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} is not transferable!",
+    "form": {
+      "sourceChainId": {
+        "title": "Source Chain ID"
+      },
+      "destinationAccount": {
+        "title": "Destination Account"
+      },
+      "targetChainId": {
+        "title": "Target Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Destination account should be maximum 1000 characters."
+    },
+    "balanceLabel": "{{symbol}} Chain balance",
+    "recent": "RECENT",
+    "contacts": "CONTACTS",
+    "confirm": {
+      "warningTitle": "Warning",
+      "publicKeyTitle": "Public Key",
+      "publicKeyPlaceholder": "Input public key",
+      "predicateTitle": "Predicate",
+      "predicatePlaceholder": "Predicate"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Cannot send to yourself",
+    "invalidGasLimit": "Invalid gas limit",
+    "gasLimitInteger": "Gas limit must be integer",
+    "invalidGasPrice": "Invalid gas price",
+    "insufficientFundsGas": "Insufficient funds for gas fee",
+    "newAddressDetected": "New address detected! Add to your contacts",
+    "tokenNotExists": "{{contractAddress}} could not exist on CHAIN {{chainId}}!",
+    "transactionParameters": "Transaction Parameters",
+    "estimatedGas": "Estimated gas {{gas}}",
+    "speed": "{{speed}} speed",
+    "modal": {
+      "confirmTitle": "Confirm Send Transaction",
+      "gasParametersTitle": "Transaction Parameters"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gas Limit"
+      },
+      "gasPrice": {
+        "title": "Gas Price"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Amount to send",
+    "button": {
+      "half": "HALF",
+      "max": "MAX"
+    },
+    "error": {
+      "insufficientFunds": "Insufficient funds",
+      "invalidAmount": "Invalid amount"
+    },
+    "balance": "Balance: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp logo",
+    "sendTransaction": "Send Transaction",
+    "destinationNotFound": "Destination account not found"
+  },
+  "history": {
+    "header": "History",
+    "modal": {
+      "confirmSendTransaction": "Confirm Send Transaction"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Transaction Details"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Your account name"
+  },
+  "activityList": {
+    "loading": "Loading...",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "noTransactions": "You have no transactions"
+  },
+  "statusFilter": {
+    "modalTitle": "Status",
+    "prefix": "Status: ",
+    "options": {
+      "all": "All",
+      "in": "Received",
+      "out": "Sent",
+      "pending": "Pending"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Asset: ",
+    "options": {
+      "all": "All"
+    }
+  },
+  "footer": {
+    "wallet": "WALLET",
+    "analytics": "ANALYTICS",
+    "nft": "NFT",
+    "settings": "SETTINGS"
+  }
+}

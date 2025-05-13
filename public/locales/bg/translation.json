@@ -1,0 +1,646 @@
+{
+  "select_language": "Изберете език",
+  "home": {
+    "startNow": "Започнете сега"
+  },
+  "common": {
+    "requiredField": "Това поле е задължително.",
+    "invalidData": "Невалидни данни",
+    "invalidUrl": "Невалиден URL",
+    "cancel": "Отказ",
+    "back": "Назад",
+    "confirm": "Потвърди",
+    "continue": "Продължи",
+    "reject": "Откажи",
+    "usd": "{{value}} USD",
+    "next": "Следващ",
+    "close": "Затвори"
+  },
+  "condition": {
+    "noPersonalInfo": "Никога не събираме ключове, адреси, транзакции, баланси, хешове или лична информация",
+    "noIP": "Никога не съхраняваме пълния Ви IP адрес",
+    "noSelling": "Никога не продаваме данните Ви за печалба. Никога!",
+    "next": "Следващ"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Прочетох и приемам",
+    "termsOfUse": "условията за ползване",
+    "createNewWallet": "Създаване на нов портфейл",
+    "setupNewAccount": "Настройване на нов eckoWALLET акаунт",
+    "restoreWallet": "Възстановяване на портфейл",
+    "restoreFromPhrase": "Възстановяване от seed фраза"
+  },
+  "createPassword": {
+    "successCreate": "Новата парола е създадена успешно",
+    "errorCreate": "Грешка при създаване на портфейл",
+    "invalidPhrase": "Невалидна фраза за възстановяване!",
+    "importFromPhrase": "Импортиране от фраза",
+    "createPassword": "Създайте парола",
+    "pastePhrase": "Поставете фразата за възстановяване",
+    "requiredField": "Това поле е задължително.",
+    "phraseTooLong": "Фразата е твърде дълга.",
+    "secretRecoveryPhrase": "Тайна фраза за възстановяване",
+    "import": "Импортиране",
+    "create": "Създаване"
+  },
+  "passwordForm": {
+    "inputPassword": "Въведете парола",
+    "inputConfirmPassword": "Потвърдете паролата",
+    "requiredField": "Това поле е задължително.",
+    "minPassword": "Паролата трябва да е поне 8 символа.",
+    "maxPassword": "Паролата може да е максимум 256 символа.",
+    "passwordMismatch": "Паролите не съвпадат",
+    "newPassword": "Нова парола (минимум 8 символа)",
+    "confirmPassword": "Потвърдете паролата",
+    "passwordWarning": "Разбирам, че съм използвал непрепоръчителни символи. Препоръчително е да използвате само букви (a–z), цифри (0–9) и символи _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Тайна фраза за възстановяване",
+    "step1Text": "На следващата стъпка запишете вашата 12-думна фраза.\nС тази фраза можете лесно да възстановите портфейла на ново устройство.\nВсеки, който има фразата, има пълен достъп до портфейла ви, пазете я защитена.\nАко загубите фразата, няма да можете да използвате портфейла, пазете я внимателно.",
+    "step1Checkbox": "Разбирам, че ако загубя фразата, няма да мога да възстановя портфейла.",
+    "generating": "Генериране на ключова двойка...",
+    "continue": "Продължи",
+    "reveal": "Показване на фразата с кликване",
+    "step2Text1": "Тайната фраза улеснява архивирането и възстановяването на профила.",
+    "step2Text2": "Внимание: Никога не споделяйте фразата. Всеки с достъп може да превземе портфейла ви.",
+    "download": "Изтегляне",
+    "verifyTitle": "Потвърдете фразата за възстановяване",
+    "verifyInstruction": "Въведете думите в правилен ред, за да потвърдите.",
+    "successVerify": "Фразата е потвърдена успешно",
+    "invalidPhrase": "Невалидна фраза!",
+    "errorGeneratingKeys": "Грешка при генериране на ключове",
+    "errorCreatingWallet": "Грешка при създаване на портфейл",
+    "generatingWallet": "Създаване на портфейл..."
+  },
+  "wallet": {
+    "netWorth": "Нетна стойност",
+    "accountBalance": "Баланс по сметка",
+    "send": "Изпрати",
+    "receive": "Получаване",
+    "receiveTokens": "Получаване на токени",
+    "buy": "Купи",
+    "history": "История",
+    "assets": "Активи",
+    "detectedTokens": "Открити токени",
+    "tokenList": "Списък токени",
+    "kdaChainDistribution": "Разпределение по KDA Chain",
+    "chainDistribution": "Разпределение по Chain",
+    "tokenRemoved": "Токенът е премахнат успешно",
+    "removeToken": "Премахване на токен",
+    "editToken": "Редактиране на токен",
+    "removeTokenTitle": "Премахване на токен {{symbol}}",
+    "confirmRemoveToken": "Сигурни ли сте, че искате да премахнете токен {{symbol}}?",
+    "notTransferable": "{{contractAddress}} не може да бъде прехвърлен!",
+    "accountDoesNotExist": "Не намерена: Сметката не съществува.",
+    "balanceZero": "Балансът на {{symbol}} е 0."
+  },
+  "accountActions": {
+    "shareWallet": "Споделяне на портфейл",
+    "copied": "Копирано!",
+    "exportRecoveryPhrase": "Експортиране на фраза за възстановяване",
+    "signHashTransaction": "Подписване на хеш транзакция",
+    "editAccountAlias": "Редактиране на псевдоним",
+    "setAccountAlias": "Задаване на псевдоним",
+    "removeSelectedWallet": "Премахване на избрания портфейл",
+    "createWallet": "Създаване на портфейл",
+    "importWallet": "Импортиране на портфейл",
+    "importHardwareWallet": "Импортиране на хардуерен портфейл"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Не са намерени други токени за тази сметка."
+  },
+  "aliasModal": {
+    "accountAlias": "Псевдоним",
+    "cancel": "Отказ",
+    "save": "Запази",
+    "aliasChanged": "Псевдонимът е променен успешно"
+  },
+  "hashSignModal": {
+    "publicKey": "Публичен ключ",
+    "transactionHash": "Хеш на транзакция",
+    "insertTransactionHash": "Въведете хеша на транзакцията",
+    "signature": "Подпис",
+    "copied": "Копирано!",
+    "clean": "Изчистване",
+    "sign": "Подпиши"
+  },
+  "popupDetailTransaction": {
+    "status": "Статус",
+    "direction": "Посока",
+    "symbol": "Символ",
+    "quantity": "Количество",
+    "gasFee": "Такса газ",
+    "total": "Общо",
+    "viewDetails": "Виж детайли",
+    "activityLog": "Журнал на активност",
+    "transactionCreated": "Създадена транзакция {{amount}} {{symbol}}",
+    "transactionConfirmed": "Транзакцията е потвърдена",
+    "success": "Успех",
+    "failed": "Неуспех",
+    "finishing": "Завършване..."
+  },
+  "removeWallet": {
+    "title": "Сигурни ли сте, че искате да премахнете този портфейл?",
+    "description": "Въведете парола за потвърждение",
+    "passwordPlaceholder": "Въведете паролата",
+    "passwordRequired": "Това поле е задължително.",
+    "passwordMinLength": "Паролата трябва да е поне 8 символа.",
+    "passwordMaxLength": "Паролата може да е максимум 256 символа.",
+    "invalidPassword": "Невалидна парола",
+    "cancel": "Отказ",
+    "remove": "Премахни"
+  },
+  "header": {
+    "selectNetwork": "Избери мрежа",
+    "manageNetworks": "Управление на мрежи",
+    "myWallets": "Моите портфейли",
+    "removeWalletTitle": "Премахване на портфейл",
+    "createAccountSuccess": "Акаунтът е създаден успешно!",
+    "createAccountFail": "Грешка при създаване на акаунт",
+    "copied": "Копирано!"
+  },
+  "signIn": {
+    "loginTitle": "Влезте в акаунта си",
+    "passwordPlaceholder": "Въведете парола",
+    "passwordTitle": "Парола",
+    "signInButton": "Вход",
+    "invalidPassword": "Невалидна парола",
+    "required": "Това поле е задължително.",
+    "minLength": "Паролата трябва да е поне 8 символа.",
+    "maxLength": "Паролата може да е максимум 256 символа.",
+    "initWalletError": "Грешка при инициализация на портфейл"
+  },
+  "settings": {
+    "contacts": "Контакти",
+    "language": "Език",
+    "languageDesc": "Изберете език на портфейла",
+    "contactsDesc": "Управление на контактите",
+    "networks": "Мрежи",
+    "networksDesc": "Добавяне или редактиране на RPC мрежи",
+    "connectedSites": "Свързани сайтове",
+    "connectedSitesDesc": "Преглед и управление на свързани сайтове",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "Свържете чрез WalletConnect",
+    "txSettings": "Настройки на транзакции",
+    "txSettingsDesc": "Настройка на предпочитания за газ",
+    "exportPhrase": "Експортиране на фраза",
+    "exportPhraseDesc": "Защитете портфейла си",
+    "editPassword": "Промяна на парола",
+    "editPasswordDesc": "Промяна на паролата за портфейла",
+    "2fa": "Двуфакторна автентикация",
+    "2faDesc": "Управление на 2FA настройки",
+    "expandView": "Разширен изглед",
+    "expandViewDesc": "Отворете eckoWALLET в нов прозорец",
+    "theme": "Тема",
+    "themeDesc": "Настройте тема на портфейла",
+    "lock": "Заключване на портфейла",
+    "lockDesc": "Защитете портфейла си",
+    "lockSettings": "Автоматично заключване",
+    "lockSettingsDesc": "Промяна на настройки за сигурност",
+    "discord": "Присъединете се към Discord",
+    "website": "Посетете уебсайта ни",
+    "terms": "Условия за ползване",
+    "privacy": "Политика за поверителност",
+    "connectedSitesPage": {
+      "title": "Свързани сайтове",
+      "removeSiteTitle": "Премахване на сайт",
+      "removeSiteConfirmText": "Сигурни ли сте, че искате да премахнете",
+      "removeSiteSuccess": "Сайтът е премахнат успешно."
+    },
+    "contactsPage": {
+      "title": "Контакти",
+      "newContactTitle": "Нов контакт",
+      "addNewContact": "Добави нов контакт",
+      "noContacts": "Няма контакти"
+    },
+    "contactForm": {
+      "enterAlias": "Въведете псевдоним",
+      "aliasPlaceholder": "напр. Иван",
+      "accountNameTitle": "Име на акаунта",
+      "accountNamePlaceholder": "Име на акаунта",
+      "scanQrTitle": "Сканирайте QR код",
+      "scanQrDescription": "Поставете QR кода пред камерата",
+      "buttonCancel": "Отказ",
+      "buttonSave": "Запази",
+      "successContactAdded": "Контактът е добавен успешно",
+      "errorNetwork": "Грешка в мрежата.",
+      "copied": "Копирано!",
+      "requiredField": "Това поле е задължително.",
+      "invalidData": "Невалидни данни",
+      "aliasMaxLength": "Псевдонимът може да бъде до 256 символа.",
+      "accountNameMaxLength": "Името на акаунта може да бъде до 1000 символа."
+    },
+    "contactInfo": {
+      "copied": "Копирано!",
+      "contactRemoved": "Контактът е премахнат",
+      "accountName": "ИМЕ НА АКАУНТ",
+      "editContact": "Редактирайте контакта",
+      "editTitle": "Редактиране на акаунта",
+      "delete": "Изтриване",
+      "deleteContactTitle": "Изтриване на контакт",
+      "removeContact": "Наистина ли искате да премахнете този контакт?",
+      "confirmRemove": "Сигурни ли сте, че искате да премахнете този контакт?",
+      "cancel": "Отказ",
+      "confirm": "Потвърди"
+    },
+    "editPasswordPage": {
+      "title": "Редактиране на парола",
+      "passwordChanged": "Паролата е променена успешно",
+      "cannotUpdatePassword": "Не може да се обнови настройката на паролата",
+      "save": "Запази"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Въведете паролата, за да продължите",
+      "inputPlaceholder": "Въведете парола",
+      "password": "Парола",
+      "errorRequired": "Това поле е задължително.",
+      "errorInvalid": "Невалидна парола.",
+      "continue": "Продължи",
+      "correctPassword": "Паролата е правилна, моля изчакайте..."
+    },
+    "exportSeedPhrase": {
+      "title": "Експортиране на фраза",
+      "copied": "Копирано!",
+      "description": "Тайната фраза помага за архивиране и възстановяване на акаунта ви.",
+      "warning": "Никога не споделяйте фразата. Който я получи, може да ви отнеме портфейла.",
+      "copyKeyphrase": "Копирайте фразата",
+      "download": "Изтегляне"
+    },
+    "lockSettingsPage": {
+      "title": "Настройки за автоматично заключване",
+      "saved": "Настройките са запазени",
+      "required": "Това поле е задължително.",
+      "placeholder": "Изберете забавяне за заключване",
+      "selectTitle": "Автоматично заключване",
+      "restore": "Възстановяване по подразбиране",
+      "save": "Запази"
+    },
+    "networksPage": {
+      "title": "Мрежи",
+      "network": "Мрежа",
+      "addNew": "Добавяне на нова мрежа",
+      "editSuccess": "Мрежата е редактирана успешно",
+      "addSuccess": "Мрежата е добавена успешно",
+      "errorUrl": "URL адресът вече съществува",
+      "deleteSuccess": "Мрежата е премахната успешно",
+      "remove": "Премахни",
+      "save": "Запази",
+      "confirmRemove": "Наистина ли искате да премахнете тази мрежа?",
+      "confirmRemoveDesc": "Сигурни ли сте, че искате да премахнете тази мрежа?",
+      "placeholderName": "Въведете име на мрежа",
+      "placeholderUrl": "Въведете RPC URL",
+      "placeholderExplorer": "Въведете URL на blockchain explorer",
+      "placeholderNetworkId": "Въведете ID на мрежа",
+      "titleName": "Име на мрежа",
+      "titleUrl": "RPC URL",
+      "titleExplorer": "Explorer URL",
+      "titleNetworkId": "Network ID",
+      "nameMax": "Името на мрежата може да бъде до 1000 символа.",
+      "urlMax": "RPC URL може да бъде до 1000 символа.",
+      "explorerMax": "Explorer URL може да бъде до 1000 символа.",
+      "networkIdMax": "ID на мрежата може да бъде до 1000 символа."
+    },
+    "selectTheme": {
+      "title": "Изберете тема"
+    },
+    "txSettingsPage": {
+      "title": "Настройки на транзакции",
+      "gasLimit": "Лимит газ",
+      "gasLimitPlaceholder": "Въведете лимит газ",
+      "finishCrossChain": "Завършете cross-chain газ резервоар",
+      "finishCrossChainPlaceholder": "Въведете cross-chain газ резервоар",
+      "crossChainGasLimit": "Cross-chain лимит газ",
+      "crossChainGasLimitPlaceholder": "Въведете cross-chain лимит газ",
+      "crossChainGasPrice": "Cross-chain цена газ",
+      "crossChainGasPricePlaceholder": "Въведете cross-chain цена газ",
+      "save": "Запази",
+      "restoreDefault": "Възстанови по подразбиране",
+      "successSave": "Настройките са запазени успешно",
+      "requiredField": "Това поле е задължително.",
+      "invalidValue": "Невалидна стойност"
+    },
+    "2faPage": {
+      "title": "Двуфакторна автентикация",
+      "description": "Двуфакторната автентикация вече е активирана.",
+      "disableButton": "Деактивиране",
+      "successDisable": "2FA е деактивирана успешно",
+      "installApp": "Инсталирайте приложение",
+      "orSimilar": "или подобно приложение",
+      "scanQRCode": "Сканирайте QR код:",
+      "enter6Digits": "Въведете 6-цифрен код",
+      "invalidCode": "Кодът е невалиден.",
+      "saveButton": "Запази",
+      "setupSuccess": "2FA е активирана успешно"
+    },
+    "walletConnectPage": {
+      "title": "WalletConnect",
+      "selectAccounts": "Изберете акаунт",
+      "invalidUrl": "Невалиден URL",
+      "disconnectSuccess": "Успешно прекъснато свързване",
+      "noActiveSessions": "НЯМА АКТИВНИ СЕСИИ",
+      "activeSessions": "АКТИВНИ СЕСИИ",
+      "expiry": "Изтича:",
+      "removeConnection": "Премахнете връзката",
+      "removeConfirmation": "Сигурни ли сте, че искате да премахнете тази WalletConnect връзка?",
+      "newConnection": "Нова връзка",
+      "addConnection": "Добавете нов WalletConnect",
+      "inputUri": "Въведете URI",
+      "code": "Код",
+      "continue": "Продължи"
+    }
+  },
+  "buy": {
+    "title": "Купи",
+    "description": "Търговията с криптовалути се извършва чрез услуга на трета страна Onramper.\n\neckoWALLET се стреми да предостави висока сигурност, но не можем да гарантираме безопасността или поверителността на трети страни.",
+    "cancel": "Отказ",
+    "confirm": "Потвърди",
+    "error": {
+      "noAddress": "Адресът на портфейла не е наличен",
+      "generic": "Невъзможно е връзка със сервиза. Моля, опитайте по-късно."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "АНАЛИЗ НА ПОРТФЕЙЛ",
+    "dexAnalytics": "Анализ на DEX",
+    "portfolioValue": "ГРАФИКА НА ПОРТФЕЙЛ",
+    "startTracking": "Започнете проследяване",
+    "trackPortfolioTitle": "Проследявайте стойността на портфейла",
+    "trackPortfolioStart": "НАЧАЛО НА ПРОСЛЕДЯВАНЕ НА БАЛАНСА",
+    "trackPortfolioDesc1": "С потвърждение ще започнете проследяване на баланса.",
+    "trackPortfolioDesc2": "Продължаваме ли?",
+    "confirm": "Потвърди",
+    "confirming": "Потвърждаване...",
+    "disclaimerTitle": "Внимание!",
+    "disclaimerText": "Данните на тази страница са в БЕТА фаза и се предоставят \"както са\"."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Невалидна мрежа",
+      "signingCmdError": "Грешка при подписване, проверете payload",
+      "signingCmdGenericError": "Грешка при подписване",
+      "rejectedByUser": "Отказано от потребителя",
+      "userRejected": "Потребителят отказа.",
+      "signedCommand": "Подписана команда",
+      "hashToSign": "ХЕШ ЗА ПОДПИСВАНЕ:",
+      "pleaseEnableLedger": "Активирайте BLIND SIGNING\nи следвайте инструкциите на Ledger първо",
+      "capabilities": "Разрешения",
+      "close": "Затвори",
+      "reject": "Откажи",
+      "confirm": "Потвърди"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Бърза заявка за подпис",
+      "code": "Код",
+      "capabilities": "Разрешения",
+      "rawData": "Сурови данни",
+      "command": "Команда {{index}}/{{total}}",
+      "hashToSign": "ХЕШ ЗА ПОДПИСВАНЕ ({{count}}/{{total}}):",
+      "ledgerInstructions": "Активирайте BLIND SIGNING и следвайте инструкциите на Ledger първо",
+      "close": "Затвори",
+      "reject": "Откажи",
+      "confirm": "Потвърди",
+      "error.invalidStructure": "QuickSign неуспешно: неправилна структура",
+      "error.pubKeyNotFound": "QuickSign неуспешно: публичният ключ не е намерен",
+      "error.ledger": "Неуспешен Ledger подпис"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Импортиране на хардуерен портфейл",
+      "selectDevice": "Изберете хардуерен портфейл",
+      "ledgerInstructions": "Свържете Ledger към компютъра. Отворете Kadena приложението и отключете.",
+      "connect": "Свързване",
+      "confirm": "Импортиране",
+      "success": "Хардуерният портфейл е импортиран успешно",
+      "error": {
+        "duplicate": "Акаунтът вече е добавен.",
+        "network": "Грешка в мрежата.",
+        "invalid": "Невалидни данни"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Импортиране от Ledger",
+      "instruction": "Свържете Ledger към компютъра, отворете Kadena приложението и отключете.",
+      "continue": "Продължи",
+      "publicKey": "ПУБЛИЧЕН КЛЮЧ",
+      "account": "АКАУНТ",
+      "confirm": "Потвърди импортиране",
+      "success": "Акаунтът е импортиран успешно.",
+      "error": {
+        "duplicate": "Акаунтът вече е добавен.",
+        "network": "Грешка при зареждане на акаунт",
+        "invalid": "Невалидни данни"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Импортиране на токени",
+      "contractLabel": "Адрес на токен контракт",
+      "symbolLabel": "Символ на токен",
+      "placeholder": {
+        "contract": "Въведете адрес на контракт",
+        "symbol": "Въведете символ"
+      },
+      "add": "Добавяне на токен",
+      "edit": "Редактиране на токен",
+      "success": "Токенът е запазен успешно",
+      "error": {
+        "duplicate": "Токенът вече е добавен",
+        "notFound": "Няма данни за {{contract}} в {{network}} – проверете мрежата"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Импортиране на портфейл",
+    "form": {
+      "accountName": {
+        "title": "Име на акаунта",
+        "placeholder": "Име на акаунта"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "Частен ключ",
+        "placeholder": "Частен ключ"
+      }
+    },
+    "validation": {
+      "required": "Това поле е задължително.",
+      "invalidData": "Невалидни данни",
+      "startsWithK": "Името трябва да започва с \"k:\"",
+      "accountName": {
+        "maxLength": "Името може да бъде до 1000 символа."
+      },
+      "secretKey": {
+        "maxLength": "Ключът може да бъде до 1000 символа."
+      }
+    },
+    "modal": {
+      "scanTitle": "Сканирайте QR код",
+      "scanBody": "Позиционирайте QR кода пред камерата"
+    },
+    "button": {
+      "import": "Импортиране"
+    },
+    "toast": {
+      "importSuccess": "Акаунтът е импортиран успешно.",
+      "duplicateError": "Акаунтът вече е добавен.",
+      "invalidAccountData": "Невалидни данни за акаунт",
+      "multipleKeys": "Не се поддържат множество ключови двойки",
+      "invalidData": "Невалидни данни",
+      "networkError": "Грешка в мрежата."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Имам съществуващ частен ключ.",
+      "prompt": "Импортиране на съществуващ частен ключ"
+    },
+    "button": {
+      "import": "Импортиране"
+    },
+    "image": {
+      "alt": "Икона за импортиране"
+    }
+  },
+  "nft": {
+    "header": "Вашите колекции",
+    "noOwned": "Нямате NFT"
+  },
+  "sendTransactions": {
+    "header": "Изпратете транзакция {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger подписът беше успешен",
+    "ledgerSignFailed": "Ledger подписът неуспешен или отказан",
+    "transferSuccess": "Прехвърлянето беше успешно",
+    "transferFailed": "Прехвърлянето неуспешно",
+    "transactionSent": "Транзакцията е изпратена успешно! Проверете историята",
+    "networkError": "Грешка в мрежата.",
+    "loadingTop": "Моля, не затваряйте този прозорец",
+    "loadingBottom": "Ще бъдете пренасочени автоматично след завършване",
+    "labelReceiver": "Получател",
+    "labelAmount": "Количество",
+    "labelGasLimit": "Лимит газ",
+    "labelGasPrice": "Цена газ",
+    "labelGasFee": "Такса газ",
+    "labelTotal": "Общо",
+    "warningCrossChainLine1": "Извършвате кръстосан трансфер",
+    "warningCrossChainLine2": "Тази операция отнема повече време",
+    "warningNonKAccountLine1": "Изпращате към акаунт, който не започва с “k:”!",
+    "warningNonKAccountLine2": "Сигурни ли сте?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} не може да се прехвърли!",
+    "form": {
+      "sourceChainId": {
+        "title": "Източник Chain ID"
+      },
+      "destinationAccount": {
+        "title": "Целеви акаунт"
+      },
+      "targetChainId": {
+        "title": "Целева Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Максимална дължина 1000 символа."
+    },
+    "balanceLabel": "Баланс {{symbol}} Chain",
+    "recent": "НАСОКО",
+    "contacts": "КОНТАКТИ",
+    "confirm": {
+      "warningTitle": "Внимание",
+      "publicKeyTitle": "Публичен ключ",
+      "publicKeyPlaceholder": "Въведете публичен ключ",
+      "predicateTitle": "Условие",
+      "predicatePlaceholder": "Въведете условие"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Не можете да изпратите на себе си",
+    "invalidGasLimit": "Невалиден лимит газ",
+    "gasLimitInteger": "Лимит газ трябва да е цяло число",
+    "invalidGasPrice": "Невалидна цена газ",
+    "insufficientFundsGas": "Недостатъчно средства за газ",
+    "newAddressDetected": "Открит нов адрес! Добавете към контактите",
+    "tokenNotExists": "{{contractAddress}} не съществува на {{chainId}} Chain!",
+    "transactionParameters": "Параметри на транзакцията",
+    "estimatedGas": "Оценен газ {{gas}}",
+    "speed": "Скорост {{speed}}",
+    "modal": {
+      "confirmTitle": "Потвърждаване на изпращане",
+      "gasParametersTitle": "Параметри газ"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Лимит газ"
+      },
+      "gasPrice": {
+        "title": "Цена газ"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Количество за изпращане",
+    "button": {
+      "half": "ПОЛОВИНА",
+      "max": "МАКС"
+    },
+    "error": {
+      "insufficientFunds": "Недостатъчно средства",
+      "invalidAmount": "Невалидно количество"
+    },
+    "balance": "Баланс: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Лого на Dapp",
+    "sendTransaction": "Изпрати транзакция",
+    "destinationNotFound": "Целеви акаунт не е намерен"
+  },
+  "history": {
+    "header": "История",
+    "modal": {
+      "confirmSendTransaction": "Потвърдете изпращането"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Подробности за транзакцията"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Име на акаунт"
+  },
+  "activityList": {
+    "loading": "Зареждане...",
+    "today": "Днес",
+    "yesterday": "Вчера",
+    "noTransactions": "Нямате транзакции"
+  },
+  "statusFilter": {
+    "modalTitle": "Статус",
+    "prefix": "Статус: ",
+    "options": {
+      "all": "Всички",
+      "in": "Получени",
+      "out": "Изпратени",
+      "pending": "Изчакване"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Токен",
+    "prefix": "Активи: ",
+    "options": {
+      "all": "Всички"
+    }
+  },
+  "footer": {
+    "wallet": "ПОРТФЕЙЛ",
+    "analytics": "АНАЛИЗ",
+    "nft": "NFT",
+    "settings": "НАСТРОЙКИ"
+  }
+}

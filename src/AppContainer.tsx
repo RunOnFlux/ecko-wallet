@@ -33,6 +33,7 @@ import History from './pages/History';
 import Nft from './pages/Nft';
 import PageTransaction from './pages/Setting/Transaction';
 import PageLockSettings from './pages/Setting/Lock';
+import PageLanguageSettings from './pages/Setting/Language';
 import PageSelectTheme from './pages/Setting/SelectTheme';
 import PageConnectedSites from './pages/Setting/ConnectedSites';
 import TwoFactorAuthenticator from './components/TwoFactorAuthenticator';
@@ -40,7 +41,6 @@ import PageWalletConnect from './pages/Setting/WalletConnect';
 import CategoryDetail from './pages/Nft/CategoryDetail';
 import ImportHardwareWallet from './pages/ImportHardwareWallet';
 import ImportLedger from './pages/ImportHardwareWallet/ImportLedger';
-import GovernanceMining from './pages/GovernanceMining';
 import MarmaladeNGCollectionDetails from './pages/Nft/NftTypes/MarmaladeNG/MarmaladeNGCollectionDetails';
 import Analytics from './pages/Analytics';
 import AnalyticsTracker from './components/AnalyticsTracker';
@@ -90,6 +90,7 @@ const AppContainer = () => {
           <PrivateRoute path="/connected-sites" component={PageConnectedSites} />
           <PrivateRoute path="/tx-settings" component={PageTransaction} />
           <PrivateRoute path="/lock-settings" component={PageLockSettings} />
+          <PrivateRoute path="/language" component={PageLanguageSettings} />
           <PrivateRoute path="/select-theme" component={PageSelectTheme} />
           <PrivateRoute path="/wallet-connect" component={PageWalletConnect} />
           <PrivateRoute path="/setting" component={PageSetting} />
@@ -98,7 +99,6 @@ const AppContainer = () => {
           <PrivateRoute path="/nft" component={Nft} />
           <PrivateRoute path="/nft-details" component={CategoryDetail} />
           <PrivateRoute path="/ng-details" component={MarmaladeNGCollectionDetails} />
-          <PrivateRoute path="/governance-mining" component={GovernanceMining} />
           <PrivateRoute path="/analytics" component={Analytics} />
           <PrivateRoute path="/" component={Wallet} />
           <Redirect to="/" />

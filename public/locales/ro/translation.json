@@ -1,0 +1,646 @@
+{
+  "select_language": "Selectați limba",
+  "home": {
+    "startNow": "Începe acum"
+  },
+  "common": {
+    "requiredField": "Acest câmp este obligatoriu.",
+    "invalidData": "Date invalide",
+    "invalidUrl": "URL invalid",
+    "cancel": "Anulează",
+    "back": "Înapoi",
+    "confirm": "Confirmă",
+    "continue": "Continuă",
+    "reject": "Respinge",
+    "usd": "{{value}} USD",
+    "next": "Următorul",
+    "close": "Închide"
+  },
+  "condition": {
+    "noPersonalInfo": "Nu colectăm niciodată chei, adrese, tranzacții, solduri, hash-uri sau alte informații personale",
+    "noIP": "Nu colectăm niciodată adresa dvs. IP completă",
+    "noSelling": "Nu vindem date pentru profit. Niciodată!",
+    "next": "Următorul"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Sunt de acord cu",
+    "termsOfUse": "Termenii și condițiile",
+    "createNewWallet": "Creează un portofel nou",
+    "setupNewAccount": "Configurează un cont nou eckoWALLET",
+    "restoreWallet": "Restabilește portofelul",
+    "restoreFromPhrase": "Restabilește cu fraza de recuperare"
+  },
+  "createPassword": {
+    "successCreate": "Parolă creată cu succes",
+    "errorCreate": "Eroare la crearea portofelului",
+    "invalidPhrase": "Frază de recuperare invalidă!",
+    "importFromPhrase": "Importă cu fraza de recuperare",
+    "createPassword": "Creează parolă",
+    "pastePhrase": "Lipește fraza de recuperare",
+    "requiredField": "Acest câmp este obligatoriu.",
+    "phraseTooLong": "Fraza de recuperare este prea lungă.",
+    "secretRecoveryPhrase": "Fraza de recuperare",
+    "import": "Importă",
+    "create": "Creează"
+  },
+  "passwordForm": {
+    "inputPassword": "Introduceți parola",
+    "inputConfirmPassword": "Confirmă parola",
+    "requiredField": "Acest câmp este obligatoriu.",
+    "minPassword": "Parola trebuie să aibă cel puțin 8 caractere.",
+    "maxPassword": "Parola poate avea cel mult 256 de caractere.",
+    "passwordMismatch": "Parolele nu coincid",
+    "newPassword": "Parolă nouă (minim 8 caractere)",
+    "confirmPassword": "Confirmă parola",
+    "passwordWarning": "Înțeleg că am folosit caractere nesigure. Este recomandat să folosiți doar litere (a-z), cifre (0-9) și caractere speciale _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Fraza de recuperare",
+    "step1Text": "În următorul pas, notați fraza de recuperare de 12 cuvinte.\nFraza vă permite să restaurați portofelul pe un dispozitiv nou.\nOricine are această frază poate prelua portofelul; păstrați-o în siguranță și în privat.\nDacă o pierdeți, nimeni nu vă poate ajuta să o recuperați, deci păstrați-o bine.",
+    "step1Checkbox": "Înțeleg că nu pot restaura portofelul fără fraza de recuperare.",
+    "generating": "Generare chei...",
+    "continue": "Continuă",
+    "reveal": "Faceți clic pentru a afișa cuvintele secrete",
+    "step2Text1": "Fraza de recuperare face ușoară backup-ul și restaurarea contului.",
+    "step2Text2": "Atenție: nu distribuiți fraza de recuperare. Oricine o are poate prelua portofelul definitiv.",
+    "download": "Descarcă",
+    "verifyTitle": "Verifică fraza de recuperare",
+    "verifyInstruction": "Confirmă fraza tastând cuvintele în ordinea corectă.",
+    "successVerify": "Fraza de recuperare verificată cu succes",
+    "invalidPhrase": "Frază de recuperare invalidă!",
+    "errorGeneratingKeys": "Eroare la generarea cheilor portofelului",
+    "errorCreatingWallet": "Eroare la crearea portofelului",
+    "generatingWallet": "Generare portofel..."
+  },
+  "wallet": {
+    "netWorth": "AVUȚIE NETĂ",
+    "accountBalance": "SOLD CONT",
+    "send": "Trimite",
+    "receive": "Primește",
+    "receiveTokens": "Primește token-uri",
+    "buy": "Cumpără",
+    "history": "Istoric",
+    "assets": "ACTIVE",
+    "detectedTokens": "Token-uri detectate",
+    "tokenList": "Listă token-uri",
+    "kdaChainDistribution": "Distribuție KDA Chain",
+    "chainDistribution": "Distribuție Chain",
+    "tokenRemoved": "Token eliminat cu succes",
+    "removeToken": "Elimină token",
+    "editToken": "Editează token",
+    "removeTokenTitle": "Elimină token-ul {{symbol}}",
+    "confirmRemoveToken": "Sigur vrei să elimini token-ul {{symbol}}?",
+    "notTransferable": "{{contractAddress}} nu este transferabil!",
+    "accountDoesNotExist": "Nu există: acest cont nu există.",
+    "balanceZero": "Sold {{symbol}} este 0."
+  },
+  "accountActions": {
+    "shareWallet": "Partajează portofelul",
+    "copied": "Copiat!",
+    "exportRecoveryPhrase": "Exportă fraza de recuperare",
+    "signHashTransaction": "Semnează tranzacție hash",
+    "editAccountAlias": "Editează alias cont",
+    "setAccountAlias": "Setează alias cont",
+    "removeSelectedWallet": "Elimină portofelul selectat",
+    "createWallet": "Creează portofel",
+    "importWallet": "Importă portofel",
+    "importHardwareWallet": "Importă portofel hardware"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Nu s-au găsit alte token-uri pentru acest cont."
+  },
+  "aliasModal": {
+    "accountAlias": "Alias cont",
+    "cancel": "Anulează",
+    "save": "Salvează",
+    "aliasChanged": "Alias modificat cu succes"
+  },
+  "hashSignModal": {
+    "publicKey": "Cheia publică",
+    "transactionHash": "Hash tranzacție",
+    "insertTransactionHash": "Introduceți hash-ul tranzacției",
+    "signature": "Semnătură",
+    "copied": "Copiat!",
+    "clean": "Curăță",
+    "sign": "Semnează"
+  },
+  "popupDetailTransaction": {
+    "status": "Stare",
+    "direction": "Direcție",
+    "symbol": "Simbol",
+    "quantity": "Cantitate",
+    "gasFee": "Taxă gas",
+    "total": "Total",
+    "viewDetails": "Vezi detalii",
+    "activityLog": "Jurnal activități",
+    "transactionCreated": "Tranzacție creată cu valoarea de {{amount}} {{symbol}}",
+    "transactionConfirmed": "Tranzacție confirmată",
+    "success": "Succes",
+    "failed": "Eșuat",
+    "finishing": "Finalizare în curs"
+  },
+  "removeWallet": {
+    "title": "Sigur vrei să elimini acest portofel?",
+    "description": "Introduceți parola pentru confirmare",
+    "passwordPlaceholder": "Introduceți parola",
+    "passwordRequired": "Acest câmp este obligatoriu.",
+    "passwordMinLength": "Parola trebuie să aibă cel puțin 8 caractere.",
+    "passwordMaxLength": "Parola poate avea maxim 256 de caractere.",
+    "invalidPassword": "Parolă invalidă",
+    "cancel": "Anulează",
+    "remove": "Elimină"
+  },
+  "header": {
+    "selectNetwork": "Selectează rețeaua",
+    "manageNetworks": "Gestionează rețelele",
+    "myWallets": "Portofelele mele",
+    "removeWalletTitle": "Elimină portofel",
+    "createAccountSuccess": "Cont creat cu succes!",
+    "createAccountFail": "Eroare la crearea contului",
+    "copied": "Copiat!"
+  },
+  "signIn": {
+    "loginTitle": "Autentifică-te în cont",
+    "passwordPlaceholder": "Introduceți parola",
+    "passwordTitle": "Parolă",
+    "signInButton": "Autentificare",
+    "invalidPassword": "Parolă invalidă",
+    "required": "Acest câmp este obligatoriu.",
+    "minLength": "Parola trebuie să aibă cel puțin 8 caractere.",
+    "maxLength": "Parola poate avea maxim 256 de caractere.",
+    "initWalletError": "Eroare la inițializarea portofelului"
+  },
+  "settings": {
+    "contacts": "Contacte",
+    "language": "Limbă",
+    "languageDesc": "Alege limba portofelului",
+    "contactsDesc": "Gestionează-ți contactele",
+    "networks": "Rețele",
+    "networksDesc": "Adaugă sau editează rețele RPC personalizate",
+    "connectedSites": "Site-uri conectate",
+    "connectedSitesDesc": "Vezi și gestionează site-urile conectate",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "Conectează prin WalletConnect",
+    "txSettings": "Setări tranzacție",
+    "txSettingsDesc": "Configurează preferințele gas",
+    "exportPhrase": "Exportă fraza de recuperare",
+    "exportPhraseDesc": "Protejează-ți portofelul",
+    "editPassword": "Schimbă parola",
+    "editPasswordDesc": "Actualizează parola portofelului",
+    "2fa": "2FA",
+    "2faDesc": "Gestionează autentificarea cu doi factori",
+    "expandView": "Extinde vizualizarea",
+    "expandViewDesc": "Deschide eckoWALLET într-o fereastră nouă",
+    "theme": "Temă",
+    "themeDesc": "Alege tema portofelului",
+    "lock": "Blochează portofelul",
+    "lockDesc": "Protejează-ți portofelul",
+    "lockSettings": "Setări blocare automată",
+    "lockSettingsDesc": "Schimbă setările de securitate",
+    "discord": "Accesează Discord",
+    "website": "Visit website",
+    "terms": "Termeni de utilizare",
+    "privacy": "Politica de confidențialitate",
+    "connectedSitesPage": {
+      "title": "Site-uri conectate",
+      "removeSiteTitle": "Elimină site",
+      "removeSiteConfirmText": "Sigur vrei să elimini",
+      "removeSiteSuccess": "Site eliminat cu succes."
+    },
+    "contactsPage": {
+      "title": "Contacte",
+      "newContactTitle": "Cont nou",
+      "addNewContact": "Adaugă contact nou",
+      "noContacts": "Niciun contact"
+    },
+    "contactForm": {
+      "enterAlias": "Introduceți alias",
+      "aliasPlaceholder": "ex. David",
+      "accountNameTitle": "Nume cont",
+      "accountNamePlaceholder": "Nume cont",
+      "scanQrTitle": "Scanează cod QR",
+      "scanQrDescription": "Ține codul QR în fața camerei",
+      "buttonCancel": "Anulează",
+      "buttonSave": "Salvează",
+      "successContactAdded": "Contact adăugat",
+      "errorNetwork": "Eroare rețea.",
+      "copied": "Copiat!",
+      "requiredField": "Acest câmp este obligatoriu.",
+      "invalidData": "Date invalide",
+      "aliasMaxLength": "Alias poate avea maxim 256 de caractere.",
+      "accountNameMaxLength": "Numele contului poate avea maxim 1000 de caractere."
+    },
+    "contactInfo": {
+      "copied": "Copiat!",
+      "contactRemoved": "Contact eliminat",
+      "accountName": "NUME CONT",
+      "editContact": "Editează contact",
+      "editTitle": "Editează cont",
+      "delete": "Șterge",
+      "deleteContactTitle": "Șterge contact",
+      "removeContact": "Șterge contact?",
+      "confirmRemove": "Sigur vrei să ștergi acest contact?",
+      "cancel": "Anulează",
+      "confirm": "Confirmă"
+    },
+    "editPasswordPage": {
+      "title": "Schimbă parola",
+      "passwordChanged": "Parolă schimbată cu succes",
+      "cannotUpdatePassword": "Nu se poate actualiza parola",
+      "save": "Salvează"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Introduceți parola pentru a continua",
+      "inputPlaceholder": "Introdu parola",
+      "password": "Parolă",
+      "errorRequired": "Acest câmp este obligatoriu.",
+      "errorInvalid": "Parolă invalidă.",
+      "continue": "Continuă",
+      "correctPassword": "Parola este corectă, vă rugăm așteptați..."
+    },
+    "exportSeedPhrase": {
+      "title": "Exportă fraza de recuperare",
+      "copied": "Copiat!",
+      "description": "Fraza de recuperare face ușoară crearea copie de siguranță și restaurarea contului.",
+      "warning": "Nu distribuiți fraza de recuperare. Oricine o are poate prelua portofelul.",
+      "copyKeyphrase": "Copiază fraza",
+      "download": "Descarcă"
+    },
+    "lockSettingsPage": {
+      "title": "Setări AutoLock portofel",
+      "saved": "Setări salvate cu succes",
+      "required": "Acest câmp este obligatoriu.",
+      "placeholder": "Selectează timpul AutoLock",
+      "selectTitle": "Timp AutoLock",
+      "restore": "Restaurează implicit",
+      "save": "Salvează"
+    },
+    "networksPage": {
+      "title": "Rețele",
+      "network": "Rețea",
+      "addNew": "Adaugă rețea nouă",
+      "editSuccess": "Rețea actualizată cu succes",
+      "addSuccess": "Rețea adăugată cu succes",
+      "errorUrl": "URL deja există",
+      "deleteSuccess": "Rețea eliminată cu succes",
+      "remove": "Elimină",
+      "save": "Salvează",
+      "confirmRemove": "Elimină această rețea?",
+      "confirmRemoveDesc": "Sigur vrei să elimini această rețea?",
+      "placeholderName": "Introduceți numele rețelei",
+      "placeholderUrl": "Introduceți noul URL RPC",
+      "placeholderExplorer": "Introduceți URL block explorer",
+      "placeholderNetworkId": "Introduceți network ID",
+      "titleName": "Nume rețea",
+      "titleUrl": "Noul URL RPC",
+      "titleExplorer": "URL block explorer",
+      "titleNetworkId": "Network ID",
+      "nameMax": "Numele rețelei poate avea maxim 1000 de caractere.",
+      "urlMax": "URL RPC poate avea maxim 1000 de caractere.",
+      "explorerMax": "URL block explorer poate avea maxim 1000 de caractere.",
+      "networkIdMax": "Network ID poate avea maxim 1000 de caractere."
+    },
+    "selectTheme": {
+      "title": "Selectează tema"
+    },
+    "txSettingsPage": {
+      "title": "Setări tranzacție",
+      "gasLimit": "Gas limit",
+      "gasLimitPlaceholder": "Introduceți gas limit",
+      "finishCrossChain": "Finalizează Cross-chain Gas Station",
+      "finishCrossChainPlaceholder": "Introduceți Cross-chain Gas Station",
+      "crossChainGasLimit": "Cross-chain gas limit",
+      "crossChainGasLimitPlaceholder": "Introduceți cross-chain gas limit",
+      "crossChainGasPrice": "Cross-chain gas price",
+      "crossChainGasPricePlaceholder": "Introduceți cross-chain gas price",
+      "save": "Salvează",
+      "restoreDefault": "Restaurează implicit",
+      "successSave": "Setări salvate cu succes",
+      "requiredField": "Acest câmp este obligatoriu.",
+      "invalidValue": "Valoare invalidă"
+    },
+    "2faPage": {
+      "title": "Autentificare cu doi factori",
+      "description": "Autentificarea cu doi factori este deja configurată.",
+      "disableButton": "Dezactivează",
+      "successDisable": "2FA dezactivat cu succes",
+      "installApp": "Instalează aplicația",
+      "orSimilar": "sau aplicații similare",
+      "scanQRCode": "Scanează codul QR de mai jos:",
+      "enter6Digits": "Introduceți codul de 6 cifre",
+      "invalidCode": "Cod invalid.",
+      "saveButton": "Salvează",
+      "setupSuccess": "2FA configurat cu succes"
+    },
+    "walletConnectPage": {
+      "title": "WalletConnect",
+      "selectAccounts": "Selectează conturi",
+      "invalidUrl": "URL invalid",
+      "disconnectSuccess": "Cerere de deconectare trimisă cu succes",
+      "noActiveSessions": "NU EXISTĂ SESIUNI ACTIVE",
+      "activeSessions": "SESIUNI ACTIVE",
+      "expiry": "Expiră la:",
+      "removeConnection": "Elimină conexiune",
+      "removeConfirmation": "Sigur vrei să elimini această conexiune WalletConnect?",
+      "newConnection": "Conexiune nouă",
+      "addConnection": "Adaugă WalletConnect",
+      "inputUri": "Introdu URI",
+      "code": "Cod",
+      "continue": "Continuă"
+    }
+  },
+  "buy": {
+    "title": "Cumpără",
+    "description": "Cumpărarea și vânzarea criptomonedelor sunt facilitate printr-un serviciu terț (Onramper).\n\neckoWALLET se angajează la cele mai înalte standarde de securitate, dar nu poate garanta securitatea și confidențialitatea serviciilor externe.",
+    "cancel": "Anulează",
+    "confirm": "Confirmă",
+    "error": {
+      "noAddress": "Adresă portofel indisponibilă",
+      "generic": "Nu se poate conecta la serviciu. Încercați mai târziu."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "ANALIZĂ PORTOFEL",
+    "dexAnalytics": "ANALIZĂ DEX",
+    "portfolioValue": "GRAFIC VALOARE PORTOFEL",
+    "startTracking": "Începe urmărirea",
+    "trackPortfolioTitle": "Urmărește valoarea portofelului",
+    "trackPortfolioStart": "PORNIRE MONITORIZARE SOLD",
+    "trackPortfolioDesc1": "Prin confirmare autorizați monitorizarea soldului contului.",
+    "trackPortfolioDesc2": "Continuați?",
+    "confirm": "Confirmă",
+    "confirming": "Confirmare în curs...",
+    "disclaimerTitle": "Atenție!",
+    "disclaimerText": "Informațiile de pe această pagină sunt în BETA și sunt oferite „ca atare” și „disponibile”."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Rețea invalidă",
+      "signingCmdError": "Eroare la semnarea comenzii, verificați payload-ul",
+      "signingCmdGenericError": "Eroare la semnarea comenzii",
+      "rejectedByUser": "Respins de utilizator",
+      "userRejected": "Utilizator respins.",
+      "signedCommand": "Comandă semnată",
+      "hashToSign": "HASH DE SEMNAT:",
+      "pleaseEnableLedger": "Activați BLIND SIGNING și urmați instrucțiunile pe Ledger",
+      "capabilities": "Capabilități",
+      "close": "Închide",
+      "reject": "Respinge",
+      "confirm": "Confirmă"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Solicitare Quick Sign",
+      "code": "Cod",
+      "capabilities": "Capabilități",
+      "rawData": "Date brute",
+      "command": "Comanda {{index}}/{{total}}",
+      "hashToSign": "HASH DE SEMNAT ({{count}}/{{total}}):",
+      "ledgerInstructions": "Activați BLIND SIGNING și urmați instrucțiunile pe Ledger",
+      "close": "Închide",
+      "reject": "Respinge",
+      "confirm": "Confirmă",
+      "error.invalidStructure": "QuickSign eșuat: structură de date invalidă",
+      "error.pubKeyNotFound": "QuickSign eșuat: cheia publică nu a fost găsită",
+      "error.ledger": "Semnarea Ledger a eșuat"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Import portofel hardware",
+      "selectDevice": "Selectați un portofel hardware",
+      "ledgerInstructions": "Conectați Ledger la computer. Deblocați și deschideți aplicația Kadena.",
+      "connect": "Conectează",
+      "confirm": "Importă",
+      "success": "Portofel hardware importat cu succes",
+      "error": {
+        "duplicate": "Contul pe care încercați să-l importați este duplicat.",
+        "network": "Eroare rețea.",
+        "invalid": "Date invalide"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Import de pe Ledger",
+      "instruction": "Conectați Ledger la computer, deblocați și deschideți aplicația Kadena.",
+      "continue": "Continuă",
+      "publicKey": "CHEIE PUBLICĂ",
+      "account": "CONT",
+      "confirm": "Confirmă importul",
+      "success": "Cont importat cu succes.",
+      "error": {
+        "duplicate": "Contul pe care încercați să-l importați este duplicat.",
+        "network": "Eroare rețea la preluarea datelor contului",
+        "invalid": "Date invalide"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Importă token-uri",
+      "contractLabel": "Adresă contract token",
+      "symbolLabel": "Simbol token",
+      "placeholder": {
+        "contract": "Introduceți adresa contractului",
+        "symbol": "Introduceți simbolul"
+      },
+      "add": "Adaugă token",
+      "edit": "Editează token",
+      "success": "Token salvat cu succes",
+      "error": {
+        "duplicate": "Token deja adăugat",
+        "notFound": "Nu s-a putut găsi {{contract}} – verificați dacă token-ul există pe {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Importă portofel",
+    "form": {
+      "accountName": {
+        "title": "Numele contului",
+        "placeholder": "Nume cont"
+      },
+      "chainId": {
+        "title": "Chain-ID"
+      },
+      "secretKey": {
+        "title": "Cheia dvs. privată",
+        "placeholder": "Cheie privată"
+      }
+    },
+    "validation": {
+      "required": "Acest câmp este obligatoriu.",
+      "invalidData": "Date invalide",
+      "startsWithK": "Numele contului trebuie să înceapă cu „k:”",
+      "accountName": {
+        "maxLength": "Numele contului poate avea maxim 1000 de caractere."
+      },
+      "secretKey": {
+        "maxLength": "Cheia privată poate avea maxim 1000 de caractere."
+      }
+    },
+    "modal": {
+      "scanTitle": "Scanează cod QR",
+      "scanBody": "Ține codul QR în fața camerei"
+    },
+    "button": {
+      "import": "Importă portofel"
+    },
+    "toast": {
+      "importSuccess": "Cont importat cu succes.",
+      "duplicateError": "Contul pe care încercați să-l importați este duplicat.",
+      "invalidAccountData": "Date cont invalide",
+      "multipleKeys": "Nu sunt acceptate seturi multiple de chei",
+      "invalidData": "Date invalide",
+      "networkError": "Eroare rețea."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Am o cheie privată existentă.",
+      "prompt": "Importă-ți cheia privată existentă"
+    },
+    "button": {
+      "import": "Importă"
+    },
+    "image": {
+      "alt": "Pictogramă import"
+    }
+  },
+  "nft": {
+    "header": "Colecțiile tale",
+    "noOwned": "Nu deții NFT-uri"
+  },
+  "sendTransactions": {
+    "header": "Trimite tranzacție {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Semnare Ledger reușită",
+    "ledgerSignFailed": "Semnare Ledger eșuată sau respinsă",
+    "transferSuccess": "Transfer reușit",
+    "transferFailed": "Transfer eșuat",
+    "transactionSent": "Tranzacție trimisă cu succes! Verifică starea în Istoric",
+    "networkError": "Eroare rețea.",
+    "loadingTop": "Nu închide această fereastră",
+    "loadingBottom": "Veți fi redirecționat după finalizarea tranzacției",
+    "labelReceiver": "Destinatar",
+    "labelAmount": "Sumă",
+    "labelGasLimit": "Gas limit",
+    "labelGasPrice": "Gas price",
+    "labelGasFee": "Taxă gas",
+    "labelTotal": "Total",
+    "warningCrossChainLine1": "Ești pe cale să efectuezi un transfer cross-chain",
+    "warningCrossChainLine2": "Această operațiune poate dura mai mult",
+    "warningNonKAccountLine1": "Trimiți către un cont care nu începe cu „k:”!",
+    "warningNonKAccountLine2": "Ești sigur că vrei să continui?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} nu este transferabil!",
+    "form": {
+      "sourceChainId": {
+        "title": "Sursa Chain-ID"
+      },
+      "destinationAccount": {
+        "title": "Cont destinație"
+      },
+      "targetChainId": {
+        "title": "Ținta Chain-ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Contul destinație poate avea maxim 1000 de caractere."
+    },
+    "balanceLabel": "Sold Chain {{symbol}}",
+    "recent": "RECENT",
+    "contacts": "CONTACTE",
+    "confirm": {
+      "warningTitle": "Atenție",
+      "publicKeyTitle": "Cheia publică",
+      "publicKeyPlaceholder": "Introduceți cheia publică",
+      "predicateTitle": "Predicate",
+      "predicatePlaceholder": "Introduceți predicate"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Nu poți trimite către tine însuți",
+    "invalidGasLimit": "Gas limit invalid",
+    "gasLimitInteger": "Gas limit trebuie să fie un număr întreg",
+    "invalidGasPrice": "Gas price invalid",
+    "insufficientFundsGas": "Fonduri insuficiente pentru taxele gas",
+    "newAddressDetected": "Adresă nouă detectată! Adaugă la contacte",
+    "tokenNotExists": "{{contractAddress}} s-ar putea să nu existe pe CHAIN {{chainId}}!",
+    "transactionParameters": "Parametrii tranzacției",
+    "estimatedGas": "Gas estimat {{gas}}",
+    "speed": "Viteză {{speed}}",
+    "modal": {
+      "confirmTitle": "Confirmă trimiterea",
+      "gasParametersTitle": "Parametri tranzacție"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gas limit"
+      },
+      "gasPrice": {
+        "title": "Gas price"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Sumă de trimis",
+    "button": {
+      "half": "JUMĂTATE",
+      "max": "MAXIM"
+    },
+    "error": {
+      "insufficientFunds": "Fonduri insuficiente",
+      "invalidAmount": "Sumă invalidă"
+    },
+    "balance": "Sold: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Siglă dapp",
+    "sendTransaction": "Trimite tranzacția",
+    "destinationNotFound": "Cont destinație negăsit"
+  },
+  "history": {
+    "header": "Istoric",
+    "modal": {
+      "confirmSendTransaction": "Confirmă trimiterea"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Detalii tranzacție"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Numele contului tău"
+  },
+  "activityList": {
+    "loading": "Se încarcă...",
+    "today": "Astăzi",
+    "yesterday": "Ieri",
+    "noTransactions": "Nu există tranzacții"
+  },
+  "statusFilter": {
+    "modalTitle": "Stare",
+    "prefix": "Stare: ",
+    "options": {
+      "all": "Toate",
+      "in": "Primite",
+      "out": "Trimise",
+      "pending": "În așteptare"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Activ: ",
+    "options": {
+      "all": "Toate"
+    }
+  },
+  "footer": {
+    "wallet": "PORTOFEL",
+    "analytics": "ANALIZĂ",
+    "nft": "NFT",
+    "settings": "SETĂRI"
+  }
+}

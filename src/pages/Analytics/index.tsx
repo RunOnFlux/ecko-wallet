@@ -1,5 +1,6 @@
 import { RefObject, useRef } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { Header as PageHeader, PageFullScreen, BodyFullScreen } from 'src/components/Page';
 import Toolbar, { AnalyticType } from 'src/components/Analytics/Toolbar';
 import PnLChart from 'src/components/Analytics/DailyP&L';
@@ -29,12 +30,14 @@ const Title = styled(AnalyticTile)`
 `;
 
 const Analytics = () => {
+  const { t } = useTranslation();
   const portfolioValueRef = useRef<HTMLDivElement>(null);
   const pnlChartRef = useRef<HTMLDivElement>(null);
   const chartAllocationRef = useRef<HTMLDivElement>(null);
   const assetAllocationRef = useRef<HTMLDivElement>(null);
   const topTokensRef = useRef<HTMLDivElement>(null);
   const heatmapRef = useRef<HTMLDivElement>(null);
+
   const allRefs: Record<AnalyticType, RefObject<HTMLDivElement>> = {
     [AnalyticType.portfolioValue]: portfolioValueRef,
     [AnalyticType.profitAndLoss]: pnlChartRef,
@@ -54,13 +57,13 @@ const Analytics = () => {
         <Toolbar onLinkClick={scrollToAnalytic} />
       </Header>
       <Body>
-        <Title>WALLET ANALYTICS</Title>
+        <Title>{t('analytics.walletAnalytics')}</Title>
         <PortfolioValue ref={portfolioValueRef} />
         <PnLChart ref={pnlChartRef} />
         <ChartAllocation ref={chartAllocationRef} />
         <AssetAllocationChart ref={assetAllocationRef} />
         {/* <TotalTransactions /> */}
-        <Title>DEX ANALYTICS</Title>
+        <Title>{t('analytics.dexAnalytics')}</Title>
         <TopTokens ref={topTokensRef} />
         <Heatmap ref={heatmapRef} />
       </Body>

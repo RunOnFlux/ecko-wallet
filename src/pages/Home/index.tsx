@@ -1,16 +1,10 @@
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { SecondaryLabel, StickyFooter } from 'src/components';
 import EckoWalletLogo from '../../images/ecko-wallet-logo.svg?react';
 import styled from 'styled-components';
 import Button from '../../components/Buttons';
-
-const Image = styled.img<{ size: string; top: string; width: string }>`
-  height: ${($props) => $props.size};
-  width: ${($props) => ($props.width ? $props.width : $props.size)};
-  margin: auto;
-  cursor: ${(props) => props.cursor};
-  margin-top: ${(props) => props.marginTop};
-`;
+import { LanguageSelector } from '@Components/LanguageSelector';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -47,6 +41,7 @@ const DivImage = styled.div`
 `;
 const HomePage = () => {
   const history = useHistory();
+  const { t } = useTranslation();
   const goToTermsCondition = () => {
     history.push('/term-condition');
   };
@@ -57,13 +52,14 @@ const HomePage = () => {
           <EckoWalletLogo style={{ width: 200 }} />
           <SecondaryLabel>The Kadena ecosystem gateway</SecondaryLabel>
         </DivImage>
+        <LanguageSelector />
       </Wrapper>
       <StickyFooter style={{ background: 'transparent', padding: '20px 0px' }}>
         <Button
           size="full"
           variant="disabled"
           onClick={goToTermsCondition}
-          label="Start Now"
+          label={t('home.startNow')}
           style={{ width: '90%', maxWidth: 890, cursor: 'pointer' }}
         />
       </StickyFooter>

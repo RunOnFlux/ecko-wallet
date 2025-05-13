@@ -14,8 +14,10 @@ import { ErrorWrapper } from 'src/pages/SendTransactions/styles';
 import { Content, SettingBody } from '../style';
 import { DivBodyNetwork } from '../Networks/views/style';
 import { Body, DivError } from '../Contact/views/style';
+import { useTranslation } from 'react-i18next';
 
 const PageLockSettings = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const { data: settings, setSettings } = useContext(SettingsContext);
 
@@ -34,7 +36,7 @@ const PageLockSettings = () => {
       ...settings,
       lockTime: lockTime?.value,
     });
-    toast.success(<Toast type="success" content="Settings saved successfully" />);
+    toast.success(<Toast type="success" content={t('settings.lockSettingsPage.saved')} />);
     history.push('/setting');
   };
 
@@ -43,10 +45,11 @@ const PageLockSettings = () => {
   };
 
   const onErrors = () => {};
+
   return (
     <SettingBody>
       <div style={{ padding: '0 24px' }}>
-        <NavigationHeader title="Wallet AutoLock Settings" onBack={() => history.push('/setting')} />
+        <NavigationHeader title={t('settings.lockSettingsPage.title')} onBack={() => history.push('/setting')} />
       </div>
       <Body>
         <Content>
@@ -58,19 +61,19 @@ const PageLockSettings = () => {
                 rules={{
                   required: {
                     value: true,
-                    message: 'This field is required.',
+                    message: t('settings.lockSettingsPage.required'),
                   },
                 }}
                 render={({ field: { onChange, onBlur, value } }) => (
                   <BaseSelect
-                    placeholder="Select Auto Lock Time"
+                    placeholder={t('settings.lockSettingsPage.placeholder')}
                     selectProps={{
                       onChange,
                       onBlur,
                       value,
                     }}
                     options={autoLockOptions}
-                    title="Auto Lock Time"
+                    title={t('settings.lockSettingsPage.selectTitle')}
                     height="auto"
                   />
                 )}
@@ -86,8 +89,8 @@ const PageLockSettings = () => {
           </form>
           <StickyFooter>
             <DivFlex gap="10px" style={{ width: '90%', maxWidth: 890 }}>
-              <Button size="full" label="Restore default" variant="disabled" onClick={restoreDefault} />
-              <Button size="full" label="Save" variant="primary" form="save-lock-timeout" type="submit" />
+              <Button size="full" label={t('settings.lockSettingsPage.restore')} variant="disabled" onClick={restoreDefault} />
+              <Button size="full" label={t('settings.lockSettingsPage.save')} variant="primary" form="save-lock-timeout" type="submit" />
             </DivFlex>
           </StickyFooter>
         </Content>

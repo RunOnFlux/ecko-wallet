@@ -9,6 +9,7 @@ import { setRecent } from 'src/stores/slices/extensions';
 import { AccountType } from 'src/stores/slices/wallet';
 import { CONFIG, ECKO_WALLET_SEND_TX_NONCE } from 'src/utils/config';
 import { updateSendDapp } from 'src/utils/message';
+import { useTranslation } from 'react-i18next';
 import { addLocalActivity, addPendingCrossChainRequestKey, getLocalRecent, setLocalRecent } from 'src/utils/storage';
 import AlertIconSVG from 'src/images/icon-alert.svg?react';
 import { useLedgerContext } from 'src/contexts/LedgerContext';
@@ -33,6 +34,7 @@ type Props = {
 };
 
 const PopupConfirm = (props: Props) => {
+  const { t } = useTranslation();
   const { configs, onClose, aliasContact, fungibleToken, kdaUSDPrice, estimateUSDAmount } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [isSending, setIsSending] = useState(false);
@@ -178,11 +180,11 @@ const PopupConfirm = (props: Props) => {
         meta,
         selectedNetwork.networkId,
       );
-      const newCreatedTime = new Date();
-      const createdTime = newCreatedTime.toString();
+      const createdTime = new Date().toString();
+
       if (configs?.type === AccountType.LEDGER) {
         try {
-          const ledgerSendTxParams = {
+          const ledgerParams = {
             recipient: receiverName,
             namespace: fungibleToken.contractAddress !== 'coin' ? fungibleToken.contractAddress?.split('.')[0] ?? undefined : undefined,
             module: fungibleToken.contractAddress !== 'coin' ? fungibleToken.contractAddress?.split('.')[1] ?? undefined : undefined,
@@ -194,31 +196,24 @@ const PopupConfirm = (props: Props) => {
             nonce: `${ECKO_WALLET_SEND_TX_NONCE}-${new Date().toISOString()}`,
           };
           if (isCrossChain) {
-            const ledgerSignCrosschainRes = await sendCrossChainTransaction({
-              ...ledgerSendTxParams,
+            const res = await sendCrossChainTransaction({
+              ...ledgerParams,
               recipient_chainId: Number(receiverChainId),
             });
-            // eslint-disable-next-line no-console
-            console.log('ledgerSignCrosschainRes', ledgerSignCrosschainRes);
-            toast.success(<Toast type="success" content="Ledger Sign Success" />);
-            sendCmd = ledgerSignCrosschainRes?.pact_command;
+            toast.success(<Toast type="success" content={t('popupConfirm.ledgerSignSuccess')} />);
+            sendCmd = res?.pact_command;
           } else {
-            const ledgerSignRes = await sendTransaction(ledgerSendTxParams);
-            // eslint-disable-next-line no-console
-            console.log('ledgerSignRes', ledgerSignRes);
-            toast.success(<Toast type="success" content="Ledger Sign Success" />);
-            sendCmd = ledgerSignRes?.pact_command;
+            const res = await sendTransaction(ledgerParams);
+            toast.success(<Toast type="success" content={t('popupConfirm.ledgerSignSuccess')} />);
+            sendCmd = res?.pact_command;
           }
-        } catch (error) {
-          toast.error(<Toast type="fail" content="Ledger Sign Failed or Rejected" />);
-          // eslint-disable-next-line no-console
-          console.error('Ledger Sign Error', error);
+        } catch {
+          toast.error(<Toast type="fail" content={t('popupConfirm.ledgerSignFailed')} />);
           return;
         }
       } else if (senderPrivateKey.length > 64) {
         const signature = await getSignatureFromHash(sendCmd.hash, senderPrivateKey);
-        const sigs = [{ sig: signature }];
-        sendCmd.sigs = sigs;
+        sendCmd.sigs = [{ sig: signature }];
       }
 
       setIsLoading(true);
@@ -227,7 +222,7 @@ const PopupConfirm = (props: Props) => {
         .then(async (data) => {
           const requestKey = data.requestKeys[0];
           addRecent(createdTime);
-          const activity: LocalActivity = generateActivityWithId({
+          const activity = generateActivityWithId({
             symbol: fungibleToken.symbol,
             module: fungibleToken.contractAddress,
             requestKey,
@@ -253,32 +248,26 @@ const PopupConfirm = (props: Props) => {
             });
           }
           if (domain) {
-            const newData = {
+            updateSendDapp({
               status: 'success',
-              message: 'Transfer successfully',
+              message: t('popupConfirm.transferSuccess'),
               requestKey,
-            };
-            updateSendDapp(newData);
-            setTimeout(() => {
-              window.close();
-            }, 500);
+            });
+            setTimeout(() => window.close(), 500);
           }
           onListenTransaction(requestKey);
           setIsLoading(false);
-          toast.success(<Toast type="success" content="Transaction sent successfully! Please check the transaction status in the history tab" />);
+          toast.success(<Toast type="success" content={t('popupConfirm.transactionSent')} />);
           goHome();
         })
-        .catch((err) => {
-          // eslint-disable-next-line no-console
-          console.log('ON SEND Err:', err);
+        .catch(() => {
           if (domain) {
-            const newData = {
+            updateSendDapp({
               status: 'fail',
-              message: 'Transfer failed',
-            };
-            updateSendDapp(newData);
+              message: t('popupConfirm.transferFailed'),
+            });
           }
-          toast.error(<Toast type="fail" content="Network Error." />);
+          toast.error(<Toast type="fail" content={t('popupConfirm.networkError')} />);
           setIsLoading(false);
         });
     }
@@ -291,14 +280,15 @@ const PopupConfirm = (props: Props) => {
     receiverChainId,
     aliasName: configs?.aliasName,
   };
+
   if (isLoading) {
     return (
       <div>
-        <LoadingTitle isTop>Please don’t close this view</LoadingTitle>
+        <LoadingTitle isTop>{t('popupConfirm.loadingTop')}</LoadingTitle>
         <SpinnerWrapper>
           <SpokesLoading />
         </SpinnerWrapper>
-        <LoadingTitle>You will be redirected when the transaction ends</LoadingTitle>
+        <LoadingTitle>{t('popupConfirm.loadingBottom')}</LoadingTitle>
       </div>
     );
   }
@@ -307,17 +297,19 @@ const PopupConfirm = (props: Props) => {
 
   return (
     <div style={{ padding: '0 20px 20px 20px', marginTop: -15 }}>
-      <TransactionInfoView info={info} containerStyle={{ borderTop: ' none', margin: '0px -20px 20px' }} />
+      <TransactionInfoView info={info} containerStyle={{ borderTop: 'none', margin: '0px -20px 20px' }} />
+
       <div style={{ textAlign: 'center' }}>
         {configs.aliasName && (
           <DivFlex margin="10px 0 0 0" justifyContent="space-between" alignItems="center">
-            <SecondaryLabel uppercase>receiver</SecondaryLabel>
+            <SecondaryLabel uppercase>{t('popupConfirm.labelReceiver')}</SecondaryLabel>
             <SecondaryLabel>{shortenAddress(receiverName)}</SecondaryLabel>
           </DivFlex>
         )}
+
         <DivFlex margin="10px 0px" justifyContent="space-between" alignItems="flex-start">
           <SecondaryLabel uppercase fontSize={16}>
-            amount
+            {t('popupConfirm.labelAmount')}
           </SecondaryLabel>
           <DivFlex flexDirection="column" alignItems="flex-end">
             <SecondaryLabel uppercase fontSize={16}>
@@ -328,18 +320,21 @@ const PopupConfirm = (props: Props) => {
             </CommonLabel>
           </DivFlex>
         </DivFlex>
+
         <DivFlex margin="10px 0 0 0" justifyContent="space-between" alignItems="center">
-          <SecondaryLabel uppercase>gas limit</SecondaryLabel>
+          <SecondaryLabel uppercase>{t('popupConfirm.labelGasLimit')}</SecondaryLabel>
           <SecondaryLabel uppercase>{gasLimit}</SecondaryLabel>
         </DivFlex>
+
         <DivFlex margin="1px 0px" justifyContent="space-between" alignItems="flex-start">
-          <SecondaryLabel uppercase>gas price</SecondaryLabel>
+          <SecondaryLabel uppercase>{t('popupConfirm.labelGasPrice')}</SecondaryLabel>
           <DivFlex flexDirection="column" alignItems="flex-end">
             <SecondaryLabel uppercase>{gasPrice} KDA</SecondaryLabel>
           </DivFlex>
         </DivFlex>
+
         <DivFlex justifyContent="space-between" alignItems="flex-start">
-          <SecondaryLabel uppercase>gas fee</SecondaryLabel>
+          <SecondaryLabel uppercase>{t('popupConfirm.labelGasFee')}</SecondaryLabel>
           <DivFlex flexDirection="column" alignItems="flex-end">
             <SecondaryLabel uppercase>{gasPrice * gasLimit} KDA</SecondaryLabel>
             <CommonLabel fontSize={12} fontWeight={600} lineHeight="8px">
@@ -347,38 +342,42 @@ const PopupConfirm = (props: Props) => {
             </CommonLabel>
           </DivFlex>
         </DivFlex>
-        {estimateUSDAmount ? (
+
+        {estimateUSDAmount && (
           <DivFlex margin="10px 0px" justifyContent="space-between" alignItems="center">
             <CommonLabel fontWeight={600} uppercase>
-              total
+              {t('popupConfirm.labelTotal')}
             </CommonLabel>
             <CommonLabel fontWeight={600}>{humanReadableNumber(Number(estimateUSDAmount) + Number(estimateFee))} USD</CommonLabel>
           </DivFlex>
-        ) : null}
+        )}
       </div>
+
       {isCrossChain && (
         <Warning margin="10px 0" style={{ justifyContent: 'center' }}>
           <AlertIconSVG />
           <div>
-            <span>You are about to do a cross chain transfer</span>
+            <span>{t('popupConfirm.warningCrossChainLine1')}</span>
             <br />
-            <span>This operation usually takes more time</span>
+            <span>{t('popupConfirm.warningCrossChainLine2')}</span>
           </div>
         </Warning>
       )}
+
       {isVanityAccount && (
         <Warning margin="10px 0" style={{ justifyContent: 'center' }}>
           <AlertIconSVG />
           <div>
-            <span>You are sending to a non “k:account”!</span>
+            <span>{t('popupConfirm.warningNonKAccountLine1')}</span>
             <br />
-            <span>Are you sure you want to proceed?</span>
+            <span>{t('popupConfirm.warningNonKAccountLine2')}</span>
           </div>
         </Warning>
       )}
+
       <DivFlex margin={isCrossChain ? '10px 0' : '30px 0'} gap="5px">
-        <Button label="Cancel" size="full" variant="secondary" onClick={() => onClose()} />
-        <Button label="Confirm" size="full" onClick={onSend} disabled={isSending} />
+        <Button label={t('common.cancel')} size="full" variant="secondary" onClick={() => onClose()} />
+        <Button label={t('common.confirm')} size="full" onClick={onSend} disabled={isSending} />
       </DivFlex>
     </div>
   );

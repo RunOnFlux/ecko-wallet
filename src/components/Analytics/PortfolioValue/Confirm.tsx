@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { DivFlex, SecondaryLabel } from 'src/components';
 import Button from 'src/components/Buttons';
 import { useAppDispatch } from 'src/stores/hooks';
@@ -8,7 +9,7 @@ import Disclaimer from './Disclaimer';
 
 const Subtitle = styled(SecondaryLabel)`
   text-transform: uppercase;
-  color: #A0A6AA;
+  color: #a0a6aa;
   font-weight: bold;
 `;
 
@@ -24,6 +25,7 @@ const Separator = styled.div`
 `;
 
 const Confirm = ({ onConfirm }: ConfirmProps) => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -36,17 +38,16 @@ const Confirm = ({ onConfirm }: ConfirmProps) => {
 
   return (
     <DivFlex flexDirection="column" padding="24px" paddingTop="0px" gap="8px">
-      <Subtitle>START ACCOUNT BALANCE MONITORING</Subtitle>
-      <Description>By confirming, you&apos;re authorising the start of tracking for your account balance.</Description>
-      <Description>Proceed?</Description>
+      <Subtitle>{t('analytics.trackPortfolioStart')}</Subtitle>
+      <Description>{t('analytics.trackPortfolioDesc1')}</Description>
+      <Description>{t('analytics.trackPortfolioDesc2')}</Description>
       <Separator />
       <Disclaimer />
-
       <DivFlex justifyContent="center" padding="4px" paddingTop="8px">
-        { loading ? (
-          <Button label="Confirming, please wait..." size="full" variant="primary" disabled />
+        {loading ? (
+          <Button label={t('analytics.confirming')} size="full" variant="primary" disabled />
         ) : (
-          <Button label="Confirm" size="full" variant="primary" onClick={handleConfirm} />
+          <Button label={t('analytics.confirm')} size="full" variant="primary" onClick={handleConfirm} />
         )}
       </DivFlex>
     </DivFlex>

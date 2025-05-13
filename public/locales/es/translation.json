@@ -1,0 +1,646 @@
+{
+  "select_language": "Seleccionar idioma",
+  "home": {
+    "startNow": "Comenzar ahora"
+  },
+  "common": {
+    "requiredField": "Este campo es obligatorio.",
+    "invalidData": "Datos inválidos",
+    "invalidUrl": "URL inválida",
+    "cancel": "Cancelar",
+    "back": "Atrás",
+    "confirm": "Confirmar",
+    "continue": "Continuar",
+    "reject": "Rechazar",
+    "usd": "{{value}} USD",
+    "next": "Siguiente",
+    "close": "Cerrar"
+  },
+  "condition": {
+    "noPersonalInfo": "Nunca recopilamos claves, direcciones, transacciones, saldos, hashes ni información personal",
+    "noIP": "Nunca recopilamos tu dirección IP completa",
+    "noSelling": "Nunca vendemos datos con fines de lucro. ¡Jamás!",
+    "next": "Siguiente"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "He leído y acepto los",
+    "termsOfUse": "Términos de uso",
+    "createNewWallet": "Crear nueva Wallet",
+    "setupNewAccount": "Configurar nueva cuenta eckoWALLET",
+    "restoreWallet": "Restaurar Wallet",
+    "restoreFromPhrase": "Restaurar desde frase de recuperación"
+  },
+  "createPassword": {
+    "successCreate": "Contraseña creada con éxito",
+    "errorCreate": "Error al crear la Wallet",
+    "invalidPhrase": "¡Frase de recuperación inválida!",
+    "importFromPhrase": "Importar desde frase de recuperación",
+    "createPassword": "Crear contraseña",
+    "pastePhrase": "Pegar frase de recuperación",
+    "requiredField": "Este campo es obligatorio.",
+    "phraseTooLong": "Frase de recuperación demasiado larga.",
+    "secretRecoveryPhrase": "Frase de recuperación secreta",
+    "import": "Importar",
+    "create": "Crear"
+  },
+  "passwordForm": {
+    "inputPassword": "Introducir contraseña",
+    "inputConfirmPassword": "Confirmar contraseña",
+    "requiredField": "Este campo es obligatorio.",
+    "minPassword": "La contraseña debe tener al menos 8 caracteres.",
+    "maxPassword": "La contraseña debe tener como máximo 256 caracteres.",
+    "passwordMismatch": "La contraseña no coincide",
+    "newPassword": "Nueva contraseña (mínimo 8 caracteres)",
+    "confirmPassword": "Confirmar contraseña",
+    "passwordWarning": "Entiendo que he utilizado caracteres inseguros. Se recomienda usar solo letras (a-z), números (0-9) y caracteres especiales _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Frase de recuperación secreta",
+    "step1Text": "En el siguiente paso registrarás tu frase de recuperación de 12 palabras.\nTu frase de recuperación facilita restaurar tu Wallet en un nuevo dispositivo.\nCualquiera con esta frase puede tomar control de tu Wallet, mantenla en privado.\nNadie puede acceder a tu frase de recuperación si se pierde, guárdala de forma segura.",
+    "step1Checkbox": "Entiendo que si pierdo mi frase de recuperación, no podré restaurar mi Wallet.",
+    "generating": "Generando claves...",
+    "continue": "Continuar",
+    "reveal": "Haz clic aquí para revelar las palabras secretas",
+    "step2Text1": "Tu frase de recuperación secreta facilita respaldar y restaurar tu cuenta.",
+    "step2Text2": "Advertencia: Nunca divulgues tu frase de recuperación secreta. Cualquiera con esta frase puede tomar tu Wallet para siempre.",
+    "download": "Descargar",
+    "verifyTitle": "Verificar frase de recuperación",
+    "verifyInstruction": "Por favor confirma tu frase de recuperación escribiendo las palabras en el orden correcto.",
+    "successVerify": "Frase de recuperación verificada con éxito",
+    "invalidPhrase": "¡Frase de recuperación secreta inválida!",
+    "errorGeneratingKeys": "Error al generar las claves de la Wallet",
+    "errorCreatingWallet": "Error al crear la Wallet",
+    "generatingWallet": "Generando tu Wallet..."
+  },
+  "wallet": {
+    "netWorth": "VALOR NETO",
+    "accountBalance": "SALDO DE LA CUENTA",
+    "send": "Enviar",
+    "receive": "Recibir",
+    "receiveTokens": "Recibir tokens",
+    "buy": "Comprar",
+    "history": "Historial",
+    "assets": "ACTIVOS",
+    "detectedTokens": "Tokens detectados",
+    "tokenList": "Lista de tokens",
+    "kdaChainDistribution": "Distribución de la cadena KDA",
+    "chainDistribution": "Distribución de la cadena",
+    "tokenRemoved": "Token eliminado con éxito",
+    "removeToken": "Eliminar token",
+    "editToken": "Editar token",
+    "removeTokenTitle": "Eliminar token {{symbol}}",
+    "confirmRemoveToken": "¿Seguro que deseas eliminar el token {{symbol}}?",
+    "notTransferable": "¡{{contractAddress}} no es transferible!",
+    "accountDoesNotExist": "No existe: esta cuenta no existe.",
+    "balanceZero": "El saldo de {{symbol}} es 0."
+  },
+  "accountActions": {
+    "shareWallet": "Compartir Wallet",
+    "copied": "¡Copiado!",
+    "exportRecoveryPhrase": "Exportar frase de recuperación",
+    "signHashTransaction": "Firmar transacción hash",
+    "editAccountAlias": "Editar alias de la cuenta",
+    "setAccountAlias": "Establecer alias de la cuenta",
+    "removeSelectedWallet": "Eliminar Wallet seleccionada",
+    "createWallet": "Crear Wallet",
+    "importWallet": "Importar Wallet",
+    "importHardwareWallet": "Importar hardware Wallet"
+  },
+  "tokenDetector": {
+    "noTokensFound": "No se encontraron otros tokens para esta cuenta."
+  },
+  "aliasModal": {
+    "accountAlias": "Alias de la cuenta",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "aliasChanged": "Alias cambiado con éxito"
+  },
+  "hashSignModal": {
+    "publicKey": "Tu clave pública",
+    "transactionHash": "Hash de la transacción",
+    "insertTransactionHash": "Inserta el hash de la transacción",
+    "signature": "Firma",
+    "copied": "¡Copiado!",
+    "clean": "Limpiar",
+    "sign": "Firmar"
+  },
+  "popupDetailTransaction": {
+    "status": "Estado",
+    "direction": "Dirección",
+    "symbol": "Símbolo",
+    "quantity": "Cantidad",
+    "gasFee": "Tarifa de gas",
+    "total": "Total",
+    "viewDetails": "Ver detalles",
+    "activityLog": "Registro de actividad",
+    "transactionCreated": "Transacción creada por un valor de {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transacción confirmada",
+    "success": "Éxito",
+    "failed": "Fallido",
+    "finishing": "Finalizando"
+  },
+  "removeWallet": {
+    "title": "¿Seguro que deseas eliminar esta Wallet?",
+    "description": "Introduce tu contraseña para confirmar",
+    "passwordPlaceholder": "Introduce la contraseña",
+    "passwordRequired": "Este campo es obligatorio.",
+    "passwordMinLength": "La contraseña debe tener al menos 8 caracteres.",
+    "passwordMaxLength": "La contraseña debe tener como máximo 256 caracteres.",
+    "invalidPassword": "Contraseña inválida",
+    "cancel": "Cancelar",
+    "remove": "Eliminar"
+  },
+  "header": {
+    "selectNetwork": "Seleccionar red",
+    "manageNetworks": "Gestionar redes",
+    "myWallets": "Mis Wallets",
+    "removeWalletTitle": "Eliminar Wallet",
+    "createAccountSuccess": "¡Cuenta creada con éxito!",
+    "createAccountFail": "Error al crear la cuenta",
+    "copied": "¡Copiado!"
+  },
+  "signIn": {
+    "loginTitle": "Iniciar sesión en tu cuenta",
+    "passwordPlaceholder": "Introduce la contraseña",
+    "passwordTitle": "Contraseña",
+    "signInButton": "Iniciar sesión",
+    "invalidPassword": "Contraseña inválida",
+    "required": "Este campo es obligatorio.",
+    "minLength": "La contraseña debe tener al menos 8 caracteres.",
+    "maxLength": "La contraseña debe tener como máximo 256 caracteres.",
+    "initWalletError": "Error al inicializar la Wallet"
+  },
+  "settings": {
+    "contacts": "Contactos",
+    "language": "Idioma",
+    "languageDesc": "Elige el idioma de la Wallet",
+    "contactsDesc": "Gestionar tus contactos",
+    "networks": "Redes",
+    "networksDesc": "Agregar o editar RPCs personalizadas",
+    "connectedSites": "Sitios conectados",
+    "connectedSitesDesc": "Ver y gestionar sitios conectados",
+    "walletConnect": "Wallet Connect",
+    "walletConnectDesc": "Conectar con WalletConnect",
+    "txSettings": "Ajustes de transacción",
+    "txSettingsDesc": "Establecer tus preferencias de gas",
+    "exportPhrase": "Exportar frase de recuperación",
+    "exportPhraseDesc": "Protege tu Wallet",
+    "editPassword": "Editar contraseña",
+    "editPasswordDesc": "Cambiar contraseña de tu Wallet",
+    "2fa": "2FA",
+    "2faDesc": "Gestionar autenticación de dos factores",
+    "expandView": "Vista expandida",
+    "expandViewDesc": "Abrir eckoWALLET en una nueva ventana",
+    "theme": "Tema",
+    "themeDesc": "Ajustar tema de la Wallet",
+    "lock": "Bloquear Wallet",
+    "lockDesc": "Proteger tu Wallet",
+    "lockSettings": "Ajustes de bloqueo",
+    "lockSettingsDesc": "Cambiar ajustes de seguridad",
+    "discord": "Únete a nuestro Discord",
+    "website": "Visita nuestro sitio web",
+    "terms": "Términos de uso",
+    "privacy": "Política de privacidad",
+    "connectedSitesPage": {
+      "title": "Sitios conectados",
+      "removeSiteTitle": "Eliminar sitio",
+      "removeSiteConfirmText": "¿Seguro que deseas eliminar",
+      "removeSiteSuccess": "Sitio eliminado con éxito."
+    },
+    "contactsPage": {
+      "title": "Contactos",
+      "newContactTitle": "Nueva cuenta",
+      "addNewContact": "Agregar nuevo contacto",
+      "noContacts": "No hay contactos"
+    },
+    "contactForm": {
+      "enterAlias": "Ingresa un alias",
+      "aliasPlaceholder": "p.ej. David",
+      "accountNameTitle": "Nombre de la cuenta",
+      "accountNamePlaceholder": "Nombre de la cuenta",
+      "scanQrTitle": "Escanear código QR",
+      "scanQrDescription": "Coloca el código QR frente a tu cámara",
+      "buttonCancel": "Cancelar",
+      "buttonSave": "Guardar",
+      "successContactAdded": "Contacto agregado",
+      "errorNetwork": "Error de red.",
+      "copied": "¡Copiado!",
+      "requiredField": "Este campo es obligatorio.",
+      "invalidData": "Datos inválidos",
+      "aliasMaxLength": "El alias debe tener como máximo 256 caracteres.",
+      "accountNameMaxLength": "El nombre de la cuenta debe tener como máximo 1000 caracteres."
+    },
+    "contactInfo": {
+      "copied": "¡Copiado!",
+      "contactRemoved": "Contacto eliminado",
+      "accountName": "NOMBRE DE LA CUENTA",
+      "editContact": "Editar contacto",
+      "editTitle": "Editar cuenta",
+      "delete": "Eliminar",
+      "deleteContactTitle": "Eliminar contacto",
+      "removeContact": "¿Eliminar contacto?",
+      "confirmRemove": "¿Seguro que deseas eliminar este contacto?",
+      "cancel": "Cancelar",
+      "confirm": "Confirmar"
+    },
+    "editPasswordPage": {
+      "title": "Editar contraseña",
+      "passwordChanged": "Contraseña modificada con éxito",
+      "cannotUpdatePassword": "No se puede actualizar la contraseña",
+      "save": "Guardar"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Ingresa tu contraseña para continuar",
+      "inputPlaceholder": "Introduce la contraseña",
+      "password": "Contraseña",
+      "errorRequired": "Este campo es obligatorio.",
+      "errorInvalid": "Contraseña inválida.",
+      "continue": "Continuar",
+      "correctPassword": "Tu contraseña es correcta, por favor espera..."
+    },
+    "exportSeedPhrase": {
+      "title": "Exportar frase de recuperación",
+      "copied": "¡Copiado!",
+      "description": "Tu frase de recuperación secreta facilita respaldar y restaurar tu cuenta.",
+      "warning": "Nunca divulgues tu frase de recuperación secreta. Cualquiera con esta frase puede tomar tu Wallet para siempre.",
+      "copyKeyphrase": "Copiar frase clave",
+      "download": "Descargar"
+    },
+    "lockSettingsPage": {
+      "title": "Ajustes de bloqueo automático",
+      "saved": "Ajustes guardados con éxito",
+      "required": "Este campo es obligatorio.",
+      "placeholder": "Selecciona tiempo de bloqueo automático",
+      "selectTitle": "Tiempo de bloqueo automático",
+      "restore": "Restaurar por defecto",
+      "save": "Guardar"
+    },
+    "networksPage": {
+      "title": "Redes",
+      "network": "Red",
+      "addNew": "Agregar nueva",
+      "editSuccess": "Red editada con éxito",
+      "addSuccess": "Red agregada con éxito",
+      "errorUrl": "La URL ya existe",
+      "deleteSuccess": "Red eliminada con éxito",
+      "remove": "Eliminar",
+      "save": "Guardar",
+      "confirmRemove": "¿Eliminar esta red?",
+      "confirmRemoveDesc": "¿Seguro que deseas eliminar esta red?",
+      "placeholderName": "Ingresa nombre de la red",
+      "placeholderUrl": "Ingresa nueva URL RPC",
+      "placeholderExplorer": "Ingresa URL del explorador de bloques",
+      "placeholderNetworkId": "Ingresa ID de la red",
+      "titleName": "Nombre de la red",
+      "titleUrl": "Nueva URL RPC",
+      "titleExplorer": "URL del explorador de bloques",
+      "titleNetworkId": "ID de la red",
+      "nameMax": "El nombre de la red debe tener como máximo 1000 caracteres.",
+      "urlMax": "La nueva URL RPC debe tener como máximo 1000 caracteres.",
+      "explorerMax": "La URL del explorador de bloques debe tener como máximo 1000 caracteres.",
+      "networkIdMax": "El ID de la red debe tener como máximo 1000 caracteres."
+    },
+    "selectTheme": {
+      "title": "Seleccionar tema"
+    },
+    "txSettingsPage": {
+      "title": "Ajustes de transacción",
+      "gasLimit": "Límite de gas",
+      "gasLimitPlaceholder": "Ingresa límite de gas",
+      "finishCrossChain": "Finalizar estación de gas cross-chain",
+      "finishCrossChainPlaceholder": "Ingresa estación de gas cross-chain",
+      "crossChainGasLimit": "Límite de gas cross-chain",
+      "crossChainGasLimitPlaceholder": "Ingresa límite de gas cross-chain",
+      "crossChainGasPrice": "Precio de gas cross-chain",
+      "crossChainGasPricePlaceholder": "Ingresa precio de gas cross-chain",
+      "save": "Guardar",
+      "restoreDefault": "Restaurar valores por defecto",
+      "successSave": "Ajustes guardados con éxito",
+      "requiredField": "Este campo es obligatorio.",
+      "invalidValue": "Valor inválido"
+    },
+    "2faPage": {
+      "title": "Autenticación de dos factores",
+      "description": "La autenticación de dos factores ya está configurada.",
+      "disableButton": "Desactivar",
+      "successDisable": "2FA eliminado con éxito",
+      "installApp": "Instalar",
+      "orSimilar": "u apps similares",
+      "scanQRCode": "Escanea el siguiente código QR:",
+      "enter6Digits": "Ingresa el código de 6 dígitos",
+      "invalidCode": "El código no es válido.",
+      "saveButton": "Guardar",
+      "setupSuccess": "2FA configurada con éxito"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "Seleccionar cuentas",
+      "invalidUrl": "URL inválida",
+      "disconnectSuccess": "Solicitud de desconexión enviada con éxito",
+      "noActiveSessions": "NO HAY SESIONES ACTIVAS",
+      "activeSessions": "SESIONES ACTIVAS",
+      "expiry": "Caducidad:",
+      "removeConnection": "Eliminar conexión",
+      "removeConfirmation": "¿Seguro que deseas eliminar esta instancia de WalletConnect?",
+      "newConnection": "Nueva conexión",
+      "addConnection": "Agregar nueva Wallet Connect",
+      "inputUri": "Ingresar URI",
+      "code": "Código",
+      "continue": "Continuar"
+    }
+  },
+  "buy": {
+    "title": "Comprar",
+    "description": "La compra y venta de criptomonedas se realiza a través de un servicio de terceros proporcionado por Onramper.\n\neckoWallet se compromete a garantizar el más alto nivel de seguridad para sus usuarios, pero no podemos garantizar la seguridad y privacidad de servicios de terceros.",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "error": {
+      "noAddress": "Dirección Wallet no disponible",
+      "generic": "No se pudo conectar con el servicio. Por favor, intenta más tarde."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "ANÁLISIS DE WALLET",
+    "dexAnalytics": "ANÁLISIS DEX",
+    "portfolioValue": "GRÁFICO DE VALOR DE PORTAFOLIO",
+    "startTracking": "Comenzar seguimiento",
+    "trackPortfolioTitle": "Rastrear valor del portafolio",
+    "trackPortfolioStart": "INICIAR MONITOREO DE SALDO DE CUENTA",
+    "trackPortfolioDesc1": "Al confirmar, autorizas el inicio del seguimiento de tu saldo de cuenta.",
+    "trackPortfolioDesc2": "¿Continuar?",
+    "confirm": "Confirmar",
+    "confirming": "Confirmando, por favor espera...",
+    "disclaimerTitle": "¡Info!",
+    "disclaimerText": "La información mostrada en esta página está en fase BETA y se proporciona \"tal cual\" y según disponibilidad."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Red inválida",
+      "signingCmdError": "Error al firmar cmd, revisa tu payload",
+      "signingCmdGenericError": "Error al firmar cmd",
+      "rejectedByUser": "Rechazado por el usuario",
+      "userRejected": "Usuario rechazó.",
+      "signedCommand": "Comando firmado",
+      "hashToSign": "HASH PARA FIRMAR:",
+      "pleaseEnableLedger": "Por favor habilita FIRMADO CIEGO\ny sigue las instrucciones en tu Ledger primero",
+      "capabilities": "Capacidades",
+      "close": "Cerrar",
+      "reject": "Rechazar",
+      "confirm": "Confirmar"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Solicitud de firma rápida",
+      "code": "Código",
+      "capabilities": "Capacidades",
+      "rawData": "Datos sin procesar",
+      "command": "Comando {{index}}/{{total}}",
+      "hashToSign": "HASH PARA FIRMAR ({{count}}/{{total}}):",
+      "ledgerInstructions": "Por favor habilita FIRMADO CIEGO y sigue las instrucciones en tu Ledger primero",
+      "close": "Cerrar",
+      "reject": "Rechazar",
+      "confirm": "Confirmar",
+      "error.invalidStructure": "Firma rápida fallida: la estructura de tus datos es inválida",
+      "error.pubKeyNotFound": "Firma rápida fallida: clave pública de la Wallet no encontrada",
+      "error.ledger": "Error en firma Ledger"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Importar hardware Wallet",
+      "selectDevice": "Por favor selecciona un hardware Wallet",
+      "ledgerInstructions": "Conecta tu Ledger directamente a tu computadora. Luego desbloquéalo y abre la app de Kadena.",
+      "connect": "Conectar",
+      "confirm": "Importar",
+      "success": "Importación de hardware Wallet exitosa",
+      "error": {
+        "duplicate": "La cuenta que intentas importar es un duplicado.",
+        "network": "Error de red.",
+        "invalid": "Datos inválidos"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Importar desde Ledger",
+      "instruction": "Conecta tu Ledger directamente a tu computadora, luego desbloquéalo y abre la app de Kadena.",
+      "continue": "Continuar",
+      "publicKey": "CLAVE PÚBLICA",
+      "account": "CUENTA",
+      "confirm": "Confirmar importación",
+      "success": "Cuenta importada con éxito.",
+      "error": {
+        "duplicate": "La cuenta que intentas importar es un duplicado.",
+        "network": "Error de red al obtener datos de la cuenta",
+        "invalid": "Datos inválidos"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Importar tokens",
+      "contractLabel": "Dirección del contrato del token",
+      "symbolLabel": "Símbolo del token",
+      "placeholder": {
+        "contract": "Ingresa dirección del contrato",
+        "symbol": "Ingresa símbolo"
+      },
+      "add": "Agregar token",
+      "edit": "Editar token",
+      "success": "Token guardado con éxito",
+      "error": {
+        "duplicate": "Token ya agregado",
+        "notFound": "No se pudo resolver {{contract}}.details – Por favor verifica que el token exista en {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Importar Wallet",
+    "form": {
+      "accountName": {
+        "title": "Tu nombre de cuenta",
+        "placeholder": "Nombre de la cuenta"
+      },
+      "chainId": {
+        "title": "ID de la cadena"
+      },
+      "secretKey": {
+        "title": "Tu clave privada",
+        "placeholder": "Clave privada"
+      }
+    },
+    "validation": {
+      "required": "Este campo es obligatorio.",
+      "invalidData": "Datos inválidos",
+      "startsWithK": "El nombre de la cuenta debe empezar con \"k:\"",
+      "accountName": {
+        "maxLength": "El nombre de la cuenta debe tener como máximo 1000 caracteres."
+      },
+      "secretKey": {
+        "maxLength": "La clave privada debe tener como máximo 1000 caracteres."
+      }
+    },
+    "modal": {
+      "scanTitle": "Escanear código QR",
+      "scanBody": "Coloca el código QR frente a tu cámara"
+    },
+    "button": {
+      "import": "Importar Wallet"
+    },
+    "toast": {
+      "importSuccess": "Cuenta importada con éxito.",
+      "duplicateError": "La cuenta que intentas importar es un duplicado.",
+      "invalidAccountData": "Datos de cuenta inválidos",
+      "multipleKeys": "No se soportan múltiples juegos de claves",
+      "invalidData": "Datos inválidos",
+      "networkError": "Error de red."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Ya tengo una clave privada existente.",
+      "prompt": "Importa tu clave privada existente"
+    },
+    "button": {
+      "import": "Importar"
+    },
+    "image": {
+      "alt": "Icono de importar"
+    }
+  },
+  "nft": {
+    "header": "Tus coleccionables",
+    "noOwned": "No posees NFT"
+  },
+  "sendTransactions": {
+    "header": "Enviar transacción {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Firma Ledger exitosa",
+    "ledgerSignFailed": "Firma Ledger fallida o rechazada",
+    "transferSuccess": "Transferencia exitosa",
+    "transferFailed": "La transferencia falló",
+    "transactionSent": "¡Transacción enviada con éxito! Por favor, verifica el estado en la pestaña de historial",
+    "networkError": "Error de red.",
+    "loadingTop": "Por favor, no cierres esta vista",
+    "loadingBottom": "Serás redirigido cuando la transacción termine",
+    "labelReceiver": "Receptor",
+    "labelAmount": "Cantidad",
+    "labelGasLimit": "Límite de gas",
+    "labelGasPrice": "Precio de gas",
+    "labelGasFee": "Tarifa de gas",
+    "labelTotal": "Total",
+    "warningCrossChainLine1": "Estás a punto de realizar una transferencia cross-chain",
+    "warningCrossChainLine2": "Esta operación suele tardar más tiempo",
+    "warningNonKAccountLine1": "¡Estás enviando a una cuenta no “k:account”!",
+    "warningNonKAccountLine2": "¿Seguro que deseas continuar?"
+  },
+  "selectReceiver": {
+    "notTransferable": "¡{{contractAddress}} no es transferible!",
+    "form": {
+      "sourceChainId": {
+        "title": "ID de la cadena de origen"
+      },
+      "destinationAccount": {
+        "title": "Cuenta de destino"
+      },
+      "targetChainId": {
+        "title": "ID de la cadena de destino"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "La cuenta de destino debe tener como máximo 1000 caracteres."
+    },
+    "balanceLabel": "Saldo en cadena {{symbol}}",
+    "recent": "RECIENTES",
+    "contacts": "CONTACTOS",
+    "confirm": {
+      "warningTitle": "Advertencia",
+      "publicKeyTitle": "Clave pública",
+      "publicKeyPlaceholder": "Ingresa clave pública",
+      "predicateTitle": "Predicado",
+      "predicatePlaceholder": "Predicado"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "No puedes enviarte a ti mismo",
+    "invalidGasLimit": "Límite de gas inválido",
+    "gasLimitInteger": "El límite de gas debe ser un entero",
+    "invalidGasPrice": "Precio de gas inválido",
+    "insufficientFundsGas": "Fondos insuficientes para la tarifa de gas",
+    "newAddressDetected": "¡Nueva dirección detectada! Agrégala a tus contactos",
+    "tokenNotExists": "¡{{contractAddress}} podría no existir en CHAIN {{chainId}}!",
+    "transactionParameters": "Parámetros de la transacción",
+    "estimatedGas": "Gas estimado {{gas}}",
+    "speed": "Velocidad {{speed}}",
+    "modal": {
+      "confirmTitle": "Confirmar envío de transacción",
+      "gasParametersTitle": "Parámetros de la transacción"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Límite de gas"
+      },
+      "gasPrice": {
+        "title": "Precio de gas"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Cantidad a enviar",
+    "button": {
+      "half": "MITAD",
+      "max": "MÁX"
+    },
+    "error": {
+      "insufficientFunds": "Fondos insuficientes",
+      "invalidAmount": "Cantidad inválida"
+    },
+    "balance": "Saldo: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Logo de la Dapp",
+    "sendTransaction": "Enviar transacción",
+    "destinationNotFound": "Cuenta de destino no encontrada"
+  },
+  "history": {
+    "header": "Historial",
+    "modal": {
+      "confirmSendTransaction": "Confirmar envío de transacción"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Detalles de la transacción"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Nombre de tu cuenta"
+  },
+  "activityList": {
+    "loading": "Cargando...",
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "noTransactions": "No tienes transacciones"
+  },
+  "statusFilter": {
+    "modalTitle": "Estado",
+    "prefix": "Estado: ",
+    "options": {
+      "all": "Todas",
+      "in": "Recibidas",
+      "out": "Enviadas",
+      "pending": "Pendientes"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Activo: ",
+    "options": {
+      "all": "Todas"
+    }
+  },
+  "footer": {
+    "wallet": "Cartera",
+    "analytics": "Análisis",
+    "nft": "NFT",
+    "settings": "Configuración"
+  }
+}

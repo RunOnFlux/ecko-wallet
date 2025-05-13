@@ -15,6 +15,7 @@ import { encryptSharedKey, generateSharedKey, initTOTP } from 'src/utils/totp';
 import { useAppDispatch } from 'src/stores/hooks';
 import { setTOTPSharedKey } from 'src/stores/slices/auth';
 import { Body, Footer, Page } from 'src/components/Page';
+import { useTranslation } from 'react-i18next';
 
 const GA_LINK = 'https://support.google.com/accounts/answer/1066447?hl=en';
 
@@ -40,6 +41,7 @@ const TokenInputWrapper = styled.div`
 `;
 
 const TOTPSetup = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const [password, setPassword] = useState('');
   const [sharedKey, setSharedKey] = useState('');
@@ -49,7 +51,6 @@ const TOTPSetup = () => {
 
   useEffect(() => {
     if (!sharedKey) {
-      // This is not in the default state of useState in order to avoid to call the function at each render
       setSharedKey(generateSharedKey());
     }
   }, [sharedKey]);
@@ -61,14 +62,12 @@ const TOTPSetup = () => {
   const onSeedPhraseRetrivied = (_seedPhrase, _password) => setPassword(_password);
 
   const onChangeInput = (e) => {
-    // Remove non-numeric characters
     setToken(e.target.value.replace(/\D/g, ''));
   };
 
   const totp = initTOTP(sharedKey);
   const uri = totp.toString();
 
-  // Check if token is exactly 6 digits and validate it
   const is6Digits = token.match(/^\d{6}$/);
   const isValidToken = is6Digits ? totp.validate({ token, window: 0 }) !== null : false;
 
@@ -80,32 +79,32 @@ const TOTPSetup = () => {
     const encryptedSharedKey = encryptSharedKey(sharedKey, passwordHash);
     dispatch(setTOTPSharedKey(encryptedSharedKey));
     goBack();
-    toast.success(<Toast type="success" content="2FA setupped successfully" />);
+    toast.success(<Toast type="success" content={t('settings.2faPage.setupSuccess')} />);
   };
 
   return (
     <Page>
-      <NavigationHeader title="Two-Factor Authentication" onBack={goBack} />
+      <NavigationHeader title={t('settings.2faPage.title')} onBack={goBack} />
       {password ? (
         <>
           <Body>
             <StepWrapper>
               <LabelWithLink fontSize={18}>
-                1. Install{' '}
+                1. {t('settings.2faPage.installApp')}{' '}
                 <a href={GA_LINK} target="_blank" rel="noreferrer">
                   Google Authenticator
                 </a>{' '}
-                or similiar apps
+                {t('settings.2faPage.orSimilar')}
               </LabelWithLink>
             </StepWrapper>
             <StepWrapper>
-              <LabelWithLink fontSize={18}>2. Scan the QR code below:</LabelWithLink>
+              <LabelWithLink fontSize={18}>{t('settings.2faPage.scanQRCode')}</LabelWithLink>
               <QRCodeWrapper>
                 <QRCode value={uri} />
               </QRCodeWrapper>
             </StepWrapper>
             <StepWrapper>
-              <LabelWithLink fontSize={18}>3. Enter the 6-digit code</LabelWithLink>
+              <LabelWithLink fontSize={18}>{t('settings.2faPage.enter6Digits')}</LabelWithLink>
               <TokenInputWrapper>
                 <TokenInput
                   placeholder="000 000"
@@ -117,11 +116,17 @@ const TOTPSetup = () => {
                   }}
                 />
               </TokenInputWrapper>
-              {is6Digits && !isValidToken && <InputError>The code is not valid.</InputError>}
+              {is6Digits && !isValidToken && <InputError>{t('settings.2faPage.invalidCode')}</InputError>}
             </StepWrapper>
           </Body>
           <Footer>
-            <Button onClick={handleSave} isDisabled={!isValidToken || isLoading} label="Save" size="full" variant="primary" />
+            <Button
+              onClick={handleSave}
+              isDisabled={!isValidToken || isLoading}
+              label={t('settings.2faPage.saveButton')}
+              size="full"
+              variant="primary"
+            />
           </Footer>
         </>
       ) : (
@@ -130,4 +135,5 @@ const TOTPSetup = () => {
     </Page>
   );
 };
+
 export default TOTPSetup;

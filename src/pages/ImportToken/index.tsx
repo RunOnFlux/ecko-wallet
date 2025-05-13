@@ -15,6 +15,7 @@ import { useGoHome } from 'src/hooks/ui';
 import Button from 'src/components/Buttons';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 export const LOCAL_KEY_FUNGIBLE_TOKENS = 'fungibleTokensByNetworkv2';
 export const LOCAL_DEFAULT_FUNGIBLE_TOKENS = {
@@ -60,47 +61,24 @@ const Footer = styled.div`
     margin-top: 25px;
   }
 `;
+
 const ImportToken = () => {
-  const stateWallet = useCurrentWallet();
+  const { t } = useTranslation();
   const { search } = useLocation();
+  const stateWallet = useCurrentWallet();
   const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const networkId = selectedNetwork?.networkId;
   const goHome = useGoHome();
-  const [fungibleTokens, setFungibleTokens] = useLocalStorage<IFungibleTokensByNetwork>(LOCAL_KEY_FUNGIBLE_TOKENS, LOCAL_DEFAULT_FUNGIBLE_TOKENS);
+  const [fungibleTokens, setFungibleTokens] = useLocalStorage(LOCAL_KEY_FUNGIBLE_TOKENS, LOCAL_DEFAULT_FUNGIBLE_TOKENS);
   const { data: settings } = useContext(SettingsContext);
   const txSettings = settings?.txSettings;
 
-  const fungibleTokensByNetwork = (fungibleTokens && fungibleTokens[networkId]) || [];
+  const fungibleTokensByNetwork = fungibleTokens?.[networkId] || [];
 
   const params = new URLSearchParams(search);
   const coin = params.get('coin');
   const suggest = params.get('suggest');
-  const token = fungibleTokensByNetwork?.find((ft) => ft.contractAddress === coin);
-
-  const checkTokenExists = async (contractAddress: string) => {
-    showLoading();
-    const { account } = stateWallet;
-    const pactCode = `(${contractAddress}.details "${account}")`;
-    for (let i = 0; i < 20; i += 1) {
-      try {
-        /* eslint-disable no-await-in-loop */
-        const res = await fetchListLocal(pactCode, selectedNetwork.url, selectedNetwork.networkId, i, txSettings?.gasPrice, txSettings?.gasLimit);
-        if (
-          res?.result?.error?.message?.includes('row not found') ||
-          res?.result?.error?.message?.includes('No value found in table') ||
-          res?.result?.status === 'success'
-        ) {
-          hideLoading();
-          return true;
-        }
-        // contractAddress not exists on chain i
-      } catch (err) {
-        // contractAddress not exists on chain i
-      }
-    }
-    hideLoading();
-    return false;
-  };
+  const token = fungibleTokensByNetwork.find((ft) => ft.contractAddress === coin);
 
   const {
     register,
@@ -123,65 +101,77 @@ const ImportToken = () => {
     }
   }, []);
 
-  const onImport = async (fT: IFungibleToken | any) => {
-    const alreadyExists = fungibleTokensByNetwork?.find((fungToken) => fungToken.contractAddress === fT.contractAddress);
-    if (!token && alreadyExists) {
-      toast.error(<Toast type="error" content="Token already added" />);
-    } else {
-      const tokenExists = await checkTokenExists(fT.contractAddress);
-      if (!tokenExists) {
-        toast.error(<Toast type="error" content={`Cannot resolve ${fT.contractAddress}.details - Please check the token exists on ${networkId}`} />);
-      } else {
-        let newFungibleTokens = fungibleTokensByNetwork || [];
-        if (token) {
-          newFungibleTokens = fungibleTokensByNetwork?.filter((ft) => ft.contractAddress !== token.contractAddress) ?? [];
+  const checkTokenExists = async (contractAddress: string) => {
+    showLoading();
+    const { account } = stateWallet;
+    const pactCode = `(${contractAddress}.details "${account}")`;
+    for (let i = 0; i < 20; i++) {
+      try {
+        const res = await fetchListLocal(pactCode, selectedNetwork.url, selectedNetwork.networkId, i, txSettings?.gasPrice, txSettings?.gasLimit);
+        if (
+          res?.result?.status === 'success' ||
+          res?.result?.error?.message?.includes('row not found') ||
+          res?.result?.error?.message?.includes('No value found in table')
+        ) {
+          hideLoading();
+          return true;
         }
-        setFungibleTokens({
-          ...fungibleTokens,
-          [networkId]: [
-            ...newFungibleTokens,
-            {
-              ...fT,
-              symbol: fT.symbol?.toLowerCase(),
-            },
-          ],
-        });
-        toast.success(<Toast type="success" content="Token successfully saved" />);
-        goHome();
-      }
+      } catch {}
     }
+    hideLoading();
+    return false;
   };
+
+  const onImport = async (fT: any) => {
+    const alreadyExists = fungibleTokensByNetwork.some((ft) => ft.contractAddress === fT.contractAddress);
+    if (!token && alreadyExists) {
+      toast.error(<Toast type="error" content={t('token.import.error.duplicate')} />);
+      return;
+    }
+
+    const tokenExists = await checkTokenExists(fT.contractAddress);
+    if (!tokenExists) {
+      toast.error(<Toast type="error" content={t('token.import.error.notFound', { contract: fT.contractAddress, network: networkId })} />);
+      return;
+    }
+
+    let newFungibleTokens = fungibleTokensByNetwork ?? [];
+    if (token) {
+      newFungibleTokens = newFungibleTokens.filter((ft) => ft.contractAddress !== token.contractAddress);
+    }
+
+    setFungibleTokens({
+      ...fungibleTokens,
+      [networkId]: [...newFungibleTokens, { ...fT, symbol: fT.symbol.toLowerCase() }],
+    });
+
+    toast.success(<Toast type="success" content={t('token.import.success')} />);
+    goHome();
+  };
+
   return (
     <ImportTokenWrapper>
-      <NavigationHeader title="Import Tokens" />
+      <NavigationHeader title={t('token.import.title')} />
       <Body>
         <form onSubmit={handleSubmit(onImport)} id="import-token-form">
           <DivBody>
             <BaseTextInput
               inputProps={{
-                placeholder: 'Input Contract Address',
+                placeholder: t('token.import.placeholder.contract'),
                 ...register('contractAddress', {
-                  required: {
-                    value: true,
-                    message: 'This field is required.',
-                  },
-                  validate: {
-                    required: (val) => val.trim().length > 0 || 'Invalid data',
-                  },
+                  required: { value: true, message: t('form.required') },
+                  validate: { required: (val) => val.trim().length > 0 || t('form.invalid') },
                 }),
               }}
-              title="Token Contract Address"
+              title={t('token.import.contractLabel')}
               height="auto"
               onChange={(e) => {
                 clearErrors('contractAddress');
-                setValue('contractAddress', e.target.value);
-                if (KNOWN_TOKENS[e.target.value] && KNOWN_TOKENS[e.target.value]?.symbol) {
-                  clearErrors('symbol');
-                  setValue('symbol', KNOWN_TOKENS[e.target.value]?.symbol);
-                } else {
-                  clearErrors('symbol');
-                  setValue('symbol', '');
-                }
+                const address = e.target.value;
+                setValue('contractAddress', address);
+                const knownSymbol = KNOWN_TOKENS[address]?.symbol || '';
+                setValue('symbol', knownSymbol);
+                clearErrors('symbol');
               }}
             />
             {errors.contractAddress && <InputError>{errors.contractAddress.message}</InputError>}
@@ -189,18 +179,13 @@ const ImportToken = () => {
           <DivBody>
             <BaseTextInput
               inputProps={{
-                placeholder: 'Input Symbol',
+                placeholder: t('token.import.placeholder.symbol'),
                 ...register('symbol', {
-                  required: {
-                    value: true,
-                    message: 'This field is required.',
-                  },
-                  validate: {
-                    required: (val) => val.trim().length > 0 || 'Invalid data',
-                  },
+                  required: { value: true, message: t('form.required') },
+                  validate: { required: (val) => val.trim().length > 0 || t('form.invalid') },
                 }),
               }}
-              title="Token Symbol"
+              title={t('token.import.symbolLabel')}
               height="auto"
               onChange={(e) => {
                 clearErrors('symbol');
@@ -212,7 +197,7 @@ const ImportToken = () => {
         </form>
       </Body>
       <Footer>
-        <ButtonSubmit variant="primary" size="full" form="import-token-form" label={`${token ? 'Edit' : 'Add'} Token`} />
+        <ButtonSubmit variant="primary" size="full" form="import-token-form" label={t(`token.import.${token ? 'edit' : 'add'}`)} />
       </Footer>
     </ImportTokenWrapper>
   );

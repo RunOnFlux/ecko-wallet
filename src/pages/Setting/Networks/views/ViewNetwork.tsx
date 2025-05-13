@@ -1,6 +1,7 @@
 import { BaseTextInput } from 'src/baseComponent';
 import { Content } from '../../style';
 import { DivBodyNetwork } from './style';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   network: any;
@@ -8,6 +9,7 @@ type Props = {
 
 const ViewNetwork = (props: Props) => {
   const { network } = props;
+  const { t } = useTranslation();
 
   return (
     <Content>
@@ -17,7 +19,7 @@ const ViewNetwork = (props: Props) => {
             value: network.name,
             readOnly: true,
           }}
-          title="Network Name"
+          title={t('settings.networksPage.titleName')}
           height="auto"
         />
       </DivBodyNetwork>
@@ -27,7 +29,7 @@ const ViewNetwork = (props: Props) => {
             readOnly: true,
             value: network.url,
           }}
-          title="New RPC URL"
+          title={t('settings.networksPage.titleUrl')}
           height="auto"
         />
       </DivBodyNetwork>
@@ -37,7 +39,7 @@ const ViewNetwork = (props: Props) => {
             readOnly: true,
             value: network.explorer,
           }}
-          title="Block Explorer URL"
+          title={t('settings.networksPage.titleExplorer')}
           height="auto"
         />
       </DivBodyNetwork>
@@ -47,7 +49,7 @@ const ViewNetwork = (props: Props) => {
             readOnly: true,
             value: network.networkId,
           }}
-          title="Network ID"
+          title={t('settings.networksPage.titleNetworkId')}
           height="auto"
         />
       </DivBodyNetwork>

@@ -1,5 +1,5 @@
-/* eslint-disable no-console */
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavigationHeader } from 'src/components/NavigationHeader';
 import Button from 'src/components/Buttons';
 import { useHistory } from 'react-router-dom';
@@ -17,6 +17,7 @@ import { useLedgerContext } from 'src/contexts/LedgerContext';
 import { useAppSelector } from 'src/stores/hooks';
 
 const ImportLedger = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const [ledgerPublicKey, setLedgerPublicKey] = useState<string>('');
   const { wallets } = useAppSelector((state) => state.wallet);
@@ -27,24 +28,18 @@ const ImportLedger = () => {
     try {
       const publicKey = await getPublicKey();
       setLedgerPublicKey(publicKey ?? '');
-      const accountName = `k:${ledgerPublicKey}`;
+      const accountName = `k:${publicKey}`;
       const pactCode = `(coin.details "${accountName}")`;
       showLoading();
       fetchLocal(pactCode, selectedNetwork.url, selectedNetwork.networkId, 0)
-        .then((response) => {
-          console.log('🚀 !!! ~ response:', response);
-          hideLoading();
-          // if ()
-        })
+        .then(() => hideLoading())
         .catch(() => {
           hideLoading();
-          toast.error(<Toast type="fail" content="Network error fetching account data" />);
+          toast.error(<Toast type="fail" content={t('ledger.import.error.network')} />);
         });
-      return publicKey;
     } catch (err: any) {
-      console.log('Ledger ERROR:', err);
+      console.error('Ledger ERROR:', err);
     }
-    return null;
   };
 
   const importAccountFromLedger = () => {
@@ -53,13 +48,12 @@ const ImportLedger = () => {
       const pactCode = `(coin.details "${accountName}")`;
       showLoading();
       fetchLocal(pactCode, selectedNetwork.url, selectedNetwork.networkId, 0)
-        .then((response) => {
-          console.log('🚀 !!! ~ response:', response);
+        .then(() => {
           hideLoading();
           getLocalPassword(
             (accountPassword) => {
-              const isWalletEmpty = isEmpty(find(wallets, (e) => Number(e.chainId) === 0 && e.account === accountName));
-              if (isWalletEmpty) {
+              const isDuplicate = !isEmpty(find(wallets, (e) => Number(e.chainId) === 0 && e.account === accountName));
+              if (!isDuplicate) {
                 const wallet = {
                   account: encryptKey(accountName, accountPassword),
                   publicKey: encryptKey(ledgerPublicKey, accountPassword),
@@ -70,15 +64,10 @@ const ImportLedger = () => {
                 };
                 getLocalWallets(
                   selectedNetwork.networkId,
-                  (item) => {
-                    const newData = [...item, wallet];
-                    setLocalWallets(selectedNetwork.networkId, newData);
-                  },
-                  () => {
-                    setLocalWallets(selectedNetwork.networkId, [wallet]);
-                  },
+                  (item) => setLocalWallets(selectedNetwork.networkId, [...item, wallet]),
+                  () => setLocalWallets(selectedNetwork.networkId, [wallet]),
                 );
-                const newStateWallet = {
+                const newWallet = {
                   chainId: 0,
                   account: accountName,
                   publicKey: ledgerPublicKey,
@@ -86,15 +75,14 @@ const ImportLedger = () => {
                   type: AccountType.LEDGER,
                   connectedSites: [],
                 };
-                const newWallets = [...wallets, newStateWallet];
-                setWallets(newWallets);
+                setWallets([...wallets, newWallet]);
                 setLocalSelectedWallet(wallet);
-                setCurrentWallet(newStateWallet);
-                toast.success(<Toast type="success" content="Import account successfully." />);
+                setCurrentWallet(newWallet);
+                toast.success(<Toast type="success" content={t('ledger.import.success')} />);
                 history.push('/');
                 setActiveTab(ACTIVE_TAB.HOME);
               } else {
-                toast.error(<Toast type="fail" content="The account you are trying to import is a duplicate." />);
+                toast.error(<Toast type="fail" content={t('ledger.import.error.duplicate')} />);
               }
             },
             () => {},
@@ -102,31 +90,28 @@ const ImportLedger = () => {
         })
         .catch(() => {
           hideLoading();
-          toast.error(<Toast type="fail" content="Network error." />);
+          toast.error(<Toast type="fail" content={t('ledger.import.error.network')} />);
         });
-    } catch (e) {
-      toast.error(<Toast type="fail" content="Invalid data" />);
+    } catch {
+      toast.error(<Toast type="fail" content={t('ledger.import.error.invalid')} />);
     }
   };
 
-  const goBack = () => {
-    history.push('/');
-  };
   return (
     <PageWrapper>
-      <NavigationHeader title="Import From Ledger" onBack={goBack} />
+      <NavigationHeader title={t('ledger.import.title')} onBack={() => history.push('/')} />
       <DivFlex>
-        <SecondaryLabel>Plug your Ledger directly into your computer, then unlock it and open the Kadena app.</SecondaryLabel>
+        <SecondaryLabel>{t('ledger.import.instruction')}</SecondaryLabel>
       </DivFlex>
       <DivFlex>
-        <Button size="full" label="Continue" variant="disabled" onClick={getLedgerAccount} />
+        <Button size="full" label={t('ledger.import.continue')} variant="disabled" onClick={getLedgerAccount} />
       </DivFlex>
       <DivFlex flexDirection="column">
-        <SecondaryLabel>PUBLIC KEY</SecondaryLabel>
+        <SecondaryLabel>{t('ledger.import.publicKey')}</SecondaryLabel>
         <SecondaryLabel>{ledgerPublicKey}</SecondaryLabel>
       </DivFlex>
       <DivFlex flexDirection="column">
-        <SecondaryLabel>ACCOUNT</SecondaryLabel>
+        <SecondaryLabel>{t('ledger.import.account')}</SecondaryLabel>
         <SecondaryLabel>{`k:${ledgerPublicKey}`}</SecondaryLabel>
       </DivFlex>
       <DivFlex flexDirection="column">
@@ -134,10 +119,11 @@ const ImportLedger = () => {
       </DivFlex>
       {ledgerPublicKey && (
         <DivFlex>
-          <Button size="full" label="Confirm import" variant="primary" onClick={importAccountFromLedger} />
+          <Button size="full" label={t('ledger.import.confirm')} variant="primary" onClick={importAccountFromLedger} />
         </DivFlex>
       )}
     </PageWrapper>
   );
 };
+
 export default ImportLedger;

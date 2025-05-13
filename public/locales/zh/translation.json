@@ -1,0 +1,646 @@
+{
+  "select_language": "选择语言",
+  "home": {
+    "startNow": "立即开始"
+  },
+  "common": {
+    "requiredField": "此字段为必填项。",
+    "invalidData": "数据无效",
+    "invalidUrl": "URL 无效",
+    "cancel": "取消",
+    "back": "返回",
+    "confirm": "确认",
+    "continue": "继续",
+    "reject": "拒绝",
+    "usd": "{{value}} 美元",
+    "next": "下一步",
+    "close": "关闭"
+  },
+  "condition": {
+    "noPersonalInfo": "我们绝不收集密钥、地址、交易、余额、哈希或个人信息",
+    "noIP": "我们绝不存储完整的 IP 地址",
+    "noSelling": "我们绝不为获利出售您的数据。绝不！",
+    "next": "下一步"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "我已阅读并同意",
+    "termsOfUse": "使用条款",
+    "createNewWallet": "创建新钱包",
+    "setupNewAccount": "设置新的 eckoWALLET 帐户",
+    "restoreWallet": "恢复钱包",
+    "restoreFromPhrase": "从助记词恢复"
+  },
+  "createPassword": {
+    "successCreate": "新密码创建成功",
+    "errorCreate": "创建钱包时出错",
+    "invalidPhrase": "恢复词无效！",
+    "importFromPhrase": "从助记词导入",
+    "createPassword": "创建密码",
+    "pastePhrase": "粘贴助记词",
+    "requiredField": "此字段为必填项。",
+    "phraseTooLong": "助记词过长。",
+    "secretRecoveryPhrase": "秘密恢复词",
+    "import": "导入",
+    "create": "创建"
+  },
+  "passwordForm": {
+    "inputPassword": "输入密码",
+    "inputConfirmPassword": "确认密码",
+    "requiredField": "此字段为必填项。",
+    "minPassword": "密码至少需包含 8 个字符。",
+    "maxPassword": "密码最多可包含 256 个字符。",
+    "passwordMismatch": "密码不匹配",
+    "newPassword": "新密码（至少 8 个字符）",
+    "confirmPassword": "确认密码",
+    "passwordWarning": "我理解我使用了不推荐的字符。建议仅使用字母 (a–z)、数字 (0–9) 和符号 _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "秘密恢复词",
+    "step1Text": "接下来请记录您的 12 个助记词。\n凭助记词可在新设备上恢复钱包。\n任何持有此助记词的人均可完全控制您的钱包，请妥善保管。\n若助记词丢失，您将无法恢复钱包，请务必备份。",
+    "step1Checkbox": "我明白若助记词丢失，将无法恢复钱包。",
+    "generating": "生成密钥对…",
+    "continue": "继续",
+    "reveal": "点击此处显示助记词",
+    "step2Text1": "秘密恢复词可简化账户备份与恢复。",
+    "step2Text2": "警告：切勿泄露恢复词。任何获得它的人均可接管您的钱包。",
+    "download": "下载",
+    "verifyTitle": "验证恢复词",
+    "verifyInstruction": "按正确顺序输入助记词以确认。",
+    "successVerify": "恢复词验证成功",
+    "invalidPhrase": "恢复词无效！",
+    "errorGeneratingKeys": "生成密钥时出错",
+    "errorCreatingWallet": "创建钱包时出错",
+    "generatingWallet": "正在创建钱包…"
+  },
+  "wallet": {
+    "netWorth": "净资产",
+    "accountBalance": "账户余额",
+    "send": "发送",
+    "receive": "接收",
+    "receiveTokens": "接收代币",
+    "buy": "购买",
+    "history": "历史记录",
+    "assets": "资产",
+    "detectedTokens": "检测到的代币",
+    "tokenList": "代币列表",
+    "kdaChainDistribution": "KDA 链分布",
+    "chainDistribution": "链分布",
+    "tokenRemoved": "代币已成功移除",
+    "removeToken": "移除代币",
+    "editToken": "编辑代币",
+    "removeTokenTitle": "移除 {{symbol}} 代币",
+    "confirmRemoveToken": "确定要移除 {{symbol}} 代币？",
+    "notTransferable": "{{contractAddress}} 无法转移！",
+    "accountDoesNotExist": "未找到：账户不存在。",
+    "balanceZero": "{{symbol}} 余额为 0。"
+  },
+  "accountActions": {
+    "shareWallet": "共享钱包",
+    "copied": "已复制！",
+    "exportRecoveryPhrase": "导出恢复词",
+    "signHashTransaction": "签署交易哈希",
+    "editAccountAlias": "编辑账户别名",
+    "setAccountAlias": "设置账户别名",
+    "removeSelectedWallet": "移除所选钱包",
+    "createWallet": "创建钱包",
+    "importWallet": "导入钱包",
+    "importHardwareWallet": "导入硬件钱包"
+  },
+  "tokenDetector": {
+    "noTokensFound": "未检测到其他代币。"
+  },
+  "aliasModal": {
+    "accountAlias": "账户别名",
+    "cancel": "取消",
+    "save": "保存",
+    "aliasChanged": "别名已成功更改"
+  },
+  "hashSignModal": {
+    "publicKey": "公钥",
+    "transactionHash": "交易哈希",
+    "insertTransactionHash": "输入交易哈希",
+    "signature": "签名",
+    "copied": "已复制！",
+    "clean": "清除",
+    "sign": "签名"
+  },
+  "popupDetailTransaction": {
+    "status": "状态",
+    "direction": "方向",
+    "symbol": "符号",
+    "quantity": "数量",
+    "gasFee": "Gas 费用",
+    "total": "总计",
+    "viewDetails": "查看详情",
+    "activityLog": "活动日志",
+    "transactionCreated": "已创建 {{amount}} {{symbol}} 交易",
+    "transactionConfirmed": "交易已确认",
+    "success": "成功",
+    "failed": "失败",
+    "finishing": "完成中…"
+  },
+  "removeWallet": {
+    "title": "确定要移除此钱包？",
+    "description": "请输入密码以确认",
+    "passwordPlaceholder": "输入密码",
+    "passwordRequired": "此字段为必填项。",
+    "passwordMinLength": "密码至少需包含 8 个字符。",
+    "passwordMaxLength": "密码最多可包含 256 个字符。",
+    "invalidPassword": "密码无效",
+    "cancel": "取消",
+    "remove": "移除"
+  },
+  "header": {
+    "selectNetwork": "选择网络",
+    "manageNetworks": "管理网络",
+    "myWallets": "我的钱包",
+    "removeWalletTitle": "移除钱包",
+    "createAccountSuccess": "账户创建成功！",
+    "createAccountFail": "账户创建失败",
+    "copied": "已复制！"
+  },
+  "signIn": {
+    "loginTitle": "登录到您的账户",
+    "passwordPlaceholder": "输入密码",
+    "passwordTitle": "密码",
+    "signInButton": "登录",
+    "invalidPassword": "密码无效",
+    "required": "此字段为必填项。",
+    "minLength": "密码至少需包含 8 个字符。",
+    "maxLength": "密码最多可包含 256 个字符。",
+    "initWalletError": "初始化钱包时出错"
+  },
+  "settings": {
+    "contacts": "联系人",
+    "language": "语言",
+    "languageDesc": "选择钱包语言",
+    "contactsDesc": "管理您的联系人",
+    "networks": "网络",
+    "networksDesc": "添加或编辑 RPC 网络",
+    "connectedSites": "已连接网站",
+    "connectedSitesDesc": "查看并管理已连接的网站",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "通过 WalletConnect 连接",
+    "txSettings": "交易设置",
+    "txSettingsDesc": "设置 Gas 首选项",
+    "exportPhrase": "导出恢复词",
+    "exportPhraseDesc": "保护您的钱包",
+    "editPassword": "更改密码",
+    "editPasswordDesc": "更改钱包密码",
+    "2fa": "双因素认证",
+    "2faDesc": "管理 2FA 设置",
+    "expandView": "扩展视图",
+    "expandViewDesc": "在新窗口中打开 eckoWALLET",
+    "theme": "主题",
+    "themeDesc": "设置钱包主题",
+    "lock": "锁定钱包",
+    "lockDesc": "保护您的钱包",
+    "lockSettings": "自动锁定",
+    "lockSettingsDesc": "更改安全设置",
+    "discord": "加入 Discord",
+    "website": "访问我们的网站",
+    "terms": "使用条款",
+    "privacy": "隐私政策",
+    "connectedSitesPage": {
+      "title": "已连接网站",
+      "removeSiteTitle": "移除网站",
+      "removeSiteConfirmText": "确定要移除此站点：",
+      "removeSiteSuccess": "网站已成功移除。"
+    },
+    "contactsPage": {
+      "title": "联系人",
+      "newContactTitle": "新建联系人",
+      "addNewContact": "添加新联系人",
+      "noContacts": "暂无联系人"
+    },
+    "contactForm": {
+      "enterAlias": "输入别名",
+      "aliasPlaceholder": "例如：张三",
+      "accountNameTitle": "账户名称",
+      "accountNamePlaceholder": "输入账户名称",
+      "scanQrTitle": "扫描二维码",
+      "scanQrDescription": "将二维码置于摄像头前",
+      "buttonCancel": "取消",
+      "buttonSave": "保存",
+      "successContactAdded": "联系人添加成功",
+      "errorNetwork": "网络错误。",
+      "copied": "已复制！",
+      "requiredField": "此字段为必填项。",
+      "invalidData": "数据无效",
+      "aliasMaxLength": "别名最多 256 个字符。",
+      "accountNameMaxLength": "账户名称最多 1000 个字符。"
+    },
+    "contactInfo": {
+      "copied": "已复制！",
+      "contactRemoved": "联系人已移除",
+      "accountName": "账户名称",
+      "editContact": "编辑联系人",
+      "editTitle": "编辑账户",
+      "delete": "删除",
+      "deleteContactTitle": "删除联系人",
+      "removeContact": "确定要删除此联系人？",
+      "confirmRemove": "确定要移除此联系人？",
+      "cancel": "取消",
+      "confirm": "确认"
+    },
+    "editPasswordPage": {
+      "title": "更改密码",
+      "passwordChanged": "密码修改成功",
+      "cannotUpdatePassword": "无法更新密码设置",
+      "save": "保存"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "输入密码以继续",
+      "inputPlaceholder": "输入密码",
+      "password": "密码",
+      "errorRequired": "此字段为必填项。",
+      "errorInvalid": "密码无效。",
+      "continue": "继续",
+      "correctPassword": "密码正确，请稍候…"
+    },
+    "exportSeedPhrase": {
+      "title": "导出恢复词",
+      "copied": "已复制！",
+      "description": "秘密恢复词可简化账户备份与恢复。",
+      "warning": "切勿泄露恢复词。任何持有它的人均可接管您的钱包。",
+      "copyKeyphrase": "复制助记词",
+      "download": "下载"
+    },
+    "lockSettingsPage": {
+      "title": "自动锁定设置",
+      "saved": "设置已保存",
+      "required": "此字段为必填项。",
+      "placeholder": "选择锁定延迟",
+      "selectTitle": "自动锁定",
+      "restore": "恢复默认",
+      "save": "保存"
+    },
+    "networksPage": {
+      "title": "网络",
+      "network": "网络",
+      "addNew": "添加新网络",
+      "editSuccess": "网络修改成功",
+      "addSuccess": "网络添加成功",
+      "errorUrl": "URL 已存在",
+      "deleteSuccess": "网络移除成功",
+      "remove": "移除",
+      "save": "保存",
+      "confirmRemove": "确定要移此网络？",
+      "confirmRemoveDesc": "确定要移除此网络？",
+      "placeholderName": "输入网络名称",
+      "placeholderUrl": "输入 RPC URL",
+      "placeholderExplorer": "输入区块链浏览器 URL",
+      "placeholderNetworkId": "输入网络 ID",
+      "titleName": "网络名称",
+      "titleUrl": "RPC URL",
+      "titleExplorer": "浏览器 URL",
+      "titleNetworkId": "网络 ID",
+      "nameMax": "网络名称最多 1000 个字符。",
+      "urlMax": "RPC URL 最多 1000 个字符。",
+      "explorerMax": "浏览器 URL 最多 1000 个字符。",
+      "networkIdMax": "网络 ID 最多 1000 个字符。"
+    },
+    "selectTheme": {
+      "title": "选择主题"
+    },
+    "txSettingsPage": {
+      "title": "交易设置",
+      "gasLimit": "Gas 限制",
+      "gasLimitPlaceholder": "输入 Gas 限制",
+      "finishCrossChain": "完成跨链 Gas 池",
+      "finishCrossChainPlaceholder": "输入跨链 Gas 池",
+      "crossChainGasLimit": "跨链 Gas 限制",
+      "crossChainGasLimitPlaceholder": "输入跨链 Gas 限制",
+      "crossChainGasPrice": "跨链 Gas 价格",
+      "crossChainGasPricePlaceholder": "输入跨链 Gas 价格",
+      "save": "保存",
+      "restoreDefault": "恢复默认",
+      "successSave": "设置保存成功",
+      "requiredField": "此字段为必填项。",
+      "invalidValue": "值无效"
+    },
+    "2faPage": {
+      "title": "双因素认证",
+      "description": "双因素认证已启用。",
+      "disableButton": "禁用",
+      "successDisable": "2FA 已成功禁用",
+      "installApp": "安装应用",
+      "orSimilar": "或类似应用",
+      "scanQRCode": "扫描以下 QR 码：",
+      "enter6Digits": "输入 6 位代码",
+      "invalidCode": "代码无效。",
+      "saveButton": "保存",
+      "setupSuccess": "2FA 已成功启用"
+    },
+    "walletConnectPage": {
+      "title": "WalletConnect",
+      "selectAccounts": "选择账户",
+      "invalidUrl": "URL 无效",
+      "disconnectSuccess": "断开连接成功",
+      "noActiveSessions": "无活动会话",
+      "activeSessions": "活动会话",
+      "expiry": "到期：",
+      "removeConnection": "移除连接",
+      "removeConfirmation": "确定要移除此 WalletConnect 连接？",
+      "newConnection": "新连接",
+      "addConnection": "添加新 WalletConnect",
+      "inputUri": "输入 URI",
+      "code": "代码",
+      "continue": "继续"
+    }
+  },
+  "buy": {
+    "title": "购买",
+    "description": "加密货币的买卖通过第三方 Onramper 服务进行。\n\neckoWALLET 致力于提供高安全性，但无法保证第三方服务的安全性或隐私。",
+    "cancel": "取消",
+    "confirm": "确认",
+    "error": {
+      "noAddress": "钱包地址不可用",
+      "generic": "无法连接服务，请稍后重试。"
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "钱包分析",
+    "dexAnalytics": "DEX 分析",
+    "portfolioValue": "资产组合价值",
+    "startTracking": "开始跟踪",
+    "trackPortfolioTitle": "跟踪资产组合价值",
+    "trackPortfolioStart": "开始跟踪余额",
+    "trackPortfolioDesc1": "确认后将开始跟踪您的账户余额。",
+    "trackPortfolioDesc2": "继续？",
+    "confirm": "确认",
+    "confirming": "确认中…",
+    "disclaimerTitle": "注意！",
+    "disclaimerText": "此页面数据处于 BETA 阶段，按“原样”提供。"
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "网络无效",
+      "signingCmdError": "签名错误，请检查负载",
+      "signingCmdGenericError": "签名错误",
+      "rejectedByUser": "已被用户拒绝",
+      "userRejected": "用户已拒绝。",
+      "signedCommand": "已签名命令",
+      "hashToSign": "签名的哈希：",
+      "pleaseEnableLedger": "请启用盲签名并先按照 Ledger 指示操作",
+      "capabilities": "权限",
+      "close": "关闭",
+      "reject": "拒绝",
+      "confirm": "确认"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "快速签名请求",
+      "code": "代码",
+      "capabilities": "权限",
+      "rawData": "原始数据",
+      "command": "命令 {{index}}/{{total}}",
+      "hashToSign": "签名的哈希 ({{count}}/{{total}})：",
+      "ledgerInstructions": "请启用盲签名并按照 Ledger 指示操作",
+      "close": "关闭",
+      "reject": "拒绝",
+      "confirm": "确认",
+      "error.invalidStructure": "快速签名失败：结构无效",
+      "error.pubKeyNotFound": "快速签名失败：未找到公钥",
+      "error.ledger": "Ledger 签名失败"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "导入硬件钱包",
+      "selectDevice": "选择硬件钱包",
+      "ledgerInstructions": "将 Ledger 连接到电脑，打开 Kadena 应用并解锁",
+      "connect": "连接",
+      "confirm": "导入",
+      "success": "硬件钱包导入成功",
+      "error": {
+        "duplicate": "要导入的账户已存在。",
+        "network": "网络错误。",
+        "invalid": "数据无效"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "从 Ledger 导入",
+      "instruction": "连接 Ledger，打开 Kadena 应用并解锁",
+      "continue": "继续",
+      "publicKey": "公钥",
+      "account": "账户",
+      "confirm": "确认导入",
+      "success": "账户导入成功。",
+      "error": {
+        "duplicate": "要导入的账户已存在。",
+        "network": "获取账户信息时网络错误",
+        "invalid": "数据无效"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "导入代币",
+      "contractLabel": "代币合约地址",
+      "symbolLabel": "代币符号",
+      "placeholder": {
+        "contract": "输入合约地址",
+        "symbol": "输入符号"
+      },
+      "add": "添加代币",
+      "edit": "编辑代币",
+      "success": "代币保存成功",
+      "error": {
+        "duplicate": "代币已存在",
+        "notFound": "未在 {{network}} 网络上找到 {{contract}} 数据"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "导入钱包",
+    "form": {
+      "accountName": {
+        "title": "账户名称",
+        "placeholder": "输入账户名称"
+      },
+      "chainId": {
+        "title": "链 ID"
+      },
+      "secretKey": {
+        "title": "私钥",
+        "placeholder": "输入私钥"
+      }
+    },
+    "validation": {
+      "required": "此字段为必填项。",
+      "invalidData": "数据无效",
+      "startsWithK": "账户名称必须以 “k:” 开头",
+      "accountName": {
+        "maxLength": "账户名称最多 1000 个字符。"
+      },
+      "secretKey": {
+        "maxLength": "私钥最多 1000 个字符。"
+      }
+    },
+    "modal": {
+      "scanTitle": "扫描二维码",
+      "scanBody": "将二维码置于摄像头前"
+    },
+    "button": {
+      "import": "导入"
+    },
+    "toast": {
+      "importSuccess": "账户导入成功。",
+      "duplicateError": "要导入的账户已存在。",
+      "invalidAccountData": "账户数据无效",
+      "multipleKeys": "不支持多个密钥对",
+      "invalidData": "数据无效",
+      "networkError": "网络错误。"
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "我已有私钥。",
+      "prompt": "导入现有私钥"
+    },
+    "button": {
+      "import": "导入"
+    },
+    "image": {
+      "alt": "导入图标"
+    }
+  },
+  "nft": {
+    "header": "您的藏品",
+    "noOwned": "暂无 NFT"
+  },
+  "sendTransactions": {
+    "header": "发送 {{symbol}} 交易"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger 签名成功",
+    "ledgerSignFailed": "Ledger 签名失败或被拒绝",
+    "transferSuccess": "转账成功",
+    "transferFailed": "转账失败",
+    "transactionSent": "交易发送成功！请在历史记录中查看",
+    "networkError": "网络错误。",
+    "loadingTop": "请勿关闭此窗口",
+    "loadingBottom": "交易完成后将自动跳转",
+    "labelReceiver": "接收者",
+    "labelAmount": "数量",
+    "labelGasLimit": "Gas 限制",
+    "labelGasPrice": "Gas 价格",
+    "labelGasFee": "Gas 费用",
+    "labelTotal": "总计",
+    "warningCrossChainLine1": "您正在进行跨链转账",
+    "warningCrossChainLine2": "此操作将比平常花费更多时间",
+    "warningNonKAccountLine1": "您正在向非 “k:” 开头的账户发送！",
+    "warningNonKAccountLine2": "确定要继续？"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} 无法转移！",
+    "form": {
+      "sourceChainId": {
+        "title": "源 链 ID"
+      },
+      "destinationAccount": {
+        "title": "目标账户"
+      },
+      "targetChainId": {
+        "title": "目标 链 ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "目标账户最多 1000 个字符。"
+    },
+    "balanceLabel": "{{symbol}} 链余额",
+    "recent": "最近",
+    "contacts": "联系人",
+    "confirm": {
+      "warningTitle": "警告",
+      "publicKeyTitle": "公钥",
+      "publicKeyPlaceholder": "输入公钥",
+      "predicateTitle": "条件",
+      "predicatePlaceholder": "输入条件"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "无法发送给自己",
+    "invalidGasLimit": "Gas 限制无效",
+    "gasLimitInteger": "Gas 限制必须是整数",
+    "invalidGasPrice": "Gas 价格无效",
+    "insufficientFundsGas": "Gas 费用不足",
+    "newAddressDetected": "检测到新地址！请添加到联系人",
+    "tokenNotExists": "{{contractAddress}} 在 {{chainId}} 链上不存在！",
+    "transactionParameters": "交易参数",
+    "estimatedGas": "预计 Gas {{gas}}",
+    "speed": "{{speed}} 速度",
+    "modal": {
+      "confirmTitle": "确认发送",
+      "gasParametersTitle": "Gas 参数"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gas 限制"
+      },
+      "gasPrice": {
+        "title": "Gas 价格"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "发送数量",
+    "button": {
+      "half": "一半",
+      "max": "最大"
+    },
+    "error": {
+      "insufficientFunds": "余额不足",
+      "invalidAmount": "数量无效"
+    },
+    "balance": "余额：{{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp 标志",
+    "sendTransaction": "发送交易",
+    "destinationNotFound": "找不到目标账户"
+  },
+  "history": {
+    "header": "历史",
+    "modal": {
+      "confirmSendTransaction": "确认发送交易"
+    }
+  },
+  "activities": {
+    "detailsTitle": "交易详情"
+  },
+  "receiveModal": {
+    "accountNameTitle": "账户名称"
+  },
+  "activityList": {
+    "loading": "加载中…",
+    "today": "今天",
+    "yesterday": "昨天",
+    "noTransactions": "您还没有交易"
+  },
+  "statusFilter": {
+    "modalTitle": "状态",
+    "prefix": "状态：",
+    "options": {
+      "all": "全部",
+      "in": "接收",
+      "out": "发送",
+      "pending": "待处理"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "代币",
+    "prefix": "资产：",
+    "options": {
+      "all": "全部"
+    }
+  },
+  "footer": {
+    "wallet": "钱包",
+    "analytics": "分析",
+    "nft": "NFT",
+    "settings": "设置"
+  }
+}

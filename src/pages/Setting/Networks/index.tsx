@@ -14,6 +14,7 @@ import { Body } from '../../SendTransactions/styles';
 import EditNetwork from './views/EditNetwork';
 import ViewNetwork from './views/ViewNetwork';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 const networkDefault = {
   name: '',
@@ -21,7 +22,9 @@ const networkDefault = {
   explorer: '',
   networkId: '',
 };
+
 const PageNetworks = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const { theme } = useAppThemeContext();
   const networks = useAppSelector((state) => state.extensions.networks);
@@ -39,6 +42,7 @@ const PageNetworks = () => {
       setIsEdit(false);
     }
   };
+
   const openMode = (isDefault, newNetwork) => {
     setNetwork({ ...newNetwork });
     if (isDefault) {
@@ -50,12 +54,14 @@ const PageNetworks = () => {
     }
     setIsNormal(false);
   };
+
   const addNewNetwork = () => {
     setIsView(false);
     setIsEdit(true);
     setIsNormal(false);
     setNetwork(networkDefault);
   };
+
   const handleClickPopup = () => {
     setIsNormal(true);
     setIsView(false);
@@ -88,7 +94,7 @@ const PageNetworks = () => {
   return (
     <SettingBody>
       <div style={{ padding: '0 24px' }}>
-        <NavigationHeader title={isNormal ? 'Networks' : 'Network'} onBack={goBack} />
+        <NavigationHeader title={isNormal ? t('settings.networksPage.title') : t('settings.networksPage.network')} onBack={goBack} />
       </div>
       <Body>
         {isEdit && <EditNetwork network={network} onBack={goBack} isEdit onClickPopup={handleClickPopup} />}
@@ -96,11 +102,12 @@ const PageNetworks = () => {
         <ContactBody>{isNormal && renderNormalMode()}</ContactBody>
         {isNormal && (
           <StickyFooter>
-            <Button size="full" label="Add New Network" onClick={addNewNetwork} style={{ width: '90%', maxWidth: 890 }} />
+            <Button size="full" label={t('settings.networksPage.addNew')} onClick={addNewNetwork} style={{ width: '90%', maxWidth: 890 }} />
           </StickyFooter>
         )}
       </Body>
     </SettingBody>
   );
 };
+
 export default PageNetworks;
