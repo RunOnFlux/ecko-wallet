@@ -6,6 +6,7 @@ import images from 'src/images';
 import { setIsCreateSeedPhrase } from 'src/stores/slices/extensions';
 import { TERM_LINK } from 'src/utils/config';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 export const WelcomeBackground = styled.div`
   display: flex;
@@ -42,8 +43,7 @@ const DivBody = styled.div`
 const Term = styled.a`
   font-weight: bold;
   text-decoration: none;
-    color: #ffffff;
-  }
+  color: #ffffff;
 `;
 const TermsBr = styled.br`
   @media (min-width: 410px) {
@@ -52,35 +52,38 @@ const TermsBr = styled.br`
 `;
 const StartButton = styled(DivFlex)`
   background: linear-gradient(114.43deg, #293445 5.17%, #292a45 65.62%);
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   border-radius: 25px;
-  padding: 25px 0px;
+  padding: 25px 16px;
   gap: 13px;
   img {
     width: 22px;
   }
 `;
 
-const getCheckboxLabel = () => (
-  <CommonLabel color="white">
-    I have read and agree to the&nbsp;
-    <TermsBr />
-    <Term href={TERM_LINK} target="_blank" rel="noreferrer">
-      Terms of Use
-    </Term>
-  </CommonLabel>
-);
-
 const InitSeedPhrase = () => {
   const history = useHistory();
+  const { t } = useTranslation();
   const [isChecked, setIsChecked] = useState(false);
+
+  const getCheckboxLabel = () => (
+    <CommonLabel color="white">
+      {t('initSeedPhrase.agreeTerms')}
+      <TermsBr />
+      <Term href={TERM_LINK} target="_blank" rel="noreferrer">
+        {t('initSeedPhrase.termsOfUse')}
+      </Term>
+    </CommonLabel>
+  );
+
   const goToCreatePassword = (isHaveSP) => {
     if (isChecked) {
       setIsCreateSeedPhrase(isHaveSP);
       history.push('/create-password');
     }
   };
+
   return (
     <WelcomeBackground>
       <Div>
@@ -94,18 +97,18 @@ const InitSeedPhrase = () => {
           <img src={images.wallet.startUser} />
           <DivFlex flexDirection="column">
             <CommonLabel color="#fff" fontWeight={600} fontSize={18}>
-              Create New Wallet
+              {t('initSeedPhrase.createNewWallet')}
             </CommonLabel>
-            <SecondaryLabel>Setup new eckoWALLET account</SecondaryLabel>
+            <SecondaryLabel>{t('initSeedPhrase.setupNewAccount')}</SecondaryLabel>
           </DivFlex>
         </StartButton>
         <StartButton onClick={() => goToCreatePassword(true)} marginTop="20px" style={{ cursor: isChecked ? 'pointer' : 'default' }}>
           <img src={images.wallet.arrowTransfer} />
           <DivFlex flexDirection="column">
             <CommonLabel color="#fff" fontWeight={600} fontSize={18}>
-              Restore Wallet
+              {t('initSeedPhrase.restoreWallet')}
             </CommonLabel>
-            <SecondaryLabel>Restore from recovery phrase</SecondaryLabel>
+            <SecondaryLabel>{t('initSeedPhrase.restoreFromPhrase')}</SecondaryLabel>
           </DivFlex>
         </StartButton>
       </div>

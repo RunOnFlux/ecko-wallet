@@ -1,0 +1,646 @@
+{
+  "select_language": "Välj språk",
+  "home": {
+    "startNow": "Börja nu"
+  },
+  "common": {
+    "requiredField": "Detta fält är obligatoriskt.",
+    "invalidData": "Ogiltig data",
+    "invalidUrl": "Ogiltig URL",
+    "cancel": "Avbryt",
+    "back": "Tillbaka",
+    "confirm": "Bekräfta",
+    "continue": "Fortsätt",
+    "reject": "Avvisa",
+    "usd": "{{value}} USD",
+    "next": "Nästa",
+    "close": "Stäng"
+  },
+  "condition": {
+    "noPersonalInfo": "Vi samlar aldrig in nycklar, adresser, transaktioner, saldon, hashvärden eller andra personuppgifter",
+    "noIP": "Vi samlar aldrig in din fullständiga IP-adress",
+    "noSelling": "Vi säljer aldrig data för vinst. Aldrig!",
+    "next": "Nästa"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Jag godkänner",
+    "termsOfUse": "Användarvillkoren",
+    "createNewWallet": "Skapa ny plånbok",
+    "setupNewAccount": "Ställ in nytt eckoWALLET-konto",
+    "restoreWallet": "Återställ plånbok",
+    "restoreFromPhrase": "Återställ med återställningsfras"
+  },
+  "createPassword": {
+    "successCreate": "Lösenord skapat",
+    "errorCreate": "Fel vid skapande av plånbok",
+    "invalidPhrase": "Ogiltig återställningsfras!",
+    "importFromPhrase": "Importera med återställningsfras",
+    "createPassword": "Skapa lösenord",
+    "pastePhrase": "Klistra in återställningsfras",
+    "requiredField": "Detta fält är obligatoriskt.",
+    "phraseTooLong": "Återställningsfrasen är för lång.",
+    "secretRecoveryPhrase": "Återställningsfras",
+    "import": "Importera",
+    "create": "Skapa"
+  },
+  "passwordForm": {
+    "inputPassword": "Ange lösenord",
+    "inputConfirmPassword": "Bekräfta lösenord",
+    "requiredField": "Detta fält är obligatoriskt.",
+    "minPassword": "Lösenordet måste vara minst 8 tecken.",
+    "maxPassword": "Lösenordet får vara högst 256 tecken.",
+    "passwordMismatch": "Lösenorden matchar inte",
+    "newPassword": "Nytt lösenord (minst 8 tecken)",
+    "confirmPassword": "Bekräfta lösenord",
+    "passwordWarning": "Jag förstår att jag använt osäkra tecken. Det rekommenderas att endast använda bokstäver (a–z), siffror (0–9) och specialtecken _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Återställningsfras",
+    "step1Text": "I nästa steg skriver du ner din 12-ords återställningsfras.\nFrasen låter dig återställa plånboken på en ny enhet.\nVem som helst med denna fras kan ta över din plånbok; håll den säker och privat.\nOm du förlorar den kan ingen hjälpa dig att återställa den, så spara den noggrant.",
+    "step1Checkbox": "Jag förstår att jag inte kan återställa plånboken utan denna fras.",
+    "generating": "Genererar nycklar...",
+    "continue": "Fortsätt",
+    "reveal": "Klicka för att visa de hemliga orden",
+    "step2Text1": "Återställningsfrasen gör det enkelt att säkerhetskopiera och återställa ditt konto.",
+    "step2Text2": "Varning: dela aldrig din återställningsfras. Vem som helst med den kan ta över din plånbok för alltid.",
+    "download": "Ladda ner",
+    "verifyTitle": "Verifiera återställningsfras",
+    "verifyInstruction": "Bekräfta frasen genom att skriva orden i rätt ordning.",
+    "successVerify": "Återställningsfras verifierad",
+    "invalidPhrase": "Ogiltig återställningsfras!",
+    "errorGeneratingKeys": "Fel vid generering av plånboksnycklar",
+    "errorCreatingWallet": "Fel vid skapande av plånbok",
+    "generatingWallet": "Genererar plånbok..."
+  },
+  "wallet": {
+    "netWorth": "NETTOVÄRDE",
+    "accountBalance": "KONTOSALDO",
+    "send": "Skicka",
+    "receive": "Ta emot",
+    "receiveTokens": "Ta emot tokens",
+    "buy": "Köp",
+    "history": "Historik",
+    "assets": "TILLGÅNGAR",
+    "detectedTokens": "Upptäckta tokens",
+    "tokenList": "Token-lista",
+    "kdaChainDistribution": "KDA Chain-fördelning",
+    "chainDistribution": "Chain-fördelning",
+    "tokenRemoved": "Token borttagen",
+    "removeToken": "Ta bort token",
+    "editToken": "Redigera token",
+    "removeTokenTitle": "Ta bort {{symbol}}-token",
+    "confirmRemoveToken": "Vill du ta bort {{symbol}}-token?",
+    "notTransferable": "{{contractAddress}} kan inte överföras!",
+    "accountDoesNotExist": "Finns inte: detta konto finns inte.",
+    "balanceZero": "{{symbol}}-saldo är 0."
+  },
+  "accountActions": {
+    "shareWallet": "Dela plånbok",
+    "copied": "Kopierat!",
+    "exportRecoveryPhrase": "Exportera återställningsfras",
+    "signHashTransaction": "Signera hash-transaktion",
+    "editAccountAlias": "Redigera kontonamn",
+    "setAccountAlias": "Sätt kontonamn",
+    "removeSelectedWallet": "Ta bort vald plånbok",
+    "createWallet": "Skapa plånbok",
+    "importWallet": "Importera plånbok",
+    "importHardwareWallet": "Importera hårdvaruplånbok"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Inga andra tokens hittades för detta konto."
+  },
+  "aliasModal": {
+    "accountAlias": "Kontonamn",
+    "cancel": "Avbryt",
+    "save": "Spara",
+    "aliasChanged": "Kontonamn uppdaterat"
+  },
+  "hashSignModal": {
+    "publicKey": "Din publika nyckel",
+    "transactionHash": "Transaktions-hash",
+    "insertTransactionHash": "Ange transaktions-hash",
+    "signature": "Signatur",
+    "copied": "Kopierat!",
+    "clean": "Rensa",
+    "sign": "Signera"
+  },
+  "popupDetailTransaction": {
+    "status": "Status",
+    "direction": "Riktning",
+    "symbol": "Symbol",
+    "quantity": "Kvantitet",
+    "gasFee": "Gasavgift",
+    "total": "Totalt",
+    "viewDetails": "Visa detaljer",
+    "activityLog": "Aktivitetslogg",
+    "transactionCreated": "Transaktion skapad för {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transaktion bekräftad",
+    "success": "Lyckad",
+    "failed": "Misslyckad",
+    "finishing": "Avslutar..."
+  },
+  "removeWallet": {
+    "title": "Vill du verkligen ta bort denna plånbok?",
+    "description": "Ange lösenord för att bekräfta",
+    "passwordPlaceholder": "Ange lösenord",
+    "passwordRequired": "Detta fält är obligatoriskt.",
+    "passwordMinLength": "Lösenordet måste vara minst 8 tecken.",
+    "passwordMaxLength": "Lösenordet får vara högst 256 tecken.",
+    "invalidPassword": "Ogiltigt lösenord",
+    "cancel": "Avbryt",
+    "remove": "Ta bort"
+  },
+  "header": {
+    "selectNetwork": "Välj nätverk",
+    "manageNetworks": "Hantera nätverk",
+    "myWallets": "Mina plånböcker",
+    "removeWalletTitle": "Ta bort plånbok",
+    "createAccountSuccess": "Konto skapat!",
+    "createAccountFail": "Misslyckades med att skapa konto",
+    "copied": "Kopierat!"
+  },
+  "signIn": {
+    "loginTitle": "Logga in på ditt konto",
+    "passwordPlaceholder": "Ange lösenord",
+    "passwordTitle": "Lösenord",
+    "signInButton": "Logga in",
+    "invalidPassword": "Ogiltigt lösenord",
+    "required": "Detta fält är obligatoriskt.",
+    "minLength": "Lösenordet måste vara minst 8 tecken.",
+    "maxLength": "Lösenordet får vara högst 256 tecken.",
+    "initWalletError": "Fel vid initiering av plånbok"
+  },
+  "settings": {
+    "contacts": "Kontakter",
+    "language": "Språk",
+    "languageDesc": "Välj plånbokens språk",
+    "contactsDesc": "Hantera dina kontakter",
+    "networks": "Nätverk",
+    "networksDesc": "Lägg till eller redigera anpassade RPC-nätverk",
+    "connectedSites": "Anslutna webbplatser",
+    "connectedSitesDesc": "Visa och hantera anslutna webbplatser",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "Anslut via WalletConnect",
+    "txSettings": "Transaktionsinställningar",
+    "txSettingsDesc": "Ställ in gaspreferenser",
+    "exportPhrase": "Exportera återställningsfras",
+    "exportPhraseDesc": "Skydda din plånbok",
+    "editPassword": "Ändra lösenord",
+    "editPasswordDesc": "Uppdatera plånbokens lösenord",
+    "2fa": "2FA",
+    "2faDesc": "Hantera tvåfaktorsautentisering",
+    "expandView": "Expandera vy",
+    "expandViewDesc": "Öppna eckoWALLET i nytt fönster",
+    "theme": "Tema",
+    "themeDesc": "Välj plånbokstema",
+    "lock": "Lås plånbok",
+    "lockDesc": "Skydda din plånbok",
+    "lockSettings": "Autolåsningsinställningar",
+    "lockSettingsDesc": "Ändra säkerhetsinställningar",
+    "discord": "Gå till Discord",
+    "website": "Besök webbplats",
+    "terms": "Användarvillkor",
+    "privacy": "Integritetspolicy",
+    "connectedSitesPage": {
+      "title": "Anslutna webbplatser",
+      "removeSiteTitle": "Ta bort webbplats",
+      "removeSiteConfirmText": "Vill du ta bort",
+      "removeSiteSuccess": "Webbplats borttagen"
+    },
+    "contactsPage": {
+      "title": "Kontakter",
+      "newContactTitle": "Nytt konto",
+      "addNewContact": "Lägg till ny kontakt",
+      "noContacts": "Inga kontakter"
+    },
+    "contactForm": {
+      "enterAlias": "Ange smeknamn",
+      "aliasPlaceholder": "t.ex. David",
+      "accountNameTitle": "Kontonamn",
+      "accountNamePlaceholder": "Kontonamn",
+      "scanQrTitle": "Skanna QR-kod",
+      "scanQrDescription": "Håll QR-koden framför kameran",
+      "buttonCancel": "Avbryt",
+      "buttonSave": "Spara",
+      "successContactAdded": "Kontakt tillagd",
+      "errorNetwork": "Nätverksfel.",
+      "copied": "Kopierat!",
+      "requiredField": "Detta fält är obligatoriskt.",
+      "invalidData": "Ogiltig data",
+      "aliasMaxLength": "Smeknamnet får vara högst 256 tecken.",
+      "accountNameMaxLength": "Kontonamnet får vara högst 1000 tecken."
+    },
+    "contactInfo": {
+      "copied": "Kopierat!",
+      "contactRemoved": "Kontakt borttagen",
+      "accountName": "KONTONAMN",
+      "editContact": "Redigera kontakt",
+      "editTitle": "Redigera konto",
+      "delete": "Ta bort",
+      "deleteContactTitle": "Ta bort kontakt",
+      "removeContact": "Ta bort kontakt?",
+      "confirmRemove": "Vill du ta bort denna kontakt?",
+      "cancel": "Avbryt",
+      "confirm": "Bekräfta"
+    },
+    "editPasswordPage": {
+      "title": "Ändra lösenord",
+      "passwordChanged": "Lösenord ändrat",
+      "cannotUpdatePassword": "Kan inte uppdatera lösenord",
+      "save": "Spara"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Ange lösenord för att fortsätta",
+      "inputPlaceholder": "Ange lösenord",
+      "password": "Lösenord",
+      "errorRequired": "Detta fält är obligatoriskt.",
+      "errorInvalid": "Ogiltigt lösenord.",
+      "continue": "Fortsätt",
+      "correctPassword": "Lösenord korrekt, vänligen vänta..."
+    },
+    "exportSeedPhrase": {
+      "title": "Exportera återställningsfras",
+      "copied": "Kopierat!",
+      "description": "Återställningsfrasen gör det enkelt att säkerhetskopiera och återställa ditt konto.",
+      "warning": "Dela aldrig din återställningsfras. Vem som helst med den kan ta över din plånbok.",
+      "copyKeyphrase": "Kopiera fras",
+      "download": "Ladda ner"
+    },
+    "lockSettingsPage": {
+      "title": "Autolåsningsinställningar",
+      "saved": "Inställningar sparade",
+      "required": "Detta fält är obligatoriskt.",
+      "placeholder": "Välj autolås-tid",
+      "selectTitle": "Autolås-tid",
+      "restore": "Återställ standard",
+      "save": "Spara"
+    },
+    "networksPage": {
+      "title": "Nätverk",
+      "network": "Nätverk",
+      "addNew": "Lägg till nytt nätverk",
+      "editSuccess": "Nätverk uppdaterat",
+      "addSuccess": "Nätverk tillagt",
+      "errorUrl": "URL finns redan",
+      "deleteSuccess": "Nätverk borttaget",
+      "remove": "Ta bort",
+      "save": "Spara",
+      "confirmRemove": "Ta bort detta nätverk?",
+      "confirmRemoveDesc": "Vill du ta bort detta nätverk?",
+      "placeholderName": "Ange nätverksnamn",
+      "placeholderUrl": "Ange ny RPC-URL",
+      "placeholderExplorer": "Ange blockutforskar-URL",
+      "placeholderNetworkId": "Ange nätverks-ID",
+      "titleName": "Nätverksnamn",
+      "titleUrl": "Ny RPC-URL",
+      "titleExplorer": "Blockutforskar-URL",
+      "titleNetworkId": "Nätverks-ID",
+      "nameMax": "Nätverksnamnet får vara högst 1000 tecken.",
+      "urlMax": "RPC-URL får vara högst 1000 tecken.",
+      "explorerMax": "Blockutforskar-URL får vara högst 1000 tecken.",
+      "networkIdMax": "Nätverks-ID får vara högst 1000 tecken."
+    },
+    "selectTheme": {
+      "title": "Välj tema"
+    },
+    "txSettingsPage": {
+      "title": "Transaktionsinställningar",
+      "gasLimit": "Gasgräns",
+      "gasLimitPlaceholder": "Ange gasgräns",
+      "finishCrossChain": "Slutför Cross-chain Gas Station",
+      "finishCrossChainPlaceholder": "Ange Cross-chain Gas Station",
+      "crossChainGasLimit": "Cross-chain gasgräns",
+      "crossChainGasLimitPlaceholder": "Ange cross-chain gasgräns",
+      "crossChainGasPrice": "Cross-chain gaspris",
+      "crossChainGasPricePlaceholder": "Ange cross-chain gaspris",
+      "save": "Spara",
+      "restoreDefault": "Återställ standard",
+      "successSave": "Inställningar sparade",
+      "requiredField": "Detta fält är obligatoriskt.",
+      "invalidValue": "Ogiltigt värde"
+    },
+    "2faPage": {
+      "title": "Tvåfaktorsautentisering",
+      "description": "Tvåfaktorsautentisering är redan aktiverad.",
+      "disableButton": "Inaktivera",
+      "successDisable": "2FA inaktiverat",
+      "installApp": "Installera app",
+      "orSimilar": "eller liknande appar",
+      "scanQRCode": "Skanna QR-koden nedan:",
+      "enter6Digits": "Ange 6-siffrig kod",
+      "invalidCode": "Ogiltig kod.",
+      "saveButton": "Spara",
+      "setupSuccess": "2FA konfigurerat"
+    },
+    "walletConnectPage": {
+      "title": "WalletConnect",
+      "selectAccounts": "Välj konton",
+      "invalidUrl": "Ogiltig URL",
+      "disconnectSuccess": "Fråga om frånkoppling skickad",
+      "noActiveSessions": "INGA AKTIVA SÄSONGER",
+      "activeSessions": "AKTIVA SÄSONGER",
+      "expiry": "Upphör:",
+      "removeConnection": "Ta bort anslutning",
+      "removeConfirmation": "Vill du ta bort denna WalletConnect-anslutning?",
+      "newConnection": "Ny anslutning",
+      "addConnection": "Lägg till WalletConnect",
+      "inputUri": "Ange URI",
+      "code": "Kod",
+      "continue": "Fortsätt"
+    }
+  },
+  "buy": {
+    "title": "Köp",
+    "description": "Köp och försäljning av kryptovalutor hanteras av en tredjepartstjänst (Onramper).\n\neckoWALLET följer högsta säkerhetsstandard, men kan inte garantera säkerheten eller integriteten hos externa tjänster.",
+    "cancel": "Avbryt",
+    "confirm": "Bekräfta",
+    "error": {
+      "noAddress": "Plånboksadress ej tillgänglig",
+      "generic": "Kan inte ansluta till tjänsten. Försök igen senare."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "PLÅNBOKSANALYS",
+    "dexAnalytics": "DEX-ANALYS",
+    "portfolioValue": "PORTFÖLJEVÄRDEDIAGRAM",
+    "startTracking": "Börja spåra",
+    "trackPortfolioTitle": "Spåra portföljvärde",
+    "trackPortfolioStart": "STARTA KONTOBALANSSPÅRNING",
+    "trackPortfolioDesc1": "Genom att bekräfta godkänner du spårning av kontosaldo.",
+    "trackPortfolioDesc2": "Fortsätta?",
+    "confirm": "Bekräfta",
+    "confirming": "Bekräftar...",
+    "disclaimerTitle": "Info!",
+    "disclaimerText": "Informationen på denna sida är i BETA och erbjuds “som det är” och “efter tillgänglighet”."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Ogiltigt nätverk",
+      "signingCmdError": "Fel vid signering av kommando, kontrollera din payload",
+      "signingCmdGenericError": "Fel vid signering av kommando",
+      "rejectedByUser": "Avvisat av användaren",
+      "userRejected": "Användaren avvisade.",
+      "signedCommand": "Signerad kommando",
+      "hashToSign": "HASH ATT SIGNERA:",
+      "pleaseEnableLedger": "Aktivera BLIND SIGNING och följ instruktionerna på din Ledger",
+      "capabilities": "Funktioner",
+      "close": "Stäng",
+      "reject": "Avvisa",
+      "confirm": "Bekräfta"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Quick Sign-förfrågan",
+      "code": "Kod",
+      "capabilities": "Funktioner",
+      "rawData": "Rådata",
+      "command": "Kommando {{index}}/{{total}}",
+      "hashToSign": "HASH ATT SIGNERA ({{count}}/{{total}}):",
+      "ledgerInstructions": "Aktivera BLIND SIGNING och följ instruktionerna på din Ledger",
+      "close": "Stäng",
+      "reject": "Avvisa",
+      "confirm": "Bekräfta",
+      "error.invalidStructure": "QuickSign misslyckades: ogiltig datastruktur",
+      "error.pubKeyNotFound": "QuickSign misslyckades: offentlig nyckel hittades inte",
+      "error.ledger": "Ledger-signering misslyckades"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Importera hårdvaruplånbok",
+      "selectDevice": "Välj en hårdvaruplånbok",
+      "ledgerInstructions": "Anslut din Ledger till datorn. Lås upp och öppna Kadena-appen.",
+      "connect": "Anslut",
+      "confirm": "Importera",
+      "success": "Hårdvaruplånbok importerad",
+      "error": {
+        "duplicate": "Konto du försöker importera är en kopia.",
+        "network": "Nätverksfel.",
+        "invalid": "Ogiltiga data"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Importera från Ledger",
+      "instruction": "Anslut Ledger till datorn, lås upp och öppna Kadena-appen.",
+      "continue": "Fortsätt",
+      "publicKey": "PUBLIK NYCKEL",
+      "account": "KONTO",
+      "confirm": "Bekräfta import",
+      "success": "Konto importerat.",
+      "error": {
+        "duplicate": "Konto du försöker importera är en kopia.",
+        "network": "Nätverksfel vid hämtning av kontodata",
+        "invalid": "Ogiltiga data"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Importera tokens",
+      "contractLabel": "Token-kontraktsadress",
+      "symbolLabel": "Token-symbol",
+      "placeholder": {
+        "contract": "Ange kontraktsadress",
+        "symbol": "Ange symbol"
+      },
+      "add": "Lägg till token",
+      "edit": "Redigera token",
+      "success": "Token sparad",
+      "error": {
+        "duplicate": "Token redan tillagd",
+        "notFound": "Kunde inte hitta {{contract}} – kontrollera att token finns på {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Importera plånbok",
+    "form": {
+      "accountName": {
+        "title": "Ditt kontonamn",
+        "placeholder": "Kontonamn"
+      },
+      "chainId": {
+        "title": "Chain-ID"
+      },
+      "secretKey": {
+        "title": "Din privata nyckel",
+        "placeholder": "Privat nyckel"
+      }
+    },
+    "validation": {
+      "required": "Detta fält är obligatoriskt.",
+      "invalidData": "Ogiltig data",
+      "startsWithK": "Kontonamnet måste börja med \"k:\"",
+      "accountName": {
+        "maxLength": "Kontonamnet får vara högst 1000 tecken."
+      },
+      "secretKey": {
+        "maxLength": "Privat nyckel får vara högst 1000 tecken."
+      }
+    },
+    "modal": {
+      "scanTitle": "Skanna QR-kod",
+      "scanBody": "Håll QR-koden framför kameran"
+    },
+    "button": {
+      "import": "Importera plånbok"
+    },
+    "toast": {
+      "importSuccess": "Konto importerat.",
+      "duplicateError": "Konto du försöker importera är en kopia.",
+      "invalidAccountData": "Ogiltiga kontouppgifter",
+      "multipleKeys": "Flera nyckeluppsättningar stöds inte",
+      "invalidData": "Ogiltig data",
+      "networkError": "Nätverksfel."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Jag har en befintlig privat nyckel.",
+      "prompt": "Importera din befintliga privata nyckel"
+    },
+    "button": {
+      "import": "Importera"
+    },
+    "image": {
+      "alt": "Import-ikon"
+    }
+  },
+  "nft": {
+    "header": "Dina collectibles",
+    "noOwned": "Inga NFT:er"
+  },
+  "sendTransactions": {
+    "header": "Skicka {{symbol}}-transaktion"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger-signering lyckades",
+    "ledgerSignFailed": "Ledger-signering misslyckades eller avvisades",
+    "transferSuccess": "Överföring lyckades",
+    "transferFailed": "Överföring misslyckades",
+    "transactionSent": "Transaktion skickad! Se status i Historik",
+    "networkError": "Nätverksfel.",
+    "loadingTop": "Stäng inte detta fönster",
+    "loadingBottom": "Du omdirigeras när transaktionen är slutförd",
+    "labelReceiver": "Mottagare",
+    "labelAmount": "Belopp",
+    "labelGasLimit": "Gasgräns",
+    "labelGasPrice": "Gaspris",
+    "labelGasFee": "Gasavgift",
+    "labelTotal": "Totalt",
+    "warningCrossChainLine1": "Du är på väg att göra en cross-chain-överföring",
+    "warningCrossChainLine2": "Denna operation tar vanligtvis längre tid",
+    "warningNonKAccountLine1": "Du skickar till ett konto som inte börjar med \"k:\"!",
+    "warningNonKAccountLine2": "Är du säker på att du vill fortsätta?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} kan inte överföras!",
+    "form": {
+      "sourceChainId": {
+        "title": "Källa Chain-ID"
+      },
+      "destinationAccount": {
+        "title": "Mål-konto"
+      },
+      "targetChainId": {
+        "title": "Mål Chain-ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Mål-kontot kan vara högst 1000 tecken."
+    },
+    "balanceLabel": "{{symbol}} chain-saldo",
+    "recent": "SENASTE",
+    "contacts": "KONTAKTER",
+    "confirm": {
+      "warningTitle": "Varning",
+      "publicKeyTitle": "Publik nyckel",
+      "publicKeyPlaceholder": "Ange publik nyckel",
+      "predicateTitle": "Predicate",
+      "predicatePlaceholder": "Ange predicate"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Du kan inte skicka till dig själv",
+    "invalidGasLimit": "Ogiltig gasgräns",
+    "gasLimitInteger": "Gasgränsen måste vara ett heltal",
+    "invalidGasPrice": "Ogiltigt gaspris",
+    "insufficientFundsGas": "Otillräckliga medel för gasavgift",
+    "newAddressDetected": "Ny adress upptäckt! Lägg till i kontakter",
+    "tokenNotExists": "{{contractAddress}} kanske inte finns på CHAIN {{chainId}}!",
+    "transactionParameters": "Transaktionsparametrar",
+    "estimatedGas": "Uppskattad gas {{gas}}",
+    "speed": "Hastighet {{speed}}",
+    "modal": {
+      "confirmTitle": "Bekräfta sändning",
+      "gasParametersTitle": "Transaktionsparametrar"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gasgräns"
+      },
+      "gasPrice": {
+        "title": "Gaspris"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Belopp att skicka",
+    "button": {
+      "half": "HALVA",
+      "max": "MAX"
+    },
+    "error": {
+      "insufficientFunds": "Otillräckliga medel",
+      "invalidAmount": "Ogiltigt belopp"
+    },
+    "balance": "Saldo: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp-logotyp",
+    "sendTransaction": "Skicka transaktion",
+    "destinationNotFound": "Mål-konto inte hittat"
+  },
+  "history": {
+    "header": "Historik",
+    "modal": {
+      "confirmSendTransaction": "Bekräfta sändning"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Transaktionsdetaljer"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Ditt kontonamn"
+  },
+  "activityList": {
+    "loading": "Laddar...",
+    "today": "Idag",
+    "yesterday": "Igår",
+    "noTransactions": "Inga transaktioner"
+  },
+  "statusFilter": {
+    "modalTitle": "Status",
+    "prefix": "Status: ",
+    "options": {
+      "all": "Alla",
+      "in": "Mottagna",
+      "out": "Skickade",
+      "pending": "Väntande"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Aktiv: ",
+    "options": {
+      "all": "Alla"
+    }
+  },
+  "footer": {
+    "wallet": "PLÅNBOK",
+    "analytics": "ANALYS",
+    "nft": "NFT",
+    "settings": "INSTÄLLNINGAR"
+  }
+}

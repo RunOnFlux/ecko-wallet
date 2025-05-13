@@ -1,0 +1,646 @@
+{
+  "select_language": "Velg språk",
+  "home": {
+    "startNow": "Start nå"
+  },
+  "common": {
+    "requiredField": "Dette feltet er påkrevd.",
+    "invalidData": "Ugyldige data",
+    "invalidUrl": "Ugyldig URL",
+    "cancel": "Avbryt",
+    "back": "Tilbake",
+    "confirm": "Bekreft",
+    "continue": "Fortsett",
+    "reject": "Avslå",
+    "usd": "{{value}} USD",
+    "next": "Neste",
+    "close": "Lukk"
+  },
+  "condition": {
+    "noPersonalInfo": "Vi samler aldri nøkler, adresser, transaksjoner, balanser, hasher eller annen personlig informasjon",
+    "noIP": "Vi samler aldri din fullstendige IP-adresse",
+    "noSelling": "Vi selger aldri data for profitt. Aldri!",
+    "next": "Neste"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Jeg godtar",
+    "termsOfUse": "Vilkårene for bruk",
+    "createNewWallet": "Opprett ny wallet",
+    "setupNewAccount": "Sett opp ny eckoWALLET-konto",
+    "restoreWallet": "Gjenopprett wallet",
+    "restoreFromPhrase": "Gjenopprett med gjenopprettingsfrase"
+  },
+  "createPassword": {
+    "successCreate": "Passord opprettet",
+    "errorCreate": "Feil ved oppretting av wallet",
+    "invalidPhrase": "Ugyldig gjenopprettingsfrase!",
+    "importFromPhrase": "Importer med gjenopprettingsfrase",
+    "createPassword": "Opprett passord",
+    "pastePhrase": "Lim inn gjenopprettingsfrase",
+    "requiredField": "Dette feltet er påkrevd.",
+    "phraseTooLong": "Gjenopprettingsfrasen er for lang.",
+    "secretRecoveryPhrase": "Gjenopprettingsfrase",
+    "import": "Importer",
+    "create": "Opprett"
+  },
+  "passwordForm": {
+    "inputPassword": "Skriv inn passord",
+    "inputConfirmPassword": "Bekreft passord",
+    "requiredField": "Dette feltet er påkrevd.",
+    "minPassword": "Passordet må være minst 8 tegn.",
+    "maxPassword": "Passordet kan være maks 256 tegn.",
+    "passwordMismatch": "Passordene stemmer ikke overens",
+    "newPassword": "Nytt passord (minst 8 tegn)",
+    "confirmPassword": "Bekreft passord",
+    "passwordWarning": "Jeg forstår at jeg har brukt usikre tegn. Det anbefales kun bokstaver (a–z), tall (0–9) og spesialtegnene _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Gjenopprettingsfrase",
+    "step1Text": "I neste steg skriver du ned din 12-ords gjenopprettingsfrase.\nFrasen lar deg gjenopprette wallet på en ny enhet.\nDen som har denne frasen kan ta over wallet – oppbevar den sikkert og privat.\nHvis du mister den kan ingen hjelpe deg, så lagre den godt.",
+    "step1Checkbox": "Jeg forstår at jeg ikke kan gjenopprette wallet uten denne frasen.",
+    "generating": "Genererer nøkler...",
+    "continue": "Fortsett",
+    "reveal": "Klikk for å vise de hemmelige ordene",
+    "step2Text1": "Gjenopprettingsfrasen gjør det enkelt å sikkerhetskopiere og gjenopprette kontoen.",
+    "step2Text2": "Advarsel: del aldri gjenopprettingsfrasen. Den som har den kan overta wallet for alltid.",
+    "download": "Last ned",
+    "verifyTitle": "Bekreft gjenopprettingsfrase",
+    "verifyInstruction": "Bekreft frasen ved å skrive ordene i riktig rekkefølge.",
+    "successVerify": "Gjenopprettingsfrasen er bekreftet",
+    "invalidPhrase": "Ugyldig gjenopprettingsfrase!",
+    "errorGeneratingKeys": "Feil ved generering av wallet-nøkler",
+    "errorCreatingWallet": "Feil ved oppretting av wallet",
+    "generatingWallet": "Genererer wallet..."
+  },
+  "wallet": {
+    "netWorth": "NETTOVERDI",
+    "accountBalance": "KONTOSALDO",
+    "send": "Send",
+    "receive": "Motta",
+    "receiveTokens": "Motta tokens",
+    "buy": "Kjøp",
+    "history": "Historikk",
+    "assets": "EIENDELER",
+    "detectedTokens": "Oppdagede tokens",
+    "tokenList": "Token-liste",
+    "kdaChainDistribution": "KDA Chain-fordeling",
+    "chainDistribution": "Chain-fordeling",
+    "tokenRemoved": "Token fjernet",
+    "removeToken": "Fjern token",
+    "editToken": "Rediger token",
+    "removeTokenTitle": "Fjern {{symbol}}-token",
+    "confirmRemoveToken": "Vil du fjerne {{symbol}}-token?",
+    "notTransferable": "{{contractAddress}} kan ikke overføres!",
+    "accountDoesNotExist": "Eksisterer ikke: denne kontoen finnes ikke.",
+    "balanceZero": "{{symbol}}-saldo er 0."
+  },
+  "accountActions": {
+    "shareWallet": "Del wallet",
+    "copied": "Kopiert!",
+    "exportRecoveryPhrase": "Eksporter gjenopprettingsfrase",
+    "signHashTransaction": "Signer hash-transaksjon",
+    "editAccountAlias": "Rediger kontonavn",
+    "setAccountAlias": "Sett kontonavn",
+    "removeSelectedWallet": "Fjern valgte wallet",
+    "createWallet": "Opprett wallet",
+    "importWallet": "Importer wallet",
+    "importHardwareWallet": "Importer hardware-wallet"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Fant ingen andre tokens for denne kontoen."
+  },
+  "aliasModal": {
+    "accountAlias": "Kontonavn",
+    "cancel": "Avbryt",
+    "save": "Lagre",
+    "aliasChanged": "Kontonavn oppdatert"
+  },
+  "hashSignModal": {
+    "publicKey": "Din offentlige nøkkel",
+    "transactionHash": "Transaksjons-hash",
+    "insertTransactionHash": "Skriv inn transaksjons-hash",
+    "signature": "Signatur",
+    "copied": "Kopiert!",
+    "clean": "Tøm",
+    "sign": "Signer"
+  },
+  "popupDetailTransaction": {
+    "status": "Status",
+    "direction": "Retning",
+    "symbol": "Symbol",
+    "quantity": "Mengde",
+    "gasFee": "Gassavgift",
+    "total": "Totalt",
+    "viewDetails": "Vis detaljer",
+    "activityLog": "Aktivitetslogg",
+    "transactionCreated": "Transaksjon opprettet med {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transaksjon bekreftet",
+    "success": "Vellykket",
+    "failed": "Mislyktes",
+    "finishing": "Avslutter..."
+  },
+  "removeWallet": {
+    "title": "Vil du virkelig fjerne denne wallet?",
+    "description": "Skriv inn passord for å bekrefte",
+    "passwordPlaceholder": "Skriv passord",
+    "passwordRequired": "Dette feltet er påkrevd.",
+    "passwordMinLength": "Passordet må være minst 8 tegn.",
+    "passwordMaxLength": "Passordet kan være maks 256 tegn.",
+    "invalidPassword": "Ugyldig passord",
+    "cancel": "Avbryt",
+    "remove": "Fjern"
+  },
+  "header": {
+    "selectNetwork": "Velg nettverk",
+    "manageNetworks": "Administrer nettverk",
+    "myWallets": "Mine wallets",
+    "removeWalletTitle": "Fjern wallet",
+    "createAccountSuccess": "Konto opprettet!",
+    "createAccountFail": "Kunne ikke opprette konto",
+    "copied": "Kopiert!"
+  },
+  "signIn": {
+    "loginTitle": "Logg inn på kontoen din",
+    "passwordPlaceholder": "Skriv passord",
+    "passwordTitle": "Passord",
+    "signInButton": "Logg inn",
+    "invalidPassword": "Ugyldig passord",
+    "required": "Dette feltet er påkrevd.",
+    "minLength": "Passordet må være minst 8 tegn.",
+    "maxLength": "Passordet kan være maks 256 tegn.",
+    "initWalletError": "Feil ved initialisering av wallet"
+  },
+  "settings": {
+    "contacts": "Kontakter",
+    "language": "Språk",
+    "languageDesc": "Velg wallet-språk",
+    "contactsDesc": "Administrer kontakter",
+    "networks": "Nettverk",
+    "networksDesc": "Legg til eller rediger tilpassede RPC-nettverk",
+    "connectedSites": "Tilkoblede sider",
+    "connectedSitesDesc": "Vis og administrer tilkoblinger",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "Koble via WalletConnect",
+    "txSettings": "Transaksjonsinnstillinger",
+    "txSettingsDesc": "Angi gasspreferanser",
+    "exportPhrase": "Eksporter gjenopprettingsfrase",
+    "exportPhraseDesc": "Beskytt din wallet",
+    "editPassword": "Endre passord",
+    "editPasswordDesc": "Oppdater wallet-passord",
+    "2fa": "2FA",
+    "2faDesc": "Administrer tofaktorautentisering",
+    "expandView": "Utvid visning",
+    "expandViewDesc": "Åpne eckoWALLET i nytt vindu",
+    "theme": "Tema",
+    "themeDesc": "Velg wallet-tema",
+    "lock": "Lås wallet",
+    "lockDesc": "Beskytt din wallet",
+    "lockSettings": "Auto-lås innstillinger",
+    "lockSettingsDesc": "Endre sikkerhetsinnstillinger",
+    "discord": "Gå til Discord",
+    "website": "Besøk nettsted",
+    "terms": "Vilkår for bruk",
+    "privacy": "Personvernpolicy",
+    "connectedSitesPage": {
+      "title": "Tilkoblede sider",
+      "removeSiteTitle": "Fjern side",
+      "removeSiteConfirmText": "Vil du fjerne",
+      "removeSiteSuccess": "Side fjernet"
+    },
+    "contactsPage": {
+      "title": "Kontakter",
+      "newContactTitle": "Ny kontakt",
+      "addNewContact": "Legg til kontakt",
+      "noContacts": "Ingen kontakter"
+    },
+    "contactForm": {
+      "enterAlias": "Skriv alias",
+      "aliasPlaceholder": "f.eks. David",
+      "accountNameTitle": "Kontonavn",
+      "accountNamePlaceholder": "Kontonavn",
+      "scanQrTitle": "Skann QR-kode",
+      "scanQrDescription": "Hold QR-koden foran kameraet",
+      "buttonCancel": "Avbryt",
+      "buttonSave": "Lagre",
+      "successContactAdded": "Kontakt lagt til",
+      "errorNetwork": "Nettverksfeil.",
+      "copied": "Kopiert!",
+      "requiredField": "Dette feltet er påkrevd.",
+      "invalidData": "Ugyldige data",
+      "aliasMaxLength": "Alias kan være maks 256 tegn.",
+      "accountNameMaxLength": "Kontonavn kan være maks 1000 tegn."
+    },
+    "contactInfo": {
+      "copied": "Kopiert!",
+      "contactRemoved": "Kontakt fjernet",
+      "accountName": "KONTONAVN",
+      "editContact": "Rediger kontakt",
+      "editTitle": "Rediger konto",
+      "delete": "Fjern",
+      "deleteContactTitle": "Fjern kontakt",
+      "removeContact": "Fjern kontakt?",
+      "confirmRemove": "Vil du fjerne denne kontakten?",
+      "cancel": "Avbryt",
+      "confirm": "Bekreft"
+    },
+    "editPasswordPage": {
+      "title": "Endre passord",
+      "passwordChanged": "Passord endret",
+      "cannotUpdatePassword": "Kan ikke oppdatere passord",
+      "save": "Lagre"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Skriv inn passord for å fortsette",
+      "inputPlaceholder": "Skriv passord",
+      "password": "Passord",
+      "errorRequired": "Dette feltet er påkrevd.",
+      "errorInvalid": "Ugyldig passord.",
+      "continue": "Fortsett",
+      "correctPassword": "Passord riktig, vennligst vent..."
+    },
+    "exportSeedPhrase": {
+      "title": "Eksporter gjenopprettingsfrase",
+      "copied": "Kopiert!",
+      "description": "Gjenopprettingsfrasen gjør det enkelt å sikkerhetskopiere og gjenopprette kontoen.",
+      "warning": "Del aldri gjenopprettingsfrasen. Den som har den kan overta wallet.",
+      "copyKeyphrase": "Kopier frase",
+      "download": "Last ned"
+    },
+    "lockSettingsPage": {
+      "title": "Auto-lås wallet-innstillinger",
+      "saved": "Innstillinger lagret",
+      "required": "Dette feltet er påkrevd.",
+      "placeholder": "Velg auto-lås-tid",
+      "selectTitle": "Auto-lås-tid",
+      "restore": "Gjenopprett standard",
+      "save": "Lagre"
+    },
+    "networksPage": {
+      "title": "Nettverk",
+      "network": "Nettverk",
+      "addNew": "Legg til nytt nettverk",
+      "editSuccess": "Nettverk oppdatert",
+      "addSuccess": "Nettverk lagt til",
+      "errorUrl": "URL finnes allerede",
+      "deleteSuccess": "Nettverk fjernet",
+      "remove": "Fjern",
+      "save": "Lagre",
+      "confirmRemove": "Fjern dette nettverket?",
+      "confirmRemoveDesc": "Vil du fjerne dette nettverket?",
+      "placeholderName": "Skriv nettverknavn",
+      "placeholderUrl": "Skriv ny RPC-URL",
+      "placeholderExplorer": "Skriv block explorer-URL",
+      "placeholderNetworkId": "Skriv nettverks-ID",
+      "titleName": "Nettverknavn",
+      "titleUrl": "Ny RPC-URL",
+      "titleExplorer": "Block explorer-URL",
+      "titleNetworkId": "Nettverks-ID",
+      "nameMax": "Nettverknavn kan være maks 1000 tegn.",
+      "urlMax": "RPC-URL kan være maks 1000 tegn.",
+      "explorerMax": "Block explorer-URL kan være maks 1000 tegn.",
+      "networkIdMax": "Nettverks-ID kan være maks 1000 tegn."
+    },
+    "selectTheme": {
+      "title": "Velg tema"
+    },
+    "txSettingsPage": {
+      "title": "Transaksjonsinnstillinger",
+      "gasLimit": "Gassgrense",
+      "gasLimitPlaceholder": "Skriv gassgrense",
+      "finishCrossChain": "Fullfør Cross-chain Gas Station",
+      "finishCrossChainPlaceholder": "Skriv Cross-chain Gas Station",
+      "crossChainGasLimit": "Cross-chain gassgrense",
+      "crossChainGasLimitPlaceholder": "Skriv cross-chain gassgrense",
+      "crossChainGasPrice": "Cross-chain gasspris",
+      "crossChainGasPricePlaceholder": "Skriv cross-chain gasspris",
+      "save": "Lagre",
+      "restoreDefault": "Gjenopprett standard",
+      "successSave": "Innstillinger lagret",
+      "requiredField": "Dette feltet er påkrevd.",
+      "invalidValue": "Ugyldig verdi"
+    },
+    "2faPage": {
+      "title": "Tofaktorautentisering",
+      "description": "Tofaktorautentisering er aktivert.",
+      "disableButton": "Deaktiver",
+      "successDisable": "2FA deaktivert",
+      "installApp": "Installer app",
+      "orSimilar": "eller lignende apper",
+      "scanQRCode": "Skann QR-koden nedenfor:",
+      "enter6Digits": "Skriv inn 6-sifret kode",
+      "invalidCode": "Ugyldig kode.",
+      "saveButton": "Lagre",
+      "setupSuccess": "2FA konfigurert"
+    },
+    "walletConnectPage": {
+      "title": "WalletConnect",
+      "selectAccounts": "Velg kontoer",
+      "invalidUrl": "Ugyldig URL",
+      "disconnectSuccess": "Frakoblingsforespørsel sendt",
+      "noActiveSessions": "INGEN AKTIVE ØKTER",
+      "activeSessions": "AKTIVE ØKTER",
+      "expiry": "Utløper:",
+      "removeConnection": "Fjern tilkobling",
+      "removeConfirmation": "Vil du fjerne denne WalletConnect-tilkoblingen?",
+      "newConnection": "Ny tilkobling",
+      "addConnection": "Legg til WalletConnect",
+      "inputUri": "Skriv URI",
+      "code": "Kode",
+      "continue": "Fortsett"
+    }
+  },
+  "buy": {
+    "title": "Kjøp",
+    "description": "Kjøp og salg av kryptovaluta formidles av en tredjepart (Onramper).\n\neckoWALLET bruker høye sikkerhetsstandarder, men kan ikke garantere sikkerhet eller personvern hos eksterne tjenester.",
+    "cancel": "Avbryt",
+    "confirm": "Bekreft",
+    "error": {
+      "noAddress": "Wallet-adresse ikke tilgjengelig",
+      "generic": "Kan ikke koble til tjenesten. Prøv igjen senere."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "WALLET-ANALYTICS",
+    "dexAnalytics": "DEX-ANALYTICS",
+    "portfolioValue": "PORTFØLJEVERDIDIAGRAM",
+    "startTracking": "Start sporing",
+    "trackPortfolioTitle": "Spor porteføljeverdi",
+    "trackPortfolioStart": "START KONTOBALANSESPORING",
+    "trackPortfolioDesc1": "Ved å bekrefte autoriserer du sporing av kontobalanse.",
+    "trackPortfolioDesc2": "Fortsette?",
+    "confirm": "Bekreft",
+    "confirming": "Bekrefter...",
+    "disclaimerTitle": "Info!",
+    "disclaimerText": "Informasjonen på denne siden er BETA og tilbys «som den er» og «etter tilgjengelighet»."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Ugyldig nettverk",
+      "signingCmdError": "Feil ved signering av kommando, sjekk payload",
+      "signingCmdGenericError": "Feil ved signering av kommando",
+      "rejectedByUser": "Avvist av bruker",
+      "userRejected": "Bruker avviste.",
+      "signedCommand": "Signert kommando",
+      "hashToSign": "HASH FOR SIGNERING:",
+      "pleaseEnableLedger": "Aktiver BLIND SIGNING og følg instruksjonene på Ledger",
+      "capabilities": "Muligheter",
+      "close": "Lukk",
+      "reject": "Avslå",
+      "confirm": "Bekreft"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Quick Sign-forespørsel",
+      "code": "Kode",
+      "capabilities": "Muligheter",
+      "rawData": "Rådata",
+      "command": "Kommando {{index}}/{{total}}",
+      "hashToSign": "HASH FOR SIGNERING ({{count}}/{{total}}):",
+      "ledgerInstructions": "Aktiver BLIND SIGNING og følg instruksjonene på Ledger",
+      "close": "Lukk",
+      "reject": "Avslå",
+      "confirm": "Bekreft",
+      "error.invalidStructure": "QuickSign mislyktes: ugyldig datastruktur",
+      "error.pubKeyNotFound": "QuickSign mislyktes: offentlig nøkkel ikke funnet",
+      "error.ledger": "Ledger-signering mislyktes"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Importer hardware-wallet",
+      "selectDevice": "Velg hardware-wallet",
+      "ledgerInstructions": "Koble Ledger til datamaskinen. Lås opp og åpne Kadena-appen.",
+      "connect": "Koble til",
+      "confirm": "Importer",
+      "success": "Hardware-wallet importert",
+      "error": {
+        "duplicate": "Kontoen du prøver å importere er en duplikat.",
+        "network": "Nettverksfeil.",
+        "invalid": "Ugyldige data"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Importer fra Ledger",
+      "instruction": "Koble Ledger til datamaskinen, lås opp og åpne Kadena-appen.",
+      "continue": "Fortsett",
+      "publicKey": "OFFENTLIG NØKKEL",
+      "account": "KONTO",
+      "confirm": "Bekreft import",
+      "success": "Konto importert.",
+      "error": {
+        "duplicate": "Kontoen du prøver å importere er en duplikat.",
+        "network": "Nettverksfeil ved henting av kontodata",
+        "invalid": "Ugyldige data"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Importer tokens",
+      "contractLabel": "Token-kontraktadresse",
+      "symbolLabel": "Token-symbol",
+      "placeholder": {
+        "contract": "Skriv kontraktadresse",
+        "symbol": "Skriv symbol"
+      },
+      "add": "Legg til token",
+      "edit": "Rediger token",
+      "success": "Token lagret",
+      "error": {
+        "duplicate": "Token er allerede lagt til",
+        "notFound": "Fant ikke {{contract}} – sjekk at token finnes på {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Importer wallet",
+    "form": {
+      "accountName": {
+        "title": "Konto-navn",
+        "placeholder": "Konto-navn"
+      },
+      "chainId": {
+        "title": "Chain-ID"
+      },
+      "secretKey": {
+        "title": "Din private nøkkel",
+        "placeholder": "Private nøkkel"
+      }
+    },
+    "validation": {
+      "required": "Dette feltet er påkrevd.",
+      "invalidData": "Ugyldige data",
+      "startsWithK": "Kontonavn må begynne med \"k:\"",
+      "accountName": {
+        "maxLength": "Kontonavn kan være maks 1000 tegn."
+      },
+      "secretKey": {
+        "maxLength": "Private nøkkel kan være maks 1000 tegn."
+      }
+    },
+    "modal": {
+      "scanTitle": "Skann QR-kode",
+      "scanBody": "Hold QR-koden foran kameraet"
+    },
+    "button": {
+      "import": "Importer wallet"
+    },
+    "toast": {
+      "importSuccess": "Konto importert.",
+      "duplicateError": "Kontoen du prøver å importere er en duplikat.",
+      "invalidAccountData": "Ugyldige kontodetaljer",
+      "multipleKeys": "Flere nøkkelsett støttes ikke",
+      "invalidData": "Ugyldige data",
+      "networkError": "Nettverksfeil."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Jeg har en eksisterende privat nøkkel.",
+      "prompt": "Importer din eksisterende private nøkkel"
+    },
+    "button": {
+      "import": "Importer"
+    },
+    "image": {
+      "alt": "Importer-ikon"
+    }
+  },
+  "nft": {
+    "header": "Dine samlerobjekter",
+    "noOwned": "Ingen NFT-er"
+  },
+  "sendTransactions": {
+    "header": "Send {{symbol}}-transaksjon"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger-signering vellykket",
+    "ledgerSignFailed": "Ledger-signering mislyktes eller ble avslått",
+    "transferSuccess": "Overføring vellykket",
+    "transferFailed": "Overføring mislyktes",
+    "transactionSent": "Transaksjon sendt! Se status i Historikk",
+    "networkError": "Nettverksfeil.",
+    "loadingTop": "Lukk ikke dette vinduet",
+    "loadingBottom": "Du blir videresendt når transaksjonen er fullført",
+    "labelReceiver": "Mottaker",
+    "labelAmount": "Beløp",
+    "labelGasLimit": "Gassgrense",
+    "labelGasPrice": "Gasspris",
+    "labelGasFee": "Gassavgift",
+    "labelTotal": "Totalt",
+    "warningCrossChainLine1": "Du er i ferd med en cross-chain-overføring",
+    "warningCrossChainLine2": "Denne operasjonen tar vanligvis lengre tid",
+    "warningNonKAccountLine1": "Du sender til en ikke-\"k:account\"!",
+    "warningNonKAccountLine2": "Er du sikker på at du vil fortsette?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} kan ikke overføres!",
+    "form": {
+      "sourceChainId": {
+        "title": "Kilde Chain-ID"
+      },
+      "destinationAccount": {
+        "title": "Destinasjonskonto"
+      },
+      "targetChainId": {
+        "title": "Mål Chain-ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Destinasjonskonto kan være maks 1000 tegn."
+    },
+    "balanceLabel": "{{symbol}} chain-saldo",
+    "recent": "SISTE",
+    "contacts": "KONTAKTER",
+    "confirm": {
+      "warningTitle": "Advarsel",
+      "publicKeyTitle": "Offentlig nøkkel",
+      "publicKeyPlaceholder": "Skriv offentlig nøkkel",
+      "predicateTitle": "Predicate",
+      "predicatePlaceholder": "Skriv predicate"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Du kan ikke sende til deg selv",
+    "invalidGasLimit": "Ugyldig gassgrense",
+    "gasLimitInteger": "Gassgrense må være et heltall",
+    "invalidGasPrice": "Ugyldig gasspris",
+    "insufficientFundsGas": "Utilstrekkelige midler for gassavgift",
+    "newAddressDetected": "Ny adresse oppdaget! Legg til i kontakter",
+    "tokenNotExists": "{{contractAddress}} finnes kanskje ikke på CHAIN {{chainId}}!",
+    "transactionParameters": "Transaksjonsparametere",
+    "estimatedGas": "Estimert gass {{gas}}",
+    "speed": "Hastighet {{speed}}",
+    "modal": {
+      "confirmTitle": "Bekreft sending",
+      "gasParametersTitle": "Transaksjonsparametere"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gassgrense"
+      },
+      "gasPrice": {
+        "title": "Gasspris"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Beløp å sende",
+    "button": {
+      "half": "HALV",
+      "max": "MAKS"
+    },
+    "error": {
+      "insufficientFunds": "Utilstrekkelige midler",
+      "invalidAmount": "Ugyldig beløp"
+    },
+    "balance": "Saldo: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp-logo",
+    "sendTransaction": "Send transaksjon",
+    "destinationNotFound": "Destinasjonskonto ikke funnet"
+  },
+  "history": {
+    "header": "Historikk",
+    "modal": {
+      "confirmSendTransaction": "Bekreft sending"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Transaksjonsdetaljer"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Ditt kontonavn"
+  },
+  "activityList": {
+    "loading": "Laster...",
+    "today": "I dag",
+    "yesterday": "I går",
+    "noTransactions": "Ingen transaksjoner"
+  },
+  "statusFilter": {
+    "modalTitle": "Status",
+    "prefix": "Status: ",
+    "options": {
+      "all": "Alle",
+      "in": "Mottatt",
+      "out": "Sendt",
+      "pending": "Venter"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Aktiv: ",
+    "options": {
+      "all": "Alle"
+    }
+  },
+  "footer": {
+    "wallet": "WALLET",
+    "analytics": "ANALYTICS",
+    "nft": "NFT",
+    "settings": "INNSTILLINGER"
+  }
+}

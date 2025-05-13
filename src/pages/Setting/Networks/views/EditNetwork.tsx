@@ -16,6 +16,7 @@ import { Content } from '../../style';
 import { ErrorWrapper, Footer } from '../../../SendTransactions/styles';
 import { DivBodyNetwork } from './style';
 import { DivError } from '../../Contact/views/style';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   onBack: any;
@@ -25,6 +26,7 @@ type Props = {
 };
 
 const EditNetwork = (props: Props) => {
+  const { t } = useTranslation();
   const { onBack, network, isEdit, onClickPopup } = props;
   const [settingNetwork, setSettingNetwork] = useState<any>(network);
   const [errMessageDuplicateUrl, setErrorMessageDuplicateUrl] = useState('');
@@ -42,8 +44,9 @@ const EditNetwork = (props: Props) => {
     setValue,
   } = useForm();
   const id = network.id ? network.id : getTimestamp();
+
   const onSave = () => {
-    const alertText = network.id ? 'Edit network successfully' : 'Add network successfully';
+    const alertText = network.id ? t('settings.networksPage.editSuccess') : t('settings.networksPage.addSuccess');
     const newNetwork = {
       id: id.toString(),
       name: settingNetwork.name.trim(),
@@ -52,8 +55,9 @@ const EditNetwork = (props: Props) => {
       networkId: settingNetwork.networkId.trim(),
       isDefault: false,
     };
+
     if (checkDuplicateUrl()) {
-      setErrorMessageDuplicateUrl('URL already exist');
+      setErrorMessageDuplicateUrl(t('settings.networksPage.errorUrl'));
       return;
     }
 
@@ -81,19 +85,23 @@ const EditNetwork = (props: Props) => {
       },
     );
   };
+
   const checkDuplicateUrl = (): boolean => {
     const duplicate = networks.some((itemNetwork: any) => itemNetwork.url === settingNetwork.url && itemNetwork.id !== id);
     return duplicate;
   };
+
   const onErrors = (err) => {
     console.log('err', err);
   };
+
   const handleChangeNetwork = (e, key) => {
     const { value } = e.target;
     const newValue = { ...settingNetwork };
     newValue[key] = value;
     setSettingNetwork(newValue);
   };
+
   const deleteNetwork = () => {
     getLocalNetworks(
       (data) => {
@@ -108,18 +116,19 @@ const EditNetwork = (props: Props) => {
           selectNetwork('0');
         }
 
-        toast.success(<Toast type="success" content="Delete network successfully" />);
+        toast.success(<Toast type="success" content={t('settings.networksPage.deleteSuccess')} />);
       },
       () => {},
     );
   };
+
   const checkInValidURL = (str) => {
     const pattern = new RegExp(
-      '^(https?:\\/\\/)?' + // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+      '^(https?:\\/\\/)?' +
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
+        '((\\d{1,3}\\.){3}\\d{1,3}))' +
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
+        '(\\?[;&a-z\\d%_.~+=-]*)?' +
         '(\\#[-a-z\\d_]*)?$',
       'i',
     );
@@ -133,22 +142,22 @@ const EditNetwork = (props: Props) => {
           <BaseTextInput
             inputProps={{
               value: settingNetwork.name,
-              placeholder: 'Insert Network Name',
+              placeholder: t('settings.networksPage.placeholderName'),
               ...register('name', {
                 required: {
                   value: true,
-                  message: 'This field is required.',
+                  message: t('common.requiredField'),
                 },
                 maxLength: {
                   value: 1000,
-                  message: 'Network name should be maximum 1000 characters.',
+                  message: t('settings.networksPage.nameMax'),
                 },
                 validate: {
-                  required: (val) => val.trim().length > 0 || 'Invalid data',
+                  required: (val) => val.trim().length > 0 || t('common.invalidData'),
                 },
               }),
             }}
-            title="Network Name"
+            title={t('settings.networksPage.titleName')}
             height="auto"
             onChange={(e) => {
               clearErrors('name');
@@ -168,27 +177,28 @@ const EditNetwork = (props: Props) => {
             </ErrorWrapper>
           )}
         </DivBodyNetwork>
+
         <DivBodyNetwork>
           <BaseTextInput
             inputProps={{
               value: settingNetwork.url,
-              placeholder: 'Insert New RPC URL',
+              placeholder: t('settings.networksPage.placeholderUrl'),
               ...register('url', {
                 required: {
                   value: true,
-                  message: 'This field is required.',
+                  message: t('common.requiredField'),
                 },
                 maxLength: {
                   value: 1000,
-                  message: 'New RPC URL should be maximum 1000 characters.',
+                  message: t('settings.networksPage.urlMax'),
                 },
                 validate: {
-                  required: (val) => val.trim().length > 0 || 'Invalid url',
-                  match: (val) => checkInValidURL(val) || 'Invalid url',
+                  required: (val) => val.trim().length > 0 || t('common.invalidUrl'),
+                  match: (val) => checkInValidURL(val) || t('common.invalidUrl'),
                 },
               }),
             }}
-            title="New RPC URL"
+            title={t('settings.networksPage.titleUrl')}
             height="auto"
             onChange={(e) => {
               clearErrors('url');
@@ -216,27 +226,28 @@ const EditNetwork = (props: Props) => {
             </ErrorWrapper>
           )}
         </DivBodyNetwork>
+
         <DivBodyNetwork>
           <BaseTextInput
             inputProps={{
               value: settingNetwork.explorer,
-              placeholder: 'Insert Block Explorer URL',
+              placeholder: t('settings.networksPage.placeholderExplorer'),
               ...register('explorer', {
                 required: {
                   value: true,
-                  message: 'This field is required.',
+                  message: t('common.requiredField'),
                 },
                 maxLength: {
                   value: 1000,
-                  message: 'Block Explorer URL should be maximum 1000 characters.',
+                  message: t('settings.networksPage.explorerMax'),
                 },
                 validate: {
-                  required: (val) => val.trim().length > 0 || 'Invalid data',
-                  match: (val) => checkInValidURL(val) || 'Invalid url',
+                  required: (val) => val.trim().length > 0 || t('common.invalidData'),
+                  match: (val) => checkInValidURL(val) || t('common.invalidUrl'),
                 },
               }),
             }}
-            title="Block Explorer URL"
+            title={t('settings.networksPage.titleExplorer')}
             height="auto"
             onChange={(e) => {
               clearErrors('explorer');
@@ -256,26 +267,27 @@ const EditNetwork = (props: Props) => {
             </ErrorWrapper>
           )}
         </DivBodyNetwork>
+
         <DivBodyNetwork>
           <BaseTextInput
             inputProps={{
               value: settingNetwork.networkId,
-              placeholder: 'Insert Network ID',
+              placeholder: t('settings.networksPage.placeholderNetworkId'),
               ...register('networkId', {
                 required: {
                   value: true,
-                  message: 'This field is required.',
+                  message: t('common.requiredField'),
                 },
                 maxLength: {
                   value: 1000,
-                  message: 'Network ID should be maximum 1000 characters.',
+                  message: t('settings.networksPage.networkIdMax'),
                 },
                 validate: {
-                  required: (val) => val.trim().length > 0 || 'Invalid data',
+                  required: (val) => val.trim().length > 0 || t('common.invalidData'),
                 },
               }),
             }}
-            title="Network ID"
+            title={t('settings.networksPage.titleNetworkId')}
             height="auto"
             onChange={(e) => {
               clearErrors('networkId');
@@ -304,22 +316,23 @@ const EditNetwork = (props: Props) => {
           )}
         </DivBodyNetwork>
       </form>
+
       <Footer>
         {isEdit && network.id ? (
           <>
             <DivFlex gap="10px">
-              <Button size="full" label="Remove" variant="remove" onClick={() => setModalRemoveNetwork(true)} />
-              <Button size="full" label="Save" variant="primary" form="save-network" />
+              <Button size="full" label={t('settings.networksPage.remove')} variant="remove" onClick={() => setModalRemoveNetwork(true)} />
+              <Button size="full" label={t('settings.networksPage.save')} variant="primary" form="save-network" />
             </DivFlex>
             {isModalRemoveNetwork && (
-              <ModalCustom isOpen={isModalRemoveNetwork} title="Remove this Network?" showCloseIcon={false} closeOnOverlayClick>
+              <ModalCustom isOpen={isModalRemoveNetwork} title={t('settings.networksPage.confirmRemove')} showCloseIcon={false}>
                 <DivFlex flexDirection="column">
                   <SecondaryLabel fontSize={16} textCenter style={{ flex: 1 }}>
-                    Are you sure you want to remove this network?
+                    {t('settings.networksPage.confirmRemoveDesc')}
                   </SecondaryLabel>
                   <DivFlex padding="24px" gap="10px">
-                    <Button size="full" label="Cancel" variant="disabled" onClick={() => setModalRemoveNetwork(false)} />
-                    <Button size="full" label="Confirm" variant="primary" onClick={deleteNetwork} />
+                    <Button size="full" label={t('common.cancel')} variant="disabled" onClick={() => setModalRemoveNetwork(false)} />
+                    <Button size="full" label={t('common.confirm')} variant="primary" onClick={deleteNetwork} />
                   </DivFlex>
                 </DivFlex>
               </ModalCustom>
@@ -327,7 +340,7 @@ const EditNetwork = (props: Props) => {
           </>
         ) : (
           <DivFlex>
-            <Button size="full" label="Save" variant="primary" form="save-network" />
+            <Button size="full" label={t('settings.networksPage.save')} variant="primary" form="save-network" />
           </DivFlex>
         )}
       </Footer>

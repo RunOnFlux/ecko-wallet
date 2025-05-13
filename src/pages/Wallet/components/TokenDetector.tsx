@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../../../stores/hooks';
 import { fetchLocal, fetchTokenList } from '@Utils/chainweb';
 import { DivFlex, SecondaryLabel } from '@Components/index';
@@ -18,6 +19,7 @@ interface DetectedToken {
 }
 
 export const TokenDetector = ({ onTokenSelect }: { onTokenSelect: (token: { contract: string; balance: number }) => void }) => {
+  const { t } = useTranslation();
   const { theme } = useAppThemeContext();
   const [loading, setLoading] = useState(true);
   const [detectedTokens, setDetectedTokens] = useState<DetectedToken[]>([]);
@@ -75,7 +77,6 @@ export const TokenDetector = ({ onTokenSelect }: { onTokenSelect: (token: { cont
             const balances = result.result.data;
             Object.keys(balances).forEach((tokenContract) => {
               const balance = parseFloat(balances[tokenContract]);
-
               if (balance > 0) {
                 if (tokenBalances[tokenContract]) {
                   tokenBalances[tokenContract].balance += balance;
@@ -128,7 +129,7 @@ export const TokenDetector = ({ onTokenSelect }: { onTokenSelect: (token: { cont
       ) : detectedTokens.length > 0 ? (
         <DivAssetList style={{ width: '100%' }}>{renderTokenOptions()}</DivAssetList>
       ) : (
-        <SecondaryLabel>No other tokens found for this account.</SecondaryLabel>
+        <SecondaryLabel>{t('tokenDetector.noTokensFound')}</SecondaryLabel>
       )}
     </DivFlex>
   );

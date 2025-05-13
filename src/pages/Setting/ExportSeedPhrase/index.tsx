@@ -10,10 +10,10 @@ import { DivFlex, SecondaryLabel } from 'src/components';
 import { Warning } from 'src/pages/SendTransactions/styles';
 import { ActionList } from 'src/components/ActionList';
 import { SeedPhraseRetrivier } from 'src/components/SeedPhraseRetrivier';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   padding: 0 20px;
-
   font-size: 16px;
   word-break: break-word;
 `;
@@ -40,12 +40,13 @@ const SPText = styled.div`
 `;
 
 const ExportSeedPhrase = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const [seedPhrase, setSeedPhrase] = useState('');
 
   const onCopy = () => {
     navigator.clipboard.writeText(seedPhrase);
-    toast.success(<Toast type="success" content="Copied!" />);
+    toast.success(<Toast type="success" content={t('settings.exportSeedPhrase.copied')} />);
   };
 
   const goBack = () => {
@@ -79,27 +80,31 @@ const ExportSeedPhrase = () => {
 
   return (
     <Wrapper>
-      <NavigationHeader title="Export Recovery Phrase" onBack={goBack} />
+      <NavigationHeader title={t('settings.exportSeedPhrase.title')} onBack={goBack} />
       {seedPhrase ? (
         <SPWrapper>
           <SPText>{encryptText(seedPhrase)}</SPText>
           <DivFlex flexDirection="column" alignItems="center" paddingTop="30px" style={{ borderTop: '1px solid #DFDFED' }}>
             <SecondaryLabel fontWeight={500} fontSize={14}>
-              Your Secret Recovery Phrase makes it easy to back up and restore your account.
+              {t('settings.exportSeedPhrase.description')}
             </SecondaryLabel>
             <Warning style={{ textAlign: 'start', marginTop: 30 }}>
               <AlertIcon style={{ minWidth: 22 }} />
-              Never disclose your Secret Recovery Phrase. Anyone with this phrase can take your wallet forever.
+              {t('settings.exportSeedPhrase.warning')}
             </Warning>
           </DivFlex>
           <ActionList
             actions={[
               {
-                label: 'Copy Keyphrase',
+                label: t('settings.exportSeedPhrase.copyKeyphrase'),
                 src: images.wallet.copyGray,
                 onClick: onCopy,
               },
-              { label: 'Download', src: images.settings.iconDownload, onClick: onDownload },
+              {
+                label: t('settings.exportSeedPhrase.download'),
+                src: images.settings.iconDownload,
+                onClick: onDownload,
+              },
             ]}
           />
         </SPWrapper>
@@ -109,4 +114,5 @@ const ExportSeedPhrase = () => {
     </Wrapper>
   );
 };
+
 export default ExportSeedPhrase;

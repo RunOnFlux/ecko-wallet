@@ -1,0 +1,647 @@
+{
+  "select_language": "Chọn ngôn ngữ",
+  "home": {
+    "startNow": "Bắt đầu ngay"
+  },
+  "common": {
+    "requiredField": "Trường này là bắt buộc.",
+    "invalidData": "Dữ liệu không hợp lệ",
+    "invalidUrl": "URL không hợp lệ",
+    "cancel": "Hủy",
+    "back": "Quay lại",
+    "confirm": "Xác nhận",
+    "continue": "Tiếp tục",
+    "reject": "Từ chối",
+    "usd": "{{value}} USD",
+    "next": "Tiếp theo",
+    "close": "Đóng"
+  },
+  "condition": {
+    "noPersonalInfo": "Chúng tôi không bao giờ thu thập khóa, địa chỉ, giao dịch, số dư, tổng hợp hay thông tin cá nhân nào",
+    "noIP": "Chúng tôi không bao giờ lưu địa chỉ IP đầy đủ của bạn",
+    "noSelling": "Chúng tôi không bao giờ bán dữ liệu của bạn vì lợi nhuận. Không bao giờ!",
+    "next": "Tiếp theo"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Tôi đã đọc và đồng ý",
+    "termsOfUse": "điều khoản sử dụng",
+    "createNewWallet": "Tạo ví mới",
+    "setupNewAccount": "Thiết lập tài khoản eckoWALLET mới",
+    "restoreWallet": "Khôi phục ví",
+    "restoreFromPhrase": "Khôi phục từ cụm từ khôi phục"
+  },
+  "createPassword": {
+    "successCreate": "Tạo mật khẩu mới thành công",
+    "errorCreate": "Lỗi khi tạo ví",
+    "invalidPhrase": "Cụm từ khôi phục không hợp lệ!",
+    "importFromPhrase": "Nhập từ cụm khôi phục",
+    "createPassword": "Tạo mật khẩu",
+    "pastePhrase": "Dán cụm từ khôi phục",
+    "requiredField": "Trường này là bắt buộc.",
+    "phraseTooLong": "Cụm từ khôi phục quá dài.",
+    "secretRecoveryPhrase": "Cụm từ khôi phục bí mật",
+    "import": "Nhập",
+    "create": "Tạo"
+  },
+  "passwordForm": {
+    "inputPassword": "Nhập mật khẩu",
+    "inputConfirmPassword": "Nhập lại mật khẩu",
+    "requiredField": "Trường này là bắt buộc.",
+    "minPassword": "Mật khẩu phải có ít nhất 8 ký tự.",
+    "maxPassword": "Mật khẩu tối đa 256 ký tự.",
+    "passwordMismatch": "Mật khẩu không khớp",
+    "newPassword": "Mật khẩu mới (ít nhất 8 ký tự)",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "passwordWarning": "Tôi hiểu tôi đã sử dụng ký tự không khuyến nghị. Khuyến nghị chỉ dùng chữ cái (a–z), số (0–9) và ký tự đặc biệt _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Cụm từ khôi phục bí mật",
+    "step1Text": "Ở bước tiếp theo, bạn sẽ ghi lại cụm từ khôi phục 12 từ của mình.\nCụm từ khôi phục cho phép bạn dễ dàng khôi phục ví trên thiết bị mới.\nBất cứ ai có cụm từ này sẽ có toàn quyền truy cập vào ví của bạn, hãy giữ nó an toàn.\nNếu bạn mất cụm từ, bạn sẽ không thể truy cập ví nữa, hãy lưu giữ cẩn thận.",
+    "step1Checkbox": "Tôi hiểu nếu mất cụm từ khôi phục, tôi sẽ không thể khôi phục ví.",
+    "generating": "Đang tạo cặp khóa...",
+    "continue": "Tiếp tục",
+    "reveal": "Hiển thị cụm từ khi nhấp vào đây",
+    "step2Text1": "Cụm từ khôi phục giúp sao lưu và khôi phục tài khoản của bạn.",
+    "step2Text2": "Cảnh báo: Không bao giờ chia sẻ cụm từ khôi phục. Bất cứ ai có nó đều có thể chiếm quyền ví của bạn.",
+    "download": "Tải xuống",
+    "verifyTitle": "Xác thực cụm từ khôi phục",
+    "verifyInstruction": "Nhập các từ của cụm từ theo đúng thứ tự để xác thực.",
+    "successVerify": "Xác thực cụm từ khôi phục thành công",
+    "invalidPhrase": "Cụm từ khôi phục không hợp lệ!",
+    "errorGeneratingKeys": "Lỗi khi tạo khóa",
+    "errorCreatingWallet": "Lỗi khi tạo ví",
+    "generatingWallet": "Đang tạo ví..."
+  },
+  "wallet": {
+    "netWorth": "TÀI SẢN RÒNG",
+    "accountBalance": "SỐ DƯ TÀI KHOẢN",
+    "send": "Gửi",
+    "receive": "Nhận",
+    "receiveTokens": "Nhận token",
+    "buy": "Mua",
+    "history": "Lịch sử",
+    "assets": "TÀI SẢN",
+    "detectedTokens": "Token phát hiện",
+    "tokenList": "Danh sách token",
+    "kdaChainDistribution": "Phân phối chuỗi KDA",
+    "chainDistribution": "Phân phối chuỗi",
+    "tokenRemoved": "Token đã xóa thành công",
+    "removeToken": "Xóa token",
+    "editToken": "Chỉnh sửa token",
+    "removeTokenTitle": "Xóa token {{symbol}}",
+    "confirmRemoveToken": "Bạn có chắc chắn muốn xóa token {{symbol}} không?",
+    "notTransferable": "{{contractAddress}} không thể chuyển giao!",
+    "accountDoesNotExist": "Không tìm thấy: Tài khoản không tồn tại.",
+    "balanceZero": "Số dư {{symbol}} là 0."
+  },
+  "accountActions": {
+    "shareWallet": "Chia sẻ ví",
+    "copied": "Đã sao chép!",
+    "exportRecoveryPhrase": "Xuất cụm từ khôi phục",
+    "signHashTransaction": "Ký hàm băm giao dịch",
+    "editAccountAlias": "Chỉnh sửa bí danh tài khoản",
+    "setAccountAlias": "Đặt bí danh tài khoản",
+    "removeSelectedWallet": "Xóa ví đã chọn",
+    "createWallet": "Tạo ví",
+    "importWallet": "Nhập ví",
+    "importHardwareWallet": "Nhập ví phần cứng"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Không tìm thấy token nào cho tài khoản."
+  },
+  "aliasModal": {
+    "accountAlias": "Bí danh tài khoản",
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "aliasChanged": "Bí danh đã thay đổi thành công"
+  },
+  "hashSignModal": {
+    "publicKey": "Khóa công khai",
+    "transactionHash": "Hàm băm giao dịch",
+    "insertTransactionHash": "Nhập hàm băm giao dịch",
+    "signature": "Chữ ký",
+    "copied": "Đã sao chép!",
+    "clean": "Xóa",
+    "sign": "Ký"
+  },
+  "popupDetailTransaction": {
+    "status": "Trạng thái",
+    "direction": "Hướng",
+    "symbol": "Biểu tượng",
+    "quantity": "Số lượng",
+    "gasFee": "Phí gas",
+    "total": "Tổng cộng",
+    "viewDetails": "Xem chi tiết",
+    "activityLog": "Nhật ký hoạt động",
+    "transactionCreated": "Đã tạo giao dịch với {{amount}} {{symbol}}",
+    "transactionConfirmed": "Giao dịch đã được xác nhận",
+    "success": "Thành công",
+    "failed": "Thất bại",
+    "finishing": "Đang hoàn thiện"
+  },
+  "removeWallet": {
+    "title": "Bạn có chắc chắn muốn xóa ví này không?",
+    "description": "Nhập mật khẩu để xác nhận",
+    "passwordPlaceholder": "Nhập mật khẩu",
+    "passwordRequired": "Trường này là bắt buộc.",
+    "passwordMinLength": "Mật khẩu phải có ít nhất 8 ký tự.",
+    "passwordMaxLength": "Mật khẩu tối đa 256 ký tự.",
+    "invalidPassword": "Mật khẩu không hợp lệ",
+    "cancel": "Hủy",
+    "remove": "Xóa"
+  },
+  "header": {
+    "selectNetwork": "Chọn mạng",
+    "manageNetworks": "Quản lý mạng",
+    "myWallets": "Ví của tôi",
+    "removeWalletTitle": "Xóa ví",
+    "createAccountSuccess": "Tạo tài khoản thành công!",
+    "createAccountFail": "Tạo tài khoản thất bại",
+    "copied": "Đã sao chép!"
+  },
+  "signIn": {
+    "loginTitle": "Đăng nhập vào tài khoản của bạn",
+    "passwordPlaceholder": "Nhập mật khẩu",
+    "passwordTitle": "Mật khẩu",
+    "signInButton": "Đăng nhập",
+    "invalidPassword": "Mật khẩu không hợp lệ",
+    "required": "Trường này là bắt buộc.",
+    "minLength": "Mật khẩu phải có ít nhất 8 ký tự.",
+    "maxLength": "Mật khẩu tối đa 256 ký tự.",
+    "initWalletError": "Lỗi khởi tạo ví"
+  },
+  "settings": {
+    "contacts": "Danh bạ",
+    "language": "Ngôn ngữ",
+    "languageDesc": "Chọn ngôn ngữ cho ví",
+    "contactsDesc": "Quản lý danh bạ của bạn",
+    "networks": "Mạng",
+    "networksDesc": "Thêm hoặc chỉnh sửa mạng RPC",
+    "connectedSites": "Trang đã kết nối",
+    "connectedSitesDesc": "Xem và quản lý các trang đã kết nối",
+    "walletConnect": "Wallet Connect",
+    "walletConnectDesc": "Kết nối qua WalletConnect",
+    "txSettings": "Cài đặt giao dịch",
+    "txSettingsDesc": "Đặt ưu tiên gas",
+    "exportPhrase": "Xuất cụm từ khôi phục",
+    "exportPhraseDesc": "Bảo vệ ví của bạn",
+    "editPassword": "Thay đổimật khẩu",
+    "editPasswordDesc": "Thay đổi mật khẩu ví",
+    "2fa": "Xác thực hai yếu tố",
+    "2faDesc": "Quản lý cài đặt 2FA",
+    "expandView": "Chế độ mở rộng",
+    "expandViewDesc": "Mở eckoWALLET trong cửa sổ mới",
+    "theme": "Chủ đề",
+    "themeDesc": "Chọn chủ đề cho ví",
+    "lock": "Khóa ví",
+    "lockDesc": "Bảo vệ ví của bạn",
+    "lockSettings": "Khóa tự động",
+    "lockSettingsDesc": "Thay đổi cài đặt bảo mật",
+    "discord": "Tham gia Discord",
+    "website": "Truy cập trang web",
+    "terms": "Điều khoản dịch vụ",
+    "privacy": "Chính sách bảo mật",
+    "connectedSitesPage": {
+      "title": "Trang đã kết nối",
+      "removeSiteTitle": "Xóa trang",
+      "removeSiteConfirmText": "Bạn có chắc chắn muốn xóa",
+      "removeSiteSuccess": "Xóa trang thành công."
+    },
+    "contactsPage": {
+      "title": "Danh bạ",
+      "newContactTitle": "Liên hệ mới",
+      "addNewContact": "Thêm liên hệ mới",
+      "noContacts": "Không có liên hệ"
+    },
+    "contactForm": {
+      "enterAlias": "Nhập bí danh",
+      "aliasPlaceholder": "ví dụ: Nguyen",
+      "accountNameTitle": "Tên tài khoản",
+      "accountNamePlaceholder": "Tên tài khoản",
+      "scanQrTitle": "Quét mã QR",
+      "scanQrDescription": "Đưa mã QR vào tầm nhìn camera",
+      "buttonCancel": "Hủy",
+      "buttonSave": "Lưu",
+      "successContactAdded": "Thêm liên hệ thành công",
+      "errorNetwork": "Lỗi mạng.",
+      "copied": "Đã sao chép!",
+      "requiredField": "Trường này là bắt buộc.",
+      "invalidData": "Dữ liệu không hợp lệ",
+      "aliasMaxLength": "Bí danh tối đa 256 ký tự.",
+      "accountNameMaxLength": "Tên tài khoản tối đa 1000 ký tự."
+    },
+    "contactInfo": {
+      "copied": "Đã sao chép!",
+      "contactRemoved": "Xóa liên hệ thành công",
+      "accountName": "TÊN TÀI KHOẢN",
+      "editContact": "Chỉnh sửa liên hệ",
+      "editTitle": "Chỉnh sửa tài khoản",
+      "delete": "Xóa",
+      "deleteContactTitle": "Xóa liên hệ",
+      "removeContact": "Bạn có muốn xóa liên hệ này không?",
+      "confirmRemove": "Bạn có chắc chắn muốn xóa liên hệ này không?",
+      "cancel": "Hủy",
+      "confirm": "Xác nhận"
+    },
+    "editPasswordPage": {
+      "title": "Chỉnh sửa mật khẩu",
+      "passwordChanged": "Đổi mật khẩu thành công",
+      "cannotUpdatePassword": "Không thể cập nhật cài đặt mật khẩu",
+      "save": "Lưu"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Nhập mật khẩu để tiếp tục",
+      "inputPlaceholder": "Nhập mật khẩu",
+      "password": "Mật khẩu",
+      "errorRequired": "Trường này là bắt buộc.",
+      "errorInvalid": "Mật khẩu không hợp lệ.",
+      "continue": "Tiếp tục",
+      "correctPassword": "Mật khẩu đúng, vui lòng chờ..."
+    },
+    "exportSeedPhrase": {
+      "title": "Xuất cụm từ khôi phục",
+      "copied": "Đã sao chép!",
+      "description": "Cụm từ khôi phục bí mật giúp sao lưu và khôi phục tài khoản.",
+      "warning": "Không bao giờ chia sẻ cụm từ khôi phục. Bất cứ ai có nó đều có thể chiếm quyền ví của bạn.",
+      "copyKeyphrase": "Sao chép cụm từ",
+      "download": "Tải xuống"
+    },
+    "lockSettingsPage": {
+      "title": "Cài đặt khóa tự động",
+      "saved": "Lưu cài đặt thành công",
+      "required": "Trường này là bắt buộc.",
+      "placeholder": "Chọn thời gian khóa",
+      "selectTitle": "Khóa tự động",
+      "restore": "Khôi phục mặc định",
+      "save": "Lưu"
+    },
+    "networksPage": {
+      "title": "Mạng",
+      "network": "Mạng",
+      "addNew": "Thêm mạng mới",
+      "editSuccess": "Chỉnh sửa mạng thành công",
+      "addSuccess": "Thêm mạng thành công",
+      "errorUrl": "URL đã tồn tại",
+      "deleteSuccess": "Xóa mạng thành công",
+      "remove": "Xóa",
+      "save": "Lưu",
+      "confirmRemove": "Bạn có muốn xóa mạng này không?",
+      "confirmRemoveDesc": "Bạn có chắc chắn muốn xóa mạng này không?",
+      "placeholderName": "Nhập tên mạng",
+      "placeholderUrl": "Nhập RPC-URL",
+      "placeholderExplorer": "Nhập URL trình duyệt blockchain",
+      "placeholderNetworkId": "Nhập ID mạng",
+      "titleName": "Tên mạng",
+      "titleUrl": "RPC-URL",
+      "titleExplorer": "URL trình duyệt blockchain",
+      "titleNetworkId": "ID mạng",
+      "nameMax": "Tên mạng tối đa 1000 ký tự.",
+      "urlMax": "RPC-URL tối đa 1000 ký tự.",
+      "explorerMax": "URL trình duyệt blockchain tối đa 1000 ký tự.",
+      "networkIdMax": "ID mạng tối đa 1000 ký tự."
+    },
+    "selectTheme": {
+      "title": "Chọn chủ đề"
+    },
+    "txSettingsPage": {
+      "title": "Cài đặt giao dịch",
+      "gasLimit": "Giới hạn gas",
+      "gasLimitPlaceholder": "Nhập giới hạn gas",
+      "finishCrossChain": "Hoàn thành bình chứa gas cross-chain",
+      "finishCrossChainPlaceholder": "Nhập bình chứa gas cross-chain",
+      "crossChainGasLimit": "Giới hạn gas cross-chain",
+      "crossChainGasLimitPlaceholder": "Nhập giới hạn gas cross-chain",
+      "crossChainGasPrice": "Giá gas cross-chain",
+      "crossChainGasPricePlaceholder": "Nhập giá gas cross-chain",
+      "save": "Lưu",
+      "restoreDefault": "Khôi phục mặc định",
+      "successSave": "Lưu cài đặt thành công",
+      "requiredField": "Trường này là bắt buộc.",
+      "invalidValue": "Giá trị không hợp lệ"
+    },
+    "2faPage": {
+      "title": "Xác thực hai yếu tố",
+      "description": "Xác thực hai yếu tố đã được kích hoạt.",
+      "disableButton": "Vô hiệu hóa",
+      "successDisable": "Tắt 2FA thành công",
+      "installApp": "Cài đặt",
+      "orSimilar": "hoặc ứng dụng tương tự",
+      "scanQRCode": "Quét mã QR bên dưới:",
+
+      "enter6Digits": "Nhập mã 6 chữ số",
+      "invalidCode": "Mã không hợp lệ.",
+      "saveButton": "Lưu",
+      "setupSuccess": "Kích hoạt 2FA thành công"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "Chọn tài khoản",
+      "invalidUrl": "URL không hợp lệ",
+      "disconnectSuccess": "Ngắt kết nối thành công theo yêu cầu",
+      "noActiveSessions": "KHÔNG CÓ PHIÊN ĐANG HOẠT ĐỘNG",
+      "activeSessions": "PHIÊN ĐANG HOẠT ĐỘNG",
+      "expiry": "Hết hạn:",
+      "removeConnection": "Gỡ kết nối",
+      "removeConfirmation": "Bạn có chắc chắn muốn gỡ kết nối WalletConnect này không?",
+      "newConnection": "Kết nối mới",
+      "addConnection": "Thêm WalletConnect mới",
+      "inputUri": "Nhập URI",
+      "code": "Mã",
+      "continue": "Tiếp tục"
+    }
+  },
+  "buy": {
+    "title": "Mua",
+    "description": "Mua và bán tiền điện tử được thực hiện thông qua dịch vụ của bên thứ ba Onramper.\n\neckoWALLET cố gắng đảm bảo bảo mật cao cho người dùng, nhưng không thể đảm bảo tính bảo mật hoặc quyền riêng tư của dịch vụ bên thứ ba.",
+    "cancel": "Hủy",
+    "confirm": "Xác nhận",
+    "error": {
+      "noAddress": "Địa chỉ ví không khả dụng",
+      "generic": "Không thể kết nối đến dịch vụ. Vui lòng thử lại sau."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "PHÂN TÍCH VÍ",
+    "dexAnalytics": "PHÂN TÍCH DEX",
+    "portfolioValue": "GIÁ TRỊ DANH MỤC",
+    "startTracking": "Bắt đầu theo dõi",
+    "trackPortfolioTitle": "Theo dõi giá trị danh mục",
+    "trackPortfolioStart": "BẮT ĐẦU THEO DÕI SỐ DƯ",
+    "trackPortfolioDesc1": "Xác nhận để bắt đầu theo dõi số dư tài khoản.",
+    "trackPortfolioDesc2": "Tiếp tục chứ?",
+    "confirm": "Xác nhận",
+    "confirming": "Đang xác nhận...",
+    "disclaimerTitle": "Thông tin!",
+    "disclaimerText": "Dữ liệu trên trang này đang ở giai đoạn BETA và được cung cấp \"nguyên trạng\"."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Mạng không hợp lệ",
+      "signingCmdError": "Lỗi ký, kiểm tra payload",
+      "signingCmdGenericError": "Lỗi ký",
+      "rejectedByUser": "Bị từ chối bởi người dùng",
+      "userRejected": "Người dùng đã từ chối.",
+      "signedCommand": "Lệnh đã ký",
+      "hashToSign": "HÀM BĂM CẦN KÝ:",
+      "pleaseEnableLedger": "Bật BLIND SIGNING\nvà làm theo hướng dẫn của Ledger trước",
+      "capabilities": "Quyền hạn",
+      "close": "Đóng",
+      "reject": "Từ chối",
+      "confirm": "Xác nhận"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Yêu cầu ký nhanh",
+      "code": "Mã",
+      "capabilities": "Quyền hạn",
+      "rawData": "Dữ liệu thô",
+      "command": "Lệnh {{index}}/{{total}}",
+      "hashToSign": "HÀM BĂM CẦN KÝ ({{count}}/{{total}}):",
+      "ledgerInstructions": "Bật BLIND SIGNING và làm theo hướng dẫn Ledger",
+      "close": "Đóng",
+      "reject": "Từ chối",
+      "confirm": "Xác nhận",
+      "error.invalidStructure": "Ký nhanh thất bại: cấu trúc không hợp lệ",
+      "error.pubKeyNotFound": "Ký nhanh thất bại: không tìm thấy khóa công khai",
+      "error.ledger": "Ký Ledger thất bại"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Nhập ví phần cứng",
+      "selectDevice": "Chọn ví phần cứng",
+      "ledgerInstructions": "Kết nối Ledger với máy tính. Mở ứng dụng Kadena và mở khóa.",
+      "connect": "Kết nối",
+      "confirm": "Nhập",
+      "success": "Nhập ví phần cứng thành công",
+      "error": {
+        "duplicate": "Tài khoản đã thêm trước đó.",
+        "network": "Lỗi mạng.",
+        "invalid": "Dữ liệu không hợp lệ"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Nhập từ Ledger",
+      "instruction": "Kết nối Ledger với máy tính, mở ứng dụng Kadena và mở khóa.",
+      "continue": "Tiếp tục",
+      "publicKey": "KHÓA CÔNG KHAI",
+      "account": "TÀI KHOẢN",
+      "confirm": "Xác nhận nhập",
+      "success": "Nhập tài khoản thành công.",
+      "error": {
+        "duplicate": "Tài khoản đã thêm trước đó.",
+        "network": "Lỗi lấy thông tin tài khoản",
+        "invalid": "Dữ liệu không hợp lệ"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Nhập token",
+      "contractLabel": "Địa chỉ hợp đồng token",
+      "symbolLabel": "Ký hiệu token",
+      "placeholder": {
+        "contract": "Nhập địa chỉ hợp đồng",
+        "symbol": "Nhập ký hiệu"
+      },
+      "add": "Thêm token",
+      "edit": "Chỉnh sửa token",
+      "success": "Lưu token thành công",
+      "error": {
+        "duplicate": "Token đã tồn tại",
+        "notFound": "Không tìm thấy dữ liệu cho hợp đồng {{contract}} trên {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Nhập ví",
+    "form": {
+      "accountName": {
+        "title": "Tên tài khoản",
+        "placeholder": "Tên tài khoản"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "Khóa bí mật",
+        "placeholder": "Khóa bí mật"
+      }
+    },
+    "validation": {
+      "required": "Trường này là bắt buộc.",
+      "invalidData": "Dữ liệu không hợp lệ",
+      "startsWithK": "Tên tài khoản phải bắt đầu bằng \"k:\"",
+      "accountName": {
+        "maxLength": "Tên tài khoản tối đa 1000 ký tự."
+      },
+      "secretKey": {
+        "maxLength": "Khóa bí mật tối đa 1000 ký tự."
+      }
+    },
+    "modal": {
+      "scanTitle": "Quét mã QR",
+      "scanBody": "Đưa mã QR vào tầm nhìn camera"
+    },
+    "button": {
+      "import": "Nhập"
+    },
+    "toast": {
+      "importSuccess": "Nhập tài khoản thành công.",
+      "duplicateError": "Tài khoản đã tồn tại.",
+      "invalidAccountData": "Dữ liệu tài khoản không hợp lệ",
+      "multipleKeys": "Không hỗ trợ nhiều cặp khóa",
+      "invalidData": "Dữ liệu không hợp lệ",
+      "networkError": "Lỗi mạng."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Tôi đã có khóa bí mật.",
+      "prompt": "Nhập khóa bí mật hiện có"
+    },
+    "button": {
+      "import": "Nhập"
+    },
+    "image": {
+      "alt": "Biểu tượng nhập"
+    }
+  },
+  "nft": {
+    "header": "Bộ sưu tập của bạn",
+    "noOwned": "Không có NFT nào"
+  },
+  "sendTransactions": {
+    "header": "Gửi giao dịch {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ký Ledger thành công",
+    "ledgerSignFailed": "Ký Ledger thất bại hoặc bị từ chối",
+    "transferSuccess": "Chuyển thành công",
+    "transferFailed": "Chuyển thất bại",
+    "transactionSent": "Giao dịch đã được gửi thành công! Kiểm tra lịch sử",
+    "networkError": "Lỗi mạng.",
+    "loadingTop": "Đừng đóng cửa sổ này",
+    "loadingBottom": "Bạn sẽ được chuyển tự động khi giao dịch hoàn thành",
+    "labelReceiver": "Người nhận",
+    "labelAmount": "Số lượng",
+    "labelGasLimit": "Giới hạn gas",
+    "labelGasPrice": "Giá gas",
+    "labelGasFee": "Phí gas",
+    "labelTotal": "Tổng cộng",
+    "warningCrossChainLine1": "Bạn đang thực hiện chuyển cross-chain",
+    "warningCrossChainLine2": "Thao tác này sẽ mất nhiều thời gian hơn",
+    "warningNonKAccountLine1": "Bạn đang gửi đến tài khoản không bắt đầu bằng “k:”!",
+    "warningNonKAccountLine2": "Bạn có chắc muốn tiếp tục?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} không thể chuyển giao!",
+    "form": {
+      "sourceChainId": {
+        "title": "Chain ID nguồn"
+      },
+      "destinationAccount": {
+        "title": "Tài khoản đích"
+      },
+      "targetChainId": {
+        "title": "Chain ID đích"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Tài khoản đích tối đa 1000 ký tự."
+    },
+    "balanceLabel": "Số dư chuỗi {{symbol}}",
+    "recent": "GẦN ĐÂY",
+    "contacts": "DANH BẠ",
+    "confirm": {
+      "warningTitle": "Cảnh báo",
+      "publicKeyTitle": "Khóa công khai",
+      "publicKeyPlaceholder": "Nhập khóa công khai",
+      "predicateTitle": "Điều kiện",
+      "predicatePlaceholder": "Nhập điều kiện"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Không thể gửi cho chính bạn",
+    "invalidGasLimit": "Giới hạn gas không hợp lệ",
+    "gasLimitInteger": "Giới hạn gas phải là số nguyên",
+    "invalidGasPrice": "Giá gas không hợp lệ",
+    "insufficientFundsGas": "Không đủ tiền cho phí gas",
+    "newAddressDetected": "Phát hiện địa chỉ mới! Thêm vào danh bạ",
+    "tokenNotExists": "{{contractAddress}} không tồn tại trên CHAIN {{chainId}}!",
+    "transactionParameters": "Các tham số giao dịch",
+    "estimatedGas": "Gas ước tính {{gas}}",
+    "speed": "Tốc độ {{speed}}",
+    "modal": {
+      "confirmTitle": "Xác nhận gửi",
+      "gasParametersTitle": "Tham số gas"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Giới hạn gas"
+      },
+      "gasPrice": {
+        "title": "Giá gas"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Số lượng gửi",
+    "button": {
+      "half": "NỬA",
+      "max": "TỐI ĐA"
+    },
+    "error": {
+      "insufficientFunds": "Không đủ tiền",
+      "invalidAmount": "Số lượng không hợp lệ"
+    },
+    "balance": "Số dư: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Logo dapp",
+    "sendTransaction": "Gửi giao dịch",
+    "destinationNotFound": "Không tìm thấy tài khoản đích"
+  },
+  "history": {
+    "header": "Lịch sử",
+    "modal": {
+      "confirmSendTransaction": "Xác nhận gửi giao dịch"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Chi tiết giao dịch"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Tên tài khoản"
+  },
+  "activityList": {
+    "loading": "Đang tải...",
+    "today": "Hôm nay",
+    "yesterday": "Hôm qua",
+    "noTransactions": "Bạn chưa có giao dịch nào"
+  },
+  "statusFilter": {
+    "modalTitle": "Trạng thái",
+    "prefix": "Trạng thái: ",
+    "options": {
+      "all": "Tất cả",
+      "in": "Đến",
+      "out": "Đi",
+      "pending": "Đang chờ"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Tài sản: ",
+    "options": {
+      "all": "Tất cả"
+    }
+  },
+  "footer": {
+    "wallet": "VÍ",
+    "analytics": "PHÂN TÍCH",
+    "nft": "NFT",
+    "settings": "CÀI ĐẶT"
+  }
+}

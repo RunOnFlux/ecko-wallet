@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { setWallets } from 'src/stores/slices/wallet';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import { decryptKey } from 'src/utils/security';
@@ -12,6 +13,7 @@ import { useModalContext } from 'src/contexts/ModalContext';
 import { useAppSelector } from 'src/stores/hooks';
 
 export const AliasModal = () => {
+  const { t } = useTranslation();
   const stateWallet = useCurrentWallet();
   const { closeModal } = useModalContext();
   const { selectedNetwork, passwordHash } = useAppSelector((state) => state.extensions);
@@ -32,7 +34,7 @@ export const AliasModal = () => {
         const selectedWalletIndex = wallets.findIndex((a) => a.account === stateWallet?.account);
         newWallets.splice(selectedWalletIndex, 0, { ...wallets[selectedWalletIndex], alias });
         setWallets(newWallets);
-        toast.success(<Toast type="success" content="Alias changed successfully" />);
+        toast.success(<Toast type="success" content={t('aliasModal.aliasChanged')} />);
       },
       () => {},
     );
@@ -42,7 +44,7 @@ export const AliasModal = () => {
     <div style={{ padding: 24 }}>
       <BaseTextInput
         inputProps={{ value: alias }}
-        title="Account Alias"
+        title={t('aliasModal.accountAlias')}
         height="auto"
         onChange={(e) => {
           if (e.target?.value?.length < 20) {
@@ -52,7 +54,7 @@ export const AliasModal = () => {
       />
       <DivFlex justifyContent="space-between" alignItems="center" gap="10px" padding="10px">
         <Button
-          label="Cancel"
+          label={t('aliasModal.cancel')}
           size="full"
           variant="disabled"
           onClick={() => {
@@ -62,7 +64,7 @@ export const AliasModal = () => {
         />
         <Button
           type="submit"
-          label="Save"
+          label={t('aliasModal.save')}
           size="full"
           onClick={() => {
             setAccountAlias();

@@ -1,0 +1,646 @@
+{
+  "select_language": "Выберите язык",
+  "home": {
+    "startNow": "Начать сейчас"
+  },
+  "common": {
+    "requiredField": "Это поле обязательно.",
+    "invalidData": "Неверные данные",
+    "invalidUrl": "Неверный URL",
+    "cancel": "Отмена",
+    "back": "Назад",
+    "confirm": "Подтвердить",
+    "continue": "Продолжить",
+    "reject": "Отклонить",
+    "usd": "{{value}} USD",
+    "next": "Далее",
+    "close": "Закрыть"
+  },
+  "condition": {
+    "noPersonalInfo": "Мы никогда не собираем приватные ключи, адреса, транзакции, балансы, хэши или личную информацию",
+    "noIP": "Мы никогда не собираем ваш полный IP-адрес",
+    "noSelling": "Мы никогда не продаём данные ради прибыли. Никогда!",
+    "next": "Далее"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Я прочитал(а) и согласен(на) с",
+    "termsOfUse": "Условиями использования",
+    "createNewWallet": "Создать новый кошелёк",
+    "setupNewAccount": "Настроить новый аккаунт eckoWALLET",
+    "restoreWallet": "Восстановить кошелёк",
+    "restoreFromPhrase": "Восстановить по фразе восстановления"
+  },
+  "createPassword": {
+    "successCreate": "Пароль успешно создан",
+    "errorCreate": "Ошибка при создании кошелька",
+    "invalidPhrase": "Неверная фраза восстановления!",
+    "importFromPhrase": "Импортировать по фразе восстановления",
+    "createPassword": "Создать пароль",
+    "pastePhrase": "Вставить фразу восстановления",
+    "requiredField": "Это поле обязательно.",
+    "phraseTooLong": "Фраза восстановления слишком длинная.",
+    "secretRecoveryPhrase": "Секретная фраза восстановления",
+    "import": "Импорт",
+    "create": "Создать"
+  },
+  "passwordForm": {
+    "inputPassword": "Введите пароль",
+    "inputConfirmPassword": "Подтвердите пароль",
+    "requiredField": "Это поле обязательно.",
+    "minPassword": "Пароль должен быть не менее 8 символов.",
+    "maxPassword": "Пароль должен быть не более 256 символов.",
+    "passwordMismatch": "Пароли не совпадают",
+    "newPassword": "Новый пароль (минимум 8 символов)",
+    "confirmPassword": "Подтвердите пароль",
+    "passwordWarning": "Я понимаю, что использовал(а) небезопасные символы. Рекомендуется использовать только буквы (a-z), цифры (0-9) и специальные символы _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Секретная фраза восстановления",
+    "step1Text": "На следующем шаге вы получите 12-словную фразу восстановления.\nС её помощью вы сможете восстановить кошелёк на новом устройстве.\nЛюбой, кто владеет этой фразой, может управлять вашим кошельком. Храните её в секрете.\nЕсли фраза будет утеряна, восстановить её невозможно. Сохраните её надежно.",
+    "step1Checkbox": "Я понимаю, что без фразы восстановления восстановить кошелёк невозможно.",
+    "generating": "Генерация ключей...",
+    "continue": "Продолжить",
+    "reveal": "Нажмите, чтобы показать секретные слова",
+    "step2Text1": "Секретная фраза восстановления позволяет создавать резервные копии и восстанавливать аккаунт.",
+    "step2Text2": "Внимание: никогда не разглашайте секретную фразу восстановления. Любой, кто её получит, сможет навсегда завладеть вашим кошельком.",
+    "download": "Скачать",
+    "verifyTitle": "Проверка фразы восстановления",
+    "verifyInstruction": "Пожалуйста, подтвердите фразу восстановления, введя слова в правильном порядке.",
+    "successVerify": "Фраза восстановления успешно подтверждена",
+    "invalidPhrase": "Неверная секретная фраза восстановления!",
+    "errorGeneratingKeys": "Ошибка при генерации ключей кошелька",
+    "errorCreatingWallet": "Ошибка при создании кошелька",
+    "generatingWallet": "Создание кошелька..."
+  },
+  "wallet": {
+    "netWorth": "ЧИСТАЯ СТОИМОСТЬ",
+    "accountBalance": "БАЛАНС СЧЁТА",
+    "send": "Отправить",
+    "receive": "Получить",
+    "receiveTokens": "Получить токены",
+    "buy": "Купить",
+    "history": "История",
+    "assets": "ASSETS",
+    "detectedTokens": "Обнаруженные токены",
+    "tokenList": "Список токенов",
+    "kdaChainDistribution": "Распределение KDA chain",
+    "chainDistribution": "Распределение chain",
+    "tokenRemoved": "Токен успешно удалён",
+    "removeToken": "Удалить токен",
+    "editToken": "Редактировать токен",
+    "removeTokenTitle": "Удалить токен {{symbol}}",
+    "confirmRemoveToken": "Вы уверены, что хотите удалить токен {{symbol}}?",
+    "notTransferable": "{{contractAddress}} нельзя перевести!",
+    "accountDoesNotExist": "Не существует: такого аккаунта нет.",
+    "balanceZero": "Баланс {{symbol}} равен 0."
+  },
+  "accountActions": {
+    "shareWallet": "Поделиться кошельком",
+    "copied": "Скопировано!",
+    "exportRecoveryPhrase": "Экспортировать фразу восстановления",
+    "signHashTransaction": "Подписать хэш транзакции",
+    "editAccountAlias": "Редактировать псевдоним аккаунта",
+    "setAccountAlias": "Установить псевдоним аккаунта",
+    "removeSelectedWallet": "Удалить выбранный кошелёк",
+    "createWallet": "Создать кошелёк",
+    "importWallet": "Импортировать кошелёк",
+    "importHardwareWallet": "Импортировать аппаратный кошелёк"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Для этого аккаунта не найдено других токенов."
+  },
+  "aliasModal": {
+    "accountAlias": "Псевдоним аккаунта",
+    "cancel": "Отмена",
+    "save": "Сохранить",
+    "aliasChanged": "Псевдоним успешно изменён"
+  },
+  "hashSignModal": {
+    "publicKey": "Ваш публичный ключ",
+    "transactionHash": "Хэш транзакции",
+    "insertTransactionHash": "Введите хэш транзакции",
+    "signature": "Подпись",
+    "copied": "Скопировано!",
+    "clean": "Очистить",
+    "sign": "Подписать"
+  },
+  "popupDetailTransaction": {
+    "status": "Статус",
+    "direction": "Направление",
+    "symbol": "Символ",
+    "quantity": "Количество",
+    "gasFee": "Комиссия за газ",
+    "total": "Итого",
+    "viewDetails": "Просмотр деталей",
+    "activityLog": "Журнал активности",
+    "transactionCreated": "Транзакция создана на сумму {{amount}} {{symbol}}",
+    "transactionConfirmed": "Транзакция подтверждена",
+    "success": "Успех",
+    "failed": "Неудача",
+    "finishing": "Завершается"
+  },
+  "removeWallet": {
+    "title": "Вы действительно хотите удалить этот кошелёк?",
+    "description": "Введите пароль для подтверждения",
+    "passwordPlaceholder": "Введите пароль",
+    "passwordRequired": "Это поле обязательно.",
+    "passwordMinLength": "Пароль должен быть не менее 8 символов.",
+    "passwordMaxLength": "Пароль должен быть не более 256 символов.",
+    "invalidPassword": "Неверный пароль",
+    "cancel": "Отмена",
+    "remove": "Удалить"
+  },
+  "header": {
+    "selectNetwork": "Выбрать сеть",
+    "manageNetworks": "Управление сетями",
+    "myWallets": "Мои кошельки",
+    "removeWalletTitle": "Удалить кошелёк",
+    "createAccountSuccess": "Аккаунт успешно создан!",
+    "createAccountFail": "Ошибка создания аккаунта",
+    "copied": "Скопировано!"
+  },
+  "signIn": {
+    "loginTitle": "Вход в аккаунт",
+    "passwordPlaceholder": "Введите пароль",
+    "passwordTitle": "Пароль",
+    "signInButton": "Войти",
+    "invalidPassword": "Неверный пароль",
+    "required": "Это поле обязательно.",
+    "minLength": "Пароль должен быть не менее 8 символов.",
+    "maxLength": "Пароль должен быть не более 256 символов.",
+    "initWalletError": "Ошибка инициализации кошелька"
+  },
+  "settings": {
+    "contacts": "Контакты",
+    "language": "Язык",
+    "languageDesc": "Выберите язык кошелька",
+    "contactsDesc": "Управление контактами",
+    "networks": "Сети",
+    "networksDesc": "Добавить или редактировать кастомные RPC",
+    "connectedSites": "Подключённые сайты",
+    "connectedSitesDesc": "Просмотр и управление подключёнными сайтами",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "Подключиться через WalletConnect",
+    "txSettings": "Настройки транзакции",
+    "txSettingsDesc": "Установить предпочтения по газу",
+    "exportPhrase": "Экспорт фразы восстановления",
+    "exportPhraseDesc": "Защитить свой кошелёк",
+    "editPassword": "Изменить пароль",
+    "editPasswordDesc": "Сменить пароль кошелька",
+    "2fa": "2FA",
+    "2faDesc": "Управление двухфакторной аутентификацией",
+    "expandView": "Расширенный вид",
+    "expandViewDesc": "Открыть eckoWALLET в новом окне",
+    "theme": "Тема",
+    "themeDesc": "Настроить тему кошелька",
+    "lock": "Блокировка кошелька",
+    "lockDesc": "Защитить свой кошелёк",
+    "lockSettings": "Настройки блокировки",
+    "lockSettingsDesc": "Изменить параметры безопасности",
+    "discord": "Присоединиться к нашему Discord",
+    "website": "Посетить наш сайт",
+    "terms": "Условия использования",
+    "privacy": "Политика конфиденциальности",
+    "connectedSitesPage": {
+      "title": "Подключённые сайты",
+      "removeSiteTitle": "Удалить сайт",
+      "removeSiteConfirmText": "Вы уверены, что хотите удалить",
+      "removeSiteSuccess": "Сайт успешно удалён."
+    },
+    "contactsPage": {
+      "title": "Контакты",
+      "newContactTitle": "Новый контакт",
+      "addNewContact": "Добавить контакт",
+      "noContacts": "Контактов нет"
+    },
+    "contactForm": {
+      "enterAlias": "Введите псевдоним",
+      "aliasPlaceholder": "например, David",
+      "accountNameTitle": "Имя аккаунта",
+      "accountNamePlaceholder": "Имя аккаунта",
+      "scanQrTitle": "Сканировать QR-код",
+      "scanQrDescription": "Наведите камеру на QR-код",
+      "buttonCancel": "Отмена",
+      "buttonSave": "Сохранить",
+      "successContactAdded": "Контакт добавлен",
+      "errorNetwork": "Ошибка сети.",
+      "copied": "Скопировано!",
+      "requiredField": "Это поле обязательно.",
+      "invalidData": "Неверные данные",
+      "aliasMaxLength": "Псевдоним не более 256 символов.",
+      "accountNameMaxLength": "Имя аккаунта не более 1000 символов."
+    },
+    "contactInfo": {
+      "copied": "Скопировано!",
+      "contactRemoved": "Контакт удалён",
+      "accountName": "ИМЯ АККАУНТА",
+      "editContact": "Редактировать контакт",
+      "editTitle": "Редактировать аккаунт",
+      "delete": "Удалить",
+      "deleteContactTitle": "Удалить контакт",
+      "removeContact": "Удалить контакт?",
+      "confirmRemove": "Вы уверены, что хотите удалить этот контакт?",
+      "cancel": "Отмена",
+      "confirm": "Подтвердить"
+    },
+    "editPasswordPage": {
+      "title": "Изменить пароль",
+      "passwordChanged": "Пароль успешно изменён",
+      "cannotUpdatePassword": "Не удалось обновить пароль",
+      "save": "Сохранить"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Введите пароль для продолжения",
+      "inputPlaceholder": "Введите пароль",
+      "password": "Пароль",
+      "errorRequired": "Это поле обязательно.",
+      "errorInvalid": "Неверный пароль.",
+      "continue": "Продолжить",
+      "correctPassword": "Пароль верный, пожалуйста подождите..."
+    },
+    "exportSeedPhrase": {
+      "title": "Экспорт фразы восстановления",
+      "copied": "Скопировано!",
+      "description": "Секретная фраза восстановления позволяет создать резервную копию и восстановить аккаунт.",
+      "warning": "Никогда не раскрывайте секретную фразу восстановления. Любой, у кого она есть, сможет навсегда завладеть вашим кошельком.",
+      "copyKeyphrase": "Скопировать фразу",
+      "download": "Скачать"
+    },
+    "lockSettingsPage": {
+      "title": "Настройки автозамка",
+      "saved": "Настройки успешно сохранены",
+      "required": "Это поле обязательно.",
+      "placeholder": "Выберите время автозамка",
+      "selectTitle": "Время автозамка",
+      "restore": "Восстановить по умолчанию",
+      "save": "Сохранить"
+    },
+    "networksPage": {
+      "title": "Сети",
+      "network": "Сеть",
+      "addNew": "Добавить новую",
+      "editSuccess": "Сеть успешно отредактирована",
+      "addSuccess": "Сеть успешно добавлена",
+      "errorUrl": "URL уже существует",
+      "deleteSuccess": "Сеть успешно удалена",
+      "remove": "Удалить",
+      "save": "Сохранить",
+      "confirmRemove": "Удалить эту сеть?",
+      "confirmRemoveDesc": "Вы уверены, что хотите удалить эту сеть?",
+      "placeholderName": "Введите название сети",
+      "placeholderUrl": "Введите новый RPC URL",
+      "placeholderExplorer": "Введите URL обозревателя блоков",
+      "placeholderNetworkId": "Введите ID сети",
+      "titleName": "Название сети",
+      "titleUrl": "Новый RPC URL",
+      "titleExplorer": "URL обозревателя блоков",
+      "titleNetworkId": "ID сети",
+      "nameMax": "Название сети не более 1000 символов.",
+      "urlMax": "RPC URL не более 1000 символов.",
+      "explorerMax": "URL обозревателя блоков не более 1000 символов.",
+      "networkIdMax": "ID сети не более 1000 символов."
+    },
+    "selectTheme": {
+      "title": "Выбрать тему"
+    },
+    "txSettingsPage": {
+      "title": "Настройки транзакции",
+      "gasLimit": "Лимит газа",
+      "gasLimitPlaceholder": "Введите лимит газа",
+      "finishCrossChain": "Завершить станцию cross-chain газа",
+      "finishCrossChainPlaceholder": "Введите станцию газа",
+      "crossChainGasLimit": "Лимит cross-chain газа",
+      "crossChainGasLimitPlaceholder": "Введите лимит cross-chain газа",
+      "crossChainGasPrice": "Цена cross-chain газа",
+      "crossChainGasPricePlaceholder": "Введите цену cross-chain газа",
+      "save": "Сохранить",
+      "restoreDefault": "Восстановить по умолчанию",
+      "successSave": "Настройки успешно сохранены",
+      "requiredField": "Это поле обязательно.",
+      "invalidValue": "Неверное значение"
+    },
+    "2faPage": {
+      "title": "Двухфакторная аутентификация",
+      "description": "Двухфакторная аутентификация уже настроена.",
+      "disableButton": "Отключить",
+      "successDisable": "2FA успешно отключена",
+      "installApp": "Установите приложение",
+      "orSimilar": "или аналогичные приложения",
+      "scanQRCode": "Отсканируйте следующий QR-код:",
+      "enter6Digits": "Введите 6-значный код",
+      "invalidCode": "Неверный код.",
+      "saveButton": "Сохранить",
+      "setupSuccess": "2FA успешно настроена"
+    },
+    "walletConnectPage": {
+      "title": "WalletConnect",
+      "selectAccounts": "Выбрать аккаунты",
+      "invalidUrl": "Неверный URL",
+      "disconnectSuccess": "Запрос на отключение успешно отправлен",
+      "noActiveSessions": "НЕТ АКТИВНЫХ СЕССИЙ",
+      "activeSessions": "АКТИВНЫЕ СЕССИИ",
+      "expiry": "Срок действия:",
+      "removeConnection": "Удалить подключение",
+      "removeConfirmation": "Вы уверены, что хотите удалить это подключение WalletConnect?",
+      "newConnection": "Новоеподключение",
+      "addConnection": "Добавить новое подключение WalletConnect",
+      "inputUri": "Введите URI",
+      "code": "Код",
+      "continue": "Продолжить"
+    }
+  },
+  "buy": {
+    "title": "Купить",
+    "description": "Покупка и продажа криптовалют осуществляется через сторонний сервис Onramper.\nНеckoWALLET обеспечивает максимальную безопасность, но не может гарантировать безопасность и конфиденциальность сторонних сервисов.",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "error": {
+      "noAddress": "Адрес кошелька недоступен",
+      "generic": "Не удалось подключиться к сервису. Пожалуйста, попробуйте позже."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "АНАЛИЗ КОШЕЛЬКА",
+    "dexAnalytics": "АНАЛИЗ DEX",
+    "portfolioValue": "ГРАФИК СТОИМОСТИ ПОРТФЕЛЯ",
+    "startTracking": "Начать отслеживание",
+    "trackPortfolioTitle": "Отслеживать стоимость портфеля",
+    "trackPortfolioStart": "НАЧАТЬ ОТСЛЕЖИВАНИЕ БАЛАНСА АККАУНТА",
+    "trackPortfolioDesc1": "Подтвердив, вы разрешаете отслеживание баланса аккаунта.",
+    "trackPortfolioDesc2": "Продолжить?",
+    "confirm": "Подтвердить",
+    "confirming": "Подтверждение, пожалуйста, подождите...",
+    "disclaimerTitle": "Внимание!",
+    "disclaimerText": "Информация на этой странице находится в стадии BETA и предоставляется \"как есть\" и по доступности."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Неверная сеть",
+      "signingCmdError": "Ошибка при подписании cmd, проверьте payload",
+      "signingCmdGenericError": "Ошибка при подписании cmd",
+      "rejectedByUser": "Отклонено пользователем",
+      "userRejected": "Пользователь отклонил.",
+      "signedCommand": "Подписанная команда",
+      "hashToSign": "HASH ДЛЯ ПОДПИСИ:",
+      "pleaseEnableLedger": "Пожалуйста, включите BLIND SIGNING и сначала следуйте инструкциям на вашем Ledger",
+      "capabilities": "Возможности",
+      "close": "Закрыть",
+      "reject": "Отклонить",
+      "confirm": "Подтвердить"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Запрос на быструю подпись",
+      "code": "Код",
+      "capabilities": "Возможности",
+      "rawData": "Исходные данные",
+      "command": "Команда {{index}}/{{total}}",
+      "hashToSign": "HASH ДЛЯ ПОДПИСИ ({{count}}/{{total}}):",
+      "ledgerInstructions": "Пожалуйста, включите BLIND SIGNING и сначала следуйте инструкциям на вашем Ledger",
+      "close": "Закрыть",
+      "reject": "Отклонить",
+      "confirm": "Подтвердить",
+      "error.invalidStructure": "Быстрая подпись не удалась: неверная структура данных",
+      "error.pubKeyNotFound": "Быстрая подпись не удалась: публичный ключ кошелька не найден",
+      "error.ledger": "Ошибка подписи Ledger"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Импорт аппаратного кошелька",
+      "selectDevice": "Выберите аппаратный кошелёк",
+      "ledgerInstructions": "Подключите Ledger к компьютеру, разблокируйте и откройте приложение Kadena.",
+      "connect": "Подключить",
+      "confirm": "Импортировать",
+      "success": "Аппаратный кошелёк успешно импортирован",
+      "error": {
+        "duplicate": "Импортируемый аккаунт дублируется.",
+        "network": "Ошибка сети.",
+        "invalid": "Неверные данные"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Импорт из Ledger",
+      "instruction": "Подключите Ledger к компьютеру, разблокируйте и откройте приложение Kadena.",
+      "continue": "Продолжить",
+      "publicKey": "ПУБЛИЧНЫЙ КЛЮЧ",
+      "account": "АККАУНТ",
+      "confirm": "Подтвердить импорт",
+      "success": "Аккаунт успешно импортирован.",
+      "error": {
+        "duplicate": "Импортируемый аккаунт дублируется.",
+        "network": "Ошибка сети при получении данных аккаунта",
+        "invalid": "Неверные данные"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Импорт токенов",
+      "contractLabel": "Адрес контракта токена",
+      "symbolLabel": "Символ токена",
+      "placeholder": {
+        "contract": "Введите адрес контракта",
+        "symbol": "Введите символ"
+      },
+      "add": "Добавить токен",
+      "edit": "Редактировать токен",
+      "success": "Токен успешно сохранён",
+      "error": {
+        "duplicate": "Токен уже добавлен",
+        "notFound": "Не удалось найти {{contract}}. Проверьте, существует ли токен в сети {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Импорт кошелька",
+    "form": {
+      "accountName": {
+        "title": "Имя вашего аккаунта",
+        "placeholder": "Имя аккаунта"
+      },
+      "chainId": {
+        "title": "Chain-ID"
+      },
+      "secretKey": {
+        "title": "Ваш приватный ключ",
+        "placeholder": "Приватный ключ"
+      }
+    },
+    "validation": {
+      "required": "Это поле обязательно.",
+      "invalidData": "Неверные данные",
+      "startsWithK": "Имя аккаунта должно начинаться с \"k:\"",
+      "accountName": {
+        "maxLength": "Имя аккаунта не более 1000 символов."
+      },
+      "secretKey": {
+        "maxLength": "Приватный ключ не более 1000 символов."
+      }
+    },
+    "modal": {
+      "scanTitle": "Сканировать QR-код",
+      "scanBody": "Наведите камеру на QR-код"
+    },
+    "button": {
+      "import": "Импортировать"
+    },
+    "toast": {
+      "importSuccess": "Аккаунт успешно импортирован.",
+      "duplicateError": "Импортируемый аккаунт дублируется.",
+      "invalidAccountData": "Неверные данные аккаунта",
+      "multipleKeys": "Не поддерживается несколько наборов ключей",
+      "invalidData": "Неверные данные",
+      "networkError": "Ошибка сети."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "У меня уже есть приватный ключ.",
+      "prompt": "Импортируйте существующий приватный ключ"
+    },
+    "button": {
+      "import": "Импортировать"
+    },
+    "image": {
+      "alt": "Иконка импорта"
+    }
+  },
+  "nft": {
+    "header": "Ваши коллекции",
+    "noOwned": "У вас нет NFT"
+  },
+  "sendTransactions": {
+    "header": "Отправить транзакцию {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Подпись Ledger успешна",
+    "ledgerSignFailed": "Подпись Ledger не удалась или отклонена",
+    "transferSuccess": "Перевод успешен",
+    "transferFailed": "Перевод не удался",
+    "transactionSent": "Транзакция успешно отправлена! Проверьте статус в истории",
+    "networkError": "Ошибка сети.",
+    "loadingTop": "Не закрывайте это окно",
+    "loadingBottom": "После завершения транзакции вы будете перенаправлены",
+    "labelReceiver": "Получатель",
+    "labelAmount": "Сумма",
+    "labelGasLimit": "Лимит газа",
+    "labelGasPrice": "Цена газа",
+    "labelGasFee": "Комиссия за газ",
+    "labelTotal": "Итого",
+    "warningCrossChainLine1": "Вы собираетесь выполнить cross-chain перевод",
+    "warningCrossChainLine2": "Эта операция обычно занимает больше времени",
+    "warningNonKAccountLine1": "Вы отправляете на аккаунт не “k:account”!",
+    "warningNonKAccountLine2": "Вы уверены, что хотите продолжить?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} нельзя перевести!",
+    "form": {
+      "sourceChainId": {
+        "title": "Source chain ID"
+      },
+      "destinationAccount": {
+        "title": "Destination account"
+      },
+      "targetChainId": {
+        "title": "Target chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Название аккаунта не более 1000 символов."
+    },
+    "balanceLabel": "Баланс: {{balance}} {{symbol}}",
+    "recent": "ПОСЛЕДНИЕ",
+    "contacts": "КОНТАКТЫ",
+    "confirm": {
+      "warningTitle": "Предупреждение",
+      "publicKeyTitle": "Публичный ключ",
+      "publicKeyPlaceholder": "Введите публичный ключ",
+      "predicateTitle": "Predicate",
+      "predicatePlaceholder": "Введите predicate"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Нельзя отправить самому себе",
+    "invalidGasLimit": "Неверный лимит газа",
+    "gasLimitInteger": "Лимит газа должен быть целым числом",
+    "invalidGasPrice": "Неверная цена газа",
+    "insufficientFundsGas": "Недостаточно средств на комиссию за газ",
+    "newAddressDetected": "Найден новый адрес! Добавьте его в контакты",
+    "tokenNotExists": "{{contractAddress}} возможно не существует в CHAIN {{chainId}}!",
+    "transactionParameters": "Параметры транзакции",
+    "estimatedGas": "Оценочный газ {{gas}}",
+    "speed": "Скорость {{speed}}",
+    "modal": {
+      "confirmTitle": "Подтвердить отправку транзакции",
+      "gasParametersTitle": "Параметры газа"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Лимит газа"
+      },
+      "gasPrice": {
+        "title": "Цена газа"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Сумма для отправки",
+    "button": {
+      "half": "ПОЛОВИНА",
+      "max": "MAX"
+    },
+    "error": {
+      "insufficientFunds": "Недостаточно средств",
+      "invalidAmount": "Неверная сумма"
+    },
+    "balance": "Баланс: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Логотип Dapp",
+    "sendTransaction": "Отправить транзакцию",
+    "destinationNotFound": "Не найден destination account"
+  },
+  "history": {
+    "header": "История",
+    "modal": {
+      "confirmSendTransaction": "Подтвердить отправку транзакции"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Детали транзакции"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Имя вашего аккаунта"
+  },
+  "activityList": {
+    "loading": "Загрузка...",
+    "today": "Сегодня",
+    "yesterday": "Вчера",
+    "noTransactions": "У вас нет транзакций"
+  },
+  "statusFilter": {
+    "modalTitle": "Статус",
+    "prefix": "Статус: ",
+    "options": {
+      "all": "Все",
+      "in": "Входящие",
+      "out": "Исходящие",
+      "pending": "В ожидании"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Токен",
+    "prefix": "Asset: ",
+    "options": {
+      "all": "Все"
+    }
+  },
+  "footer": {
+    "wallet": "Кошелёк",
+    "analytics": "Аналитика",
+    "nft": "NFT",
+    "settings": "Настройки"
+  }
+}

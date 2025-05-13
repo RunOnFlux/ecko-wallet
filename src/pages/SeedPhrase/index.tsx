@@ -17,6 +17,7 @@ import { setCurrentWallet, setWallets } from 'src/stores/slices/wallet';
 import { Warning } from '../SendTransactions/styles';
 import { SPWrapper } from '../Setting/ExportSeedPhrase';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 const Footer = styled.div`
   margin: 20px 0;
@@ -52,7 +53,6 @@ const Title = styled.div`
   font-weight: 700;
   font-size: 24px;
   line-height: 25px;
-  text-align: left;
   text-align: center;
   margin: 30px 0;
 `;
@@ -98,6 +98,7 @@ const SPText = styled.div`
   font-family: monospace;
 `;
 const defaultArr = ['', '', '', '', '', '', '', '', '', '', '', ''];
+
 const SeedPhrase = () => {
   const history = useHistory();
   const { passwordHash, selectedNetwork } = useAppSelector((state) => state.extensions);
@@ -109,6 +110,7 @@ const SeedPhrase = () => {
   const [isHiddenSP, setIsHiddenSP] = useState(true);
   const [sP, setSP] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const initSeedPhrase = async () => {
@@ -119,17 +121,16 @@ const SeedPhrase = () => {
         setKeyPairs(newKeyPairs);
       } catch (error) {
         console.error('Error generating key pairs:', error);
-        toast.error(<Toast type="fail" content="Error generating wallet keys" />);
+        toast.error(<Toast type="fail" content={t('seedPhrase.errorGeneratingKeys')} />);
       } finally {
         setIsLoading(false);
       }
     };
-
     initSeedPhrase();
-  }, []);
+  }, [t]);
 
   const goToSignIn = () => {
-    toast.success(<Toast type="success" content="Secret Recovery Phrase verified successfully" />);
+    toast.success(<Toast type="success" content={t('seedPhrase.successVerify')} />);
     history.push('/sign-in');
   };
 
@@ -207,11 +208,11 @@ const SeedPhrase = () => {
           setLocalSeedPhrase(seedPhraseHash);
           goToSignIn();
         } else {
-          toast.error(<Toast type="fail" content="Invalid Secret Recovery Phrase!" />);
+          toast.error(<Toast type="fail" content={t('seedPhrase.invalidPhrase')} />);
         }
       } catch (error) {
         console.error('Error creating wallet:', error);
-        toast.error(<Toast type="fail" content="Error creating wallet" />);
+        toast.error(<Toast type="fail" content={t('seedPhrase.errorCreatingWallet')} />);
       }
     }
   };
@@ -235,24 +236,14 @@ const SeedPhrase = () => {
   };
 
   const isFullSP = (arr) => {
-    let isFull = true;
-    for (let i = 0; i < 12; i += 1) {
-      if (!arr[i]) {
-        isFull = false;
-      }
-    }
-    return isFull;
+    return arr.every((word) => word);
   };
 
   const onChangeSP = (value, index) => {
     const newSP = [...sPMap];
     newSP[index - 1] = value.trim();
     setSPMap(newSP);
-    if (isFullSP(newSP)) {
-      setEnable(true);
-    } else {
-      setEnable(false);
-    }
+    setEnable(isFullSP(newSP));
   };
 
   const renderItem = (index) => (
@@ -263,80 +254,75 @@ const SeedPhrase = () => {
   );
 
   const renderVerifySP = () => {
-    const result: any[] = [];
-    for (let i = 1; i < 13; i += 1) {
-      const item = renderItem(i);
-      result.push(item);
-    }
-    return <VerifyWrapper>{result}</VerifyWrapper>;
+    return <VerifyWrapper>{Array.from({ length: 12 }, (_, i) => renderItem(i + 1))}</VerifyWrapper>;
   };
 
   const renderStep1 = () => (
     <>
-      <Title>Secret Recovery Phrase</Title>
+      <Title>{t('seedPhrase.title')}</Title>
       <Warning>
         <AlertIconSVG />
-        <div style={{ flex: 1 }}>
-          In the next step you will record your 12 word recovery phrase.
-          <br />
-          Your recovery phrase makes it easy to restore your wallet on a new device.
-          <br />
-          Anyone with this phrase can take control of your wallet, keep this phrase private.
-          <br />
-          Kadena cannot access your recovery phrase if lost, please store it safely.
-        </div>
+        <div style={{ flex: 1 }}>{t('seedPhrase.step1Text')}</div>
       </Warning>
       <CheckboxWrapper>
         <Radio
           isChecked={isChecked}
-          label={<SecondaryLabel>I understand that if I lose my recovery phrase, I will not be able to restore my wallet.</SecondaryLabel>}
+          label={<SecondaryLabel style={{ wordBreak: 'break-word' }}>{t('seedPhrase.step1Checkbox')}</SecondaryLabel>}
           onClick={() => setIsChecked((prev) => !prev)}
         />
       </CheckboxWrapper>
       <Footer style={{ marginTop: 50 }}>
-        <Button size="full" onClick={onNext} isDisabled={!isChecked || isLoading} label={isLoading ? 'Generating keys...' : 'Continue'} />
+        <Button
+          size="full"
+          onClick={onNext}
+          isDisabled={!isChecked || isLoading}
+          label={isLoading ? t('seedPhrase.generating') : t('seedPhrase.continue')}
+        />
       </Footer>
     </>
   );
+
   const renderStep2 = () => (
     <>
-      <NavigationHeader title="Secret Recovery Phrase" onBack={goBack} />
+      <NavigationHeader title={t('seedPhrase.title')} onBack={goBack} />
       <SPWrapper>
         <SPText isBlur={isHiddenSP}>{sP}</SPText>
         {isHiddenSP && (
           <SPBlackDrop onClick={showSP}>
             <LockImage src={images.settings.iconLockOpen} alt="lock" />
-            <SecondaryLabel fontWeight={500}>Click here to reveal secret words</SecondaryLabel>
+            <SecondaryLabel fontWeight={500}>{t('seedPhrase.reveal')}</SecondaryLabel>
           </SPBlackDrop>
         )}
       </SPWrapper>
       <Warning>
         <AlertIconSVG />
         <div style={{ flex: 1 }}>
-          <Text>Your Secret Recovery Phrase makes it easy to back up and restore your account.</Text>
-          <Text isLast>Warning: Never disclose your Secret Recovery Phrase. Anyone with this phrase can take your wallet forever.</Text>
+          <Text>{t('seedPhrase.step2Text1')}</Text>
+          <Text isLast>{t('seedPhrase.step2Text2')}</Text>
         </div>
       </Warning>
       <DivFlex gap="10px" padding="24px 0">
-        <Button size="full" variant="primary" onClick={onDownload} label="Download" />
-        <Button size="full" onClick={onNext} isDisabled={isHiddenSP} label="Continue" />
+        <Button size="full" variant="primary" onClick={onDownload} label={t('seedPhrase.download')} />
+        <Button size="full" onClick={onNext} isDisabled={isHiddenSP} label={t('seedPhrase.continue')} />
       </DivFlex>
     </>
   );
+
   const renderStep3 = () => (
     <>
-      <NavigationHeader title="Verify Recovery Phrase" onBack={goBack} />
-      <SecondaryLabel>Please confirm your recovery phrase by typing the words in the correct order.</SecondaryLabel>
+      <NavigationHeader title={t('seedPhrase.verifyTitle')} onBack={goBack} />
+      <SecondaryLabel>{t('seedPhrase.verifyInstruction')}</SecondaryLabel>
       {renderVerifySP()}
       <Footer>
-        <Button size="full" onClick={onNext} isDisabled={!enable} label="Continue" />
+        <Button size="full" onClick={onNext} isDisabled={!enable} label={t('seedPhrase.continue')} />
       </Footer>
     </>
   );
+
   if (isLoading) {
     return (
       <Wrapper>
-        <Title>Generating your wallet...</Title>
+        <Title>{t('seedPhrase.generatingWallet')}</Title>
       </Wrapper>
     );
   }
@@ -349,4 +335,5 @@ const SeedPhrase = () => {
     </Wrapper>
   );
 };
+
 export default SeedPhrase;

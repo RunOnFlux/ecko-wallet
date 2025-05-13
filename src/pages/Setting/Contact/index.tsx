@@ -12,6 +12,7 @@ import { Body } from '../../SendTransactions/styles';
 import ContactForm from './views/ContactForm';
 import { ContactInfo } from './views/ContactInfo';
 import { useAppSelector } from 'src/stores/hooks';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   padding: 0 20px;
@@ -23,6 +24,7 @@ const AccountRow = styled.div`
 `;
 
 const PageContact = () => {
+  const { t } = useTranslation();
   const { contacts, selectedNetwork } = useAppSelector((state) => state.extensions);
   const history = useHistory();
   const groupedContacts = groupBy(
@@ -45,7 +47,7 @@ const PageContact = () => {
 
   const onAddAccount = () =>
     openModal({
-      title: 'New account',
+      title: t('settings.contactsPage.newContactTitle'),
       content: <ContactForm isNew contact={{ aliasName: null, accountName: null }} networkId={selectedNetwork.networkId} />,
     });
 
@@ -55,7 +57,7 @@ const PageContact = () => {
 
   return (
     <Wrapper>
-      <NavigationHeader title="Contacts" onBack={goBack} />
+      <NavigationHeader title={t('settings.contactsPage.title')} onBack={goBack} />
       <Body style={{ marginBottom: 100 }}>
         {sortedKeys?.length ? (
           sortedKeys.map((letter) => (
@@ -95,15 +97,16 @@ const PageContact = () => {
         ) : (
           <DivFlex justifyContent="center" marginTop="40px">
             <SecondaryLabel fontSize={12} fontWeight={600} uppercase>
-              No contacts
+              {t('settings.contactsPage.noContacts')}
             </SecondaryLabel>
           </DivFlex>
         )}
         <StickyFooter>
-          <Button size="full" label="Add New Contact" onClick={onAddAccount} style={{ width: '90%', maxWidth: 890 }} />
+          <Button size="full" label={t('settings.contactsPage.addNewContact')} onClick={onAddAccount} style={{ width: '90%', maxWidth: 890 }} />
         </StickyFooter>
       </Body>
     </Wrapper>
   );
 };
+
 export default PageContact;

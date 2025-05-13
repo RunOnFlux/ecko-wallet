@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { hash } from '@kadena/cryptography-utils';
 import { useAppDispatch, useAppSelector } from 'src/stores/hooks';
 import { require2FA } from 'src/stores/slices/auth';
@@ -59,6 +60,7 @@ const DivImage = styled.div`
   margin-bottom: 30px;
   font-weight: ${(props) => props.fontWeight};
 `;
+
 const Image = styled.img<{ size: string; top: string; width: string }>`
   height: ${($props) => $props.size};
   width: ${($props) => ($props.width ? $props.width : $props.size)};
@@ -68,6 +70,7 @@ const Image = styled.img<{ size: string; top: string; width: string }>`
 `;
 
 const SignIn = () => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -82,6 +85,7 @@ const SignIn = () => {
   const { setIsLocked } = useSettingsContext();
   const dispatch = useAppDispatch();
   const goHome = useGoHome();
+  const history = useHistory();
 
   useEffect(() => {
     getLocalPassword(
@@ -121,38 +125,33 @@ const SignIn = () => {
     const password = getValues('password');
     getOldLocalPassword(
       async (oldHashPassword) => {
-        // old password found
-        // check if is correct
         const isValidOldPassword = checkIsValidOldPassword(password, oldHashPassword);
         if (isValidOldPassword) {
-          // get seedphrase and store again
           getLocalSeedPhrase(
             async (secretKey) => {
               try {
                 const plainSeedPhrase = decryptKey(secretKey, oldHashPassword);
-                // save new hashed secretKey
                 const hashPassword = hash(password);
                 setLocalPassword(hashPassword);
                 dispatch(require2FA());
                 await initLocalWallet(plainSeedPhrase, hashPassword);
                 removeOldLocalPassword();
-                // restore data
                 window.location.reload();
               } catch (error) {
                 console.error('Error initializing wallet:', error);
-                setError('password', { type: 'manual', message: 'Error initializing wallet' });
+                setError('password', { type: 'manual', message: t('signIn.initWalletError') });
               }
             },
             () => {},
           );
         } else {
-          setError('password', { type: 'manual', message: 'Invalid Password' });
+          setError('password', { type: 'manual', message: t('signIn.invalidPassword') });
         }
       },
       async () => {
         const isValid = await isValidPassword(password);
         if (!isValid) {
-          setError('password', { type: 'manual', message: 'Invalid Password' });
+          setError('password', { type: 'manual', message: t('signIn.invalidPassword') });
         } else {
           saveSessionPassword(password);
           unlockWallet();
@@ -161,14 +160,13 @@ const SignIn = () => {
     );
   };
 
-  const history = useHistory();
   return (
     <WelcomeBackground>
       <DivFlex flexDirection="column" style={{ height: '100vh', padding: '0 24px' }} justifyContent="center" gap="45px">
         <DivImage marginBottom="30px" marginTop="30px">
           <Image src={images.eckoWalletLogo} size={200} width={200} alt="logo" />
           <CommonLabel color="#fff" fontSize={18} fontWeight={500} style={{ marginTop: 20 }}>
-            Login to your account
+            {t('signIn.loginTitle')}
           </CommonLabel>
         </DivImage>
         <form onSubmit={handleSubmit(handleSignIn)} id="sign-in-form">
@@ -176,20 +174,11 @@ const SignIn = () => {
             <BaseTextInput
               inputProps={{
                 type: 'password',
-                placeholder: 'Input Password',
+                placeholder: t('signIn.passwordPlaceholder'),
                 ...register('password', {
-                  required: {
-                    value: true,
-                    message: 'This field is required.',
-                  },
-                  minLength: {
-                    value: 8,
-                    message: 'Password should be minimum 8 characters.',
-                  },
-                  maxLength: {
-                    value: 256,
-                    message: 'Password should be maximum 256 characters.',
-                  },
+                  required: { value: true, message: t('signIn.required') },
+                  minLength: { value: 8, message: t('signIn.minLength') },
+                  maxLength: { value: 256, message: t('signIn.maxLength') },
                 }),
                 style: { color: '#fff' },
               }}
@@ -198,7 +187,7 @@ const SignIn = () => {
                 borderRadius: 25,
               }}
               typeInput="password"
-              title="Password"
+              title={t('signIn.passwordTitle')}
               height="auto"
               onChange={(e) => {
                 clearErrors('password');
@@ -207,7 +196,7 @@ const SignIn = () => {
             />
             <DivError>{errors.password && <InputError marginTop="0">{errors.password.message}</InputError>}</DivError>
           </DivFlex>
-          <Button type="submit" size="full" form="sign-in-form" label="Sign In" style={{ marginTop: 80 }} />
+          <Button type="submit" size="full" form="sign-in-form" label={t('signIn.signInButton')} style={{ marginTop: 80 }} />
         </form>
       </DivFlex>
     </WelcomeBackground>

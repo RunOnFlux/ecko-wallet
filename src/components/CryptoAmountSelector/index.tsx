@@ -8,16 +8,16 @@ import Button from 'src/components/Buttons';
 import { SInput } from 'src/baseComponent/BaseTextInput';
 import { IFungibleToken } from 'src/pages/ImportToken';
 import { GasType, NUMBER_DECIMAL_AFTER_DOT } from 'src/utils/config';
+import { useTranslation } from 'react-i18next';
 
 export const AmountWrapper = styled(DivFlex)`
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    margin: 0;
   }
   input[type='number'] {
-    -moz-appearance: textfield; /* Firefox */
+    -moz-appearance: textfield;
   }
 `;
 
@@ -70,6 +70,7 @@ const CryptoAmountSelector = ({
   onChangeAmount,
   ...props
 }: CryptoAmountSelectorProps) => {
+  const { t } = useTranslation();
   const { usdPrices } = useAccountBalanceContext();
 
   const [amount, setAmount] = React.useState(props.amount || '0.0');
@@ -115,12 +116,8 @@ const CryptoAmountSelector = ({
   };
 
   const getInputFontSize = (length: number) => {
-    if (length < 5) {
-      return 40;
-    }
-    if (length < 12) {
-      return 40 - amount.toString().length;
-    }
+    if (length < 5) return 40;
+    if (length < 12) return 40 - amount.toString().length;
     return 22;
   };
 
@@ -128,14 +125,14 @@ const CryptoAmountSelector = ({
     <div>
       <DivFlex justifyContent="space-between" margin="10px 0" alignItems="center">
         <SecondaryLabel uppercase fontWeight={700} style={{ flex: 1 }}>
-          Amount to send
+          {t('cryptoAmountSelector.labelAmountToSend')}
         </SecondaryLabel>
         {showPrefilledButtons && (
           <DivFlex justifyContent="flex-end" style={{ flex: 1, gap: 5 }}>
             <Button
               type="button"
               onClick={() => setPrefilledBalance('half')}
-              label="HALF"
+              label={t('cryptoAmountSelector.button.half')}
               size="full"
               variant="grey"
               style={{ height: 28, fontSize: 10, maxWidth: 60 }}
@@ -143,7 +140,7 @@ const CryptoAmountSelector = ({
             <Button
               type="button"
               onClick={() => setPrefilledBalance('max')}
-              label="MAX"
+              label={t('cryptoAmountSelector.button.max')}
               size="full"
               variant="grey"
               style={{ height: 28, fontSize: 10, maxWidth: 60 }}
@@ -151,7 +148,7 @@ const CryptoAmountSelector = ({
           </DivFlex>
         )}
       </DivFlex>
-      {/* amount */}
+
       <AmountWrapper alignItems="center" justifyContent="space-between">
         <AmountInput
           autoComplete="off"
@@ -167,61 +164,64 @@ const CryptoAmountSelector = ({
           {...register('amount', {
             required: {
               value: true,
-              message: 'This field is required.',
+              message: t('common.requiredField'),
             },
             validate: {
-              isZero: (v) => {
-                const value = Number(v);
-                return value !== 0;
-              },
+              isZero: (v) => Number(v) !== 0 || t('cryptoAmountSelector.error.invalidAmount'),
               positive: (v) => {
                 const value = Number(v);
-                const balance = Number(tokenBalance);
-                let amountValue = BigNumberConverter(balance);
+                let balance = BigNumberConverter(tokenBalance);
                 if (fungibleToken.contractAddress === 'coin') {
-                  amountValue -= gasFee;
+                  balance -= gasFee;
                 }
-                return value > 0 && value <= amountValue;
+                return (value > 0 && value <= balance) || t('cryptoAmountSelector.error.insufficientFunds');
               },
             },
           })}
           onFocus={(event) => event.target.select()}
           onChange={changeAmount}
         />
-        {/** TODO: make dynamic length text <TextScaling /> */}
         <PrimaryLabel fontSize={40} uppercase>
           {fungibleToken.symbol.substring(0, 5)}
         </PrimaryLabel>
       </AmountWrapper>
+
       {errors.amount && errors.amount.type === 'required' && (
         <ErrorWrapper>
           <DivFlex>
-            <Error>This field is required</Error>
+            <Error>{errors.amount.message}</Error>
           </DivFlex>
         </ErrorWrapper>
       )}
       {errors.amount && errors.amount.type === 'positive' && (
         <ErrorWrapper>
           <DivFlex>
-            <Error>Insufficient funds</Error>
+            <Error>{errors.amount.message}</Error>
           </DivFlex>
         </ErrorWrapper>
       )}
       {errors.amount && errors.amount.type === 'isZero' && (
         <ErrorWrapper>
           <DivFlex>
-            <Error>Invalid amount</Error>
+            <Error>{errors.amount.message}</Error>
           </DivFlex>
         </ErrorWrapper>
       )}
+
       <DivFlex justifyContent="space-between" alignItems="center" margin="0px">
         {showEstimatedUSD && (
           <CommonLabel fontSize={12} fontWeight={600}>
-            {estimateUSDAmount && `${humanReadableNumber(estimateUSDAmount)} USD`}
+            {estimateUSDAmount &&
+              t('common.usd', {
+                value: humanReadableNumber(estimateUSDAmount),
+              })}
           </CommonLabel>
         )}
         <SecondaryLabel fontSize={12} fontWeight={600}>
-          {`Balance: ${BigNumberConverter(tokenBalance)} ${fungibleToken.symbol.toUpperCase()}`}
+          {t('cryptoAmountSelector.balance', {
+            balance: BigNumberConverter(tokenBalance),
+            symbol: fungibleToken.symbol.toUpperCase(),
+          })}
         </SecondaryLabel>
       </DivFlex>
     </div>

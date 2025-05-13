@@ -1,0 +1,646 @@
+{
+  "select_language": "Válassz nyelvet",
+  "home": {
+    "startNow": "Kezdd el most"
+  },
+  "common": {
+    "requiredField": "Ez a mező kötelező.",
+    "invalidData": "Érvénytelen adat",
+    "invalidUrl": "Érvénytelen URL",
+    "cancel": "Mégse",
+    "back": "Vissza",
+    "confirm": "Megerősít",
+    "continue": "Folytatás",
+    "reject": "Elutasít",
+    "usd": "{{value}} USD",
+    "next": "Következő",
+    "close": "Bezár"
+  },
+  "condition": {
+    "noPersonalInfo": "Sosem gyűjtünk kulcsokat, címeket, tranzakciókat, egyenlegeket, kivonatokat vagy személyes adatokat",
+    "noIP": "Sosem tároljuk a teljes IP-címedet",
+    "noSelling": "Sosem adjuk el az adataidat profitért. Soha!",
+    "next": "Következő"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Elfogadom és elolvastam a",
+    "termsOfUse": "felhasználási feltételeket",
+    "createNewWallet": "Új tárca létrehozása",
+    "setupNewAccount": "Új eckoWALLET-fiók létrehozása",
+    "restoreWallet": "Tárca visszaállítása",
+    "restoreFromPhrase": "Visszaállítás a helyreállító mondatból"
+  },
+  "createPassword": {
+    "successCreate": "Az új jelszó létrehozása sikerült",
+    "errorCreate": "Hiba a tárca létrehozásakor",
+    "invalidPhrase": "Érvénytelen helyreállító mondat!",
+    "importFromPhrase": "Importálás a helyreállító mondatból",
+    "createPassword": "Jelszó létrehozása",
+    "pastePhrase": "Helyreállító mondat beillesztése",
+    "requiredField": "Ez a mező kötelező.",
+    "phraseTooLong": "A helyreállító mondat túl hosszú.",
+    "secretRecoveryPhrase": "Titkos helyreállító mondat",
+    "import": "Importál",
+    "create": "Létrehoz"
+  },
+  "passwordForm": {
+    "inputPassword": "Jelszó megadása",
+    "inputConfirmPassword": "Jelszó megerősítése",
+    "requiredField": "Ez a mező kötelező.",
+    "minPassword": "A jelszónak legalább 8 karakterből kell állnia.",
+    "maxPassword": "A jelszó maximális hossza 256 karakter.",
+    "passwordMismatch": "A jelszavak nem egyeznek",
+    "newPassword": "Új jelszó (legalább 8 karakter)",
+    "confirmPassword": "Jelszó megerősítése",
+    "passwordWarning": "Értem, hogy nem engedélyezett karaktereket használtam. Ajánlott csak betűket (a–z), számokat (0–9) és speciális karaktereket _!?\"'.#@,;- használni"
+  },
+  "seedPhrase": {
+    "title": "Titkos helyreállító mondat",
+    "step1Text": "A következő lépésben leírod a 12 szavas helyreállító mondatodat.\nA helyreállító mondat segítségével könnyen visszaállíthatod a tárcádat egy másik eszközön.\nAkinek ez a mondat megvan, teljes hozzáférést kap a tárcádhoz, ezért tartsd biztonságban.\nHa elveszíted a mondatot, nem tudod többé használni a tárcádat, őrizd gondosan.",
+    "step1Checkbox": "Értem, hogy ha elveszítem a helyreállító mondatot, nem tudom visszaállítani a tárcámat.",
+    "generating": "Kulcspár generálása...",
+    "continue": "Folytatás",
+    "reveal": "Titkos szavak megjelenítése kattintással",
+    "step2Text1": "A titkos helyreállító mondat megkönnyíti fiókod biztonsági mentését és helyreállítását.",
+    "step2Text2": "Figyelem: Soha ne oszd meg a helyreállító mondatot. Akinek megvan, átveheti a tárcádat.",
+    "download": "Letöltés",
+    "verifyTitle": "Helyreállító mondat megerősítése",
+    "verifyInstruction": "Írd be a mondat szavait helyes sorrendben a megerősítéshez.",
+    "successVerify": "Helyreállító mondat megerősítése sikerült",
+    "invalidPhrase": "Érvénytelen helyreállító mondat!",
+    "errorGeneratingKeys": "Hiba a kulcsok generálásakor",
+    "errorCreatingWallet": "Hiba a tárca létrehozásakor",
+    "generatingWallet": "Tárcád létrehozása..."
+  },
+  "wallet": {
+    "netWorth": "NETTÓ VAGYON",
+    "accountBalance": "FIÓK EGYENLEG",
+    "send": "Küldés",
+    "receive": "Fogadás",
+    "receiveTokens": "Tokenek fogadása",
+    "buy": "Vásárlás",
+    "history": "Előzmények",
+    "assets": "ESZKÖZÖK",
+    "detectedTokens": "Felismerve tokenek",
+    "tokenList": "Token lista",
+    "kdaChainDistribution": "KDA lánc eloszlás",
+    "chainDistribution": "Lánc eloszlás",
+    "tokenRemoved": "Token sikeresen eltávolítva",
+    "removeToken": "Token eltávolítása",
+    "editToken": "Token szerkesztése",
+    "removeTokenTitle": "{{symbol}} token eltávolítása",
+    "confirmRemoveToken": "Biztosan el akarod távolítani a(z) {{symbol}} tokent?",
+    "notTransferable": "{{contractAddress}} nem átruházható!",
+    "accountDoesNotExist": "Nem található: A fiók nem létezik.",
+    "balanceZero": "{{symbol}} egyenleg 0."
+  },
+  "accountActions": {
+    "shareWallet": "Tárca megosztása",
+    "copied": "Másolva!",
+    "exportRecoveryPhrase": "Helyreállító mondat exportálása",
+    "signHashTransaction": "Tranzakció hash aláírása",
+    "editAccountAlias": "Fióknév szerkesztése",
+    "setAccountAlias": "Fióknév beállítása",
+    "removeSelectedWallet": "Kijelölt tárca eltávolítása",
+    "createWallet": "Tárca létrehozása",
+    "importWallet": "Tárca importálása",
+    "importHardwareWallet": "Hardveres tárca importálása"
+  },
+  "tokenDetector": {
+    "noTokensFound": "A fiókhoz nem találhatók további tokenek."
+  },
+  "aliasModal": {
+    "accountAlias": "Fióknév",
+    "cancel": "Mégse",
+    "save": "Mentés",
+    "aliasChanged": "A fióknév sikeresen megváltozott"
+  },
+  "hashSignModal": {
+    "publicKey": "Publikus kulcs",
+    "transactionHash": "Tranzakció hash",
+    "insertTransactionHash": "Add meg a tranzakció hash-t",
+    "signature": "Aláírás",
+    "copied": "Másolva!",
+    "clean": "Törlés",
+    "sign": "Aláírás"
+  },
+  "popupDetailTransaction": {
+    "status": "Állapot",
+    "direction": "Irány",
+    "symbol": "Szimbólum",
+    "quantity": "Mennyiség",
+    "gasFee": "Gázdíj",
+    "total": "Összesen",
+    "viewDetails": "Részletek megtekintése",
+    "activityLog": "Tevékenységi napló",
+    "transactionCreated": "Tranzakció létrehozva {{amount}} {{symbol}} értékkel",
+    "transactionConfirmed": "Tranzakció megerősítve",
+    "success": "Sikeres",
+    "failed": "Sikertelen",
+    "finishing": "Befejezés..."
+  },
+  "removeWallet": {
+    "title": "Biztosan eltávolítod ezt a tárcát?",
+    "description": "Jelszó megadása megerősítéshez",
+    "passwordPlaceholder": "Add meg a jelszót",
+    "passwordRequired": "Ez a mező kötelező.",
+    "passwordMinLength": "A jelszónak legalább 8 karakteresnek kell lennie.",
+    "passwordMaxLength": "A jelszó maximális hossza 256 karakter.",
+    "invalidPassword": "Érvénytelen jelszó",
+    "cancel": "Mégse",
+    "remove": "Eltávolítás"
+  },
+  "header": {
+    "selectNetwork": "Hálózat kiválasztása",
+    "manageNetworks": "Hálózatok kezelése",
+    "myWallets": "Tárcáim",
+    "removeWalletTitle": "Tárca eltávolítása",
+    "createAccountSuccess": "Fiók sikeresen létrehozva!",
+    "createAccountFail": "Fióklétrehozás sikertelen",
+    "copied": "Másolva!"
+  },
+  "signIn": {
+    "loginTitle": "Jelentkezz be a fiókodba",
+    "passwordPlaceholder": "Add meg a jelszót",
+    "passwordTitle": "Jelszó",
+    "signInButton": "Bejelentkezés",
+    "invalidPassword": "Érvénytelen jelszó",
+    "required": "Ez a mező kötelező.",
+    "minLength": "A jelszónak legalább 8 karakteresnek kell lennie.",
+    "maxLength": "A jelszó maximális hossza 256 karakter.",
+    "initWalletError": "Hiba a tárca inicializálásakor"
+  },
+  "settings": {
+    "contacts": "Kapcsolatok",
+    "language": "Nyelv",
+    "languageDesc": "Válaszd ki a tárca nyelvét",
+    "contactsDesc": "Kapcsolatok kezelése",
+    "networks": "Hálózatok",
+    "networksDesc": "RPC-hálózatok hozzáadása vagy szerkesztése",
+    "connectedSites": "Csatlakoztatott oldalak",
+    "connectedSitesDesc": "Csatlakoztatott oldalak megtekintése és kezelése",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "Csatlakozás WalletConnect segítségével",
+    "txSettings": "Tranzakció beállítások",
+    "txSettingsDesc": "Gázpreferenciák beállítása",
+    "exportPhrase": "Helyreállító mondat exportálása",
+    "exportPhraseDesc": "Tárcád biztonságának növelése",
+    "editPassword": "Jelszó módosítása",
+    "editPasswordDesc": "Tárca jelszavának megváltoztatása",
+    "2fa": "Kétfaktoros hitelesítés",
+    "2faDesc": "2FA beállításainak kezelése",
+    "expandView": "Bővített nézet",
+    "expandViewDesc": "eckoWALLET új ablakban nyitása",
+    "theme": "Téma",
+    "themeDesc": "Tárca téma beállítása",
+    "lock": "Tárca lezárása",
+    "lockDesc": "Tárca védelmének beállítása",
+    "lockSettings": "Automatikus zárolás",
+    "lockSettingsDesc": "Biztonsági beállítások módosítása",
+    "discord": "Csatlakozás a Discordhoz",
+    "website": "Weboldalunk megtekintése",
+    "terms": "Felhasználási feltételek",
+    "privacy": "Adatvédelmi szabályzat",
+    "connectedSitesPage": {
+      "title": "Csatlakoztatott oldalak",
+      "removeSiteTitle": "Oldal eltávolítása",
+      "removeSiteConfirmText": "Biztosan eltávolítod a következőt:",
+      "removeSiteSuccess": "Oldal sikeresen eltávolítva."
+    },
+    "contactsPage": {
+      "title": "Kapcsolatok",
+      "newContactTitle": "Új kapcsolat",
+      "addNewContact": "Új kapcsolat hozzáadása",
+      "noContacts": "Nincsenek kapcsolatok"
+    },
+    "contactForm": {
+      "enterAlias": "Alias megadása",
+      "aliasPlaceholder": "pl. Példa",
+      "accountNameTitle": "Fiók neve",
+      "accountNamePlaceholder": "Fiók neve",
+      "scanQrTitle": "QR-kód beolvasása",
+      "scanQrDescription": "Tartsd a QR-kódot a kamera elé",
+      "buttonCancel": "Mégse",
+      "buttonSave": "Mentés",
+      "successContactAdded": "Kapcsolat sikeresen hozzáadva",
+      "errorNetwork": "Hálózati hiba.",
+      "copied": "Másolva!",
+      "requiredField": "Ez a mező kötelező.",
+      "invalidData": "Érvénytelen adat",
+      "aliasMaxLength": "Az alias maximális hossza 256 karakter.",
+      "accountNameMaxLength": "A fiók nevének maximális hossza 1000 karakter."
+    },
+    "contactInfo": {
+      "copied": "Másolva!",
+      "contactRemoved": "Kapcsolat eltávolítva",
+      "accountName": "FIÓK NÉV",
+      "editContact": "Kapcsolat szerkesztése",
+      "editTitle": "Fiók szerkesztése",
+      "delete": "Törlés",
+      "deleteContactTitle": "Kapcsolat törlése",
+      "removeContact": "Törölni szeretnéd a kapcsolatot?",
+      "confirmRemove": "Biztosan eltávolítod ezt a kapcsolatot?",
+      "cancel": "Mégse",
+      "confirm": "Megerősít"
+    },
+    "editPasswordPage": {
+      "title": "Jelszó módosítása",
+      "passwordChanged": "Jelszó sikeresen megváltozott",
+      "cannotUpdatePassword": "Nem lehet frissíteni a jelszóbeállításokat",
+      "save": "Mentés"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Add meg a jelszavad a folytatáshoz",
+      "inputPlaceholder": "Jelszó megadása",
+      "password": "Jelszó",
+      "errorRequired": "Ez a mező kötelező.",
+      "errorInvalid": "Érvénytelen jelszó.",
+      "continue": "Folytatás",
+      "correctPassword": "Helyes jelszó, kérlek várj..."
+    },
+    "exportSeedPhrase": {
+      "title": "Helyreállító mondat exportálása",
+      "copied": "Másolva!",
+      "description": "Titkos helyreállító mondatod segít a fiókod biztonsági mentésében és helyreállításában.",
+      "warning": "Soha ne oszd meg a helyreállító mondatot. Akinek megvan, átveheti a tárcádat.",
+      "copyKeyphrase": "Mondat másolása",
+      "download": "Letöltés"
+    },
+    "lockSettingsPage": {
+      "title": "Automatikus zárolás beállításai",
+      "saved": "Beállítások mentve",
+      "required": "Ez a mező kötelező.",
+      "placeholder": "Zárolási késleltetés kiválasztása",
+      "selectTitle": "Automatikus zárolás",
+      "restore": "Alapértelmezett visszaállítása",
+      "save": "Mentés"
+    },
+    "networksPage": {
+      "title": "Hálózatok",
+      "network": "Hálózat",
+      "addNew": "Új hálózat hozzáadása",
+      "editSuccess": "Hálózat sikeresen szerkesztve",
+      "addSuccess": "Hálózat sikeresen hozzáadva",
+      "errorUrl": "Az URL már létezik",
+      "deleteSuccess": "Hálózat sikeresen eltávolítva",
+      "remove": "Eltávolítás",
+      "save": "Mentés",
+      "confirmRemove": "Eltávolítod ezt a hálózatot?",
+      "confirmRemoveDesc": "Biztosan el akarod távolítani ezt a hálózatot?",
+      "placeholderName": "Add meg a hálózat nevét",
+      "placeholderUrl": "Add meg az új RPC-URL-t",
+      "placeholderExplorer": "Add meg a blokklánc böngésző URL-jét",
+      "placeholderNetworkId": "Add meg a hálózat azonosítóját",
+      "titleName": "Hálózat neve",
+      "titleUrl": "Új RPC-URL",
+      "titleExplorer": "Blokklánc böngésző URL",
+      "titleNetworkId": "Hálózat azonosító",
+      "nameMax": "A hálózat neve maximum 1000 karakter lehet.",
+      "urlMax": "Az RPC-URL maximum 1000 karakter lehet.",
+      "explorerMax": "A blokklánc böngésző URL maximum 1000 karakter lehet.",
+      "networkIdMax": "A hálózat azonosító maximum 1000 karakter lehet."
+    },
+    "selectTheme": {
+      "title": "Téma kiválasztása"
+    },
+    "txSettingsPage": {
+      "title": "Tranzakció beállítások",
+      "gasLimit": "Gázlimit",
+      "gasLimitPlaceholder": "Add meg a gázlimitet",
+      "finishCrossChain": "Cross-chain gáz tartály befejezése",
+      "finishCrossChainPlaceholder": "Add meg a cross-chain gáz tartályt",
+      "crossChainGasLimit": "Cross-chain gázlimit",
+      "crossChainGasLimitPlaceholder": "Add meg a cross-chain gázlimitet",
+      "crossChainGasPrice": "Cross-chain gázár",
+      "crossChainGasPricePlaceholder": "Add meg a cross-chain gázárat",
+      "save": "Mentés",
+      "restoreDefault": "Alapértelmezett visszaállítása",
+      "successSave": "Beállítások sikeresen mentve",
+      "requiredField": "Ez a mező kötelező.",
+      "invalidValue": "Érvénytelen érték"
+    },
+    "2faPage": {
+      "title": "Kétfaktoros hitelesítés",
+      "description": "A kétfaktoros hitelesítés már engedélyezve van.",
+      "disableButton": "Letiltás",
+      "successDisable": "2FA sikeresen letiltva",
+      "installApp": "Telepítés",
+      "orSimilar": "vagy hasonló alkalmazás",
+      "scanQRCode": "Olvasd be az alábbi QR-kódot:",
+      "enter6Digits": "Add meg a 6 jegyű kódot",
+      "invalidCode": "A kód érvénytelen.",
+      "saveButton": "Mentés",
+      "setupSuccess": "2FA sikeresen beállítva"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "Fiókok kiválasztása",
+      "invalidUrl": "Érvénytelen URL",
+      "disconnectSuccess": "Sikeres bontás a kérésnek megfelelően",
+      "noActiveSessions": "NINCS AKTÍV ÜLÉS",
+      "activeSessions": "AKTÍV ÜLÉSEK",
+      "expiry": "Lejár:",
+      "removeConnection": "Kapcsolat eltávolítása",
+      "removeConfirmation": "Biztosan eltávolítod ezt a WalletConnect-kapcsolatot?",
+      "newConnection": "Új kapcsolódás",
+      "addConnection": "Új WalletConnect hozzáadása",
+      "inputUri": "URI megadása",
+      "code": "Kód",
+      "continue": "Folytatás"
+    }
+  },
+  "buy": {
+    "title": "Vásárlás",
+    "description": "A kriptovaluták adás-vétele egy harmadik fél, az Onramper szolgáltatásán keresztül történik.\n\neckoWALLET kiemelt biztonságot nyújt, de nem garantálhatjuk harmadik felek szolgáltatásainak biztonságát vagy adatvédelmét.",
+    "cancel": "Mégse",
+    "confirm": "Megerősít",
+    "error": {
+      "noAddress": "A tárca címe nem elérhető",
+      "generic": "Nem sikerült kapcsolódni a szolgáltatáshoz. Kérjük, próbáld később."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "TÁRCA ANALITIKA",
+    "dexAnalytics": "DEX ANALITIKA",
+    "portfolioValue": "PORTFÓLIÓ ÉRTÉK",
+    "startTracking": "Követés indítása",
+    "trackPortfolioTitle": "Portfólió érték követése",
+    "trackPortfolioStart": "EGYENLEG KÖVETÉS ELINDÍTÁSA",
+    "trackPortfolioDesc1": "Megerősítéssel elindítod a fiókod egyenlegének követését.",
+    "trackPortfolioDesc2": "Folytatjuk?",
+    "confirm": "Megerősít",
+    "confirming": "Megerősítés folyamatban...",
+    "disclaimerTitle": "Tájékoztatás!",
+    "disclaimerText": "Az ezen az oldalon szereplő adatok BETA státuszban vannak és \"ahogy vannak\" alapon érhetők el."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Érvénytelen hálózat",
+      "signingCmdError": "Aláírási hiba, ellenőrizd a payloadot",
+      "signingCmdGenericError": "Aláírási hiba",
+      "rejectedByUser": "A felhasználó elutasította",
+      "userRejected": "A felhasználó elutasította.",
+      "signedCommand": "Aláírt parancs",
+      "hashToSign": "ALÁÍRANDÓ HASH:",
+      "pleaseEnableLedger": "Kapcsold be a BLIND SIGNING-et\nés kövesd a Ledger utasításait",
+      "capabilities": "Jogosultságok",
+      "close": "Bezár",
+      "reject": "Elutasít",
+      "confirm": "Megerősít"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Gyors aláírási kérés",
+      "code": "Kód",
+      "capabilities": "Jogosultságok",
+      "rawData": "Nyers adatok",
+      "command": "Parancs {{index}}/{{total}}",
+      "hashToSign": "ALÁÍRANDÓ HASH ({{count}}/{{total}}):",
+      "ledgerInstructions": "Kapcsold be a BLIND SIGNING-et és kövesd a Ledger utasításait",
+      "close": "Bezár",
+      "reject": "Elutasít",
+      "confirm": "Megerősít",
+      "error.invalidStructure": "Gyors aláírás sikertelen: érvénytelen szerkezet",
+      "error.pubKeyNotFound": "Gyors aláírás sikertelen: publikus kulcs nem található",
+      "error.ledger": "Ledger aláírás sikertelen"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Hardveres tárca importálása",
+      "selectDevice": "Válassz hardveres tárcát",
+      "ledgerInstructions": "Csatlakoztasd a Ledgert a számítógéphez. Nyisd meg a Kadena alkalmazást és oldd fel.",
+      "connect": "Csatlakozás",
+      "confirm": "Importálás",
+      "success": "Hardveres tárca sikeresen importálva",
+      "error": {
+        "duplicate": "A hozzáadni kívánt fiók már létezik.",
+        "network": "Hálózati hiba.",
+        "invalid": "Érvénytelen adat"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Importálás Ledgerből",
+      "instruction": "Csatlakoztasd a Ledgert a számítógéphez, nyisd meg a Kadena alkalmazást és oldd fel.",
+      "continue": "Folytatás",
+      "publicKey": "PUBLIKUS KULCS",
+      "account": "FIÓK",
+      "confirm": "Importálás megerősítése",
+      "success": "Fiók sikeresen importálva.",
+      "error": {
+        "duplicate": "A hozzáadni kívánt fiók már létezik.",
+        "network": "Hiba a fiók adatok lekérésekor",
+        "invalid": "Érvénytelen adat"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Token importálása",
+      "contractLabel": "Token szerződés címe",
+      "symbolLabel": "Token szimbólum",
+      "placeholder": {
+        "contract": "Add meg a szerződés címét",
+        "symbol": "Add meg a szimbólumot"
+      },
+      "add": "Token hozzáadása",
+      "edit": "Token szerkesztése",
+      "success": "Token sikeresen mentve",
+      "error": {
+        "duplicate": "A token már hozzá van adva",
+        "notFound": "Nincs adat ehhez a szerződéshez: {{contract}} – ellenőrizd a hálózatot {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Tárca importálása",
+    "form": {
+      "accountName": {
+        "title": "Fiók neve",
+        "placeholder": "Fiók neve"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "Privát kulcs",
+        "placeholder": "Privát kulcs"
+      }
+    },
+    "validation": {
+      "required": "Ez a mező kötelező.",
+      "invalidData": "Érvénytelen adat",
+      "startsWithK": "A fiók nevének \"k:\"-vel kell kezdődnie",
+      "accountName": {
+        "maxLength": "A fiók neve maximálisan 1000 karakter lehet."
+      },
+      "secretKey": {
+        "maxLength": "A privát kulcs maximálisan 1000 karakter lehet."
+      }
+    },
+    "modal": {
+      "scanTitle": "QR-kód beolvasása",
+      "scanBody": "Tartsd a QR-kódot a kamera elé"
+    },
+    "button": {
+      "import": "Importálás"
+    },
+    "toast": {
+      "importSuccess": "Fiók sikeresen importálva.",
+      "duplicateError": "A hozzáadni kívánt fiók már létezik.",
+      "invalidAccountData": "Érvénytelen fiókadatok",
+      "multipleKeys": "Több kulcspár nem támogatott",
+      "invalidData": "Érvénytelen adat",
+      "networkError": "Hálózati hiba."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Már van privát kulcsom.",
+      "prompt": "Létező privát kulcs importálása"
+    },
+    "button": {
+      "import": "Importálás"
+    },
+    "image": {
+      "alt": "Import ikon"
+    }
+  },
+  "nft": {
+    "header": "Gyűjteményed",
+    "noOwned": "Nincsenek NFT-id"
+  },
+  "sendTransactions": {
+    "header": "{{symbol}} tranzakció küldése"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger aláírás sikerült",
+    "ledgerSignFailed": "Ledger aláírás sikertelen vagy elutasított",
+    "transferSuccess": "Átutalás sikerült",
+    "transferFailed": "Átutalás sikertelen",
+    "transactionSent": "Tranzakció sikeresen elküldve! Nézd meg az előzmények fülön",
+    "networkError": "Hálózati hiba.",
+    "loadingTop": "Ne zárd be ezt az ablakot",
+    "loadingBottom": "Automatikusan továbbítunk, amint a tranzakció kész",
+    "labelReceiver": "Címzett",
+    "labelAmount": "Mennyiség",
+    "labelGasLimit": "Gázlimit",
+    "labelGasPrice": "Gázár",
+    "labelGasFee": "Gázdíj",
+    "labelTotal": "Összesen",
+    "warningCrossChainLine1": "Cross-chain átutalást végzel",
+    "warningCrossChainLine2": "Ez a művelet hosszabb ideig tarthat",
+    "warningNonKAccountLine1": "Nem „k:”-s fiókra küldesz!",
+    "warningNonKAccountLine2": "Biztosan folytatod?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} nem átruházható!",
+    "form": {
+      "sourceChainId": {
+        "title": "Forrás Chain ID"
+      },
+      "destinationAccount": {
+        "title": "Célfiók"
+      },
+      "targetChainId": {
+        "title": "Cél Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "A célfiók maximális hossza 1000 karakter."
+    },
+    "balanceLabel": "{{symbol}} Chain egyenleg",
+    "recent": "LEGUTÓBBI",
+    "contacts": "KAPCSOLATOK",
+    "confirm": {
+      "warningTitle": "Figyelem",
+      "publicKeyTitle": "Publikus kulcs",
+      "publicKeyPlaceholder": "Publikus kulcs megadása",
+      "predicateTitle": "Feltétel",
+      "predicatePlaceholder": "Feltétel megadása"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Nem küldhetsz magadnak",
+    "invalidGasLimit": "Érvénytelen gázlimit",
+    "gasLimitInteger": "A gázlimitének egész számnak kell lennie",
+    "invalidGasPrice": "Érvénytelen gázár",
+    "insufficientFundsGas": "Nincs elég pénz a gázdíjra",
+    "newAddressDetected": "Új cím észlelve! Add hozzá a kapcsolatokhoz",
+    "tokenNotExists": "{{contractAddress}} nem található a {{chainId}} láncon!",
+    "transactionParameters": "Tranzakció paraméterek",
+    "estimatedGas": "Becsült gáz {{gas}}",
+    "speed": "{{speed}} sebesség",
+    "modal": {
+      "confirmTitle": "Küldés megerősítése",
+      "gasParametersTitle": "Gáz paraméterek"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gázlimit"
+      },
+      "gasPrice": {
+        "title": "Gázár"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Küldendő összeg",
+    "button": {
+      "half": "FÉL",
+      "max": "MAX"
+    },
+    "error": {
+      "insufficientFunds": "Nincs elég pénz",
+      "invalidAmount": "Érvénytelen összeg"
+    },
+    "balance": "Egyenleg: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp logo",
+    "sendTransaction": "Tranzakció küldése",
+    "destinationNotFound": "Célfiók nem található"
+  },
+  "history": {
+    "header": "Előzmények",
+    "modal": {
+      "confirmSendTransaction": "Küldés megerősítése"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Tranzakció részletek"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Fiók neve"
+  },
+  "activityList": {
+    "loading": "Betöltés...",
+    "today": "Ma",
+    "yesterday": "Tegnap",
+    "noTransactions": "Nincsenek tranzakcióid"
+  },
+  "statusFilter": {
+    "modalTitle": "Állapot",
+    "prefix": "Állapot: ",
+    "options": {
+      "all": "Összes",
+      "in": "Bejövő",
+      "out": "Kimenő",
+      "pending": "Függőben"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Eszközök: ",
+    "options": {
+      "all": "Összes"
+    }
+  },
+  "footer": {
+    "wallet": "TÁRCA",
+    "analytics": "ANALITIKA",
+    "nft": "NFT",
+    "settings": "BEÁLLÍTÁSOK"
+  }
+}

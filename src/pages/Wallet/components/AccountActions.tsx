@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import images from 'src/images';
@@ -28,6 +29,7 @@ export const AccountActions = ({
   onImportFromLedger: any;
   onRemoveWallet: any;
 }) => {
+  const { t } = useTranslation();
   const history = useHistory();
   const stateWallet = useCurrentWallet();
   const { openModal } = useContext(ModalContext);
@@ -40,28 +42,37 @@ export const AccountActions = ({
   const actions = [
     {
       src: images.settings.iconShare,
-      label: 'Share Wallet',
+      label: t('accountActions.shareWallet'),
       onClick: () => {
         navigator.clipboard.writeText(stateWallet?.account);
-        toast.success(<Toast type="success" content="Copied!" />);
+        toast.success(<Toast type="success" content={t('accountActions.copied')} />);
       },
     },
-    { src: images.settings.iconShare, label: 'Export Recovery Phrase', onClick: () => onActionClick(history.push('/export-seed-phrase')) },
+    {
+      src: images.settings.iconShare,
+      label: t('accountActions.exportRecoveryPhrase'),
+      onClick: () => onActionClick(history.push('/export-seed-phrase')),
+    },
     {
       src: images.settings.iconSignHash,
-      label: 'Sign Hash Transaction',
-      onClick: () => openModal({ title: 'Sign Hash Transaction', content: <HashSignModal /> }),
+      label: t('accountActions.signHashTransaction'),
+      onClick: () => openModal({ title: t('accountActions.signHashTransaction'), content: <HashSignModal /> }),
       style: { marginLeft: -2, marginRight: 10, width: 22 },
     },
     {
       src: images.settings.iconEdit,
-      label: 'Edit Account Alias',
-      onClick: () => openModal({ title: 'Set Account Alias', content: <AliasModal /> }),
+      label: t('accountActions.editAccountAlias'),
+      onClick: () => openModal({ title: t('accountActions.setAccountAlias'), content: <AliasModal /> }),
       style: { marginLeft: -2, marginRight: 10, width: 22 },
     },
   ];
+
   if (wallets?.length > 1) {
-    actions.push({ src: images.settings.iconTrash, label: 'Remove Selected Wallet', onClick: onRemoveWallet });
+    actions.push({
+      src: images.settings.iconTrash,
+      label: t('accountActions.removeSelectedWallet'),
+      onClick: onRemoveWallet,
+    });
   }
 
   return (
@@ -71,13 +82,13 @@ export const AccountActions = ({
           <ActionList actions={actions} />
         </DivFlex>
       </DoubleFooter>
-      <DoubleFooter style={{ borderTop: ' 1px solid #dfdfed' }}>
+      <DoubleFooter style={{ borderTop: '1px solid #dfdfed' }}>
         <DivFlex flexDirection="column">
           <ActionList
             actions={[
-              { label: 'Create Wallet', onClick: () => onActionClick(onCreateAccount) },
-              { label: 'Import Wallet', onClick: () => onActionClick(onImportAccount) },
-              { label: 'Import Hardware Wallet', onClick: () => onActionClick(onImportFromLedger) },
+              { label: t('accountActions.createWallet'), onClick: () => onActionClick(onCreateAccount) },
+              { label: t('accountActions.importWallet'), onClick: () => onActionClick(onImportAccount) },
+              { label: t('accountActions.importHardwareWallet'), onClick: () => onActionClick(onImportFromLedger) },
             ]}
           />
         </DivFlex>

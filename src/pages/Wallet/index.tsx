@@ -16,7 +16,6 @@ import { DivBottomShadow, DivFlex, PrimaryLabel, SecondaryLabel } from 'src/comp
 import { ConfirmModal } from 'src/components/ConfirmModal';
 import { IconButton } from 'src/components/IconButton';
 import { ActionList } from 'src/components/ActionList';
-import KDXGovernanceMiningButton from 'src/components/GovernanceMining/KDXButton';
 import { roundNumber, BigNumberConverter, humanReadableNumber } from 'src/utils';
 import { MAINNET_NETWORK_ID, extractDecimal } from 'src/utils/chainweb';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
@@ -33,6 +32,7 @@ import { AssetsList } from './components/AssetsList';
 import { Warning } from '../SendTransactions/styles';
 import { useAppSelector } from 'src/stores/hooks';
 import TokenDetector from './components/TokenDetector';
+import { useTranslation } from 'react-i18next';
 
 export interface IFungibleTokenBalance {
   contractAddress: string;
@@ -61,6 +61,7 @@ export const DivAssetList = styled.div`
 
 const Wallet = () => {
   const history = useHistory();
+  const { t } = useTranslation();
   const { openModal, closeModal } = useModalContext();
   const { isLoadingBalances, selectedAccountBalance, allAccountsBalance, allAccountsBalanceUsd } = useAccountBalanceContext();
   const { selectedNetwork } = useAppSelector((state) => state.extensions);
@@ -118,7 +119,7 @@ const Wallet = () => {
   const handleRemoveToken = (contractAddress) => {
     const newFungibleTokens = fungibleTokensByNetwork?.filter((ft) => ft.contractAddress !== contractAddress) ?? [];
     setFungibleTokens({ ...fungibleTokens, [networkId]: newFungibleTokens });
-    toast.success(<Toast type="success" content="Token successfully removed" />);
+    toast.success(<Toast type="success" content={t('wallet.tokenRemoved')} />);
     closeModal();
   };
 
@@ -131,15 +132,14 @@ const Wallet = () => {
     const hasBalance = getTokenChainDistribution(contractAddress).filter((cD) => cD.balance > 0)?.length > 0;
     return (
       <div style={{ padding: 20 }}>
-        {isNonTransferable ? (
+        {isNonTransferable && (
           <Warning justifyContent="center" type="danger" margin="-20px 0px 10px 0px">
             <AlertIconSVG />
             <div>
-              <span>{contractAddress} is not transferable!</span>
+              <span>{t('wallet.notTransferable', { contractAddress })}</span>
             </div>
           </Warning>
-        ) : null}
-        {symbol?.toLowerCase() === 'kdx' && <KDXGovernanceMiningButton onClick={closeModal} />}
+        )}
         {getTokenChainDistribution(contractAddress)
           .filter((cD) => cD.balance > 0)
           .map((cD) => (
@@ -153,22 +153,22 @@ const Wallet = () => {
               usdBalance={getTokenUsdBalance(contractAddress, cD.chainId)}
             />
           ))}
-        {!hasBalance && symbol?.toLowerCase() === 'kda' ? (
-          <Warning justifyContent="center">Doesn’t exist: This account does not exist.</Warning>
-        ) : null}
-        {!hasBalance && symbol?.toLowerCase() !== 'kda' ? <Warning justifyContent="center">{symbol?.toUpperCase()} balance is 0.</Warning> : null}
+        {!hasBalance && symbol?.toLowerCase() === 'kda' && <Warning justifyContent="center">{t('wallet.accountDoesNotExist')}</Warning>}
+        {!hasBalance && symbol?.toLowerCase() !== 'kda' && (
+          <Warning justifyContent="center">{t('wallet.balanceZero', { symbol: symbol?.toUpperCase() })}</Warning>
+        )}
         {['coin', 'runonflux.flux'].every((add) => add !== contractAddress) && (
           <ActionList
             actions={[
               {
                 src: images.settings.iconTrash,
-                label: 'Remove token',
+                label: t('wallet.removeToken'),
                 onClick: () =>
                   openModal({
-                    title: `Remove ${symbol.toUpperCase()} token`,
+                    title: t('wallet.removeTokenTitle', { symbol: symbol.toUpperCase() }),
                     content: (
                       <ConfirmModal
-                        text={`Are you sure you want remove ${symbol.toUpperCase()} token?`}
+                        text={t('wallet.confirmRemoveToken', { symbol: symbol.toUpperCase() })}
                         onClose={closeModal}
                         onConfirm={() => handleRemoveToken(contractAddress)}
                       />
@@ -177,7 +177,7 @@ const Wallet = () => {
               },
               {
                 src: images.settings.iconEdit,
-                label: 'Edit token',
+                label: t('wallet.editToken'),
                 onClick: () => {
                   closeModal();
                   history.push(`/import-token?coin=${contractAddress}`);
@@ -200,7 +200,7 @@ const Wallet = () => {
     <div>
       <Header />
       <DivFlex justifyContent="space-between" padding="15px 20px">
-        <SecondaryLabel>NET WORTH</SecondaryLabel>
+        <SecondaryLabel>{t('wallet.netWorth')}</SecondaryLabel>
         <SecondaryLabel color={theme.text?.primary}>
           {isLoadingBalances ? (
             <Spinner size={10} color={theme.text?.primary} weight={2} />
@@ -210,35 +210,35 @@ const Wallet = () => {
         </SecondaryLabel>
       </DivFlex>
       <DivBottomShadow justifyContent="center" flexDirection="column" alignItems="center" padding="20px">
-        <SecondaryLabel>ACCOUNT BALANCE</SecondaryLabel>
+        <SecondaryLabel>{t('wallet.accountBalance')}</SecondaryLabel>
         <PrimaryLabel>$ {humanReadableNumber(getAccountBalance(stateWallet?.account).toFixed(2), 2)}</PrimaryLabel>
         <DivFlex justifyContent="space-around" style={{ width: '100%', marginTop: 30 }}>
           <CircledButton
             onClick={() => history.push('/transfer?coin=kda&chainId=0')}
-            label="Send"
+            label={t('wallet.send')}
             iconUrl={images.wallet.arrowSend}
             variant="primary"
           />
           <CircledButton
-            onClick={() => openModal({ title: 'Receive tokens', content: <ReceiveModal /> })}
-            label="Receive"
+            onClick={() => openModal({ title: t('wallet.receiveTokens'), content: <ReceiveModal /> })}
+            label={t('wallet.receive')}
             iconUrl={images.wallet.arrowReceive}
             variant="secondary"
           />
-          <CircledButton onClick={handleBuy} label="Buy" iconUrl={images.wallet.iconBuy} variant="brand" />
-          <CircledButton onClick={handleHistory} label="History" iconUrl={images.iconHistory} variant="empty" />
+          <CircledButton onClick={handleBuy} label={t('wallet.buy')} iconUrl={images.wallet.iconBuy} variant="brand" />
+          <CircledButton onClick={handleHistory} label={t('wallet.history')} iconUrl={images.iconHistory} variant="empty" />
         </DivFlex>
       </DivBottomShadow>
       <DivAsset>
         <DivFlex justifyContent="space-between">
-          <SecondaryLabel style={{ paddingTop: 10 }}>ASSETS</SecondaryLabel>
+          <SecondaryLabel style={{ paddingTop: 10 }}>{t('wallet.assets')}</SecondaryLabel>
           <DivFlex>
             {selectedNetwork.networkId === MAINNET_NETWORK_ID && (
               <>
                 <IconButton
                   onClick={() =>
                     openModal({
-                      title: 'Detected tokens',
+                      title: t('wallet.detectedTokens'),
                       content: (
                         <TokenDetector
                           onTokenSelect={(t) => {
@@ -251,7 +251,7 @@ const Wallet = () => {
                   }
                   svgComponent={<RefreshIconSVG style={{ marginTop: -2 }} />}
                 />
-                <IconButton onClick={() => openModal({ title: 'Token list', content: <AssetsList /> })} svgComponent={<SearchIconSVG />} />
+                <IconButton onClick={() => openModal({ title: t('wallet.tokenList'), content: <AssetsList /> })} svgComponent={<SearchIconSVG />} />
               </>
             )}
             <IconButton onClick={() => history.push('/import-token')} svgComponent={<AddIconSVG />} style={{ marginLeft: 5 }} />
@@ -264,54 +264,51 @@ const Wallet = () => {
             name="KDA"
             usdBalance={roundNumber(getTokenUsdBalance('coin'), 2)}
             logo={images.wallet.tokens.coin}
-            onClick={() => selectedAccountBalance && openModal({ title: 'KDA Chain Distribution', content: renderChainDistribution('kda', 'coin') })}
+            onClick={() =>
+              selectedAccountBalance &&
+              openModal({
+                title: t('wallet.kdaChainDistribution'),
+                content: renderChainDistribution('kda', 'coin'),
+              })
+            }
           />
           {LOCAL_DEFAULT_FUNGIBLE_TOKENS[networkId] &&
-            LOCAL_DEFAULT_FUNGIBLE_TOKENS[networkId].map((t) => (
+            LOCAL_DEFAULT_FUNGIBLE_TOKENS[networkId].map((token) => (
               <TokenElement
-                key={t.contractAddress}
+                key={token.contractAddress}
                 isLoadingBalances={isLoadingBalances}
-                balance={getTokenTotalBalance(t.contractAddress, stateWallet?.account)}
-                name={t.symbol?.toLocaleUpperCase()}
-                usdBalance={roundNumber(getTokenUsdBalance(t.contractAddress), 2)}
-                logo={images.wallet.tokens[t.contractAddress]}
+                balance={getTokenTotalBalance(token.contractAddress, stateWallet?.account)}
+                name={token.symbol?.toLocaleUpperCase()}
+                usdBalance={roundNumber(getTokenUsdBalance(token.contractAddress), 2)}
+                logo={images.wallet.tokens[token.contractAddress]}
                 onClick={() =>
                   selectedAccountBalance &&
                   openModal({
-                    title: `${t.symbol.toLocaleUpperCase()} Chain Distribution`,
-                    content: renderChainDistribution(t.symbol, t.contractAddress),
+                    title: `${token.symbol.toLocaleUpperCase()} ${t('wallet.chainDistribution')}`,
+                    content: renderChainDistribution(token.symbol, token.contractAddress),
                   })
                 }
               />
             ))}
-
           {fungibleTokensByNetwork
-            ?.filter(
-              (fT) =>
-                !(LOCAL_DEFAULT_FUNGIBLE_TOKENS[networkId] && LOCAL_DEFAULT_FUNGIBLE_TOKENS[networkId])
-                  .map((t) => t.contractAddress)
-                  .includes(fT.contractAddress),
-            )
-            ?.map((fT) => {
-              const tokenBalance = getTokenTotalBalance(fT.contractAddress, stateWallet?.account);
-              return (
-                <TokenElement
-                  key={fT.contractAddress}
-                  isLoadingBalances={isLoadingBalances}
-                  balance={tokenBalance || 0}
-                  name={fT.symbol?.toUpperCase()}
-                  usdBalance={roundNumber(getTokenUsdBalance(fT.contractAddress), 2)}
-                  logo={images.wallet.tokens[fT.contractAddress] || images.wallet.iconUnknownKadenaToken}
-                  onClick={() => {
-                    selectedAccountBalance &&
-                      openModal({
-                        title: `${fT.symbol?.toUpperCase()} Chain Distribution`,
-                        content: renderChainDistribution(fT.symbol, fT.contractAddress),
-                      });
-                  }}
-                />
-              );
-            })}
+            ?.filter((fT) => !(LOCAL_DEFAULT_FUNGIBLE_TOKENS[networkId] || []).map((t) => t.contractAddress).includes(fT.contractAddress))
+            .map((fT) => (
+              <TokenElement
+                key={fT.contractAddress}
+                isLoadingBalances={isLoadingBalances}
+                balance={getTokenTotalBalance(fT.contractAddress, stateWallet?.account) || 0}
+                name={fT.symbol?.toUpperCase()}
+                usdBalance={roundNumber(getTokenUsdBalance(fT.contractAddress), 2)}
+                logo={images.wallet.tokens[fT.contractAddress] || images.wallet.iconUnknownKadenaToken}
+                onClick={() =>
+                  selectedAccountBalance &&
+                  openModal({
+                    title: `${fT.symbol?.toUpperCase()} ${t('wallet.chainDistribution')}`,
+                    content: renderChainDistribution(fT.symbol, fT.contractAddress),
+                  })
+                }
+              />
+            ))}
         </DivAssetList>
       </DivAsset>
       <NotificationManager />

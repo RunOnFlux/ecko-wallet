@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import InfoIconSVG from 'src/images/info.svg?react';
 
 const Container = styled.div`
@@ -22,23 +23,25 @@ const InfoCaption = styled.div`
   padding-bottom: 8px;
   font-weight: bold;
 `;
+
 const InfoText = styled.div`
   text-align: left;
   font-size: 11px;
   font-weight: normal;
 `;
 
-const Disclaimer = () => (
-  <Container>
-    <InfoIconSVG />
-    <Info>
-      <InfoCaption>Info!</InfoCaption>
-      <InfoText>
-        The information displayed on this page is currently under BETA testing, and is provided on an &quot;as is&quot; and &quot;as available&quot;
-        basis.
-      </InfoText>
-    </Info>
-  </Container>
-);
+const Disclaimer = () => {
+  const { t } = useTranslation();
+
+  return (
+    <Container>
+      <InfoIconSVG />
+      <Info>
+        <InfoCaption>{t('analytics.disclaimerTitle')}</InfoCaption>
+        <InfoText>{t('analytics.disclaimerText')}</InfoText>
+      </Info>
+    </Container>
+  );
+};
 
 export default Disclaimer;

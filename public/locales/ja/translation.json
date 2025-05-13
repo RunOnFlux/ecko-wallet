@@ -1,0 +1,646 @@
+{
+  "select_language": "言語を選択",
+  "home": {
+    "startNow": "今すぐ始める"
+  },
+  "common": {
+    "requiredField": "この項目は必須です。",
+    "invalidData": "無効なデータ",
+    "invalidUrl": "無効なURL",
+    "cancel": "キャンセル",
+    "back": "戻る",
+    "confirm": "確認",
+    "continue": "続行",
+    "reject": "拒否",
+    "usd": "{{value}} USD",
+    "next": "次へ",
+    "close": "閉じる"
+  },
+  "condition": {
+    "noPersonalInfo": "キー、アドレス、トランザクション、残高、ハッシュ、または個人情報は一切収集しません",
+    "noIP": "IPアドレス全体を保存することはありません",
+    "noSelling": "利益目的でデータを販売することは絶対にありません",
+    "next": "次へ"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "利用規約に同意します",
+    "termsOfUse": "利用規約",
+    "createNewWallet": "新しいウォレットを作成",
+    "setupNewAccount": "新しい eckoWALLET アカウントを設定",
+    "restoreWallet": "ウォレットを復元",
+    "restoreFromPhrase": "シードフレーズから復元"
+  },
+  "createPassword": {
+    "successCreate": "新しいパスワードの作成に成功しました",
+    "errorCreate": "ウォレット作成中にエラーが発生しました",
+    "invalidPhrase": "無効なリカバリーフレーズです！",
+    "importFromPhrase": "フレーズからインポート",
+    "createPassword": "パスワードを作成",
+    "pastePhrase": "リカバリーフレーズを貼り付け",
+    "requiredField": "この項目は必須です。",
+    "phraseTooLong": "リカバリーフレーズが長すぎます。",
+    "secretRecoveryPhrase": "シークレットリカバリーフレーズ",
+    "import": "インポート",
+    "create": "作成"
+  },
+  "passwordForm": {
+    "inputPassword": "パスワードを入力",
+    "inputConfirmPassword": "パスワードを再入力",
+    "requiredField": "この項目は必須です。",
+    "minPassword": "パスワードは8文字以上である必要があります。",
+    "maxPassword": "パスワードは最大256文字です。",
+    "passwordMismatch": "パスワードが一致しません",
+    "newPassword": "新しいパスワード（8文字以上）",
+    "confirmPassword": "パスワードの確認",
+    "passwordWarning": "推奨されない文字を使用しています。英字（a–z）、数字（0–9）、記号 _!?\"'.#@,;- のみを推奨します"
+  },
+  "seedPhrase": {
+    "title": "シークレットリカバリーフレーズ",
+    "step1Text": "次のステップで12語のリカバリーフレーズを書き留めます。\nこのフレーズがあれば、新しいデバイスでウォレットを復元できます。\nこのフレーズを持つ誰でもウォレットに完全にアクセスできるため、安全に保管してください。\nフレーズを失うとウォレットを復元できなくなりますので、ご注意ください。",
+    "step1Checkbox": "リカバリーフレーズを失うとウォレットを復元できないことを理解しました。",
+    "generating": "鍵ペアを生成中…",
+    "continue": "続行",
+    "reveal": "クリックしてフレーズを表示",
+    "step2Text1": "リカバリーフレーズはアカウントのバックアップと復元を簡単にします。",
+    "step2Text2": "警告：リカバリーフレーズを他人と共有しないでください。誰でもウォレットを取得できます。",
+    "download": "ダウンロード",
+    "verifyTitle": "リカバリーフレーズを確認",
+    "verifyInstruction": "フレーズの単語を正しい順序で入力して確認してください。",
+    "successVerify": "リカバリーフレーズの確認に成功しました",
+    "invalidPhrase": "無効なリカバリーフレーズです！",
+    "errorGeneratingKeys": "鍵生成中にエラーが発生しました",
+    "errorCreatingWallet": "ウォレット作成中にエラーが発生しました",
+    "generatingWallet": "ウォレットを生成中…"
+  },
+  "wallet": {
+    "netWorth": "純資産",
+    "accountBalance": "口座残高",
+    "send": "送信",
+    "receive": "受信",
+    "receiveTokens": "トークンを受信",
+    "buy": "購入",
+    "history": "履歴",
+    "assets": "資産",
+    "detectedTokens": "検出されたトークン",
+    "tokenList": "トークンリスト",
+    "kdaChainDistribution": "KDAチェーン分布",
+    "chainDistribution": "チェーン分布",
+    "tokenRemoved": "トークンを正常に削除しました",
+    "removeToken": "トークンを削除",
+    "editToken": "トークンを編集",
+    "removeTokenTitle": "{{symbol}} トークンを削除",
+    "confirmRemoveToken": "{{symbol}} トークンを本当に削除しますか？",
+    "notTransferable": "{{contractAddress}} は転送できません！",
+    "accountDoesNotExist": "見つかりません：口座が存在しません。",
+    "balanceZero": "{{symbol}} の残高は0です。"
+  },
+  "accountActions": {
+    "shareWallet": "ウォレットを共有",
+    "copied": "コピーしました！",
+    "exportRecoveryPhrase": "リカバリーフレーズをエクスポート",
+    "signHashTransaction": "トランザクションハッシュに署名",
+    "editAccountAlias": "アカウントエイリアスを編集",
+    "setAccountAlias": "アカウントエイリアスを設定",
+    "removeSelectedWallet": "選択したウォレットを削除",
+    "createWallet": "ウォレットを作成",
+    "importWallet": "ウォレットをインポート",
+    "importHardwareWallet": "ハードウェアウォレットをインポート"
+  },
+  "tokenDetector": {
+    "noTokensFound": "このアカウントには他のトークンが見つかりませんでした。"
+  },
+  "aliasModal": {
+    "accountAlias": "アカウントエイリアス",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "aliasChanged": "エイリアスを正常に変更しました"
+  },
+  "hashSignModal": {
+    "publicKey": "公開鍵",
+    "transactionHash": "トランザクションハッシュ",
+    "insertTransactionHash": "トランザクションハッシュを入力",
+    "signature": "署名",
+    "copied": "コピーしました！",
+    "clean": "クリア",
+    "sign": "署名"
+  },
+  "popupDetailTransaction": {
+    "status": "ステータス",
+    "direction": "方向",
+    "symbol": "シンボル",
+    "quantity": "数量",
+    "gasFee": "ガス代",
+    "total": "合計",
+    "viewDetails": "詳細を表示",
+    "activityLog": "アクティビティログ",
+    "transactionCreated": "{{amount}} {{symbol}} のトランザクションを作成しました",
+    "transactionConfirmed": "トランザクションが確認されました",
+    "success": "成功",
+    "failed": "失敗",
+    "finishing": "完了中…"
+  },
+  "removeWallet": {
+    "title": "本当にこのウォレットを削除しますか？",
+    "description": "確認のためパスワードを入力してください",
+    "passwordPlaceholder": "パスワードを入力",
+    "passwordRequired": "この項目は必須です。",
+    "passwordMinLength": "パスワードは8文字以上である必要があります。",
+    "passwordMaxLength": "パスワードは最大256文字です。",
+    "invalidPassword": "無効なパスワード",
+    "cancel": "キャンセル",
+    "remove": "削除"
+  },
+  "header": {
+    "selectNetwork": "ネットワークを選択",
+    "manageNetworks": "ネットワークを管理",
+    "myWallets": "マイウォレット",
+    "removeWalletTitle": "ウォレットを削除",
+    "createAccountSuccess": "アカウント作成に成功しました！",
+    "createAccountFail": "アカウント作成に失敗しました",
+    "copied": "コピーしました！"
+  },
+  "signIn": {
+    "loginTitle": "アカウントにサインイン",
+    "passwordPlaceholder": "パスワードを入力",
+    "passwordTitle": "パスワード",
+    "signInButton": "サインイン",
+    "invalidPassword": "無効なパスワード",
+    "required": "この項目は必須です。",
+    "minLength": "パスワードは8文字以上である必要があります。",
+    "maxLength": "パスワードは最大256文字です。",
+    "initWalletError": "ウォレット初期化中にエラーが発生しました"
+  },
+  "settings": {
+    "contacts": "連絡先",
+    "language": "言語",
+    "languageDesc": "ウォレットの言語を選択",
+    "contactsDesc": "連絡先を管理",
+    "networks": "ネットワーク",
+    "networksDesc": "RPCネットワークを追加または編集",
+    "connectedSites": "接続済みサイト",
+    "connectedSitesDesc": "接続されたサイトを表示および管理",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "WalletConnectで接続",
+    "txSettings": "トランザクション設定",
+    "txSettingsDesc": "ガス設定を調整",
+    "exportPhrase": "リカバリーフレーズをエクスポート",
+    "exportPhraseDesc": "ウォレットを保護",
+    "editPassword": "パスワードを変更",
+    "editPasswordDesc": "ウォレットのパスワードを変更",
+    "2fa": "二段階認証",
+    "2faDesc": "2FA設定を管理",
+    "expandView": "拡張ビュー",
+    "expandViewDesc": "新しいウィンドウで eckoWALLET を開く",
+    "theme": "テーマ",
+    "themeDesc": "ウォレットのテーマを選択",
+    "lock": "ウォレットをロック",
+    "lockDesc": "ウォレットを保護",
+    "lockSettings": "自動ロック",
+    "lockSettingsDesc": "セキュリティ設定を変更",
+    "discord": "Discordに参加",
+    "website": "ウェブサイトへ",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "connectedSitesPage": {
+      "title": "接続済みサイト",
+      "removeSiteTitle": "サイトを削除",
+      "removeSiteConfirmText": "本当に次を削除しますか：",
+      "removeSiteSuccess": "サイトが正常に削除されました。"
+    },
+    "contactsPage": {
+      "title": "連絡先",
+      "newContactTitle": "新しい連絡先",
+      "addNewContact": "連絡先を追加",
+      "noContacts": "連絡先がありません"
+    },
+    "contactForm": {
+      "enterAlias": "エイリアスを入力",
+      "aliasPlaceholder": "例：山田太郎",
+      "accountNameTitle": "アカウント名",
+      "accountNamePlaceholder": "アカウント名を入力",
+      "scanQrTitle": "QRコードをスキャン",
+      "scanQrDescription": "カメラにQRコードをかざしてください",
+      "buttonCancel": "キャンセル",
+      "buttonSave": "保存",
+      "successContactAdded": "連絡先を正常に追加しました",
+      "errorNetwork": "ネットワークエラー。",
+      "copied": "コピーしました！",
+      "requiredField": "この項目は必須です。",
+      "invalidData": "無効なデータ",
+      "aliasMaxLength": "エイリアスは最大256文字です。",
+      "accountNameMaxLength": "アカウント名は最大1000文字です。"
+    },
+    "contactInfo": {
+      "copied": "コピーしました！",
+      "contactRemoved": "連絡先を削除しました",
+      "accountName": "アカウント名",
+      "editContact": "連絡先を編集",
+      "editTitle": "アカウントを編集",
+      "delete": "削除",
+      "deleteContactTitle": "連絡先を削除",
+      "removeContact": "この連絡先を削除しますか？",
+      "confirmRemove": "本当にこの連絡先を削除しますか？",
+      "cancel": "キャンセル",
+      "confirm": "確認"
+    },
+    "editPasswordPage": {
+      "title": "パスワードを変更",
+      "passwordChanged": "パスワードを正常に変更しました",
+      "cannotUpdatePassword": "パスワード設定を更新できません",
+      "save": "保存"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "続行するにはパスワードを入力してください",
+      "inputPlaceholder": "パスワードを入力",
+      "password": "パスワード",
+      "errorRequired": "この項目は必須です。",
+      "errorInvalid": "無効なパスワードです。",
+      "continue": "続行",
+      "correctPassword": "パスワードが正しいです。お待ちください…"
+    },
+    "exportSeedPhrase": {
+      "title": "リカバリーフレーズをエクスポート",
+      "copied": "コピーしました！",
+      "description": "シークレットリカバリーフレーズはアカウントのバックアップと復元を簡単にします。",
+      "warning": "リカバリーフレーズを絶対に共有しないでください。誰でもウォレットを取得できます。",
+      "copyKeyphrase": "フレーズをコピー",
+      "download": "ダウンロード"
+    },
+    "lockSettingsPage": {
+      "title": "自動ロック設定",
+      "saved": "設定を保存しました",
+      "required": "この項目は必須です。",
+      "placeholder": "ロックまでの時間を選択",
+      "selectTitle": "自動ロック",
+      "restore": "デフォルトに戻す",
+      "save": "保存"
+    },
+    "networksPage": {
+      "title": "ネットワーク",
+      "network": "ネットワーク",
+      "addNew": "新しいネットワークを追加",
+      "editSuccess": "ネットワークを正常に編集しました",
+      "addSuccess": "ネットワークを正常に追加しました",
+      "errorUrl": "URLが既に存在します",
+      "deleteSuccess": "ネットワークを正常に削除しました",
+      "remove": "削除",
+      "save": "保存",
+      "confirmRemove": "このネットワークを削除しますか？",
+      "confirmRemoveDesc": "本当にこのネットワークを削除しますか？",
+      "placeholderName": "ネットワーク名を入力",
+      "placeholderUrl": "RPC URLを入力",
+      "placeholderExplorer": "ブロックチェーンエクスプローラーのURLを入力",
+      "placeholderNetworkId": "ネットワークIDを入力",
+      "titleName": "ネットワーク名",
+      "titleUrl": "RPC URL",
+      "titleExplorer": "エクスプローラー URL",
+      "titleNetworkId": "ネットワークID",
+      "nameMax": "ネットワーク名は最大1000文字です。",
+      "urlMax": "RPC URLは最大1000文字です。",
+      "explorerMax": "エクスプローラー URLは最大1000文字です。",
+      "networkIdMax": "ネットワークIDは最大1000文字です。"
+    },
+    "selectTheme": {
+      "title": "テーマを選択"
+    },
+    "txSettingsPage": {
+      "title": "トランザクション設定",
+      "gasLimit": "ガスリミット",
+      "gasLimitPlaceholder": "ガスリミットを入力",
+      "finishCrossChain": "クロスチェー��ガスタンクを完了",
+      "finishCrossChainPlaceholder": "クロスチェーンガスタンクを入力",
+      "crossChainGasLimit": "クロスチェーンガスリミット",
+      "crossChainGasLimitPlaceholder": "クロスチェーンガスリミットを入力",
+      "crossChainGasPrice": "クロスチェーンガス価格",
+      "crossChainGasPricePlaceholder": "クロスチェーンガス価格を入力",
+      "save": "保存",
+      "restoreDefault": "デフォルトに戻す",
+      "successSave": "設定を正常に保存しました",
+      "requiredField": "この項目は必須です。",
+      "invalidValue": "無効な値"
+    },
+    "2faPage": {
+      "title": "二段階認証",
+      "description": "二段階認証は既に有効です。",
+      "disableButton": "無効にする",
+      "successDisable": "2FAを正常に無効化しました",
+      "installApp": "アプリをインストール",
+      "orSimilar": "または同様のアプリ",
+      "scanQRCode": "以下のQRコードをスキャン：",
+      "enter6Digits": "6桁のコードを入力",
+      "invalidCode": "無効なコードです。",
+      "saveButton": "保存",
+      "setupSuccess": "2FAを正常に有効化しました"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "アカウントを選択",
+      "invalidUrl": "無効なURL",
+      "disconnectSuccess": "接続解除に成功しました",
+      "noActiveSessions": "アクティブなセッションはありません",
+      "activeSessions": "アクティブセッション",
+      "expiry": "有効期限：",
+      "removeConnection": "接続を削除",
+      "removeConfirmation": "このWalletConnect接続を本当に削除しますか？",
+      "newConnection": "新しい接続",
+      "addConnection": "新しいWalletConnectを追加",
+      "inputUri": "URIを入力",
+      "code": "コード",
+      "continue": "続行"
+    }
+  },
+  "buy": {
+    "title": "購入",
+    "description": "暗号通貨の売買は第三者サービス Onramper を通じて行われます。\n\neckoWALLET は高いセキュリティを提供しますが、第三者サービスの安全性やプライバシーは保証できません。",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "error": {
+      "noAddress": "ウォレットアドレスが利用できません",
+      "generic": "サービスに接続できません。後でもう一度お試しください。"
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "ウォレット分析",
+    "dexAnalytics": "DEX分析",
+    "portfolioValue": "ポートフォリオ価値",
+    "startTracking": "追跡を開始",
+    "trackPortfolioTitle": "ポートフォリオ価値を追跡",
+    "trackPortfolioStart": "残高追跡を開始",
+    "trackPortfolioDesc1": "確認するとアカウント残高の追跡を開始します。",
+    "trackPortfolioDesc2": "続行しますか？",
+    "confirm": "確認",
+    "confirming": "確認中…",
+    "disclaimerTitle": "注意！",
+    "disclaimerText": "このページのデータはベータ版で、“現状のまま”提供されています。"
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "無効なネットワーク",
+      "signingCmdError": "署名エラー：ペイロードを確認してください",
+      "signingCmdGenericError": "署名エラー",
+      "rejectedByUser": "ユーザーによって拒否されました",
+      "userRejected": "ユーザーが拒否しました。",
+      "signedCommand": "署名済みコマンド",
+      "hashToSign": "署名するハッシュ：",
+      "pleaseEnableLedger": "Blind Signing を有効にし、Ledger の指示に従ってください",
+      "capabilities": "権限",
+      "close": "閉じる",
+      "reject": "拒否",
+      "confirm": "確認"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "クイック署名要求",
+      "code": "コード",
+      "capabilities": "権限",
+      "rawData": "生データ",
+      "command": "コマンド {{index}}/{{total}}",
+      "hashToSign": "署名するハッシュ ({{count}}/{{total}})：",
+      "ledgerInstructions": "Blind Signing を有効にし、Ledger の指示に従ってください",
+      "close": "閉じる",
+      "reject": "拒否",
+      "confirm": "確認",
+      "error.invalidStructure": "クイック署名失敗：構造が無効です",
+      "error.pubKeyNotFound": "クイック署名失敗：公開鍵が見つかりません",
+      "error.ledger": "Ledger 署名失敗"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "ハードウェアウォレットをインポート",
+      "selectDevice": "ハードウェアウォレットを選択",
+      "ledgerInstructions": "Ledger をコンピュータに接続し、Kadena アプリを開いてアンロックしてください。",
+      "connect": "接続",
+      "confirm": "インポート",
+      "success": "ハードウェアウォレットのインポートに成功しました",
+      "error": {
+        "duplicate": "このアカウントはすでに追加されています。",
+        "network": "ネットワークエラー。",
+        "invalid": "無効なデータ"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Ledger からインポート",
+      "instruction": "Ledger を接続し、Kadena アプリを開いてアンロックしてください。",
+      "continue": "続行",
+      "publicKey": "公開鍵",
+      "account": "アカウント",
+      "confirm": "インポートを確認",
+      "success": "アカウントのインポートに成功しました。",
+      "error": {
+        "duplicate": "このアカウントはすでに追加されています。",
+        "network": "アカウント情報の取得中にネットワークエラーが発生しました",
+        "invalid": "無効なデータ"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "トークンをインポート",
+      "contractLabel": "トークンコントラクトアドレス",
+      "symbolLabel": "トークンシンボル",
+      "placeholder": {
+        "contract": "コントラクトアドレスを入力",
+        "symbol": "シンボルを入力"
+      },
+      "add": "トークンを追加",
+      "edit": "トークンを編集",
+      "success": "トークンを正常に保存しました",
+      "error": {
+        "duplicate": "トークンはすでに追加されています",
+        "notFound": "{{network}} ネットワークで {{contract}} のデータが見つかりません"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "ウォレットをインポート",
+    "form": {
+      "accountName": {
+        "title": "アカウント名",
+        "placeholder": "アカウント名を入力"
+      },
+      "chainId": {
+        "title": "Chain ID"
+      },
+      "secretKey": {
+        "title": "秘密鍵",
+        "placeholder": "秘密鍵を入力"
+      }
+    },
+    "validation": {
+      "required": "この項目は必須です。",
+      "invalidData": "無効なデータ",
+      "startsWithK": "アカウント名は「k:」で始まる必要があります",
+      "accountName": {
+        "maxLength": "アカウント名は最大1000文字です。"
+      },
+      "secretKey": {
+        "maxLength": "秘密鍵は最大1000文字です。"
+      }
+    },
+    "modal": {
+      "scanTitle": "QRコードをスキャン",
+      "scanBody": "カメラにQRコードをかざしてください"
+    },
+    "button": {
+      "import": "インポート"
+    },
+    "toast": {
+      "importSuccess": "アカウントのインポートに成功しました。",
+      "duplicateError": "このアカウントはすでに追加されています。",
+      "invalidAccountData": "無効なアカウントデータ",
+      "multipleKeys": "複数の鍵ペアはサポートされていません",
+      "invalidData": "無効なデータ",
+      "networkError": "ネットワークエラー。"
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "既存の秘密鍵を持っています。",
+      "prompt": "既存の秘密鍵をインポート"
+    },
+    "button": {
+      "import": "インポート"
+    },
+    "image": {
+      "alt": "インポートアイコン"
+    }
+  },
+  "nft": {
+    "header": "あなたのコレクション",
+    "noOwned": "保持しているNFTはありません"
+  },
+  "sendTransactions": {
+    "header": "{{symbol}} トランザクションを送信"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger署名に成功しました",
+    "ledgerSignFailed": "Ledger署名に失敗または拒否されました",
+    "transferSuccess": "送金に成功しました",
+    "transferFailed": "送金に失敗しました",
+    "transactionSent": "トランザクションが正常に送信されました！履歴タブを確認してください",
+    "networkError": "ネットワークエラー。",
+    "loadingTop": "この画面を閉じないでください",
+    "loadingBottom": "トランザクション完了後、自動で遷移します",
+    "labelReceiver": "受信者",
+    "labelAmount": "金額",
+    "labelGasLimit": "ガスリミット",
+    "labelGasPrice": "ガス価格",
+    "labelGasFee": "ガス代",
+    "labelTotal": "合計",
+    "warningCrossChainLine1": "クロスチェーン転送を行っています",
+    "warningCrossChainLine2": "この操作には通常より時間がかかります",
+    "warningNonKAccountLine1": "「k:」で始まらないアカウントに送信しています！",
+    "warningNonKAccountLine2": "本当に続行しますか？"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} は転送できません！",
+    "form": {
+      "sourceChainId": {
+        "title": "送信元 Chain ID"
+      },
+      "destinationAccount": {
+        "title": "宛先アカウント"
+      },
+      "targetChainId": {
+        "title": "宛先 Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "宛先アカウントは最大1000文字です。"
+    },
+    "balanceLabel": "{{symbol}} チェーン残高",
+    "recent": "最近",
+    "contacts": "連絡先",
+    "confirm": {
+      "warningTitle": "警告",
+      "publicKeyTitle": "公開鍵",
+      "publicKeyPlaceholder": "公開鍵を入力",
+      "predicateTitle": "条件",
+      "predicatePlaceholder": "条件を入力"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "自分自身には送れません",
+    "invalidGasLimit": "無効なガスリミット",
+    "gasLimitInteger": "ガスリミットは整数である必要があります",
+    "invalidGasPrice": "無効なガス価格",
+    "insufficientFundsGas": "ガス代に不足しています",
+    "newAddressDetected": "新しいアドレスを検出しました！連絡先に追加してください",
+    "tokenNotExists": "{{chainId}} チェーンに {{contractAddress}} が存在しません！",
+    "transactionParameters": "トランザクションパラメータ",
+    "estimatedGas": "推定ガス {{gas}}",
+    "speed": "{{speed}} スピード",
+    "modal": {
+      "confirmTitle": "送信を確認",
+      "gasParametersTitle": "ガスパラメータ"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "ガスリミット"
+      },
+      "gasPrice": {
+        "title": "ガス価格"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "送信額",
+    "button": {
+      "half": "半分",
+      "max": "最大"
+    },
+    "error": {
+      "insufficientFunds": "残高不足",
+      "invalidAmount": "無効な金額"
+    },
+    "balance": "残高: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dappロゴ",
+    "sendTransaction": "トランザクションを送信",
+    "destinationNotFound": "宛先アカウントが見つかりません"
+  },
+  "history": {
+    "header": "履歴",
+    "modal": {
+      "confirmSendTransaction": "送信を確認"
+    }
+  },
+  "activities": {
+    "detailsTitle": "トランザクション詳細"
+  },
+  "receiveModal": {
+    "accountNameTitle": "アカウント名"
+  },
+  "activityList": {
+    "loading": "読み込み中…",
+    "today": "今日",
+    "yesterday": "昨日",
+    "noTransactions": "トランザクションがありません"
+  },
+  "statusFilter": {
+    "modalTitle": "ステータス",
+    "prefix": "ステータス: ",
+    "options": {
+      "all": "すべて",
+      "in": "受信",
+      "out": "送信",
+      "pending": "保留中"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "トークン",
+    "prefix": "資産: ",
+    "options": {
+      "all": "すべて"
+    }
+  },
+  "footer": {
+    "wallet": "ウォレット",
+    "analytics": "分析",
+    "nft": "NFT",
+    "settings": "設定"
+  }
+}

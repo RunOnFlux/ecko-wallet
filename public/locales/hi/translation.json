@@ -1,0 +1,646 @@
+{
+  "select_language": "भाषा चुनें",
+  "home": {
+    "startNow": "अभी शुरू करें"
+  },
+  "common": {
+    "requiredField": "यह फ़ील्ड आवश्यक है।",
+    "invalidData": "अमान्य डेटा",
+    "invalidUrl": "अमान्य URL",
+    "cancel": "रद्द करें",
+    "back": "वापस",
+    "confirm": "पुष्टि करें",
+    "continue": "जारी रखें",
+    "reject": "अस्वीकार करें",
+    "usd": "{{value}} USD",
+    "next": "अगला",
+    "close": "बंद करें"
+  },
+  "condition": {
+    "noPersonalInfo": "हम कभी निजी कुंजी, पते, लेनदेन, शेष, हैश या व्यक्तिगत जानकारी एकत्र नहीं करते",
+    "noIP": "हम कभी आपका पूरा IP पता एकत्र नहीं करते",
+    "noSelling": "हम कभी डेटा बिक्री से लाभ नहीं कमाते। कभी नहीं!",
+    "next": "अगला"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "मैंने पढ़ लिया है और सहमत हूँ",
+    "termsOfUse": "उपयोग की शर्तें",
+    "createNewWallet": "नया वॉलेट बनाएँ",
+    "setupNewAccount": "नया eckoWALLET खाता सेटअप करें",
+    "restoreWallet": "वॉलेट पुनर्स्थापित करें",
+    "restoreFromPhrase": "रिकवरी वाक्यांश से पुनर्स्थापित करें"
+  },
+  "createPassword": {
+    "successCreate": "पासवर्ड सफलतापूर्वक बनाया गया",
+    "errorCreate": "वॉलेट बनाने में त्रुटि",
+    "invalidPhrase": "अमान्य रिकवरी वाक्यांश!",
+    "importFromPhrase": "रिकवरी वाक्यांश से आयात करें",
+    "createPassword": "पासवर्ड बनाएँ",
+    "pastePhrase": "रिकवरी वाक्यांश चिपकाएँ",
+    "requiredField": "यह फ़ील्ड आवश्यक है।",
+    "phraseTooLong": "रिकवरी वाक्यांश बहुत लंबा है।",
+    "secretRecoveryPhrase": "गुप्त रिकवरी वाक्यांश",
+    "import": "आयात करें",
+    "create": "बनाएँ"
+  },
+  "passwordForm": {
+    "inputPassword": "पासवर्ड दर्ज करें",
+    "inputConfirmPassword": "पासवर्ड की पुष्टि करें",
+    "requiredField": "यह फ़ील्ड आवश्यक है।",
+    "minPassword": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए।",
+    "maxPassword": "पासवर्ड अधिकतम 256 अक्षरों का हो सकता है।",
+    "passwordMismatch": "पासवर्ड मेल नहीं खाते",
+    "newPassword": "नया पासवर्ड (न्यूनतम 8 अक्षर)",
+    "confirmPassword": "पासवर्ड पुष्टि करें",
+    "passwordWarning": "मैं समझता/समझती हूँ कि मैंने असुरक्षित वर्णों का उपयोग किया है। केवल अक्षर (a-z), अंक (0-9) और विशेष वर्ण _!?\"'.#@,;- का उपयोग करने की सिफारिश की जाती है"
+  },
+  "seedPhrase": {
+    "title": "गुप्त रिकवरी वाक्यांश",
+    "step1Text": "अगले चरण में आप 12 शब्दों का रिकवरी वाक्यांश प्राप्त करेंगे।\nयह वाक्यांश नए उपकरण पर अपना वॉलेट पुनर्स्थापित करने में मदद करता है।\nजिसके पास यह वाक्यांश है, वह आपके वॉलेट को नियंत्रित कर सकता है। इसे निजी रखें।\nयदि यह खो जाता है तो पुनर्प्राप्त नहीं किया जा सकता, सुरक्षित स्थान पर संग्रहीत करें।",
+    "step1Checkbox": "मैं समझता/समझती हूँ कि यदि मैं अपना रिकवरी वाक्यांश खो देता/दیتی हूँ, तो मैं अपना वॉलेट पुनर्स्थापित नहीं कर पाऊँगा।",
+    "generating": "कुंजी उत्पन्न की जा रही है…",
+    "continue": "जारी रखें",
+    "reveal": "गुप्त शब्द दिखाने के लिए यहां क्लिक करें",
+    "step2Text1": "आपका गुप्त रिकवरी वाक्यांश आपके खाते का बैकअप और पुनर्स्थापना आसान बनाता है।",
+    "step2Text2": "चेतावनी: अपना गुप्त रिकवरी वाक्यांश कभी न साझा करें। जिसके पास यह है, वह हमेशा के लिए आपका वॉलेट ले सकता है।",
+    "download": "डाउनलोड करें",
+    "verifyTitle": "रिकवरी वाक्यांश सत्यापित करें",
+    "verifyInstruction": "कृपया सही क्रम में शब्द टाइप करके अपना रिकवरी वाक्यांश सत्यापित करें।",
+    "successVerify": "रिकवरी वाक्यांश सफलतापूर्वक सत्यापित हुआ",
+    "invalidPhrase": "अमान्य गुप्त रिकवरी वाक्यांश!",
+    "errorGeneratingKeys": "वॉलेट कुंजियाँ उत्पन्न करने में त्रुटि",
+    "errorCreatingWallet": "वॉलेट बनाने में त्रुटि",
+    "generatingWallet": "आपका वॉलेट बन रहा है…"
+  },
+  "wallet": {
+    "netWorth": "कुल संपत्ति",
+    "accountBalance": "खाता शेष",
+    "send": "भेजें",
+    "receive": "प्राप्त करें",
+    "receiveTokens": "टोकन प्राप्त करें",
+    "buy": "खरीदें",
+    "history": "इतिहास",
+    "assets": "संपत्ति",
+    "detectedTokens": "पहचाने गए टोकन",
+    "tokenList": "टोकन सूची",
+    "kdaChainDistribution": "KDA चैन वितरण",
+    "chainDistribution": "चैन वितरण",
+    "tokenRemoved": "टोकन सफलतापूर्वक हटाया गया",
+    "removeToken": "टोकन हटाएँ",
+    "editToken": "टोकन संपादित करें",
+    "removeTokenTitle": "{{symbol}} टोकन हटाएँ",
+    "confirmRemoveToken": "क्या आप वाकई {{symbol}} टोकन हटाना चाहते हैं?",
+    "notTransferable": "{{contractAddress}} हस्तांतरित नहीं किया जा सकता!",
+    "accountDoesNotExist": "मौजूद नहीं: यह खाता मौजूद नहीं है।",
+    "balanceZero": "{{symbol}} का शेष 0 है।"
+  },
+  "accountActions": {
+    "shareWallet": "वॉलेट साझा करें",
+    "copied": "कॉपी किया गया!",
+    "exportRecoveryPhrase": "रिकवरी वाक्यांश निर्यात करें",
+    "signHashTransaction": "लेनदेन हैश पर हस्ताक्षर करें",
+    "editAccountAlias": "खाता उपनाम संपादित करें",
+    "setAccountAlias": "खाता उपनाम सेट करें",
+    "removeSelectedWallet": "चयनित वॉलेट हटाएँ",
+    "createWallet": "वॉलेट बनाएँ",
+    "importWallet": "वॉलेट आयात करें",
+    "importHardwareWallet": "हार्डवेयर वॉलेट आयात करें"
+  },
+  "tokenDetector": {
+    "noTokensFound": "इस खाते के लिए कोई अन्य टोकन नहीं मिला।"
+  },
+  "aliasModal": {
+    "accountAlias": "खाता उपनाम",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "aliasChanged": "उपनाम सफलतापूर्वक बदल दिया गया"
+  },
+  "hashSignModal": {
+    "publicKey": "आपकी सार्वजनिक कुंजी",
+    "transactionHash": "लेनदेन हैश",
+    "insertTransactionHash": "लेनदेन हैश डालें",
+    "signature": "हस्ताक्षर",
+    "copied": "कॉपी किया गया!",
+    "clean": "साफ़ करें",
+    "sign": "हस्ताक्षर करें"
+  },
+  "popupDetailTransaction": {
+    "status": "स्थिति",
+    "direction": "दिशा",
+    "symbol": "प्रतीक",
+    "quantity": "मात्रा",
+    "gasFee": "गैस शुल्क",
+    "total": "कुल",
+    "viewDetails": "विवरण देखें",
+    "activityLog": "गतिविधि लॉग",
+    "transactionCreated": "{{amount}} {{symbol}} का लेनदेन बनाया गया",
+    "transactionConfirmed": "लेनदेन की पुष्टि हुई",
+    "success": "सफल",
+    "failed": "असफल",
+    "finishing": "समाप्त हो रहा है"
+  },
+  "removeWallet": {
+    "title": "क्या आप वाकई यह वॉलेट हटाना चाहते हैं?",
+    "description": "कृपया पुष्टि के लिए अपना पासवर्ड दर्ज करें",
+    "passwordPlaceholder": "पासवर्ड दर्ज करें",
+    "passwordRequired": "यह फ़ील्ड आवश्यक है।",
+    "passwordMinLength": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए।",
+    "passwordMaxLength": "पासवर्ड अधिकतम 256 अक्षरों का हो सकता है।",
+    "invalidPassword": "अमान्य पासवर्ड",
+    "cancel": "रद्द करें",
+    "remove": "हटाएँ"
+  },
+  "header": {
+    "selectNetwork": "नेटवर्क चुनें",
+    "manageNetworks": "नेटवर्क प्रबंधित करें",
+    "myWallets": "मेरे वॉलेट",
+    "removeWalletTitle": "वॉलेट हटाएँ",
+    "createAccountSuccess": "खाता सफलतापूर्वक बनाया गया!",
+    "createAccountFail": "खाता बनाने में त्रुटि",
+    "copied": "कॉपी किया गया!"
+  },
+  "signIn": {
+    "loginTitle": "अपने खाते में साइन इन करें",
+    "passwordPlaceholder": "पासवर्ड दर्ज करें",
+    "passwordTitle": "पासवर्ड",
+    "signInButton": "साइन इन करें",
+    "invalidPassword": "अमान्य पासवर्ड",
+    "required": "यह फ़ील्ड आवश्यक है।",
+    "minLength": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए।",
+    "maxLength": "पासवर्ड अधिकतम 256 अक्षरों का हो सकता है।",
+    "initWalletError": "वॉलेट आरंभ करने में त्रुटि"
+  },
+  "settings": {
+    "contacts": "संपर्क",
+    "language": "भाषा",
+    "languageDesc": "वॉलेट की भाषा चुनें",
+    "contactsDesc": "अपने संपर्क प्रबंधित करें",
+    "networks": "नेटवर्क",
+    "networksDesc": "कस्टम RPC जोड़ें या संपादित करें",
+    "connectedSites": "कनेक्टेड साइटें",
+    "connectedSitesDesc": "कनेक्टेड साइटें देखें और प्रबंधित करें",
+    "walletConnect": "WalletConnect",
+    "walletConnectDesc": "WalletConnect के माध्यम से कनेक्ट करें",
+    "txSettings": "लेनदेन सेटिंग्स",
+    "txSettingsDesc": "अपनी गैس प्राथमिकताएँ सेट करें",
+    "exportPhrase": "रिकवरी वाक्यांश निर्यात करें",
+    "exportPhraseDesc": "अपने वॉलेट की सुरक्षा करें",
+    "editPassword": "पासवर्ड संपादित करें",
+    "editPasswordDesc": "वॉलेट पासवर्ड बदलें",
+    "2fa": "2FA",
+    "2faDesc": "दो-कारक प्रमाणीकरण प्रबंधित करें",
+    "expandView": "विस्तारित दृश्य",
+    "expandViewDesc": "नए विंडो में eckoWALLET खोलें",
+    "theme": "थीम",
+    "themeDesc": "वॉलेट थीम समायोजित करें",
+    "lock": "वॉलेट लॉक करें",
+    "lockDesc": "अपने वॉलेट की सुरक्षा करें",
+    "lockSettings": "लॉक सेटिंग्स",
+    "lockSettingsDesc": "सुरक्षा सेटिंग्स बदलें",
+    "discord": "हमारे Discord में शामिल हों",
+    "website": "हमारी वेबसाइट देखें",
+    "terms": "उपयोग की शर्तें",
+    "privacy": "गोपनीयता नीति",
+    "connectedSitesPage": {
+      "title": "कनेक्टेड साइटें",
+      "removeSiteTitle": "साइट हटाएँ",
+      "removeSiteConfirmText": "क्या आप वाकई हटाना चाहते हैं",
+      "removeSiteSuccess": "साइट सफलतापूर्वक हटाई गई।"
+    },
+    "contactsPage": {
+      "title": "संपर्क",
+      "newContactTitle": "नया संपर्क",
+      "addNewContact": "नया संपर्क जोड़ें",
+      "noContacts": "कोई संपर्क नहीं"
+    },
+    "contactForm": {
+      "enterAlias": "उपनाम दर्ज करें",
+      "aliasPlaceholder": "जैसे, David",
+      "accountNameTitle": "खाता नाम",
+      "accountNamePlaceholder": "खाता नाम",
+      "scanQrTitle": "QR कोड स्कैन करें",
+      "scanQrDescription": "QR कोड अपने कैमरे के सामने रखें",
+      "buttonCancel": "रद्द करें",
+      "buttonSave": "सहेजें",
+      "successContactAdded": "संपर्क सफलतापूर्वक जोड़ा गया",
+      "errorNetwork": "नेटवर्क त्रुटि।",
+      "copied": "कॉपी किया गया!",
+      "requiredField": "यह फ़ील्ड आवश्यक है।",
+      "invalidData": "अमान्य डेटा",
+      "aliasMaxLength": "उपनाम अधिकतम 256 अक्षरों का हो सकता है।",
+      "accountNameMaxLength": "खाता नाम अधिकतम 1000 अक्षरों का हो सकता है।"
+    },
+    "contactInfo": {
+      "copied": "कॉपी किया गया!",
+      "contactRemoved": "संपर्क हटाया गया",
+      "accountName": "खाता नाम",
+      "editContact": "संपर्क संपादित करें",
+      "editTitle": "खाता संपादित करें",
+      "delete": "हटाएँ",
+      "deleteContactTitle": "संपर्क हटाएँ",
+      "removeContact": "संपर्क हटाएं?",
+      "confirmRemove": "क्या आप वाकई यह संपर्क हटाना चाहते हैं?",
+      "cancel": "रद्द करें",
+      "confirm": "पुष्टि करें"
+    },
+    "editPasswordPage": {
+      "title": "पासवर्ड संपादित करें",
+      "passwordChanged": "पासवर्ड सफलतापूर्वक बदला गया",
+      "cannotUpdatePassword": "पासवर्ड अपडेट नहीं हो सका",
+      "save": "सहेजें"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "जारी रखने के लिए पासवर्ड दर्ज करें",
+      "inputPlaceholder": "पासवर्ड दर्ज करें",
+      "password": "पासवर्ड",
+      "errorRequired": "यह फ़ील्ड आवश्यक है।",
+      "errorInvalid": "अमान्य पासवर्ड।",
+      "continue": "जारी रखें",
+      "correctPassword": "पासवर्ड सही है, कृपया प्रतीक्षा करें…"
+    },
+    "exportSeedPhrase": {
+      "title": "रिकवरी वाक्यांश निर्यात करें",
+      "copied": "कॉपी किया गया!",
+      "description": "आपका गुप्त रिकवरी वाक्यांश आपके खाते का बैकअप और पुनर्स्थापना आसान बनाता है।",
+      "warning": "अपना गुप्त रिकवरी वाक्यांश कभी साझा न करें। जिसके पास यह है, वह हमेशा के लिए आपका वॉलेट ले सकता है।",
+      "copyKeyphrase": "कीफ्रेज कॉपी करें",
+      "download": "डाउनलोड करें"
+    },
+    "lockSettingsPage": {
+      "title": "स्वतः-लॉक सेटिंग्स",
+      "saved": "सेटिंग्स सफलतापूर्वक सहेजी गईं",
+      "required": "यह फ़ील्ड आवश्यक है।",
+      "placeholder": "स्वतः-लॉक समय चुनें",
+      "selectTitle": "स्वतः-लॉक समय",
+      "restore": "डिफ़ॉल्ट पुनर्स्थापित करें",
+      "save": "सहेजें"
+    },
+    "networksPage": {
+      "title": "नेटवर्क",
+      "network": "नेटवर्क",
+      "addNew": "नया जोड़ें",
+      "editSuccess": "नेटवर्क सफलतापूर्वक संपादित हुआ",
+      "addSuccess": "नेटवर्क सफलतापूर्वक जोड़ा गया",
+      "errorUrl": "URL पहले से मौजूद है",
+      "deleteSuccess": "नेटवर्क सफलतापूर्वक हटाया गया",
+      "remove": "हटाएँ",
+      "save": "सहेजें",
+      "confirmRemove": "क्या इस नेटवर्क को हटाना है?",
+      "confirmRemoveDesc": "क्या आप वाकई यह नेटवर्क हटाना चाहते हैं?",
+      "placeholderName": "नेटवर्क नाम दर्ज करें",
+      "placeholderUrl": "नया RPC URL दर्ज करें",
+      "placeholderExplorer": "ब्लॉक एक्सप्लोरर URL दर्ज करें",
+      "placeholderNetworkId": "नेटवर्क ID दर्ज करें",
+      "titleName": "नेटवर्क नाम",
+      "titleUrl": "नया RPC URL",
+      "titleExplorer": "ब्लॉक एक्सप्लोरर URL",
+      "titleNetworkId": "नेटवर्क ID",
+      "nameMax": "नेटवर्क नाम अधिकतम 1000 अक्षरों का हो सकता है।",
+      "urlMax": "RPC URL अधिकतम 1000 अक्षरों का हो सकता है।",
+      "explorerMax": "एक्सप्लोरर URL अधिकतम 1000 अक्षरों का हो सकता है।",
+      "networkIdMax": "नेटवर्क ID अधिकतम 1000 अक्षरों का हो सकता है।"
+    },
+    "selectTheme": {
+      "title": "थीम चुनें"
+    },
+    "txSettingsPage": {
+      "title": "लेनदेन सेटिंग्स",
+      "gasLimit": "गैस सीमा",
+      "gasLimitPlaceholder": "गैस सीमा दर्ज करें",
+      "finishCrossChain": "क्रॉस-चेन गैस स्टेशन समाप्त करें",
+      "finishCrossChainPlaceholder": "गैस स्टेशन दर्ज करें",
+      "crossChainGasLimit": "क्रॉस-चेन गैस सीमा",
+      "crossChainGasLimitPlaceholder": "क्रॉस-चेन गैस सीमा दर्ज करें",
+      "crossChainGasPrice": "क्रॉस-चेन गैस मूल्य",
+      "crossChainGasPricePlaceholder": "क्रॉस-चेन गैस मूल्य दर्ज करें",
+      "save": "सहेजें",
+      "restoreDefault": "डिफ़ॉल्ट पुनर्स्थापित करें",
+      "successSave": "सेटिंग्स सफलतापूर्वक सहेजी गईं",
+      "requiredField": "यह फ़ील्ड आवश्यक है।",
+      "invalidValue": "अमान्य मान"
+    },
+    "2faPage": {
+      "title": "द्वि-कारक प्रमाणीकरण",
+      "description": "द्वि-कारक प्रमाणीकरण पहले से सक्रिय है।",
+      "disableButton": "अक्षम करें",
+      "successDisable": "2FA सफलतापूर्वक अक्षम हुआ",
+      "installApp": "ऐप इंस्टॉल करें",
+      "orSimilar": "या समान ऐप्स",
+      "scanQRCode": "निम्न QR कोड स्कैन करें:",
+      "enter6Digits": "6 अंकों का कोड दर्ज करें",
+      "invalidCode": "अमान्य कोड।",
+      "saveButton": "सहेजें",
+      "setupSuccess": "2FA सफलतापूर्वक सेटअप हुआ"
+    },
+    "walletConnectPage": {
+      "title": "WalletConnect",
+      "selectAccounts": "खाता चुनें",
+      "invalidUrl": "अमान्य URL",
+      "disconnectSuccess": "डिस्कनेक्ट अनुरोध सफलतापूर्वक भेजा गया",
+      "noActiveSessions": "कोई सक्रिय सत्र नहीं",
+      "activeSessions": "सक्रिय सत्र",
+      "expiry": "समाप्ति:",
+      "removeConnection": "कनेक्शन हटाएँ",
+      "removeConfirmation": "क्या आप वाकई इस WalletConnect कनेक्शन को हटाना चाहते हैं?",
+      "newConnection": "नया कनेक्शन",
+      "addConnection": "नया WalletConnect कनेक्शन जोड़ें",
+      "inputUri": "URI दर्ज करें",
+      "code": "कोड",
+      "continue": "जारी रखें"
+    }
+  },
+  "buy": {
+    "title": "खरीदें",
+    "description": "क्रिप्टोकुरेंसी की खरीद और बिक्री Onramper द्वारा प्रदान किए गए थर्ड-पार्टी सेवा के माध्यम से की जाती है।\n\neckoWALLET अपने उपयोगकर्ताओं के लिए उच्चतम सुरक्षा सुनिश्चित करने का वचन देता है, लेकिन तृतीय-पक्ष सेवाओं की सुरक्षा और गोपनीयता की गारंटी नहीं दे सकता।",
+    "cancel": "रद्द करें",
+    "confirm": "निश्चित करें",
+    "error": {
+      "noAddress": "वॉलेट पता उपलब्ध नहीं है",
+      "generic": "सेवा से कनेक्ट करने में विफल रहा। कृपया बाद में पुनः प्रयास करें।"
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "वॉलेट विश्लेषण",
+    "dexAnalytics": "DEX विश्लेषण",
+    "portfolioValue": "पोर्टफोलियो मूल्य ग्राफ",
+    "startTracking": "ट्रैकिंग शुरू करें",
+    "trackPortfolioTitle": "पोर्टफोलियो मूल्य ट्रैक करें",
+    "trackPortfolioStart": "खाता शेष ट्रैकिंग शुरू करें",
+    "trackPortfolioDesc1": "पुष्टि करने पर, आप अपने खाते के शेष को ट्रैक करने की अनुमति देते हैं।",
+    "trackPortfolioDesc2": "जारी रखें?",
+    "confirm": "निश्चित करें",
+    "confirming": "पुष्टि हो रही है, कृपया प्रतीक्षा करें…",
+    "disclaimerTitle": "सूचना!",
+    "disclaimerText": "इस पृष्ठ पर दिखाई गई जानकारी बीटा चरण में है और \"जैसा है\" और उपलब्धता के आधार पर प्रदान की जाती है।"
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "अमान्य नेटवर्क",
+      "signingCmdError": "कमांड साइन करने में त्रुटि, कृपया अपना पेलोड जांचें",
+      "signingCmdGenericError": "कमांड साइन में त्रुटि",
+      "rejectedByUser": "उपयोगकर्ता द्वारा अस्वीकार",
+      "userRejected": "उपयोगकर्ता ने अस्वीकार किया।",
+      "signedCommand": "साइन की गई कमांड",
+      "hashToSign": "हैश साइन के लिए:",
+      "pleaseEnableLedger": "कृपया ब्लाइंड साइनिंग सक्षम करें और पहले अपने Ledger पर निर्देशों का पालन करें",
+      "capabilities": "क्षमताएँ",
+      "close": "बंद करें",
+      "reject": "अस्वीकार करें",
+      "confirm": "पुष्टि करें"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "त्वरित साइन के लिए अनुरोध",
+      "code": "कोड",
+      "capabilities": "क्षमताएँ",
+      "rawData": "कच्चा डेटा",
+      "command": "कमान्ड {{index}}/{{total}}",
+      "hashToSign": "हैश साइन के लिए ({{count}}/{{total}}):",
+      "ledgerInstructions": "कृपया ब्लाइंड साइनिंग सक्षम करें और पहले अपने Ledger पर निर्देशों का पालन करें",
+      "close": "बंद करें",
+      "reject": "अस्वीकार करें",
+      "confirm": "पुष्टि करें",
+      "error.invalidStructure": "त्वरित साइन विफल: अमान्य डेटा संरचना",
+      "error.pubKeyNotFound": "त्वरित साइन विफल: वॉलेट सार्वजनिक कुंजी नहीं मिली",
+      "error.ledger": "Ledger साइन में त्रुटि"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "हार्डवेयर वॉलेट आयात करें",
+      "selectDevice": "कृपया एक हार्डवेयर वॉलेट चुनें",
+      "ledgerInstructions": "अपने Ledger को सीधे अपने कंप्यूटर से कनेक्ट करें। अनलॉक करें और Kadena ऐप खोलें।",
+      "connect": "कनेक्ट करें",
+      "confirm": "आयात करें",
+      "success": "हार्डवेयर वॉलेट सफलतापूर्वक आयात किया गया",
+      "error": {
+        "duplicate": "जो खाता आप आयात करने का प्रयास कर रहे हैं वह डुप्लिकेट है।",
+        "network": "नेटवर्क त्रुटि।",
+        "invalid": "अमान्य डेटा"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Ledger से आयात करें",
+      "instruction": "Ledger को अपने कंप्यूटर से कनेक्ट करें, अनलॉक करें और Kadena ऐप खोलें।",
+      "continue": "जारी रखें",
+      "publicKey": "सार्वजनिक कुंजी",
+      "account": "खाता",
+      "confirm": "आयात पुष्टि करें",
+      "success": "खाता सफलतापूर्वक आयात किया गया।",
+      "error": {
+        "duplicate": "जो खाता आप आयात करने का प्रयास कर रहे हैं वह डुप्लिकेट है।",
+        "network": "खाता डेटा लाने में नेटवर्क त्रुटि",
+        "invalid": "अमान्य डेटा"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "टोकन आयात करें",
+      "contractLabel": "टोकन अनुबंध पता",
+      "symbolLabel": "टोकन प्रतीक",
+      "placeholder": {
+        "contract": "अनुबंध पता दर्ज करें",
+        "symbol": "प्रतीक दर्ज करें"
+      },
+      "add": "टोकन जोड़ें",
+      "edit": "टोकन संपादित करें",
+      "success": "टोकन सफलतापूर्वक सहेजा गया",
+      "error": {
+        "duplicate": "टोकन पहले ही जोड़ा जा चुका है",
+        "notFound": "{{contract}} का निर्धारण नहीं कर सकता। कृपया जांचें कि टोकन {{network}} में मौजूद है"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "वॉलेट आयात करें",
+    "form": {
+      "accountName": {
+        "title": "आपके खाते का नाम",
+        "placeholder": "खाते का नाम"
+      },
+      "chainId": {
+        "title": "चेन आईडी"
+      },
+      "secretKey": {
+        "title": "आपकी निजी कुंजी",
+        "placeholder": "निजी कुंजी"
+      }
+    },
+    "validation": {
+      "required": "यह फ़ील्ड आवश्यक है।",
+      "invalidData": "अमान्य डेटा",
+      "startsWithK": "खाते का नाम \"k:\" से शुरू होना चाहिए",
+      "accountName": {
+        "maxLength": "खाते का नाम अधिकतम 1000 अक्षरों का हो सकता है।"
+      },
+      "secretKey": {
+        "maxLength": "निजी कुंजी अधिकतम 1000 अक्षरों की हो सकती है।"
+      }
+    },
+    "modal": {
+      "scanTitle": "QR कोड स्कैन करें",
+      "scanBody": "QR कोड अपने कैमरे के सामने रखें"
+    },
+    "button": {
+      "import": "आयात करें"
+    },
+    "toast": {
+      "importSuccess": "खाता सफलतापूर्वक आयात किया गया।",
+      "duplicateError": "जो खाता आप आयात करने का प्रयास कर रहे हैं वह डुप्लिकेट है।",
+      "invalidAccountData": "खाते का डेटा अमान्य है",
+      "multipleKeys": "एकाधिक कुंजी सेट समर्थित नहीं हैं",
+      "invalidData": "अमान्य डेटा",
+      "networkError": "नेटवर्क त्रुटि।"
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "मेरे पास पहले से ही एक निजी कुंजी है।",
+      "prompt": "अपनी मौजूदा निजी कुंजी आयात करें"
+    },
+    "button": {
+      "import": "आयात करें"
+    },
+    "image": {
+      "alt": "आयात आइकन"
+    }
+  },
+  "nft": {
+    "header": "आपके संग्रहणीय",
+    "noOwned": "आपके पास कोई NFT नहीं है"
+  },
+  "sendTransactions": {
+    "header": "{{symbol}} लेनदेन भेजें"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger हस्ताक्षर सफल",
+    "ledgerSignFailed": "Ledger हस्ताक्षर विफल या अस्वीकार",
+    "transferSuccess": "स्थानांतरण सफल",
+    "transferFailed": "स्थानांतरण विफल",
+    "transactionSent": "लेनदेन सफलतापूर्वक भेजा गया! कृपया इतिहास में स्थिति की जांच करें",
+    "networkError": "नेटवर्क त्रुटि।",
+    "loadingTop": "कृपया इस दृश्य को बंद न करें",
+    "loadingBottom": "लेनदेन पूरा होने पर आप पुनर्निर्देशित किए जाएंगे",
+    "labelReceiver": "प्राप्तकर्ता",
+    "labelAmount": "राशि",
+    "labelGasLimit": "गैस सीमा",
+    "labelGasPrice": "गैस मूल्य",
+    "labelGasFee": "गैस शुल्क",
+    "labelTotal": "कुल",
+    "warningCrossChainLine1": "आप एक क्रॉस-चेन ट्रांसफर करने वाले हैं",
+    "warningCrossChainLine2": "यह ऑपरेशन आम तौर पर अधिक समय लेता है",
+    "warningNonKAccountLine1": "आप गैर-“k:account” खाते में भेज रहे हैं!",
+    "warningNonKAccountLine2": "क्या आप जारी रखना चाहते हैं?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} हस्तांतरित नहीं किया जा सकता!",
+    "form": {
+      "sourceChainId": {
+        "title": "स्रोत चेन आईडी"
+      },
+      "destinationAccount": {
+        "title": "गंतव्य खाता"
+      },
+      "targetChainId": {
+        "title": "लक्ष्य चेन आईडी"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "गंतव्य खाता अधिकतम 1000 अक्षरों का हो सकता है।"
+    },
+    "balanceLabel": "बैलेंस: {{balance}} {{symbol}}",
+    "recent": "हाल ही में",
+    "contacts": "संपर्क",
+    "confirm": {
+      "warningTitle": "चेतावनी",
+      "publicKeyTitle": "सार्वजनिक कुंजी",
+      "publicKeyPlaceholder": "सार्वजनिक कुंजी दर्ज करें",
+      "predicateTitle": "पूर्वनिर्धारण",
+      "predicatePlaceholder": "पूर्वनिर्धारण दर्ज करें"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "आप स्वयं को नहीं भेज सकते",
+    "invalidGasLimit": "अमान्य गैस सीमा",
+    "gasLimitInteger": "गैस सीमा पूर्णांक होनी चाहिए",
+    "invalidGasPrice": "अमान्य गैस मूल्य",
+    "insufficientFundsGas": "गैस शुल्क के लिए अपर्याप्त धन",
+    "newAddressDetected": "नया पता पाया गया! इसे अपने संपर्कों में जोड़ें",
+    "tokenNotExists": "{{contractAddress}} संभवतः CHAIN {{chainId}} में मौजूद नहीं है!",
+    "transactionParameters": "लेनदेन पैरामीटर",
+    "estimatedGas": "अनुमानित गैस {{gas}}",
+    "speed": "गति {{speed}}",
+    "modal": {
+      "confirmTitle": "लेनदेन भेजने की पुष्टि करें",
+      "gasParametersTitle": "गैस पैरामीटर"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "गैस सीमा"
+      },
+      "gasPrice": {
+        "title": "गैस मूल्य"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "भेजने की राशि",
+    "button": {
+      "half": "आधा",
+      "max": "अधिकतम"
+    },
+    "error": {
+      "insufficientFunds": "पर्याप्त धन नहीं",
+      "invalidAmount": "अमान्य राशि"
+    },
+    "balance": "बैलेंस: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp लोगो",
+    "sendTransaction": "लेनदेन भेजें",
+    "destinationNotFound": "गंतव्य खाता नहीं मिला"
+  },
+  "history": {
+    "header": "इतिहास",
+    "modal": {
+      "confirmSendTransaction": "लेनदेन भेजने की पुष्टि करें"
+    }
+  },
+  "activities": {
+    "detailsTitle": "लेनदेन विवरण"
+  },
+  "receiveModal": {
+    "accountNameTitle": "आपके खाते का नाम"
+  },
+  "activityList": {
+    "loading": "लोड हो रहा है…",
+    "today": "आज",
+    "yesterday": "कल",
+    "noTransactions": "आपके कोई लेनदेन नहीं हैं"
+  },
+  "statusFilter": {
+    "modalTitle": "स्थिति",
+    "prefix": "स्थिति: ",
+    "options": {
+      "all": "सभी",
+      "in": "प्राप्त",
+      "out": "भेजा गया",
+      "pending": "लंबित"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "टोकन",
+    "prefix": "संपत्ति: ",
+    "options": {
+      "all": "सभी"
+    }
+  },
+  "footer": {
+    "wallet": "वॉलेट",
+    "analytics": "विश्लेषण",
+    "nft": "NFT",
+    "settings": "सेटिंग्स"
+  }
+}

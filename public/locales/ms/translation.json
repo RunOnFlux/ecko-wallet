@@ -1,0 +1,646 @@
+{
+  "select_language": "Pilih bahasa",
+  "home": {
+    "startNow": "Mula sekarang"
+  },
+  "common": {
+    "requiredField": "Medan ini dikehendaki.",
+    "invalidData": "Data tidak sah",
+    "invalidUrl": "URL tidak sah",
+    "cancel": "Batal",
+    "back": "Kembali",
+    "confirm": "Sahkan",
+    "continue": "Teruskan",
+    "reject": "Tolak",
+    "usd": "{{value}} USD",
+    "next": "Seterusnya",
+    "close": "Tutup"
+  },
+  "condition": {
+    "noPersonalInfo": "Kami tidak pernah mengumpul kunci, alamat, transaksi, baki, hash atau sebarang data peribadi",
+    "noIP": "Kami tidak pernah mengumpul alamat IP penuh anda",
+    "noSelling": "Kami tidak pernah menjual data untuk keuntungan. Pernah!",
+    "next": "Seterusnya"
+  },
+  "initSeedPhrase": {
+    "agreeTerms": "Saya telah membaca dan bersetuju dengan",
+    "termsOfUse": "Terma penggunaan",
+    "createNewWallet": "Buat dompet baru",
+    "setupNewAccount": "Tetapkan akaun eckoWALLET baru",
+    "restoreWallet": "Pulihkan dompet",
+    "restoreFromPhrase": "Pulihkan daripada frasa"
+  },
+  "createPassword": {
+    "successCreate": "Kata laluan berjaya dibuat",
+    "errorCreate": "Ralat semasa membuat dompet",
+    "invalidPhrase": "Frasa pemulihan peribadi tidak sah!",
+    "importFromPhrase": "Import daripada frasa pemulihan",
+    "createPassword": "Buat kata laluan",
+    "pastePhrase": "Tampal frasa pemulihan peribadi",
+    "requiredField": "Medan ini dikehendaki.",
+    "phraseTooLong": "Frasa pemulihan terlalu panjang.",
+    "secretRecoveryPhrase": "Frasa pemulihan peribadi",
+    "import": "Import",
+    "create": "Buat"
+  },
+  "passwordForm": {
+    "inputPassword": "Masukkan kata laluan",
+    "inputConfirmPassword": "Masukkan pengesahan kata laluan",
+    "requiredField": "Medan ini dikehendaki.",
+    "minPassword": "Kata laluan mesti sekurang-kurangnya 8 aksara.",
+    "maxPassword": "Kata laluan boleh mengandungi maksimum 256 aksara.",
+    "passwordMismatch": "Kata laluan tidak sepadan",
+    "newPassword": "Kata laluan baru (min. 8 aksara)",
+    "confirmPassword": "Sahkan kata laluan",
+    "passwordWarning": "Saya sedar saya telah menggunakan aksara tidak selamat. Kami mengesyorkan hanya menggunakan huruf (a–z), nombor (0–9) dan aksara khas _!?\"'.#@,;-"
+  },
+  "seedPhrase": {
+    "title": "Frasa pemulihan peribadi",
+    "step1Text": "Dalam langkah seterusnya, anda akan mencatat frasa pemulihan 12 perkataan anda.\nFrasa pemulihan anda membolehkan pemulihan dompet dengan mudah pada peranti baru.\nSesiapa dengan frasa ini boleh mengawal dompet anda, jadi simpanlah dengan selamat.\nJika anda hilang frasa, tiada siapa boleh memulihkannya; simpan secara selamat.",
+    "step1Checkbox": "Saya faham bahawa jika saya kehilangan frasa pemulihan, saya tidak akan dapat memulihkan dompet.",
+    "generating": "Menjana kunci...",
+    "continue": "Teruskan",
+    "reveal": "Klik di sini untuk mendedahkan perkataan rahsia",
+    "step2Text1": "Frasa pemulihan peribadi anda membolehkan sandaran dan pemulihan akaun yang mudah.",
+    "step2Text2": "Amaran: jangan pernah dedahkan frasa pemulihan peribadi anda. Sesiapa yang memilikinya boleh mengambil alih dompet anda selamanya.",
+    "download": "Muat turun",
+    "verifyTitle": "Sahkan frasa pemulihan",
+    "verifyInstruction": "Sahkan frasa pemulihan dengan memasukkan perkataan mengikut susunan yang betul.",
+    "successVerify": "Frasa pemulihan peribadi berjaya disahkan.",
+    "invalidPhrase": "Frasa pemulihan peribadi tidak sah!",
+    "errorGeneratingKeys": "Ralat semasa menjana kunci dompet",
+    "errorCreatingWallet": "Ralat semasa membuat dompet",
+    "generatingWallet": "Mencipta dompet anda..."
+  },
+  "wallet": {
+    "netWorth": "KEKAYAAN BERSIH",
+    "accountBalance": "BAKI AKAUN",
+    "send": "Hantar",
+    "receive": "Terima",
+    "receiveTokens": "Terima token",
+    "buy": "Beli",
+    "history": "Sejarah",
+    "assets": "ASET",
+    "detectedTokens": "Token ditemui",
+    "tokenList": "Senarai token",
+    "kdaChainDistribution": "Pengagihan KDA chain",
+    "chainDistribution": "Pengagihan rantaian",
+    "tokenRemoved": "Token berjaya dikeluarkan",
+    "removeToken": "Keluarkan token",
+    "editToken": "Edit token",
+    "removeTokenTitle": "Keluarkan token {{symbol}}",
+    "confirmRemoveToken": "Adakah anda pasti mahu mengeluarkan token {{symbol}}?",
+    "notTransferable": "{{contractAddress}} tidak boleh dipindahkan!",
+    "accountDoesNotExist": "Tidak wujud: akaun ini tidak wujud.",
+    "balanceZero": "Baki {{symbol}} ialah 0."
+  },
+  "accountActions": {
+    "shareWallet": "Kongsi dompet",
+    "copied": "Disalin!",
+    "exportRecoveryPhrase": "Eksport frasa pemulihan",
+    "signHashTransaction": "Tandatangani transaksi hash",
+    "editAccountAlias": "Edit alias akaun",
+    "setAccountAlias": "Tetapkan alias akaun",
+    "removeSelectedWallet": "Buang dompet terpilih",
+    "createWallet": "Buat dompet",
+    "importWallet": "Import dompet",
+    "importHardwareWallet": "Import dompet perkakasan"
+  },
+  "tokenDetector": {
+    "noTokensFound": "Tiada token lain ditemui untuk akaun ini."
+  },
+  "aliasModal": {
+    "accountAlias": "Alias akaun",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "aliasChanged": "Alias berjaya diubah"
+  },
+  "hashSignModal": {
+    "publicKey": "Kunci awam anda",
+    "transactionHash": "Hash transaksi",
+    "insertTransactionHash": "Masukkan hash transaksi",
+    "signature": "Tandatangan",
+    "copied": "Disalin!",
+    "clean": "Bersihkan",
+    "sign": "Tandatangani"
+  },
+  "popupDetailTransaction": {
+    "status": "Status",
+    "direction": "Arah",
+    "symbol": "Simbol",
+    "quantity": "Kuantiti",
+    "gasFee": "Yuran gas",
+    "total": "Jumlah",
+    "viewDetails": "Lihat butiran",
+    "activityLog": "Log aktiviti",
+    "transactionCreated": "Transaksi dicipta bernilai {{amount}} {{symbol}}",
+    "transactionConfirmed": "Transaksi disahkan",
+    "success": "Berjaya",
+    "failed": "Gagal",
+    "finishing": "Sedang diselesaikan"
+  },
+  "removeWallet": {
+    "title": "Adakah anda pasti mahu membuang dompet ini?",
+    "description": "Untuk mengesahkan, masukkan kata laluan",
+    "passwordPlaceholder": "Masukkan kata laluan",
+    "passwordRequired": "Medan ini dikehendaki.",
+    "passwordMinLength": "Kata laluan mesti sekurang-kurangnya 8 aksara.",
+    "passwordMaxLength": "Kata laluan boleh mengandungi maksimum 256 aksara.",
+    "invalidPassword": "Kata laluan tidak sah",
+    "cancel": "Batal",
+    "remove": "Buang"
+  },
+  "header": {
+    "selectNetwork": "Pilih rangkaian",
+    "manageNetworks": "Urus rangkaian",
+    "myWallets": "Dompet saya",
+    "removeWalletTitle": "Buang dompet",
+    "createAccountSuccess": "Akaun berjaya dicipta!",
+    "createAccountFail": "Gagal mencipta akaun",
+    "copied": "Disalin!"
+  },
+  "signIn": {
+    "loginTitle": "Log masuk ke akaun anda",
+    "passwordPlaceholder": "Masukkan kata laluan",
+    "passwordTitle": "Kata laluan",
+    "signInButton": "Log masuk",
+    "invalidPassword": "Kata laluan tidak sah",
+    "required": "Medan ini dikehendaki.",
+    "minLength": "Kata laluan mesti sekurang-kurangnya 8 aksara.",
+    "maxLength": "Kata laluan boleh mengandungi maksimum 256 aksara.",
+    "initWalletError": "Ralat inisialisasi dompet"
+  },
+  "settings": {
+    "contacts": "Kenalan",
+    "language": "Bahasa",
+    "languageDesc": "Pilih bahasa dompet",
+    "contactsDesc": "Urus kenalan anda",
+    "networks": "Rangkaian",
+    "networksDesc": "Tambah atau edit RPC tersuai",
+    "connectedSites": "Laman disambungkan",
+    "connectedSitesDesc": "Lihat dan urus laman disambungkan",
+    "walletConnect": "Wallet Connect",
+    "walletConnectDesc": "Sambung dengan WalletConnect",
+    "txSettings": "Tetapan transaksi",
+    "txSettingsDesc": "Tetapkan tetapan gas",
+    "exportPhrase": "Eksport frasa pemulihan",
+    "exportPhraseDesc": "Lindungi dompet anda",
+    "editPassword": "Edit kata laluan",
+    "editPasswordDesc": "Tukar kata laluan dompet",
+    "2fa": "2FA",
+    "2faDesc": "Urus pengesahan dua faktor",
+    "expandView": "Paparan diperluaskan",
+    "expandViewDesc": "Buka eckoWALLET dalam tetingkap baru",
+    "theme": "Tema",
+    "themeDesc": "Tetapkan tema dompet",
+    "lock": "Kunci dompet",
+    "lockDesc": "Lindungi dompet anda",
+    "lockSettings": "Tetapan kunci",
+    "lockSettingsDesc": "Tukar tetapan keselamatan",
+    "discord": "Sertai kami di Discord",
+    "website": "Lawati laman web kami",
+    "terms": "Terma penggunaan",
+    "privacy": "Dasar privasi",
+    "connectedSitesPage": {
+      "title": "Laman disambungkan",
+      "removeSiteTitle": "Buang laman",
+      "removeSiteConfirmText": "Adakah anda pasti mahu membuang",
+      "removeSiteSuccess": "Laman berjaya dibuang."
+    },
+    "contactsPage": {
+      "title": "Kenalan",
+      "newContactTitle": "Kenalan baru",
+      "addNewContact": "Tambah kenalan baru",
+      "noContacts": "Tiada kenalan"
+    },
+    "contactForm": {
+      "enterAlias": "Masukkan alias",
+      "aliasPlaceholder": "contoh: David",
+      "accountNameTitle": "Nama akaun",
+      "accountNamePlaceholder": "Nama akaun",
+      "scanQrTitle": "Imbas kod QR",
+      "scanQrDescription": "Arahkan kamera ke kod QR",
+      "buttonCancel": "Batal",
+      "buttonSave": "Simpan",
+      "successContactAdded": "Kenalan ditambah",
+      "errorNetwork": "Ralat rangkaian.",
+      "copied": "Disalin!",
+      "requiredField": "Medan ini dikehendaki.",
+      "invalidData": "Data tidak sah",
+      "aliasMaxLength": "Alias boleh mengandungi maksimum 256 aksara.",
+      "accountNameMaxLength": "Nama akaun boleh mengandungi maksimum 1000 aksara."
+    },
+    "contactInfo": {
+      "copied": "Disalin!",
+      "contactRemoved": "Kenalan dibuang",
+      "accountName": "NAMA AKAUN",
+      "editContact": "Edit kenalan",
+      "editTitle": "Edit akaun",
+      "delete": "Padam",
+      "deleteContactTitle": "Padam kenalan",
+      "removeContact": "Buang kenalan?",
+      "confirmRemove": "Adakah anda pasti mahu membuang kenalan ini?",
+      "cancel": "Batal",
+      "confirm": "Sahkan"
+    },
+    "editPasswordPage": {
+      "title": "Edit kata laluan",
+      "passwordChanged": "Kata laluan berjaya diubah",
+      "cannotUpdatePassword": "Tidak dapat mengemas kini kata laluan",
+      "save": "Simpan"
+    },
+    "seedPhraseRetrivier": {
+      "enterPassword": "Masukkan kata laluan untuk meneruskan",
+      "inputPlaceholder": "Masukkan kata laluan",
+      "password": "Kata laluan",
+      "errorRequired": "Medan ini dikehendaki.",
+      "errorInvalid": "Kata laluan tidak sah.",
+      "continue": "Teruskan",
+      "correctPassword": "Kata laluan anda betul, sila tunggu..."
+    },
+    "exportSeedPhrase": {
+      "title": "Eksport frasa pemulihan",
+      "copied": "Disalin!",
+      "description": "Frasa pemulihan peribadi anda membolehkan sandaran dan pemulihan akaun yang mudah.",
+      "warning": "Jangan pernah dedahkan frasa pemulihan peribadi anda. Sesiapa yang memilikinya boleh mengambil alih dompet anda secara kekal.",
+      "copyKeyphrase": "Salin frasa",
+      "download": "Muat turun"
+    },
+    "lockSettingsPage": {
+      "title": "Tetapan kunci automatik dompet",
+      "saved": "Tetapan berjaya disimpan",
+      "required": "Medan ini dikehendaki.",
+      "placeholder": "Pilih masa untuk kunci automatik",
+      "selectTitle": "Masa kunci automatik",
+      "restore": "Pulihkan lalai",
+      "save": "Simpan"
+    },
+    "networksPage": {
+      "title": "Rangkaian",
+      "network": "Rangkaian",
+      "addNew": "Tambah baru",
+      "editSuccess": "Rangkaian berjaya disunting",
+      "addSuccess": "Rangkaian berjaya ditambah",
+      "errorUrl": "URL sudah wujud",
+      "deleteSuccess": "Rangkaian berjaya dibuang",
+      "remove": "Buang",
+      "save": "Simpan",
+      "confirmRemove": "Buang rangkaian ini?",
+      "confirmRemoveDesc": "Adakah anda pasti mahu membuang rangkaian ini?",
+      "placeholderName": "Masukkan nama rangkaian",
+      "placeholderUrl": "Masukkan URL RPC baru",
+      "placeholderExplorer": "Masukkan URL pemeriksa blok",
+      "placeholderNetworkId": "Masukkan ID rangkaian",
+      "titleName": "Nama rangkaian",
+      "titleUrl": "URL RPC baru",
+      "titleExplorer": "URL pemeriksa blok",
+      "titleNetworkId": "ID rangkaian",
+      "nameMax": "Nama rangkaian boleh mengandungi maksimum 1000 aksara.",
+      "urlMax": "URL RPC baru boleh mengandungi maksimum 1000 aksara.",
+      "explorerMax": "URL pemeriksa blok boleh mengandungi maksimum 1000 aksara.",
+      "networkIdMax": "ID rangkaian boleh mengandungi maksimum 1000 aksara."
+    },
+    "selectTheme": {
+      "title": "Pilih tema"
+    },
+    "txSettingsPage": {
+      "title": "Tetapan transaksi",
+      "gasLimit": "Had gas",
+      "gasLimitPlaceholder": "Masukkan had gas",
+      "finishCrossChain": "Selesaikan Crosschain Gas Station",
+      "finishCrossChainPlaceholder": "Masukkan Crosschain Gas Station",
+      "crossChainGasLimit": "Had gas silang rantaian",
+      "crossChainGasLimitPlaceholder": "Masukkan had gas silang rantaian",
+      "crossChainGasPrice": "Harga gas silang rantaian",
+      "crossChainGasPricePlaceholder": "Masukkan harga gas silang rantaian",
+      "save": "Simpan",
+      "restoreDefault": "Pulihkan lalai",
+      "successSave": "Tetapan berjaya disimpan",
+      "requiredField": "Medan ini dikehendaki.",
+      "invalidValue": "Nilai tidak sah"
+    },
+    "2faPage": {
+      "title": "Pengaktifan dua faktor",
+      "description": "Pengaktifan dua faktor telah dikonfigurasi.",
+      "disableButton": "Nyahdayakan",
+      "successDisable": "2FA berjaya dinyahdayakan.",
+      "installApp": "Pasang",
+      "orSimilar": "atau aplikasi serupa",
+      "scanQRCode": "Imbas kod QR di bawah:",
+      "enter6Digits": "Masukkan kod 6 digit",
+      "invalidCode": "Kod tidak sah.",
+      "saveButton": "Simpan",
+      "setupSuccess": "2FA berjaya ditetapkan"
+    },
+    "walletConnectPage": {
+      "title": "Wallet Connect",
+      "selectAccounts": "Pilih akaun",
+      "invalidUrl": "URL tidak sah",
+      "disconnectSuccess": "Permintaan putus sambung berjaya dihantar",
+      "noActiveSessions": "TIADA SESI AKTIF",
+      "activeSessions": "SESI AKTIF",
+      "expiry": "Tamat tempoh:",
+      "removeConnection": "Buang sambungan",
+      "removeConfirmation": "Adakah anda pasti mahu membuang contoh WalletConnect ini?",
+      "newConnection": "Sambungan baru",
+      "addConnection": "Tambah sambungan Wallet Connect baru",
+      "inputUri": "Masukkan URI",
+      "code": "Kod",
+      "continue": "Teruskan"
+    }
+  },
+  "buy": {
+    "title": "Beli",
+    "description": "Pembelian dan penjualan mata wang kripto dijalankan melalui perkhidmatan pihak ketiga dibekalkan oleh Onramper.\n\nWalaupun eckoWALLET komited untuk memberikan tahap keselamatan tertinggi untuk pengguna, kami tidak dapat menjamin keselamatan dan privasi perkhidmatan pihak ketiga.",
+    "cancel": "Batal",
+    "confirm": "Sahkan",
+    "error": {
+      "noAddress": "Alamat dompet tidak tersedia",
+      "generic": "Gagal menyambung ke perkhidmatan. Sila cuba lagi kemudian."
+    }
+  },
+  "analytics": {
+    "walletAnalytics": "ANALITIK DOMPET",
+    "dexAnalytics": "ANALITIK DEX",
+    "portfolioValue": "GRAF NILAI PORTFOLIO",
+    "startTracking": "Mula menjejak",
+    "trackPortfolioTitle": "Jejaki nilai portfolio",
+    "trackPortfolioStart": "MULA MENJEJAK BAKI AKAUN",
+    "trackPortfolioDesc1": "Dengan mengesahkan, anda membenarkan penjejakan baki akaun anda.",
+    "trackPortfolioDesc2": "Adakah anda mahu meneruskan?",
+    "confirm": "Sahkan",
+    "confirming": "Mengesahkan, sila tunggu...",
+    "disclaimerTitle": "Maklumat!",
+    "disclaimerText": "Maklumat pada halaman ini sedang dalam ujian BETA dan disediakan \"apa adanya\" dan \"seperti tersedia\"."
+  },
+  "dapps": {
+    "signedCmd": {
+      "invalidNetwork": "Rangkaian tidak sah",
+      "signingCmdError": "Ralat menandatangani arahan, semak payload anda",
+      "signingCmdGenericError": "Ralat menandatangani arahan",
+      "rejectedByUser": "Ditolak oleh pengguna",
+      "userRejected": "Pengguna menolak.",
+      "signedCommand": "Arahan ditandatangani",
+      "hashToSign": "HASH UNTUK DITANDATANGANI:",
+      "pleaseEnableLedger": "Sila aktifkan BLIND SIGNING dan ikut arahan pada Ledger anda terlebih dahulu.",
+      "capabilities": "Keupayaan",
+      "close": "Tutup",
+      "reject": "Tolak",
+      "confirm": "Sahkan"
+    },
+    "quickSignCmd": {
+      "quickSignRequest": "Permintaan tandatangan cepat",
+      "code": "Kod",
+      "capabilities": "Keupayaan",
+      "rawData": "Data mentah",
+      "command": "Arahan {{index}}/{{total}}",
+      "hashToSign": "HASH UNTUK DITANDATANGANI ({{count}}/{{total}}):",
+      "ledgerInstructions": "Sila aktifkan BLIND SIGNING dan ikut arahan pada Ledger anda terlebih dahulu",
+      "close": "Tutup",
+      "reject": "Tolak",
+      "confirm": "Sahkan",
+      "error.invalidStructure": "QuickSign gagal: struktur data tidak sah",
+      "error.pubKeyNotFound": "QuickSign gagal: kunci awam dompet tidak dijumpai",
+      "error.ledger": "Kegagalan tandatangan Ledger"
+    }
+  },
+  "hardware": {
+    "import": {
+      "title": "Import dompet perkakasan",
+      "selectDevice": "Pilih dompet perkakasan",
+      "ledgerInstructions": "Sambungkan Ledger anda terus ke komputer. Kemudian buka kuncinya dan buka aplikasi Kadena.",
+      "connect": "Sambung",
+      "confirm": "Import",
+      "success": "Dompet perkakasan berjaya diimport",
+      "error": {
+        "duplicate": "Akaun yang anda cuba import sudah wujud.",
+        "network": "Ralat rangkaian.",
+        "invalid": "Data tidak sah"
+      }
+    }
+  },
+  "ledger": {
+    "import": {
+      "title": "Import daripada Ledger",
+      "instruction": "Masukkan Ledger anda terus ke komputer, kemudian buka kuncinya dan buka aplikasi Kadena.",
+      "continue": "Teruskan",
+      "publicKey": "KUNCI AWAM",
+      "account": "AKAUN",
+      "confirm": "Sahkan import",
+      "success": "Akaun berjaya diimport.",
+      "error": {
+        "duplicate": "Akaun yang anda cuba import sudah wujud.",
+        "network": "Ralat rangkaian semasa mengambil data akaun",
+        "invalid": "Data tidak sah"
+      }
+    }
+  },
+  "token": {
+    "import": {
+      "title": "Import token",
+      "contractLabel": "Alamat kontrak token",
+      "symbolLabel": "Simbol token",
+      "placeholder": {
+        "contract": "Masukkan alamat kontrak",
+        "symbol": "Masukkan simbol"
+      },
+      "add": "Tambah token",
+      "edit": "Edit token",
+      "success": "Token berjaya disimpan",
+      "error": {
+        "duplicate": "Token sudah ditambah",
+        "notFound": "Gagal menyelesaikan {{contract}}. Sila semak sama ada token wujud pada rangkaian {{network}}"
+      }
+    }
+  },
+  "importWallet": {
+    "header": "Import dompet",
+    "form": {
+      "accountName": {
+        "title": "Nama akaun anda",
+        "placeholder": "Nama akaun"
+      },
+      "chainId": {
+        "title": "ID rangkaian"
+      },
+      "secretKey": {
+        "title": "Kunci peribadi anda",
+        "placeholder": "Kunci peribadi"
+      }
+    },
+    "validation": {
+      "required": "Medan ini dikehendaki.",
+      "invalidData": "Data tidak sah",
+      "startsWithK": "Nama akaun mesti bermula dengan \"k:\"",
+      "accountName": {
+        "maxLength": "Nama akaun boleh mengandungi maksimum 1000 aksara."
+      },
+      "secretKey": {
+        "maxLength": "Kunci peribadi boleh mengandungi maksimum 1000 aksara."
+      }
+    },
+    "modal": {
+      "scanTitle": "Imbas kod QR",
+      "scanBody": "Arahkan kamera ke kod QR"
+    },
+    "button": {
+      "import": "Import dompet"
+    },
+    "toast": {
+      "importSuccess": "Akaun berjaya diimport.",
+      "duplicateError": "Akaun yang anda cuba import sudah wujud.",
+      "invalidAccountData": "Data akaun tidak sah",
+      "multipleKeys": "Beberapa set kunci tidak disokong.",
+      "invalidData": "Data tidak sah",
+      "networkError": "Ralat rangkaian."
+    }
+  },
+  "initPage": {
+    "secondary": {
+      "existingKey": "Saya sudah mempunyai kunci peribadi.",
+      "prompt": "Import kunci peribadi sedia ada anda"
+    },
+    "button": {
+      "import": "Import"
+    },
+    "image": {
+      "alt": "Ikon import"
+    }
+  },
+  "nft": {
+    "header": "Item koleksi anda",
+    "noOwned": "Anda tidak memiliki sebarang NFT."
+  },
+  "sendTransactions": {
+    "header": "Hantar transaksi {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Tandatangan Ledger berjaya",
+    "ledgerSignFailed": "Tandatangan Ledger gagal atau ditolak",
+    "transferSuccess": "Pemindahan berjaya",
+    "transferFailed": "Pemindahan gagal",
+    "transactionSent": "Transaksi berjaya dihantar! Semak sejarah untuk status transaksi",
+    "networkError": "Ralat rangkaian.",
+    "loadingTop": "Sila jangan tutup tetingkap ini",
+    "loadingBottom": "Anda akan dialihkan apabila transaksi selesai",
+    "labelReceiver": "Penerima",
+    "labelAmount": "Jumlah",
+    "labelGasLimit": "Had gas",
+    "labelGasPrice": "Harga gas",
+    "labelGasFee": "Yuran gas",
+    "labelTotal": "Jumlah",
+    "warningCrossChainLine1": "Anda hendak membuat pemindahan cross-chain",
+    "warningCrossChainLine2": "Operasi ini biasanya mengambil masa lebih lama",
+    "warningNonKAccountLine1": "Anda menghantar ke akaun yang bukan \"k:account\"!",
+    "warningNonKAccountLine2": "Adakah anda pasti mahu meneruskan?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} tidak boleh dipindahkan!",
+    "form": {
+      "sourceChainId": {
+        "title": "ID Chain asal"
+      },
+      "destinationAccount": {
+        "title": "Akaun destinasi"
+      },
+      "targetChainId": {
+        "title": "ID Chain destinasi"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Akaun destinasi boleh mengandungi maksimum 1000 aksara."
+    },
+    "balanceLabel": "Baki {{symbol}} rantaian",
+    "recent": "TERKINI",
+    "contacts": "KENALAN",
+    "confirm": {
+      "warningTitle": "Amaran",
+      "publicKeyTitle": "Kunci awam",
+      "publicKeyPlaceholder": "Masukkan kunci awam",
+      "predicateTitle": "Predikat",
+      "predicatePlaceholder": "Predikat"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Anda tidak boleh menghantar kepada diri sendiri",
+    "invalidGasLimit": "Had gas tidak sah",
+    "gasLimitInteger": "Had gas mesti integer",
+    "invalidGasPrice": "Harga gas tidak sah",
+    "insufficientFundsGas": "Dana tidak mencukupi untuk yuran gas",
+    "newAddressDetected": "Alamat baru dikesan! Tambah ke kenalan anda.",
+    "tokenNotExists": "{{contractAddress}} mungkin tidak wujud di Chain {{chainId}}!",
+    "transactionParameters": "Parameter transaksi",
+    "estimatedGas": "Gas dianggarkan {{gas}}",
+    "speed": "Kelajuan {{speed}}",
+    "modal": {
+      "confirmTitle": "Sahkan penghantaran transaksi",
+      "gasParametersTitle": "Parameter transaksi"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Had gas"
+      },
+      "gasPrice": {
+        "title": "Harga gas"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Jumlah untuk dihantar",
+    "button": {
+      "half": "SEPARUH",
+      "max": "MAKS"
+    },
+    "error": {
+      "insufficientFunds": "Dana tidak mencukupi",
+      "invalidAmount": "Jumlah tidak sah"
+    },
+    "balance": "Baki: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Logo Dapp",
+    "sendTransaction": "Hantar transaksi",
+    "destinationNotFound": "Akaun destinasi tidak dijumpai"
+  },
+  "history": {
+    "header": "Sejarah",
+    "modal": {
+      "confirmSendTransaction": "Sahkan penghantaran transaksi"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Butiran transaksi"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Nama akaun anda"
+  },
+  "activityList": {
+    "loading": "Memuat...",
+    "today": "Hari ini",
+    "yesterday": "Semalam",
+    "noTransactions": "Anda tiada transaksi"
+  },
+  "statusFilter": {
+    "modalTitle": "Status",
+    "prefix": "Status: ",
+    "options": {
+      "all": "Semua",
+      "in": "Diterima",
+      "out": "Dihantar",
+      "pending": "Dalam menunggu"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Aset: ",
+    "options": {
+      "all": "Semua"
+    }
+  },
+  "footer": {
+    "wallet": "DOMPET",
+    "analytics": "ANALITIK",
+    "nft": "NFT",
+    "settings": "TETAPAN"
+  }
+}
