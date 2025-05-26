@@ -1,6 +1,6 @@
 import images from '../images';
 
-export const ECKO_DEXTOOLS_API_URL = 'https://api.dexscan.ecko.finance/';
+export const ECKO_DEXTOOLS_API_URL = 'https://api-dexscan.eckowallet.com/';
 
 export const OptionSelect = {
   ConnectedSite: 0,
