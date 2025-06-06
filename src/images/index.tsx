@@ -145,6 +145,9 @@ import downtrend from './ic_downtrend.svg';
 import topTokens from './ic_top_tokens.svg';
 import portfolioValueBlurred from './portfolio-blurred.png';
 
+import poweredByFluxDark from './powered_by_dark.png';
+import poweredByFlux from './powered_by_light.png';
+
 const wallet = {
   checked,
   loadMore,
@@ -349,6 +352,8 @@ const images = {
   governance,
   iconMarmaladeNG,
   analytics,
+  poweredByFlux,
+  poweredByFluxDark,
 };
 
 export default images;

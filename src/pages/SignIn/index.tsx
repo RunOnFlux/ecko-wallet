@@ -25,6 +25,7 @@ import {
 } from 'src/utils/storage';
 import { DivError } from '../Setting/Contact/views/style';
 import { WelcomeBackground } from '../InitSeedPhrase';
+import { RUNONFLUX_LINK } from '@Utils/config';
 
 export const isValidPassword = async (password) => {
   const hashPassword = hash(password);
@@ -165,6 +166,9 @@ const SignIn = () => {
       <DivFlex flexDirection="column" style={{ height: '100vh', padding: '0 24px' }} justifyContent="center" gap="45px">
         <DivImage marginBottom="30px" marginTop="30px">
           <Image src={images.eckoWalletLogo} size={200} width={200} alt="logo" />
+          <a href={RUNONFLUX_LINK} target="_blank" rel="noreferrer" style={{ marginTop: 10 }}>
+            <Image src={images.poweredByFlux} width={100} alt="Powered by Flux" marginTop={10} />
+          </a>
           <CommonLabel color="#fff" fontSize={18} fontWeight={500} style={{ marginTop: 20 }}>
             {t('signIn.loginTitle')}
           </CommonLabel>
