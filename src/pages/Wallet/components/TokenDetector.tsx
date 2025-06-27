@@ -114,9 +114,9 @@ export const TokenDetector = ({ onTokenSelect }: { onTokenSelect: (token: { cont
     return detectedTokens.map((token) => (
       <TokenElement
         key={token.contract}
+        contractAddress={token.contract}
         rightText={humanReadableNumber(token.balance, 5)}
         name={shortenAddress(token.contract, 5, 15)}
-        logo={images.wallet.tokens[token.contract] || images.wallet.iconUnknownKadenaToken}
         onClick={() => onTokenSelect(token)}
       />
     ));

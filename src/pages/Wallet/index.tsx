@@ -263,7 +263,7 @@ const Wallet = () => {
             balance={getTokenTotalBalance('coin', stateWallet?.account)}
             name="KDA"
             usdBalance={roundNumber(getTokenUsdBalance('coin'), 2)}
-            logo={images.wallet.tokens.coin}
+            contractAddress={'coin'}
             onClick={() =>
               selectedAccountBalance &&
               openModal({
@@ -280,7 +280,7 @@ const Wallet = () => {
                 balance={getTokenTotalBalance(token.contractAddress, stateWallet?.account)}
                 name={token.symbol?.toLocaleUpperCase()}
                 usdBalance={roundNumber(getTokenUsdBalance(token.contractAddress), 2)}
-                logo={images.wallet.tokens[token.contractAddress]}
+                contractAddress={token.contractAddress}
                 onClick={() =>
                   selectedAccountBalance &&
                   openModal({
@@ -299,7 +299,7 @@ const Wallet = () => {
                 balance={getTokenTotalBalance(fT.contractAddress, stateWallet?.account) || 0}
                 name={fT.symbol?.toUpperCase()}
                 usdBalance={roundNumber(getTokenUsdBalance(fT.contractAddress), 2)}
-                logo={images.wallet.tokens[fT.contractAddress] || images.wallet.iconUnknownKadenaToken}
+                contractAddress={fT.contractAddress}
                 onClick={() =>
                   selectedAccountBalance &&
                   openModal({

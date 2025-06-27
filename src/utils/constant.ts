@@ -38,40 +38,31 @@ export const CHAIN_COUNT = 20;
 export const KNOWN_TOKENS = {
   'runonflux.flux': {
     symbol: 'flux',
-    image: images.wallet.tokens['runonflux.flux'],
     coingeckoId: 'zelcash',
   },
   'kaddex.kdx': {
     symbol: 'kdx',
-    image: images.wallet.tokens['kaddex.kdx'],
   },
   'hypercent.prod-hype-coin': {
     symbol: 'hype',
-    image: images.wallet.tokens['hypercent.prod-hype-coin'],
   },
   'kdlaunch.token': {
     symbol: 'kdl',
-    image: images.wallet.tokens['kdlaunch.token'],
   },
   'free.anedak': {
     symbol: 'anedak',
-    image: images.wallet.tokens['free.anedak'],
   },
   'free.babena': {
     symbol: 'babena',
-    image: images.wallet.tokens['free.babena'],
   },
   'mok.token': {
     symbol: 'mok',
-    image: images.wallet.tokens['mok.token'],
   },
   'lago.kwUSDC': {
     symbol: 'usdc',
-    image: images.wallet.tokens['lago.kwUSDC'],
   },
   'kaddex.skdx': {
     symbol: 'skdx',
-    image: images.wallet.tokens['kaddex.skdx'],
   },
 };
 
@@ -154,3 +145,5 @@ export const CHAIN_AVAILABLE_TOKENS_FIXTURE = [
 ];
 
 export const SETTINGS_STORAGE_KEY = 'settingsV2';
+
+export const getTokenImageUrl = (contractAddress: string) => `${ECKO_DEXTOOLS_API_URL}api/token-icon?token=${encodeURIComponent(contractAddress)}`;
