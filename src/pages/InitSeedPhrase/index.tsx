@@ -72,7 +72,7 @@ const InitSeedPhrase = () => {
       {t('initSeedPhrase.agreeTerms')}
       <TermsBr />
       <Term href={TERM_LINK} target="_blank" rel="noreferrer">
-        {t('initSeedPhrase.termsOfUse')}
+        &nbsp;{t('initSeedPhrase.termsOfUse')}
       </Term>
     </CommonLabel>
   );

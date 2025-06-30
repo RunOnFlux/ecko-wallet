@@ -68,35 +68,6 @@ import closeBlack from './close-black.svg';
 import radioChecked from './radio-checked.svg';
 import radioUnchecked from './radio-unchecked.svg';
 import settingWhite from './setting-white.svg';
-import iconFlux from './flux-icon.png';
-import iconKdl from './kdl-logo.svg';
-import iconKdx from './kdx-logo.svg';
-import iconHype from './hypercent-logo.svg';
-import iconDocu from './docushield-logo.svg';
-import iconBabena from './babena-logo.svg';
-import iconAnedak from './anedak-logo.svg';
-import iconSkdx from './skdx-logo.png';
-import iconMok from './mok-logo.png';
-import iconKapy from './kapy-logo.svg';
-import iconJde from './jodie-logo.svg';
-import iconKwbtc from './kwbtc-logo.svg';
-import iconUsdc from './usdc-logo.png';
-import iconMaga from './maga-token.png';
-import iconHeron from './heron-token.png';
-import iconKayc from './kayc-logo.svg';
-import iconKds from './kds-logo.svg';
-import iconCrna from './corona-logo.svg';
-import iconKishu from './tokens/kishuken.png';
-import iconArkd from './arkade-logo.png';
-import iconAzuki from './tokens/azuki_logo.png';
-import iconWiz from './wizz.svg';
-import iconTeckel from './teckel-coin.png';
-import iconCrankk from './tokens/crankk.png';
-import iconUnitt from './tokens/unitt_Logo.png';
-import iconBro from './bro-logo.png';
-import iconCfly from './cfly-logo.svg';
-import iconFinux from './finux-logo.png';
-import zUSD from './zUSD.png';
 import checkedV from './checked-v.svg';
 import violetAdd from './violet-add.svg';
 import trashViolet from './trash-violet.svg';
@@ -186,7 +157,6 @@ const wallet = {
   checkedGreen,
   arrayDropdownBack,
   arrayDropdown,
-  iconFlux,
   checkedV,
   kdaIcon,
   iconSend,
@@ -196,32 +166,6 @@ const wallet = {
   iconDropDown,
   iconCreate,
   iconBuy,
-  tickers: {
-    generic: iconUnknownKadenaToken,
-    ANEDAK: iconAnedak,
-    ARKD: iconArkd,
-    BABENA: iconBabena,
-    BRO: iconBro,
-    CFLY: iconCfly,
-    CRANKK: iconCrankk,
-    DOCU: iconDocu,
-    FINUX: iconFinux,
-    FLUX: iconFlux,
-    HERON: iconHeron,
-    HYPE: iconHype,
-    KAPY: iconKapy,
-    KDA: iconKadenaToken,
-    KDL: iconKdl,
-    KDS: iconKds,
-    KDX: iconKdx,
-    KISHK: iconKishu,
-    KWBTC: iconKwbtc,
-    MAGA: iconMaga,
-    MOK: iconMok,
-    TECKEL: iconTeckel,
-    zUSD,
-    WIZ: iconWiz,
-  },
 };
 const initPage = {
   importPrivateKey,
