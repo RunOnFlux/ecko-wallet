@@ -33,7 +33,7 @@ export const ACTIVE_TAB = {
   ANALYTICS: 'analytics',
 };
 
-export const CHAIN_COUNT = 20;
+export const CHAIN_COUNT = 25;
 
 export const KNOWN_TOKENS = {
   'runonflux.flux': {

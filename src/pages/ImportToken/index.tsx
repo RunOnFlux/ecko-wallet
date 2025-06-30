@@ -9,7 +9,7 @@ import { BaseTextInput, InputError } from 'src/baseComponent';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import { fetchListLocal } from 'src/utils/chainweb';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
-import { KNOWN_TOKENS } from 'src/utils/constant';
+import { CHAIN_COUNT, KNOWN_TOKENS } from 'src/utils/constant';
 import { SettingsContext } from 'src/contexts/SettingsContext';
 import { useGoHome } from 'src/hooks/ui';
 import Button from 'src/components/Buttons';
@@ -105,7 +105,7 @@ const ImportToken = () => {
     showLoading();
     const { account } = stateWallet;
     const pactCode = `(${contractAddress}.details "${account}")`;
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < CHAIN_COUNT; i++) {
       try {
         const res = await fetchListLocal(pactCode, selectedNetwork.url, selectedNetwork.networkId, i, txSettings?.gasPrice, txSettings?.gasLimit);
         if (
