@@ -12,13 +12,14 @@ import GlobeIcon from 'src/images/globe-icon.svg?react';
 import Padlock from 'src/images/padlock.svg?react';
 import ExpandView from 'src/images/expand-view.svg?react';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
-import { DISCORD_INVITATION_LINK, PRIVACY_LINK, TERM_LINK, WEBSITE_LINK } from 'src/utils/config';
+import { DISCORD_INVITATION_LINK, PRIVACY_LINK, RUNONFLUX_LINK, TERM_LINK, WEBSITE_LINK } from 'src/utils/config';
 import { useSettingsContext } from 'src/contexts/SettingsContext';
 import useSessionStorage from 'src/hooks/useSessionStorage';
 import { STORAGE_PASSWORD_KEY } from 'src/utils/storage';
 import { RoundedArrow } from '../../components/Activities/FinishTransferItem';
 import packageJson from '../../../package.json';
 import { useAppSelector } from 'src/stores/hooks';
+import images from 'src/images';
 
 const SettingsContainer = styled.div`
   padding: 24px;
@@ -49,6 +50,11 @@ const AboutDiv = styled(DivFlex)`
       margin-right: 6px;
     }
   }
+`;
+
+const PoweredByFlux = styled.img<{ size: string; top: string; width: string }>`
+  width: ${($props) => $props.width};
+  margin-top: ${(props) => props.marginTop};
 `;
 
 const PageSetting = () => {
@@ -150,6 +156,10 @@ const PageSetting = () => {
       <AboutDiv marginTop="48px" alignItems="center">
         <SecondaryLabel fontWeight={500}>
           eckoWALLET V. {packageJson.version}
+          <br />
+          <a href={RUNONFLUX_LINK} target="_blank" rel="noreferrer">
+            <PoweredByFlux src={theme.isDark ? images.poweredByFlux : images.poweredByFluxDark} width={100} alt="Powered by Flux" />
+          </a>
           <br />
           <br />
           The Kadena ecosystem gateway

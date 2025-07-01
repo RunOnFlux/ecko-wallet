@@ -68,35 +68,6 @@ import closeBlack from './close-black.svg';
 import radioChecked from './radio-checked.svg';
 import radioUnchecked from './radio-unchecked.svg';
 import settingWhite from './setting-white.svg';
-import iconFlux from './flux-icon.png';
-import iconKdl from './kdl-logo.svg';
-import iconKdx from './kdx-logo.svg';
-import iconHype from './hypercent-logo.svg';
-import iconDocu from './docushield-logo.svg';
-import iconBabena from './babena-logo.svg';
-import iconAnedak from './anedak-logo.svg';
-import iconSkdx from './skdx-logo.png';
-import iconMok from './mok-logo.png';
-import iconKapy from './kapy-logo.svg';
-import iconJde from './jodie-logo.svg';
-import iconKwbtc from './kwbtc-logo.svg';
-import iconUsdc from './usdc-logo.png';
-import iconMaga from './maga-token.png';
-import iconHeron from './heron-token.png';
-import iconKayc from './kayc-logo.svg';
-import iconKds from './kds-logo.svg';
-import iconCrna from './corona-logo.svg';
-import iconKishu from './tokens/kishuken.png';
-import iconArkd from './arkade-logo.png';
-import iconAzuki from './tokens/azuki_logo.png';
-import iconWiz from './wizz.svg';
-import iconTeckel from './teckel-coin.png';
-import iconCrankk from './tokens/crankk.png';
-import iconUnitt from './tokens/unitt_Logo.png';
-import iconBro from './bro-logo.png';
-import iconCfly from './cfly-logo.svg';
-import iconFinux from './finux-logo.png';
-import zUSD from './zUSD.png';
 import checkedV from './checked-v.svg';
 import violetAdd from './violet-add.svg';
 import trashViolet from './trash-violet.svg';
@@ -145,6 +116,9 @@ import downtrend from './ic_downtrend.svg';
 import topTokens from './ic_top_tokens.svg';
 import portfolioValueBlurred from './portfolio-blurred.png';
 
+import poweredByFluxDark from './powered_by_dark.png';
+import poweredByFlux from './powered_by_light.png';
+
 const wallet = {
   checked,
   loadMore,
@@ -183,7 +157,6 @@ const wallet = {
   checkedGreen,
   arrayDropdownBack,
   arrayDropdown,
-  iconFlux,
   checkedV,
   kdaIcon,
   iconSend,
@@ -193,66 +166,6 @@ const wallet = {
   iconDropDown,
   iconCreate,
   iconBuy,
-  tickers: {
-    generic: iconUnknownKadenaToken,
-    ANEDAK: iconAnedak,
-    ARKD: iconArkd,
-    BABENA: iconBabena,
-    BRO: iconBro,
-    CFLY: iconCfly,
-    CRANKK: iconCrankk,
-    DOCU: iconDocu,
-    FINUX: iconFinux,
-    FLUX: iconFlux,
-    HERON: iconHeron,
-    HYPE: iconHype,
-    KAPY: iconKapy,
-    KDA: iconKadenaToken,
-    KDL: iconKdl,
-    KDS: iconKds,
-    KDX: iconKdx,
-    KISHK: iconKishu,
-    KWBTC: iconKwbtc,
-    MAGA: iconMaga,
-    MOK: iconMok,
-    TECKEL: iconTeckel,
-    zUSD,
-    WIZ: iconWiz,
-  },
-  tokens: {
-    generic: iconUnknownKadenaToken,
-    coin: iconKadenaToken,
-    'kaddex.kdx': iconKdx,
-    'n_dd05101ff4df21179bfc038a912fc88c38d777a1.kdx': iconKdx,
-    'hypercent.prod-hype-coin': iconHype,
-    'runonflux.flux': iconFlux,
-    'kdlaunch.token': iconKdl,
-    'free.babena': iconBabena,
-    'free.anedak': iconAnedak,
-    'mok.token': iconMok,
-    'lago.kwUSDC': iconUsdc,
-    'kaddex.skdx': iconSkdx,
-    'free.jodie-token': iconJde,
-    'lago.kwBTC': iconKwbtc,
-    'free.kapybara-token': iconKapy,
-    'free.docu': iconDocu,
-    'free.kishu-ken': iconKishu,
-    'kdlaunch.kdswap-token': iconKds,
-    'arkade.token': iconArkd,
-    'free.KAYC': iconKayc,
-    'free.wiza': iconWiz,
-    'free.teckel': iconTeckel,
-    'free.crankk01': iconCrankk,
-    'free.corona-token': iconCrna,
-    'free.maga': iconMaga,
-    'free.finux': iconFinux,
-    'n_b742b4e9c600892af545afb408326e82a6c0c6ed.zUSD': zUSD,
-    'n_e309f0fa7cf3a13f93a8da5325cdad32790d2070.heron': iconHeron,
-    'n_582fed11af00dc626812cd7890bb88e72067f28c.bro': iconBro,
-    'n_518dfea5f0d2abe95cbcd8956eb97f3238e274a9.AZUKI': iconAzuki,
-    'free.cyberfly_token': iconCfly,
-    'n_ebe54249b2e9d68f5060961f3c419f8288d18dc2.unitt': iconUnitt,
-  },
 };
 const initPage = {
   importPrivateKey,
@@ -349,6 +262,8 @@ const images = {
   governance,
   iconMarmaladeNG,
   analytics,
+  poweredByFlux,
+  poweredByFluxDark,
 };
 
 export default images;

@@ -7,6 +7,8 @@ import { IFungibleToken, IFungibleTokensByNetwork } from 'src/pages/ImportToken'
 import { DivFlex, SecondaryLabel } from 'src/components';
 import images from 'src/images';
 import { LabeledContainer } from '../UI';
+import { getTokenImageUrl } from '@Utils/constant';
+import { useDexPairs } from 'src/hooks/dexPairs';
 
 const TokensContainer = styled.div`
   display: grid;
@@ -49,6 +51,7 @@ interface Props {
 
 const Chart = forwardRef<HTMLDivElement, Props>(({ allAccountsBalanceUsd, fungibleTokens }, ref) => {
   const { theme } = useAppThemeContext();
+  const pairs = useDexPairs();
   const summedTokenBalance = Object.values(allAccountsBalanceUsd).reduce(
     (sumPerAccount, account) =>
       account.reduce(
@@ -190,7 +193,7 @@ const Chart = forwardRef<HTMLDivElement, Props>(({ allAccountsBalanceUsd, fungib
       <TokensContainer>
         {series.map((value, index) => (
           <DivFlex key={labels[index]} alignItems="center" justifyContent="flex-start">
-            <Token src={images.wallet.tokens[addresses[index]] || images.wallet.iconUnknownKadenaToken} />
+            <Token src={getTokenImageUrl(addresses[index])} />
             <Dot color={COLORS[index % COLORS.length]} />
             <TokenName>{labels[index]}</TokenName>
             <TokenPercentual>{((value / total) * 100).toFixed(2)}%</TokenPercentual>

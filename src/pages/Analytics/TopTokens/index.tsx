@@ -1,9 +1,9 @@
+import { getTokenImageUrl } from '@Utils/constant';
 import React, { forwardRef } from 'react';
 import PairTrend from 'src/components/Analytics/PairTrend';
 import TokenTrend from 'src/components/Analytics/TokenTrend';
 import { useDexPairs } from 'src/hooks/dexPairs';
 import { useDexTokensPerformance } from 'src/hooks/dexTokensPerformance';
-import images from 'src/images';
 
 const TopTokens = forwardRef<HTMLDivElement>((_, ref) => {
   const { data: performanceData, isFetching } = useDexTokensPerformance('1D');
@@ -17,7 +17,7 @@ const TopTokens = forwardRef<HTMLDivElement>((_, ref) => {
     <div ref={ref}>
       <TokenTrend
         title="TOP GAINER"
-        iconPath={images.wallet.tickers[bestPerformer?.ticker] ?? images.wallet.tickers.generic}
+        iconPath={getTokenImageUrl(bestPerformer?.ticker)}
         symbol={bestPerformer.ticker}
         value={parseFloat(bestPerformer?.diff?.toFixed(2) ?? 0)}
         isUp={bestPerformer.diff > 0}
@@ -25,7 +25,7 @@ const TopTokens = forwardRef<HTMLDivElement>((_, ref) => {
 
       <TokenTrend
         title="TOP LOSER"
-        iconPath={images.wallet.tickers[worstPerformer?.ticker] ?? images.wallet.tickers.generic}
+        iconPath={getTokenImageUrl(worstPerformer?.ticker)}
         symbol={worstPerformer.ticker}
         value={parseFloat(worstPerformer?.diff?.toFixed(2) ?? 0)}
         isUp={worstPerformer.diff > 0}
@@ -34,8 +34,8 @@ const TopTokens = forwardRef<HTMLDivElement>((_, ref) => {
       {!isPairsFetching && topTradedPair ? (
         <PairTrend
           title="ECKODEX TOP TRADED PAIR"
-          firstTokenIconPath={images.wallet.tickers[topTradedPair?.token0.name] ?? images.wallet.tickers.generic}
-          secondTokenIconPath={images.wallet.tickers[topTradedPair?.token1.name] ?? images.wallet.tickers.generic}
+          firstTokenIconPath={getTokenImageUrl(topTradedPair?.token0.name)}
+          secondTokenIconPath={getTokenImageUrl(topTradedPair?.token1.name)}
           firstTokenSymbol={topTradedPair.token0.name}
           secondTokenSymbol={topTradedPair.token1.name}
           value={parseFloat(topTradedPair?.pricePercChange24h?.toFixed(2) ?? 0)}

@@ -22,6 +22,7 @@ export const DISCORD_INVITATION_LINK = 'https://discord.com/invite/QSJpHRFDcv';
 export const WEBSITE_LINK = 'https://eckowallet.com/';
 export const TERM_LINK = 'https://eckowallet.com/terms-of-use';
 export const PRIVACY_LINK = 'https://eckowallet.com/privacy-policy';
+export const RUNONFLUX_LINK = 'https://runonflux.com/';
 
 export type GasType = {
   LABEL: string;
