@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { addLocalActivity, addPendingCrossChainRequestKey, getLocalRecent, setLocalRecent } from 'src/utils/storage';
 import AlertIconSVG from 'src/images/icon-alert.svg?react';
 import { useLedgerContext } from 'src/contexts/LedgerContext';
+import { useSpireKeyContext } from 'src/contexts/SpireKeyContext';
 import { useGoHome } from 'src/hooks/ui';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
 import { LocalActivity } from 'src/components/Activities/types';
@@ -40,6 +41,7 @@ const PopupConfirm = (props: Props) => {
   const [isSending, setIsSending] = useState(false);
   // const { setCrossChainRequest, getCrossChainRequestsAsync } = useContext(CrossChainContext);
   const { sendTransaction, sendCrossChainTransaction } = useLedgerContext();
+  const { signTransactions, account: spireAccount, buildTransaction } = useSpireKeyContext();
   const goHome = useGoHome();
   const {
     senderName,
@@ -208,6 +210,48 @@ const PopupConfirm = (props: Props) => {
             sendCmd = res?.pact_command;
           }
         } catch {
+          toast.error(<Toast type="fail" content={t('popupConfirm.ledgerSignFailed')} />);
+          return;
+        }
+      } else if (configs?.type === AccountType.SPIREKEY) {
+        try {
+          const transaction = await buildTransaction({
+            senderName,
+            receiverName,
+            amount: Number(amount),
+            chainId: senderChainId.toString(),
+            networkId: selectedNetwork.networkId,
+            fungibleToken: fungibleToken.contractAddress || 'coin',
+            isCrossChain,
+            receiverChainId: receiverChainId?.toString(),
+          });
+
+          const tokenModule = fungibleToken.contractAddress || 'coin';
+          const requirements = spireAccount
+            ? [
+                {
+                  accountName: spireAccount.accountName,
+                  networkId: spireAccount.networkId,
+                  chainIds: spireAccount.chainIds,
+                  requestedFungibles: [
+                    {
+                      fungible: tokenModule,
+                      amount: Number(amount) || 0,
+                      ...(isCrossChain ? { target: receiverChainId } : {}),
+                    },
+                  ],
+                },
+              ]
+            : [];
+          const signed = await signTransactions([transaction], requirements);
+          if (signed && signed.length > 0) {
+            sendCmd = signed[0];
+            toast.success(<Toast type="success" content={t('popupConfirm.ledgerSignSuccess')} />);
+          } else {
+            toast.error(<Toast type="fail" content={t('popupConfirm.ledgerSignFailed')} />);
+            return;
+          }
+        } catch (e) {
           toast.error(<Toast type="fail" content={t('popupConfirm.ledgerSignFailed')} />);
           return;
         }

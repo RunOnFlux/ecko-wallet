@@ -14,9 +14,11 @@ import { getTimestamp } from 'src/utils';
 import { ECKO_WALLET_DAPP_SIGN_NONCE, WALLET_CONNECT_SIGN_METHOD } from 'src/utils/config';
 import { getSignatureFromHash } from 'src/utils/chainweb';
 import { bufferToHex, useLedgerContext } from 'src/contexts/LedgerContext';
+import { useSpireKeyContext } from 'src/contexts/SpireKeyContext';
 import { AccountType } from 'src/stores/slices/wallet';
 import { useAppSelector } from 'src/stores/hooks';
 import { useTranslation } from 'react-i18next';
+import { createTransactionBuilder, ChainId } from '@kadena/client';
 
 export const DappWrapper = styled.div`
   display: flex;
@@ -69,6 +71,7 @@ const SignedCmd = () => {
   const [caps, setCaps] = useState<any[]>([]);
   const [walletConnectParams, setWalletConnectParams] = useState<WalletConnectParams | null>(null);
   const { signHash, isWaitingLedger } = useLedgerContext();
+  const { signTransactions, ensureAccountReady, isWaitingSpireKey, account } = useSpireKeyContext();
   const { theme } = useAppThemeContext();
   const { publicKey, secretKey, type } = useAppSelector((state) => state.wallet);
 
@@ -150,6 +153,75 @@ const SignedCmd = () => {
         return { signedCmd, signingCmd };
       }
 
+      if (type === AccountType.SPIREKEY) {
+        try {
+          const spireAccount = await ensureAccountReady(signingCmd.networkId, signingCmd.chainId.toString());
+
+          let tx = createTransactionBuilder()
+            .execution(signingCmd.pactCode || signingCmd.code)
+            .setMeta({
+              senderAccount: signingCmd.sender,
+              chainId: signingCmd.chainId.toString() as ChainId,
+              gasLimit: parseFloat(signingCmd.gasLimit),
+              gasPrice: parseFloat(signingCmd.gasPrice),
+              ttl: signingCmd.ttl,
+            })
+            .setNetworkId(signingCmd.networkId);
+
+          if (signingCmd.data || signingCmd.envData) {
+            const data = signingCmd.data || signingCmd.envData;
+            Object.entries(data).forEach(([key, value]) => {
+              tx.addData(key, value as any);
+            });
+          }
+
+          if (spireAccount?.devices) {
+            spireAccount.devices.flatMap((d: any) =>
+              d.guard.keys.map((k: string) =>
+                tx.addSigner(
+                  {
+                    pubKey: k,
+                    scheme: /^WEBAUTHN-/.test(k) ? 'WebAuthn' : 'ED25519',
+                  },
+                  (withCap: any) => {
+                    if (signingCmd.caps && signingCmd.caps.length > 0) {
+                      return signingCmd.caps.map((cap: any) => (withCap as any)(cap.cap.name));
+                    }
+                    return [];
+                  },
+                ),
+              ),
+            );
+          }
+
+          const rawTransaction = tx.createTransaction();
+
+          const requirements = spireAccount
+            ? [
+                {
+                  accountName: spireAccount.accountName,
+                  networkId: spireAccount.networkId,
+                  chainIds: spireAccount.chainIds,
+                  requestedFungibles: [],
+                },
+              ]
+            : [];
+
+          const signedTransactions = await signTransactions([rawTransaction], requirements);
+
+          if (signedTransactions && signedTransactions.length > 0) {
+            const spireSigned = signedTransactions[0];
+            if (spireSigned.sigs && spireSigned.sigs.length > 0) {
+              signedCmd.sigs = spireSigned.sigs;
+            }
+          }
+
+          return { signedCmd, signingCmd };
+        } catch (err: any) {
+          throw { status: 'fail', message: err?.message || 'SpireKey signing failed' };
+        }
+      }
+
       if (secretKey.length > 64) {
         const signature = await getSignatureFromHash(signedCmd.hash, secretKey);
         signedCmd.sigs = [{ sig: signature }];
@@ -200,7 +272,12 @@ const SignedCmd = () => {
           )}
         </DivFlex>
       )}
-      {!isWaitingLedger && caps?.length > 0 && (
+      {type === AccountType.SPIREKEY && isWaitingSpireKey && (
+        <DivFlex flexDirection="column" alignItems="center" padding="24px">
+          <SecondaryLabel style={{ textAlign: 'center' }}>Please confirm on SpireKey</SecondaryLabel>
+        </DivFlex>
+      )}
+      {!isWaitingLedger && !isWaitingSpireKey && caps?.length > 0 && (
         <>
           <SecondaryLabel style={{ textAlign: 'center' }}>{t('dapps.signedCmd.capabilities')}</SecondaryLabel>
           <DivFlex flexDirection="column">
@@ -212,7 +289,7 @@ const SignedCmd = () => {
           </DivFlex>
         </>
       )}
-      {!isWaitingLedger && (
+      {!isWaitingLedger && !isWaitingSpireKey && (
         <>
           <DivFlex gap="10px" padding="24px">
             <InputError>{errorMessage}</InputError>
@@ -224,7 +301,9 @@ const SignedCmd = () => {
               variant="disabled"
               onClick={onClose}
             />
-            {!errorMessage && <Button isDisabled={isWaitingLedger} size="full" label={t('dapps.signedCmd.confirm')} onClick={onSave} />}
+            {!errorMessage && (
+              <Button isDisabled={isWaitingLedger || isWaitingSpireKey} size="full" label={t('dapps.signedCmd.confirm')} onClick={onSave} />
+            )}
           </DivFlex>
         </>
       )}

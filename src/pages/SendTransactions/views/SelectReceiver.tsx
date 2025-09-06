@@ -186,6 +186,15 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
               keys: [receiver.substring(2)],
             };
             goToTransferAccount(destinationAccount, sourceChainIdValue);
+          } else if (receiver.startsWith('r:')) {
+            const destinationAccount = {
+              accountName: receiver,
+              aliasName,
+              chainId,
+              pred: predList[0].value,
+              keys: [receiver.substring(2)],
+            };
+            goToTransferAccount(destinationAccount, sourceChainIdValue);
           } else {
             setAccount({
               accountName: receiver,
@@ -544,56 +553,87 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
       )}
 
       {isOpenConfirmModal && (
-        <ModalCustom
-          isOpen
-          title={t('selectReceiver.confirm.warningTitle')}
-          onCloseModal={() => setIsOpenConfirmModal(false)}
-          closeOnOverlayClick={false}
-        >
+        <ModalCustom isOpen={isOpenConfirmModal} title="Warning" onCloseModal={() => setIsOpenConfirmModal(false)} closeOnOverlayClick={false}>
           <div style={{ padding: '0 24px' }}>
-            {/* ... */}
-            <BaseTextInput
-              title={t('selectReceiver.confirm.publicKeyTitle')}
-              inputProps={{
-                placeholder: t('selectReceiver.confirm.publicKeyPlaceholder'),
-                ...register('publicKey'),
-              }}
-              image={{
-                width: '20px',
-                height: '20px',
-                src: images.transfer.violetAdd,
-                callback: () => onAddPublicKey(),
-              }}
-              height="auto"
-              onChange={(e) => {
-                clearErrors('publicKey');
-                setValue('publicKey', e.target.value);
-              }}
-            />
-            {/* ... */}
-            <Controller
-              control={control}
-              name="pred"
-              rules={{
-                required: {
-                  value: true,
-                  message: t('common.requiredField'),
-                },
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <BaseSelect
-                  selectProps={{ onChange, onBlur, value }}
-                  options={predList}
-                  title={t('selectReceiver.confirm.predicateTitle')}
-                  placeholder={t('selectReceiver.confirm.predicatePlaceholder')}
+            <DivFlex justifyContent="center">
+              <JazzAccount
+                diameter={50}
+                account={account.accountName}
+                renderAccount={
+                  account.accountName &&
+                  ((acc) => (
+                    <DivFlex flexDirection="column">
+                      <CommonLabel color={theme.footer?.primary} fontWeight={700} fontSize={14}>
+                        {acc}
+                      </CommonLabel>
+                      <SecondaryLabel fontWeight={500}>CHAIN {account.chainId}</SecondaryLabel>
+                    </DivFlex>
+                  ))
+                }
+              />
+            </DivFlex>
+
+            <DivFlex justifyContent="center" marginTop="20px" style={{ textAlign: 'center' }}>
+              <CommonLabel fontWeight={600} fontSize={14}>
+                Receiving account does not exist. <br />
+                You must specify a keyset to create this account.
+              </CommonLabel>
+            </DivFlex>
+            <form onSubmit={handleSubmit(onCreateAccount)} id="create-account-form">
+              <InputWrapper>
+                <BaseTextInput
+                  inputProps={{
+                    placeholder: 'Input public key',
+                    ...register('publicKey', {
+                      required: false,
+                    }),
+                  }}
+                  image={{
+                    width: '20px',
+                    height: '20px',
+                    src: images.transfer.violetAdd,
+                    callback: () => onAddPublicKey(),
+                  }}
+                  title="Public Key"
                   height="auto"
+                  onChange={(e) => {
+                    clearErrors('publicKey');
+                    setValue('publicKey', e.target.value);
+                  }}
                 />
-              )}
-            />
-            {/* ... */}
+                {errors.publicKey && <InputError>{errors.publicKey.message}</InputError>}
+              </InputWrapper>
+              {pKeys.length > 0 && renderKeys()}
+              <InputWrapper>
+                <Controller
+                  control={control}
+                  name="pred"
+                  rules={{
+                    required: {
+                      value: true,
+                      message: 'This field is required.',
+                    },
+                  }}
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <BaseSelect
+                      selectProps={{
+                        onChange,
+                        onBlur,
+                        value,
+                      }}
+                      options={predList}
+                      title="Predicate"
+                      height="auto"
+                      placeholder="Predicate"
+                    />
+                  )}
+                />
+                {errors.pred && !getValues('pred') && <InputError>{errors.pred}</InputError>}
+              </InputWrapper>
+            </form>
             <DivFlex justifyContent="space-between" alignItems="center" margin="24px 0px" gap="10px">
-              <Button size="full" variant="disabled" label={t('common.cancel')} onClick={() => setIsOpenConfirmModal(false)} />
-              <Button size="full" variant="primary" label={t('common.continue')} form="create-account-form" />
+              <Button size="full" variant="disabled" label="Cancel" onClick={() => setIsOpenConfirmModal(false)} />
+              <Button size="full" variant="primary" label="Continue" form="create-account-form" />
             </DivFlex>
           </div>
         </ModalCustom>

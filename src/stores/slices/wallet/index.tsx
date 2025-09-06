@@ -4,6 +4,7 @@ import { RootState } from 'src/stores';
 export enum AccountType {
   STANDARD = 'STANDARD',
   LEDGER = 'LEDGER',
+  SPIREKEY = 'SPIREKEY',
 }
 
 export interface RawWallet {

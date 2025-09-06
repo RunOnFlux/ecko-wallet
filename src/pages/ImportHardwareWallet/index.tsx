@@ -17,6 +17,7 @@ import { encryptKey } from 'src/utils/security';
 import { AccountType, setCurrentWallet, setWallets } from 'src/stores/slices/wallet';
 import { ACTIVE_TAB } from 'src/utils/constant';
 import { useLedgerContext } from 'src/contexts/LedgerContext';
+import { useSpireKeyContext } from 'src/contexts/SpireKeyContext';
 import { RadioSelection } from 'src/components/RadioSelection';
 import { useAppSelector } from 'src/stores/hooks';
 
@@ -38,12 +39,14 @@ const HardwareButton = styled.div<{ isSelected: boolean }>`
 const ImportHardwareWallet = () => {
   const { t } = useTranslation();
   const history = useHistory();
-  const [selectedHardwareWallet, setSelectedHardwareWallet] = useState<'ledger' | 'trezor' | null>(null);
+  const [selectedHardwareWallet, setSelectedHardwareWallet] = useState<'ledger' | 'spirekey' | 'trezor' | null>(null);
   const [ledgerPublicKey, setLedgerPublicKey] = useState<string>('');
   const [selectedPublicKey, setSelectedPublicKey] = useState<string>('');
+  const [selectedAccountName, setSelectedAccountName] = useState<string>('');
   const { wallets } = useAppSelector((state) => state.wallet);
   const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const { getPublicKey } = useLedgerContext();
+  const { connectAccount } = useSpireKeyContext();
 
   const goBack = () => {
     history.push('/');
@@ -117,6 +120,76 @@ const ImportHardwareWallet = () => {
     }
   };
 
+  const getSpireKeyAccount = async () => {
+    try {
+      showLoading();
+      const acc = await connectAccount(selectedNetwork.networkId, '0');
+      if (acc?.accountName) {
+        setSelectedAccountName(acc.accountName);
+      }
+      hideLoading();
+    } catch (err: any) {
+      console.error('SpireKey ERROR:', err);
+      hideLoading();
+    }
+  };
+
+  const importAccountFromSpireKey = () => {
+    const accountName = selectedAccountName;
+    try {
+      const pactCode = `(coin.details "${accountName}")`;
+      showLoading();
+      fetchLocal(pactCode, selectedNetwork.url, selectedNetwork.networkId, 0)
+        .then(() => {
+          hideLoading();
+          getLocalPassword(
+            (accountPassword) => {
+              const alreadyExists = !isEmpty(find(wallets, (e) => Number(e.chainId) === 0 && e.account === accountName));
+              if (!alreadyExists) {
+                const wallet = {
+                  account: encryptKey(accountName, accountPassword),
+                  publicKey: encryptKey('', accountPassword),
+                  secretKey: '',
+                  chainId: '0',
+                  connectedSites: [],
+                  type: 'SPIREKEY',
+                };
+                getLocalWallets(
+                  selectedNetwork.networkId,
+                  (item) => setLocalWallets(selectedNetwork.networkId, [...item, wallet]),
+                  () => setLocalWallets(selectedNetwork.networkId, [wallet]),
+                );
+                const newWalletState = {
+                  chainId: 0,
+                  account: accountName,
+                  publicKey: '',
+                  secretKey: '',
+                  type: AccountType.SPIREKEY,
+                  connectedSites: [],
+                };
+                const updatedWallets = [...wallets, newWalletState];
+                setWallets(updatedWallets);
+                setLocalSelectedWallet(wallet);
+                setCurrentWallet(newWalletState);
+                toast.success(<Toast type="success" content={t('hardware.import.success')} />);
+                history.push('/');
+                setActiveTab(ACTIVE_TAB.HOME);
+              } else {
+                toast.error(<Toast type="fail" content={t('hardware.import.error.duplicate')} />);
+              }
+            },
+            () => {},
+          );
+        })
+        .catch(() => {
+          hideLoading();
+          toast.error(<Toast type="fail" content={t('hardware.import.error.network')} />);
+        });
+    } catch {
+      toast.error(<Toast type="fail" content={t('hardware.import.error.invalid')} />);
+    }
+  };
+
   const renderSelectHardwareWallet = () => (
     <>
       <DivFlex justifyContent="center" padding="22px 0">
@@ -126,6 +199,9 @@ const ImportHardwareWallet = () => {
         <HardwareButton isSelected={selectedHardwareWallet === 'ledger'} onClick={() => setSelectedHardwareWallet('ledger')}>
           <LedgerLogo style={{ marginTop: 13 }} />
         </HardwareButton>
+        <HardwareButton isSelected={selectedHardwareWallet === 'spirekey'} onClick={() => setSelectedHardwareWallet('spirekey')}>
+          <SecondaryLabel style={{ lineHeight: '50px' }}>SpireKey</SecondaryLabel>
+        </HardwareButton>
       </DivFlex>
       {selectedHardwareWallet === 'ledger' && (
         <>
@@ -134,6 +210,16 @@ const ImportHardwareWallet = () => {
           </DivFlex>
           <StickyFooter style={{ background: 'transparent', padding: '20px 0px' }}>
             <Button onClick={getLedgerAccount} label={t('hardware.import.connect')} size="full" style={{ width: '90%', maxWidth: 890 }} />
+          </StickyFooter>
+        </>
+      )}
+      {selectedHardwareWallet === 'spirekey' && (
+        <>
+          <DivFlex justifyContent="center" padding="22px 0">
+            <SecondaryLabel>Follow SpireKey instructions on the device/app</SecondaryLabel>
+          </DivFlex>
+          <StickyFooter style={{ background: 'transparent', padding: '20px 0px' }}>
+            <Button onClick={getSpireKeyAccount} label={t('hardware.import.connect')} size="full" style={{ width: '90%', maxWidth: 890 }} />
           </StickyFooter>
         </>
       )}
@@ -177,11 +263,48 @@ const ImportHardwareWallet = () => {
     </>
   );
 
+  const renderSelectAccountSpireKey = () => (
+    <>
+      <DivFlex
+        justifyContent="flex-start"
+        padding="24x"
+        flexDirection="column"
+        alignItems="flex-start"
+        style={{
+          margin: '0 -22px 40px -22px',
+          borderTop: '1px solid #81878F',
+          borderBottom: '1px solid #81878F',
+          padding: 16,
+          gap: 10,
+        }}
+      >
+        <SecondaryLabel>DEVICE</SecondaryLabel>
+        <DivFlex justifyContent="flex-start" padding="24x" alignItems="center" gap="10px">
+          <SecondaryLabel>SpireKey</SecondaryLabel>
+        </DivFlex>
+      </DivFlex>
+      <RadioSelection
+        value={selectedAccountName}
+        options={[{ label: `${selectedAccountName}`, value: selectedAccountName }]}
+        onChange={(name) => {
+          if (!name) return;
+          setSelectedAccountName(name);
+        }}
+      />
+      {selectedAccountName && (
+        <StickyFooter style={{ background: 'transparent', padding: '20px 0px' }}>
+          <Button onClick={importAccountFromSpireKey} label={t('hardware.import.confirm')} size="full" style={{ width: '90%', maxWidth: 890 }} />
+        </StickyFooter>
+      )}
+    </>
+  );
+
   return (
     <PageWrapper>
       <NavigationHeader title={t('hardware.import.title')} onBack={goBack} />
-      {!ledgerPublicKey && renderSelectHardwareWallet()}
+      {!ledgerPublicKey && !selectedAccountName && renderSelectHardwareWallet()}
       {ledgerPublicKey && renderSelectAccount()}
+      {!ledgerPublicKey && selectedAccountName && renderSelectAccountSpireKey()}
     </PageWrapper>
   );
 };
