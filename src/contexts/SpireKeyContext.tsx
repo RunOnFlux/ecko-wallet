@@ -56,6 +56,7 @@ interface SpireKeyContextData {
     fungibleToken: string;
     isCrossChain?: boolean;
     receiverChainId?: string;
+    receiverExists?: boolean;
   }) => any;
   disconnect: () => void;
 }
@@ -144,8 +145,9 @@ export const SpireKeyProvider = ({ children }: any) => {
     fungibleToken: string;
     isCrossChain?: boolean;
     receiverChainId?: string;
+    receiverExists?: boolean;
   }) => {
-    const { senderName, receiverName, amount, chainId, networkId, fungibleToken, isCrossChain, receiverChainId } = params;
+    const { senderName, receiverName, amount, chainId, networkId, fungibleToken, isCrossChain, receiverChainId, receiverExists } = params;
 
     const ensureAccount = await ensureAccountReady(networkId, chainId);
     const isR = receiverName.startsWith('r:');
@@ -163,7 +165,9 @@ export const SpireKeyProvider = ({ children }: any) => {
                 decimals,
               )})`
           : isR
-          ? `(${fungibleToken}.transfer "${senderName}" "${receiverName}" ${amount.toFixed(decimals)})`
+          ? receiverExists
+            ? `(${fungibleToken}.transfer "${senderName}" "${receiverName}" ${amount.toFixed(decimals)})`
+            : `(${fungibleToken}.transfer-create "${senderName}" "${receiverName}" (keyset-ref-guard "${keysetRef}") ${amount.toFixed(decimals)})`
           : `(${fungibleToken}.transfer "${senderName}" "${receiverName}" ${amount.toFixed(decimals)})`,
       )
       .setMeta({

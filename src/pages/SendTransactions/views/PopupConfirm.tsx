@@ -248,6 +248,7 @@ const PopupConfirm = (props: Props) => {
             fungibleToken: fungibleToken.contractAddress || 'coin',
             isCrossChain,
             receiverChainId: receiverChainId?.toString(),
+            receiverExists,
           });
 
           const tokenModule = fungibleToken.contractAddress || 'coin';

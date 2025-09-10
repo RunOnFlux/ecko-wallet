@@ -179,8 +179,9 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
           const pred = get(res, 'result.data.guard.pred');
           const keys = get(res, 'result.data.guard.keys');
           console.log('🚀 ~ onNext ~ exist:', exist);
+
           if (exist) {
-            // account exists - pass keysetRefGuard to transfer if r:account for crosschain transfer
+            // account exists for this token
             const destinationAccount = {
               accountName: receiver,
               aliasName,
@@ -193,6 +194,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
             };
             goToTransferAccount(destinationAccount, sourceChainIdValue);
           } else if (receiver.startsWith('k:')) {
+            // fallback k: create
             const destinationAccount = {
               accountName: receiver,
               aliasName,
@@ -202,8 +204,9 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
             };
             goToTransferAccount(destinationAccount, sourceChainIdValue);
           } else if (isRAccount) {
-            // account does not exist - check if
+            // r: account
             if (prefix === 'coin') {
+              // r: on coin does not exist yet
               openModal(
                 createWarningModal({
                   message: 'This r:account is not yet active. Ask the recipient to open SpireKey and initialize the account.',
@@ -218,7 +221,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
                 }),
               );
             } else {
-              // For non-coin tokens, check if account exists using token.details
+              // Token ≠ coin: try to read the guard from coin.details to use transfer-create with keyset-ref-guard
               try {
                 const accountDetails = await fetchAccountDetails(
                   receiver,
@@ -232,22 +235,22 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
 
                 console.log('🚀 ~ onNext ~ accountDetails:', accountDetails);
                 if (accountDetails?.result?.status === 'success') {
-                  // Account exists with this token
+                  // exists on coin but not on token -> we will use transfer-create on token with keyset-ref-guard
                   const destinationAccount = {
                     accountName: receiver,
                     aliasName,
                     chainId,
-                    pred: predList[0].value,
-                    keys: [receiver.substring(2)],
-                    isRAccount,
+                    // no pred/keys for r:
+                    isRAccount: true,
+                    receiverExists: false,
                     keysetRefGuard: get(accountDetails, 'result.data.guard'),
                   };
                   goToTransferAccount(destinationAccount, sourceChainIdValue);
                 } else {
-                  // Account doesn't exist with this token
+                  // does not exist on coin
                   openModal(
                     createWarningModal({
-                      message: `This r:account does not exist for ${prefix} token. Ask the recipient to initialize the account for this token.`,
+                      message: `This r:account does not exist for ${prefix} token. Ask the recipient to initialize the account.`,
                       onCancel: () => {
                         setValue('accountName', '');
                         closeModal();
@@ -265,6 +268,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
               }
             }
           } else {
+            // Vanity / other
             setAccount({
               accountName: receiver,
               chainId,
