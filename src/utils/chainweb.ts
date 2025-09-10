@@ -190,3 +190,16 @@ export const getAccountExistsChains = async (accounts, networkUrl, networkId) =>
   }
   return accountResponse;
 };
+
+export const fetchAccountDetails = async (
+  account: string,
+  tokenContract: string = 'coin',
+  networkUrl: string,
+  networkId: string,
+  chainId: number,
+  gasPrice: number = CONFIG.GAS_PRICE,
+  gasLimit: number = CONFIG.GAS_LIMIT,
+) => {
+  const code = `(${tokenContract}.details "${account}")`;
+  return fetchListLocal(code, networkUrl, networkId, chainId, gasPrice, gasLimit);
+};

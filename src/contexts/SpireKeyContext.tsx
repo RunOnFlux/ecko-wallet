@@ -148,12 +148,23 @@ export const SpireKeyProvider = ({ children }: any) => {
     const { senderName, receiverName, amount, chainId, networkId, fungibleToken, isCrossChain, receiverChainId } = params;
 
     const ensureAccount = await ensureAccountReady(networkId, chainId);
+    const isR = receiverName.startsWith('r:');
+    const keysetRef = isR ? receiverName.slice(2) : undefined;
+    const decimals = 8;
 
     let tx = createTransactionBuilder()
       .execution(
         isCrossChain
-          ? `(${fungibleToken}.transfer-crosschain "${senderName}" "${receiverName}" (read-keyset "ks") "${receiverChainId}" ${amount.toFixed(8)})`
-          : `(${fungibleToken}.transfer "${senderName}" "${receiverName}" ${amount.toFixed(8)})`,
+          ? isR
+            ? `(${fungibleToken}.transfer-crosschain "${senderName}" "${receiverName}" (keyset-ref-guard "${keysetRef}") "${receiverChainId}" ${amount.toFixed(
+                decimals,
+              )})`
+            : `(${fungibleToken}.transfer-crosschain "${senderName}" "${receiverName}" (read-keyset "ks") "${receiverChainId}" ${amount.toFixed(
+                decimals,
+              )})`
+          : isR
+          ? `(${fungibleToken}.transfer "${senderName}" "${receiverName}" ${amount.toFixed(decimals)})`
+          : `(${fungibleToken}.transfer "${senderName}" "${receiverName}" ${amount.toFixed(decimals)})`,
       )
       .setMeta({
         senderAccount: senderName,
@@ -161,12 +172,12 @@ export const SpireKeyProvider = ({ children }: any) => {
       })
       .setNetworkId(networkId);
 
-    if (isCrossChain) {
+    if (isCrossChain && !isR) {
       const recvPub = receiverName.startsWith('k:') ? receiverName.slice(2) : undefined;
       const ks = recvPub
         ? { keys: [recvPub], pred: 'keys-all' }
         : { keys: (ensureAccount?.devices?.[0]?.guard?.keys ?? []).slice(0, 1), pred: 'keys-any' };
-      tx.addData('ks', ks);
+      tx = tx.addData('ks', ks);
     }
 
     if (ensureAccount?.devices) {
@@ -182,7 +193,7 @@ export const SpireKeyProvider = ({ children }: any) => {
                 isCrossChain ? `${fungibleToken}.TRANSFER_XCHAIN` : `${fungibleToken}.TRANSFER`,
                 senderName,
                 receiverName,
-                { decimal: amount.toFixed(8) },
+                { decimal: amount.toFixed(decimals) },
                 ...(isCrossChain ? [receiverChainId] : []),
               ),
               withCap(`coin.GAS`),
@@ -191,7 +202,7 @@ export const SpireKeyProvider = ({ children }: any) => {
         ),
       );
     } else {
-      tx.addSigner(
+      tx = tx.addSigner(
         {
           pubKey: senderName,
           scheme: 'ED25519',
@@ -201,7 +212,7 @@ export const SpireKeyProvider = ({ children }: any) => {
             isCrossChain ? `${fungibleToken}.TRANSFER_XCHAIN` : `${fungibleToken}.TRANSFER`,
             senderName,
             receiverName,
-            { decimal: amount.toFixed(8) },
+            { decimal: amount.toFixed(decimals) },
             ...(isCrossChain ? [receiverChainId] : []),
           ),
           withCap(`coin.GAS`),

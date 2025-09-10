@@ -60,7 +60,10 @@ const PopupConfirm = (props: Props) => {
     domain,
     dappAmount,
     estimateFee,
+    isRAccount,
+    keysetRefGuard,
   } = configs;
+  console.log('🚀 ~ PopupConfirm ~ configs:', configs);
   const amount = domain ? dappAmount : configs.amount;
 
   const validAmount = parseFloat(amount);
@@ -69,15 +72,33 @@ const PopupConfirm = (props: Props) => {
 
   const getCmd = async () => {
     const decimals = getFloatPrecision(Number.parseFloat(amount)) || 2;
-    let pactCode = `(${fungibleToken.contractAddress}.transfer${receiverExists ? '' : '-create'} "${senderName}" "${receiverName}" ${
-      receiverExists ? '' : '(read-keyset "ks")'
-    } ${Number.parseFloat(amount).toFixed(decimals)})`;
+    let pactCode;
+
     if (isCrossChain) {
-      pactCode = `(${
-        fungibleToken.contractAddress
-      }.transfer-crosschain "${senderName}" "${receiverName}" (read-keyset "ks") "${receiverChainId}" ${Number.parseFloat(amount).toFixed(
-        decimals,
-      )})`;
+      if (isRAccount) {
+        pactCode = `(${fungibleToken.contractAddress}.transfer-crosschain "${senderName}" "${receiverName}"  (keyset-ref-guard "${
+          keysetRefGuard.keysetref.ns
+        }.${keysetRefGuard.keysetref.ksn}") "${receiverChainId}" ${Number.parseFloat(amount).toFixed(decimals)})`;
+      } else {
+        pactCode = `(${
+          fungibleToken.contractAddress
+        }.transfer-crosschain "${senderName}" "${receiverName}" (read-keyset "ks") "${receiverChainId}" ${Number.parseFloat(amount).toFixed(
+          decimals,
+        )})`;
+      }
+    } else {
+      // Same chain transfer
+      if (isRAccount && keysetRefGuard) {
+        pactCode = `(${fungibleToken.contractAddress}.transfer${
+          receiverExists ? '' : '-create'
+        } "${senderName}" "${receiverName}" ${`(keyset-ref-guard "${keysetRefGuard.keysetref.ns}.${keysetRefGuard.keysetref.ksn}")`} ${Number.parseFloat(
+          amount,
+        ).toFixed(decimals)})`;
+      } else {
+        pactCode = `(${fungibleToken.contractAddress}.transfer${receiverExists ? '' : '-create'} "${senderName}" "${receiverName}" ${
+          receiverExists ? '' : '(read-keyset "ks")'
+        } ${Number.parseFloat(amount).toFixed(decimals)})`;
+      }
     }
     const crossKeyPairs: any = {
       publicKey: senderPublicKey,
@@ -115,15 +136,18 @@ const PopupConfirm = (props: Props) => {
     const cmd = {
       keyPairs,
       pactCode,
-      envData: {
-        ks: {
-          keys: receiverKeys,
-          pred: receiverPred,
-        },
-      },
+      envData: isRAccount
+        ? undefined
+        : {
+            ks: {
+              keys: receiverKeys,
+              pred: receiverPred,
+            },
+          },
       meta: Pact.lang.mkMeta(senderName, senderChainId.toString(), validGasPrice, validGasLimit, getTimestamp(), CONFIG.X_CHAIN_TTL),
       networkId: selectedNetwork.networkId,
     };
+    console.log('🚀 ~ getCmd ~ cmd:', cmd);
     return cmd;
   };
 

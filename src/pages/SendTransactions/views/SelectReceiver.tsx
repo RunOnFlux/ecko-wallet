@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect, useRef } from 'react';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
-import { extractDecimal, fetchListLocal } from 'src/utils/chainweb';
+import { extractDecimal, fetchListLocal, fetchAccountDetails } from 'src/utils/chainweb';
 import { BaseSelect, BaseTextInput, BaseModalSelect, InputError } from 'src/baseComponent';
 import { Controller, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
@@ -26,6 +26,7 @@ import ModalCustom from 'src/components/Modal/ModalCustom';
 import { get } from 'lodash';
 import { CommonLabel, DivBottomShadow, DivFlex, SecondaryLabel, StickyFooter } from 'src/components';
 import Button from 'src/components/Buttons';
+import { createWarningModal } from 'src/utils/modalHelpers';
 import { IFungibleToken } from 'src/pages/ImportToken';
 import { BodyModal, TitleModal, DivChild, InputWrapper, Warning } from '../styles';
 import { KeyWrapper, KeyItemWrapper, KeyRemove, ContactSuggestion } from './style';
@@ -143,8 +144,16 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
     }
   }, [debouncedAccountName]);
 
-  const onNext = () => {
+  const openSendAlertModal = () => {
+    openModal({
+      title: 'Warning',
+      content: <div>Are you sure you want to proceed?</div>,
+    });
+  };
+
+  const onNext = async () => {
     const receiver: string = convertedAccountName || getValues('accountName');
+    console.log('🚀 ~ onNext ~ receiver:', receiver);
     const aliasName = receiver !== getValues('accountName') ? getValues('accountName') : null;
     const chainId: any = getValues('chainId')?.value;
     const sourceChainIdValue: any = getValues('sourceChainId')?.value;
@@ -157,17 +166,21 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
       toast.error(<Toast type="fail" content="Can not send to yourself" />);
     } else {
       showLoading();
+      const isRAccount = receiver.startsWith('r:');
       const prefix = fungibleToken?.contractAddress || 'coin';
       const code = `(${prefix}.details "${receiver}")`;
       fetchListLocal(code, selectedNetwork.url, selectedNetwork.networkId, chainId, txSettings?.gasPrice, txSettings?.gasLimit)
-        .then((res) => {
+        .then(async (res) => {
+          console.log('🚀 ~ onNext ~ res:', res);
           hideLoading();
           setIsSearching(false);
           const status = get(res, 'result.status');
           const exist = status === 'success';
           const pred = get(res, 'result.data.guard.pred');
           const keys = get(res, 'result.data.guard.keys');
+          console.log('🚀 ~ onNext ~ exist:', exist);
           if (exist) {
+            // account exists - pass keysetRefGuard to transfer if r:account for crosschain transfer
             const destinationAccount = {
               accountName: receiver,
               aliasName,
@@ -175,6 +188,8 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
               pred,
               keys,
               receiverExists: true,
+              isRAccount,
+              keysetRefGuard: isRAccount ? get(res, 'result.data.guard') : undefined,
             };
             goToTransferAccount(destinationAccount, sourceChainIdValue);
           } else if (receiver.startsWith('k:')) {
@@ -186,49 +201,87 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
               keys: [receiver.substring(2)],
             };
             goToTransferAccount(destinationAccount, sourceChainIdValue);
-          } else if (receiver.startsWith('r:')) {
-            const destinationAccount = {
-              accountName: receiver,
-              aliasName,
-              chainId,
-              pred: predList[0].value,
-              keys: [receiver.substring(2)],
-            };
-            goToTransferAccount(destinationAccount, sourceChainIdValue);
+          } else if (isRAccount) {
+            // account does not exist - check if
+            if (prefix === 'coin') {
+              openModal(
+                createWarningModal({
+                  message: 'This r:account is not yet active. Ask the recipient to open SpireKey and initialize the account.',
+                  onCancel: () => {
+                    setValue('accountName', '');
+                    closeModal();
+                  },
+                  onContinue: () => {
+                    closeModal();
+                    setIsOpenConfirmModal(true);
+                  },
+                }),
+              );
+            } else {
+              // For non-coin tokens, check if account exists using token.details
+              try {
+                const accountDetails = await fetchAccountDetails(
+                  receiver,
+                  'coin',
+                  selectedNetwork.url,
+                  selectedNetwork.networkId,
+                  chainId,
+                  txSettings?.gasPrice,
+                  txSettings?.gasLimit,
+                );
+
+                console.log('🚀 ~ onNext ~ accountDetails:', accountDetails);
+                if (accountDetails?.result?.status === 'success') {
+                  // Account exists with this token
+                  const destinationAccount = {
+                    accountName: receiver,
+                    aliasName,
+                    chainId,
+                    pred: predList[0].value,
+                    keys: [receiver.substring(2)],
+                    isRAccount,
+                    keysetRefGuard: get(accountDetails, 'result.data.guard'),
+                  };
+                  goToTransferAccount(destinationAccount, sourceChainIdValue);
+                } else {
+                  // Account doesn't exist with this token
+                  openModal(
+                    createWarningModal({
+                      message: `This r:account does not exist for ${prefix} token. Ask the recipient to initialize the account for this token.`,
+                      onCancel: () => {
+                        setValue('accountName', '');
+                        closeModal();
+                      },
+                      onContinue: () => {
+                        closeModal();
+                        setIsOpenConfirmModal(true);
+                      },
+                    }),
+                  );
+                }
+              } catch (error) {
+                console.error('Error checking account details:', error);
+                toast.error(<Toast type="fail" content="Error checking account details" />);
+              }
+            }
           } else {
             setAccount({
               accountName: receiver,
               chainId,
             });
-            openModal({
-              title: 'Warning',
-              content: (
-                <DivFlex flexDirection="column" alignItems="center" justifyContent="space-evenly" padding="15px" style={{ textAlign: 'center' }}>
-                  <CommonLabel fontWeight={600} fontSize={14}>
-                    You are sending to a non “k:account”! <br /> <br /> Are you sure you want to proceed?
-                  </CommonLabel>
-                  <DivFlex gap="10px" style={{ width: '90%', marginTop: 40 }}>
-                    <Button
-                      onClick={() => {
-                        setValue('accountName', '');
-                        closeModal();
-                      }}
-                      variant="secondary"
-                      label="Cancel"
-                      size="full"
-                    />
-                    <Button
-                      onClick={() => {
-                        closeModal();
-                        setIsOpenConfirmModal(true);
-                      }}
-                      label="Continue"
-                      size="full"
-                    />
-                  </DivFlex>
-                </DivFlex>
-              ),
-            });
+            openModal(
+              createWarningModal({
+                message: 'You are sending to a non "k:account"! <br /> <br /> Are you sure you want to proceed?',
+                onCancel: () => {
+                  setValue('accountName', '');
+                  closeModal();
+                },
+                onContinue: () => {
+                  closeModal();
+                  setIsOpenConfirmModal(true);
+                },
+              }),
+            );
           }
         })
         .catch(() => {
