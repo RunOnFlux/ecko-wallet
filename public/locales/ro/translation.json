@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Semnare Ledger reușită",
     "ledgerSignFailed": "Semnare Ledger eșuată sau respinsă",
+    "spireKeySignSuccess": "Semnare SpireKey reușită",
+    "spireKeySignFailed": "Semnare SpireKey eșuată sau respinsă",
     "transferSuccess": "Transfer reușit",
     "transferFailed": "Transfer eșuat",
     "transactionSent": "Tranzacție trimisă cu succes! Verifică starea în Istoric",

@@ -6,7 +6,7 @@ interface WarningModalConfig {
   title?: string;
   message: string;
   onCancel?: () => void;
-  onContinue: () => void;
+  onContinue?: () => void;
   cancelLabel?: string;
   continueLabel?: string;
 }
@@ -23,7 +23,7 @@ export const createWarningModal = (config: WarningModalConfig) => {
         </CommonLabel>
         <DivFlex gap="10px" style={{ width: '90%', marginTop: 40 }}>
           {onCancel && <Button onClick={onCancel} variant="secondary" label={cancelLabel} size="full" />}
-          <Button onClick={onContinue} label={continueLabel} size="full" />
+          {onContinue && <Button onClick={onContinue} label={continueLabel} size="full" />}
         </DivFlex>
       </DivFlex>
     ),

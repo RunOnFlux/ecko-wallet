@@ -202,6 +202,134 @@
     "terms": "Uvjeti korištenja",
     "privacy": "Pravilnik o privatnosti"
   },
+  "sendTransactions": {
+    "header": "Pošalji {{symbol}} transakciju"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger potpis uspješan",
+    "ledgerSignFailed": "Ledger potpis neuspješan ili odbačen",
+    "spireKeySignSuccess": "SpireKey potpis uspješan",
+    "spireKeySignFailed": "SpireKey potpis neuspješan ili odbačen",
+    "transferSuccess": "Transfer uspješan",
+    "transferFailed": "Transfer neuspješan",
+    "transactionSent": "Transakcija uspješno poslana! Provjerite status u povijesti",
+    "networkError": "Greška mreže.",
+    "loadingTop": "Molimo ne zatvarajte ovaj prikaz",
+    "loadingBottom": "Bit ćete preusmjereni kada se transakcija završi",
+    "labelReceiver": "Primatelj",
+    "labelAmount": "Iznos",
+    "labelGasLimit": "Gas limit",
+    "labelGasPrice": "Gas cijena",
+    "labelGasFee": "Gas naknada",
+    "labelTotal": "Ukupno",
+    "warningCrossChainLine1": "Izvršavate cross-chain transfer",
+    "warningCrossChainLine2": "Ova operacija obično traje duže",
+    "warningNonKAccountLine1": "Šaljete na račun koji nije \"k:account\"!",
+    "warningNonKAccountLine2": "Jeste li sigurni da želite nastaviti?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} nije prenosiv!",
+    "form": {
+      "sourceChainId": {
+        "title": "Source Chain ID"
+      },
+      "destinationAccount": {
+        "title": "Odredišni račun"
+      },
+      "targetChainId": {
+        "title": "Target Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Odredišni račun može imati najviše 1000 znakova."
+    },
+    "balanceLabel": "Stanje {{symbol}} chain",
+    "recent": "NAJNOVIJE",
+    "contacts": "KONTAKTI",
+    "confirm": {
+      "warningTitle": "Upozorenje",
+      "publicKeyTitle": "Javni ključ",
+      "publicKeyPlaceholder": "Unesite javni ključ",
+      "predicateTitle": "Predikat",
+      "predicatePlaceholder": "Predikat"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Ne možete poslati sami sebi",
+    "invalidGasLimit": "Neispravan gas limit",
+    "gasLimitInteger": "Gas limit mora biti cijeli broj",
+    "invalidGasPrice": "Neispravna gas cijena",
+    "insufficientFundsGas": "Nedovoljno sredstava za gas naknadu",
+    "newAddressDetected": "Otkrivena nova adresa! Dodajte u kontakte",
+    "tokenNotExists": "{{contractAddress}} možda ne postoji na chain {{chainId}}!",
+    "transactionParameters": "Parametri transakcije",
+    "estimatedGas": "Procijenjeni gas {{gas}}",
+    "speed": "Brzina {{speed}}",
+    "modal": {
+      "confirmTitle": "Potvrdi slanje transakcije",
+      "gasParametersTitle": "Gas parametri"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Gas limit"
+      },
+      "gasPrice": {
+        "title": "Gas cijena"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Iznos za slanje",
+    "button": {
+      "half": "POLOVICA",
+      "max": "MAKS"
+    },
+    "error": {
+      "insufficientFunds": "Nedovoljno sredstava",
+      "invalidAmount": "Neispravan iznos"
+    },
+    "balance": "Stanje: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp logo",
+    "sendTransaction": "Pošalji transakciju",
+    "destinationNotFound": "Odredišni račun nije pronađen"
+  },
+  "history": {
+    "header": "Povijest",
+    "modal": {
+      "confirmSendTransaction": "Potvrdi slanje transakcije"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Detalji transakcije"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Naziv vašeg računa"
+  },
+  "activityList": {
+    "loading": "Učitavanje...",
+    "today": "Danas",
+    "yesterday": "Jučer",
+    "noTransactions": "Nemate transakcija"
+  },
+  "statusFilter": {
+    "modalTitle": "Status",
+    "prefix": "Status: ",
+    "options": {
+      "all": "Sve",
+      "in": "Primljene",
+      "out": "Poslane",
+      "pending": "Na čekanju"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Imovina: ",
+    "options": {
+      "all": "Sve"
+    }
+  },
   "footer": {
     "wallet": "Wallet",
     "analytics": "Analitika",

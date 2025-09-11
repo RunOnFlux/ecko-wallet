@@ -57,7 +57,7 @@ interface SpireKeyContextData {
     isCrossChain?: boolean;
     receiverChainId?: string;
     receiverExists?: boolean;
-  }) => any;
+  }) => Promise<{ transaction: any; account: SpireKeyAccountLike | undefined }>;
   disconnect: () => void;
 }
 
@@ -69,7 +69,7 @@ export const SpireKeyContext = createContext<SpireKeyContextData>({
   isReady: async () => {},
   signTransactions: async () => undefined,
   ensureAccountReady: async () => undefined,
-  buildTransaction: () => ({}),
+  buildTransaction: async () => ({ transaction: {}, account: undefined }),
   disconnect: () => {},
 });
 
@@ -126,6 +126,7 @@ export const SpireKeyProvider = ({ children }: any) => {
     try {
       if (account?.isReady) {
         await account.isReady();
+        setAccount(account as SpireKeyAccountLike);
         return account;
       }
     } catch {
@@ -224,7 +225,7 @@ export const SpireKeyProvider = ({ children }: any) => {
       );
     }
 
-    return tx.createTransaction();
+    return { transaction: tx.createTransaction(), account: ensureAccount };
   };
 
   const signTransactions = async (transactions: any[], requirements?: any[]): Promise<(IUnsignedCommand | ICommand)[] | undefined> => {

@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Підпис за допомогою Ledger успішний",
     "ledgerSignFailed": "Підпис за допомогою Ledger не вдався або був відхилений",
+    "spireKeySignSuccess": "Підпис за допомогою SpireKey успішний",
+    "spireKeySignFailed": "Підпис за допомогою SpireKey не вдався або був відхилений",
     "transferSuccess": "Переказ успішний",
     "transferFailed": "Переказ не вдався",
     "transactionSent": "Транзакцію успішно відправлено! Перевірте статус в Історії",

@@ -16,7 +16,6 @@ import { useLedgerContext } from 'src/contexts/LedgerContext';
 import { useSpireKeyContext } from 'src/contexts/SpireKeyContext';
 import { useGoHome } from 'src/hooks/ui';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
-import { LocalActivity } from 'src/components/Activities/types';
 import { generateActivityWithId } from 'src/components/Activities/utils';
 import SpokesLoading from 'src/components/Loading/Spokes';
 import Toast from 'src/components/Toast/Toast';
@@ -39,7 +38,6 @@ const PopupConfirm = (props: Props) => {
   const { configs, onClose, aliasContact, fungibleToken, kdaUSDPrice, estimateUSDAmount } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  // const { setCrossChainRequest, getCrossChainRequestsAsync } = useContext(CrossChainContext);
   const { sendTransaction, sendCrossChainTransaction } = useLedgerContext();
   const { signTransactions, account: spireAccount, buildTransaction } = useSpireKeyContext();
   const goHome = useGoHome();
@@ -63,7 +61,6 @@ const PopupConfirm = (props: Props) => {
     isRAccount,
     keysetRefGuard,
   } = configs;
-  console.log('🚀 ~ PopupConfirm ~ configs:', configs);
   const amount = domain ? dappAmount : configs.amount;
 
   const validAmount = parseFloat(amount);
@@ -147,7 +144,6 @@ const PopupConfirm = (props: Props) => {
       meta: Pact.lang.mkMeta(senderName, senderChainId.toString(), validGasPrice, validGasLimit, getTimestamp(), CONFIG.X_CHAIN_TTL),
       networkId: selectedNetwork.networkId,
     };
-    console.log('🚀 ~ getCmd ~ cmd:', cmd);
     return cmd;
   };
 
@@ -239,7 +235,7 @@ const PopupConfirm = (props: Props) => {
         }
       } else if (configs?.type === AccountType.SPIREKEY) {
         try {
-          const transaction = await buildTransaction({
+          const { transaction } = await buildTransaction({
             senderName,
             receiverName,
             amount: Number(amount),
@@ -271,9 +267,9 @@ const PopupConfirm = (props: Props) => {
           const signed = await signTransactions([transaction], requirements);
           if (signed && signed.length > 0) {
             sendCmd = signed[0];
-            toast.success(<Toast type="success" content={t('popupConfirm.ledgerSignSuccess')} />);
+            toast.success(<Toast type="success" content={t('popupConfirm.spireKeySignSuccess')} />);
           } else {
-            toast.error(<Toast type="fail" content={t('popupConfirm.ledgerSignFailed')} />);
+            toast.error(<Toast type="fail" content={t('popupConfirm.spireKeySignFailed')} />);
             return;
           }
         } catch (e) {
@@ -329,14 +325,24 @@ const PopupConfirm = (props: Props) => {
           toast.success(<Toast type="success" content={t('popupConfirm.transactionSent')} />);
           goHome();
         })
-        .catch(() => {
+        .catch((error) => {
+          let errorMessage = t('popupConfirm.networkError');
+
+          if (error?.response?.data) {
+            errorMessage = JSON.stringify(error.response.data);
+          } else if (error?.message) {
+            errorMessage = error.message;
+          } else if (typeof error === 'string') {
+            errorMessage = error;
+          }
+
           if (domain) {
             updateSendDapp({
               status: 'fail',
-              message: t('popupConfirm.transferFailed'),
+              message: errorMessage,
             });
           }
-          toast.error(<Toast type="fail" content={t('popupConfirm.networkError')} />);
+          toast.error(<Toast type="fail" content={errorMessage} />);
           setIsLoading(false);
         });
     }
@@ -362,7 +368,7 @@ const PopupConfirm = (props: Props) => {
     );
   }
 
-  const isVanityAccount = !receiverName?.startsWith('k:');
+  const isVanityAccount = !receiverName?.startsWith('k:') && !receiverName?.startsWith('r:');
 
   return (
     <div style={{ padding: '0 20px 20px 20px', marginTop: -15 }}>

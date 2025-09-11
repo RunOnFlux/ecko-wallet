@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { DivFlex, PageWrapper, SecondaryLabel, StickyFooter } from 'src/components';
 import LedgerLogo from 'src/images/ledger-logo-long.svg?react';
 import LedgerIcon from 'src/images/ledger-logo.svg?react';
+import SpireKeyLogo from 'src/images/spirekey.svg?react';
 import { toast } from 'react-toastify';
 import Toast from 'src/components/Toast/Toast';
 import { hideLoading, setActiveTab, showLoading } from 'src/stores/slices/extensions';
@@ -124,6 +125,7 @@ const ImportHardwareWallet = () => {
     try {
       showLoading();
       const acc = await connectAccount(selectedNetwork.networkId, '0');
+      console.log('🚀 ~ getSpireKeyAccount ~ acc:', acc);
       if (acc?.accountName) {
         setSelectedAccountName(acc.accountName);
       }
@@ -200,7 +202,7 @@ const ImportHardwareWallet = () => {
           <LedgerLogo style={{ marginTop: 13 }} />
         </HardwareButton>
         <HardwareButton isSelected={selectedHardwareWallet === 'spirekey'} onClick={() => setSelectedHardwareWallet('spirekey')}>
-          <SecondaryLabel style={{ lineHeight: '50px' }}>SpireKey</SecondaryLabel>
+          <SpireKeyLogo style={{ marginTop: 5, width: '80px', height: '40px' }} />
         </HardwareButton>
       </DivFlex>
       {selectedHardwareWallet === 'ledger' && (

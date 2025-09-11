@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Ledger हस्ताक्षर सफल",
     "ledgerSignFailed": "Ledger हस्ताक्षर विफल या अस्वीकार",
+    "spireKeySignSuccess": "SpireKey हस्ताक्षर सफल",
+    "spireKeySignFailed": "SpireKey हस्ताक्षर विफल या अस्वीकार",
     "transferSuccess": "स्थानांतरण सफल",
     "transferFailed": "स्थानांतरण विफल",
     "transactionSent": "लेनदेन सफलतापूर्वक भेजा गया! कृपया इतिहास में स्थिति की जांच करें",

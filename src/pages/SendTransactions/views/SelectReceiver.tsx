@@ -146,8 +146,8 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
 
   const openSendAlertModal = () => {
     openModal({
-      title: 'Warning',
-      content: <div>Are you sure you want to proceed?</div>,
+      title: t('selectReceiver.confirm.warningTitle'),
+      content: <div>{t('selectReceiver.alerts.genericProceed')}</div>,
     });
   };
 
@@ -158,12 +158,12 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
     const chainId: any = getValues('chainId')?.value;
     const sourceChainIdValue: any = getValues('sourceChainId')?.value;
     if (chainId === null) {
-      setError('chainId', { type: 'required', message: 'Please select the Target Chain ID' });
+      setError('chainId', { type: 'required', message: t('common.requiredField') });
       return;
     }
     const isDuplicated = receiver === rootStateWallet?.account && chainId.toString() === sourceChainIdValue.toString();
     if (isDuplicated) {
-      toast.error(<Toast type="fail" content="Can not send to yourself" />);
+      toast.error(<Toast type="fail" content={t('transfer.cannotSendToYourself')} />);
     } else {
       showLoading();
       const isRAccount = receiver.startsWith('r:');
@@ -171,14 +171,12 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
       const code = `(${prefix}.details "${receiver}")`;
       fetchListLocal(code, selectedNetwork.url, selectedNetwork.networkId, chainId, txSettings?.gasPrice, txSettings?.gasLimit)
         .then(async (res) => {
-          console.log('🚀 ~ onNext ~ res:', res);
           hideLoading();
           setIsSearching(false);
           const status = get(res, 'result.status');
           const exist = status === 'success';
           const pred = get(res, 'result.data.guard.pred');
           const keys = get(res, 'result.data.guard.keys');
-          console.log('🚀 ~ onNext ~ exist:', exist);
 
           if (exist) {
             // account exists for this token
@@ -209,14 +207,10 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
               // r: on coin does not exist yet
               openModal(
                 createWarningModal({
-                  message: 'This r:account is not yet active. Ask the recipient to open SpireKey and initialize the account.',
+                  message: t('selectReceiver.alerts.rAccountNotActive'),
                   onCancel: () => {
                     setValue('accountName', '');
                     closeModal();
-                  },
-                  onContinue: () => {
-                    closeModal();
-                    setIsOpenConfirmModal(true);
                   },
                 }),
               );
@@ -233,7 +227,6 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
                   txSettings?.gasLimit,
                 );
 
-                console.log('🚀 ~ onNext ~ accountDetails:', accountDetails);
                 if (accountDetails?.result?.status === 'success') {
                   // exists on coin but not on token -> we will use transfer-create on token with keyset-ref-guard
                   const destinationAccount = {
@@ -250,21 +243,20 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
                   // does not exist on coin
                   openModal(
                     createWarningModal({
-                      message: `This r:account does not exist for ${prefix} token. Ask the recipient to initialize the account.`,
+                      message: t('selectReceiver.alerts.rAccountNotExistForToken', { token: prefix }),
                       onCancel: () => {
                         setValue('accountName', '');
                         closeModal();
                       },
                       onContinue: () => {
                         closeModal();
-                        setIsOpenConfirmModal(true);
                       },
                     }),
                   );
                 }
               } catch (error) {
                 console.error('Error checking account details:', error);
-                toast.error(<Toast type="fail" content="Error checking account details" />);
+                toast.error(<Toast type="fail" content={t('selectReceiver.error.checkingAccountDetails')} />);
               }
             }
           } else {
@@ -275,7 +267,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
             });
             openModal(
               createWarningModal({
-                message: 'You are sending to a non "k:account"! <br /> <br /> Are you sure you want to proceed?',
+                message: t('selectReceiver.alerts.nonKRWarning'),
                 onCancel: () => {
                   setValue('accountName', '');
                   closeModal();
@@ -289,7 +281,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
           }
         })
         .catch(() => {
-          toast.error(<Toast type="fail" content="Network error" />);
+          toast.error(<Toast type="fail" content={t('popupConfirm.networkError')} />);
           hideLoading();
           setIsSearching(false);
         });
@@ -610,7 +602,12 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
       )}
 
       {isOpenConfirmModal && (
-        <ModalCustom isOpen={isOpenConfirmModal} title="Warning" onCloseModal={() => setIsOpenConfirmModal(false)} closeOnOverlayClick={false}>
+        <ModalCustom
+          isOpen={isOpenConfirmModal}
+          title={t('selectReceiver.confirm.warningTitle')}
+          onCloseModal={() => setIsOpenConfirmModal(false)}
+          closeOnOverlayClick={false}
+        >
           <div style={{ padding: '0 24px' }}>
             <DivFlex justifyContent="center">
               <JazzAccount
@@ -623,7 +620,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
                       <CommonLabel color={theme.footer?.primary} fontWeight={700} fontSize={14}>
                         {acc}
                       </CommonLabel>
-                      <SecondaryLabel fontWeight={500}>CHAIN {account.chainId}</SecondaryLabel>
+                      <SecondaryLabel fontWeight={500}>{t('selectReceiver.chainLabel', { chainId: account.chainId })}</SecondaryLabel>
                     </DivFlex>
                   ))
                 }
@@ -632,15 +629,15 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
 
             <DivFlex justifyContent="center" marginTop="20px" style={{ textAlign: 'center' }}>
               <CommonLabel fontWeight={600} fontSize={14}>
-                Receiving account does not exist. <br />
-                You must specify a keyset to create this account.
+                {t('selectReceiver.confirm.notExistLine1')} <br />
+                {t('selectReceiver.confirm.notExistLine2')}
               </CommonLabel>
             </DivFlex>
             <form onSubmit={handleSubmit(onCreateAccount)} id="create-account-form">
               <InputWrapper>
                 <BaseTextInput
                   inputProps={{
-                    placeholder: 'Input public key',
+                    placeholder: t('selectReceiver.confirm.publicKeyPlaceholder', { defaultValue: 'Input public key' }),
                     ...register('publicKey', {
                       required: false,
                     }),
@@ -651,7 +648,7 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
                     src: images.transfer.violetAdd,
                     callback: () => onAddPublicKey(),
                   }}
-                  title="Public Key"
+                  title={t('selectReceiver.confirm.publicKeyTitle')}
                   height="auto"
                   onChange={(e) => {
                     clearErrors('publicKey');
@@ -679,9 +676,9 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
                         value,
                       }}
                       options={predList}
-                      title="Predicate"
+                      title={t('selectReceiver.confirm.predicateTitle')}
                       height="auto"
-                      placeholder="Predicate"
+                      placeholder={t('selectReceiver.confirm.predicatePlaceholder')}
                     />
                   )}
                 />
@@ -689,8 +686,8 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
               </InputWrapper>
             </form>
             <DivFlex justifyContent="space-between" alignItems="center" margin="24px 0px" gap="10px">
-              <Button size="full" variant="disabled" label="Cancel" onClick={() => setIsOpenConfirmModal(false)} />
-              <Button size="full" variant="primary" label="Continue" form="create-account-form" />
+              <Button size="full" variant="disabled" label={t('common.cancel')} onClick={() => setIsOpenConfirmModal(false)} />
+              <Button size="full" variant="primary" label={t('common.continue')} form="create-account-form" />
             </DivFlex>
           </div>
         </ModalCustom>
