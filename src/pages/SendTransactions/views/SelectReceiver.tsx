@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect, useRef } from 'react';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
-import { extractDecimal, fetchListLocal } from 'src/utils/chainweb';
+import { extractDecimal, fetchListLocal, fetchAccountDetails } from 'src/utils/chainweb';
 import { BaseSelect, BaseTextInput, BaseModalSelect, InputError } from 'src/baseComponent';
 import { Controller, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
@@ -26,6 +26,7 @@ import ModalCustom from 'src/components/Modal/ModalCustom';
 import { get } from 'lodash';
 import { CommonLabel, DivBottomShadow, DivFlex, SecondaryLabel, StickyFooter } from 'src/components';
 import Button from 'src/components/Buttons';
+import { createWarningModal } from 'src/utils/modalHelpers';
 import { IFungibleToken } from 'src/pages/ImportToken';
 import { BodyModal, TitleModal, DivChild, InputWrapper, Warning } from '../styles';
 import { KeyWrapper, KeyItemWrapper, KeyRemove, ContactSuggestion } from './style';
@@ -143,31 +144,42 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
     }
   }, [debouncedAccountName]);
 
-  const onNext = () => {
+  const openSendAlertModal = () => {
+    openModal({
+      title: t('selectReceiver.confirm.warningTitle'),
+      content: <div>{t('selectReceiver.alerts.genericProceed')}</div>,
+    });
+  };
+
+  const onNext = async () => {
     const receiver: string = convertedAccountName || getValues('accountName');
+    console.log('🚀 ~ onNext ~ receiver:', receiver);
     const aliasName = receiver !== getValues('accountName') ? getValues('accountName') : null;
     const chainId: any = getValues('chainId')?.value;
     const sourceChainIdValue: any = getValues('sourceChainId')?.value;
     if (chainId === null) {
-      setError('chainId', { type: 'required', message: 'Please select the Target Chain ID' });
+      setError('chainId', { type: 'required', message: t('common.requiredField') });
       return;
     }
     const isDuplicated = receiver === rootStateWallet?.account && chainId.toString() === sourceChainIdValue.toString();
     if (isDuplicated) {
-      toast.error(<Toast type="fail" content="Can not send to yourself" />);
+      toast.error(<Toast type="fail" content={t('transfer.cannotSendToYourself')} />);
     } else {
       showLoading();
+      const isRAccount = receiver.startsWith('r:');
       const prefix = fungibleToken?.contractAddress || 'coin';
       const code = `(${prefix}.details "${receiver}")`;
       fetchListLocal(code, selectedNetwork.url, selectedNetwork.networkId, chainId, txSettings?.gasPrice, txSettings?.gasLimit)
-        .then((res) => {
+        .then(async (res) => {
           hideLoading();
           setIsSearching(false);
           const status = get(res, 'result.status');
           const exist = status === 'success';
           const pred = get(res, 'result.data.guard.pred');
           const keys = get(res, 'result.data.guard.keys');
+
           if (exist) {
+            // account exists for this token
             const destinationAccount = {
               accountName: receiver,
               aliasName,
@@ -175,9 +187,12 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
               pred,
               keys,
               receiverExists: true,
+              isRAccount,
+              keysetRefGuard: isRAccount ? get(res, 'result.data.guard') : undefined,
             };
             goToTransferAccount(destinationAccount, sourceChainIdValue);
           } else if (receiver.startsWith('k:')) {
+            // fallback k: create
             const destinationAccount = {
               accountName: receiver,
               aliasName,
@@ -186,44 +201,87 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
               keys: [receiver.substring(2)],
             };
             goToTransferAccount(destinationAccount, sourceChainIdValue);
+          } else if (isRAccount) {
+            // r: account
+            if (prefix === 'coin') {
+              // r: on coin does not exist yet
+              openModal(
+                createWarningModal({
+                  message: t('selectReceiver.alerts.rAccountNotActive'),
+                  onCancel: () => {
+                    setValue('accountName', '');
+                    closeModal();
+                  },
+                }),
+              );
+            } else {
+              // Token ≠ coin: try to read the guard from coin.details to use transfer-create with keyset-ref-guard
+              try {
+                const accountDetails = await fetchAccountDetails(
+                  receiver,
+                  'coin',
+                  selectedNetwork.url,
+                  selectedNetwork.networkId,
+                  chainId,
+                  txSettings?.gasPrice,
+                  txSettings?.gasLimit,
+                );
+
+                if (accountDetails?.result?.status === 'success') {
+                  // exists on coin but not on token -> we will use transfer-create on token with keyset-ref-guard
+                  const destinationAccount = {
+                    accountName: receiver,
+                    aliasName,
+                    chainId,
+                    // no pred/keys for r:
+                    isRAccount: true,
+                    receiverExists: false,
+                    keysetRefGuard: get(accountDetails, 'result.data.guard'),
+                  };
+                  goToTransferAccount(destinationAccount, sourceChainIdValue);
+                } else {
+                  // does not exist on coin
+                  openModal(
+                    createWarningModal({
+                      message: t('selectReceiver.alerts.rAccountNotExistForToken', { token: prefix }),
+                      onCancel: () => {
+                        setValue('accountName', '');
+                        closeModal();
+                      },
+                      onContinue: () => {
+                        closeModal();
+                      },
+                    }),
+                  );
+                }
+              } catch (error) {
+                console.error('Error checking account details:', error);
+                toast.error(<Toast type="fail" content={t('selectReceiver.error.checkingAccountDetails')} />);
+              }
+            }
           } else {
+            // Vanity / other
             setAccount({
               accountName: receiver,
               chainId,
             });
-            openModal({
-              title: 'Warning',
-              content: (
-                <DivFlex flexDirection="column" alignItems="center" justifyContent="space-evenly" padding="15px" style={{ textAlign: 'center' }}>
-                  <CommonLabel fontWeight={600} fontSize={14}>
-                    You are sending to a non “k:account”! <br /> <br /> Are you sure you want to proceed?
-                  </CommonLabel>
-                  <DivFlex gap="10px" style={{ width: '90%', marginTop: 40 }}>
-                    <Button
-                      onClick={() => {
-                        setValue('accountName', '');
-                        closeModal();
-                      }}
-                      variant="secondary"
-                      label="Cancel"
-                      size="full"
-                    />
-                    <Button
-                      onClick={() => {
-                        closeModal();
-                        setIsOpenConfirmModal(true);
-                      }}
-                      label="Continue"
-                      size="full"
-                    />
-                  </DivFlex>
-                </DivFlex>
-              ),
-            });
+            openModal(
+              createWarningModal({
+                message: t('selectReceiver.alerts.nonKRWarning'),
+                onCancel: () => {
+                  setValue('accountName', '');
+                  closeModal();
+                },
+                onContinue: () => {
+                  closeModal();
+                  setIsOpenConfirmModal(true);
+                },
+              }),
+            );
           }
         })
         .catch(() => {
-          toast.error(<Toast type="fail" content="Network error" />);
+          toast.error(<Toast type="fail" content={t('popupConfirm.networkError')} />);
           hideLoading();
           setIsSearching(false);
         });
@@ -545,52 +603,88 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
 
       {isOpenConfirmModal && (
         <ModalCustom
-          isOpen
+          isOpen={isOpenConfirmModal}
           title={t('selectReceiver.confirm.warningTitle')}
           onCloseModal={() => setIsOpenConfirmModal(false)}
           closeOnOverlayClick={false}
         >
           <div style={{ padding: '0 24px' }}>
-            {/* ... */}
-            <BaseTextInput
-              title={t('selectReceiver.confirm.publicKeyTitle')}
-              inputProps={{
-                placeholder: t('selectReceiver.confirm.publicKeyPlaceholder'),
-                ...register('publicKey'),
-              }}
-              image={{
-                width: '20px',
-                height: '20px',
-                src: images.transfer.violetAdd,
-                callback: () => onAddPublicKey(),
-              }}
-              height="auto"
-              onChange={(e) => {
-                clearErrors('publicKey');
-                setValue('publicKey', e.target.value);
-              }}
-            />
-            {/* ... */}
-            <Controller
-              control={control}
-              name="pred"
-              rules={{
-                required: {
-                  value: true,
-                  message: t('common.requiredField'),
-                },
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <BaseSelect
-                  selectProps={{ onChange, onBlur, value }}
-                  options={predList}
-                  title={t('selectReceiver.confirm.predicateTitle')}
-                  placeholder={t('selectReceiver.confirm.predicatePlaceholder')}
+            <DivFlex justifyContent="center">
+              <JazzAccount
+                diameter={50}
+                account={account.accountName}
+                renderAccount={
+                  account.accountName &&
+                  ((acc) => (
+                    <DivFlex flexDirection="column">
+                      <CommonLabel color={theme.footer?.primary} fontWeight={700} fontSize={14}>
+                        {acc}
+                      </CommonLabel>
+                      <SecondaryLabel fontWeight={500}>{t('selectReceiver.chainLabel', { chainId: account.chainId })}</SecondaryLabel>
+                    </DivFlex>
+                  ))
+                }
+              />
+            </DivFlex>
+
+            <DivFlex justifyContent="center" marginTop="20px" style={{ textAlign: 'center' }}>
+              <CommonLabel fontWeight={600} fontSize={14}>
+                {t('selectReceiver.confirm.notExistLine1')} <br />
+                {t('selectReceiver.confirm.notExistLine2')}
+              </CommonLabel>
+            </DivFlex>
+            <form onSubmit={handleSubmit(onCreateAccount)} id="create-account-form">
+              <InputWrapper>
+                <BaseTextInput
+                  inputProps={{
+                    placeholder: t('selectReceiver.confirm.publicKeyPlaceholder', { defaultValue: 'Input public key' }),
+                    ...register('publicKey', {
+                      required: false,
+                    }),
+                  }}
+                  image={{
+                    width: '20px',
+                    height: '20px',
+                    src: images.transfer.violetAdd,
+                    callback: () => onAddPublicKey(),
+                  }}
+                  title={t('selectReceiver.confirm.publicKeyTitle')}
                   height="auto"
+                  onChange={(e) => {
+                    clearErrors('publicKey');
+                    setValue('publicKey', e.target.value);
+                  }}
                 />
-              )}
-            />
-            {/* ... */}
+                {errors.publicKey && <InputError>{errors.publicKey.message}</InputError>}
+              </InputWrapper>
+              {pKeys.length > 0 && renderKeys()}
+              <InputWrapper>
+                <Controller
+                  control={control}
+                  name="pred"
+                  rules={{
+                    required: {
+                      value: true,
+                      message: 'This field is required.',
+                    },
+                  }}
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <BaseSelect
+                      selectProps={{
+                        onChange,
+                        onBlur,
+                        value,
+                      }}
+                      options={predList}
+                      title={t('selectReceiver.confirm.predicateTitle')}
+                      height="auto"
+                      placeholder={t('selectReceiver.confirm.predicatePlaceholder')}
+                    />
+                  )}
+                />
+                {errors.pred && !getValues('pred') && <InputError>{errors.pred}</InputError>}
+              </InputWrapper>
+            </form>
             <DivFlex justifyContent="space-between" alignItems="center" margin="24px 0px" gap="10px">
               <Button size="full" variant="disabled" label={t('common.cancel')} onClick={() => setIsOpenConfirmModal(false)} />
               <Button size="full" variant="primary" label={t('common.continue')} form="create-account-form" />

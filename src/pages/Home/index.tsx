@@ -5,6 +5,8 @@ import EckoWalletLogo from '../../images/ecko-wallet-logo.svg?react';
 import styled from 'styled-components';
 import Button from '../../components/Buttons';
 import { LanguageSelector } from '@Components/LanguageSelector';
+import { RUNONFLUX_LINK } from '@Utils/config';
+import images from 'src/images';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -39,6 +41,12 @@ const DivImage = styled.div`
   margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};
 `;
+
+const PoweredByFlux = styled.img<{ size: string; top: string; width: string }>`
+  width: ${($props) => $props.width};
+  margin: 10px 0;
+`;
+
 const HomePage = () => {
   const history = useHistory();
   const { t } = useTranslation();
@@ -50,6 +58,9 @@ const HomePage = () => {
       <Wrapper>
         <DivImage marginBottom="120px">
           <EckoWalletLogo style={{ width: 200 }} />
+          <a href={RUNONFLUX_LINK} target="_blank" rel="noreferrer">
+            <PoweredByFlux src={images.poweredByFlux} width={100} alt="Powered by Flux" />
+          </a>
           <SecondaryLabel>The Kadena ecosystem gateway</SecondaryLabel>
         </DivImage>
         <LanguageSelector />

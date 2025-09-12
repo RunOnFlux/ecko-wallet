@@ -1,7 +1,7 @@
 {
   "name": "eckoWALLET",
   "description": "The best web extension wallet for the Kadena blockchain.",
-  "version": "2.21.1",
+  "version": "2.22.3",
   "manifest_version": 3,
   "background": {
     "service_worker": "app/background.js"
@@ -38,8 +38,6 @@
     "128": "favicon.png"
   },
   "content_security_policy": {
-    "content_security_policy": {
-      "extension_pages": "default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src *; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; frame-src https://buy.onramper.com; sandbox allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
-    }
+    "extension_pages": "default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: http: http://localhost:3001 https://api-dexscan.eckowallet.com; connect-src *; script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; frame-src https://buy.onramper.com https://chainweaver.kadena.io; sandbox allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
   }
 }

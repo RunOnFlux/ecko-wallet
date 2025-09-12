@@ -264,6 +264,8 @@ const Transfer = (props: Props) => {
     isCrossChain,
     selectedNetwork,
     estimateFee,
+    isRAccount: destinationAccount?.isRAccount,
+    keysetRefGuard: destinationAccount?.keysetRefGuard,
   };
 
   const onCloseTransfer = () => {

@@ -15,10 +15,12 @@ import { InputError } from 'src/baseComponent';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
 import { sendWalletConnectMessage, updateQuickSignedCmdMessage } from 'src/utils/message';
 import { DEFAULT_BIP32_PATH, bufferToHex, useLedgerContext } from 'src/contexts/LedgerContext';
+import { useSpireKeyContext } from 'src/contexts/SpireKeyContext';
 import { AccountType } from 'src/stores/slices/wallet';
 import { DappDescription, DappLogo, DappWrapper, WalletConnectParams } from './SignedCmd';
 import { useAppSelector } from 'src/stores/hooks';
 import { useTranslation } from 'react-i18next';
+import { createTransactionBuilder, ChainId } from '@kadena/client';
 
 const CommandListWrapper = styled.div`
   padding: 10px;
@@ -53,6 +55,7 @@ const QuickSignedCmd = () => {
   const [quickSignData, setQuickSignData] = useState<any>([]);
   const [walletConnectParams, setWalletConnectParams] = useState<WalletConnectParams | null>(null);
   const { getLedger } = useLedgerContext();
+  const { signTransactions, ensureAccountReady, isWaitingSpireKey, account } = useSpireKeyContext();
 
   const { publicKey, secretKey, type } = useAppSelector((state) => state.wallet);
 
@@ -109,6 +112,57 @@ const QuickSignedCmd = () => {
   const checkHasQuickSignValidSignature = async (commandSigDatas) =>
     commandSigDatas && commandSigDatas.filter((r) => r.sigs?.some((s) => s.pubKey === publicKey))?.length > 0;
 
+  const buildSpireKeyTransactions = async (commandSigDatas) => {
+    const transactions = [];
+
+    for (const { cmd } of commandSigDatas) {
+      const parsedCmd = JSON.parse(cmd);
+
+      let tx = createTransactionBuilder()
+        .execution(parsedCmd.payload.exec.code)
+        .setMeta({
+          senderAccount: parsedCmd.meta.sender,
+          chainId: parsedCmd.meta.chainId as ChainId,
+          gasLimit: parsedCmd.meta.gasLimit,
+          gasPrice: parsedCmd.meta.gasPrice,
+          ttl: parsedCmd.meta.ttl,
+        })
+        .setNetworkId(parsedCmd.networkId);
+
+      if (parsedCmd.payload.exec.data) {
+        Object.entries(parsedCmd.payload.exec.data).forEach(([key, value]) => {
+          tx.addData(key, value as any);
+        });
+      }
+
+      if (account?.devices) {
+        account.devices.flatMap((d: any) =>
+          d.guard.keys.map((k: string) =>
+            tx.addSigner(
+              {
+                pubKey: k,
+                scheme: /^WEBAUTHN-/.test(k) ? 'WebAuthn' : 'ED25519',
+              },
+              (withCap: any) => {
+                if (parsedCmd.signers && parsedCmd.signers.length > 0) {
+                  const signer = parsedCmd.signers.find((s: any) => s.pubKey === publicKey);
+                  if (signer && signer.clist) {
+                    return signer.clist.map((cap: any) => (withCap as any)(cap.name, ...(cap.args || [])));
+                  }
+                }
+                return [];
+              },
+            ),
+          ),
+        );
+      }
+
+      (transactions as any[]).push(tx.createTransaction());
+    }
+
+    return transactions;
+  };
+
   const quickSignCmd = async (data) => {
     const isValidPayload = checkIsValidQuickSignPayload(data);
     if (!isValidPayload) {
@@ -124,6 +178,58 @@ const QuickSignedCmd = () => {
     if (type === AccountType.LEDGER) {
       setIsWaitingLedger(true);
       ledger = await getLedger();
+    }
+
+    if (type === AccountType.SPIREKEY) {
+      try {
+        const firstCmd = JSON.parse(data.commandSigDatas[0].cmd);
+        await ensureAccountReady(firstCmd.networkId, firstCmd.meta.chainId);
+
+        const transactions = await buildSpireKeyTransactions(data.commandSigDatas);
+
+        const requirements = account
+          ? [
+              {
+                accountName: account.accountName,
+                networkId: account.networkId,
+                chainIds: account.chainIds,
+                requestedFungibles: [],
+              },
+            ]
+          : [];
+
+        const signedTransactions = await signTransactions(transactions, requirements);
+
+        if (signedTransactions && signedTransactions.length > 0) {
+          const signedResponses: any[] = [];
+          for (let i = 0; i < data.commandSigDatas.length; i += 1) {
+            const { cmd, sigs } = data.commandSigDatas[i];
+            const signatureIndex = sigs.findIndex((s) => s.pubKey === publicKey);
+
+            if (signatureIndex >= 0 && signedTransactions[i]) {
+              const spireSigned = signedTransactions[i];
+              if (spireSigned?.sigs && spireSigned.sigs.length > 0) {
+                sigs[signatureIndex].sig = spireSigned.sigs[0]?.sig;
+              }
+            }
+
+            signedResponses.push({
+              commandSigData: {
+                cmd,
+                sigs,
+              },
+              outcome: {
+                result: 'success',
+                hash: kadenaJSHash(cmd),
+              },
+            });
+          }
+          return signedResponses;
+        }
+      } catch (err: any) {
+        setErrorMessage(err?.message || 'SpireKey quick sign failed');
+        return null;
+      }
     }
 
     const signedResponses: any[] = [];
@@ -227,6 +333,11 @@ const QuickSignedCmd = () => {
           )}
         </DivFlex>
       )}
+      {type === AccountType.SPIREKEY && isWaitingSpireKey && (
+        <DivFlex flexDirection="column" alignItems="center" padding="24px">
+          <SecondaryLabel style={{ textAlign: 'center' }}>Please confirm on SpireKey</SecondaryLabel>
+        </DivFlex>
+      )}
       {quickSignData?.map(({ commandSigData, outcome }, iCmd) => {
         const cmd = JSON.parse(commandSigData?.cmd || {});
         const signData = {
@@ -236,7 +347,8 @@ const QuickSignedCmd = () => {
         };
         const caps = cmd?.signers?.find((s) => s?.pubKey === publicKey)?.clist;
         return (
-          !isWaitingLedger && (
+          !isWaitingLedger &&
+          !isWaitingSpireKey && (
             <>
               <CommonLabel textCenter fontWeight={800} style={{ marginBottom: 15 }}>
                 COMMAND {iCmd + 1}/{quickSignData?.length}
@@ -269,14 +381,14 @@ const QuickSignedCmd = () => {
           )
         );
       })}
-      {!isWaitingLedger && (
+      {!isWaitingLedger && !isWaitingSpireKey && (
         <>
           <DivFlex gap="10px" padding="24px">
             <InputError>{errorMessage}</InputError>
           </DivFlex>
           <DivFlex gap="10px" padding="24px">
             <Button size="full" label={errorMessage ? 'Close' : 'Reject'} variant="disabled" onClick={onClose} />
-            {!errorMessage && <Button isDisabled={isWaitingLedger} size="full" label="Confirm" onClick={onSave} />}
+            {!errorMessage && <Button isDisabled={isWaitingLedger || isWaitingSpireKey} size="full" label="Confirm" onClick={onSave} />}
           </DivFlex>
         </>
       )}

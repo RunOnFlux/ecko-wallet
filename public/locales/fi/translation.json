@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Ledger-allekirjoitus onnistui",
     "ledgerSignFailed": "Ledger-allekirjoitus epäonnistui tai hylättiin",
+    "spireKeySignSuccess": "SpireKey-allekirjoitus onnistui",
+    "spireKeySignFailed": "SpireKey-allekirjoitus epäonnistui tai hylättiin",
     "transferSuccess": "Siirto onnistui",
     "transferFailed": "Siirto epäonnistui",
     "transactionSent": "Tapahtuma lähetetty onnistuneesti! Tarkista tila historia-välilehdeltä",

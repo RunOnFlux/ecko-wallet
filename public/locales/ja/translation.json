@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Ledger署名に成功しました",
     "ledgerSignFailed": "Ledger署名に失敗または拒否されました",
+    "spireKeySignSuccess": "SpireKey署名に成功しました",
+    "spireKeySignFailed": "SpireKey署名に失敗または拒否されました",
     "transferSuccess": "送金に成功しました",
     "transferFailed": "送金に失敗しました",
     "transactionSent": "トランザクションが正常に送信されました！履歴タブを確認してください",

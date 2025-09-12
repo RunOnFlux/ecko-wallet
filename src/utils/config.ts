@@ -16,12 +16,13 @@ export const CONFIG = {
 };
 export const NUMBER_DECIMAL_AFTER_DOT = 12;
 export const ESTIMATE_KDA_TO_USD_API = 'https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&ids=kadena,';
-export const KADDEX_ANALYTICS_API = 'https://api.ecko.finance';
+export const KADDEX_ANALYTICS_API = 'https://api.eckowallet.com';
 export const TELEGRAM_GROUP_LINK = 'https://t.me/kadena_io';
 export const DISCORD_INVITATION_LINK = 'https://discord.com/invite/QSJpHRFDcv';
-export const WEBSITE_LINK = 'https://wallet.ecko.finance/';
-export const TERM_LINK = 'https://wallet.ecko.finance/terms-of-use';
-export const PRIVACY_LINK = 'https://wallet.ecko.finance/privacy-policy';
+export const WEBSITE_LINK = 'https://eckowallet.com/';
+export const TERM_LINK = 'https://eckowallet.com/terms-of-use';
+export const PRIVACY_LINK = 'https://eckowallet.com/privacy-policy';
+export const RUNONFLUX_LINK = 'https://runonflux.com/';
 
 export type GasType = {
   LABEL: string;

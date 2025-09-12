@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Ledger-signering lyckades",
     "ledgerSignFailed": "Ledger-signering misslyckades eller avvisades",
+    "spireKeySignSuccess": "SpireKey-signering lyckades",
+    "spireKeySignFailed": "SpireKey-signering misslyckades eller avvisades",
     "transferSuccess": "Överföring lyckades",
     "transferFailed": "Överföring misslyckades",
     "transactionSent": "Transaktion skickad! Se status i Historik",

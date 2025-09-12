@@ -9,17 +9,20 @@ const coinToken: IFungibleToken = {
   symbol: 'KDA',
 };
 
-type TKnownToken = Record<string, {
-  symbol: string,
-  image: unknown,
-  coingeckoId?: string,
-}>;
+type TKnownToken = Record<
+  string,
+  {
+    symbol: string;
+    coingeckoId?: string;
+  }
+>;
 
 const knownTokens = Object.keys(KNOWN_TOKENS as TKnownToken).map(
-  (contractAddress) => ({
-    contractAddress,
-    symbol: KNOWN_TOKENS[contractAddress].symbol.toUpperCase(),
-  } as IFungibleToken),
+  (contractAddress) =>
+    ({
+      contractAddress,
+      symbol: KNOWN_TOKENS[contractAddress].symbol.toUpperCase(),
+    } as IFungibleToken),
 );
 
 export const useFungibleTokensList = () => {
@@ -32,11 +35,7 @@ export const useFungibleTokensList = () => {
     symbol: token.symbol.toUpperCase(),
   }));
 
-  const allTokens = [
-    coinToken,
-    ...localFungibleTokensParsed,
-    ...knownTokens,
-  ];
+  const allTokens = [coinToken, ...localFungibleTokensParsed, ...knownTokens];
 
   const withoutDuplicates = allTokens.reduce((acc, token) => {
     if (!acc[token.contractAddress]) {

@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Podpis Ledger zakończony powodzeniem",
     "ledgerSignFailed": "Podpis Ledger nie powiódł się lub został odrzucony",
+    "spireKeySignSuccess": "Podpis SpireKey zakończony powodzeniem",
+    "spireKeySignFailed": "Podpis SpireKey nie powiódł się lub został odrzucony",
     "transferSuccess": "Przelew zakończony sukcesem",
     "transferFailed": "Przelew nie powiódł się",
     "transactionSent": "Transakcja wysłana pomyślnie! Sprawdź status w zakładce Historia",

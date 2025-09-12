@@ -202,6 +202,134 @@
     "terms": "Όροι χρήσης",
     "privacy": "Πολιτική απορρήτου"
   },
+  "sendTransactions": {
+    "header": "Αποστολή συναλλαγής {{symbol}}"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Η υπογραφή Ledger ήταν επιτυχής",
+    "ledgerSignFailed": "Η υπογραφή Ledger απέτυχε ή απορρίφθηκε",
+    "spireKeySignSuccess": "Η υπογραφή SpireKey ήταν επιτυχής",
+    "spireKeySignFailed": "Η υπογραφή SpireKey απέτυχε ή απορρίφθηκε",
+    "transferSuccess": "Η μεταφορά ήταν επιτυχής",
+    "transferFailed": "Η μεταφορά απέτυχε",
+    "transactionSent": "Η συναλλαγή στάλθηκε επιτυχώς! Παρακαλώ ελέγξτε την κατάσταση στο ιστορικό",
+    "networkError": "Σφάλμα δικτύου.",
+    "loadingTop": "Παρακαλώ μην κλείσετε αυτή την προβολή",
+    "loadingBottom": "Θα ανακατευθυνθείτε αυτόματα όταν ολοκληρωθεί η συναλλαγή",
+    "labelReceiver": "Παραλήπτης",
+    "labelAmount": "Ποσό",
+    "labelGasLimit": "Όριο gas",
+    "labelGasPrice": "Τιμή gas",
+    "labelGasFee": "Τέλος gas",
+    "labelTotal": "Σύνολο",
+    "warningCrossChainLine1": "Πρόκειται να κάνετε cross-chain μεταφορά",
+    "warningCrossChainLine2": "Αυτή η λειτουργία συνήθως παίρνει περισσότερο χρόνο",
+    "warningNonKAccountLine1": "Στέλνετε σε λογαριασμό που δεν είναι \"k:account\"!",
+    "warningNonKAccountLine2": "Είστε σίγουροι ότι θέλετε να συνεχίσετε;"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} δεν μεταφέρεται!",
+    "form": {
+      "sourceChainId": {
+        "title": "Source Chain ID"
+      },
+      "destinationAccount": {
+        "title": "Λογαριασμός προορισμού"
+      },
+      "targetChainId": {
+        "title": "Target Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "Ο λογαριασμός προορισμού μπορεί να έχει μέχρι 1000 χαρακτήρες."
+    },
+    "balanceLabel": "Υπόλοιπο {{symbol}} chain",
+    "recent": "ΠΡΟΣΦΑΤΑ",
+    "contacts": "ΕΠΑΦΕΣ",
+    "confirm": {
+      "warningTitle": "Προειδοποίηση",
+      "publicKeyTitle": "Δημόσιο κλειδί",
+      "publicKeyPlaceholder": "Εισάγετε δημόσιο κλειδί",
+      "predicateTitle": "Κατηγόρημα",
+      "predicatePlaceholder": "Κατηγόρημα"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "Δεν μπορείτε να στείλετε στον εαυτό σας",
+    "invalidGasLimit": "Μη έγκυρο όριο gas",
+    "gasLimitInteger": "Το όριο gas πρέπει να είναι ακέραιος αριθμός",
+    "invalidGasPrice": "Μη έγκυρη τιμή gas",
+    "insufficientFundsGas": "Ανεπαρκή κεφάλαια για τέλος gas",
+    "newAddressDetected": "Εντοπίστηκε νέα διεύθυνση! Προσθέστε την στις επαφές σας",
+    "tokenNotExists": "Το {{contractAddress}} μπορεί να μην υπάρχει στο chain {{chainId}}!",
+    "transactionParameters": "Παράμετροι συναλλαγής",
+    "estimatedGas": "Εκτιμώμενο gas {{gas}}",
+    "speed": "Ταχύτητα {{speed}}",
+    "modal": {
+      "confirmTitle": "Επιβεβαίωση αποστολής συναλλαγής",
+      "gasParametersTitle": "Παράμετροι gas"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "Όριο gas"
+      },
+      "gasPrice": {
+        "title": "Τιμή gas"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "Ποσό προς αποστολή",
+    "button": {
+      "half": "ΜΙΣΟ",
+      "max": "ΜΕΓΙΣΤΟ"
+    },
+    "error": {
+      "insufficientFunds": "Ανεπαρκή κεφάλαια",
+      "invalidAmount": "Μη έγκυρο ποσό"
+    },
+    "balance": "Υπόλοιπο: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Λογότυπο Dapp",
+    "sendTransaction": "Αποστολή συναλλαγής",
+    "destinationNotFound": "Δεν βρέθηκε λογαριασμός προορισμού"
+  },
+  "history": {
+    "header": "Ιστορικό",
+    "modal": {
+      "confirmSendTransaction": "Επιβεβαίωση αποστολής συναλλαγής"
+    }
+  },
+  "activities": {
+    "detailsTitle": "Λεπτομέρειες συναλλαγής"
+  },
+  "receiveModal": {
+    "accountNameTitle": "Όνομα λογαριασμού σας"
+  },
+  "activityList": {
+    "loading": "Φόρτωση...",
+    "today": "Σήμερα",
+    "yesterday": "Χθες",
+    "noTransactions": "Δεν έχετε συναλλαγές"
+  },
+  "statusFilter": {
+    "modalTitle": "Κατάσταση",
+    "prefix": "Κατάσταση: ",
+    "options": {
+      "all": "Όλες",
+      "in": "Εισερχόμενες",
+      "out": "Εξερχόμενες",
+      "pending": "Εκκρεμείς"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "Token",
+    "prefix": "Περιουσιακό στοιχείο: ",
+    "options": {
+      "all": "Όλα"
+    }
+  },
   "footer": {
     "wallet": "Πορτοφόλι",
     "analytics": "Αναλύσεις",

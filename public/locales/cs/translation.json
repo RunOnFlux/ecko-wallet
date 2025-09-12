@@ -511,6 +511,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Podpis Ledger úspěšný",
     "ledgerSignFailed": "Podpis Ledger selhal nebo byl odmítnut",
+    "spireKeySignSuccess": "Podpis SpireKey úspěšný",
+    "spireKeySignFailed": "Podpis SpireKey selhal nebo byl odmítnut",
     "transferSuccess": "Převod úspěšný",
     "transferFailed": "Převod selhal",
     "transactionSent": "Transakce úspěšně odeslána! Zkontrolujte stav v historii",

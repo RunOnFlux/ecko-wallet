@@ -12,6 +12,7 @@ import { SettingsProvider } from './contexts/SettingsContext';
 import { AccountBalanceProvider } from './contexts/AccountBalanceContext';
 import ModalCustom from './components/Modal/ModalCustom';
 import { LedgerProvider } from './contexts/LedgerContext';
+import { SpireKeyProvider } from './contexts/SpireKeyContext';
 import { NotificationContextProvider } from './contexts/NotificationsContext';
 import ToastContainer from './components/ToastContainer';
 
@@ -42,31 +43,33 @@ const App = () => (
         <AppWrapper>
           <Content>
             <LedgerProvider>
-              <ModalProvider>
-                <SettingsProvider>
-                  <AccountBalanceProvider>
-                    <QueryClientProvider client={queryClient}>
-                      <NotificationContextProvider>
-                        <ModalConsumer>
-                          {({ isOpen, title, content, footer, closeModal, roundIcon, bodyHeight }) => (
-                            <ModalCustom
-                              isOpen={isOpen || false}
-                              title={title}
-                              bodyHeight={bodyHeight}
-                              footer={footer}
-                              onCloseModal={closeModal}
-                              roundIcon={roundIcon}
-                            >
-                              {content}
-                            </ModalCustom>
-                          )}
-                        </ModalConsumer>
-                        <AppContainer />
-                      </NotificationContextProvider>
-                    </QueryClientProvider>
-                  </AccountBalanceProvider>
-                </SettingsProvider>
-              </ModalProvider>
+              <SpireKeyProvider>
+                <ModalProvider>
+                  <SettingsProvider>
+                    <AccountBalanceProvider>
+                      <QueryClientProvider client={queryClient}>
+                        <NotificationContextProvider>
+                          <ModalConsumer>
+                            {({ isOpen, title, content, footer, closeModal, roundIcon, bodyHeight }) => (
+                              <ModalCustom
+                                isOpen={isOpen || false}
+                                title={title}
+                                bodyHeight={bodyHeight}
+                                footer={footer}
+                                onCloseModal={closeModal}
+                                roundIcon={roundIcon}
+                              >
+                                {content}
+                              </ModalCustom>
+                            )}
+                          </ModalConsumer>
+                          <AppContainer />
+                        </NotificationContextProvider>
+                      </QueryClientProvider>
+                    </AccountBalanceProvider>
+                  </SettingsProvider>
+                </ModalProvider>
+              </SpireKeyProvider>
             </LedgerProvider>
           </Content>
         </AppWrapper>

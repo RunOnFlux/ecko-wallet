@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Ledger 서명 성공",
     "ledgerSignFailed": "Ledger 서명 실패 또는 거부됨",
+    "spireKeySignSuccess": "SpireKey 서명 성공",
+    "spireKeySignFailed": "SpireKey 서명 실패 또는 거부됨",
     "transferSuccess": "전송 성공",
     "transferFailed": "전송 실패",
     "transactionSent": "트랜잭션이 성공적으로 전송되었습니다! 내역 탭을 확인하세요",

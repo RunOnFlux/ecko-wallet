@@ -15,7 +15,7 @@ export const MAINNET_NETWORK_ID = 'mainnet01';
 export const getApiUrl = (url, networkId, chainId) =>
   // ignore dismissed networks
   `${
-    url === 'https://chainweb.kaddex.com' || url === 'https://chainweb.ecko.finance' ? 'https://api.chainweb.com' : url
+    url === 'https://chainweb.kaddex.com' || url === 'https://chainweb.ecko.finance' ? 'https://chainweb.eckowallet.com' : url
   }/chainweb/0.0/${networkId}/chain/${chainId}/pact`;
 
 export const fetchLocal = (code, url, networkId, chainId, gasLimit = 1500000) => {
@@ -189,4 +189,17 @@ export const getAccountExistsChains = async (accounts, networkUrl, networkId) =>
     }
   }
   return accountResponse;
+};
+
+export const fetchAccountDetails = async (
+  account: string,
+  tokenContract: string = 'coin',
+  networkUrl: string,
+  networkId: string,
+  chainId: number,
+  gasPrice: number = CONFIG.GAS_PRICE,
+  gasLimit: number = CONFIG.GAS_LIMIT,
+) => {
+  const code = `(${tokenContract}.details "${account}")`;
+  return fetchListLocal(code, networkUrl, networkId, chainId, gasPrice, gasLimit);
 };
