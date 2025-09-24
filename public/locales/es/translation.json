@@ -539,6 +539,7 @@
   "selectReceiver": {
     "notTransferable": "¡{{contractAddress}} no es transferible!",
     "form": {
+      "tokenTitle": "Token",
       "sourceChainId": {
         "title": "ID de la cadena de origen"
       },

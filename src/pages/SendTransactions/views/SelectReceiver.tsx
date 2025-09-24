@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useRef } from 'react';
+import { useState, useContext, useEffect, useRef, useMemo } from 'react';
 import { hideLoading, showLoading } from 'src/stores/slices/extensions';
 import { extractDecimal, fetchListLocal, fetchAccountDetails } from 'src/utils/chainweb';
 import { BaseSelect, BaseTextInput, BaseModalSelect, InputError } from 'src/baseComponent';
@@ -13,7 +13,10 @@ import { SInput, SLabel } from 'src/baseComponent/BaseTextInput';
 import Spinner from 'src/components/Spinner';
 import { useModalContext } from 'src/contexts/ModalContext';
 import { JazzAccount } from 'src/components/JazzAccount';
-import { NON_TRANSFERABLE_TOKENS } from 'src/utils/constant';
+import { NON_TRANSFERABLE_TOKENS, getTokenImageUrl } from 'src/utils/constant';
+import { SelectionOption } from 'src/components/RadioSelection';
+import useLocalStorage from 'src/hooks/useLocalStorage';
+import { IFungibleTokensByNetwork, LOCAL_DEFAULT_FUNGIBLE_TOKENS, LOCAL_KEY_FUNGIBLE_TOKENS } from 'src/pages/ImportToken';
 import { useAccountBalanceContext } from 'src/contexts/AccountBalanceContext';
 import { useAppThemeContext } from 'src/contexts/AppThemeContext';
 import { SettingsContext } from 'src/contexts/SettingsContext';
@@ -70,6 +73,20 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
   const rootStateWallet = useAppSelector((state) => state.wallet);
   const history = useHistory();
   const optionsChain = useChainIdOptions();
+  const [localFungibleTokens] = useLocalStorage<IFungibleTokensByNetwork>(LOCAL_KEY_FUNGIBLE_TOKENS, LOCAL_DEFAULT_FUNGIBLE_TOKENS);
+  const networkId = selectedNetwork?.networkId;
+  const tokenOptions: SelectionOption[] = useMemo(() => {
+    const userTokens = ((localFungibleTokens && localFungibleTokens[networkId]) || []) as any[];
+    const defaultTokens = (LOCAL_DEFAULT_FUNGIBLE_TOKENS[networkId] || []).map((t) => t.contractAddress);
+    const filtered = userTokens.filter((ft) => !defaultTokens.includes(ft.contractAddress));
+    const mapped = filtered
+      .map((ft) => ({
+        label: (ft.symbol as string)?.toUpperCase?.() || (ft.symbol as string),
+        value: ft.contractAddress as string,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+    return [{ label: 'KDA', value: 'coin' }, { label: 'FLUX', value: 'runonflux.flux' }, ...mapped];
+  }, [localFungibleTokens, networkId]);
   const { data: settings } = useContext(SettingsContext);
   const txSettings = settings?.txSettings;
   const { selectedAccountBalance, usdPrices } = useAccountBalanceContext();
@@ -115,6 +132,10 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
       sourceChainId: !Number.isNaN(sourceChainId) ? { value: Number(sourceChainId), label: `Chain ${sourceChainId}` } : { label: null, value: null },
       pred: { label: null, value: null },
       publicKey: '',
+      token: {
+        value: fungibleToken?.contractAddress,
+        label: (fungibleToken?.symbol as string)?.toUpperCase?.() || (fungibleToken?.symbol as string),
+      },
     },
   });
 
@@ -124,6 +145,12 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
   const accountName = getValues('accountName');
 
   const debouncedAccountName = useDebounce(accountName, 500);
+  useEffect(() => {
+    setValue('token', {
+      value: fungibleToken?.contractAddress,
+      label: (fungibleToken?.symbol as string)?.toUpperCase?.() || (fungibleToken?.symbol as string),
+    } as any);
+  }, [fungibleToken?.contractAddress, fungibleToken?.symbol]);
 
   useEffect(() => {
     if (debouncedAccountName?.endsWith('.kda')) {
@@ -153,7 +180,6 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
 
   const onNext = async () => {
     const receiver: string = convertedAccountName || getValues('accountName');
-    console.log('🚀 ~ onNext ~ receiver:', receiver);
     const aliasName = receiver !== getValues('accountName') ? getValues('accountName') : null;
     const chainId: any = getValues('chainId')?.value;
     const sourceChainIdValue: any = getValues('sourceChainId')?.value;
@@ -451,6 +477,47 @@ const SelectReceiver = ({ goToTransfer, sourceChainId, fungibleToken }: Props) =
           )}
           <DivBottomShadow justifyContent="center" flexDirection="column" padding="20px" margin="0 -20px">
             <InputWrapper style={{ marginTop: 0 }}>
+              <Controller
+                control={control}
+                name="token"
+                render={({ field: { onChange, value } }) => {
+                  const selected = (value?.value as string) || (fungibleToken?.contractAddress as string);
+                  const iconUrl = getTokenImageUrl(selected || 'coin');
+                  return (
+                    <BaseModalSelect
+                      value={value}
+                      onChange={(opt) => {
+                        onChange(opt);
+                        const params = new URLSearchParams(history.location.search);
+                        if (opt?.value) {
+                          params.set('coin', opt.value as string);
+                        } else {
+                          params.delete('coin');
+                        }
+                        history.replace({ search: params.toString() });
+                      }}
+                      options={tokenOptions}
+                      title={t('selectReceiver.form.tokenTitle') || 'Token'}
+                      displayValue={
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                          <img
+                            crossOrigin="anonymous"
+                            src={iconUrl}
+                            alt="token"
+                            style={{ width: 24, height: 24, borderRadius: 12, marginRight: 8 }}
+                          />
+                          <span>
+                            {(value?.label as string) || (fungibleToken?.symbol as string)?.toUpperCase?.() || (fungibleToken?.symbol as string)}
+                          </span>
+                        </div>
+                      }
+                    />
+                  );
+                }}
+              />
+            </InputWrapper>
+
+            <InputWrapper>
               <Controller
                 control={control}
                 name="sourceChainId"

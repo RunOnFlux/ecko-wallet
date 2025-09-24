@@ -551,6 +551,7 @@
       "checkingAccountDetails": "Error checking account details"
     },
     "form": {
+      "tokenTitle": "Token",
       "sourceChainId": {
         "title": "Source Chain ID"
       },

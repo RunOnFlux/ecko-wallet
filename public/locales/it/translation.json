@@ -551,6 +551,7 @@
       "checkingAccountDetails": "Errore durante il controllo dei dettagli dell'account"
     },
     "form": {
+      "tokenTitle": "Token",
       "sourceChainId": {
         "title": "ID Chain di origine"
       },
