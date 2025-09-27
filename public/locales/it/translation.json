@@ -593,6 +593,7 @@
     "insufficientFundsGas": "Fondi insufficienti per la commissione gas",
     "newAddressDetected": "Nuovo indirizzo rilevato! Aggiungi ai tuoi contatti",
     "tokenNotExists": "{{contractAddress}} non esiste su CHAIN {{chainId}}!",
+    "rAccountTokenWarning": "Questo contratto del token potrebbe non supportare gli account r: per il cross-chain. Assicurati di verificare l'indirizzo di destinazione e il supporto del token prima di procedere",
     "transactionParameters": "Parametri transazione",
     "estimatedGas": "Gas stimato {{gas}}",
     "speed": "Velocità {{speed}}",

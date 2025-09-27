@@ -444,6 +444,14 @@ const Transfer = (props: Props) => {
             </div>
           </Warning>
         )}
+        {destinationAccount?.accountName?.startsWith('r:') && fungibleToken?.contractAddress !== 'coin' && (
+          <Warning margin="10px 0">
+            <AlertIconSVG />
+            <div>
+              <span>{t('transfer.rAccountTokenWarning')}</span>
+            </div>
+          </Warning>
+        )}
         <DivBottomShadow margin="0 -20px 20px -20px" />
         <DivFlex justifyContent="space-between">
           <SecondaryLabel fontSize={12} fontWeight={600} uppercase>
