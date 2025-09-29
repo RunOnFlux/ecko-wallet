@@ -539,6 +539,7 @@
   "selectReceiver": {
     "notTransferable": "{{contractAddress}} n’est pas transférable !",
     "form": {
+      "tokenTitle": "Token",
       "sourceChainId": {
         "title": "ID de la chaîne source"
       },
@@ -571,6 +572,7 @@
     "insufficientFundsGas": "Fonds insuffisants pour les frais de gas",
     "newAddressDetected": "Nouvelle adresse détectée ! Ajoutez-la à vos contacts",
     "tokenNotExists": "{{contractAddress}} n’existe peut-être pas sur la CHAIN {{chainId}} !",
+    "rAccountTokenWarning": "Ce contrat de token peut ne pas prendre en charge les comptes r: pour le cross-chain. Assurez-vous de vérifier l’adresse de destination et la compatibilité du token avant de continuer",
     "transactionParameters": "Paramètres de la transaction",
     "estimatedGas": "Gas estimé {{gas}}",
     "speed": "Vitesse {{speed}}",
