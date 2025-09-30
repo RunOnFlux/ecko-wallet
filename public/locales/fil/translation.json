@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Matagumpay ang Ledger sign",
     "ledgerSignFailed": "Nabigo o tinanggihan ang Ledger sign",
+    "spireKeySignSuccess": "Matagumpay ang SpireKey sign",
+    "spireKeySignFailed": "Nabigo o tinanggihan ang SpireKey sign",
     "transferSuccess": "Matagumpay ang transfer",
     "transferFailed": "Nabigo ang transfer",
     "transactionSent": "Matagumpay na na-send ang transaksyon! Pakicheck ang status sa history",

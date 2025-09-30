@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Ledger aláírás sikerült",
     "ledgerSignFailed": "Ledger aláírás sikertelen vagy elutasított",
+    "spireKeySignSuccess": "SpireKey aláírás sikerült",
+    "spireKeySignFailed": "SpireKey aláírás sikertelen vagy elutasított",
     "transferSuccess": "Átutalás sikerült",
     "transferFailed": "Átutalás sikertelen",
     "transactionSent": "Tranzakció sikeresen elküldve! Nézd meg az előzmények fülön",

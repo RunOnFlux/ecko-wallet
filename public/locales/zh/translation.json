@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Ledger 签名成功",
     "ledgerSignFailed": "Ledger 签名失败或被拒绝",
+    "spireKeySignSuccess": "SpireKey 签名成功",
+    "spireKeySignFailed": "SpireKey 签名失败或被拒绝",
     "transferSuccess": "转账成功",
     "transferFailed": "转账失败",
     "transactionSent": "交易发送成功！请在历史记录中查看",

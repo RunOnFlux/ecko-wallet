@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Ledger подписът беше успешен",
     "ledgerSignFailed": "Ledger подписът неуспешен или отказан",
+    "spireKeySignSuccess": "SpireKey подписът беше успешен",
+    "spireKeySignFailed": "SpireKey подписът неуспешен или отказан",
     "transferSuccess": "Прехвърлянето беше успешно",
     "transferFailed": "Прехвърлянето неуспешно",
     "transactionSent": "Транзакцията е изпратена успешно! Проверете историята",

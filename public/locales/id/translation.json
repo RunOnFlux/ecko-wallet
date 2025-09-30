@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Tanda tangan Ledger berhasil",
     "ledgerSignFailed": "Tanda tangan Ledger gagal atau ditolak",
+    "spireKeySignSuccess": "Tanda tangan SpireKey berhasil",
+    "spireKeySignFailed": "Tanda tangan SpireKey gagal atau ditolak",
     "transferSuccess": "Transfer berhasil",
     "transferFailed": "Transfer gagal",
     "transactionSent": "Transaksi berhasil dikirim! Periksa status di riwayat",

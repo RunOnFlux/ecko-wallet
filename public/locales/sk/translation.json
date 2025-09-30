@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Podpis na Ledgeri úspešný",
     "ledgerSignFailed": "Podpis na Ledgeri zlyhal alebo bol odmietnutý",
+    "spireKeySignSuccess": "Podpis na SpireKey úspešný",
+    "spireKeySignFailed": "Podpis na SpireKey zlyhal alebo bol odmietnutý",
     "transferSuccess": "Prevod úspešný",
     "transferFailed": "Prevod zlyhal",
     "transactionSent": "Transakcia úspešne odoslaná! Skontrolujte stav v histórii",

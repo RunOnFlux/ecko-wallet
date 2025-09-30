@@ -264,6 +264,8 @@ const Transfer = (props: Props) => {
     isCrossChain,
     selectedNetwork,
     estimateFee,
+    isRAccount: destinationAccount?.isRAccount,
+    keysetRefGuard: destinationAccount?.keysetRefGuard,
   };
 
   const onCloseTransfer = () => {
@@ -439,6 +441,14 @@ const Transfer = (props: Props) => {
                   chainId: destinationAccount?.chainId,
                 })}
               </span>
+            </div>
+          </Warning>
+        )}
+        {destinationAccount?.accountName?.startsWith('r:') && fungibleToken?.contractAddress !== 'coin' && (
+          <Warning margin="10px 0">
+            <AlertIconSVG />
+            <div>
+              <span>{t('transfer.rAccountTokenWarning')}</span>
             </div>
           </Warning>
         )}

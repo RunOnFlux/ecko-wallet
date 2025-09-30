@@ -518,6 +518,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Ký Ledger thành công",
     "ledgerSignFailed": "Ký Ledger thất bại hoặc bị từ chối",
+    "spireKeySignSuccess": "Ký SpireKey thành công",
+    "spireKeySignFailed": "Ký SpireKey thất bại hoặc bị từ chối",
     "transferSuccess": "Chuyển thành công",
     "transferFailed": "Chuyển thất bại",
     "transactionSent": "Giao dịch đã được gửi thành công! Kiểm tra lịch sử",

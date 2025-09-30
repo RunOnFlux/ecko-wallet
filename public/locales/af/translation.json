@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Ledger-ondertekening suksesvol",
     "ledgerSignFailed": "Ledger-ondertekening misluk of geweier",
+    "spireKeySignSuccess": "SpireKey-ondertekening suksesvol",
+    "spireKeySignFailed": "SpireKey-ondertekening misluk of geweier",
     "transferSuccess": "Oordrag suksesvol",
     "transferFailed": "Oordrag misluk",
     "transactionSent": "Transaksie suksesvol gestuur! Kontroleer status in Geskiedenis",

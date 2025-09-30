@@ -515,6 +515,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Firma Ledger riuscita",
     "ledgerSignFailed": "Firma Ledger fallita o annullata",
+    "spireKeySignSuccess": "Firma SpireKey riuscita",
+    "spireKeySignFailed": "Firma SpireKey fallita o annullata",
     "transferSuccess": "Trasferimento avvenuto con successo",
     "transferFailed": "Trasferimento fallito",
     "transactionSent": "Transazione inviata con successo! Controlla lo stato nella cronologia",
@@ -534,7 +536,22 @@
   },
   "selectReceiver": {
     "notTransferable": "{{contractAddress}} non è trasferibile!",
+    "predicate": {
+      "allKeys": "Tutte le chiavi",
+      "anySingleKey": "Qualsiasi singola chiave"
+    },
+    "alerts": {
+      "genericProceed": "Sei sicuro di voler procedere?",
+      "rAccountNotActive": "Questo r:account non è ancora attivo. Chiedi al destinatario di aprire SpireKey e inizializzare l'account.",
+      "rAccountNotExistForToken": "Questo r:account non esiste per il token {{token}}. Chiedi al destinatario di inizializzare l'account.",
+      "nonKRWarning": "Stai inviando a un account diverso da \"k:account\" o \"r:account\"! Sei sicuro di voler procedere?"
+    },
+    "chainLabel": "CHAIN {{chainId}}",
+    "error": {
+      "checkingAccountDetails": "Errore durante il controllo dei dettagli dell'account"
+    },
     "form": {
+      "tokenTitle": "Token",
       "sourceChainId": {
         "title": "ID Chain di origine"
       },
@@ -544,6 +561,15 @@
       "targetChainId": {
         "title": "ID Chain di destinazione"
       }
+    },
+    "confirm": {
+      "warningTitle": "Avviso",
+      "notExistLine1": "L'account di destinazione non esiste.",
+      "notExistLine2": "Devi specificare un keyset per creare questo account.",
+      "publicKeyTitle": "Chiave pubblica",
+      "publicKeyPlaceholder": "Inserisci chiave pubblica",
+      "predicateTitle": "Predicato",
+      "predicatePlaceholder": "Predicato"
     },
     "validation": {
       "maxDestinationAccount": "L'account di destinazione può contenere al massimo 1000 caratteri."
@@ -567,6 +593,7 @@
     "insufficientFundsGas": "Fondi insufficienti per la commissione gas",
     "newAddressDetected": "Nuovo indirizzo rilevato! Aggiungi ai tuoi contatti",
     "tokenNotExists": "{{contractAddress}} non esiste su CHAIN {{chainId}}!",
+    "rAccountTokenWarning": "Questo contratto del token potrebbe non supportare gli account r: per il cross-chain. Assicurati di verificare l'indirizzo di destinazione e il supporto del token prima di procedere",
     "transactionParameters": "Parametri transazione",
     "estimatedGas": "Gas stimato {{gas}}",
     "speed": "Velocità {{speed}}",

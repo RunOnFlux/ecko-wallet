@@ -13,9 +13,9 @@ import { useTranslation } from 'react-i18next';
 import { addLocalActivity, addPendingCrossChainRequestKey, getLocalRecent, setLocalRecent } from 'src/utils/storage';
 import AlertIconSVG from 'src/images/icon-alert.svg?react';
 import { useLedgerContext } from 'src/contexts/LedgerContext';
+import { useSpireKeyContext } from 'src/contexts/SpireKeyContext';
 import { useGoHome } from 'src/hooks/ui';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
-import { LocalActivity } from 'src/components/Activities/types';
 import { generateActivityWithId } from 'src/components/Activities/utils';
 import SpokesLoading from 'src/components/Loading/Spokes';
 import Toast from 'src/components/Toast/Toast';
@@ -38,8 +38,8 @@ const PopupConfirm = (props: Props) => {
   const { configs, onClose, aliasContact, fungibleToken, kdaUSDPrice, estimateUSDAmount } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  // const { setCrossChainRequest, getCrossChainRequestsAsync } = useContext(CrossChainContext);
   const { sendTransaction, sendCrossChainTransaction } = useLedgerContext();
+  const { signTransactions, account: spireAccount, buildTransaction } = useSpireKeyContext();
   const goHome = useGoHome();
   const {
     senderName,
@@ -58,6 +58,8 @@ const PopupConfirm = (props: Props) => {
     domain,
     dappAmount,
     estimateFee,
+    isRAccount,
+    keysetRefGuard,
   } = configs;
   const amount = domain ? dappAmount : configs.amount;
 
@@ -67,15 +69,33 @@ const PopupConfirm = (props: Props) => {
 
   const getCmd = async () => {
     const decimals = getFloatPrecision(Number.parseFloat(amount)) || 2;
-    let pactCode = `(${fungibleToken.contractAddress}.transfer${receiverExists ? '' : '-create'} "${senderName}" "${receiverName}" ${
-      receiverExists ? '' : '(read-keyset "ks")'
-    } ${Number.parseFloat(amount).toFixed(decimals)})`;
+    let pactCode;
+
     if (isCrossChain) {
-      pactCode = `(${
-        fungibleToken.contractAddress
-      }.transfer-crosschain "${senderName}" "${receiverName}" (read-keyset "ks") "${receiverChainId}" ${Number.parseFloat(amount).toFixed(
-        decimals,
-      )})`;
+      if (isRAccount) {
+        pactCode = `(${fungibleToken.contractAddress}.transfer-crosschain "${senderName}" "${receiverName}"  (keyset-ref-guard "${
+          keysetRefGuard.keysetref.ns
+        }.${keysetRefGuard.keysetref.ksn}") "${receiverChainId}" ${Number.parseFloat(amount).toFixed(decimals)})`;
+      } else {
+        pactCode = `(${
+          fungibleToken.contractAddress
+        }.transfer-crosschain "${senderName}" "${receiverName}" (read-keyset "ks") "${receiverChainId}" ${Number.parseFloat(amount).toFixed(
+          decimals,
+        )})`;
+      }
+    } else {
+      // Same chain transfer
+      if (isRAccount && keysetRefGuard) {
+        pactCode = `(${fungibleToken.contractAddress}.transfer${
+          receiverExists ? '' : '-create'
+        } "${senderName}" "${receiverName}" ${`(keyset-ref-guard "${keysetRefGuard.keysetref.ns}.${keysetRefGuard.keysetref.ksn}")`} ${Number.parseFloat(
+          amount,
+        ).toFixed(decimals)})`;
+      } else {
+        pactCode = `(${fungibleToken.contractAddress}.transfer${receiverExists ? '' : '-create'} "${senderName}" "${receiverName}" ${
+          receiverExists ? '' : '(read-keyset "ks")'
+        } ${Number.parseFloat(amount).toFixed(decimals)})`;
+      }
     }
     const crossKeyPairs: any = {
       publicKey: senderPublicKey,
@@ -113,12 +133,14 @@ const PopupConfirm = (props: Props) => {
     const cmd = {
       keyPairs,
       pactCode,
-      envData: {
-        ks: {
-          keys: receiverKeys,
-          pred: receiverPred,
-        },
-      },
+      envData: isRAccount
+        ? undefined
+        : {
+            ks: {
+              keys: receiverKeys,
+              pred: receiverPred,
+            },
+          },
       meta: Pact.lang.mkMeta(senderName, senderChainId.toString(), validGasPrice, validGasLimit, getTimestamp(), CONFIG.X_CHAIN_TTL),
       networkId: selectedNetwork.networkId,
     };
@@ -211,6 +233,49 @@ const PopupConfirm = (props: Props) => {
           toast.error(<Toast type="fail" content={t('popupConfirm.ledgerSignFailed')} />);
           return;
         }
+      } else if (configs?.type === AccountType.SPIREKEY) {
+        try {
+          const { transaction } = await buildTransaction({
+            senderName,
+            receiverName,
+            amount: Number(amount),
+            chainId: senderChainId.toString(),
+            networkId: selectedNetwork.networkId,
+            fungibleToken: fungibleToken.contractAddress || 'coin',
+            isCrossChain,
+            receiverChainId: receiverChainId?.toString(),
+            receiverExists,
+          });
+
+          const tokenModule = fungibleToken.contractAddress || 'coin';
+          const requirements = spireAccount
+            ? [
+                {
+                  accountName: spireAccount.accountName,
+                  networkId: spireAccount.networkId,
+                  chainIds: spireAccount.chainIds,
+                  requestedFungibles: [
+                    {
+                      fungible: tokenModule,
+                      amount: Number(amount) || 0,
+                      ...(isCrossChain ? { target: receiverChainId } : {}),
+                    },
+                  ],
+                },
+              ]
+            : [];
+          const signed = await signTransactions([transaction], requirements);
+          if (signed && signed.length > 0) {
+            sendCmd = signed[0];
+            toast.success(<Toast type="success" content={t('popupConfirm.spireKeySignSuccess')} />);
+          } else {
+            toast.error(<Toast type="fail" content={t('popupConfirm.spireKeySignFailed')} />);
+            return;
+          }
+        } catch (e) {
+          toast.error(<Toast type="fail" content={t('popupConfirm.ledgerSignFailed')} />);
+          return;
+        }
       } else if (senderPrivateKey.length > 64) {
         const signature = await getSignatureFromHash(sendCmd.hash, senderPrivateKey);
         sendCmd.sigs = [{ sig: signature }];
@@ -260,14 +325,24 @@ const PopupConfirm = (props: Props) => {
           toast.success(<Toast type="success" content={t('popupConfirm.transactionSent')} />);
           goHome();
         })
-        .catch(() => {
+        .catch((error) => {
+          let errorMessage = t('popupConfirm.networkError');
+
+          if (error?.response?.data) {
+            errorMessage = JSON.stringify(error.response.data);
+          } else if (error?.message) {
+            errorMessage = error.message;
+          } else if (typeof error === 'string') {
+            errorMessage = error;
+          }
+
           if (domain) {
             updateSendDapp({
               status: 'fail',
-              message: t('popupConfirm.transferFailed'),
+              message: errorMessage,
             });
           }
-          toast.error(<Toast type="fail" content={t('popupConfirm.networkError')} />);
+          toast.error(<Toast type="fail" content={errorMessage} />);
           setIsLoading(false);
         });
     }
@@ -293,7 +368,7 @@ const PopupConfirm = (props: Props) => {
     );
   }
 
-  const isVanityAccount = !receiverName?.startsWith('k:');
+  const isVanityAccount = !receiverName?.startsWith('k:') && !receiverName?.startsWith('r:');
 
   return (
     <div style={{ padding: '0 20px 20px 20px', marginTop: -15 }}>

@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "ลงนาม Ledger สำเร็จ",
     "ledgerSignFailed": "ลงนาม Ledger ล้มเหลวหรือถูกปฏิเสธ",
+    "spireKeySignSuccess": "ลงนาม SpireKey สำเร็จ",
+    "spireKeySignFailed": "ลงนาม SpireKey ล้มเหลวหรือถูกปฏิเสธ",
     "transferSuccess": "การโอนสำเร็จ",
     "transferFailed": "การโอนล้มเหลว",
     "transactionSent": "ส่งธุรกรรมเรียบร้อย! ตรวจสอบสถานะในประวัติ",

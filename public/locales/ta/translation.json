@@ -202,6 +202,134 @@
     "terms": "பயன்பாட்டு நிபந்திரங்கள்",
     "privacy": "தனியுரிமைக் கொள்கை"
   },
+  "sendTransactions": {
+    "header": "{{symbol}} பரிவர்த்தனையை அனுப்பு"
+  },
+  "popupConfirm": {
+    "ledgerSignSuccess": "Ledger கையொப்பம் வெற்றிகரமானது",
+    "ledgerSignFailed": "Ledger கையொப்பம் தோல்வியடைந்தது அல்லது நிராகரிக்கப்பட்டது",
+    "spireKeySignSuccess": "SpireKey கையொப்பம் வெற்றிகரமானது",
+    "spireKeySignFailed": "SpireKey கையொப்பம் தோல்வியடைந்தது அல்லது நிராகரிக்கப்பட்டது",
+    "transferSuccess": "பரிமாற்றம் வெற்றிகரமானது",
+    "transferFailed": "பரிமாற்றம் தோல்வியடைந்தது",
+    "transactionSent": "பரிவர்த்தனை வெற்றிகரமாக அனுப்பப்பட்டது! வரலாற்றில் நிலையை சரிபார்க்கவும்",
+    "networkError": "நெட்வொர்க் பிழை.",
+    "loadingTop": "இந்த காட்சியை மூட வேண்டாம்",
+    "loadingBottom": "பரிவர்த்தனை முடிந்தவுடன் தானாக திருப்பி விடப்படுவீர்கள்",
+    "labelReceiver": "பெறுநர்",
+    "labelAmount": "தொகை",
+    "labelGasLimit": "கேஸ் வரம்பு",
+    "labelGasPrice": "கேஸ் விலை",
+    "labelGasFee": "கேஸ் கட்டணம்",
+    "labelTotal": "மொத்தம்",
+    "warningCrossChainLine1": "நீங்கள் குறுக்கு-சங்கிலி பரிமாற்றம் செய்கிறீர்கள்",
+    "warningCrossChainLine2": "இந்த செயல்பாடு பொதுவாக அதிக நேரம் எடுக்கும்",
+    "warningNonKAccountLine1": "நீங்கள் \"k:account\" அல்லாத கணக்கிற்கு அனுப்புகிறீர்கள்!",
+    "warningNonKAccountLine2": "நீங்கள் தொடர விரும்புகிறீர்களா என்பதை உறுதிப்படுத்துங்கள்?"
+  },
+  "selectReceiver": {
+    "notTransferable": "{{contractAddress}} மாற்றக்கூடியதல்ல!",
+    "form": {
+      "sourceChainId": {
+        "title": "Source Chain ID"
+      },
+      "destinationAccount": {
+        "title": "இலக்கு கணக்கு"
+      },
+      "targetChainId": {
+        "title": "Target Chain ID"
+      }
+    },
+    "validation": {
+      "maxDestinationAccount": "இலக்கு கணக்கு அதிகபட்சம் 1000 எழுத்துகளைக் கொண்டிருக்கலாம்."
+    },
+    "balanceLabel": "{{symbol}} சங்கிலி இருப்பு",
+    "recent": "சமீபத்தியவை",
+    "contacts": "தொடர்புகள்",
+    "confirm": {
+      "warningTitle": "எச்சரிக்கை",
+      "publicKeyTitle": "பொது விசை",
+      "publicKeyPlaceholder": "பொது விசையை உள்ளிடவும்",
+      "predicateTitle": "வினைச்சொல்",
+      "predicatePlaceholder": "வினைச்சொல்"
+    }
+  },
+  "transfer": {
+    "cannotSendToYourself": "நீங்கள் உங்களுக்கு அனுப்ப முடியாது",
+    "invalidGasLimit": "தவறான கேஸ் வரம்பு",
+    "gasLimitInteger": "கேஸ் வரம்பு முழு எண்ணாக இருக்க வேண்டும்",
+    "invalidGasPrice": "தவறான கேஸ் விலை",
+    "insufficientFundsGas": "கேஸ் கட்டணத்திற்கு போதுமான நிதி இல்லை",
+    "newAddressDetected": "புதிய முகவரி கண்டறியப்பட்டது! தொடர்புகளில் சேர்க்கவும்",
+    "tokenNotExists": "{{contractAddress}} {{chainId}} சங்கிலியில் இல்லாமல் இருக்கலாம்!",
+    "transactionParameters": "பரிவர்த்தனை அளவுருக்கள்",
+    "estimatedGas": "மதிப்பிடப்பட்ட கேஸ் {{gas}}",
+    "speed": "வேகம் {{speed}}",
+    "modal": {
+      "confirmTitle": "பரிவர்த்தனை அனுப்புவதை உறுதிப்படுத்து",
+      "gasParametersTitle": "கேஸ் அளவுருக்கள்"
+    },
+    "form": {
+      "gasLimit": {
+        "title": "கேஸ் வரம்பு"
+      },
+      "gasPrice": {
+        "title": "கேஸ் விலை"
+      }
+    }
+  },
+  "cryptoAmountSelector": {
+    "labelAmountToSend": "அனுப்ப வேண்டிய தொகை",
+    "button": {
+      "half": "பாதி",
+      "max": "அதிகபட்சம்"
+    },
+    "error": {
+      "insufficientFunds": "போதுமான நிதி இல்லை",
+      "invalidAmount": "தவறான தொகை"
+    },
+    "balance": "இருப்பு: {{balance}} {{symbol}}"
+  },
+  "dappTransfer": {
+    "logoAlt": "Dapp லோகோ",
+    "sendTransaction": "பரிவர்த்தனையை அனுப்பு",
+    "destinationNotFound": "இலக்கு கணக்கு கண்டறியப்படவில்லை"
+  },
+  "history": {
+    "header": "வரலாறு",
+    "modal": {
+      "confirmSendTransaction": "பரிவர்த்தனை அனுப்புவதை உறுதிப்படுத்து"
+    }
+  },
+  "activities": {
+    "detailsTitle": "பரிவர்த்தனை விவரங்கள்"
+  },
+  "receiveModal": {
+    "accountNameTitle": "உங்கள் கணக்கின் பெயர்"
+  },
+  "activityList": {
+    "loading": "ஏற்றுகிறது...",
+    "today": "இன்று",
+    "yesterday": "நேற்று",
+    "noTransactions": "உங்களிடம் பரிவர்த்தனைகள் இல்லை"
+  },
+  "statusFilter": {
+    "modalTitle": "நிலை",
+    "prefix": "நிலை: ",
+    "options": {
+      "all": "அனைத்தும்",
+      "in": "உள்வரும்",
+      "out": "வெளிச்செல்லும்",
+      "pending": "நிலுவையில்"
+    }
+  },
+  "tokenFilter": {
+    "modalTitle": "டோக்கன்",
+    "prefix": "சொத்து: ",
+    "options": {
+      "all": "அனைத்தும்"
+    }
+  },
   "footer": {
     "wallet": "பணப்பை",
     "analytics": "பகுப்பாய்வு",

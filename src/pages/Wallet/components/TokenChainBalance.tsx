@@ -6,14 +6,22 @@ import ArrowSendIcon from 'src/images/arrow-send.svg?react';
 import { DivFlex, CommonLabel } from 'src/components';
 import { humanReadableNumber } from 'src/utils';
 import { TokenElementProps } from './TokenElement';
+import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 
 export const TokenChainBalance = ({ name, contractAddress, balance, usdBalance, chainId, isNonTransferable }: TokenElementProps) => {
   const history = useHistory();
   const { closeModal } = useModalContext();
+  const stateWallet = useCurrentWallet();
 
   const onSendToken = () => {
+    const targetPath = `/transfer?coin=${contractAddress}&chainId=${chainId}`;
     closeModal();
-    history.push(`/transfer?coin=${contractAddress}&chainId=${chainId}`);
+    const isPopupView = typeof window !== 'undefined' && window.innerWidth <= 420;
+    if (stateWallet?.account?.startsWith('r:') && isPopupView) {
+      window.open(`/index.html#${targetPath}`, '_blank');
+    } else {
+      history.push(targetPath);
+    }
   };
   return (
     <DivFlex

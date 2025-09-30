@@ -517,6 +517,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Podpis z Ledgerjem uspešen",
     "ledgerSignFailed": "Podpis z Ledgerjem ni uspel ali je bil zavrnjen",
+    "spireKeySignSuccess": "Podpis s SpireKey uspešen",
+    "spireKeySignFailed": "Podpis s SpireKey ni uspel ali je bil zavrnjen",
     "transferSuccess": "Prenos uspešen",
     "transferFailed": "Prenos neuspel",
     "transactionSent": "Transakcija je bila uspešno poslana! Preverite stanje transakcije na zavihku Zgodovina",

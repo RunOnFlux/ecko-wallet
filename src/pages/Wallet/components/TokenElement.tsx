@@ -8,8 +8,10 @@ import { ECKO_DEXTOOLS_API_URL } from '@Utils/constant';
 export const TokenElement = ({ contractAddress, name, balance, isLoadingBalances, usdBalance, rightText, onClick }: TokenElementProps) => {
   const { theme } = useAppThemeContext();
 
+  const cacheBuster = Math.floor(Date.now() / (60 * 60 * 1000));
+
   const iconUrl = contractAddress
-    ? `${ECKO_DEXTOOLS_API_URL}api/token-icon?token=${encodeURIComponent(contractAddress)}`
+    ? `${ECKO_DEXTOOLS_API_URL}api/token-icon?token=${encodeURIComponent(contractAddress)}&cb=${cacheBuster}`
     : `${ECKO_DEXTOOLS_API_URL}public/token-icons/default.svg`;
 
   const renderRightText = () => {
@@ -31,7 +33,7 @@ export const TokenElement = ({ contractAddress, name, balance, isLoadingBalances
           src={iconUrl}
           alt={name}
           onError={(e) => {
-            const fallbackUrl = `${ECKO_DEXTOOLS_API_URL}public/token-icons/default.svg`;
+            const fallbackUrl = `${ECKO_DEXTOOLS_API_URL}public/token-icons/default.svg?cb=${cacheBuster}`;
             if (e.currentTarget.src !== fallbackUrl) {
               e.currentTarget.src = fallbackUrl;
             }

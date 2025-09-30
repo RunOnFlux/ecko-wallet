@@ -1,13 +1,15 @@
 {
   "name": "ecko-wallet",
-  "version": "2.22.3",
+  "version": "2.23.0",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.16.0",
     "@babel/runtime": "^7.16.0",
+    "@kadena/client": "^1.18.0",
     "@kadena/cryptography-utils": "^0.1.4",
     "@kadena/hd-wallet": "^0.6.0",
+    "@kadena/spirekey-sdk": "^1.0.1",
     "@ledgerhq/hw-transport-webhid": "^6.27.19",
     "@ledgerhq/logs": "^6.10.1",
     "@reduxjs/toolkit": "^2.3.0",

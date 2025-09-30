@@ -32,6 +32,6 @@ interface DropdownRadioModalProps {
   containerStyle?: React.CSSProperties;
   titleStyle?: React.CSSProperties;
   onChange?: (value: SelectionOption) => void;
-  displayValue?: string;
+  displayValue?: React.ReactNode;
   showFilter?: boolean;
 }

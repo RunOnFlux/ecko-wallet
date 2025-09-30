@@ -515,6 +515,8 @@
   "popupConfirm": {
     "ledgerSignSuccess": "Ledger sign success",
     "ledgerSignFailed": "Ledger sign failed or rejected",
+    "spireKeySignSuccess": "SpireKey sign success",
+    "spireKeySignFailed": "SpireKey sign failed or rejected",
     "transferSuccess": "Transfer successfully",
     "transferFailed": "Transfer failed",
     "transactionSent": "Transaction sent successfully! Please check the transaction status in the history tab",
@@ -534,7 +536,22 @@
   },
   "selectReceiver": {
     "notTransferable": "{{contractAddress}} is not transferable!",
+    "predicate": {
+      "allKeys": "All keys",
+      "anySingleKey": "Any single key"
+    },
+    "alerts": {
+      "genericProceed": "Are you sure you want to proceed?",
+      "rAccountNotActive": "This r:account is not yet active. Ask the recipient to open SpireKey and initialize the account.",
+      "rAccountNotExistForToken": "This r:account does not exist for {{token}} token. Ask the recipient to initialize the account.",
+      "nonKRWarning": "You are sending to a non \"k:account\" or \"r:account\"! Are you sure you want to proceed?"
+    },
+    "chainLabel": "CHAIN {{chainId}}",
+    "error": {
+      "checkingAccountDetails": "Error checking account details"
+    },
     "form": {
+      "tokenTitle": "Token",
       "sourceChainId": {
         "title": "Source Chain ID"
       },
@@ -544,6 +561,15 @@
       "targetChainId": {
         "title": "Target Chain ID"
       }
+    },
+    "confirm": {
+      "warningTitle": "Warning",
+      "notExistLine1": "Receiving account does not exist.",
+      "notExistLine2": "You must specify a keyset to create this account.",
+      "publicKeyTitle": "Public Key",
+      "publicKeyPlaceholder": "Input public key",
+      "predicateTitle": "Predicate",
+      "predicatePlaceholder": "Predicate"
     },
     "validation": {
       "maxDestinationAccount": "Destination account should be maximum 1000 characters."
@@ -567,6 +593,7 @@
     "insufficientFundsGas": "Insufficient funds for gas fee",
     "newAddressDetected": "New address detected! Add to your contacts",
     "tokenNotExists": "{{contractAddress}} could not exist on CHAIN {{chainId}}!",
+    "rAccountTokenWarning": "This token contract may not support r: accounts for cross-chain. Be sure to verify the destination address and token support before proceeding",
     "transactionParameters": "Transaction Parameters",
     "estimatedGas": "Estimated gas {{gas}}",
     "speed": "{{speed}} speed",

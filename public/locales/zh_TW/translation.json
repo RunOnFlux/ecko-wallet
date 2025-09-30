@@ -518,6 +518,8 @@
     "ledgerSignSuccess": "Ledger 簽署成功",
     "ledgerSignFailed": "Ledger �署失敗或被拒絕",
     "transferSuccess": "轉帳成功",
+    "spireKeySignSuccess": "SpireKey 簽署成功",
+    "spireKeySignFailed": "SpireKey 簽署失敗或被拒絕",
     "transferFailed": "轉帳失敗",
     "transactionSent": "交易發送成功！請於歷史紀錄查看",
     "networkError": "網路錯誤。",

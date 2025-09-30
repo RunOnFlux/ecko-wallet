@@ -8,9 +8,10 @@ interface BaseModalSelectProps {
   title: any;
   options?: object[];
   onChange: any;
+  displayValue?: React.ReactNode;
 }
 
-const BaseModalSelect = memo(({ title, options = [], value, onChange }: BaseModalSelectProps) => {
+const BaseModalSelect = memo(({ title, options = [], value, onChange, displayValue }: BaseModalSelectProps) => {
   const { theme } = useAppThemeContext();
   return (
     <div>
@@ -20,6 +21,7 @@ const BaseModalSelect = memo(({ title, options = [], value, onChange }: BaseModa
         modalTitle={title}
         options={options as any}
         onChange={onChange}
+        displayValue={displayValue as any}
         titleStyle={{
           padding: '5px 10px',
           fontSize: '16px',

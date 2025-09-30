@@ -127,6 +127,16 @@ const Wallet = () => {
     history.push('/buy');
   };
 
+  const handleSend = () => {
+    const targetPath = '/transfer?coin=kda&chainId=0';
+    const isPopupView = typeof window !== 'undefined' && window.innerWidth <= 420;
+    if (stateWallet?.account?.startsWith('r:') && isPopupView) {
+      window.open(`/index.html#${targetPath}`, '_blank');
+    } else {
+      history.push(targetPath);
+    }
+  };
+
   const renderChainDistribution = (symbol: string, contractAddress: string) => {
     const isNonTransferable = NON_TRANSFERABLE_TOKENS.some((nonTransf) => nonTransf === contractAddress);
     const hasBalance = getTokenChainDistribution(contractAddress).filter((cD) => cD.balance > 0)?.length > 0;
@@ -213,12 +223,7 @@ const Wallet = () => {
         <SecondaryLabel>{t('wallet.accountBalance')}</SecondaryLabel>
         <PrimaryLabel>$ {humanReadableNumber(getAccountBalance(stateWallet?.account).toFixed(2), 2)}</PrimaryLabel>
         <DivFlex justifyContent="space-around" style={{ width: '100%', marginTop: 30 }}>
-          <CircledButton
-            onClick={() => history.push('/transfer?coin=kda&chainId=0')}
-            label={t('wallet.send')}
-            iconUrl={images.wallet.arrowSend}
-            variant="primary"
-          />
+          <CircledButton onClick={handleSend} label={t('wallet.send')} iconUrl={images.wallet.arrowSend} variant="primary" />
           <CircledButton
             onClick={() => openModal({ title: t('wallet.receiveTokens'), content: <ReceiveModal /> })}
             label={t('wallet.receive')}
