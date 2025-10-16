@@ -7,6 +7,7 @@ import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import { encryptKey } from 'src/utils/security';
 import { toast } from 'react-toastify';
 import LedgerIcon from 'src/images/ledger-logo.svg?react';
+import SpireKeyLogo from 'src/images/spirekey-logo.svg?react';
 import { ModalContext } from 'src/contexts/ModalContext';
 import { AccountList } from 'src/pages/Wallet/components/AccountList';
 import { AccountActions } from 'src/pages/Wallet/components/AccountActions';
@@ -121,7 +122,13 @@ export const Header = ({ hideAccounts }: { hideAccounts?: boolean }) => {
         <DropdownModal
           title={
             <DivFlex>
-              {type === AccountType.LEDGER ? <LedgerIcon /> : <Jazzicon diameter={24} seed={jsNumberForAddress(stateWallet?.account)} />}
+              {type === AccountType.LEDGER ? (
+                <LedgerIcon />
+              ) : type === AccountType.SPIREKEY ? (
+                <SpireKeyLogo style={{ width: 24, height: 24 }} />
+              ) : (
+                <Jazzicon diameter={24} seed={jsNumberForAddress(stateWallet?.account)} />
+              )}
               <AccountLabel>{selectedWallet?.alias || shortenAddress(stateWallet?.account)}</AccountLabel>
             </DivFlex>
           }

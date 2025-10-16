@@ -3,6 +3,7 @@ import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import { shortenAddress } from 'src/utils';
 import { AccountType } from 'src/stores/slices/wallet';
 import LedgerIcon from 'src/images/ledger-logo.svg?react';
+import SpireKeyLogo from 'src/images/spirekey-logo.svg?react';
 import styled from 'styled-components';
 import { DivFlex } from '..';
 
@@ -37,6 +38,8 @@ export const JazzAccount = ({
     <AccountListWrapper key={account} justifyContent="flex-start" alignItems="center" onClick={onClick}>
       {type === AccountType.LEDGER ? (
         <LedgerIcon style={{ marginRight: 11 }} />
+      ) : type === AccountType.SPIREKEY ? (
+        <SpireKeyLogo style={{ marginRight: 10, width: 24, height: 24, marginTop: -10 }} />
       ) : (
         <Jazzicon
           diameter={diameter || 24}
