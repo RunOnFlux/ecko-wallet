@@ -70,7 +70,7 @@ export const LanguageSelector = () => {
         </CommonLabel>
       }
       iconContainerStyle={{ padding: 0 }}
-      containerStyle={{ border: 'none', justifyContent: 'flex-end' }}
+      containerStyle={{ border: 'none', justifyContent: 'center' }}
       modalTitle={t('select_language')}
       modalContent={
         <DivFlex flexDirection="column" padding="10px 20px" style={{ fontSize: 20 }}>

@@ -86,11 +86,9 @@ const PopupConfirm = (props: Props) => {
     } else {
       // Same chain transfer
       if (isRAccount && keysetRefGuard) {
-        pactCode = `(${fungibleToken.contractAddress}.transfer${
-          receiverExists ? '' : '-create'
-        } "${senderName}" "${receiverName}" ${`(keyset-ref-guard "${keysetRefGuard.keysetref.ns}.${keysetRefGuard.keysetref.ksn}")`} ${Number.parseFloat(
-          amount,
-        ).toFixed(decimals)})`;
+        pactCode = `(${fungibleToken.contractAddress}.transfer${receiverExists ? '' : '-create'} "${senderName}" "${receiverName}" ${
+          !receiverExists ? `(keyset-ref-guard "${keysetRefGuard.keysetref.ns}.${keysetRefGuard.keysetref.ksn}")` : ''
+        } ${Number.parseFloat(amount).toFixed(decimals)})`;
       } else {
         pactCode = `(${fungibleToken.contractAddress}.transfer${receiverExists ? '' : '-create'} "${senderName}" "${receiverName}" ${
           receiverExists ? '' : '(read-keyset "ks")'

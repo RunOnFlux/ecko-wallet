@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import images from 'src/images';
 import { useHistory } from 'react-router-dom';
 import { idToPascalCase } from 'src/utils';
-import { hideLoading, showLoading } from 'src/stores/slices/extensions';
 import { useCurrentWallet } from 'src/stores/slices/wallet/hooks';
 import { fetchLocal } from 'src/utils/chainweb';
 import {
@@ -17,6 +16,7 @@ import {
 } from '../../nft-data';
 import NftCard from '../NftCard';
 import { useAppSelector } from 'src/stores/hooks';
+import Spinner from '@Components/Spinner';
 
 export interface NgCollection {
   id: string;
@@ -28,6 +28,7 @@ export interface NgCollection {
 
 const MarmaladeNGCollectionList = () => {
   const [ngCollections, setNgCollections] = useState<NgCollection[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { selectedNetwork } = useAppSelector((state) => state.extensions);
   const history = useHistory();
 
@@ -38,6 +39,7 @@ const MarmaladeNGCollectionList = () => {
       const ownedTokens: string[] = [];
       const promises: any[] = [];
       if (account) {
+        setIsLoading(true);
         try {
           for (const chainId of MARMALADE_NG_CHAINS) {
             const ngNfts = await fetchLocal(
@@ -65,8 +67,9 @@ const MarmaladeNGCollectionList = () => {
         } catch (err) {
           // eslint-disable-next-line no-console
           console.error('Error fetching NG NFTs', err);
+        } finally {
+          setIsLoading(false);
         }
-        showLoading();
         Promise.all(promises)
           .then(async (resArray: any[]) => {
             const allPrepareNgCollectionsPromises = resArray.map(async (res) => {
@@ -78,7 +81,6 @@ const MarmaladeNGCollectionList = () => {
                   name: string;
                 }[] = Object.values(res?.result?.data);
 
-                showLoading();
                 const prepareNgCollections: (NgCollection | null)[] = await Promise.all(
                   collections.map(async (collection) => {
                     if (MARMALADE_NG_WHITELISTED_COLLECTIONS.includes(collection.id)) {
@@ -113,7 +115,6 @@ const MarmaladeNGCollectionList = () => {
                     return null;
                   }),
                 );
-                hideLoading();
                 return prepareNgCollections.filter((collection): collection is NgCollection => collection !== null);
               }
               return [];
@@ -125,10 +126,9 @@ const MarmaladeNGCollectionList = () => {
           })
           .catch((err) => {
             console.error('Error fetching NG NFTs', err);
-            hideLoading();
           })
           .finally(() => {
-            hideLoading();
+            setIsLoading(false);
           });
       }
     };
@@ -137,15 +137,21 @@ const MarmaladeNGCollectionList = () => {
 
   return (
     <>
-      {ngCollections?.map((c) => (
-        <NftCard
-          key={c.name}
-          src={getGatewayUrlByIPFS(c.src, c.chainId)}
-          srcFallback={images.iconMarmaladeNG}
-          label={`${idToPascalCase(c.name)} (${c.ownedCount})`}
-          onClick={() => history.push(`/ng-details?id=${c.id}&name=${c.name}&chainId=${c.chainId}`)}
-        />
-      ))}
+      {isLoading ? (
+        <Spinner style={{ margin: '80px auto' }} />
+      ) : (
+        <>
+          {ngCollections?.map((c) => (
+            <NftCard
+              key={c.name}
+              src={getGatewayUrlByIPFS(c.src, c.chainId)}
+              srcFallback={images.iconMarmaladeNG}
+              label={`${idToPascalCase(c.name)} (${c.ownedCount})`}
+              onClick={() => history.push(`/ng-details?id=${c.id}&name=${c.name}&chainId=${c.chainId}`)}
+            />
+          ))}
+        </>
+      )}
     </>
   );
 };

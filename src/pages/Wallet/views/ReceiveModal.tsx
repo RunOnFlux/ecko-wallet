@@ -33,7 +33,7 @@ const ReceiveModal = () => {
 
   const onCopy = (str: string) => {
     navigator.clipboard.writeText(str);
-    toast.success(<Toast type="success" content={t('common.copied')} />);
+    toast.success(<Toast type="success" content={t('accountActions.copied')} />);
   };
 
   return (
