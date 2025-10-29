@@ -83,7 +83,7 @@ export const SpireKeyProvider = ({ children }: any) => {
 
   useEffect(() => {
     initSpireKey({
-      hostUrl: 'https://chainweaver.kadena.io',
+      hostUrl: 'https://spirekey.eckowallet.com',
     });
   }, []);
 
