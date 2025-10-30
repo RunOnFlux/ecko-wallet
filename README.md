@@ -9,9 +9,9 @@ The **eckoWALLET Chrome Extension** brings secure and streamlined access to the 
 ### 📅 Download Now
 
 - **Chrome Extension:** [Install from Chrome Web Store](https://chromewebstore.google.com/detail/eckowallet/bofddndhbegljegmpmnlbhcejofmjgbn?pli=1)
-- Official website: [wallet.ecko.finance](https://wallet.ecko.finance)
-- Documentation: [docs.ecko.finance](https://docs.ecko.finance/eckodao/eckowallet/introduction)
-- Community: [Join our Discord](https://discord.com/invite/QSJpHRFDcv)
+- Official website: [eckowallet.com](https://eckowallet.com)
+- Documentation: [docs.eckowallet.com](https://docs.eckowallet.com)
+- Community: [Join our Discord](https://discord.com/invite/runonflux)
 
 ---
 

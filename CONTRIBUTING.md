@@ -78,7 +78,7 @@ The extension reloads automatically when code changes.
 
 Never submit real seed phrases or sensitive data in PRs or issues.
 
-Security-related issues can be reported privately via [Discord](https://discord.com/invite/QSJpHRFDcv).
+Security-related issues can be reported privately via [Discord](https://discord.com/invite/runonflux).
 
 ---
 
@@ -104,7 +104,7 @@ If you'd like to help with translations, you can update the `i18n` files or reac
 
 ## 💬 Community
 
-- Join our [Discord](https://discord.com/invite/QSJpHRFDcv)
+- Join our [Discord](https://discord.com/invite/runonflux)
 - Open an [issue](https://github.com/RunOnFlux/ecko-wallet-extension/issues) for bugs or feature ideas
 
 ---

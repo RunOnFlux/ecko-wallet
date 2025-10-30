@@ -27,7 +27,7 @@ export class WalletConnectProvider {
       metadata: {
         name: 'EckoWallet',
         description: 'EckoWallet Browser Extension',
-        url: 'https://wallet.ecko.finance',
+        url: 'https://eckowallet.com',
         icons: ['https://swap.ecko.finance/images/crypto/kaddex-crypto.svg'],
       },
     });
