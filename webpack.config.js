@@ -11,6 +11,7 @@ module.exports = {
     popup: './src/index.tsx',
     background: './public/app/background.js',
     content: './public/app/content.js',
+    bringContent: './public/app/bring/content.js',
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -20,6 +21,8 @@ module.exports = {
           return 'app/background.js';
         case 'content':
           return 'app/content.js';
+        case 'bringContent':
+          return 'app/bringContent.js';
         default:
           return '[name].bundle.js';
       }
