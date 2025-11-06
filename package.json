@@ -6,6 +6,7 @@
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.16.0",
     "@babel/runtime": "^7.16.0",
+    "@bringweb3/chrome-extension-kit": "^1.5.2",
     "@kadena/client": "^1.18.0",
     "@kadena/cryptography-utils": "^0.1.4",
     "@kadena/hd-wallet": "^0.6.0",
