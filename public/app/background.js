@@ -161,6 +161,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       bringGetWalletAddress(tabIdResponse, sendResponse);
       return true;
     }
+    if (request.action === 'bring_promptLogin') {
+      bringPromptLogin(tabIdResponse, sendResponse);
+      return true;
+    }
     if (request.action.includes(INTERNAL_MESSAGE_PREFIX)) {
       void (async () => {
         const internalMethod = request.action?.split(INTERNAL_MESSAGE_PREFIX) && request.action?.split(INTERNAL_MESSAGE_PREFIX)[1];
@@ -381,24 +385,45 @@ const bringGetWalletAddress = (tabId, sendResponse) => {
       if (account?.account) {
         console.log('bring_getWalletAddress: resolved immediately', { tabId });
         sendResponse({ walletAddress: account.account });
-        return;
-      }
-
-      console.log('bring_getWalletAddress: wallet locked, queue request', { tabId });
-      if (!bringWalletAddressRequests.has(tabId)) {
-        bringWalletAddressRequests.set(tabId, []);
-      }
-      bringWalletAddressRequests.get(tabId).push(sendResponse);
-
-      if (tabId) {
-        showPopup({ tabId }, 'login-dapps');
       } else {
-        console.warn('bring_getWalletAddress: missing tabId, cannot show login popup');
+        console.log('bring_getWalletAddress: no account, returning null', { tabId });
+        sendResponse({ walletAddress: null });
       }
     })
     .catch((error) => {
       console.error('bring_getWalletAddress: failed to get wallet', { tabId, error });
       sendResponse({ walletAddress: null, error: error?.message });
+    });
+};
+
+const bringPromptLogin = (tabId, sendResponse) => {
+  console.log('bring_promptLogin: request received', { tabId });
+  getSelectedWalletAsync()
+    .then((account) => {
+      if (account?.account) {
+        console.log('bring_promptLogin: already logged in', { tabId });
+        sendResponse({ success: true, walletAddress: account.account });
+        return;
+      }
+
+      console.log('bring_promptLogin: wallet locked, queue request', { tabId });
+      if (!bringWalletAddressRequests.has(tabId)) {
+        bringWalletAddressRequests.set(tabId, []);
+      }
+      bringWalletAddressRequests.get(tabId).push((result) => {
+        sendResponse({ success: true, walletAddress: result.walletAddress });
+      });
+
+      if (tabId) {
+        showPopup({ tabId }, 'login-dapps');
+      } else {
+        console.warn('bring_promptLogin: missing tabId, cannot show login popup');
+        sendResponse({ success: false, error: 'Missing tabId' });
+      }
+    })
+    .catch((error) => {
+      console.error('bring_promptLogin: failed', { tabId, error });
+      sendResponse({ success: false, error: error?.message });
     });
 };
 
