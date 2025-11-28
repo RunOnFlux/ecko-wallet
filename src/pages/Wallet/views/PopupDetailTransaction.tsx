@@ -11,6 +11,8 @@ import { TransactionInfoView } from 'src/pages/SendTransactions/views/Transfer';
 import { DivFlex } from 'src/components';
 import { LocalActivity } from 'src/components/Activities/types';
 import { inferSymbolFromLocalActivity } from 'src/components/Activities/utils';
+import { MAINNET_EXPLORER_LINK } from '@Utils/config';
+import { MAINNET_NETWORK_ID } from '@Utils/chainweb';
 
 const DetailTx = styled.div`
   padding: 0 20px 20px 20px;
@@ -73,7 +75,8 @@ const PopupDetailTransaction = (props: Props) => {
   const { isOpen, onCloseModal, closeOnOverlayClick, title, showCloseIcon, activityDetails, selectedNetwork, isFinishing } = props;
 
   const openTransactionDetails = () => {
-    (window as any).chrome.tabs.create({ url: `${selectedNetwork.explorer}/tx/${activityDetails.requestKey}` });
+    const explorerLink = selectedNetwork.networkId === MAINNET_NETWORK_ID ? MAINNET_EXPLORER_LINK : selectedNetwork.explorer;
+    (window as any).chrome.tabs.create({ url: `${explorerLink}/${activityDetails.requestKey}` });
   };
 
   const gasFee = Number(activityDetails.gas) * Number(activityDetails.gasPrice);
