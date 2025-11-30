@@ -17,7 +17,6 @@ const getWalletAddress = async () =>
       },
       (response) => {
         if (chrome.runtime.lastError) {
-          console.error('getWalletAddress error:', chrome.runtime.lastError);
           resolve(null);
           return;
         }
@@ -35,7 +34,6 @@ const promptLogin = async () =>
       },
       (response) => {
         if (chrome.runtime.lastError) {
-          console.error('promptLogin error:', chrome.runtime.lastError);
           resolve(false);
           return;
         }

@@ -165,6 +165,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       bringPromptLogin(tabIdResponse, sendResponse);
       return true;
     }
+    if (request.action === 'bring_resolveSelection') {
+      bringResolveSelection(tabIdResponse, request.walletAddress, sendResponse);
+      return true;
+    }
     if (request.action.includes(INTERNAL_MESSAGE_PREFIX)) {
       void (async () => {
         const internalMethod = request.action?.split(INTERNAL_MESSAGE_PREFIX) && request.action?.split(INTERNAL_MESSAGE_PREFIX)[1];
@@ -307,6 +311,46 @@ chrome.runtime.onConnect.addListener(async (port) => {
   });
 });
 
+const checkWalletExists = async () => {
+  return new Promise((resolve) => {
+    chrome?.storage.local.get('selectedWallet', (wallet) => {
+      resolve(wallet && wallet.selectedWallet && wallet.selectedWallet.account);
+    });
+  });
+};
+
+const getBringCashbackAddress = async () => {
+  return new Promise((resolve) => {
+    chrome.storage.local.get('bringCashbackAddress', (result) => {
+      resolve(result?.bringCashbackAddress || null);
+    });
+  });
+};
+
+const setBringCashbackAddress = async (address) => {
+  return new Promise((resolve) => {
+    chrome.storage.local.set({ bringCashbackAddress: address }, () => {
+      resolve();
+    });
+  });
+};
+
+const getWalletsCount = async () => {
+  return new Promise((resolve) => {
+    chrome.storage.local.get('selectedNetwork', (result) => {
+      const network = result?.selectedNetwork?.networkId;
+      if (!network) {
+        resolve(0);
+        return;
+      }
+      chrome.storage.local.get(`${network}.wallets`, (walletsResult) => {
+        const wallets = walletsResult?.[`${network}.wallets`];
+        resolve(wallets && Array.isArray(wallets) ? wallets.length : 0);
+      });
+    });
+  });
+};
+
 const getSelectedWalletAsync = async (isHaveSecret = false) => {
   const newSelectedWallet = await new Promise((resolve) => {
     chrome?.storage.local.get('selectedWallet', (wallet) => {
@@ -336,95 +380,116 @@ const getSelectedWalletAsync = async (isHaveSecret = false) => {
   return newSelectedWallet;
 };
 
+const bringResolveSelection = async (tabId, walletAddress, sendResponse) => {
+  if (!bringWalletAddressRequests.has(tabId)) {
+    if (sendResponse) {
+      sendResponse({ success: true });
+    }
+    return;
+  }
+  const responders = bringWalletAddressRequests.get(tabId);
+  responders.forEach((respond) => {
+    try {
+      respond({ walletAddress });
+    } catch (error) {}
+  });
+  bringWalletAddressRequests.delete(tabId);
+  if (sendResponse) {
+    sendResponse({ success: true });
+  }
+};
+
 const bringResolvePendingWalletAddress = async () => {
   if (!bringWalletAddressRequests.size) {
-    console.log('bring_getWalletAddress: no pending requests');
     return;
   }
   try {
-    const account = await getSelectedWalletAsync();
-    console.log('bring_getWalletAddress: resolving pending requests', {
-      hasAccount: !!account?.account,
-      pendingTabs: [...bringWalletAddressRequests.keys()],
-    });
-    if (!account?.account) {
-      console.log('bring_getWalletAddress: account still locked');
+    const bringAddress = await getBringCashbackAddress();
+    const walletAddress = bringAddress || (await getSelectedWalletAsync())?.account;
+    if (!walletAddress) {
       return;
     }
-    const walletAddress = account.account;
     for (const [tabId, responders] of bringWalletAddressRequests.entries()) {
       responders.forEach((respond) => {
         try {
           respond({ walletAddress });
-        } catch (error) {
-          console.error('bring_getWalletAddress: respond error', { tabId, error });
-        }
+        } catch (error) {}
       });
     }
     bringWalletAddressRequests.clear();
   } catch (error) {
-    console.error('bring_getWalletAddress: resolve pending failed', error);
     for (const [tabId, responders] of bringWalletAddressRequests.entries()) {
       responders.forEach((respond) => {
         try {
           respond({ walletAddress: null, error: error?.message });
-        } catch (respondError) {
-          console.error('bring_getWalletAddress: respond error fallback', { tabId, respondError });
-        }
+        } catch (respondError) {}
       });
     }
     bringWalletAddressRequests.clear();
   }
 };
 
-const bringGetWalletAddress = (tabId, sendResponse) => {
-  console.log('bring_getWalletAddress: request received', { tabId });
-  getSelectedWalletAsync()
-    .then((account) => {
-      console.log('bring_getWalletAddress: account lookup result', account);
-      if (account?.account) {
-        console.log('bring_getWalletAddress: resolved immediately', { tabId });
-        sendResponse({ walletAddress: account.account });
-      } else {
-        console.log('bring_getWalletAddress: no account, returning null', { tabId });
-        sendResponse({ walletAddress: null });
-      }
-    })
-    .catch((error) => {
-      console.error('bring_getWalletAddress: failed to get wallet', { tabId, error });
-      sendResponse({ walletAddress: null, error: error?.message });
-    });
+const bringGetWalletAddress = async (tabId, sendResponse) => {
+  try {
+    const bringAddress = await getBringCashbackAddress();
+    if (bringAddress) {
+      sendResponse({ walletAddress: bringAddress });
+      return;
+    }
+    const account = await getSelectedWalletAsync();
+    sendResponse({ walletAddress: account?.account || null });
+  } catch (error) {
+    sendResponse({ walletAddress: null, error: error?.message });
+  }
 };
 
-const bringPromptLogin = (tabId, sendResponse) => {
-  console.log('bring_promptLogin: request received', { tabId });
-  getSelectedWalletAsync()
-    .then((account) => {
-      if (account?.account) {
-        console.log('bring_promptLogin: already logged in', { tabId });
+const bringPromptLogin = async (tabId, sendResponse) => {
+  try {
+    const walletExists = await checkWalletExists();
+    if (!walletExists) {
+      chrome.tabs.create({ url: '/index.html#/home-page' });
+      sendResponse({ success: false, error: 'No wallet exists. Please create or restore a wallet first.' });
+      return;
+    }
+
+    const account = await getSelectedWalletAsync();
+    if (account?.account) {
+      const walletCount = await getWalletsCount();
+      if (walletCount >= 2) {
+        if (tabId) {
+          showPopup({ tabId, bring: true }, 'bring-select-account');
+        } else {
+          sendResponse({ success: false, error: 'Missing tabId' });
+        }
+        if (!bringWalletAddressRequests.has(tabId)) {
+          bringWalletAddressRequests.set(tabId, []);
+        }
+        bringWalletAddressRequests.get(tabId).push((result) => {
+          sendResponse({ success: true, walletAddress: result.walletAddress });
+        });
+        return;
+      } else {
+        await setBringCashbackAddress(account.account);
         sendResponse({ success: true, walletAddress: account.account });
         return;
       }
+    }
 
-      console.log('bring_promptLogin: wallet locked, queue request', { tabId });
-      if (!bringWalletAddressRequests.has(tabId)) {
-        bringWalletAddressRequests.set(tabId, []);
-      }
-      bringWalletAddressRequests.get(tabId).push((result) => {
-        sendResponse({ success: true, walletAddress: result.walletAddress });
-      });
-
-      if (tabId) {
-        showPopup({ tabId }, 'login-dapps');
-      } else {
-        console.warn('bring_promptLogin: missing tabId, cannot show login popup');
-        sendResponse({ success: false, error: 'Missing tabId' });
-      }
-    })
-    .catch((error) => {
-      console.error('bring_promptLogin: failed', { tabId, error });
-      sendResponse({ success: false, error: error?.message });
+    if (!bringWalletAddressRequests.has(tabId)) {
+      bringWalletAddressRequests.set(tabId, []);
+    }
+    bringWalletAddressRequests.get(tabId).push((result) => {
+      sendResponse({ success: true, walletAddress: result.walletAddress });
     });
+
+    if (tabId) {
+      showPopup({ tabId, bring: true }, 'login-dapps');
+    } else {
+      sendResponse({ success: false, error: 'Missing tabId' });
+    }
+  } catch (error) {
+    sendResponse({ success: false, error: error?.message });
+  }
 };
 
 const checkConnect = async (data, tabId) => {
@@ -728,6 +793,7 @@ const showPopup = async (data = {}, popupUrl) => {
     icon: data.icon,
     tabId: data.tabId,
     message: data.message,
+    bring: data.bring,
   };
 
   chrome.storage.local.set({ dapps });
@@ -873,7 +939,7 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
           status: 'success',
           message: 'Account changed',
         },
-        target: 'kda.content',
+        target: 'kda.dapps',
         action: 'res_accountChange',
       };
       setTimeout(() => {
@@ -881,6 +947,19 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
       }, 500);
       sendInternalMessage('sync_data');
       bringResolvePendingWalletAddress();
+    }
+    if (key === 'bringCashbackAddress') {
+      const successMsg = {
+        result: {
+          status: 'success',
+          message: 'Account changed',
+        },
+        target: 'kda.dapps',
+        action: 'res_accountChange',
+      };
+      setTimeout(() => {
+        sendToConnectedPorts(successMsg);
+      }, 500);
     }
     if (namespace === 'session' && key === 'accountPassword') {
       bringResolvePendingWalletAddress();

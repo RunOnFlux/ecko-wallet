@@ -668,3 +668,11 @@ export const addPendingCrossChainRequestKey = ({ requestKey, networkId, sourceCh
         .catch(() => reject());
     });
   });
+
+export const getBringCashbackAddress = (successCallback, failCallback) => {
+  getLocalStorageData('bringCashbackAddress', successCallback, failCallback);
+};
+
+export const setBringCashbackAddress = (address: string) => {
+  setLocalStorageData('bringCashbackAddress', address);
+};

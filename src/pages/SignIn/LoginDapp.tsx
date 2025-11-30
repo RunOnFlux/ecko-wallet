@@ -12,10 +12,12 @@ import { hash } from '@kadena/cryptography-utils';
 import {
   getLocalDapps,
   getLocalSeedPhrase,
+  getLocalWallets,
   getOldLocalPassword,
   initDataFromLocal,
   initLocalWallet,
   removeOldLocalPassword,
+  setBringCashbackAddress,
   setLocalPassword,
 } from 'src/utils/storage';
 import Button from 'src/components/Buttons';
@@ -96,19 +98,23 @@ const LoginDapp = (props: any) => {
   const { selectedNetwork, networks, passwordHash } = useAppSelector((state) => state.extensions);
   const { publicKey, account, connectedSites } = useAppSelector((state) => state.wallet);
   const from = state?.from ?? null;
+  const history = useHistory();
 
   useEffect(() => {
     if (passwordHash) {
       if (from) {
         history.push(from);
       } else {
-        const walletData: WalletData = {
-          account,
-          publicKey,
-          connectedSites,
-        };
         getLocalDapps(
-          (dapps) => {
+          async (dapps) => {
+            if (dapps?.bring) {
+              return;
+            }
+            const walletData: WalletData = {
+              account,
+              publicKey,
+              connectedSites,
+            };
             switch (dapps?.message) {
               case 'res_checkStatus': {
                 updateCheckStatusMessage(
@@ -141,7 +147,7 @@ const LoginDapp = (props: any) => {
         );
       }
     }
-  }, [publicKey, account, connectedSites]);
+  }, [publicKey, account, connectedSites, passwordHash, selectedNetwork, history]);
 
   const handleSignIn = async () => {
     const password = getValues('password');
@@ -183,6 +189,59 @@ const LoginDapp = (props: any) => {
           dispatch(require2FA());
           initDataFromLocal(selectedNetwork, networks);
           setIsLocked(false);
+          
+          getLocalDapps(
+            async (dapps) => {
+              if (dapps?.bring) {
+                await new Promise((resolve) => setTimeout(resolve, 800));
+                getLocalWallets(
+                  selectedNetwork?.networkId || 'mainnet01',
+                  async (walletsList) => {
+                    if (walletsList && walletsList.length >= 2) {
+                      history.push('/bring-select-account');
+                    } else {
+                      const currentAccount = await new Promise((resolve) => {
+                        chrome.storage.local.get('selectedWallet', (wallet) => {
+                          if (wallet?.selectedWallet?.account) {
+                            chrome.storage.session.get('accountPassword', (result) => {
+                              const accountPassword = result?.accountPassword;
+                              if (accountPassword) {
+                                const decryptedAccount = decryptKey(wallet.selectedWallet.account, accountPassword);
+                                resolve(decryptedAccount);
+                              } else {
+                                resolve(null);
+                              }
+                            });
+                          } else {
+                            resolve(null);
+                          }
+                        });
+                      });
+                      
+                      if (currentAccount && typeof currentAccount === 'string') {
+                        await setBringCashbackAddress(currentAccount);
+                        chrome.runtime.sendMessage(
+                          {
+                            target: 'kda.background',
+                            action: 'bring_resolveSelection',
+                            tabId: dapps.tabId,
+                            walletAddress: currentAccount,
+                          },
+                          () => {
+                            setTimeout(() => {
+                              window.close();
+                            }, 300);
+                          }
+                        );
+                      }
+                    }
+                  },
+                  () => {}
+                );
+              }
+            },
+            () => {}
+          );
         } else {
           setError('password', { type: 'manual', message: 'Invalid Passwords' });
         }
@@ -190,7 +249,6 @@ const LoginDapp = (props: any) => {
     );
   };
 
-  const history = useHistory();
   return (
     <CreatePasswordWrapper>
       <Body>
