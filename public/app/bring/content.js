@@ -4,7 +4,7 @@ import { dark } from './theme';
 window.addEventListener('message', (event) => {
   if (event.source !== window) return;
   if (event.data?.action === 'res_accountChange' && event.data?.target === 'kda.dapps') {
-    document.dispatchEvent(new CustomEvent('ecko_accountChange', { detail: event.data }));
+    window.dispatchEvent(new CustomEvent('ecko_accountChange', { detail: event.data }));
   }
 });
 
