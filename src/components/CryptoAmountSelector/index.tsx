@@ -54,6 +54,8 @@ type CryptoAmountSelectorProps = {
   readOnly: boolean;
   amount?: string;
   onChangeAmount?: (amount: string) => void;
+  hideLabel?: boolean;
+  customLabel?: string;
 };
 
 const CryptoAmountSelector = ({
@@ -68,12 +70,20 @@ const CryptoAmountSelector = ({
   errors,
   readOnly,
   onChangeAmount,
+  hideLabel = false,
+  customLabel,
   ...props
 }: CryptoAmountSelectorProps) => {
   const { t } = useTranslation();
   const { usdPrices } = useAccountBalanceContext();
 
   const [amount, setAmount] = React.useState(props.amount || '0.0');
+
+  React.useEffect(() => {
+    if (props.amount !== undefined) {
+      setAmount(props.amount);
+    }
+  }, [props.amount]);
 
   const estimateUSDAmount = Object.prototype.hasOwnProperty.call(usdPrices, fungibleToken.contractAddress)
     ? (usdPrices[fungibleToken.contractAddress as any] || 0) * Number(amount)
@@ -123,11 +133,12 @@ const CryptoAmountSelector = ({
 
   return (
     <div>
-      <DivFlex justifyContent="space-between" margin="10px 0" alignItems="center">
-        <SecondaryLabel uppercase fontWeight={700} style={{ flex: 1 }}>
-          {t('cryptoAmountSelector.labelAmountToSend')}
-        </SecondaryLabel>
-        {showPrefilledButtons && (
+      {!hideLabel && (
+        <DivFlex justifyContent="space-between" margin="10px 0" alignItems="center">
+          <SecondaryLabel uppercase fontWeight={700} style={{ flex: 1 }}>
+            {customLabel || t('cryptoAmountSelector.labelAmountToSend')}
+          </SecondaryLabel>
+          {showPrefilledButtons && (
           <DivFlex justifyContent="flex-end" style={{ flex: 1, gap: 5 }}>
             <Button
               type="button"
@@ -146,8 +157,9 @@ const CryptoAmountSelector = ({
               style={{ height: 28, fontSize: 10, maxWidth: 60 }}
             />
           </DivFlex>
-        )}
-      </DivFlex>
+          )}
+        </DivFlex>
+      )}
 
       <AmountWrapper alignItems="center" justifyContent="space-between">
         <AmountInput

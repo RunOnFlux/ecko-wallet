@@ -14,6 +14,7 @@ import ModalCustom from './components/Modal/ModalCustom';
 import { LedgerProvider } from './contexts/LedgerContext';
 import { SpireKeyProvider } from './contexts/SpireKeyContext';
 import { NotificationContextProvider } from './contexts/NotificationsContext';
+import { SwapProvider } from './contexts/SwapContext';
 import ToastContainer from './components/ToastContainer';
 
 const AppWrapper = styled.div`
@@ -49,21 +50,23 @@ const App = () => (
                     <AccountBalanceProvider>
                       <QueryClientProvider client={queryClient}>
                         <NotificationContextProvider>
-                          <ModalConsumer>
-                            {({ isOpen, title, content, footer, closeModal, roundIcon, bodyHeight }) => (
-                              <ModalCustom
-                                isOpen={isOpen || false}
-                                title={title}
-                                bodyHeight={bodyHeight}
-                                footer={footer}
-                                onCloseModal={closeModal}
-                                roundIcon={roundIcon}
-                              >
-                                {content}
-                              </ModalCustom>
-                            )}
-                          </ModalConsumer>
-                          <AppContainer />
+                          <SwapProvider>
+                            <ModalConsumer>
+                              {({ isOpen, title, content, footer, closeModal, roundIcon, bodyHeight }) => (
+                                <ModalCustom
+                                  isOpen={isOpen || false}
+                                  title={title}
+                                  bodyHeight={bodyHeight}
+                                  footer={footer}
+                                  onCloseModal={closeModal}
+                                  roundIcon={roundIcon}
+                                >
+                                  {content}
+                                </ModalCustom>
+                              )}
+                            </ModalConsumer>
+                            <AppContainer />
+                          </SwapProvider>
                         </NotificationContextProvider>
                       </QueryClientProvider>
                     </AccountBalanceProvider>
