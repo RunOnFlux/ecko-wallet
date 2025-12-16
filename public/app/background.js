@@ -6,9 +6,11 @@ import { INTERNAL_MESSAGE_PREFIX } from '../../src/utils/message';
 import { getAccountExistsChains } from '../../src/utils/chainweb';
 import { WalletConnectProvider } from './wallet-connect';
 import './crosschain';
+import './bring/background';
 
 let contentPort = null;
 const portMap = new Map();
+const bringWalletAddressRequests = new Map();
 
 const walletConnect = new WalletConnectProvider();
 
@@ -152,43 +154,58 @@ chrome.runtime.onStartup.addListener(() => {
 /**
  * One-time connection
  */
-chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const tabIdResponse = request?.tabId || sender?.tab?.id;
   if (request.target === 'kda.background') {
+    if (request.action === 'bring_getWalletAddress') {
+      bringGetWalletAddress(tabIdResponse, sendResponse);
+      return true;
+    }
+    if (request.action === 'bring_promptLogin') {
+      bringPromptLogin(tabIdResponse, sendResponse);
+      return true;
+    }
+    if (request.action === 'bring_resolveSelection') {
+      bringResolveSelection(tabIdResponse, request.walletAddress, sendResponse);
+      return true;
+    }
     if (request.action.includes(INTERNAL_MESSAGE_PREFIX)) {
-      const internalMethod = request.action?.split(INTERNAL_MESSAGE_PREFIX) && request.action?.split(INTERNAL_MESSAGE_PREFIX)[1];
-      switch (internalMethod) {
-        case 'walletConnect:init': {
-          await walletConnect.init();
-          await walletConnect.pair(request.uri);
-          setWalletConnectEvents(request.accounts);
-          return;
-        }
-        case 'walletConnect:response': {
-          if (walletConnect.isInitialized()) {
-            await walletConnect.respond(request.topic, request.id, request.response, request.error);
+      void (async () => {
+        const internalMethod = request.action?.split(INTERNAL_MESSAGE_PREFIX) && request.action?.split(INTERNAL_MESSAGE_PREFIX)[1];
+        switch (internalMethod) {
+          case 'walletConnect:init': {
+            await walletConnect.init();
+            await walletConnect.pair(request.uri);
+            setWalletConnectEvents(request.accounts);
+            break;
           }
-          return;
-        }
-        case 'walletConnect:sessions': {
-          if (walletConnect.isInitialized()) {
-            const sessions = await walletConnect.getActiveSessions();
-            sendInternalMessage('walletConnect:sessions', sessions);
-          } else {
-            sendInternalMessage('walletConnect:sessions', []);
+          case 'walletConnect:response': {
+            if (walletConnect.isInitialized()) {
+              await walletConnect.respond(request.topic, request.id, request.response, request.error);
+            }
+            break;
           }
-          return;
-        }
-        case 'walletConnect:disconnect': {
-          if (walletConnect.isInitialized()) {
-            await walletConnect.disconnectSession(request?.topic);
+          case 'walletConnect:sessions': {
+            if (walletConnect.isInitialized()) {
+              const sessions = await walletConnect.getActiveSessions();
+              sendInternalMessage('walletConnect:sessions', sessions);
+            } else {
+              sendInternalMessage('walletConnect:sessions', []);
+            }
+            break;
           }
-          return;
+          case 'walletConnect:disconnect': {
+            if (walletConnect.isInitialized()) {
+              await walletConnect.disconnectSession(request?.topic);
+            }
+            break;
+          }
+          default: {
+            break;
+          }
         }
-        default: {
-          return;
-        }
-      }
+      })();
+      return;
     }
     let senderPort = null;
     for (const [tabId, port] of portMap.entries()) {
@@ -294,6 +311,46 @@ chrome.runtime.onConnect.addListener(async (port) => {
   });
 });
 
+const checkWalletExists = async () => {
+  return new Promise((resolve) => {
+    chrome?.storage.local.get('selectedWallet', (wallet) => {
+      resolve(wallet && wallet.selectedWallet && wallet.selectedWallet.account);
+    });
+  });
+};
+
+const getBringCashbackAddress = async () => {
+  return new Promise((resolve) => {
+    chrome.storage.local.get('bringCashbackAddress', (result) => {
+      resolve(result?.bringCashbackAddress || null);
+    });
+  });
+};
+
+const setBringCashbackAddress = async (address) => {
+  return new Promise((resolve) => {
+    chrome.storage.local.set({ bringCashbackAddress: address }, () => {
+      resolve();
+    });
+  });
+};
+
+const getWalletsCount = async () => {
+  return new Promise((resolve) => {
+    chrome.storage.local.get('selectedNetwork', (result) => {
+      const network = result?.selectedNetwork?.networkId;
+      if (!network) {
+        resolve(0);
+        return;
+      }
+      chrome.storage.local.get(`${network}.wallets`, (walletsResult) => {
+        const wallets = walletsResult?.[`${network}.wallets`];
+        resolve(wallets && Array.isArray(wallets) ? wallets.length : 0);
+      });
+    });
+  });
+};
+
 const getSelectedWalletAsync = async (isHaveSecret = false) => {
   const newSelectedWallet = await new Promise((resolve) => {
     chrome?.storage.local.get('selectedWallet', (wallet) => {
@@ -321,6 +378,118 @@ const getSelectedWalletAsync = async (isHaveSecret = false) => {
     });
   });
   return newSelectedWallet;
+};
+
+const bringResolveSelection = async (tabId, walletAddress, sendResponse) => {
+  if (!bringWalletAddressRequests.has(tabId)) {
+    if (sendResponse) {
+      sendResponse({ success: true });
+    }
+    return;
+  }
+  const responders = bringWalletAddressRequests.get(tabId);
+  responders.forEach((respond) => {
+    try {
+      respond({ walletAddress });
+    } catch (error) {}
+  });
+  bringWalletAddressRequests.delete(tabId);
+  if (sendResponse) {
+    sendResponse({ success: true });
+  }
+};
+
+const bringResolvePendingWalletAddress = async () => {
+  if (!bringWalletAddressRequests.size) {
+    return;
+  }
+  try {
+    const bringAddress = await getBringCashbackAddress();
+    const walletAddress = bringAddress || (await getSelectedWalletAsync())?.account;
+    if (!walletAddress) {
+      return;
+    }
+    for (const [tabId, responders] of bringWalletAddressRequests.entries()) {
+      responders.forEach((respond) => {
+        try {
+          respond({ walletAddress });
+        } catch (error) {}
+      });
+    }
+    bringWalletAddressRequests.clear();
+  } catch (error) {
+    for (const [tabId, responders] of bringWalletAddressRequests.entries()) {
+      responders.forEach((respond) => {
+        try {
+          respond({ walletAddress: null, error: error?.message });
+        } catch (respondError) {}
+      });
+    }
+    bringWalletAddressRequests.clear();
+  }
+};
+
+const bringGetWalletAddress = async (tabId, sendResponse) => {
+  try {
+    const bringAddress = await getBringCashbackAddress();
+    if (bringAddress) {
+      sendResponse({ walletAddress: bringAddress });
+      return;
+    }
+    const account = await getSelectedWalletAsync();
+    sendResponse({ walletAddress: account?.account || null });
+  } catch (error) {
+    sendResponse({ walletAddress: null, error: error?.message });
+  }
+};
+
+const bringPromptLogin = async (tabId, sendResponse) => {
+  try {
+    const walletExists = await checkWalletExists();
+    if (!walletExists) {
+      chrome.tabs.create({ url: '/index.html#/home-page' });
+      sendResponse({ success: false, error: 'No wallet exists. Please create or restore a wallet first.' });
+      return;
+    }
+
+    const account = await getSelectedWalletAsync();
+    if (account?.account) {
+      const walletCount = await getWalletsCount();
+      if (walletCount >= 2) {
+        if (tabId) {
+          showPopup({ tabId, bring: true }, 'bring-select-account');
+        } else {
+          sendResponse({ success: false, error: 'Missing tabId' });
+        }
+        if (!bringWalletAddressRequests.has(tabId)) {
+          bringWalletAddressRequests.set(tabId, []);
+        }
+        bringWalletAddressRequests.get(tabId).push((result) => {
+          sendResponse({ success: true, walletAddress: result.walletAddress });
+        });
+        return;
+      } else {
+        await setBringCashbackAddress(account.account);
+        sendResponse({ success: true, walletAddress: account.account });
+        return;
+      }
+    }
+
+    if (!bringWalletAddressRequests.has(tabId)) {
+      bringWalletAddressRequests.set(tabId, []);
+    }
+    bringWalletAddressRequests.get(tabId).push((result) => {
+      sendResponse({ success: true, walletAddress: result.walletAddress });
+    });
+
+    if (tabId) {
+      showPopup({ tabId, bring: true }, 'login-dapps');
+    } else {
+      sendResponse({ success: false, error: 'Missing tabId' });
+    }
+  } catch (error) {
+    sendResponse({ success: false, error: error?.message });
+  }
 };
 
 const checkConnect = async (data, tabId) => {
@@ -624,6 +793,7 @@ const showPopup = async (data = {}, popupUrl) => {
     icon: data.icon,
     tabId: data.tabId,
     message: data.message,
+    bring: data.bring,
   };
 
   chrome.storage.local.set({ dapps });
@@ -769,13 +939,30 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
           status: 'success',
           message: 'Account changed',
         },
-        target: 'kda.content',
+        target: 'kda.dapps',
         action: 'res_accountChange',
       };
       setTimeout(() => {
         sendToConnectedPorts(successMsg);
       }, 500);
       sendInternalMessage('sync_data');
+      bringResolvePendingWalletAddress();
+    }
+    if (key === 'bringCashbackAddress') {
+      const successMsg = {
+        result: {
+          status: 'success',
+          message: 'Account changed',
+        },
+        target: 'kda.dapps',
+        action: 'res_accountChange',
+      };
+      setTimeout(() => {
+        sendToConnectedPorts(successMsg);
+      }, 500);
+    }
+    if (namespace === 'session' && key === 'accountPassword') {
+      bringResolvePendingWalletAddress();
     }
   }
 });

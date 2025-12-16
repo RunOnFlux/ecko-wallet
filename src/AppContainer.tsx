@@ -21,6 +21,7 @@ import ConnectedDapp from './pages/Dapps/ConnectedDapp';
 import DappTransfer from './pages/SendTransactions/DappTransfer';
 import DappSignIn from './pages/Dapps/DappSignIn';
 import LoginDapp from './pages/SignIn/LoginDapp';
+import BringAccountSelect from './pages/SignIn/BringAccountSelect';
 import DappPrivateRoute from './components/Route/DappPrivateRoute';
 import SignedCmd from './pages/Dapps/SignedCmd';
 import QuickSignedCmd from './pages/Dapps/QuickSignedCmd';
@@ -85,6 +86,7 @@ const AppContainer = () => {
           <DappPrivateRoute path="/signed-cmd" component={SignedCmd} />
           <DappPrivateRoute path="/quick-signed-cmd" component={QuickSignedCmd} />
           <Route isSignIn path="/login-dapps" component={LoginDapp} />
+          <DappPrivateRoute path="/bring-select-account" component={BringAccountSelect} />
           <DappPrivateRoute path="/dapps-transfer" component={DappTransfer} />
           <PrivateRoute path="/contact" component={PageContact} />
           <PrivateRoute path="/networks" component={PageNetworks} />
