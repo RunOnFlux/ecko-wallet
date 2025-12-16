@@ -92,16 +92,13 @@ const SwapButton = styled.button`
 const PoweredBy = styled.div`
   text-align: center;
   margin-top: 16px;
-  margin-bottom: 80px;
+  margin-bottom: 30px;
   font-size: 12px;
   color: ${({ theme }) => theme.text?.secondary};
   opacity: 0.7;
 `;
 
-const FloatingButton = styled.button<{ position: 'left' | 'right'; active?: boolean }>`
-  position: fixed;
-  bottom: 104px;
-  ${({ position }) => (position === 'left' ? 'left: 24px;' : 'right: 24px;')}
+const RoundedButton = styled.button<{ position: 'left' | 'right'; active?: boolean }>`
   width: 48px;
   height: 48px;
   border-radius: 24px;
@@ -113,7 +110,6 @@ const FloatingButton = styled.button<{ position: 'left' | 'right'; active?: bool
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
-  z-index: 5;
 
   &:hover {
     transform: scale(1.05);
@@ -184,7 +180,7 @@ const SwapPage = () => {
         setAmountTo(out.toFixed(12));
       }
     }
-  }, [pairReserve, computeOut]);
+  }, [amountFrom, pairReserve, computeOut]);
 
   const fromToken: IFungibleToken = useMemo(() => {
     return (
@@ -280,7 +276,7 @@ const SwapPage = () => {
       const transferCap = Pact.lang.mkCap('transfer capability', 'transfer token in', `${token0Address}.TRANSFER`, [
         wallet.account,
         pairAccount,
-        isSwapIn ? amountFromNum : amountFromNum,
+        amountFromNum,
       ]);
 
       const token0AmountWithSlippage = amountFromNum * (1 + slippage);
@@ -457,6 +453,17 @@ const SwapPage = () => {
     return null;
   }, [pairReserve, ratio, fromToken, toToken]);
 
+  const registerStub: any = () => ({
+    onChange: async () => {},
+    onBlur: async () => {},
+    ref: () => {},
+    name: 'amount',
+  });
+
+  const setValueStub: any = () => {};
+
+  const clearErrorsStub: any = () => {};
+
   return (
     <>
       <Body>
@@ -473,9 +480,9 @@ const SwapPage = () => {
           <CryptoAmountSelector
             fungibleToken={fromToken}
             tokenBalance={fromTokenBalance}
-            register={() => ({} as any)}
-            setValue={() => {}}
-            clearErrors={() => {}}
+            register={registerStub}
+            setValue={setValueStub}
+            clearErrors={clearErrorsStub}
             errors={{}}
             readOnly={false}
             amount={amountFrom}
@@ -499,9 +506,9 @@ const SwapPage = () => {
           <CryptoAmountSelector
             fungibleToken={toToken}
             tokenBalance={toTokenBalance}
-            register={() => ({} as any)}
-            setValue={() => {}}
-            clearErrors={() => {}}
+            register={registerStub}
+            setValue={setValueStub}
+            clearErrors={clearErrorsStub}
             errors={{}}
             readOnly={true}
             amount={amountTo}
@@ -512,14 +519,21 @@ const SwapPage = () => {
         </SwapSection>
 
         {priceInfo && (
-          <DivFlex justifyContent="center" margin="16px 0">
+          <DivFlex justifyContent="space-between" margin="16px 0">
             <SecondaryLabel fontSize={12}>{priceInfo}</SecondaryLabel>
           </DivFlex>
         )}
 
-        <PoweredBy>Powered by eckoDEX</PoweredBy>
-
-        <DivFlex margin="30px 0 20px 0" justifyContent="center">
+        <DivFlex justifyContent="space-between" margin="15px 0 20px 0">
+          <RoundedButton position="left" onClick={() => setIsTransactionSettingsModalOpen(true)} type="button">
+            <BasicSettingsIcon />
+          </RoundedButton>
+          <PoweredBy>Powered by eckoDEX</PoweredBy>
+          <RoundedButton position="right" onClick={() => setIsGasSettingModalOpen(true)} type="button" active={enableGasStation}>
+            <GasStationIcon />
+          </RoundedButton>
+        </DivFlex>
+        <DivFlex margin="0px 0px 20px 0px" justifyContent="center">
           <Button
             size="full"
             variant={isSubmitting || !amountFrom || Number(amountFrom) <= 0 ? 'disabled' : 'primary'}
@@ -571,14 +585,6 @@ const SwapPage = () => {
         gasFee={gasFee}
         gasFeeUSD={gasFeeUSD}
       />
-
-      <FloatingButton position="left" onClick={() => setIsTransactionSettingsModalOpen(true)} type="button">
-        <BasicSettingsIcon />
-      </FloatingButton>
-
-      <FloatingButton position="right" onClick={() => setIsGasSettingModalOpen(true)} type="button" active={enableGasStation}>
-        <GasStationIcon />
-      </FloatingButton>
 
       <GasSettingModal isOpen={isGasSettingModalOpen} onClose={() => setIsGasSettingModalOpen(false)} />
 

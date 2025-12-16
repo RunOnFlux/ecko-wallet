@@ -667,5 +667,17 @@
     "analytics": "ANALYTICS",
     "nft": "NFT",
     "settings": "SETTINGS"
+  },
+  "swap": {
+    "chain2Warning": {
+      "message": "Swap functionality is only available on Chain 2. Make sure you have funds on Chain 2."
+    },
+    "give": "GIVE",
+    "receive": "RECEIVE",
+    "swapping": "Swapping...",
+    "swapBlock": {
+      "confirm": "Swap",
+      "submittedMessage": "Swap transaction submitted successfully"
+    }
   }
 }

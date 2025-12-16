@@ -638,5 +638,17 @@
     "analytics": "Analytika",
     "nft": "NFT",
     "settings": "Nastavení"
+  },
+  "swap": {
+    "chain2Warning": {
+      "message": "Funkce Swap je dostupná pouze na Chain 2. Ujistěte se, že máte prostředky na Chain 2."
+    },
+    "give": "DÁT",
+    "receive": "PŘIJMOUT",
+    "swapping": "Probíhá výměna...",
+    "swapBlock": {
+      "confirm": "Vyměnit",
+      "submittedMessage": "Transakce výměny úspěšně odeslána"
+    }
   }
 }
