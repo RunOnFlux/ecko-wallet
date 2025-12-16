@@ -45,6 +45,7 @@ import MarmaladeNGCollectionDetails from './pages/Nft/NftTypes/MarmaladeNG/Marma
 import Analytics from './pages/Analytics';
 import AnalyticsTracker from './components/AnalyticsTracker';
 import Buy from './pages/Buy';
+import SwapPage from './pages/Swap';
 
 const Container = styled.div`
   width: 1000px;
@@ -96,6 +97,7 @@ const AppContainer = () => {
           <PrivateRoute path="/setting" component={PageSetting} />
           <PrivateRoute path="/history" component={History} />
           <PrivateRoute path="/buy" component={Buy} />
+          <PrivateRoute path="/swap" component={SwapPage} />
           <PrivateRoute path="/nft" component={Nft} />
           <PrivateRoute path="/nft-details" component={CategoryDetail} />
           <PrivateRoute path="/ng-details" component={MarmaladeNGCollectionDetails} />

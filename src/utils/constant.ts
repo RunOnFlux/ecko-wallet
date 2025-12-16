@@ -31,6 +31,7 @@ export const ACTIVE_TAB = {
   SETTINGS: 'settings',
   NFT: 'nft',
   ANALYTICS: 'analytics',
+  SWAP: 'swap',
 };
 
 export const CHAIN_COUNT = 20;

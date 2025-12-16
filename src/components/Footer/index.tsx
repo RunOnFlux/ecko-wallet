@@ -10,6 +10,7 @@ import EckoWalletLogoBar from 'src/images/ecko-wallet-icon.svg?react';
 import AnalyticsIcon from 'src/images/ic_analytics.svg?react';
 import GearIcon from 'src/images/gear-icon.svg?react';
 import NFTIcon from 'src/images/nft-icon.svg?react';
+import SwapIcon from 'src/images/swap.svg?react';
 import { ACTIVE_TAB } from 'src/utils/constant';
 import { DivFlex, SecondaryLabel } from '..';
 import { useAppSelector } from 'src/stores/hooks';
@@ -83,13 +84,15 @@ const Footer = () => {
   const location = useLocation().pathname;
   const locationExtension = window.location.hash;
   const showSettingAndSelectNetworks = !(location.includes('networks') || location.includes('contact') || location.includes('about'));
-  const isFooterWeb = location === '/' || location === '/wallet' || location === '/analytics' || location === '/setting' || location === '/nft';
+  const isFooterWeb =
+    location === '/' || location === '/wallet' || location === '/analytics' || location === '/setting' || location === '/nft' || location === '/swap';
   const isFooterExtension =
     locationExtension.substring(1) === '/' ||
     locationExtension.substring(1) === '/wallet' ||
     locationExtension.substring(1) === '/popup' ||
     locationExtension.substring(1) === '/analytics' ||
-    locationExtension.substring(1) === '/setting';
+    locationExtension.substring(1) === '/setting' ||
+    locationExtension.substring(1) === '/swap';
   const isFooter = (isFooterWeb || isFooterExtension) && account !== null && account !== '' && account !== undefined;
   const { isLocked } = useSettingsContext();
 
@@ -159,6 +162,10 @@ const Footer = () => {
     history.push('/nft');
     setActiveTab(ACTIVE_TAB.NFT);
   };
+  const setIconSwapActive = () => {
+    history.push('/swap');
+    setActiveTab(ACTIVE_TAB.SWAP);
+  };
 
   const { t } = useTranslation();
 
@@ -171,6 +178,14 @@ const Footer = () => {
           </span>
           <SecondaryLabel uppercase fontWeight={700}>
             {t('footer.wallet')}
+          </SecondaryLabel>
+        </ActionBarElement>
+        <ActionBarElement className={activeTab === ACTIVE_TAB.SWAP && 'active'} onClick={setIconSwapActive}>
+          <span>
+            <SwapIcon />
+          </span>
+          <SecondaryLabel uppercase fontWeight={700}>
+            {t('footer.swap', 'Swap')}
           </SecondaryLabel>
         </ActionBarElement>
         <ActionBarElement className={activeTab === ACTIVE_TAB.ANALYTICS && 'active'} onClick={setIconAnalyticsActive}>

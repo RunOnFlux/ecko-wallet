@@ -646,5 +646,17 @@
     "analytics": "Analytique",
     "nft": "NFT",
     "settings": "Paramètres"
+  },
+  "swap": {
+    "chain2Warning": {
+      "message": "La fonctionnalité Swap n'est disponible que sur la Chaîne 2. Assurez-vous d'avoir des fonds sur la Chaîne 2."
+    },
+    "give": "DONNER",
+    "receive": "RECEVOIR",
+    "swapping": "Échange en cours...",
+    "swapBlock": {
+      "confirm": "Échanger",
+      "submittedMessage": "Transaction d'échange soumise avec succès"
+    }
   }
 }
