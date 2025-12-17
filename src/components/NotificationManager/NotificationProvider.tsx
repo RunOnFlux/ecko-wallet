@@ -4,8 +4,8 @@ import ZusdBridge from './notifications/ZusdBridge';
 
 const NotificationProvider = () => (
   <>
-    <GovernanceIntroNotification />
-    <ZusdBridge />
+    {/* <GovernanceIntroNotification />
+    <ZusdBridge /> */}
   </>
 );
 

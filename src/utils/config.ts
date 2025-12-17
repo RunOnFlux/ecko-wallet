@@ -24,6 +24,7 @@ export const TERM_LINK = 'https://eckowallet.com/terms-of-use';
 export const PRIVACY_LINK = 'https://eckowallet.com/privacy-policy';
 export const RUNONFLUX_LINK = 'https://runonflux.com/';
 export const MAINNET_EXPLORER_LINK = 'https://explorer.eckowallet.com/transactions';
+export const CASHBACK_LINK = 'https://ecko.bringweb3.io/';
 
 export type GasType = {
   LABEL: string;

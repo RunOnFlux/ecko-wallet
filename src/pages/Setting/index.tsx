@@ -12,7 +12,7 @@ import GlobeIcon from 'src/images/globe-icon.svg?react';
 import Padlock from 'src/images/padlock.svg?react';
 import ExpandView from 'src/images/expand-view.svg?react';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
-import { DISCORD_INVITATION_LINK, PRIVACY_LINK, RUNONFLUX_LINK, TERM_LINK, WEBSITE_LINK } from 'src/utils/config';
+import { CASHBACK_LINK, DISCORD_INVITATION_LINK, PRIVACY_LINK, RUNONFLUX_LINK, TERM_LINK, WEBSITE_LINK } from 'src/utils/config';
 import { useSettingsContext } from 'src/contexts/SettingsContext';
 import useSessionStorage from 'src/hooks/useSessionStorage';
 import { STORAGE_PASSWORD_KEY } from 'src/utils/storage';
@@ -183,6 +183,11 @@ const PageSetting = () => {
       <AboutDiv marginTop="10px">
         <a href={PRIVACY_LINK} target="_blank" rel="noreferrer">
           <SecondaryLabel>{t('settings.privacy')}</SecondaryLabel>
+        </a>
+      </AboutDiv>
+      <AboutDiv marginTop="10px">
+        <a href={CASHBACK_LINK} target="_blank" rel="noreferrer">
+          <SecondaryLabel>{t('settings.cashback')}</SecondaryLabel>
         </a>
       </AboutDiv>
     </SettingsContainer>
