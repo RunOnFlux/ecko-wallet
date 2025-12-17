@@ -11,7 +11,7 @@ export const setStoreExtensions = (store: Store) => {
 const selectedNetwork: RawNetwork = {
   name: 'Mainnet',
   url: 'https://chainweb.eckowallet.com',
-  explorer: 'https://explorer.eckowallet.com/mainnet',
+  explorer: 'https://explorer.eckowallet.com',
   networkId: 'mainnet01',
   isDefault: true,
   id: '0',
@@ -20,7 +20,7 @@ export const defaultNetworks: RawNetwork[] = [
   {
     name: 'Mainnet',
     url: 'https://chainweb.eckowallet.com',
-    explorer: 'https://explorer.eckowallet.com/mainnet',
+    explorer: 'https://explorer.eckowallet.com',
     networkId: 'mainnet01',
     isDefault: true,
     id: '0',
