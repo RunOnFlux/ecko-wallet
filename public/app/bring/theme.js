@@ -35,13 +35,13 @@ export const dark = Object.freeze({
     markdownBorderC: "#404A8D",
     markdownScrollbarC: "#404A8D",
     // Wallet address
-    walletBg: "#222",
-    walletFS: "13px",
+    walletBg: "#13172F",
+    walletFS: "12px",
     walletFW: "400",
     walletFC: "#EFEFEF",
     walletBorderC: "transparent",
     walletBorderW: "0",
-    walletRadius: "3px",
+    walletRadius: "100px",
     // Details of offering
     detailsBg: "#13172F",
     detailsTitleFS: "16px",
