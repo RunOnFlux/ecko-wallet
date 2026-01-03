@@ -202,6 +202,7 @@
     "terms": "使用條款",
     "privacy": "隱私政策",
     "cashback": "現金回饋",
+    "cashbackDesc": "使用任何卡片線上購物。獲得 KDA 現金回饋",
     "connectedSitesPage": {
       "title": "已連線網站",
       "removeSiteTitle": "移除網站",
@@ -644,6 +645,6 @@
     "wallet": "錢包",
     "analytics": "分析",
     "nft": "NFT",
-    "settings": "設定"
+    "settings": "MENU"
   }
 }

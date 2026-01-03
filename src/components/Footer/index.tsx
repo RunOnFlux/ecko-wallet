@@ -8,7 +8,7 @@ import { setCurrentWallet, setWallets } from 'src/stores/slices/wallet';
 import { getLocalSeedPhrase, initDataFromLocal } from 'src/utils/storage';
 import EckoWalletLogoBar from 'src/images/ecko-wallet-icon.svg?react';
 import AnalyticsIcon from 'src/images/ic_analytics.svg?react';
-import GearIcon from 'src/images/gear-icon.svg?react';
+import MenuIcon from 'src/images/ic_menu.svg?react';
 import NFTIcon from 'src/images/nft-icon.svg?react';
 import SwapIcon from 'src/images/swap.svg?react';
 import { ACTIVE_TAB } from 'src/utils/constant';
@@ -210,7 +210,7 @@ const Footer = () => {
           onClick={setIconSettingActive}
         >
           <span>
-            <GearIcon />
+            <MenuIcon />
           </span>
           <SecondaryLabel uppercase fontWeight={700}>
             {t('footer.settings')}

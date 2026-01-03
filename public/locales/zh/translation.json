@@ -202,6 +202,7 @@
     "terms": "使用条款",
     "privacy": "隐私政策",
     "cashback": "返现",
+    "cashbackDesc": "使用任何卡片在线购物。获得 KDA 返现",
     "connectedSitesPage": {
       "title": "已连接网站",
       "removeSiteTitle": "移除网站",
@@ -644,6 +645,6 @@
     "wallet": "钱包",
     "analytics": "分析",
     "nft": "NFT",
-    "settings": "设置"
+    "settings": "MENU"
   }
 }

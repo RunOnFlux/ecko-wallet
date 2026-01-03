@@ -202,6 +202,7 @@
     "terms": "이용 약관",
     "privacy": "개인정보 보호정책",
     "cashback": "캐시백",
+    "cashbackDesc": "모든 카드로 온라인 쇼핑. KDA로 캐시백 받기",
     "connectedSitesPage": {
       "title": "연결된 사이트",
       "removeSiteTitle": "사이트 제거",
@@ -644,6 +645,6 @@
     "wallet": "지갑",
     "analytics": "분석",
     "nft": "NFT",
-    "settings": "설정"
+    "settings": "MENU"
   }
 }

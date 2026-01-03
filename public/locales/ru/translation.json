@@ -202,6 +202,7 @@
     "terms": "Условия использования",
     "privacy": "Политика конфиденциальности",
     "cashback": "Кэшбэк",
+    "cashbackDesc": "Покупайте онлайн любой картой. Получайте кэшбэк в KDA",
     "connectedSitesPage": {
       "title": "Подключённые сайты",
       "removeSiteTitle": "Удалить сайт",
@@ -644,6 +645,6 @@
     "wallet": "Кошелёк",
     "analytics": "Аналитика",
     "nft": "NFT",
-    "settings": "Настройки"
+    "settings": "MENU"
   }
 }

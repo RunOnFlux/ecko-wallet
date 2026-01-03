@@ -202,6 +202,7 @@
     "terms": "ข้อกำหนดการใช้",
     "privacy": "นโยบายความเป็นส่วนตัว",
     "cashback": "เงินคืน",
+    "cashbackDesc": "ช้อปปิ้งออนไลน์ด้วยบัตรใดก็ได้ รับเงินคืนเป็น KDA",
     "connectedSitesPage": {
       "title": "เว็บไซต์ที่เชื่อมต่อ",
       "removeSiteTitle": "ลบเว็บไซต์",
@@ -644,6 +645,6 @@
     "wallet": "กระเป๋า",
     "analytics": "วิเคราะห์",
     "nft": "NFT",
-    "settings": "การตั้งค่า"
+    "settings": "MENU"
   }
 }

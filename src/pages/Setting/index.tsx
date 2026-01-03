@@ -11,6 +11,7 @@ import DiscordIcon from 'src/images/discord-icon.svg?react';
 import GlobeIcon from 'src/images/globe-icon.svg?react';
 import Padlock from 'src/images/padlock.svg?react';
 import ExpandView from 'src/images/expand-view.svg?react';
+import CashbackIcon from 'src/images/icon-cashback.svg?react';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
 import { CASHBACK_LINK, DISCORD_INVITATION_LINK, PRIVACY_LINK, RUNONFLUX_LINK, TERM_LINK, WEBSITE_LINK } from 'src/utils/config';
 import { useSettingsContext } from 'src/contexts/SettingsContext';
@@ -71,6 +72,12 @@ const PageSetting = () => {
   };
 
   const settingsMenu = [
+    {
+      title: t('settings.cashback'),
+      img: <CashbackIcon />,
+      description: t('settings.cashbackDesc'),
+      onClick: () => window.open(CASHBACK_LINK, '_blank'),
+    },
     { title: t('settings.contacts'), img: <ContactsIcon />, description: t('settings.contactsDesc'), onClick: () => history.push('/contact') },
     { title: t('settings.networks'), img: <NetworksIcon />, description: t('settings.networksDesc'), onClick: () => history.push('/networks') },
     {
@@ -183,11 +190,6 @@ const PageSetting = () => {
       <AboutDiv marginTop="10px">
         <a href={PRIVACY_LINK} target="_blank" rel="noreferrer">
           <SecondaryLabel>{t('settings.privacy')}</SecondaryLabel>
-        </a>
-      </AboutDiv>
-      <AboutDiv marginTop="10px">
-        <a href={CASHBACK_LINK} target="_blank" rel="noreferrer">
-          <SecondaryLabel>{t('settings.cashback')}</SecondaryLabel>
         </a>
       </AboutDiv>
     </SettingsContainer>

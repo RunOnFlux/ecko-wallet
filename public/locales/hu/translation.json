@@ -202,6 +202,7 @@
     "terms": "Felhasználási feltételek",
     "privacy": "Adatvédelmi szabályzat",
     "cashback": "Cashback",
+    "cashbackDesc": "Vásárolj online bármilyen kártyával. Szerezz cashback-et KDA-ban",
     "connectedSitesPage": {
       "title": "Csatlakoztatott oldalak",
       "removeSiteTitle": "Oldal eltávolítása",
@@ -644,6 +645,6 @@
     "wallet": "TÁRCA",
     "analytics": "ANALITIKA",
     "nft": "NFT",
-    "settings": "BEÁLLÍTÁSOK"
+    "settings": "MENU"
   }
 }

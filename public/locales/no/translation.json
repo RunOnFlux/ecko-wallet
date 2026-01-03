@@ -202,6 +202,7 @@
     "terms": "Vilkår for bruk",
     "privacy": "Personvernpolicy",
     "cashback": "Cashback",
+    "cashbackDesc": "Handel online med hvilket som helst kort. Få cashback i KDA",
     "connectedSitesPage": {
       "title": "Tilkoblede sider",
       "removeSiteTitle": "Fjern side",
@@ -644,6 +645,6 @@
     "wallet": "WALLET",
     "analytics": "ANALYTICS",
     "nft": "NFT",
-    "settings": "INNSTILLINGER"
+    "settings": "MENU"
   }
 }

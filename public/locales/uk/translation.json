@@ -202,6 +202,7 @@
     "terms": "Умови використання",
     "privacy": "Політика конфіденційності",
     "cashback": "Кешбек",
+    "cashbackDesc": "Купуйте онлайн будь-якою карткою. Отримуйте кешбек у KDA",
     "connectedSitesPage": {
       "title": "Підключені сайти",
       "removeSiteTitle": "Видалити сайт",
@@ -644,6 +645,6 @@
     "wallet": "ГАМАНЕЦЬ",
     "analytics": "АНАЛІТИКА",
     "nft": "NFT",
-    "settings": "НАЛАШТУВАННЯ"
+    "settings": "MENU"
   }
 }

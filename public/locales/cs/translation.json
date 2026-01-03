@@ -202,6 +202,7 @@
     "terms": "Podmínky použití",
     "privacy": "Zásady ochrany osobních údajů",
     "cashback": "Cashback",
+    "cashbackDesc": "Nakupujte online jakoukoli kartou. Získejte cashback v KDA",
     "connectedSitesPage": {
       "title": "Připojené stránky",
       "removeSiteTitle": "Odstranit stránku",
@@ -638,7 +639,7 @@
     "wallet": "Peněženka",
     "analytics": "Analytika",
     "nft": "NFT",
-    "settings": "Nastavení"
+    "settings": "MENU"
   },
   "swap": {
     "chain2Warning": {

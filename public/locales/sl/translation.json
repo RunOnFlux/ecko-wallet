@@ -202,6 +202,7 @@
     "terms": "Pogoji uporabe",
     "privacy": "Politika zasebnosti",
     "cashback": "Cashback",
+    "cashbackDesc": "Shop online with any card. Get cashback in KDA",
     "connectedSitesPage": {
       "title": "Povezane strani",
       "removeSiteTitle": "Odstrani stran",
@@ -644,6 +645,6 @@
     "wallet": "DENARNICA",
     "analytics": "ANALITIKA",
     "nft": "NFT",
-    "settings": "NASTAVITVE"
+    "settings": "MENU"
   }
 }

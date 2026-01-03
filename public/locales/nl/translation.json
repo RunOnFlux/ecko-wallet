@@ -202,6 +202,7 @@
     "terms": "Gebruiksvoorwaarden",
     "privacy": "Privacybeleid",
     "cashback": "Cashback",
+    "cashbackDesc": "Shop online met elke kaart. Krijg cashback in KDA",
     "connectedSitesPage": {
       "title": "Verbonden sites",
       "removeSiteTitle": "Site verwijderen",
@@ -644,6 +645,6 @@
     "wallet": "WALLET",
     "analytics": "ANALYTICS",
     "nft": "NFT",
-    "settings": "INSTELLINGEN"
+    "settings": "MENU"
   }
 }

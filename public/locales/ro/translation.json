@@ -202,6 +202,7 @@
     "terms": "Termeni de utilizare",
     "privacy": "Politica de confidențialitate",
     "cashback": "Cashback",
+    "cashbackDesc": "Cumpără online cu orice card. Primește cashback în KDA",
     "connectedSitesPage": {
       "title": "Site-uri conectate",
       "removeSiteTitle": "Elimină site",
@@ -644,6 +645,6 @@
     "wallet": "PORTOFEL",
     "analytics": "ANALIZĂ",
     "nft": "NFT",
-    "settings": "SETĂRI"
+    "settings": "MENU"
   }
 }

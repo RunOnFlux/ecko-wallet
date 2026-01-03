@@ -202,6 +202,7 @@
     "terms": "利用規約",
     "privacy": "プライバシーポリシー",
     "cashback": "キャッシュバック",
+    "cashbackDesc": "任意のカードでオンラインショッピング。KDAでキャッシュバックを獲得",
     "connectedSitesPage": {
       "title": "接続済みサイト",
       "removeSiteTitle": "サイトを削除",
@@ -644,6 +645,6 @@
     "wallet": "ウォレット",
     "analytics": "分析",
     "nft": "NFT",
-    "settings": "設定"
+    "settings": "MENU"
   }
 }

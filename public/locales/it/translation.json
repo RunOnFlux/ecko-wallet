@@ -200,6 +200,7 @@
     "terms": "Termini di utilizzo",
     "privacy": "Informativa sulla privacy",
     "cashback": "Cashback",
+    "cashbackDesc": "Acquista online con qualsiasi carta. Ricevi cashback in KDA",
     "connectedSitesPage": {
       "title": "Siti Collegati",
       "removeSiteTitle": "Rimuovi sito",
@@ -667,7 +668,7 @@
     "wallet": "WALLET",
     "analytics": "ANALYTICS",
     "nft": "NFT",
-    "settings": "IMPOSTAZIONI"
+    "settings": "MENU"
   },
   "swap": {
     "chain2Warning": {

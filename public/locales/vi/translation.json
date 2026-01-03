@@ -202,6 +202,7 @@
     "terms": "Điều khoản dịch vụ",
     "privacy": "Chính sách bảo mật",
     "cashback": "Hoàn tiền",
+    "cashbackDesc": "Mua sắm trực tuyến với bất kỳ thẻ nào. Nhận hoàn tiền bằng KDA",
     "connectedSitesPage": {
       "title": "Trang đã kết nối",
       "removeSiteTitle": "Xóa trang",
@@ -645,6 +646,6 @@
     "wallet": "VÍ",
     "analytics": "PHÂN TÍCH",
     "nft": "NFT",
-    "settings": "CÀI ĐẶT"
+    "settings": "MENU"
   }
 }

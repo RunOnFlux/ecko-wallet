@@ -202,6 +202,7 @@
     "terms": "Käyttöehdot",
     "privacy": "Tietosuojakäytäntö",
     "cashback": "Cashback",
+    "cashbackDesc": "Osta verkossa millä tahansa kortilla. Saat cashbackia KDA:na",
     "connectedSitesPage": {
       "title": "Yhdistetyt sivustot",
       "removeSiteTitle": "Poista sivusto",
@@ -644,6 +645,6 @@
     "wallet": "LOMPAKKO",
     "analytics": "ANALYTIIKKA",
     "nft": "NFT",
-    "settings": "ASETUKSET"
+    "settings": "MENU"
   }
 }
