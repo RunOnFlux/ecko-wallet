@@ -49,4 +49,5 @@ bringInitContentScript({
   theme: 'dark',
   text: 'upper',
   darkTheme: dark,
+  switchWallet: false,
 });
