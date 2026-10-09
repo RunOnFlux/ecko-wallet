@@ -202,6 +202,8 @@
     "terms": "उपयोग की शर्तें",
     "privacy": "गोपनीयता नीति",
     "cashback": "कैशबैक",
+    "cumulusVpn": "CumulusVPN: निजी VPN",
+    "cumulusVpnDesc": "Flux पर विकेंद्रीकृत VPN। कोई अकाउंट नहीं, कोई लॉग नहीं। मुफ़्त, या $0.99/माह में पूरी स्पीड।",
     "connectedSitesPage": {
       "title": "कनेक्टेड साइटें",
       "removeSiteTitle": "साइट हटाएँ",

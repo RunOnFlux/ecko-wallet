@@ -202,6 +202,8 @@
     "terms": "Gebruiksvoorwaardes",
     "privacy": "Privaatheidsbeleid",
     "cashback": "Cashback",
+    "cumulusVpn": "CumulusVPN: privaat VPN",
+    "cumulusVpnDesc": "Gedesentraliseerde VPN op Flux. Geen rekening, geen logs nie. Gratis, of volle spoed vir $0.99/maand.",
     "connectedSitesPage": {
       "title": "Verbonde werwe",
       "removeSiteTitle": "Verwyder werf",

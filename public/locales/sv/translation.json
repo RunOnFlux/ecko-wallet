@@ -203,6 +203,8 @@
     "privacy": "Integritetspolicy",
     "cashback": "Cashback",
     "cashbackDesc": "Handla online med vilket kort som helst. Få cashback i KDA",
+    "cumulusVpn": "CumulusVPN: privat VPN",
+    "cumulusVpnDesc": "Decentraliserad VPN på Flux. Inget konto, inga loggar. Gratis, eller full hastighet för $0.99/månad.",
     "connectedSitesPage": {
       "title": "Anslutna webbplatser",
       "removeSiteTitle": "Ta bort webbplats",

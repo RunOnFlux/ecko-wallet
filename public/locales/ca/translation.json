@@ -202,6 +202,8 @@
     "terms": "Termes d’ús",
     "privacy": "Política de privacitat",
     "cashback": "Cashback",
+    "cumulusVpn": "CumulusVPN: VPN privada",
+    "cumulusVpnDesc": "VPN descentralitzada a Flux. Sense compte, sense registres. Gratuïta, o a màxima velocitat per $0.99/mes.",
     "connectedSitesPage": {
       "title": "Llocs connectats",
       "removeSiteTitle": "Elimina lloc",

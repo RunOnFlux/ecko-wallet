@@ -203,6 +203,8 @@
     "privacy": "Adatvédelmi szabályzat",
     "cashback": "Cashback",
     "cashbackDesc": "Vásárolj online bármilyen kártyával. Szerezz cashback-et KDA-ban",
+    "cumulusVpn": "CumulusVPN: privát VPN",
+    "cumulusVpnDesc": "Decentralizált VPN a Flux hálózaton. Nincs fiók, nincs naplózás. Ingyenes, vagy teljes sebesség havi $0.99-ért.",
     "connectedSitesPage": {
       "title": "Csatlakoztatott oldalak",
       "removeSiteTitle": "Oldal eltávolítása",

@@ -202,6 +202,8 @@
     "terms": "Условия за ползване",
     "privacy": "Политика за поверителност",
     "cashback": "Кешбек",
+    "cumulusVpn": "CumulusVPN: частен VPN",
+    "cumulusVpnDesc": "Децентрализиран VPN във Flux. Без акаунт, без логове. Безплатно или пълна скорост за $0.99/месец.",
     "connectedSitesPage": {
       "title": "Свързани сайтове",
       "removeSiteTitle": "Премахване на сайт",

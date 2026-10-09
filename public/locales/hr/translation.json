@@ -200,7 +200,9 @@
     "discord": "Pridruži nam se na Discordu",
     "website": "Posjeti našu web stranicu",
     "terms": "Uvjeti korištenja",
-    "privacy": "Pravilnik o privatnosti"
+    "privacy": "Pravilnik o privatnosti",
+    "cumulusVpn": "CumulusVPN: privatni VPN",
+    "cumulusVpnDesc": "Decentralizirani VPN na mreži Flux. Bez računa, bez zapisa. Besplatno ili puna brzina za $0.99 mjesečno."
   },
   "sendTransactions": {
     "header": "Pošalji {{symbol}} transakciju"
