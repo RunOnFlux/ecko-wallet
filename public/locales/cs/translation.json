@@ -203,6 +203,8 @@
     "privacy": "Zásady ochrany osobních údajů",
     "cashback": "Cashback",
     "cashbackDesc": "Nakupujte online jakoukoli kartou. Získejte cashback v KDA",
+    "cumulusVpn": "CumulusVPN: soukromá VPN",
+    "cumulusVpnDesc": "Decentralizovaná VPN na síti Flux. Bez účtu, bez logů. Zdarma, nebo plná rychlost za $0.99/měsíc.",
     "connectedSitesPage": {
       "title": "Připojené stránky",
       "removeSiteTitle": "Odstranit stránku",

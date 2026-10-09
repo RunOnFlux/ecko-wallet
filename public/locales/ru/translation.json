@@ -203,6 +203,8 @@
     "privacy": "Политика конфиденциальности",
     "cashback": "Кэшбэк",
     "cashbackDesc": "Покупайте онлайн любой картой. Получайте кэшбэк в KDA",
+    "cumulusVpn": "CumulusVPN: приватный VPN",
+    "cumulusVpnDesc": "Децентрализованный VPN в сети Flux. Без аккаунта, без логов. Бесплатно или полная скорость за $0.99/мес.",
     "connectedSitesPage": {
       "title": "Подключённые сайты",
       "removeSiteTitle": "Удалить сайт",

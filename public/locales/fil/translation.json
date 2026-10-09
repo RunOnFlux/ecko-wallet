@@ -202,6 +202,8 @@
     "terms": "Mga Tuntunin ng Paggamit",
     "privacy": "Patakaran sa Privacy",
     "cashback": "Cashback",
+    "cumulusVpn": "CumulusVPN: pribadong VPN",
+    "cumulusVpnDesc": "Desentralisadong VPN sa Flux. Walang account, walang log. Libre, o buong bilis sa halagang $0.99/buwan.",
     "connectedSitesPage": {
       "title": "Mga nakakonektang site",
       "removeSiteTitle": "Tanggalin ang site",

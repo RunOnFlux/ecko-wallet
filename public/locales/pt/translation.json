@@ -203,6 +203,8 @@
     "privacy": "Política de privacidade",
     "cashback": "Cashback",
     "cashbackDesc": "Compre online com qualquer cartão. Receba cashback em KDA",
+    "cumulusVpn": "CumulusVPN: VPN privada",
+    "cumulusVpnDesc": "VPN descentralizada na Flux. Sem conta, sem logs. Grátis, ou velocidade máxima por $0.99/mês.",
     "connectedSitesPage": {
       "title": "Sites conectados",
       "removeSiteTitle": "Remover site",
