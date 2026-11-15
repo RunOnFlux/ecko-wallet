@@ -202,7 +202,7 @@
     "terms": "Terma penggunaan",
     "privacy": "Dasar privasi",
     "cashback": "Tunai balik",
-    "cashbackDesc": "Beli-belah dalam talian dengan mana-mana kad. Dapatkan tunai balik dalam KDA",
+    "cashbackDesc": "Beli-belah dalam talian dengan mana-mana kad. Dapatkan tunai balik dalam GOLD",
     "cumulusVpn": "CumulusVPN: VPN peribadi",
     "cumulusVpnDesc": "VPN terdesentralisasi di Flux. Tiada akaun, tiada log. Percuma, atau kelajuan penuh pada $0.99/bulan.",
     "connectedSitesPage": {
@@ -647,6 +647,7 @@
     "wallet": "DOMPET",
     "analytics": "ANALITIK",
     "nft": "NFT",
+    "rewards": "GANJARAN",
     "settings": "TETAPAN"
   }
 }

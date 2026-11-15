@@ -202,7 +202,7 @@
     "terms": "利用規約",
     "privacy": "プライバシーポリシー",
     "cashback": "キャッシュバック",
-    "cashbackDesc": "任意のカードでオンラインショッピング。KDAでキャッシュバックを獲得",
+    "cashbackDesc": "任意のカードでオンラインショッピング。GOLDでキャッシュバックを獲得",
     "cumulusVpn": "CumulusVPN：プライベートVPN",
     "cumulusVpnDesc": "Flux上の分散型VPN。アカウント不要、ログなし。無料、または月額$0.99でフルスピード。",
     "connectedSitesPage": {
@@ -647,6 +647,7 @@
     "wallet": "ウォレット",
     "analytics": "分析",
     "nft": "NFT",
+    "rewards": "リワード",
     "settings": "MENU"
   }
 }

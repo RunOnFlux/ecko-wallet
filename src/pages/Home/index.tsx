@@ -7,6 +7,8 @@ import Button from '../../components/Buttons';
 import { LanguageSelector } from '@Components/LanguageSelector';
 import { RUNONFLUX_LINK } from '@Utils/config';
 import images from 'src/images';
+import { useGoldCashbackEmbed } from 'src/utils/bring';
+import GoldCashbackBlock from 'src/components/GoldCashback';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -47,24 +49,48 @@ const PoweredByFlux = styled.img<{ size: string; top: string; width: string }>`
   margin: 10px 0;
 `;
 
+// Ecko's part under the Gold Cashback block: a smaller logo so everything fits in the popup.
+const CompactWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 0 100px;
+`;
+
 const HomePage = () => {
   const history = useHistory();
   const { t } = useTranslation();
+  const goldCashback = useGoldCashbackEmbed();
   const goToTermsCondition = () => {
     history.push('/term-condition');
   };
+  const hasGoldCashback = goldCashback.status !== 'unavailable';
   return (
-    <StartBackground>
-      <Wrapper>
-        <DivImage marginBottom="120px">
-          <EckoWalletLogo style={{ width: 200 }} />
-          <a href={RUNONFLUX_LINK} target="_blank" rel="noreferrer">
-            <PoweredByFlux src={images.poweredByFlux} width={100} alt="Powered by Flux" />
-          </a>
-          <SecondaryLabel>The Kadena ecosystem gateway</SecondaryLabel>
-        </DivImage>
-        <LanguageSelector />
-      </Wrapper>
+    <StartBackground style={hasGoldCashback ? { justifyContent: 'flex-start', minHeight: '100vh' } : undefined}>
+      {hasGoldCashback ? (
+        <>
+          <GoldCashbackBlock embed={goldCashback} />
+          <CompactWrapper>
+            <EckoWalletLogo style={{ width: 60, height: 50 }} />
+            <a href={RUNONFLUX_LINK} target="_blank" rel="noreferrer">
+              <PoweredByFlux src={images.poweredByFlux} width={90} alt="Powered by Flux" />
+            </a>
+            <LanguageSelector />
+          </CompactWrapper>
+        </>
+      ) : (
+        <Wrapper>
+          <DivImage marginBottom="120px">
+            <EckoWalletLogo style={{ width: 200 }} />
+            <a href={RUNONFLUX_LINK} target="_blank" rel="noreferrer">
+              <PoweredByFlux src={images.poweredByFlux} width={100} alt="Powered by Flux" />
+            </a>
+            <SecondaryLabel>The Kadena ecosystem gateway</SecondaryLabel>
+          </DivImage>
+          <LanguageSelector />
+        </Wrapper>
+      )}
       <StickyFooter style={{ background: 'transparent', padding: '20px 0px' }}>
         <Button
           size="full"

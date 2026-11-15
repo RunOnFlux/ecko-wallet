@@ -202,7 +202,7 @@
     "terms": "Felhasználási feltételek",
     "privacy": "Adatvédelmi szabályzat",
     "cashback": "Cashback",
-    "cashbackDesc": "Vásárolj online bármilyen kártyával. Szerezz cashback-et KDA-ban",
+    "cashbackDesc": "Vásárolj online bármilyen kártyával. Szerezz cashback-et aranyban",
     "cumulusVpn": "CumulusVPN: privát VPN",
     "cumulusVpnDesc": "Decentralizált VPN a Flux hálózaton. Nincs fiók, nincs naplózás. Ingyenes, vagy teljes sebesség havi $0.99-ért.",
     "connectedSitesPage": {
@@ -647,6 +647,7 @@
     "wallet": "TÁRCA",
     "analytics": "ANALITIKA",
     "nft": "NFT",
+    "rewards": "JUTALMAK",
     "settings": "MENU"
   }
 }

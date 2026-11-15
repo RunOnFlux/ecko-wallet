@@ -26,6 +26,8 @@ import {
 import { DivError } from '../Setting/Contact/views/style';
 import { WelcomeBackground } from '../InitSeedPhrase';
 import { RUNONFLUX_LINK } from '@Utils/config';
+import { useGoldCashbackEmbed } from 'src/utils/bring';
+import GoldCashbackBlock from 'src/components/GoldCashback';
 
 export const isValidPassword = async (password) => {
   const hashPassword = hash(password);
@@ -87,6 +89,7 @@ const SignIn = () => {
   const dispatch = useAppDispatch();
   const goHome = useGoHome();
   const history = useHistory();
+  const goldCashback = useGoldCashbackEmbed();
 
   useEffect(() => {
     getLocalPassword(
@@ -161,18 +164,35 @@ const SignIn = () => {
     );
   };
 
+  // With Bring's Gold Cashback block: block on top, then a compact sign-in form under the divider.
+  // Without it: the logo layout. The form keeps its place in the tree either way, so a late switch
+  // (block failed to load) doesn't remount it and wipe a password the user is typing.
+  const hasGoldCashback = goldCashback.status !== 'unavailable';
+
   return (
-    <WelcomeBackground>
-      <DivFlex flexDirection="column" style={{ height: '100vh', padding: '0 24px' }} justifyContent="center" gap="45px">
-        <DivImage marginBottom="30px" marginTop="30px">
-          <Image src={images.eckoWalletLogo} size={200} width={200} alt="logo" />
-          <a href={RUNONFLUX_LINK} target="_blank" rel="noreferrer" style={{ marginTop: 10 }}>
-            <Image src={images.poweredByFlux} width={100} alt="Powered by Flux" marginTop={10} />
-          </a>
-          <CommonLabel color="#fff" fontSize={18} fontWeight={500} style={{ marginTop: 20 }}>
+    <WelcomeBackground style={hasGoldCashback ? { justifyContent: 'flex-start', minHeight: '100vh' } : undefined}>
+      {hasGoldCashback && <GoldCashbackBlock embed={goldCashback} />}
+      <DivFlex
+        flexDirection="column"
+        style={hasGoldCashback ? { padding: '20px 24px' } : { height: '100vh', padding: '0 24px' }}
+        justifyContent={hasGoldCashback ? 'flex-start' : 'center'}
+        gap={hasGoldCashback ? '16px' : '45px'}
+      >
+        {hasGoldCashback ? (
+          <CommonLabel color="#fff" fontSize={16} fontWeight={500} style={{ textAlign: 'center' }}>
             {t('signIn.loginTitle')}
           </CommonLabel>
-        </DivImage>
+        ) : (
+          <DivImage marginBottom="30px" marginTop="30px">
+            <Image src={images.eckoWalletLogo} size={200} width={200} alt="logo" />
+            <a href={RUNONFLUX_LINK} target="_blank" rel="noreferrer" style={{ marginTop: 10 }}>
+              <Image src={images.poweredByFlux} width={100} alt="Powered by Flux" marginTop={10} />
+            </a>
+            <CommonLabel color="#fff" fontSize={18} fontWeight={500} style={{ marginTop: 20 }}>
+              {t('signIn.loginTitle')}
+            </CommonLabel>
+          </DivImage>
+        )}
         <form onSubmit={handleSubmit(handleSignIn)} id="sign-in-form">
           <DivFlex flexDirection="column">
             <BaseTextInput
@@ -200,7 +220,7 @@ const SignIn = () => {
             />
             <DivError>{errors.password && <InputError marginTop="0">{errors.password.message}</InputError>}</DivError>
           </DivFlex>
-          <Button type="submit" size="full" form="sign-in-form" label={t('signIn.signInButton')} style={{ marginTop: 80 }} />
+          <Button type="submit" size="full" form="sign-in-form" label={t('signIn.signInButton')} style={{ marginTop: hasGoldCashback ? 16 : 80 }} />
         </form>
       </DivFlex>
     </WelcomeBackground>

@@ -11,6 +11,8 @@ import AnalyticsIcon from 'src/images/ic_analytics.svg?react';
 import MenuIcon from 'src/images/ic_menu.svg?react';
 import NFTIcon from 'src/images/nft-icon.svg?react';
 import SwapIcon from 'src/images/swap.svg?react';
+import goldIcon from 'src/images/gold-icon.png';
+import { openBringRewards } from 'src/utils/bring';
 import { ACTIVE_TAB } from 'src/utils/constant';
 import { DivFlex, SecondaryLabel } from '..';
 import { useAppSelector } from 'src/stores/hooks';
@@ -24,8 +26,15 @@ const Wrapper = styled.div<{ isFooter?: boolean }>`
   background: ${({ theme }) => theme.background};
 `;
 
+// Bring's Gold icon is 26x26; the negative margin keeps it in the same 22px box as the other tab icons.
+const RewardsIcon = styled.img`
+  width: 26px;
+  height: 26px;
+  margin: -2px;
+`;
+
 const ActionBarElement = styled.div`
-  padding: 10px;
+  padding: 10px 2px;
   cursor: pointer;
   display: flex;
   flex: 1;
@@ -202,6 +211,14 @@ const Footer = () => {
           </span>
           <SecondaryLabel uppercase fontWeight={700}>
             {t('footer.nft')}
+          </SecondaryLabel>
+        </ActionBarElement>
+        <ActionBarElement onClick={openBringRewards}>
+          <span>
+            <RewardsIcon src={goldIcon} alt="" />
+          </span>
+          <SecondaryLabel uppercase fontWeight={700}>
+            {t('footer.rewards', 'Rewards')}
           </SecondaryLabel>
         </ActionBarElement>
         <ActionBarElement

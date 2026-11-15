@@ -202,7 +202,7 @@
     "terms": "使用條款",
     "privacy": "隱私政策",
     "cashback": "現金回饋",
-    "cashbackDesc": "使用任何卡片線上購物。獲得 KDA 現金回饋",
+    "cashbackDesc": "使用任何卡片線上購物。獲得 GOLD 現金回饋",
     "cumulusVpn": "CumulusVPN：私密 VPN",
     "cumulusVpnDesc": "基於 Flux 的去中心化 VPN。無需帳戶，不保留紀錄。免費使用，或以每月 $0.99 享受全速。",
     "connectedSitesPage": {
@@ -647,6 +647,7 @@
     "wallet": "錢包",
     "analytics": "分析",
     "nft": "NFT",
+    "rewards": "獎勵",
     "settings": "MENU"
   }
 }

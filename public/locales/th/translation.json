@@ -202,7 +202,7 @@
     "terms": "ข้อกำหนดการใช้",
     "privacy": "นโยบายความเป็นส่วนตัว",
     "cashback": "เงินคืน",
-    "cashbackDesc": "ช้อปปิ้งออนไลน์ด้วยบัตรใดก็ได้ รับเงินคืนเป็น KDA",
+    "cashbackDesc": "ช้อปปิ้งออนไลน์ด้วยบัตรใดก็ได้ รับเงินคืนเป็น GOLD",
     "cumulusVpn": "CumulusVPN: VPN ส่วนตัว",
     "cumulusVpnDesc": "VPN แบบกระจายศูนย์บน Flux ไม่ต้องมีบัญชี ไม่เก็บล็อก ใช้ฟรี หรือความเร็วเต็มที่ในราคา $0.99/เดือน",
     "connectedSitesPage": {
@@ -647,6 +647,7 @@
     "wallet": "กระเป๋า",
     "analytics": "วิเคราะห์",
     "nft": "NFT",
+    "rewards": "รางวัล",
     "settings": "MENU"
   }
 }

@@ -42,6 +42,20 @@ const promptLogin = async () =>
     );
   });
 
+// "KDA Wallet" button on Bring's welcome page: open the wallet in a new tab.
+const openWallet = () => {
+  chrome.runtime.sendMessage(
+    {
+      target: 'kda.background',
+      action: 'bring_openWallet',
+    },
+    () => {
+      // Read lastError so Chrome doesn't log it when the service worker is restarting.
+      void chrome.runtime.lastError;
+    },
+  );
+};
+
 bringInitContentScript({
   getWalletAddress,
   promptLogin,
@@ -50,4 +64,7 @@ bringInitContentScript({
   text: 'upper',
   darkTheme: dark,
   switchWallet: false,
+  onboarding: {
+    onWalletClick: openWallet,
+  },
 });
