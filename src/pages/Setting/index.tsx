@@ -12,8 +12,9 @@ import GlobeIcon from 'src/images/globe-icon.svg?react';
 import Padlock from 'src/images/padlock.svg?react';
 import ExpandView from 'src/images/expand-view.svg?react';
 import CashbackIcon from 'src/images/icon-cashback.svg?react';
+import CumulusVpnLogo from 'src/images/cumulusvpn-logo.png';
 import { CommonLabel, DivFlex, SecondaryLabel } from 'src/components';
-import { CASHBACK_LINK, DISCORD_INVITATION_LINK, PRIVACY_LINK, RUNONFLUX_LINK, TERM_LINK, WEBSITE_LINK } from 'src/utils/config';
+import { CASHBACK_LINK, CUMULUSVPN_LINK, DISCORD_INVITATION_LINK, PRIVACY_LINK, RUNONFLUX_LINK, TERM_LINK, WEBSITE_LINK } from 'src/utils/config';
 import { useSettingsContext } from 'src/contexts/SettingsContext';
 import useSessionStorage from 'src/hooks/useSessionStorage';
 import { STORAGE_PASSWORD_KEY } from 'src/utils/storage';
@@ -140,6 +141,12 @@ const PageSetting = () => {
       img: <Padlock />,
       description: t('settings.lockSettingsDesc'),
       onClick: () => history.push('/lock-settings'),
+    },
+    {
+      title: t('settings.cumulusVpn'),
+      img: <img src={CumulusVpnLogo} width={41} height={41} alt="CumulusVPN" />,
+      description: t('settings.cumulusVpnDesc'),
+      onClick: () => window.open(CUMULUSVPN_LINK, '_blank'),
     },
   ];
 

@@ -203,6 +203,8 @@
     "privacy": "Tietosuojakäytäntö",
     "cashback": "Cashback",
     "cashbackDesc": "Osta verkossa millä tahansa kortilla. Saat cashbackia KDA:na",
+    "cumulusVpn": "CumulusVPN: yksityinen VPN",
+    "cumulusVpnDesc": "Hajautettu VPN Flux-verkossa. Ei tiliä, ei lokeja. Ilmainen, tai täysi nopeus hintaan $0.99/kk.",
     "connectedSitesPage": {
       "title": "Yhdistetyt sivustot",
       "removeSiteTitle": "Poista sivusto",

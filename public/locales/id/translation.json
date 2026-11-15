@@ -202,6 +202,8 @@
     "terms": "Syarat Penggunaan",
     "privacy": "Kebijakan Privasi",
     "cashback": "Cashback",
+    "cumulusVpn": "CumulusVPN: VPN pribadi",
+    "cumulusVpnDesc": "VPN terdesentralisasi di Flux. Tanpa akun, tanpa log. Gratis, atau kecepatan penuh seharga $0.99/bulan.",
     "connectedSitesPage": {
       "title": "Situs terhubung",
       "removeSiteTitle": "Hapus situs",

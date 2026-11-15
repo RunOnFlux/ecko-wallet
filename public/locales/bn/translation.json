@@ -202,6 +202,8 @@
     "terms": "ব্যবহারের শর্তাদি",
     "privacy": "গোপনীয়তা নীতি",
     "cashback": "ক্যাশব্যাক",
+    "cumulusVpn": "CumulusVPN: ব্যক্তিগত VPN",
+    "cumulusVpnDesc": "Flux-এ বিকেন্দ্রীভূত VPN। কোনো অ্যাকাউন্ট নেই, কোনো লগ নেই। বিনামূল্যে, অথবা $0.99/মাসে পূর্ণ গতি।",
     "connectedSitesPage": {
       "title": "সংযুক্ত সাইট",
       "removeSiteTitle": "সাইট মুছুন",

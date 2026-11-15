@@ -203,6 +203,8 @@
     "privacy": "隐私政策",
     "cashback": "返现",
     "cashbackDesc": "使用任何卡片在线购物。获得 KDA 返现",
+    "cumulusVpn": "CumulusVPN：私密 VPN",
+    "cumulusVpnDesc": "基于 Flux 的去中心化 VPN。无需账户，不记录日志。免费使用，或以每月 $0.99 享受全速。",
     "connectedSitesPage": {
       "title": "已连接网站",
       "removeSiteTitle": "移除网站",

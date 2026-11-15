@@ -25,6 +25,7 @@ export const PRIVACY_LINK = 'https://eckowallet.com/privacy-policy';
 export const RUNONFLUX_LINK = 'https://runonflux.com/';
 export const MAINNET_EXPLORER_LINK = 'https://explorer.eckowallet.com/transactions';
 export const CASHBACK_LINK = 'https://ecko.bringweb3.io/';
+export const CUMULUSVPN_LINK = 'https://cumulusvpn.com/?utm_source=eckowallet&utm_medium=app&utm_campaign=cumulusvpn';
 
 export type GasType = {
   LABEL: string;
