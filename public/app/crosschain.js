@@ -2,6 +2,7 @@
 import Pact from 'pact-lang-api';
 import { getApiUrl, pollRequestKey, fetchSend } from '../../src/utils/chainweb';
 import { delay } from '../../src/utils';
+import { isPactAlreadyCompleted, readContinuationSendResult } from '../../src/utils/crossChain';
 
 const getLocalStorageDataByKey = (key) =>
   new Promise((resolve, reject) => {
@@ -69,12 +70,21 @@ const getTxSPV = (requestKey, targetChainId, url) =>
   });
 
 const finishCrossChain = async (proof, targetChainId, requestKey, network) => {
-  const finishRequestKey = await finishCrossChainWithProof(proof, requestKey, targetChainId, network);
+  const sendResult = await finishCrossChainWithProof(proof, requestKey, targetChainId, network);
+  if (sendResult.alreadyCompleted) {
+    // Usually a relayer finished the transfer first; the funds have arrived.
+    removePendingCrossChain(requestKey);
+    return;
+  }
+  if (!sendResult.requestKey) {
+    console.log(`Finish cross transfer ${requestKey} was not accepted: ${sendResult.error}`);
+    return;
+  }
   const nodeUrl = getApiUrl(network.url, network.networkId, targetChainId);
-  const pollRes = await pollRequestKey(finishRequestKey, nodeUrl);
+  const pollRes = await pollRequestKey(sendResult.requestKey, nodeUrl);
   if (pollRes) {
     const status = pollRes?.result?.status;
-    if (status === 'success' || (pollRes?.result.error?.message && pollRes?.result.error?.message?.indexOf('resumePact: pact completed') > -1)) {
+    if (status === 'success' || isPactAlreadyCompleted(pollRes?.result?.error?.message)) {
       removePendingCrossChain(requestKey);
     } else if (status === 'failure') {
       //   toast.error(<Toast type="fail" content="Finish cross transfer Fail" />);
@@ -119,18 +129,12 @@ const finishCrossChainWithProof = async (proof, requestKey, targetChainId, netwo
       cmd.proof,
       cmd.networkId,
     );
-    const data = await fetchSend(sendCommand, host);
-    if (data.ok) {
-      const res = await data.json();
-      if (res && res.requestKeys) {
-        return res.requestKeys[0];
-      }
-    }
-    return false;
+    const response = await fetchSend(sendCommand, host);
+    return await readContinuationSendResult(response);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log('finishCrossChainWithProof error', err);
-    return false;
+    return { error: String(err) };
   }
 };
 
