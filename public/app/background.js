@@ -138,11 +138,8 @@ function setWalletConnectEvents(accounts) {
   walletConnect.wallet?.on('pairing_expire', (event) => console.log('pairing_expire', event));
 }
 
-chrome.runtime.onInstalled.addListener((details) => {
-  if (details.reason === 'install') {
-    chrome.tabs.create({ url: '/index.html#/home-page' });
-  }
-});
+// First-install onboarding is handled by the Bring kit (onboarding: { on: true } in ./bring/background):
+// it opens Bring's welcome page, whose "KDA Wallet" button opens the wallet via bring_openWallet.
 
 chrome.runtime.onStartup.addListener(() => {
   chrome.storage.local.set({ expiredTime: null });
@@ -168,6 +165,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'bring_resolveSelection') {
       bringResolveSelection(tabIdResponse, request.walletAddress, sendResponse);
       return true;
+    }
+    if (request.action === 'bring_openWallet') {
+      bringOpenWallet(sender?.tab);
+      sendResponse({ success: true });
+      return;
     }
     if (request.action.includes(INTERNAL_MESSAGE_PREFIX)) {
       void (async () => {
@@ -397,6 +399,17 @@ const bringResolveSelection = async (tabId, walletAddress, sendResponse) => {
   if (sendResponse) {
     sendResponse({ success: true });
   }
+};
+
+// Opens the wallet next to Bring's welcome page. New users land on the start page (what the
+// old install onboarding opened); users who already have a wallet are redirected to sign-in or home.
+const bringOpenWallet = (senderTab) => {
+  const createProperties = { url: chrome.runtime.getURL('index.html#/home-page') };
+  if (senderTab && typeof senderTab.index === 'number') {
+    createProperties.windowId = senderTab.windowId;
+    createProperties.index = senderTab.index + 1;
+  }
+  chrome.tabs.create(createProperties);
 };
 
 const bringResolvePendingWalletAddress = async () => {

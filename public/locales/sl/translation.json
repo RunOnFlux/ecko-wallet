@@ -202,7 +202,7 @@
     "terms": "Pogoji uporabe",
     "privacy": "Politika zasebnosti",
     "cashback": "Cashback",
-    "cashbackDesc": "Shop online with any card. Get cashback in KDA",
+    "cashbackDesc": "Shop online with any card. Get cashback in GOLD",
     "cumulusVpn": "CumulusVPN: zasebni VPN",
     "cumulusVpnDesc": "Decentraliziran VPN na omrežju Flux. Brez računa, brez dnevnikov. Brezplačno ali polna hitrost za $0.99/mesec.",
     "connectedSitesPage": {
@@ -647,6 +647,7 @@
     "wallet": "DENARNICA",
     "analytics": "ANALITIKA",
     "nft": "NFT",
+    "rewards": "NAGRADE",
     "settings": "MENU"
   }
 }

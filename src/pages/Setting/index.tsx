@@ -18,6 +18,7 @@ import { CASHBACK_LINK, CUMULUSVPN_LINK, DISCORD_INVITATION_LINK, PRIVACY_LINK, 
 import { useSettingsContext } from 'src/contexts/SettingsContext';
 import useSessionStorage from 'src/hooks/useSessionStorage';
 import { STORAGE_PASSWORD_KEY } from 'src/utils/storage';
+import { openInNewTab } from 'src/utils/bring';
 import { RoundedArrow } from '../../components/Activities/FinishTransferItem';
 import packageJson from '../../../package.json';
 import { useAppSelector } from 'src/stores/hooks';
@@ -77,7 +78,8 @@ const PageSetting = () => {
       title: t('settings.cashback'),
       img: <CashbackIcon />,
       description: t('settings.cashbackDesc'),
-      onClick: () => window.open(CASHBACK_LINK, '_blank'),
+      // chrome.tabs.create, not window.open: a tab opened from the sandboxed extension page stays sandboxed.
+      onClick: () => openInNewTab(CASHBACK_LINK),
     },
     { title: t('settings.contacts'), img: <ContactsIcon />, description: t('settings.contactsDesc'), onClick: () => history.push('/contact') },
     { title: t('settings.networks'), img: <NetworksIcon />, description: t('settings.networksDesc'), onClick: () => history.push('/networks') },

@@ -202,7 +202,7 @@
     "terms": "Điều khoản dịch vụ",
     "privacy": "Chính sách bảo mật",
     "cashback": "Hoàn tiền",
-    "cashbackDesc": "Mua sắm trực tuyến với bất kỳ thẻ nào. Nhận hoàn tiền bằng KDA",
+    "cashbackDesc": "Mua sắm trực tuyến với bất kỳ thẻ nào. Nhận hoàn tiền bằng GOLD",
     "cumulusVpn": "CumulusVPN: VPN riêng tư",
     "cumulusVpnDesc": "VPN phi tập trung trên Flux. Không cần tài khoản, không lưu nhật ký. Miễn phí, hoặc tốc độ tối đa với $0.99/tháng.",
     "connectedSitesPage": {
@@ -648,6 +648,7 @@
     "wallet": "VÍ",
     "analytics": "PHÂN TÍCH",
     "nft": "NFT",
+    "rewards": "PHẦN THƯỞNG",
     "settings": "MENU"
   }
 }

@@ -202,7 +202,7 @@
     "terms": "Gebruiksvoorwaarden",
     "privacy": "Privacybeleid",
     "cashback": "Cashback",
-    "cashbackDesc": "Shop online met elke kaart. Krijg cashback in KDA",
+    "cashbackDesc": "Shop online met elke kaart. Krijg cashback in GOLD",
     "cumulusVpn": "CumulusVPN: privé-VPN",
     "cumulusVpnDesc": "Gedecentraliseerde VPN op Flux. Geen account, geen logs. Gratis, of volledige snelheid voor $0.99/maand.",
     "connectedSitesPage": {
@@ -647,6 +647,7 @@
     "wallet": "WALLET",
     "analytics": "ANALYTICS",
     "nft": "NFT",
+    "rewards": "REWARDS",
     "settings": "MENU"
   }
 }

@@ -202,7 +202,7 @@
     "terms": "Käyttöehdot",
     "privacy": "Tietosuojakäytäntö",
     "cashback": "Cashback",
-    "cashbackDesc": "Osta verkossa millä tahansa kortilla. Saat cashbackia KDA:na",
+    "cashbackDesc": "Osta verkossa millä tahansa kortilla. Saat cashbackia kultana",
     "cumulusVpn": "CumulusVPN: yksityinen VPN",
     "cumulusVpnDesc": "Hajautettu VPN Flux-verkossa. Ei tiliä, ei lokeja. Ilmainen, tai täysi nopeus hintaan $0.99/kk.",
     "connectedSitesPage": {
@@ -647,6 +647,7 @@
     "wallet": "LOMPAKKO",
     "analytics": "ANALYTIIKKA",
     "nft": "NFT",
+    "rewards": "PALKKIOT",
     "settings": "MENU"
   }
 }

@@ -202,7 +202,7 @@
     "terms": "Termeni de utilizare",
     "privacy": "Politica de confidențialitate",
     "cashback": "Cashback",
-    "cashbackDesc": "Cumpără online cu orice card. Primește cashback în KDA",
+    "cashbackDesc": "Cumpără online cu orice card. Primește cashback în GOLD",
     "cumulusVpn": "CumulusVPN: VPN privat",
     "cumulusVpnDesc": "VPN descentralizat pe Flux. Fără cont, fără loguri. Gratuit sau viteză maximă pentru $0.99/lună.",
     "connectedSitesPage": {
@@ -647,6 +647,7 @@
     "wallet": "PORTOFEL",
     "analytics": "ANALIZĂ",
     "nft": "NFT",
+    "rewards": "RECOMPENSE",
     "settings": "MENU"
   }
 }

@@ -200,7 +200,7 @@
     "terms": "Termini di utilizzo",
     "privacy": "Informativa sulla privacy",
     "cashback": "Cashback",
-    "cashbackDesc": "Acquista online con qualsiasi carta. Ricevi cashback in KDA",
+    "cashbackDesc": "Acquista online con qualsiasi carta. Ricevi cashback in GOLD",
     "cumulusVpn": "CumulusVPN: VPN privata",
     "cumulusVpnDesc": "VPN decentralizzata su Flux. Nessun account, nessun log. Gratis, o a piena velocità per $0.99/mese.",
     "connectedSitesPage": {
@@ -670,6 +670,7 @@
     "wallet": "WALLET",
     "analytics": "ANALYTICS",
     "nft": "NFT",
+    "rewards": "REWARDS",
     "settings": "MENU"
   },
   "swap": {

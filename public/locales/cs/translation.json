@@ -202,7 +202,7 @@
     "terms": "Podmínky použití",
     "privacy": "Zásady ochrany osobních údajů",
     "cashback": "Cashback",
-    "cashbackDesc": "Nakupujte online jakoukoli kartou. Získejte cashback v KDA",
+    "cashbackDesc": "Nakupujte online jakoukoli kartou. Získejte cashback v GOLD",
     "cumulusVpn": "CumulusVPN: soukromá VPN",
     "cumulusVpnDesc": "Decentralizovaná VPN na síti Flux. Bez účtu, bez logů. Zdarma, nebo plná rychlost za $0.99/měsíc.",
     "connectedSitesPage": {
@@ -641,6 +641,7 @@
     "wallet": "Peněženka",
     "analytics": "Analytika",
     "nft": "NFT",
+    "rewards": "Odměny",
     "settings": "MENU"
   },
   "swap": {
