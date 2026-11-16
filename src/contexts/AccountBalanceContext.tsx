@@ -158,34 +158,35 @@ export const AccountBalanceProvider = ({ children }: any) => {
   };
 
   const updateUsdPrices = () => {
+    // a token only gets a daily candle when it was swapped that day, so look back far enough to find one for illiquid tokens
+    const dateStart = moment().subtract(30, 'days').format('YYYY-MM-DD');
+    const dateEnd = moment().format('YYYY-MM-DD');
     const promises: Promise<Response>[] = [
-      fetch(
-        `${KADDEX_ANALYTICS_API}/candles?dateStart=${moment().subtract(3, 'days').format('YYYY-MM-DD')}&dateEnd=${moment().format(
-          'YYYY-MM-DD',
-        )}&currency=USDT&asset=KDA`,
-      ),
+      fetch(`${KADDEX_ANALYTICS_API}/candles?dateStart=${dateStart}&dateEnd=${dateEnd}&currency=USDT&asset=KDA`),
     ];
     fungibleTokensByNetwork?.forEach((tok) => {
-      promises.push(
-        fetch(
-          `${KADDEX_ANALYTICS_API}/candles?dateStart=${moment().subtract(3, 'days').format('YYYY-MM-DD')}&dateEnd=${moment().format(
-            'YYYY-MM-DD',
-          )}&currency=coin&asset=${tok?.contractAddress}`,
-        ),
-      );
+      promises.push(fetch(`${KADDEX_ANALYTICS_API}/candles?dateStart=${dateStart}&dateEnd=${dateEnd}&currency=coin&asset=${tok?.contractAddress}`));
     });
     Promise.all(promises)
       .then((results) => Promise.all(results.map((r) => r.json())))
       .then((candlesData) => {
         const usdPricesData = {};
+        // token candles are priced in KDA and the last one can be weeks old, so convert with the current KDA price
+        // instead of the candle's own usdPrice, which uses the KDA price of that day
+        const kdaCandles = candlesData[0];
+        const kdaUsdPrice = kdaCandles?.length ? kdaCandles[kdaCandles.length - 1]?.price?.close : 0;
         candlesData.forEach((candleAnalytics) => {
           if (candleAnalytics.length) {
             const lastCandle = candleAnalytics?.pop();
             const asset = lastCandle?.pairName?.split('/')[0];
             const moduleName = asset?.toLowerCase() === 'kda' ? 'coin' : asset?.toLowerCase();
-            usdPricesData[moduleName] = lastCandle?.usdPrice?.close || lastCandle?.price?.close || 0;
+            const usdPrice =
+              moduleName !== 'coin' && kdaUsdPrice && lastCandle?.price?.close
+                ? lastCandle.price.close * kdaUsdPrice
+                : lastCandle?.usdPrice?.close || lastCandle?.price?.close || 0;
+            usdPricesData[moduleName] = usdPrice;
             if (moduleName === 'kaddex.kdx') {
-              usdPricesData['kaddex.skdx'] = lastCandle?.usdPrice?.close || lastCandle?.price?.close || 0;
+              usdPricesData['kaddex.skdx'] = usdPrice;
             }
           }
         });
