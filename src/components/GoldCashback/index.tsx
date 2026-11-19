@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import type { GoldCashbackEmbed } from 'src/utils/bring';
 
-// Bring's block is designed for up to 355px wide and at least 353px tall.
-const BLOCK_MAX_WIDTH = 355;
+// Bring's block fills whatever width it gets (popup or full tab) and needs at least 353px of height.
 const BLOCK_HEIGHT = 353;
 
 const Wrapper = styled.div`
@@ -15,17 +14,13 @@ const Wrapper = styled.div`
 const Frame = styled.iframe`
   display: block;
   width: 100%;
-  max-width: ${BLOCK_MAX_WIDTH}px;
   height: ${BLOCK_HEIGHT}px;
-  margin: 0 auto;
   border: 0;
 `;
 
 const Placeholder = styled.div`
   width: 100%;
-  max-width: ${BLOCK_MAX_WIDTH}px;
   height: ${BLOCK_HEIGHT}px;
-  margin: 0 auto;
 `;
 
 // Matches Bring's Divider.png (1px, #404A8D), full width under the block.
