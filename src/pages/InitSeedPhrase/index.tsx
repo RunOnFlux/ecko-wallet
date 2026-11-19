@@ -33,6 +33,7 @@ const Div = styled.div`
 `;
 const DivBody = styled.div`
   width: 100%;
+  box-sizing: border-box;
   font-size: 16px;
   line-height: 25px;
   display: flex;
@@ -69,10 +70,9 @@ const InitSeedPhrase = () => {
 
   const getCheckboxLabel = () => (
     <CommonLabel color="white">
-      {t('initSeedPhrase.agreeTerms')}
-      <TermsBr />
+      {t('initSeedPhrase.agreeTerms')} <TermsBr />
       <Term href={TERM_LINK} target="_blank" rel="noreferrer">
-        &nbsp;{t('initSeedPhrase.termsOfUse')}
+        {t('initSeedPhrase.termsOfUse')}
       </Term>
     </CommonLabel>
   );

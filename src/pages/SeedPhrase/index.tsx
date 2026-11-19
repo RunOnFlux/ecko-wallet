@@ -3,7 +3,7 @@ import images from 'src/images';
 import styled from 'styled-components';
 import Button from 'src/components/Buttons';
 import AlertIconSVG from 'src/images/icon-alert.svg?react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Radio } from 'src/components/Radio';
 import { toast } from 'react-toastify';
 import { NavigationHeader } from 'src/components/NavigationHeader';
@@ -18,6 +18,7 @@ import { Warning } from '../SendTransactions/styles';
 import { SPWrapper } from '../Setting/ExportSeedPhrase';
 import { useAppSelector } from 'src/stores/hooks';
 import { useTranslation } from 'react-i18next';
+import { splitSeedPhrase } from 'src/utils/seedPhrase';
 
 const Footer = styled.div`
   margin: 20px 0;
@@ -78,10 +79,12 @@ const ItemWrapper = styled.div`
   text-align: center;
   width: 22%;
 `;
+// 13px monospace fits the longest (8-letter) words in a popup-width box; 16px cut them off.
 const SInput = styled.input`
   text-align: center;
   width: 100%;
-  font-size: 16px;
+  box-sizing: border-box;
+  font-size: 13px;
   border: 1px solid ${({ theme }) => theme.text.primary};
   padding: 13px 0;
   border-radius: 8px;
@@ -97,7 +100,8 @@ const SPText = styled.div`
   font-size: 24px;
   font-family: monospace;
 `;
-const defaultArr = ['', '', '', '', '', '', '', '', '', '', '', ''];
+const WORD_COUNT = 12;
+const defaultArr: string[] = Array(WORD_COUNT).fill('');
 
 const SeedPhrase = () => {
   const history = useHistory();
@@ -110,6 +114,7 @@ const SeedPhrase = () => {
   const [isHiddenSP, setIsHiddenSP] = useState(true);
   const [sP, setSP] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const wordInputs = useRef<(HTMLInputElement | null)[]>([]);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -239,22 +244,69 @@ const SeedPhrase = () => {
     return arr.every((word) => word);
   };
 
-  const onChangeSP = (value, index) => {
-    const newSP = [...sPMap];
-    newSP[index - 1] = value.trim();
+  const updateWords = (newSP: string[]) => {
     setSPMap(newSP);
     setEnable(isFullSP(newSP));
   };
 
-  const renderItem = (index) => (
+  // Several words at once (pasted, or typed with spaces) fill the boxes from this one onwards. A whole phrase
+  // fills every box from the first, whichever box it was pasted into.
+  const fillWords = (words: string[], index: number) => {
+    const start = words.length >= WORD_COUNT ? 0 : index;
+    const newSP = [...sPMap];
+    words.slice(0, WORD_COUNT - start).forEach((word, i) => {
+      newSP[start + i] = word;
+    });
+    updateWords(newSP);
+    const lastFilled = Math.min(start + words.length, WORD_COUNT) - 1;
+    wordInputs.current[Math.min(lastFilled + 1, WORD_COUNT - 1)]?.focus();
+  };
+
+  const onChangeSP = (value: string, index: number) => {
+    const words = splitSeedPhrase(value);
+    if (words.length > 1) {
+      fillWords(words, index);
+      return;
+    }
+    const newSP = [...sPMap];
+    newSP[index] = words[0] || '';
+    updateWords(newSP);
+    // A space after a word moves on to the next box.
+    if (words.length === 1 && /\s$/.test(value) && index < WORD_COUNT - 1) {
+      wordInputs.current[index + 1]?.focus();
+    }
+  };
+
+  const onPasteSP = (e: React.ClipboardEvent<HTMLInputElement>, index: number) => {
+    const words = splitSeedPhrase(e.clipboardData.getData('text'));
+    if (words.length > 1) {
+      e.preventDefault();
+      fillWords(words, index);
+    }
+  };
+
+  const renderItem = (index: number) => (
     <ItemWrapper key={index}>
-      {index}
-      <SInput type="text" onChange={(e) => onChangeSP(e.target.value, index)} style={{ fontFamily: 'monospace' }} />
+      {index + 1}
+      <SInput
+        type="text"
+        value={sPMap[index]}
+        ref={(el) => {
+          wordInputs.current[index] = el;
+        }}
+        onChange={(e) => onChangeSP(e.target.value, index)}
+        onPaste={(e) => onPasteSP(e, index)}
+        autoComplete="off"
+        autoCapitalize="off"
+        autoCorrect="off"
+        spellCheck={false}
+        style={{ fontFamily: 'monospace' }}
+      />
     </ItemWrapper>
   );
 
   const renderVerifySP = () => {
-    return <VerifyWrapper>{Array.from({ length: 12 }, (_, i) => renderItem(i + 1))}</VerifyWrapper>;
+    return <VerifyWrapper>{Array.from({ length: WORD_COUNT }, (_, i) => renderItem(i))}</VerifyWrapper>;
   };
 
   const renderStep1 = () => (
