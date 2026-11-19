@@ -55,7 +55,7 @@ const CompactWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 16px 0 100px;
+  padding: 32px 0 100px;
 `;
 
 const HomePage = () => {

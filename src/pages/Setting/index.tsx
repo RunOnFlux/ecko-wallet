@@ -130,7 +130,7 @@ const PageSetting = () => {
     {
       title: t('settings.theme'),
       img: (
-        <RoundedArrow margin="0px 5px 0px 0px" background={theme.iconSettingsBackground}>
+        <RoundedArrow background={theme.iconSettingsBackground} style={{ marginRight: 0 }}>
           <ThemeIcon style={{ width: 20 }} />
         </RoundedArrow>
       ),

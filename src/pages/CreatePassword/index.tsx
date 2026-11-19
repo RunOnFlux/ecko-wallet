@@ -12,6 +12,7 @@ import Button from 'src/components/Buttons';
 import { PasswordForm } from 'src/components/PasswordForm';
 import { useAppSelector } from 'src/stores/hooks';
 import { useTranslation } from 'react-i18next';
+import { normalizeSeedPhrase, splitSeedPhrase } from 'src/utils/seedPhrase';
 
 const CreatePasswordWrapper = styled.div`
   padding: 0 20px;
@@ -88,13 +89,14 @@ const CreatePassword = () => {
   };
 
   const onCheck = async (data) => {
-    const { seedPhrase } = data;
     if (isCreateSeedPhrase) {
+      // The validator rejects a valid phrase with a trailing newline, double spaces or capitals, so clean it first.
+      const seedPhrase = normalizeSeedPhrase(data.seedPhrase);
       const isSeedPhraseValid = kadenaCheckMnemonic(seedPhrase);
       if (!isSeedPhraseValid) {
         toast.error(<Toast type="fail" content={t('createPassword.invalidPhrase')} />);
       } else {
-        await onStorePassword(data, '/sign-in');
+        await onStorePassword({ ...data, seedPhrase }, '/sign-in');
       }
     } else {
       await onStorePassword(data, '/seed-phrase');
@@ -117,6 +119,15 @@ const CreatePassword = () => {
                   inputProps={{
                     type: 'password',
                     placeholder: t('createPassword.pastePhrase'),
+                    // A single-line input deletes line breaks from pasted text, which glues words copied one per
+                    // line together. Take the clipboard text and put it in cleaned up instead.
+                    onPaste: (e: React.ClipboardEvent<HTMLInputElement>) => {
+                      const words = splitSeedPhrase(e.clipboardData.getData('text'));
+                      if (words.length < 2) return;
+                      e.preventDefault();
+                      clearErrors('seedPhrase');
+                      setValue('seedPhrase', words.join(' '));
+                    },
                     ...register('seedPhrase', {
                       required: {
                         value: true,

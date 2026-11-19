@@ -72,6 +72,13 @@ const Image = styled.img<{ size: string; top: string; width: string }>`
   margin-top: ${(props) => props.marginTop};
 `;
 
+// In a full tab the form would otherwise stretch across the whole 1000px wallet; Bring asked for half that.
+const SignInForm = styled.form`
+  width: 100%;
+  max-width: 476px;
+  margin: 0 auto;
+`;
+
 const SignIn = () => {
   const { t } = useTranslation();
   const {
@@ -164,19 +171,21 @@ const SignIn = () => {
     );
   };
 
-  // With Bring's Gold Cashback block: block on top, then a compact sign-in form under the divider.
+  // With Bring's Gold Cashback block: block on top, then a compact sign-in form under the divider, laid out
+  // as in Bring's Figma sketch (no field label, input and button close together).
   // Without it: the logo layout. The form keeps its place in the tree either way, so a late switch
   // (block failed to load) doesn't remount it and wipe a password the user is typing.
   const hasGoldCashback = goldCashback.status !== 'unavailable';
+  const passwordError = errors.password && <InputError marginTop="0">{errors.password.message}</InputError>;
 
   return (
     <WelcomeBackground style={hasGoldCashback ? { justifyContent: 'flex-start', minHeight: '100vh' } : undefined}>
       {hasGoldCashback && <GoldCashbackBlock embed={goldCashback} />}
       <DivFlex
         flexDirection="column"
-        style={hasGoldCashback ? { padding: '20px 24px' } : { height: '100vh', padding: '0 24px' }}
+        style={hasGoldCashback ? { padding: '40px 24px 24px' } : { height: '100vh', padding: '0 24px' }}
         justifyContent={hasGoldCashback ? 'flex-start' : 'center'}
-        gap={hasGoldCashback ? '16px' : '45px'}
+        gap={hasGoldCashback ? '24px' : '45px'}
       >
         {hasGoldCashback ? (
           <CommonLabel color="#fff" fontSize={16} fontWeight={500} style={{ textAlign: 'center' }}>
@@ -193,12 +202,13 @@ const SignIn = () => {
             </CommonLabel>
           </DivImage>
         )}
-        <form onSubmit={handleSubmit(handleSignIn)} id="sign-in-form">
+        <SignInForm onSubmit={handleSubmit(handleSignIn)} id="sign-in-form">
           <DivFlex flexDirection="column">
             <BaseTextInput
               inputProps={{
                 type: 'password',
                 placeholder: t('signIn.passwordPlaceholder'),
+                'aria-label': t('signIn.passwordTitle'),
                 ...register('password', {
                   required: { value: true, message: t('signIn.required') },
                   minLength: { value: 8, message: t('signIn.minLength') },
@@ -209,19 +219,20 @@ const SignIn = () => {
               wrapperStyle={{
                 background: 'linear-gradient(114.43deg, #293445 5.17%, #292A45 65.62%)',
                 borderRadius: 25,
+                ...(hasGoldCashback && { border: '1px solid #404a8d' }),
               }}
               typeInput="password"
-              title={t('signIn.passwordTitle')}
+              title={hasGoldCashback ? '' : t('signIn.passwordTitle')}
               height="auto"
               onChange={(e) => {
                 clearErrors('password');
                 setValue('password', e.target.value);
               }}
             />
-            <DivError>{errors.password && <InputError marginTop="0">{errors.password.message}</InputError>}</DivError>
+            {hasGoldCashback ? passwordError && <DivError>{passwordError}</DivError> : <DivError>{passwordError}</DivError>}
           </DivFlex>
           <Button type="submit" size="full" form="sign-in-form" label={t('signIn.signInButton')} style={{ marginTop: hasGoldCashback ? 16 : 80 }} />
-        </form>
+        </SignInForm>
       </DivFlex>
     </WelcomeBackground>
   );
